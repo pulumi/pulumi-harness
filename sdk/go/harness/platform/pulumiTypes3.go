@@ -11243,6 +11243,5694 @@ func (o IdpCatalogEntityGitDetailsPtrOutput) StoreType() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+type IdpIntegrationBitbucketCloud struct {
+	// Lower bound for the first sync, RFC3339.
+	StartDate *string `pulumi:"startDate"`
+}
+
+// IdpIntegrationBitbucketCloudInput is an input type that accepts IdpIntegrationBitbucketCloudArgs and IdpIntegrationBitbucketCloudOutput values.
+// You can construct a concrete instance of `IdpIntegrationBitbucketCloudInput` via:
+//
+//	IdpIntegrationBitbucketCloudArgs{...}
+type IdpIntegrationBitbucketCloudInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationBitbucketCloudOutput() IdpIntegrationBitbucketCloudOutput
+	ToIdpIntegrationBitbucketCloudOutputWithContext(context.Context) IdpIntegrationBitbucketCloudOutput
+}
+
+type IdpIntegrationBitbucketCloudArgs struct {
+	// Lower bound for the first sync, RFC3339.
+	StartDate pulumi.StringPtrInput `pulumi:"startDate"`
+}
+
+func (IdpIntegrationBitbucketCloudArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationBitbucketCloud)(nil)).Elem()
+}
+
+func (i IdpIntegrationBitbucketCloudArgs) ToIdpIntegrationBitbucketCloudOutput() IdpIntegrationBitbucketCloudOutput {
+	return i.ToIdpIntegrationBitbucketCloudOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationBitbucketCloudArgs) ToIdpIntegrationBitbucketCloudOutputWithContext(ctx context.Context) IdpIntegrationBitbucketCloudOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationBitbucketCloudOutput)
+}
+
+func (i IdpIntegrationBitbucketCloudArgs) ToIdpIntegrationBitbucketCloudPtrOutput() IdpIntegrationBitbucketCloudPtrOutput {
+	return i.ToIdpIntegrationBitbucketCloudPtrOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationBitbucketCloudArgs) ToIdpIntegrationBitbucketCloudPtrOutputWithContext(ctx context.Context) IdpIntegrationBitbucketCloudPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationBitbucketCloudOutput).ToIdpIntegrationBitbucketCloudPtrOutputWithContext(ctx)
+}
+
+// IdpIntegrationBitbucketCloudPtrInput is an input type that accepts IdpIntegrationBitbucketCloudArgs, IdpIntegrationBitbucketCloudPtr and IdpIntegrationBitbucketCloudPtrOutput values.
+// You can construct a concrete instance of `IdpIntegrationBitbucketCloudPtrInput` via:
+//
+//	        IdpIntegrationBitbucketCloudArgs{...}
+//
+//	or:
+//
+//	        nil
+type IdpIntegrationBitbucketCloudPtrInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationBitbucketCloudPtrOutput() IdpIntegrationBitbucketCloudPtrOutput
+	ToIdpIntegrationBitbucketCloudPtrOutputWithContext(context.Context) IdpIntegrationBitbucketCloudPtrOutput
+}
+
+type idpIntegrationBitbucketCloudPtrType IdpIntegrationBitbucketCloudArgs
+
+func IdpIntegrationBitbucketCloudPtr(v *IdpIntegrationBitbucketCloudArgs) IdpIntegrationBitbucketCloudPtrInput {
+	return (*idpIntegrationBitbucketCloudPtrType)(v)
+}
+
+func (*idpIntegrationBitbucketCloudPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpIntegrationBitbucketCloud)(nil)).Elem()
+}
+
+func (i *idpIntegrationBitbucketCloudPtrType) ToIdpIntegrationBitbucketCloudPtrOutput() IdpIntegrationBitbucketCloudPtrOutput {
+	return i.ToIdpIntegrationBitbucketCloudPtrOutputWithContext(context.Background())
+}
+
+func (i *idpIntegrationBitbucketCloudPtrType) ToIdpIntegrationBitbucketCloudPtrOutputWithContext(ctx context.Context) IdpIntegrationBitbucketCloudPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationBitbucketCloudPtrOutput)
+}
+
+type IdpIntegrationBitbucketCloudOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationBitbucketCloudOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationBitbucketCloud)(nil)).Elem()
+}
+
+func (o IdpIntegrationBitbucketCloudOutput) ToIdpIntegrationBitbucketCloudOutput() IdpIntegrationBitbucketCloudOutput {
+	return o
+}
+
+func (o IdpIntegrationBitbucketCloudOutput) ToIdpIntegrationBitbucketCloudOutputWithContext(ctx context.Context) IdpIntegrationBitbucketCloudOutput {
+	return o
+}
+
+func (o IdpIntegrationBitbucketCloudOutput) ToIdpIntegrationBitbucketCloudPtrOutput() IdpIntegrationBitbucketCloudPtrOutput {
+	return o.ToIdpIntegrationBitbucketCloudPtrOutputWithContext(context.Background())
+}
+
+func (o IdpIntegrationBitbucketCloudOutput) ToIdpIntegrationBitbucketCloudPtrOutputWithContext(ctx context.Context) IdpIntegrationBitbucketCloudPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdpIntegrationBitbucketCloud) *IdpIntegrationBitbucketCloud {
+		return &v
+	}).(IdpIntegrationBitbucketCloudPtrOutput)
+}
+
+// Lower bound for the first sync, RFC3339.
+func (o IdpIntegrationBitbucketCloudOutput) StartDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpIntegrationBitbucketCloud) *string { return v.StartDate }).(pulumi.StringPtrOutput)
+}
+
+type IdpIntegrationBitbucketCloudPtrOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationBitbucketCloudPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpIntegrationBitbucketCloud)(nil)).Elem()
+}
+
+func (o IdpIntegrationBitbucketCloudPtrOutput) ToIdpIntegrationBitbucketCloudPtrOutput() IdpIntegrationBitbucketCloudPtrOutput {
+	return o
+}
+
+func (o IdpIntegrationBitbucketCloudPtrOutput) ToIdpIntegrationBitbucketCloudPtrOutputWithContext(ctx context.Context) IdpIntegrationBitbucketCloudPtrOutput {
+	return o
+}
+
+func (o IdpIntegrationBitbucketCloudPtrOutput) Elem() IdpIntegrationBitbucketCloudOutput {
+	return o.ApplyT(func(v *IdpIntegrationBitbucketCloud) IdpIntegrationBitbucketCloud {
+		if v != nil {
+			return *v
+		}
+		var ret IdpIntegrationBitbucketCloud
+		return ret
+	}).(IdpIntegrationBitbucketCloudOutput)
+}
+
+// Lower bound for the first sync, RFC3339.
+func (o IdpIntegrationBitbucketCloudPtrOutput) StartDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationBitbucketCloud) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StartDate
+	}).(pulumi.StringPtrOutput)
+}
+
+type IdpIntegrationCatalogInfo struct {
+	// Branch to read; omit for each repository's default branch.
+	Branch *string `pulumi:"branch"`
+	// Catalog file glob, relative to the repository root.
+	CatalogPath *string `pulumi:"catalogPath"`
+	// Writes converted Harness YAML to git.
+	GitSync *IdpIntegrationCatalogInfoGitSync `pulumi:"gitSync"`
+	// Repositories to scan; omit to scan all.
+	Repositories []string `pulumi:"repositories"`
+	// github or bitbucket.
+	SourceType *string `pulumi:"sourceType"`
+}
+
+// IdpIntegrationCatalogInfoInput is an input type that accepts IdpIntegrationCatalogInfoArgs and IdpIntegrationCatalogInfoOutput values.
+// You can construct a concrete instance of `IdpIntegrationCatalogInfoInput` via:
+//
+//	IdpIntegrationCatalogInfoArgs{...}
+type IdpIntegrationCatalogInfoInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationCatalogInfoOutput() IdpIntegrationCatalogInfoOutput
+	ToIdpIntegrationCatalogInfoOutputWithContext(context.Context) IdpIntegrationCatalogInfoOutput
+}
+
+type IdpIntegrationCatalogInfoArgs struct {
+	// Branch to read; omit for each repository's default branch.
+	Branch pulumi.StringPtrInput `pulumi:"branch"`
+	// Catalog file glob, relative to the repository root.
+	CatalogPath pulumi.StringPtrInput `pulumi:"catalogPath"`
+	// Writes converted Harness YAML to git.
+	GitSync IdpIntegrationCatalogInfoGitSyncPtrInput `pulumi:"gitSync"`
+	// Repositories to scan; omit to scan all.
+	Repositories pulumi.StringArrayInput `pulumi:"repositories"`
+	// github or bitbucket.
+	SourceType pulumi.StringPtrInput `pulumi:"sourceType"`
+}
+
+func (IdpIntegrationCatalogInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationCatalogInfo)(nil)).Elem()
+}
+
+func (i IdpIntegrationCatalogInfoArgs) ToIdpIntegrationCatalogInfoOutput() IdpIntegrationCatalogInfoOutput {
+	return i.ToIdpIntegrationCatalogInfoOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationCatalogInfoArgs) ToIdpIntegrationCatalogInfoOutputWithContext(ctx context.Context) IdpIntegrationCatalogInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationCatalogInfoOutput)
+}
+
+func (i IdpIntegrationCatalogInfoArgs) ToIdpIntegrationCatalogInfoPtrOutput() IdpIntegrationCatalogInfoPtrOutput {
+	return i.ToIdpIntegrationCatalogInfoPtrOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationCatalogInfoArgs) ToIdpIntegrationCatalogInfoPtrOutputWithContext(ctx context.Context) IdpIntegrationCatalogInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationCatalogInfoOutput).ToIdpIntegrationCatalogInfoPtrOutputWithContext(ctx)
+}
+
+// IdpIntegrationCatalogInfoPtrInput is an input type that accepts IdpIntegrationCatalogInfoArgs, IdpIntegrationCatalogInfoPtr and IdpIntegrationCatalogInfoPtrOutput values.
+// You can construct a concrete instance of `IdpIntegrationCatalogInfoPtrInput` via:
+//
+//	        IdpIntegrationCatalogInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type IdpIntegrationCatalogInfoPtrInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationCatalogInfoPtrOutput() IdpIntegrationCatalogInfoPtrOutput
+	ToIdpIntegrationCatalogInfoPtrOutputWithContext(context.Context) IdpIntegrationCatalogInfoPtrOutput
+}
+
+type idpIntegrationCatalogInfoPtrType IdpIntegrationCatalogInfoArgs
+
+func IdpIntegrationCatalogInfoPtr(v *IdpIntegrationCatalogInfoArgs) IdpIntegrationCatalogInfoPtrInput {
+	return (*idpIntegrationCatalogInfoPtrType)(v)
+}
+
+func (*idpIntegrationCatalogInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpIntegrationCatalogInfo)(nil)).Elem()
+}
+
+func (i *idpIntegrationCatalogInfoPtrType) ToIdpIntegrationCatalogInfoPtrOutput() IdpIntegrationCatalogInfoPtrOutput {
+	return i.ToIdpIntegrationCatalogInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *idpIntegrationCatalogInfoPtrType) ToIdpIntegrationCatalogInfoPtrOutputWithContext(ctx context.Context) IdpIntegrationCatalogInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationCatalogInfoPtrOutput)
+}
+
+type IdpIntegrationCatalogInfoOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationCatalogInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationCatalogInfo)(nil)).Elem()
+}
+
+func (o IdpIntegrationCatalogInfoOutput) ToIdpIntegrationCatalogInfoOutput() IdpIntegrationCatalogInfoOutput {
+	return o
+}
+
+func (o IdpIntegrationCatalogInfoOutput) ToIdpIntegrationCatalogInfoOutputWithContext(ctx context.Context) IdpIntegrationCatalogInfoOutput {
+	return o
+}
+
+func (o IdpIntegrationCatalogInfoOutput) ToIdpIntegrationCatalogInfoPtrOutput() IdpIntegrationCatalogInfoPtrOutput {
+	return o.ToIdpIntegrationCatalogInfoPtrOutputWithContext(context.Background())
+}
+
+func (o IdpIntegrationCatalogInfoOutput) ToIdpIntegrationCatalogInfoPtrOutputWithContext(ctx context.Context) IdpIntegrationCatalogInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdpIntegrationCatalogInfo) *IdpIntegrationCatalogInfo {
+		return &v
+	}).(IdpIntegrationCatalogInfoPtrOutput)
+}
+
+// Branch to read; omit for each repository's default branch.
+func (o IdpIntegrationCatalogInfoOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpIntegrationCatalogInfo) *string { return v.Branch }).(pulumi.StringPtrOutput)
+}
+
+// Catalog file glob, relative to the repository root.
+func (o IdpIntegrationCatalogInfoOutput) CatalogPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpIntegrationCatalogInfo) *string { return v.CatalogPath }).(pulumi.StringPtrOutput)
+}
+
+// Writes converted Harness YAML to git.
+func (o IdpIntegrationCatalogInfoOutput) GitSync() IdpIntegrationCatalogInfoGitSyncPtrOutput {
+	return o.ApplyT(func(v IdpIntegrationCatalogInfo) *IdpIntegrationCatalogInfoGitSync { return v.GitSync }).(IdpIntegrationCatalogInfoGitSyncPtrOutput)
+}
+
+// Repositories to scan; omit to scan all.
+func (o IdpIntegrationCatalogInfoOutput) Repositories() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IdpIntegrationCatalogInfo) []string { return v.Repositories }).(pulumi.StringArrayOutput)
+}
+
+// github or bitbucket.
+func (o IdpIntegrationCatalogInfoOutput) SourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpIntegrationCatalogInfo) *string { return v.SourceType }).(pulumi.StringPtrOutput)
+}
+
+type IdpIntegrationCatalogInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationCatalogInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpIntegrationCatalogInfo)(nil)).Elem()
+}
+
+func (o IdpIntegrationCatalogInfoPtrOutput) ToIdpIntegrationCatalogInfoPtrOutput() IdpIntegrationCatalogInfoPtrOutput {
+	return o
+}
+
+func (o IdpIntegrationCatalogInfoPtrOutput) ToIdpIntegrationCatalogInfoPtrOutputWithContext(ctx context.Context) IdpIntegrationCatalogInfoPtrOutput {
+	return o
+}
+
+func (o IdpIntegrationCatalogInfoPtrOutput) Elem() IdpIntegrationCatalogInfoOutput {
+	return o.ApplyT(func(v *IdpIntegrationCatalogInfo) IdpIntegrationCatalogInfo {
+		if v != nil {
+			return *v
+		}
+		var ret IdpIntegrationCatalogInfo
+		return ret
+	}).(IdpIntegrationCatalogInfoOutput)
+}
+
+// Branch to read; omit for each repository's default branch.
+func (o IdpIntegrationCatalogInfoPtrOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationCatalogInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Branch
+	}).(pulumi.StringPtrOutput)
+}
+
+// Catalog file glob, relative to the repository root.
+func (o IdpIntegrationCatalogInfoPtrOutput) CatalogPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationCatalogInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CatalogPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Writes converted Harness YAML to git.
+func (o IdpIntegrationCatalogInfoPtrOutput) GitSync() IdpIntegrationCatalogInfoGitSyncPtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationCatalogInfo) *IdpIntegrationCatalogInfoGitSync {
+		if v == nil {
+			return nil
+		}
+		return v.GitSync
+	}).(IdpIntegrationCatalogInfoGitSyncPtrOutput)
+}
+
+// Repositories to scan; omit to scan all.
+func (o IdpIntegrationCatalogInfoPtrOutput) Repositories() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *IdpIntegrationCatalogInfo) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Repositories
+	}).(pulumi.StringArrayOutput)
+}
+
+// github or bitbucket.
+func (o IdpIntegrationCatalogInfoPtrOutput) SourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationCatalogInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceType
+	}).(pulumi.StringPtrOutput)
+}
+
+type IdpIntegrationCatalogInfoGitSync struct {
+	// Directory the files are written to.
+	BasePath *string `pulumi:"basePath"`
+	// Connector used to push.
+	ConnectorRef string `pulumi:"connectorRef"`
+	// Where to push. Set exactly one of source*repo or repo.
+	Target IdpIntegrationCatalogInfoGitSyncTarget `pulumi:"target"`
+}
+
+// IdpIntegrationCatalogInfoGitSyncInput is an input type that accepts IdpIntegrationCatalogInfoGitSyncArgs and IdpIntegrationCatalogInfoGitSyncOutput values.
+// You can construct a concrete instance of `IdpIntegrationCatalogInfoGitSyncInput` via:
+//
+//	IdpIntegrationCatalogInfoGitSyncArgs{...}
+type IdpIntegrationCatalogInfoGitSyncInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationCatalogInfoGitSyncOutput() IdpIntegrationCatalogInfoGitSyncOutput
+	ToIdpIntegrationCatalogInfoGitSyncOutputWithContext(context.Context) IdpIntegrationCatalogInfoGitSyncOutput
+}
+
+type IdpIntegrationCatalogInfoGitSyncArgs struct {
+	// Directory the files are written to.
+	BasePath pulumi.StringPtrInput `pulumi:"basePath"`
+	// Connector used to push.
+	ConnectorRef pulumi.StringInput `pulumi:"connectorRef"`
+	// Where to push. Set exactly one of source*repo or repo.
+	Target IdpIntegrationCatalogInfoGitSyncTargetInput `pulumi:"target"`
+}
+
+func (IdpIntegrationCatalogInfoGitSyncArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationCatalogInfoGitSync)(nil)).Elem()
+}
+
+func (i IdpIntegrationCatalogInfoGitSyncArgs) ToIdpIntegrationCatalogInfoGitSyncOutput() IdpIntegrationCatalogInfoGitSyncOutput {
+	return i.ToIdpIntegrationCatalogInfoGitSyncOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationCatalogInfoGitSyncArgs) ToIdpIntegrationCatalogInfoGitSyncOutputWithContext(ctx context.Context) IdpIntegrationCatalogInfoGitSyncOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationCatalogInfoGitSyncOutput)
+}
+
+func (i IdpIntegrationCatalogInfoGitSyncArgs) ToIdpIntegrationCatalogInfoGitSyncPtrOutput() IdpIntegrationCatalogInfoGitSyncPtrOutput {
+	return i.ToIdpIntegrationCatalogInfoGitSyncPtrOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationCatalogInfoGitSyncArgs) ToIdpIntegrationCatalogInfoGitSyncPtrOutputWithContext(ctx context.Context) IdpIntegrationCatalogInfoGitSyncPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationCatalogInfoGitSyncOutput).ToIdpIntegrationCatalogInfoGitSyncPtrOutputWithContext(ctx)
+}
+
+// IdpIntegrationCatalogInfoGitSyncPtrInput is an input type that accepts IdpIntegrationCatalogInfoGitSyncArgs, IdpIntegrationCatalogInfoGitSyncPtr and IdpIntegrationCatalogInfoGitSyncPtrOutput values.
+// You can construct a concrete instance of `IdpIntegrationCatalogInfoGitSyncPtrInput` via:
+//
+//	        IdpIntegrationCatalogInfoGitSyncArgs{...}
+//
+//	or:
+//
+//	        nil
+type IdpIntegrationCatalogInfoGitSyncPtrInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationCatalogInfoGitSyncPtrOutput() IdpIntegrationCatalogInfoGitSyncPtrOutput
+	ToIdpIntegrationCatalogInfoGitSyncPtrOutputWithContext(context.Context) IdpIntegrationCatalogInfoGitSyncPtrOutput
+}
+
+type idpIntegrationCatalogInfoGitSyncPtrType IdpIntegrationCatalogInfoGitSyncArgs
+
+func IdpIntegrationCatalogInfoGitSyncPtr(v *IdpIntegrationCatalogInfoGitSyncArgs) IdpIntegrationCatalogInfoGitSyncPtrInput {
+	return (*idpIntegrationCatalogInfoGitSyncPtrType)(v)
+}
+
+func (*idpIntegrationCatalogInfoGitSyncPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpIntegrationCatalogInfoGitSync)(nil)).Elem()
+}
+
+func (i *idpIntegrationCatalogInfoGitSyncPtrType) ToIdpIntegrationCatalogInfoGitSyncPtrOutput() IdpIntegrationCatalogInfoGitSyncPtrOutput {
+	return i.ToIdpIntegrationCatalogInfoGitSyncPtrOutputWithContext(context.Background())
+}
+
+func (i *idpIntegrationCatalogInfoGitSyncPtrType) ToIdpIntegrationCatalogInfoGitSyncPtrOutputWithContext(ctx context.Context) IdpIntegrationCatalogInfoGitSyncPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationCatalogInfoGitSyncPtrOutput)
+}
+
+type IdpIntegrationCatalogInfoGitSyncOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationCatalogInfoGitSyncOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationCatalogInfoGitSync)(nil)).Elem()
+}
+
+func (o IdpIntegrationCatalogInfoGitSyncOutput) ToIdpIntegrationCatalogInfoGitSyncOutput() IdpIntegrationCatalogInfoGitSyncOutput {
+	return o
+}
+
+func (o IdpIntegrationCatalogInfoGitSyncOutput) ToIdpIntegrationCatalogInfoGitSyncOutputWithContext(ctx context.Context) IdpIntegrationCatalogInfoGitSyncOutput {
+	return o
+}
+
+func (o IdpIntegrationCatalogInfoGitSyncOutput) ToIdpIntegrationCatalogInfoGitSyncPtrOutput() IdpIntegrationCatalogInfoGitSyncPtrOutput {
+	return o.ToIdpIntegrationCatalogInfoGitSyncPtrOutputWithContext(context.Background())
+}
+
+func (o IdpIntegrationCatalogInfoGitSyncOutput) ToIdpIntegrationCatalogInfoGitSyncPtrOutputWithContext(ctx context.Context) IdpIntegrationCatalogInfoGitSyncPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdpIntegrationCatalogInfoGitSync) *IdpIntegrationCatalogInfoGitSync {
+		return &v
+	}).(IdpIntegrationCatalogInfoGitSyncPtrOutput)
+}
+
+// Directory the files are written to.
+func (o IdpIntegrationCatalogInfoGitSyncOutput) BasePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpIntegrationCatalogInfoGitSync) *string { return v.BasePath }).(pulumi.StringPtrOutput)
+}
+
+// Connector used to push.
+func (o IdpIntegrationCatalogInfoGitSyncOutput) ConnectorRef() pulumi.StringOutput {
+	return o.ApplyT(func(v IdpIntegrationCatalogInfoGitSync) string { return v.ConnectorRef }).(pulumi.StringOutput)
+}
+
+// Where to push. Set exactly one of source*repo or repo.
+func (o IdpIntegrationCatalogInfoGitSyncOutput) Target() IdpIntegrationCatalogInfoGitSyncTargetOutput {
+	return o.ApplyT(func(v IdpIntegrationCatalogInfoGitSync) IdpIntegrationCatalogInfoGitSyncTarget { return v.Target }).(IdpIntegrationCatalogInfoGitSyncTargetOutput)
+}
+
+type IdpIntegrationCatalogInfoGitSyncPtrOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationCatalogInfoGitSyncPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpIntegrationCatalogInfoGitSync)(nil)).Elem()
+}
+
+func (o IdpIntegrationCatalogInfoGitSyncPtrOutput) ToIdpIntegrationCatalogInfoGitSyncPtrOutput() IdpIntegrationCatalogInfoGitSyncPtrOutput {
+	return o
+}
+
+func (o IdpIntegrationCatalogInfoGitSyncPtrOutput) ToIdpIntegrationCatalogInfoGitSyncPtrOutputWithContext(ctx context.Context) IdpIntegrationCatalogInfoGitSyncPtrOutput {
+	return o
+}
+
+func (o IdpIntegrationCatalogInfoGitSyncPtrOutput) Elem() IdpIntegrationCatalogInfoGitSyncOutput {
+	return o.ApplyT(func(v *IdpIntegrationCatalogInfoGitSync) IdpIntegrationCatalogInfoGitSync {
+		if v != nil {
+			return *v
+		}
+		var ret IdpIntegrationCatalogInfoGitSync
+		return ret
+	}).(IdpIntegrationCatalogInfoGitSyncOutput)
+}
+
+// Directory the files are written to.
+func (o IdpIntegrationCatalogInfoGitSyncPtrOutput) BasePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationCatalogInfoGitSync) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BasePath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Connector used to push.
+func (o IdpIntegrationCatalogInfoGitSyncPtrOutput) ConnectorRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationCatalogInfoGitSync) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ConnectorRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// Where to push. Set exactly one of source*repo or repo.
+func (o IdpIntegrationCatalogInfoGitSyncPtrOutput) Target() IdpIntegrationCatalogInfoGitSyncTargetPtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationCatalogInfoGitSync) *IdpIntegrationCatalogInfoGitSyncTarget {
+		if v == nil {
+			return nil
+		}
+		return &v.Target
+	}).(IdpIntegrationCatalogInfoGitSyncTargetPtrOutput)
+}
+
+type IdpIntegrationCatalogInfoGitSyncTarget struct {
+	// Push to one repository.
+	Repo *IdpIntegrationCatalogInfoGitSyncTargetRepo `pulumi:"repo"`
+	// Push to the repository each file was read from.
+	SourceRepo *bool `pulumi:"sourceRepo"`
+}
+
+// IdpIntegrationCatalogInfoGitSyncTargetInput is an input type that accepts IdpIntegrationCatalogInfoGitSyncTargetArgs and IdpIntegrationCatalogInfoGitSyncTargetOutput values.
+// You can construct a concrete instance of `IdpIntegrationCatalogInfoGitSyncTargetInput` via:
+//
+//	IdpIntegrationCatalogInfoGitSyncTargetArgs{...}
+type IdpIntegrationCatalogInfoGitSyncTargetInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationCatalogInfoGitSyncTargetOutput() IdpIntegrationCatalogInfoGitSyncTargetOutput
+	ToIdpIntegrationCatalogInfoGitSyncTargetOutputWithContext(context.Context) IdpIntegrationCatalogInfoGitSyncTargetOutput
+}
+
+type IdpIntegrationCatalogInfoGitSyncTargetArgs struct {
+	// Push to one repository.
+	Repo IdpIntegrationCatalogInfoGitSyncTargetRepoPtrInput `pulumi:"repo"`
+	// Push to the repository each file was read from.
+	SourceRepo pulumi.BoolPtrInput `pulumi:"sourceRepo"`
+}
+
+func (IdpIntegrationCatalogInfoGitSyncTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationCatalogInfoGitSyncTarget)(nil)).Elem()
+}
+
+func (i IdpIntegrationCatalogInfoGitSyncTargetArgs) ToIdpIntegrationCatalogInfoGitSyncTargetOutput() IdpIntegrationCatalogInfoGitSyncTargetOutput {
+	return i.ToIdpIntegrationCatalogInfoGitSyncTargetOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationCatalogInfoGitSyncTargetArgs) ToIdpIntegrationCatalogInfoGitSyncTargetOutputWithContext(ctx context.Context) IdpIntegrationCatalogInfoGitSyncTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationCatalogInfoGitSyncTargetOutput)
+}
+
+func (i IdpIntegrationCatalogInfoGitSyncTargetArgs) ToIdpIntegrationCatalogInfoGitSyncTargetPtrOutput() IdpIntegrationCatalogInfoGitSyncTargetPtrOutput {
+	return i.ToIdpIntegrationCatalogInfoGitSyncTargetPtrOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationCatalogInfoGitSyncTargetArgs) ToIdpIntegrationCatalogInfoGitSyncTargetPtrOutputWithContext(ctx context.Context) IdpIntegrationCatalogInfoGitSyncTargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationCatalogInfoGitSyncTargetOutput).ToIdpIntegrationCatalogInfoGitSyncTargetPtrOutputWithContext(ctx)
+}
+
+// IdpIntegrationCatalogInfoGitSyncTargetPtrInput is an input type that accepts IdpIntegrationCatalogInfoGitSyncTargetArgs, IdpIntegrationCatalogInfoGitSyncTargetPtr and IdpIntegrationCatalogInfoGitSyncTargetPtrOutput values.
+// You can construct a concrete instance of `IdpIntegrationCatalogInfoGitSyncTargetPtrInput` via:
+//
+//	        IdpIntegrationCatalogInfoGitSyncTargetArgs{...}
+//
+//	or:
+//
+//	        nil
+type IdpIntegrationCatalogInfoGitSyncTargetPtrInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationCatalogInfoGitSyncTargetPtrOutput() IdpIntegrationCatalogInfoGitSyncTargetPtrOutput
+	ToIdpIntegrationCatalogInfoGitSyncTargetPtrOutputWithContext(context.Context) IdpIntegrationCatalogInfoGitSyncTargetPtrOutput
+}
+
+type idpIntegrationCatalogInfoGitSyncTargetPtrType IdpIntegrationCatalogInfoGitSyncTargetArgs
+
+func IdpIntegrationCatalogInfoGitSyncTargetPtr(v *IdpIntegrationCatalogInfoGitSyncTargetArgs) IdpIntegrationCatalogInfoGitSyncTargetPtrInput {
+	return (*idpIntegrationCatalogInfoGitSyncTargetPtrType)(v)
+}
+
+func (*idpIntegrationCatalogInfoGitSyncTargetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpIntegrationCatalogInfoGitSyncTarget)(nil)).Elem()
+}
+
+func (i *idpIntegrationCatalogInfoGitSyncTargetPtrType) ToIdpIntegrationCatalogInfoGitSyncTargetPtrOutput() IdpIntegrationCatalogInfoGitSyncTargetPtrOutput {
+	return i.ToIdpIntegrationCatalogInfoGitSyncTargetPtrOutputWithContext(context.Background())
+}
+
+func (i *idpIntegrationCatalogInfoGitSyncTargetPtrType) ToIdpIntegrationCatalogInfoGitSyncTargetPtrOutputWithContext(ctx context.Context) IdpIntegrationCatalogInfoGitSyncTargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationCatalogInfoGitSyncTargetPtrOutput)
+}
+
+type IdpIntegrationCatalogInfoGitSyncTargetOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationCatalogInfoGitSyncTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationCatalogInfoGitSyncTarget)(nil)).Elem()
+}
+
+func (o IdpIntegrationCatalogInfoGitSyncTargetOutput) ToIdpIntegrationCatalogInfoGitSyncTargetOutput() IdpIntegrationCatalogInfoGitSyncTargetOutput {
+	return o
+}
+
+func (o IdpIntegrationCatalogInfoGitSyncTargetOutput) ToIdpIntegrationCatalogInfoGitSyncTargetOutputWithContext(ctx context.Context) IdpIntegrationCatalogInfoGitSyncTargetOutput {
+	return o
+}
+
+func (o IdpIntegrationCatalogInfoGitSyncTargetOutput) ToIdpIntegrationCatalogInfoGitSyncTargetPtrOutput() IdpIntegrationCatalogInfoGitSyncTargetPtrOutput {
+	return o.ToIdpIntegrationCatalogInfoGitSyncTargetPtrOutputWithContext(context.Background())
+}
+
+func (o IdpIntegrationCatalogInfoGitSyncTargetOutput) ToIdpIntegrationCatalogInfoGitSyncTargetPtrOutputWithContext(ctx context.Context) IdpIntegrationCatalogInfoGitSyncTargetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdpIntegrationCatalogInfoGitSyncTarget) *IdpIntegrationCatalogInfoGitSyncTarget {
+		return &v
+	}).(IdpIntegrationCatalogInfoGitSyncTargetPtrOutput)
+}
+
+// Push to one repository.
+func (o IdpIntegrationCatalogInfoGitSyncTargetOutput) Repo() IdpIntegrationCatalogInfoGitSyncTargetRepoPtrOutput {
+	return o.ApplyT(func(v IdpIntegrationCatalogInfoGitSyncTarget) *IdpIntegrationCatalogInfoGitSyncTargetRepo {
+		return v.Repo
+	}).(IdpIntegrationCatalogInfoGitSyncTargetRepoPtrOutput)
+}
+
+// Push to the repository each file was read from.
+func (o IdpIntegrationCatalogInfoGitSyncTargetOutput) SourceRepo() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v IdpIntegrationCatalogInfoGitSyncTarget) *bool { return v.SourceRepo }).(pulumi.BoolPtrOutput)
+}
+
+type IdpIntegrationCatalogInfoGitSyncTargetPtrOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationCatalogInfoGitSyncTargetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpIntegrationCatalogInfoGitSyncTarget)(nil)).Elem()
+}
+
+func (o IdpIntegrationCatalogInfoGitSyncTargetPtrOutput) ToIdpIntegrationCatalogInfoGitSyncTargetPtrOutput() IdpIntegrationCatalogInfoGitSyncTargetPtrOutput {
+	return o
+}
+
+func (o IdpIntegrationCatalogInfoGitSyncTargetPtrOutput) ToIdpIntegrationCatalogInfoGitSyncTargetPtrOutputWithContext(ctx context.Context) IdpIntegrationCatalogInfoGitSyncTargetPtrOutput {
+	return o
+}
+
+func (o IdpIntegrationCatalogInfoGitSyncTargetPtrOutput) Elem() IdpIntegrationCatalogInfoGitSyncTargetOutput {
+	return o.ApplyT(func(v *IdpIntegrationCatalogInfoGitSyncTarget) IdpIntegrationCatalogInfoGitSyncTarget {
+		if v != nil {
+			return *v
+		}
+		var ret IdpIntegrationCatalogInfoGitSyncTarget
+		return ret
+	}).(IdpIntegrationCatalogInfoGitSyncTargetOutput)
+}
+
+// Push to one repository.
+func (o IdpIntegrationCatalogInfoGitSyncTargetPtrOutput) Repo() IdpIntegrationCatalogInfoGitSyncTargetRepoPtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationCatalogInfoGitSyncTarget) *IdpIntegrationCatalogInfoGitSyncTargetRepo {
+		if v == nil {
+			return nil
+		}
+		return v.Repo
+	}).(IdpIntegrationCatalogInfoGitSyncTargetRepoPtrOutput)
+}
+
+// Push to the repository each file was read from.
+func (o IdpIntegrationCatalogInfoGitSyncTargetPtrOutput) SourceRepo() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationCatalogInfoGitSyncTarget) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SourceRepo
+	}).(pulumi.BoolPtrOutput)
+}
+
+type IdpIntegrationCatalogInfoGitSyncTargetRepo struct {
+	// Branch.
+	Branch string `pulumi:"branch"`
+	// Repository.
+	Name string `pulumi:"name"`
+}
+
+// IdpIntegrationCatalogInfoGitSyncTargetRepoInput is an input type that accepts IdpIntegrationCatalogInfoGitSyncTargetRepoArgs and IdpIntegrationCatalogInfoGitSyncTargetRepoOutput values.
+// You can construct a concrete instance of `IdpIntegrationCatalogInfoGitSyncTargetRepoInput` via:
+//
+//	IdpIntegrationCatalogInfoGitSyncTargetRepoArgs{...}
+type IdpIntegrationCatalogInfoGitSyncTargetRepoInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationCatalogInfoGitSyncTargetRepoOutput() IdpIntegrationCatalogInfoGitSyncTargetRepoOutput
+	ToIdpIntegrationCatalogInfoGitSyncTargetRepoOutputWithContext(context.Context) IdpIntegrationCatalogInfoGitSyncTargetRepoOutput
+}
+
+type IdpIntegrationCatalogInfoGitSyncTargetRepoArgs struct {
+	// Branch.
+	Branch pulumi.StringInput `pulumi:"branch"`
+	// Repository.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (IdpIntegrationCatalogInfoGitSyncTargetRepoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationCatalogInfoGitSyncTargetRepo)(nil)).Elem()
+}
+
+func (i IdpIntegrationCatalogInfoGitSyncTargetRepoArgs) ToIdpIntegrationCatalogInfoGitSyncTargetRepoOutput() IdpIntegrationCatalogInfoGitSyncTargetRepoOutput {
+	return i.ToIdpIntegrationCatalogInfoGitSyncTargetRepoOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationCatalogInfoGitSyncTargetRepoArgs) ToIdpIntegrationCatalogInfoGitSyncTargetRepoOutputWithContext(ctx context.Context) IdpIntegrationCatalogInfoGitSyncTargetRepoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationCatalogInfoGitSyncTargetRepoOutput)
+}
+
+func (i IdpIntegrationCatalogInfoGitSyncTargetRepoArgs) ToIdpIntegrationCatalogInfoGitSyncTargetRepoPtrOutput() IdpIntegrationCatalogInfoGitSyncTargetRepoPtrOutput {
+	return i.ToIdpIntegrationCatalogInfoGitSyncTargetRepoPtrOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationCatalogInfoGitSyncTargetRepoArgs) ToIdpIntegrationCatalogInfoGitSyncTargetRepoPtrOutputWithContext(ctx context.Context) IdpIntegrationCatalogInfoGitSyncTargetRepoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationCatalogInfoGitSyncTargetRepoOutput).ToIdpIntegrationCatalogInfoGitSyncTargetRepoPtrOutputWithContext(ctx)
+}
+
+// IdpIntegrationCatalogInfoGitSyncTargetRepoPtrInput is an input type that accepts IdpIntegrationCatalogInfoGitSyncTargetRepoArgs, IdpIntegrationCatalogInfoGitSyncTargetRepoPtr and IdpIntegrationCatalogInfoGitSyncTargetRepoPtrOutput values.
+// You can construct a concrete instance of `IdpIntegrationCatalogInfoGitSyncTargetRepoPtrInput` via:
+//
+//	        IdpIntegrationCatalogInfoGitSyncTargetRepoArgs{...}
+//
+//	or:
+//
+//	        nil
+type IdpIntegrationCatalogInfoGitSyncTargetRepoPtrInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationCatalogInfoGitSyncTargetRepoPtrOutput() IdpIntegrationCatalogInfoGitSyncTargetRepoPtrOutput
+	ToIdpIntegrationCatalogInfoGitSyncTargetRepoPtrOutputWithContext(context.Context) IdpIntegrationCatalogInfoGitSyncTargetRepoPtrOutput
+}
+
+type idpIntegrationCatalogInfoGitSyncTargetRepoPtrType IdpIntegrationCatalogInfoGitSyncTargetRepoArgs
+
+func IdpIntegrationCatalogInfoGitSyncTargetRepoPtr(v *IdpIntegrationCatalogInfoGitSyncTargetRepoArgs) IdpIntegrationCatalogInfoGitSyncTargetRepoPtrInput {
+	return (*idpIntegrationCatalogInfoGitSyncTargetRepoPtrType)(v)
+}
+
+func (*idpIntegrationCatalogInfoGitSyncTargetRepoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpIntegrationCatalogInfoGitSyncTargetRepo)(nil)).Elem()
+}
+
+func (i *idpIntegrationCatalogInfoGitSyncTargetRepoPtrType) ToIdpIntegrationCatalogInfoGitSyncTargetRepoPtrOutput() IdpIntegrationCatalogInfoGitSyncTargetRepoPtrOutput {
+	return i.ToIdpIntegrationCatalogInfoGitSyncTargetRepoPtrOutputWithContext(context.Background())
+}
+
+func (i *idpIntegrationCatalogInfoGitSyncTargetRepoPtrType) ToIdpIntegrationCatalogInfoGitSyncTargetRepoPtrOutputWithContext(ctx context.Context) IdpIntegrationCatalogInfoGitSyncTargetRepoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationCatalogInfoGitSyncTargetRepoPtrOutput)
+}
+
+type IdpIntegrationCatalogInfoGitSyncTargetRepoOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationCatalogInfoGitSyncTargetRepoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationCatalogInfoGitSyncTargetRepo)(nil)).Elem()
+}
+
+func (o IdpIntegrationCatalogInfoGitSyncTargetRepoOutput) ToIdpIntegrationCatalogInfoGitSyncTargetRepoOutput() IdpIntegrationCatalogInfoGitSyncTargetRepoOutput {
+	return o
+}
+
+func (o IdpIntegrationCatalogInfoGitSyncTargetRepoOutput) ToIdpIntegrationCatalogInfoGitSyncTargetRepoOutputWithContext(ctx context.Context) IdpIntegrationCatalogInfoGitSyncTargetRepoOutput {
+	return o
+}
+
+func (o IdpIntegrationCatalogInfoGitSyncTargetRepoOutput) ToIdpIntegrationCatalogInfoGitSyncTargetRepoPtrOutput() IdpIntegrationCatalogInfoGitSyncTargetRepoPtrOutput {
+	return o.ToIdpIntegrationCatalogInfoGitSyncTargetRepoPtrOutputWithContext(context.Background())
+}
+
+func (o IdpIntegrationCatalogInfoGitSyncTargetRepoOutput) ToIdpIntegrationCatalogInfoGitSyncTargetRepoPtrOutputWithContext(ctx context.Context) IdpIntegrationCatalogInfoGitSyncTargetRepoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdpIntegrationCatalogInfoGitSyncTargetRepo) *IdpIntegrationCatalogInfoGitSyncTargetRepo {
+		return &v
+	}).(IdpIntegrationCatalogInfoGitSyncTargetRepoPtrOutput)
+}
+
+// Branch.
+func (o IdpIntegrationCatalogInfoGitSyncTargetRepoOutput) Branch() pulumi.StringOutput {
+	return o.ApplyT(func(v IdpIntegrationCatalogInfoGitSyncTargetRepo) string { return v.Branch }).(pulumi.StringOutput)
+}
+
+// Repository.
+func (o IdpIntegrationCatalogInfoGitSyncTargetRepoOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v IdpIntegrationCatalogInfoGitSyncTargetRepo) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type IdpIntegrationCatalogInfoGitSyncTargetRepoPtrOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationCatalogInfoGitSyncTargetRepoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpIntegrationCatalogInfoGitSyncTargetRepo)(nil)).Elem()
+}
+
+func (o IdpIntegrationCatalogInfoGitSyncTargetRepoPtrOutput) ToIdpIntegrationCatalogInfoGitSyncTargetRepoPtrOutput() IdpIntegrationCatalogInfoGitSyncTargetRepoPtrOutput {
+	return o
+}
+
+func (o IdpIntegrationCatalogInfoGitSyncTargetRepoPtrOutput) ToIdpIntegrationCatalogInfoGitSyncTargetRepoPtrOutputWithContext(ctx context.Context) IdpIntegrationCatalogInfoGitSyncTargetRepoPtrOutput {
+	return o
+}
+
+func (o IdpIntegrationCatalogInfoGitSyncTargetRepoPtrOutput) Elem() IdpIntegrationCatalogInfoGitSyncTargetRepoOutput {
+	return o.ApplyT(func(v *IdpIntegrationCatalogInfoGitSyncTargetRepo) IdpIntegrationCatalogInfoGitSyncTargetRepo {
+		if v != nil {
+			return *v
+		}
+		var ret IdpIntegrationCatalogInfoGitSyncTargetRepo
+		return ret
+	}).(IdpIntegrationCatalogInfoGitSyncTargetRepoOutput)
+}
+
+// Branch.
+func (o IdpIntegrationCatalogInfoGitSyncTargetRepoPtrOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationCatalogInfoGitSyncTargetRepo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Branch
+	}).(pulumi.StringPtrOutput)
+}
+
+// Repository.
+func (o IdpIntegrationCatalogInfoGitSyncTargetRepoPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationCatalogInfoGitSyncTargetRepo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type IdpIntegrationConnector struct {
+	// Credentials stored on the integration.
+	Inline *IdpIntegrationConnectorInline `pulumi:"inline"`
+	// Reference to a standalone IDP connector.
+	Ref *string `pulumi:"ref"`
+}
+
+// IdpIntegrationConnectorInput is an input type that accepts IdpIntegrationConnectorArgs and IdpIntegrationConnectorOutput values.
+// You can construct a concrete instance of `IdpIntegrationConnectorInput` via:
+//
+//	IdpIntegrationConnectorArgs{...}
+type IdpIntegrationConnectorInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationConnectorOutput() IdpIntegrationConnectorOutput
+	ToIdpIntegrationConnectorOutputWithContext(context.Context) IdpIntegrationConnectorOutput
+}
+
+type IdpIntegrationConnectorArgs struct {
+	// Credentials stored on the integration.
+	Inline IdpIntegrationConnectorInlinePtrInput `pulumi:"inline"`
+	// Reference to a standalone IDP connector.
+	Ref pulumi.StringPtrInput `pulumi:"ref"`
+}
+
+func (IdpIntegrationConnectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationConnector)(nil)).Elem()
+}
+
+func (i IdpIntegrationConnectorArgs) ToIdpIntegrationConnectorOutput() IdpIntegrationConnectorOutput {
+	return i.ToIdpIntegrationConnectorOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationConnectorArgs) ToIdpIntegrationConnectorOutputWithContext(ctx context.Context) IdpIntegrationConnectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationConnectorOutput)
+}
+
+func (i IdpIntegrationConnectorArgs) ToIdpIntegrationConnectorPtrOutput() IdpIntegrationConnectorPtrOutput {
+	return i.ToIdpIntegrationConnectorPtrOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationConnectorArgs) ToIdpIntegrationConnectorPtrOutputWithContext(ctx context.Context) IdpIntegrationConnectorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationConnectorOutput).ToIdpIntegrationConnectorPtrOutputWithContext(ctx)
+}
+
+// IdpIntegrationConnectorPtrInput is an input type that accepts IdpIntegrationConnectorArgs, IdpIntegrationConnectorPtr and IdpIntegrationConnectorPtrOutput values.
+// You can construct a concrete instance of `IdpIntegrationConnectorPtrInput` via:
+//
+//	        IdpIntegrationConnectorArgs{...}
+//
+//	or:
+//
+//	        nil
+type IdpIntegrationConnectorPtrInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationConnectorPtrOutput() IdpIntegrationConnectorPtrOutput
+	ToIdpIntegrationConnectorPtrOutputWithContext(context.Context) IdpIntegrationConnectorPtrOutput
+}
+
+type idpIntegrationConnectorPtrType IdpIntegrationConnectorArgs
+
+func IdpIntegrationConnectorPtr(v *IdpIntegrationConnectorArgs) IdpIntegrationConnectorPtrInput {
+	return (*idpIntegrationConnectorPtrType)(v)
+}
+
+func (*idpIntegrationConnectorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpIntegrationConnector)(nil)).Elem()
+}
+
+func (i *idpIntegrationConnectorPtrType) ToIdpIntegrationConnectorPtrOutput() IdpIntegrationConnectorPtrOutput {
+	return i.ToIdpIntegrationConnectorPtrOutputWithContext(context.Background())
+}
+
+func (i *idpIntegrationConnectorPtrType) ToIdpIntegrationConnectorPtrOutputWithContext(ctx context.Context) IdpIntegrationConnectorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationConnectorPtrOutput)
+}
+
+type IdpIntegrationConnectorOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationConnectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationConnector)(nil)).Elem()
+}
+
+func (o IdpIntegrationConnectorOutput) ToIdpIntegrationConnectorOutput() IdpIntegrationConnectorOutput {
+	return o
+}
+
+func (o IdpIntegrationConnectorOutput) ToIdpIntegrationConnectorOutputWithContext(ctx context.Context) IdpIntegrationConnectorOutput {
+	return o
+}
+
+func (o IdpIntegrationConnectorOutput) ToIdpIntegrationConnectorPtrOutput() IdpIntegrationConnectorPtrOutput {
+	return o.ToIdpIntegrationConnectorPtrOutputWithContext(context.Background())
+}
+
+func (o IdpIntegrationConnectorOutput) ToIdpIntegrationConnectorPtrOutputWithContext(ctx context.Context) IdpIntegrationConnectorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdpIntegrationConnector) *IdpIntegrationConnector {
+		return &v
+	}).(IdpIntegrationConnectorPtrOutput)
+}
+
+// Credentials stored on the integration.
+func (o IdpIntegrationConnectorOutput) Inline() IdpIntegrationConnectorInlinePtrOutput {
+	return o.ApplyT(func(v IdpIntegrationConnector) *IdpIntegrationConnectorInline { return v.Inline }).(IdpIntegrationConnectorInlinePtrOutput)
+}
+
+// Reference to a standalone IDP connector.
+func (o IdpIntegrationConnectorOutput) Ref() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpIntegrationConnector) *string { return v.Ref }).(pulumi.StringPtrOutput)
+}
+
+type IdpIntegrationConnectorPtrOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationConnectorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpIntegrationConnector)(nil)).Elem()
+}
+
+func (o IdpIntegrationConnectorPtrOutput) ToIdpIntegrationConnectorPtrOutput() IdpIntegrationConnectorPtrOutput {
+	return o
+}
+
+func (o IdpIntegrationConnectorPtrOutput) ToIdpIntegrationConnectorPtrOutputWithContext(ctx context.Context) IdpIntegrationConnectorPtrOutput {
+	return o
+}
+
+func (o IdpIntegrationConnectorPtrOutput) Elem() IdpIntegrationConnectorOutput {
+	return o.ApplyT(func(v *IdpIntegrationConnector) IdpIntegrationConnector {
+		if v != nil {
+			return *v
+		}
+		var ret IdpIntegrationConnector
+		return ret
+	}).(IdpIntegrationConnectorOutput)
+}
+
+// Credentials stored on the integration.
+func (o IdpIntegrationConnectorPtrOutput) Inline() IdpIntegrationConnectorInlinePtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationConnector) *IdpIntegrationConnectorInline {
+		if v == nil {
+			return nil
+		}
+		return v.Inline
+	}).(IdpIntegrationConnectorInlinePtrOutput)
+}
+
+// Reference to a standalone IDP connector.
+func (o IdpIntegrationConnectorPtrOutput) Ref() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationConnector) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ref
+	}).(pulumi.StringPtrOutput)
+}
+
+type IdpIntegrationConnectorInline struct {
+	// Harness connector reference, e.g. account.snow. Can't change.
+	CredentialsRef string `pulumi:"credentialsRef"`
+}
+
+// IdpIntegrationConnectorInlineInput is an input type that accepts IdpIntegrationConnectorInlineArgs and IdpIntegrationConnectorInlineOutput values.
+// You can construct a concrete instance of `IdpIntegrationConnectorInlineInput` via:
+//
+//	IdpIntegrationConnectorInlineArgs{...}
+type IdpIntegrationConnectorInlineInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationConnectorInlineOutput() IdpIntegrationConnectorInlineOutput
+	ToIdpIntegrationConnectorInlineOutputWithContext(context.Context) IdpIntegrationConnectorInlineOutput
+}
+
+type IdpIntegrationConnectorInlineArgs struct {
+	// Harness connector reference, e.g. account.snow. Can't change.
+	CredentialsRef pulumi.StringInput `pulumi:"credentialsRef"`
+}
+
+func (IdpIntegrationConnectorInlineArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationConnectorInline)(nil)).Elem()
+}
+
+func (i IdpIntegrationConnectorInlineArgs) ToIdpIntegrationConnectorInlineOutput() IdpIntegrationConnectorInlineOutput {
+	return i.ToIdpIntegrationConnectorInlineOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationConnectorInlineArgs) ToIdpIntegrationConnectorInlineOutputWithContext(ctx context.Context) IdpIntegrationConnectorInlineOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationConnectorInlineOutput)
+}
+
+func (i IdpIntegrationConnectorInlineArgs) ToIdpIntegrationConnectorInlinePtrOutput() IdpIntegrationConnectorInlinePtrOutput {
+	return i.ToIdpIntegrationConnectorInlinePtrOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationConnectorInlineArgs) ToIdpIntegrationConnectorInlinePtrOutputWithContext(ctx context.Context) IdpIntegrationConnectorInlinePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationConnectorInlineOutput).ToIdpIntegrationConnectorInlinePtrOutputWithContext(ctx)
+}
+
+// IdpIntegrationConnectorInlinePtrInput is an input type that accepts IdpIntegrationConnectorInlineArgs, IdpIntegrationConnectorInlinePtr and IdpIntegrationConnectorInlinePtrOutput values.
+// You can construct a concrete instance of `IdpIntegrationConnectorInlinePtrInput` via:
+//
+//	        IdpIntegrationConnectorInlineArgs{...}
+//
+//	or:
+//
+//	        nil
+type IdpIntegrationConnectorInlinePtrInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationConnectorInlinePtrOutput() IdpIntegrationConnectorInlinePtrOutput
+	ToIdpIntegrationConnectorInlinePtrOutputWithContext(context.Context) IdpIntegrationConnectorInlinePtrOutput
+}
+
+type idpIntegrationConnectorInlinePtrType IdpIntegrationConnectorInlineArgs
+
+func IdpIntegrationConnectorInlinePtr(v *IdpIntegrationConnectorInlineArgs) IdpIntegrationConnectorInlinePtrInput {
+	return (*idpIntegrationConnectorInlinePtrType)(v)
+}
+
+func (*idpIntegrationConnectorInlinePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpIntegrationConnectorInline)(nil)).Elem()
+}
+
+func (i *idpIntegrationConnectorInlinePtrType) ToIdpIntegrationConnectorInlinePtrOutput() IdpIntegrationConnectorInlinePtrOutput {
+	return i.ToIdpIntegrationConnectorInlinePtrOutputWithContext(context.Background())
+}
+
+func (i *idpIntegrationConnectorInlinePtrType) ToIdpIntegrationConnectorInlinePtrOutputWithContext(ctx context.Context) IdpIntegrationConnectorInlinePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationConnectorInlinePtrOutput)
+}
+
+type IdpIntegrationConnectorInlineOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationConnectorInlineOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationConnectorInline)(nil)).Elem()
+}
+
+func (o IdpIntegrationConnectorInlineOutput) ToIdpIntegrationConnectorInlineOutput() IdpIntegrationConnectorInlineOutput {
+	return o
+}
+
+func (o IdpIntegrationConnectorInlineOutput) ToIdpIntegrationConnectorInlineOutputWithContext(ctx context.Context) IdpIntegrationConnectorInlineOutput {
+	return o
+}
+
+func (o IdpIntegrationConnectorInlineOutput) ToIdpIntegrationConnectorInlinePtrOutput() IdpIntegrationConnectorInlinePtrOutput {
+	return o.ToIdpIntegrationConnectorInlinePtrOutputWithContext(context.Background())
+}
+
+func (o IdpIntegrationConnectorInlineOutput) ToIdpIntegrationConnectorInlinePtrOutputWithContext(ctx context.Context) IdpIntegrationConnectorInlinePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdpIntegrationConnectorInline) *IdpIntegrationConnectorInline {
+		return &v
+	}).(IdpIntegrationConnectorInlinePtrOutput)
+}
+
+// Harness connector reference, e.g. account.snow. Can't change.
+func (o IdpIntegrationConnectorInlineOutput) CredentialsRef() pulumi.StringOutput {
+	return o.ApplyT(func(v IdpIntegrationConnectorInline) string { return v.CredentialsRef }).(pulumi.StringOutput)
+}
+
+type IdpIntegrationConnectorInlinePtrOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationConnectorInlinePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpIntegrationConnectorInline)(nil)).Elem()
+}
+
+func (o IdpIntegrationConnectorInlinePtrOutput) ToIdpIntegrationConnectorInlinePtrOutput() IdpIntegrationConnectorInlinePtrOutput {
+	return o
+}
+
+func (o IdpIntegrationConnectorInlinePtrOutput) ToIdpIntegrationConnectorInlinePtrOutputWithContext(ctx context.Context) IdpIntegrationConnectorInlinePtrOutput {
+	return o
+}
+
+func (o IdpIntegrationConnectorInlinePtrOutput) Elem() IdpIntegrationConnectorInlineOutput {
+	return o.ApplyT(func(v *IdpIntegrationConnectorInline) IdpIntegrationConnectorInline {
+		if v != nil {
+			return *v
+		}
+		var ret IdpIntegrationConnectorInline
+		return ret
+	}).(IdpIntegrationConnectorInlineOutput)
+}
+
+// Harness connector reference, e.g. account.snow. Can't change.
+func (o IdpIntegrationConnectorInlinePtrOutput) CredentialsRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationConnectorInline) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CredentialsRef
+	}).(pulumi.StringPtrOutput)
+}
+
+type IdpIntegrationCustom struct {
+	// Columns shown for the integration's entities.
+	Layout *IdpIntegrationCustomLayout `pulumi:"layout"`
+	// webhook or api.
+	Mode string `pulumi:"mode"`
+	// Label for the sending system.
+	SourceLabel *string `pulumi:"sourceLabel"`
+	// Webhook authentication. Required in webhook mode.
+	WebhookAuth *IdpIntegrationCustomWebhookAuth `pulumi:"webhookAuth"`
+}
+
+// IdpIntegrationCustomInput is an input type that accepts IdpIntegrationCustomArgs and IdpIntegrationCustomOutput values.
+// You can construct a concrete instance of `IdpIntegrationCustomInput` via:
+//
+//	IdpIntegrationCustomArgs{...}
+type IdpIntegrationCustomInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationCustomOutput() IdpIntegrationCustomOutput
+	ToIdpIntegrationCustomOutputWithContext(context.Context) IdpIntegrationCustomOutput
+}
+
+type IdpIntegrationCustomArgs struct {
+	// Columns shown for the integration's entities.
+	Layout IdpIntegrationCustomLayoutPtrInput `pulumi:"layout"`
+	// webhook or api.
+	Mode pulumi.StringInput `pulumi:"mode"`
+	// Label for the sending system.
+	SourceLabel pulumi.StringPtrInput `pulumi:"sourceLabel"`
+	// Webhook authentication. Required in webhook mode.
+	WebhookAuth IdpIntegrationCustomWebhookAuthPtrInput `pulumi:"webhookAuth"`
+}
+
+func (IdpIntegrationCustomArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationCustom)(nil)).Elem()
+}
+
+func (i IdpIntegrationCustomArgs) ToIdpIntegrationCustomOutput() IdpIntegrationCustomOutput {
+	return i.ToIdpIntegrationCustomOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationCustomArgs) ToIdpIntegrationCustomOutputWithContext(ctx context.Context) IdpIntegrationCustomOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationCustomOutput)
+}
+
+func (i IdpIntegrationCustomArgs) ToIdpIntegrationCustomPtrOutput() IdpIntegrationCustomPtrOutput {
+	return i.ToIdpIntegrationCustomPtrOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationCustomArgs) ToIdpIntegrationCustomPtrOutputWithContext(ctx context.Context) IdpIntegrationCustomPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationCustomOutput).ToIdpIntegrationCustomPtrOutputWithContext(ctx)
+}
+
+// IdpIntegrationCustomPtrInput is an input type that accepts IdpIntegrationCustomArgs, IdpIntegrationCustomPtr and IdpIntegrationCustomPtrOutput values.
+// You can construct a concrete instance of `IdpIntegrationCustomPtrInput` via:
+//
+//	        IdpIntegrationCustomArgs{...}
+//
+//	or:
+//
+//	        nil
+type IdpIntegrationCustomPtrInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationCustomPtrOutput() IdpIntegrationCustomPtrOutput
+	ToIdpIntegrationCustomPtrOutputWithContext(context.Context) IdpIntegrationCustomPtrOutput
+}
+
+type idpIntegrationCustomPtrType IdpIntegrationCustomArgs
+
+func IdpIntegrationCustomPtr(v *IdpIntegrationCustomArgs) IdpIntegrationCustomPtrInput {
+	return (*idpIntegrationCustomPtrType)(v)
+}
+
+func (*idpIntegrationCustomPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpIntegrationCustom)(nil)).Elem()
+}
+
+func (i *idpIntegrationCustomPtrType) ToIdpIntegrationCustomPtrOutput() IdpIntegrationCustomPtrOutput {
+	return i.ToIdpIntegrationCustomPtrOutputWithContext(context.Background())
+}
+
+func (i *idpIntegrationCustomPtrType) ToIdpIntegrationCustomPtrOutputWithContext(ctx context.Context) IdpIntegrationCustomPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationCustomPtrOutput)
+}
+
+type IdpIntegrationCustomOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationCustomOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationCustom)(nil)).Elem()
+}
+
+func (o IdpIntegrationCustomOutput) ToIdpIntegrationCustomOutput() IdpIntegrationCustomOutput {
+	return o
+}
+
+func (o IdpIntegrationCustomOutput) ToIdpIntegrationCustomOutputWithContext(ctx context.Context) IdpIntegrationCustomOutput {
+	return o
+}
+
+func (o IdpIntegrationCustomOutput) ToIdpIntegrationCustomPtrOutput() IdpIntegrationCustomPtrOutput {
+	return o.ToIdpIntegrationCustomPtrOutputWithContext(context.Background())
+}
+
+func (o IdpIntegrationCustomOutput) ToIdpIntegrationCustomPtrOutputWithContext(ctx context.Context) IdpIntegrationCustomPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdpIntegrationCustom) *IdpIntegrationCustom {
+		return &v
+	}).(IdpIntegrationCustomPtrOutput)
+}
+
+// Columns shown for the integration's entities.
+func (o IdpIntegrationCustomOutput) Layout() IdpIntegrationCustomLayoutPtrOutput {
+	return o.ApplyT(func(v IdpIntegrationCustom) *IdpIntegrationCustomLayout { return v.Layout }).(IdpIntegrationCustomLayoutPtrOutput)
+}
+
+// webhook or api.
+func (o IdpIntegrationCustomOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v IdpIntegrationCustom) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+// Label for the sending system.
+func (o IdpIntegrationCustomOutput) SourceLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpIntegrationCustom) *string { return v.SourceLabel }).(pulumi.StringPtrOutput)
+}
+
+// Webhook authentication. Required in webhook mode.
+func (o IdpIntegrationCustomOutput) WebhookAuth() IdpIntegrationCustomWebhookAuthPtrOutput {
+	return o.ApplyT(func(v IdpIntegrationCustom) *IdpIntegrationCustomWebhookAuth { return v.WebhookAuth }).(IdpIntegrationCustomWebhookAuthPtrOutput)
+}
+
+type IdpIntegrationCustomPtrOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationCustomPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpIntegrationCustom)(nil)).Elem()
+}
+
+func (o IdpIntegrationCustomPtrOutput) ToIdpIntegrationCustomPtrOutput() IdpIntegrationCustomPtrOutput {
+	return o
+}
+
+func (o IdpIntegrationCustomPtrOutput) ToIdpIntegrationCustomPtrOutputWithContext(ctx context.Context) IdpIntegrationCustomPtrOutput {
+	return o
+}
+
+func (o IdpIntegrationCustomPtrOutput) Elem() IdpIntegrationCustomOutput {
+	return o.ApplyT(func(v *IdpIntegrationCustom) IdpIntegrationCustom {
+		if v != nil {
+			return *v
+		}
+		var ret IdpIntegrationCustom
+		return ret
+	}).(IdpIntegrationCustomOutput)
+}
+
+// Columns shown for the integration's entities.
+func (o IdpIntegrationCustomPtrOutput) Layout() IdpIntegrationCustomLayoutPtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationCustom) *IdpIntegrationCustomLayout {
+		if v == nil {
+			return nil
+		}
+		return v.Layout
+	}).(IdpIntegrationCustomLayoutPtrOutput)
+}
+
+// webhook or api.
+func (o IdpIntegrationCustomPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationCustom) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Label for the sending system.
+func (o IdpIntegrationCustomPtrOutput) SourceLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationCustom) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceLabel
+	}).(pulumi.StringPtrOutput)
+}
+
+// Webhook authentication. Required in webhook mode.
+func (o IdpIntegrationCustomPtrOutput) WebhookAuth() IdpIntegrationCustomWebhookAuthPtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationCustom) *IdpIntegrationCustomWebhookAuth {
+		if v == nil {
+			return nil
+		}
+		return v.WebhookAuth
+	}).(IdpIntegrationCustomWebhookAuthPtrOutput)
+}
+
+type IdpIntegrationCustomLayout struct {
+	// A column.
+	Columns []IdpIntegrationCustomLayoutColumn `pulumi:"columns"`
+}
+
+// IdpIntegrationCustomLayoutInput is an input type that accepts IdpIntegrationCustomLayoutArgs and IdpIntegrationCustomLayoutOutput values.
+// You can construct a concrete instance of `IdpIntegrationCustomLayoutInput` via:
+//
+//	IdpIntegrationCustomLayoutArgs{...}
+type IdpIntegrationCustomLayoutInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationCustomLayoutOutput() IdpIntegrationCustomLayoutOutput
+	ToIdpIntegrationCustomLayoutOutputWithContext(context.Context) IdpIntegrationCustomLayoutOutput
+}
+
+type IdpIntegrationCustomLayoutArgs struct {
+	// A column.
+	Columns IdpIntegrationCustomLayoutColumnArrayInput `pulumi:"columns"`
+}
+
+func (IdpIntegrationCustomLayoutArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationCustomLayout)(nil)).Elem()
+}
+
+func (i IdpIntegrationCustomLayoutArgs) ToIdpIntegrationCustomLayoutOutput() IdpIntegrationCustomLayoutOutput {
+	return i.ToIdpIntegrationCustomLayoutOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationCustomLayoutArgs) ToIdpIntegrationCustomLayoutOutputWithContext(ctx context.Context) IdpIntegrationCustomLayoutOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationCustomLayoutOutput)
+}
+
+func (i IdpIntegrationCustomLayoutArgs) ToIdpIntegrationCustomLayoutPtrOutput() IdpIntegrationCustomLayoutPtrOutput {
+	return i.ToIdpIntegrationCustomLayoutPtrOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationCustomLayoutArgs) ToIdpIntegrationCustomLayoutPtrOutputWithContext(ctx context.Context) IdpIntegrationCustomLayoutPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationCustomLayoutOutput).ToIdpIntegrationCustomLayoutPtrOutputWithContext(ctx)
+}
+
+// IdpIntegrationCustomLayoutPtrInput is an input type that accepts IdpIntegrationCustomLayoutArgs, IdpIntegrationCustomLayoutPtr and IdpIntegrationCustomLayoutPtrOutput values.
+// You can construct a concrete instance of `IdpIntegrationCustomLayoutPtrInput` via:
+//
+//	        IdpIntegrationCustomLayoutArgs{...}
+//
+//	or:
+//
+//	        nil
+type IdpIntegrationCustomLayoutPtrInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationCustomLayoutPtrOutput() IdpIntegrationCustomLayoutPtrOutput
+	ToIdpIntegrationCustomLayoutPtrOutputWithContext(context.Context) IdpIntegrationCustomLayoutPtrOutput
+}
+
+type idpIntegrationCustomLayoutPtrType IdpIntegrationCustomLayoutArgs
+
+func IdpIntegrationCustomLayoutPtr(v *IdpIntegrationCustomLayoutArgs) IdpIntegrationCustomLayoutPtrInput {
+	return (*idpIntegrationCustomLayoutPtrType)(v)
+}
+
+func (*idpIntegrationCustomLayoutPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpIntegrationCustomLayout)(nil)).Elem()
+}
+
+func (i *idpIntegrationCustomLayoutPtrType) ToIdpIntegrationCustomLayoutPtrOutput() IdpIntegrationCustomLayoutPtrOutput {
+	return i.ToIdpIntegrationCustomLayoutPtrOutputWithContext(context.Background())
+}
+
+func (i *idpIntegrationCustomLayoutPtrType) ToIdpIntegrationCustomLayoutPtrOutputWithContext(ctx context.Context) IdpIntegrationCustomLayoutPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationCustomLayoutPtrOutput)
+}
+
+type IdpIntegrationCustomLayoutOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationCustomLayoutOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationCustomLayout)(nil)).Elem()
+}
+
+func (o IdpIntegrationCustomLayoutOutput) ToIdpIntegrationCustomLayoutOutput() IdpIntegrationCustomLayoutOutput {
+	return o
+}
+
+func (o IdpIntegrationCustomLayoutOutput) ToIdpIntegrationCustomLayoutOutputWithContext(ctx context.Context) IdpIntegrationCustomLayoutOutput {
+	return o
+}
+
+func (o IdpIntegrationCustomLayoutOutput) ToIdpIntegrationCustomLayoutPtrOutput() IdpIntegrationCustomLayoutPtrOutput {
+	return o.ToIdpIntegrationCustomLayoutPtrOutputWithContext(context.Background())
+}
+
+func (o IdpIntegrationCustomLayoutOutput) ToIdpIntegrationCustomLayoutPtrOutputWithContext(ctx context.Context) IdpIntegrationCustomLayoutPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdpIntegrationCustomLayout) *IdpIntegrationCustomLayout {
+		return &v
+	}).(IdpIntegrationCustomLayoutPtrOutput)
+}
+
+// A column.
+func (o IdpIntegrationCustomLayoutOutput) Columns() IdpIntegrationCustomLayoutColumnArrayOutput {
+	return o.ApplyT(func(v IdpIntegrationCustomLayout) []IdpIntegrationCustomLayoutColumn { return v.Columns }).(IdpIntegrationCustomLayoutColumnArrayOutput)
+}
+
+type IdpIntegrationCustomLayoutPtrOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationCustomLayoutPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpIntegrationCustomLayout)(nil)).Elem()
+}
+
+func (o IdpIntegrationCustomLayoutPtrOutput) ToIdpIntegrationCustomLayoutPtrOutput() IdpIntegrationCustomLayoutPtrOutput {
+	return o
+}
+
+func (o IdpIntegrationCustomLayoutPtrOutput) ToIdpIntegrationCustomLayoutPtrOutputWithContext(ctx context.Context) IdpIntegrationCustomLayoutPtrOutput {
+	return o
+}
+
+func (o IdpIntegrationCustomLayoutPtrOutput) Elem() IdpIntegrationCustomLayoutOutput {
+	return o.ApplyT(func(v *IdpIntegrationCustomLayout) IdpIntegrationCustomLayout {
+		if v != nil {
+			return *v
+		}
+		var ret IdpIntegrationCustomLayout
+		return ret
+	}).(IdpIntegrationCustomLayoutOutput)
+}
+
+// A column.
+func (o IdpIntegrationCustomLayoutPtrOutput) Columns() IdpIntegrationCustomLayoutColumnArrayOutput {
+	return o.ApplyT(func(v *IdpIntegrationCustomLayout) []IdpIntegrationCustomLayoutColumn {
+		if v == nil {
+			return nil
+		}
+		return v.Columns
+	}).(IdpIntegrationCustomLayoutColumnArrayOutput)
+}
+
+type IdpIntegrationCustomLayoutColumn struct {
+	// JQ path of the value.
+	Path string `pulumi:"path"`
+	// Column title.
+	Title string `pulumi:"title"`
+}
+
+// IdpIntegrationCustomLayoutColumnInput is an input type that accepts IdpIntegrationCustomLayoutColumnArgs and IdpIntegrationCustomLayoutColumnOutput values.
+// You can construct a concrete instance of `IdpIntegrationCustomLayoutColumnInput` via:
+//
+//	IdpIntegrationCustomLayoutColumnArgs{...}
+type IdpIntegrationCustomLayoutColumnInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationCustomLayoutColumnOutput() IdpIntegrationCustomLayoutColumnOutput
+	ToIdpIntegrationCustomLayoutColumnOutputWithContext(context.Context) IdpIntegrationCustomLayoutColumnOutput
+}
+
+type IdpIntegrationCustomLayoutColumnArgs struct {
+	// JQ path of the value.
+	Path pulumi.StringInput `pulumi:"path"`
+	// Column title.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (IdpIntegrationCustomLayoutColumnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationCustomLayoutColumn)(nil)).Elem()
+}
+
+func (i IdpIntegrationCustomLayoutColumnArgs) ToIdpIntegrationCustomLayoutColumnOutput() IdpIntegrationCustomLayoutColumnOutput {
+	return i.ToIdpIntegrationCustomLayoutColumnOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationCustomLayoutColumnArgs) ToIdpIntegrationCustomLayoutColumnOutputWithContext(ctx context.Context) IdpIntegrationCustomLayoutColumnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationCustomLayoutColumnOutput)
+}
+
+// IdpIntegrationCustomLayoutColumnArrayInput is an input type that accepts IdpIntegrationCustomLayoutColumnArray and IdpIntegrationCustomLayoutColumnArrayOutput values.
+// You can construct a concrete instance of `IdpIntegrationCustomLayoutColumnArrayInput` via:
+//
+//	IdpIntegrationCustomLayoutColumnArray{ IdpIntegrationCustomLayoutColumnArgs{...} }
+type IdpIntegrationCustomLayoutColumnArrayInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationCustomLayoutColumnArrayOutput() IdpIntegrationCustomLayoutColumnArrayOutput
+	ToIdpIntegrationCustomLayoutColumnArrayOutputWithContext(context.Context) IdpIntegrationCustomLayoutColumnArrayOutput
+}
+
+type IdpIntegrationCustomLayoutColumnArray []IdpIntegrationCustomLayoutColumnInput
+
+func (IdpIntegrationCustomLayoutColumnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IdpIntegrationCustomLayoutColumn)(nil)).Elem()
+}
+
+func (i IdpIntegrationCustomLayoutColumnArray) ToIdpIntegrationCustomLayoutColumnArrayOutput() IdpIntegrationCustomLayoutColumnArrayOutput {
+	return i.ToIdpIntegrationCustomLayoutColumnArrayOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationCustomLayoutColumnArray) ToIdpIntegrationCustomLayoutColumnArrayOutputWithContext(ctx context.Context) IdpIntegrationCustomLayoutColumnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationCustomLayoutColumnArrayOutput)
+}
+
+type IdpIntegrationCustomLayoutColumnOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationCustomLayoutColumnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationCustomLayoutColumn)(nil)).Elem()
+}
+
+func (o IdpIntegrationCustomLayoutColumnOutput) ToIdpIntegrationCustomLayoutColumnOutput() IdpIntegrationCustomLayoutColumnOutput {
+	return o
+}
+
+func (o IdpIntegrationCustomLayoutColumnOutput) ToIdpIntegrationCustomLayoutColumnOutputWithContext(ctx context.Context) IdpIntegrationCustomLayoutColumnOutput {
+	return o
+}
+
+// JQ path of the value.
+func (o IdpIntegrationCustomLayoutColumnOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v IdpIntegrationCustomLayoutColumn) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// Column title.
+func (o IdpIntegrationCustomLayoutColumnOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v IdpIntegrationCustomLayoutColumn) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type IdpIntegrationCustomLayoutColumnArrayOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationCustomLayoutColumnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IdpIntegrationCustomLayoutColumn)(nil)).Elem()
+}
+
+func (o IdpIntegrationCustomLayoutColumnArrayOutput) ToIdpIntegrationCustomLayoutColumnArrayOutput() IdpIntegrationCustomLayoutColumnArrayOutput {
+	return o
+}
+
+func (o IdpIntegrationCustomLayoutColumnArrayOutput) ToIdpIntegrationCustomLayoutColumnArrayOutputWithContext(ctx context.Context) IdpIntegrationCustomLayoutColumnArrayOutput {
+	return o
+}
+
+func (o IdpIntegrationCustomLayoutColumnArrayOutput) Index(i pulumi.IntInput) IdpIntegrationCustomLayoutColumnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IdpIntegrationCustomLayoutColumn {
+		return vs[0].([]IdpIntegrationCustomLayoutColumn)[vs[1].(int)]
+	}).(IdpIntegrationCustomLayoutColumnOutput)
+}
+
+type IdpIntegrationCustomWebhookAuth struct {
+	// Header carrying the signature or token.
+	AuthHeader *string `pulumi:"authHeader"`
+	// hmac*auth or jwt*auth.
+	AuthType string `pulumi:"authType"`
+	// HMAC hash: hmac*sha224, hmac*sha256, hmac*sha384 or hmac*sha512.
+	HashAlgo *string `pulumi:"hashAlgo"`
+	// Secret reference holding the shared secret.
+	SecretRef *string `pulumi:"secretRef"`
+}
+
+// IdpIntegrationCustomWebhookAuthInput is an input type that accepts IdpIntegrationCustomWebhookAuthArgs and IdpIntegrationCustomWebhookAuthOutput values.
+// You can construct a concrete instance of `IdpIntegrationCustomWebhookAuthInput` via:
+//
+//	IdpIntegrationCustomWebhookAuthArgs{...}
+type IdpIntegrationCustomWebhookAuthInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationCustomWebhookAuthOutput() IdpIntegrationCustomWebhookAuthOutput
+	ToIdpIntegrationCustomWebhookAuthOutputWithContext(context.Context) IdpIntegrationCustomWebhookAuthOutput
+}
+
+type IdpIntegrationCustomWebhookAuthArgs struct {
+	// Header carrying the signature or token.
+	AuthHeader pulumi.StringPtrInput `pulumi:"authHeader"`
+	// hmac*auth or jwt*auth.
+	AuthType pulumi.StringInput `pulumi:"authType"`
+	// HMAC hash: hmac*sha224, hmac*sha256, hmac*sha384 or hmac*sha512.
+	HashAlgo pulumi.StringPtrInput `pulumi:"hashAlgo"`
+	// Secret reference holding the shared secret.
+	SecretRef pulumi.StringPtrInput `pulumi:"secretRef"`
+}
+
+func (IdpIntegrationCustomWebhookAuthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationCustomWebhookAuth)(nil)).Elem()
+}
+
+func (i IdpIntegrationCustomWebhookAuthArgs) ToIdpIntegrationCustomWebhookAuthOutput() IdpIntegrationCustomWebhookAuthOutput {
+	return i.ToIdpIntegrationCustomWebhookAuthOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationCustomWebhookAuthArgs) ToIdpIntegrationCustomWebhookAuthOutputWithContext(ctx context.Context) IdpIntegrationCustomWebhookAuthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationCustomWebhookAuthOutput)
+}
+
+func (i IdpIntegrationCustomWebhookAuthArgs) ToIdpIntegrationCustomWebhookAuthPtrOutput() IdpIntegrationCustomWebhookAuthPtrOutput {
+	return i.ToIdpIntegrationCustomWebhookAuthPtrOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationCustomWebhookAuthArgs) ToIdpIntegrationCustomWebhookAuthPtrOutputWithContext(ctx context.Context) IdpIntegrationCustomWebhookAuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationCustomWebhookAuthOutput).ToIdpIntegrationCustomWebhookAuthPtrOutputWithContext(ctx)
+}
+
+// IdpIntegrationCustomWebhookAuthPtrInput is an input type that accepts IdpIntegrationCustomWebhookAuthArgs, IdpIntegrationCustomWebhookAuthPtr and IdpIntegrationCustomWebhookAuthPtrOutput values.
+// You can construct a concrete instance of `IdpIntegrationCustomWebhookAuthPtrInput` via:
+//
+//	        IdpIntegrationCustomWebhookAuthArgs{...}
+//
+//	or:
+//
+//	        nil
+type IdpIntegrationCustomWebhookAuthPtrInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationCustomWebhookAuthPtrOutput() IdpIntegrationCustomWebhookAuthPtrOutput
+	ToIdpIntegrationCustomWebhookAuthPtrOutputWithContext(context.Context) IdpIntegrationCustomWebhookAuthPtrOutput
+}
+
+type idpIntegrationCustomWebhookAuthPtrType IdpIntegrationCustomWebhookAuthArgs
+
+func IdpIntegrationCustomWebhookAuthPtr(v *IdpIntegrationCustomWebhookAuthArgs) IdpIntegrationCustomWebhookAuthPtrInput {
+	return (*idpIntegrationCustomWebhookAuthPtrType)(v)
+}
+
+func (*idpIntegrationCustomWebhookAuthPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpIntegrationCustomWebhookAuth)(nil)).Elem()
+}
+
+func (i *idpIntegrationCustomWebhookAuthPtrType) ToIdpIntegrationCustomWebhookAuthPtrOutput() IdpIntegrationCustomWebhookAuthPtrOutput {
+	return i.ToIdpIntegrationCustomWebhookAuthPtrOutputWithContext(context.Background())
+}
+
+func (i *idpIntegrationCustomWebhookAuthPtrType) ToIdpIntegrationCustomWebhookAuthPtrOutputWithContext(ctx context.Context) IdpIntegrationCustomWebhookAuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationCustomWebhookAuthPtrOutput)
+}
+
+type IdpIntegrationCustomWebhookAuthOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationCustomWebhookAuthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationCustomWebhookAuth)(nil)).Elem()
+}
+
+func (o IdpIntegrationCustomWebhookAuthOutput) ToIdpIntegrationCustomWebhookAuthOutput() IdpIntegrationCustomWebhookAuthOutput {
+	return o
+}
+
+func (o IdpIntegrationCustomWebhookAuthOutput) ToIdpIntegrationCustomWebhookAuthOutputWithContext(ctx context.Context) IdpIntegrationCustomWebhookAuthOutput {
+	return o
+}
+
+func (o IdpIntegrationCustomWebhookAuthOutput) ToIdpIntegrationCustomWebhookAuthPtrOutput() IdpIntegrationCustomWebhookAuthPtrOutput {
+	return o.ToIdpIntegrationCustomWebhookAuthPtrOutputWithContext(context.Background())
+}
+
+func (o IdpIntegrationCustomWebhookAuthOutput) ToIdpIntegrationCustomWebhookAuthPtrOutputWithContext(ctx context.Context) IdpIntegrationCustomWebhookAuthPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdpIntegrationCustomWebhookAuth) *IdpIntegrationCustomWebhookAuth {
+		return &v
+	}).(IdpIntegrationCustomWebhookAuthPtrOutput)
+}
+
+// Header carrying the signature or token.
+func (o IdpIntegrationCustomWebhookAuthOutput) AuthHeader() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpIntegrationCustomWebhookAuth) *string { return v.AuthHeader }).(pulumi.StringPtrOutput)
+}
+
+// hmac*auth or jwt*auth.
+func (o IdpIntegrationCustomWebhookAuthOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v IdpIntegrationCustomWebhookAuth) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// HMAC hash: hmac*sha224, hmac*sha256, hmac*sha384 or hmac*sha512.
+func (o IdpIntegrationCustomWebhookAuthOutput) HashAlgo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpIntegrationCustomWebhookAuth) *string { return v.HashAlgo }).(pulumi.StringPtrOutput)
+}
+
+// Secret reference holding the shared secret.
+func (o IdpIntegrationCustomWebhookAuthOutput) SecretRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpIntegrationCustomWebhookAuth) *string { return v.SecretRef }).(pulumi.StringPtrOutput)
+}
+
+type IdpIntegrationCustomWebhookAuthPtrOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationCustomWebhookAuthPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpIntegrationCustomWebhookAuth)(nil)).Elem()
+}
+
+func (o IdpIntegrationCustomWebhookAuthPtrOutput) ToIdpIntegrationCustomWebhookAuthPtrOutput() IdpIntegrationCustomWebhookAuthPtrOutput {
+	return o
+}
+
+func (o IdpIntegrationCustomWebhookAuthPtrOutput) ToIdpIntegrationCustomWebhookAuthPtrOutputWithContext(ctx context.Context) IdpIntegrationCustomWebhookAuthPtrOutput {
+	return o
+}
+
+func (o IdpIntegrationCustomWebhookAuthPtrOutput) Elem() IdpIntegrationCustomWebhookAuthOutput {
+	return o.ApplyT(func(v *IdpIntegrationCustomWebhookAuth) IdpIntegrationCustomWebhookAuth {
+		if v != nil {
+			return *v
+		}
+		var ret IdpIntegrationCustomWebhookAuth
+		return ret
+	}).(IdpIntegrationCustomWebhookAuthOutput)
+}
+
+// Header carrying the signature or token.
+func (o IdpIntegrationCustomWebhookAuthPtrOutput) AuthHeader() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationCustomWebhookAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthHeader
+	}).(pulumi.StringPtrOutput)
+}
+
+// hmac*auth or jwt*auth.
+func (o IdpIntegrationCustomWebhookAuthPtrOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationCustomWebhookAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AuthType
+	}).(pulumi.StringPtrOutput)
+}
+
+// HMAC hash: hmac*sha224, hmac*sha256, hmac*sha384 or hmac*sha512.
+func (o IdpIntegrationCustomWebhookAuthPtrOutput) HashAlgo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationCustomWebhookAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HashAlgo
+	}).(pulumi.StringPtrOutput)
+}
+
+// Secret reference holding the shared secret.
+func (o IdpIntegrationCustomWebhookAuthPtrOutput) SecretRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationCustomWebhookAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretRef
+	}).(pulumi.StringPtrOutput)
+}
+
+type IdpIntegrationDatadog struct {
+	// Environment used to add service dependencies.
+	ServiceDependenciesEnv *string `pulumi:"serviceDependenciesEnv"`
+}
+
+// IdpIntegrationDatadogInput is an input type that accepts IdpIntegrationDatadogArgs and IdpIntegrationDatadogOutput values.
+// You can construct a concrete instance of `IdpIntegrationDatadogInput` via:
+//
+//	IdpIntegrationDatadogArgs{...}
+type IdpIntegrationDatadogInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationDatadogOutput() IdpIntegrationDatadogOutput
+	ToIdpIntegrationDatadogOutputWithContext(context.Context) IdpIntegrationDatadogOutput
+}
+
+type IdpIntegrationDatadogArgs struct {
+	// Environment used to add service dependencies.
+	ServiceDependenciesEnv pulumi.StringPtrInput `pulumi:"serviceDependenciesEnv"`
+}
+
+func (IdpIntegrationDatadogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationDatadog)(nil)).Elem()
+}
+
+func (i IdpIntegrationDatadogArgs) ToIdpIntegrationDatadogOutput() IdpIntegrationDatadogOutput {
+	return i.ToIdpIntegrationDatadogOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationDatadogArgs) ToIdpIntegrationDatadogOutputWithContext(ctx context.Context) IdpIntegrationDatadogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationDatadogOutput)
+}
+
+func (i IdpIntegrationDatadogArgs) ToIdpIntegrationDatadogPtrOutput() IdpIntegrationDatadogPtrOutput {
+	return i.ToIdpIntegrationDatadogPtrOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationDatadogArgs) ToIdpIntegrationDatadogPtrOutputWithContext(ctx context.Context) IdpIntegrationDatadogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationDatadogOutput).ToIdpIntegrationDatadogPtrOutputWithContext(ctx)
+}
+
+// IdpIntegrationDatadogPtrInput is an input type that accepts IdpIntegrationDatadogArgs, IdpIntegrationDatadogPtr and IdpIntegrationDatadogPtrOutput values.
+// You can construct a concrete instance of `IdpIntegrationDatadogPtrInput` via:
+//
+//	        IdpIntegrationDatadogArgs{...}
+//
+//	or:
+//
+//	        nil
+type IdpIntegrationDatadogPtrInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationDatadogPtrOutput() IdpIntegrationDatadogPtrOutput
+	ToIdpIntegrationDatadogPtrOutputWithContext(context.Context) IdpIntegrationDatadogPtrOutput
+}
+
+type idpIntegrationDatadogPtrType IdpIntegrationDatadogArgs
+
+func IdpIntegrationDatadogPtr(v *IdpIntegrationDatadogArgs) IdpIntegrationDatadogPtrInput {
+	return (*idpIntegrationDatadogPtrType)(v)
+}
+
+func (*idpIntegrationDatadogPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpIntegrationDatadog)(nil)).Elem()
+}
+
+func (i *idpIntegrationDatadogPtrType) ToIdpIntegrationDatadogPtrOutput() IdpIntegrationDatadogPtrOutput {
+	return i.ToIdpIntegrationDatadogPtrOutputWithContext(context.Background())
+}
+
+func (i *idpIntegrationDatadogPtrType) ToIdpIntegrationDatadogPtrOutputWithContext(ctx context.Context) IdpIntegrationDatadogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationDatadogPtrOutput)
+}
+
+type IdpIntegrationDatadogOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationDatadogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationDatadog)(nil)).Elem()
+}
+
+func (o IdpIntegrationDatadogOutput) ToIdpIntegrationDatadogOutput() IdpIntegrationDatadogOutput {
+	return o
+}
+
+func (o IdpIntegrationDatadogOutput) ToIdpIntegrationDatadogOutputWithContext(ctx context.Context) IdpIntegrationDatadogOutput {
+	return o
+}
+
+func (o IdpIntegrationDatadogOutput) ToIdpIntegrationDatadogPtrOutput() IdpIntegrationDatadogPtrOutput {
+	return o.ToIdpIntegrationDatadogPtrOutputWithContext(context.Background())
+}
+
+func (o IdpIntegrationDatadogOutput) ToIdpIntegrationDatadogPtrOutputWithContext(ctx context.Context) IdpIntegrationDatadogPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdpIntegrationDatadog) *IdpIntegrationDatadog {
+		return &v
+	}).(IdpIntegrationDatadogPtrOutput)
+}
+
+// Environment used to add service dependencies.
+func (o IdpIntegrationDatadogOutput) ServiceDependenciesEnv() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpIntegrationDatadog) *string { return v.ServiceDependenciesEnv }).(pulumi.StringPtrOutput)
+}
+
+type IdpIntegrationDatadogPtrOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationDatadogPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpIntegrationDatadog)(nil)).Elem()
+}
+
+func (o IdpIntegrationDatadogPtrOutput) ToIdpIntegrationDatadogPtrOutput() IdpIntegrationDatadogPtrOutput {
+	return o
+}
+
+func (o IdpIntegrationDatadogPtrOutput) ToIdpIntegrationDatadogPtrOutputWithContext(ctx context.Context) IdpIntegrationDatadogPtrOutput {
+	return o
+}
+
+func (o IdpIntegrationDatadogPtrOutput) Elem() IdpIntegrationDatadogOutput {
+	return o.ApplyT(func(v *IdpIntegrationDatadog) IdpIntegrationDatadog {
+		if v != nil {
+			return *v
+		}
+		var ret IdpIntegrationDatadog
+		return ret
+	}).(IdpIntegrationDatadogOutput)
+}
+
+// Environment used to add service dependencies.
+func (o IdpIntegrationDatadogPtrOutput) ServiceDependenciesEnv() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationDatadog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceDependenciesEnv
+	}).(pulumi.StringPtrOutput)
+}
+
+type IdpIntegrationDynatrace struct {
+	// Secret reference to a Platform API token.
+	PlatformTokenRef *string `pulumi:"platformTokenRef"`
+	// Lower bound for incremental streams, RFC3339.
+	StartDate *string `pulumi:"startDate"`
+}
+
+// IdpIntegrationDynatraceInput is an input type that accepts IdpIntegrationDynatraceArgs and IdpIntegrationDynatraceOutput values.
+// You can construct a concrete instance of `IdpIntegrationDynatraceInput` via:
+//
+//	IdpIntegrationDynatraceArgs{...}
+type IdpIntegrationDynatraceInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationDynatraceOutput() IdpIntegrationDynatraceOutput
+	ToIdpIntegrationDynatraceOutputWithContext(context.Context) IdpIntegrationDynatraceOutput
+}
+
+type IdpIntegrationDynatraceArgs struct {
+	// Secret reference to a Platform API token.
+	PlatformTokenRef pulumi.StringPtrInput `pulumi:"platformTokenRef"`
+	// Lower bound for incremental streams, RFC3339.
+	StartDate pulumi.StringPtrInput `pulumi:"startDate"`
+}
+
+func (IdpIntegrationDynatraceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationDynatrace)(nil)).Elem()
+}
+
+func (i IdpIntegrationDynatraceArgs) ToIdpIntegrationDynatraceOutput() IdpIntegrationDynatraceOutput {
+	return i.ToIdpIntegrationDynatraceOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationDynatraceArgs) ToIdpIntegrationDynatraceOutputWithContext(ctx context.Context) IdpIntegrationDynatraceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationDynatraceOutput)
+}
+
+func (i IdpIntegrationDynatraceArgs) ToIdpIntegrationDynatracePtrOutput() IdpIntegrationDynatracePtrOutput {
+	return i.ToIdpIntegrationDynatracePtrOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationDynatraceArgs) ToIdpIntegrationDynatracePtrOutputWithContext(ctx context.Context) IdpIntegrationDynatracePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationDynatraceOutput).ToIdpIntegrationDynatracePtrOutputWithContext(ctx)
+}
+
+// IdpIntegrationDynatracePtrInput is an input type that accepts IdpIntegrationDynatraceArgs, IdpIntegrationDynatracePtr and IdpIntegrationDynatracePtrOutput values.
+// You can construct a concrete instance of `IdpIntegrationDynatracePtrInput` via:
+//
+//	        IdpIntegrationDynatraceArgs{...}
+//
+//	or:
+//
+//	        nil
+type IdpIntegrationDynatracePtrInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationDynatracePtrOutput() IdpIntegrationDynatracePtrOutput
+	ToIdpIntegrationDynatracePtrOutputWithContext(context.Context) IdpIntegrationDynatracePtrOutput
+}
+
+type idpIntegrationDynatracePtrType IdpIntegrationDynatraceArgs
+
+func IdpIntegrationDynatracePtr(v *IdpIntegrationDynatraceArgs) IdpIntegrationDynatracePtrInput {
+	return (*idpIntegrationDynatracePtrType)(v)
+}
+
+func (*idpIntegrationDynatracePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpIntegrationDynatrace)(nil)).Elem()
+}
+
+func (i *idpIntegrationDynatracePtrType) ToIdpIntegrationDynatracePtrOutput() IdpIntegrationDynatracePtrOutput {
+	return i.ToIdpIntegrationDynatracePtrOutputWithContext(context.Background())
+}
+
+func (i *idpIntegrationDynatracePtrType) ToIdpIntegrationDynatracePtrOutputWithContext(ctx context.Context) IdpIntegrationDynatracePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationDynatracePtrOutput)
+}
+
+type IdpIntegrationDynatraceOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationDynatraceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationDynatrace)(nil)).Elem()
+}
+
+func (o IdpIntegrationDynatraceOutput) ToIdpIntegrationDynatraceOutput() IdpIntegrationDynatraceOutput {
+	return o
+}
+
+func (o IdpIntegrationDynatraceOutput) ToIdpIntegrationDynatraceOutputWithContext(ctx context.Context) IdpIntegrationDynatraceOutput {
+	return o
+}
+
+func (o IdpIntegrationDynatraceOutput) ToIdpIntegrationDynatracePtrOutput() IdpIntegrationDynatracePtrOutput {
+	return o.ToIdpIntegrationDynatracePtrOutputWithContext(context.Background())
+}
+
+func (o IdpIntegrationDynatraceOutput) ToIdpIntegrationDynatracePtrOutputWithContext(ctx context.Context) IdpIntegrationDynatracePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdpIntegrationDynatrace) *IdpIntegrationDynatrace {
+		return &v
+	}).(IdpIntegrationDynatracePtrOutput)
+}
+
+// Secret reference to a Platform API token.
+func (o IdpIntegrationDynatraceOutput) PlatformTokenRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpIntegrationDynatrace) *string { return v.PlatformTokenRef }).(pulumi.StringPtrOutput)
+}
+
+// Lower bound for incremental streams, RFC3339.
+func (o IdpIntegrationDynatraceOutput) StartDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpIntegrationDynatrace) *string { return v.StartDate }).(pulumi.StringPtrOutput)
+}
+
+type IdpIntegrationDynatracePtrOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationDynatracePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpIntegrationDynatrace)(nil)).Elem()
+}
+
+func (o IdpIntegrationDynatracePtrOutput) ToIdpIntegrationDynatracePtrOutput() IdpIntegrationDynatracePtrOutput {
+	return o
+}
+
+func (o IdpIntegrationDynatracePtrOutput) ToIdpIntegrationDynatracePtrOutputWithContext(ctx context.Context) IdpIntegrationDynatracePtrOutput {
+	return o
+}
+
+func (o IdpIntegrationDynatracePtrOutput) Elem() IdpIntegrationDynatraceOutput {
+	return o.ApplyT(func(v *IdpIntegrationDynatrace) IdpIntegrationDynatrace {
+		if v != nil {
+			return *v
+		}
+		var ret IdpIntegrationDynatrace
+		return ret
+	}).(IdpIntegrationDynatraceOutput)
+}
+
+// Secret reference to a Platform API token.
+func (o IdpIntegrationDynatracePtrOutput) PlatformTokenRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationDynatrace) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PlatformTokenRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// Lower bound for incremental streams, RFC3339.
+func (o IdpIntegrationDynatracePtrOutput) StartDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationDynatrace) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StartDate
+	}).(pulumi.StringPtrOutput)
+}
+
+type IdpIntegrationEndpoint struct {
+	// Kind.
+	Kind *string `pulumi:"kind"`
+	// HTTP method.
+	Method *string `pulumi:"method"`
+	// Path relative to the integration manager, e.g. https://app.harness.io/gateway/integration.
+	Url *string `pulumi:"url"`
+}
+
+// IdpIntegrationEndpointInput is an input type that accepts IdpIntegrationEndpointArgs and IdpIntegrationEndpointOutput values.
+// You can construct a concrete instance of `IdpIntegrationEndpointInput` via:
+//
+//	IdpIntegrationEndpointArgs{...}
+type IdpIntegrationEndpointInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationEndpointOutput() IdpIntegrationEndpointOutput
+	ToIdpIntegrationEndpointOutputWithContext(context.Context) IdpIntegrationEndpointOutput
+}
+
+type IdpIntegrationEndpointArgs struct {
+	// Kind.
+	Kind pulumi.StringPtrInput `pulumi:"kind"`
+	// HTTP method.
+	Method pulumi.StringPtrInput `pulumi:"method"`
+	// Path relative to the integration manager, e.g. https://app.harness.io/gateway/integration.
+	Url pulumi.StringPtrInput `pulumi:"url"`
+}
+
+func (IdpIntegrationEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationEndpoint)(nil)).Elem()
+}
+
+func (i IdpIntegrationEndpointArgs) ToIdpIntegrationEndpointOutput() IdpIntegrationEndpointOutput {
+	return i.ToIdpIntegrationEndpointOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationEndpointArgs) ToIdpIntegrationEndpointOutputWithContext(ctx context.Context) IdpIntegrationEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationEndpointOutput)
+}
+
+// IdpIntegrationEndpointArrayInput is an input type that accepts IdpIntegrationEndpointArray and IdpIntegrationEndpointArrayOutput values.
+// You can construct a concrete instance of `IdpIntegrationEndpointArrayInput` via:
+//
+//	IdpIntegrationEndpointArray{ IdpIntegrationEndpointArgs{...} }
+type IdpIntegrationEndpointArrayInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationEndpointArrayOutput() IdpIntegrationEndpointArrayOutput
+	ToIdpIntegrationEndpointArrayOutputWithContext(context.Context) IdpIntegrationEndpointArrayOutput
+}
+
+type IdpIntegrationEndpointArray []IdpIntegrationEndpointInput
+
+func (IdpIntegrationEndpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IdpIntegrationEndpoint)(nil)).Elem()
+}
+
+func (i IdpIntegrationEndpointArray) ToIdpIntegrationEndpointArrayOutput() IdpIntegrationEndpointArrayOutput {
+	return i.ToIdpIntegrationEndpointArrayOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationEndpointArray) ToIdpIntegrationEndpointArrayOutputWithContext(ctx context.Context) IdpIntegrationEndpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationEndpointArrayOutput)
+}
+
+type IdpIntegrationEndpointOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationEndpoint)(nil)).Elem()
+}
+
+func (o IdpIntegrationEndpointOutput) ToIdpIntegrationEndpointOutput() IdpIntegrationEndpointOutput {
+	return o
+}
+
+func (o IdpIntegrationEndpointOutput) ToIdpIntegrationEndpointOutputWithContext(ctx context.Context) IdpIntegrationEndpointOutput {
+	return o
+}
+
+// Kind.
+func (o IdpIntegrationEndpointOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpIntegrationEndpoint) *string { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
+// HTTP method.
+func (o IdpIntegrationEndpointOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpIntegrationEndpoint) *string { return v.Method }).(pulumi.StringPtrOutput)
+}
+
+// Path relative to the integration manager, e.g. https://app.harness.io/gateway/integration.
+func (o IdpIntegrationEndpointOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpIntegrationEndpoint) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+type IdpIntegrationEndpointArrayOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationEndpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IdpIntegrationEndpoint)(nil)).Elem()
+}
+
+func (o IdpIntegrationEndpointArrayOutput) ToIdpIntegrationEndpointArrayOutput() IdpIntegrationEndpointArrayOutput {
+	return o
+}
+
+func (o IdpIntegrationEndpointArrayOutput) ToIdpIntegrationEndpointArrayOutputWithContext(ctx context.Context) IdpIntegrationEndpointArrayOutput {
+	return o
+}
+
+func (o IdpIntegrationEndpointArrayOutput) Index(i pulumi.IntInput) IdpIntegrationEndpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IdpIntegrationEndpoint {
+		return vs[0].([]IdpIntegrationEndpoint)[vs[1].(int)]
+	}).(IdpIntegrationEndpointOutput)
+}
+
+type IdpIntegrationGcp struct {
+	// The organization or folder whose assets are synced. Set exactly one field.
+	Parent IdpIntegrationGcpParent `pulumi:"parent"`
+}
+
+// IdpIntegrationGcpInput is an input type that accepts IdpIntegrationGcpArgs and IdpIntegrationGcpOutput values.
+// You can construct a concrete instance of `IdpIntegrationGcpInput` via:
+//
+//	IdpIntegrationGcpArgs{...}
+type IdpIntegrationGcpInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationGcpOutput() IdpIntegrationGcpOutput
+	ToIdpIntegrationGcpOutputWithContext(context.Context) IdpIntegrationGcpOutput
+}
+
+type IdpIntegrationGcpArgs struct {
+	// The organization or folder whose assets are synced. Set exactly one field.
+	Parent IdpIntegrationGcpParentInput `pulumi:"parent"`
+}
+
+func (IdpIntegrationGcpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationGcp)(nil)).Elem()
+}
+
+func (i IdpIntegrationGcpArgs) ToIdpIntegrationGcpOutput() IdpIntegrationGcpOutput {
+	return i.ToIdpIntegrationGcpOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationGcpArgs) ToIdpIntegrationGcpOutputWithContext(ctx context.Context) IdpIntegrationGcpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationGcpOutput)
+}
+
+func (i IdpIntegrationGcpArgs) ToIdpIntegrationGcpPtrOutput() IdpIntegrationGcpPtrOutput {
+	return i.ToIdpIntegrationGcpPtrOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationGcpArgs) ToIdpIntegrationGcpPtrOutputWithContext(ctx context.Context) IdpIntegrationGcpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationGcpOutput).ToIdpIntegrationGcpPtrOutputWithContext(ctx)
+}
+
+// IdpIntegrationGcpPtrInput is an input type that accepts IdpIntegrationGcpArgs, IdpIntegrationGcpPtr and IdpIntegrationGcpPtrOutput values.
+// You can construct a concrete instance of `IdpIntegrationGcpPtrInput` via:
+//
+//	        IdpIntegrationGcpArgs{...}
+//
+//	or:
+//
+//	        nil
+type IdpIntegrationGcpPtrInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationGcpPtrOutput() IdpIntegrationGcpPtrOutput
+	ToIdpIntegrationGcpPtrOutputWithContext(context.Context) IdpIntegrationGcpPtrOutput
+}
+
+type idpIntegrationGcpPtrType IdpIntegrationGcpArgs
+
+func IdpIntegrationGcpPtr(v *IdpIntegrationGcpArgs) IdpIntegrationGcpPtrInput {
+	return (*idpIntegrationGcpPtrType)(v)
+}
+
+func (*idpIntegrationGcpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpIntegrationGcp)(nil)).Elem()
+}
+
+func (i *idpIntegrationGcpPtrType) ToIdpIntegrationGcpPtrOutput() IdpIntegrationGcpPtrOutput {
+	return i.ToIdpIntegrationGcpPtrOutputWithContext(context.Background())
+}
+
+func (i *idpIntegrationGcpPtrType) ToIdpIntegrationGcpPtrOutputWithContext(ctx context.Context) IdpIntegrationGcpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationGcpPtrOutput)
+}
+
+type IdpIntegrationGcpOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationGcpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationGcp)(nil)).Elem()
+}
+
+func (o IdpIntegrationGcpOutput) ToIdpIntegrationGcpOutput() IdpIntegrationGcpOutput {
+	return o
+}
+
+func (o IdpIntegrationGcpOutput) ToIdpIntegrationGcpOutputWithContext(ctx context.Context) IdpIntegrationGcpOutput {
+	return o
+}
+
+func (o IdpIntegrationGcpOutput) ToIdpIntegrationGcpPtrOutput() IdpIntegrationGcpPtrOutput {
+	return o.ToIdpIntegrationGcpPtrOutputWithContext(context.Background())
+}
+
+func (o IdpIntegrationGcpOutput) ToIdpIntegrationGcpPtrOutputWithContext(ctx context.Context) IdpIntegrationGcpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdpIntegrationGcp) *IdpIntegrationGcp {
+		return &v
+	}).(IdpIntegrationGcpPtrOutput)
+}
+
+// The organization or folder whose assets are synced. Set exactly one field.
+func (o IdpIntegrationGcpOutput) Parent() IdpIntegrationGcpParentOutput {
+	return o.ApplyT(func(v IdpIntegrationGcp) IdpIntegrationGcpParent { return v.Parent }).(IdpIntegrationGcpParentOutput)
+}
+
+type IdpIntegrationGcpPtrOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationGcpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpIntegrationGcp)(nil)).Elem()
+}
+
+func (o IdpIntegrationGcpPtrOutput) ToIdpIntegrationGcpPtrOutput() IdpIntegrationGcpPtrOutput {
+	return o
+}
+
+func (o IdpIntegrationGcpPtrOutput) ToIdpIntegrationGcpPtrOutputWithContext(ctx context.Context) IdpIntegrationGcpPtrOutput {
+	return o
+}
+
+func (o IdpIntegrationGcpPtrOutput) Elem() IdpIntegrationGcpOutput {
+	return o.ApplyT(func(v *IdpIntegrationGcp) IdpIntegrationGcp {
+		if v != nil {
+			return *v
+		}
+		var ret IdpIntegrationGcp
+		return ret
+	}).(IdpIntegrationGcpOutput)
+}
+
+// The organization or folder whose assets are synced. Set exactly one field.
+func (o IdpIntegrationGcpPtrOutput) Parent() IdpIntegrationGcpParentPtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationGcp) *IdpIntegrationGcpParent {
+		if v == nil {
+			return nil
+		}
+		return &v.Parent
+	}).(IdpIntegrationGcpParentPtrOutput)
+}
+
+type IdpIntegrationGcpParent struct {
+	// Folder ID.
+	FolderId *string `pulumi:"folderId"`
+	// Organization ID.
+	OrgId *string `pulumi:"orgId"`
+}
+
+// IdpIntegrationGcpParentInput is an input type that accepts IdpIntegrationGcpParentArgs and IdpIntegrationGcpParentOutput values.
+// You can construct a concrete instance of `IdpIntegrationGcpParentInput` via:
+//
+//	IdpIntegrationGcpParentArgs{...}
+type IdpIntegrationGcpParentInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationGcpParentOutput() IdpIntegrationGcpParentOutput
+	ToIdpIntegrationGcpParentOutputWithContext(context.Context) IdpIntegrationGcpParentOutput
+}
+
+type IdpIntegrationGcpParentArgs struct {
+	// Folder ID.
+	FolderId pulumi.StringPtrInput `pulumi:"folderId"`
+	// Organization ID.
+	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
+}
+
+func (IdpIntegrationGcpParentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationGcpParent)(nil)).Elem()
+}
+
+func (i IdpIntegrationGcpParentArgs) ToIdpIntegrationGcpParentOutput() IdpIntegrationGcpParentOutput {
+	return i.ToIdpIntegrationGcpParentOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationGcpParentArgs) ToIdpIntegrationGcpParentOutputWithContext(ctx context.Context) IdpIntegrationGcpParentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationGcpParentOutput)
+}
+
+func (i IdpIntegrationGcpParentArgs) ToIdpIntegrationGcpParentPtrOutput() IdpIntegrationGcpParentPtrOutput {
+	return i.ToIdpIntegrationGcpParentPtrOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationGcpParentArgs) ToIdpIntegrationGcpParentPtrOutputWithContext(ctx context.Context) IdpIntegrationGcpParentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationGcpParentOutput).ToIdpIntegrationGcpParentPtrOutputWithContext(ctx)
+}
+
+// IdpIntegrationGcpParentPtrInput is an input type that accepts IdpIntegrationGcpParentArgs, IdpIntegrationGcpParentPtr and IdpIntegrationGcpParentPtrOutput values.
+// You can construct a concrete instance of `IdpIntegrationGcpParentPtrInput` via:
+//
+//	        IdpIntegrationGcpParentArgs{...}
+//
+//	or:
+//
+//	        nil
+type IdpIntegrationGcpParentPtrInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationGcpParentPtrOutput() IdpIntegrationGcpParentPtrOutput
+	ToIdpIntegrationGcpParentPtrOutputWithContext(context.Context) IdpIntegrationGcpParentPtrOutput
+}
+
+type idpIntegrationGcpParentPtrType IdpIntegrationGcpParentArgs
+
+func IdpIntegrationGcpParentPtr(v *IdpIntegrationGcpParentArgs) IdpIntegrationGcpParentPtrInput {
+	return (*idpIntegrationGcpParentPtrType)(v)
+}
+
+func (*idpIntegrationGcpParentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpIntegrationGcpParent)(nil)).Elem()
+}
+
+func (i *idpIntegrationGcpParentPtrType) ToIdpIntegrationGcpParentPtrOutput() IdpIntegrationGcpParentPtrOutput {
+	return i.ToIdpIntegrationGcpParentPtrOutputWithContext(context.Background())
+}
+
+func (i *idpIntegrationGcpParentPtrType) ToIdpIntegrationGcpParentPtrOutputWithContext(ctx context.Context) IdpIntegrationGcpParentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationGcpParentPtrOutput)
+}
+
+type IdpIntegrationGcpParentOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationGcpParentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationGcpParent)(nil)).Elem()
+}
+
+func (o IdpIntegrationGcpParentOutput) ToIdpIntegrationGcpParentOutput() IdpIntegrationGcpParentOutput {
+	return o
+}
+
+func (o IdpIntegrationGcpParentOutput) ToIdpIntegrationGcpParentOutputWithContext(ctx context.Context) IdpIntegrationGcpParentOutput {
+	return o
+}
+
+func (o IdpIntegrationGcpParentOutput) ToIdpIntegrationGcpParentPtrOutput() IdpIntegrationGcpParentPtrOutput {
+	return o.ToIdpIntegrationGcpParentPtrOutputWithContext(context.Background())
+}
+
+func (o IdpIntegrationGcpParentOutput) ToIdpIntegrationGcpParentPtrOutputWithContext(ctx context.Context) IdpIntegrationGcpParentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdpIntegrationGcpParent) *IdpIntegrationGcpParent {
+		return &v
+	}).(IdpIntegrationGcpParentPtrOutput)
+}
+
+// Folder ID.
+func (o IdpIntegrationGcpParentOutput) FolderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpIntegrationGcpParent) *string { return v.FolderId }).(pulumi.StringPtrOutput)
+}
+
+// Organization ID.
+func (o IdpIntegrationGcpParentOutput) OrgId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpIntegrationGcpParent) *string { return v.OrgId }).(pulumi.StringPtrOutput)
+}
+
+type IdpIntegrationGcpParentPtrOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationGcpParentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpIntegrationGcpParent)(nil)).Elem()
+}
+
+func (o IdpIntegrationGcpParentPtrOutput) ToIdpIntegrationGcpParentPtrOutput() IdpIntegrationGcpParentPtrOutput {
+	return o
+}
+
+func (o IdpIntegrationGcpParentPtrOutput) ToIdpIntegrationGcpParentPtrOutputWithContext(ctx context.Context) IdpIntegrationGcpParentPtrOutput {
+	return o
+}
+
+func (o IdpIntegrationGcpParentPtrOutput) Elem() IdpIntegrationGcpParentOutput {
+	return o.ApplyT(func(v *IdpIntegrationGcpParent) IdpIntegrationGcpParent {
+		if v != nil {
+			return *v
+		}
+		var ret IdpIntegrationGcpParent
+		return ret
+	}).(IdpIntegrationGcpParentOutput)
+}
+
+// Folder ID.
+func (o IdpIntegrationGcpParentPtrOutput) FolderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationGcpParent) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FolderId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Organization ID.
+func (o IdpIntegrationGcpParentPtrOutput) OrgId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationGcpParent) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OrgId
+	}).(pulumi.StringPtrOutput)
+}
+
+type IdpIntegrationGithub struct {
+	// Agents file to detect in repositories.
+	AgentFileName *string `pulumi:"agentFileName"`
+	// Organizations to sync.
+	Orgs []string `pulumi:"orgs"`
+	// Lower bound for the first sync, RFC3339.
+	StartDate *string `pulumi:"startDate"`
+}
+
+// IdpIntegrationGithubInput is an input type that accepts IdpIntegrationGithubArgs and IdpIntegrationGithubOutput values.
+// You can construct a concrete instance of `IdpIntegrationGithubInput` via:
+//
+//	IdpIntegrationGithubArgs{...}
+type IdpIntegrationGithubInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationGithubOutput() IdpIntegrationGithubOutput
+	ToIdpIntegrationGithubOutputWithContext(context.Context) IdpIntegrationGithubOutput
+}
+
+type IdpIntegrationGithubArgs struct {
+	// Agents file to detect in repositories.
+	AgentFileName pulumi.StringPtrInput `pulumi:"agentFileName"`
+	// Organizations to sync.
+	Orgs pulumi.StringArrayInput `pulumi:"orgs"`
+	// Lower bound for the first sync, RFC3339.
+	StartDate pulumi.StringPtrInput `pulumi:"startDate"`
+}
+
+func (IdpIntegrationGithubArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationGithub)(nil)).Elem()
+}
+
+func (i IdpIntegrationGithubArgs) ToIdpIntegrationGithubOutput() IdpIntegrationGithubOutput {
+	return i.ToIdpIntegrationGithubOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationGithubArgs) ToIdpIntegrationGithubOutputWithContext(ctx context.Context) IdpIntegrationGithubOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationGithubOutput)
+}
+
+func (i IdpIntegrationGithubArgs) ToIdpIntegrationGithubPtrOutput() IdpIntegrationGithubPtrOutput {
+	return i.ToIdpIntegrationGithubPtrOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationGithubArgs) ToIdpIntegrationGithubPtrOutputWithContext(ctx context.Context) IdpIntegrationGithubPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationGithubOutput).ToIdpIntegrationGithubPtrOutputWithContext(ctx)
+}
+
+// IdpIntegrationGithubPtrInput is an input type that accepts IdpIntegrationGithubArgs, IdpIntegrationGithubPtr and IdpIntegrationGithubPtrOutput values.
+// You can construct a concrete instance of `IdpIntegrationGithubPtrInput` via:
+//
+//	        IdpIntegrationGithubArgs{...}
+//
+//	or:
+//
+//	        nil
+type IdpIntegrationGithubPtrInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationGithubPtrOutput() IdpIntegrationGithubPtrOutput
+	ToIdpIntegrationGithubPtrOutputWithContext(context.Context) IdpIntegrationGithubPtrOutput
+}
+
+type idpIntegrationGithubPtrType IdpIntegrationGithubArgs
+
+func IdpIntegrationGithubPtr(v *IdpIntegrationGithubArgs) IdpIntegrationGithubPtrInput {
+	return (*idpIntegrationGithubPtrType)(v)
+}
+
+func (*idpIntegrationGithubPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpIntegrationGithub)(nil)).Elem()
+}
+
+func (i *idpIntegrationGithubPtrType) ToIdpIntegrationGithubPtrOutput() IdpIntegrationGithubPtrOutput {
+	return i.ToIdpIntegrationGithubPtrOutputWithContext(context.Background())
+}
+
+func (i *idpIntegrationGithubPtrType) ToIdpIntegrationGithubPtrOutputWithContext(ctx context.Context) IdpIntegrationGithubPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationGithubPtrOutput)
+}
+
+type IdpIntegrationGithubOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationGithubOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationGithub)(nil)).Elem()
+}
+
+func (o IdpIntegrationGithubOutput) ToIdpIntegrationGithubOutput() IdpIntegrationGithubOutput {
+	return o
+}
+
+func (o IdpIntegrationGithubOutput) ToIdpIntegrationGithubOutputWithContext(ctx context.Context) IdpIntegrationGithubOutput {
+	return o
+}
+
+func (o IdpIntegrationGithubOutput) ToIdpIntegrationGithubPtrOutput() IdpIntegrationGithubPtrOutput {
+	return o.ToIdpIntegrationGithubPtrOutputWithContext(context.Background())
+}
+
+func (o IdpIntegrationGithubOutput) ToIdpIntegrationGithubPtrOutputWithContext(ctx context.Context) IdpIntegrationGithubPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdpIntegrationGithub) *IdpIntegrationGithub {
+		return &v
+	}).(IdpIntegrationGithubPtrOutput)
+}
+
+// Agents file to detect in repositories.
+func (o IdpIntegrationGithubOutput) AgentFileName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpIntegrationGithub) *string { return v.AgentFileName }).(pulumi.StringPtrOutput)
+}
+
+// Organizations to sync.
+func (o IdpIntegrationGithubOutput) Orgs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IdpIntegrationGithub) []string { return v.Orgs }).(pulumi.StringArrayOutput)
+}
+
+// Lower bound for the first sync, RFC3339.
+func (o IdpIntegrationGithubOutput) StartDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpIntegrationGithub) *string { return v.StartDate }).(pulumi.StringPtrOutput)
+}
+
+type IdpIntegrationGithubPtrOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationGithubPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpIntegrationGithub)(nil)).Elem()
+}
+
+func (o IdpIntegrationGithubPtrOutput) ToIdpIntegrationGithubPtrOutput() IdpIntegrationGithubPtrOutput {
+	return o
+}
+
+func (o IdpIntegrationGithubPtrOutput) ToIdpIntegrationGithubPtrOutputWithContext(ctx context.Context) IdpIntegrationGithubPtrOutput {
+	return o
+}
+
+func (o IdpIntegrationGithubPtrOutput) Elem() IdpIntegrationGithubOutput {
+	return o.ApplyT(func(v *IdpIntegrationGithub) IdpIntegrationGithub {
+		if v != nil {
+			return *v
+		}
+		var ret IdpIntegrationGithub
+		return ret
+	}).(IdpIntegrationGithubOutput)
+}
+
+// Agents file to detect in repositories.
+func (o IdpIntegrationGithubPtrOutput) AgentFileName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationGithub) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AgentFileName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Organizations to sync.
+func (o IdpIntegrationGithubPtrOutput) Orgs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *IdpIntegrationGithub) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Orgs
+	}).(pulumi.StringArrayOutput)
+}
+
+// Lower bound for the first sync, RFC3339.
+func (o IdpIntegrationGithubPtrOutput) StartDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationGithub) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StartDate
+	}).(pulumi.StringPtrOutput)
+}
+
+type IdpIntegrationHarnessCd struct {
+	// Days of deployments to read.
+	DeploymentCycle *int `pulumi:"deploymentCycle"`
+	// Fields to map per kind; omit to map all.
+	MappingFields []IdpIntegrationHarnessCdMappingField `pulumi:"mappingFields"`
+}
+
+// IdpIntegrationHarnessCdInput is an input type that accepts IdpIntegrationHarnessCdArgs and IdpIntegrationHarnessCdOutput values.
+// You can construct a concrete instance of `IdpIntegrationHarnessCdInput` via:
+//
+//	IdpIntegrationHarnessCdArgs{...}
+type IdpIntegrationHarnessCdInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationHarnessCdOutput() IdpIntegrationHarnessCdOutput
+	ToIdpIntegrationHarnessCdOutputWithContext(context.Context) IdpIntegrationHarnessCdOutput
+}
+
+type IdpIntegrationHarnessCdArgs struct {
+	// Days of deployments to read.
+	DeploymentCycle pulumi.IntPtrInput `pulumi:"deploymentCycle"`
+	// Fields to map per kind; omit to map all.
+	MappingFields IdpIntegrationHarnessCdMappingFieldArrayInput `pulumi:"mappingFields"`
+}
+
+func (IdpIntegrationHarnessCdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationHarnessCd)(nil)).Elem()
+}
+
+func (i IdpIntegrationHarnessCdArgs) ToIdpIntegrationHarnessCdOutput() IdpIntegrationHarnessCdOutput {
+	return i.ToIdpIntegrationHarnessCdOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationHarnessCdArgs) ToIdpIntegrationHarnessCdOutputWithContext(ctx context.Context) IdpIntegrationHarnessCdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationHarnessCdOutput)
+}
+
+func (i IdpIntegrationHarnessCdArgs) ToIdpIntegrationHarnessCdPtrOutput() IdpIntegrationHarnessCdPtrOutput {
+	return i.ToIdpIntegrationHarnessCdPtrOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationHarnessCdArgs) ToIdpIntegrationHarnessCdPtrOutputWithContext(ctx context.Context) IdpIntegrationHarnessCdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationHarnessCdOutput).ToIdpIntegrationHarnessCdPtrOutputWithContext(ctx)
+}
+
+// IdpIntegrationHarnessCdPtrInput is an input type that accepts IdpIntegrationHarnessCdArgs, IdpIntegrationHarnessCdPtr and IdpIntegrationHarnessCdPtrOutput values.
+// You can construct a concrete instance of `IdpIntegrationHarnessCdPtrInput` via:
+//
+//	        IdpIntegrationHarnessCdArgs{...}
+//
+//	or:
+//
+//	        nil
+type IdpIntegrationHarnessCdPtrInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationHarnessCdPtrOutput() IdpIntegrationHarnessCdPtrOutput
+	ToIdpIntegrationHarnessCdPtrOutputWithContext(context.Context) IdpIntegrationHarnessCdPtrOutput
+}
+
+type idpIntegrationHarnessCdPtrType IdpIntegrationHarnessCdArgs
+
+func IdpIntegrationHarnessCdPtr(v *IdpIntegrationHarnessCdArgs) IdpIntegrationHarnessCdPtrInput {
+	return (*idpIntegrationHarnessCdPtrType)(v)
+}
+
+func (*idpIntegrationHarnessCdPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpIntegrationHarnessCd)(nil)).Elem()
+}
+
+func (i *idpIntegrationHarnessCdPtrType) ToIdpIntegrationHarnessCdPtrOutput() IdpIntegrationHarnessCdPtrOutput {
+	return i.ToIdpIntegrationHarnessCdPtrOutputWithContext(context.Background())
+}
+
+func (i *idpIntegrationHarnessCdPtrType) ToIdpIntegrationHarnessCdPtrOutputWithContext(ctx context.Context) IdpIntegrationHarnessCdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationHarnessCdPtrOutput)
+}
+
+type IdpIntegrationHarnessCdOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationHarnessCdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationHarnessCd)(nil)).Elem()
+}
+
+func (o IdpIntegrationHarnessCdOutput) ToIdpIntegrationHarnessCdOutput() IdpIntegrationHarnessCdOutput {
+	return o
+}
+
+func (o IdpIntegrationHarnessCdOutput) ToIdpIntegrationHarnessCdOutputWithContext(ctx context.Context) IdpIntegrationHarnessCdOutput {
+	return o
+}
+
+func (o IdpIntegrationHarnessCdOutput) ToIdpIntegrationHarnessCdPtrOutput() IdpIntegrationHarnessCdPtrOutput {
+	return o.ToIdpIntegrationHarnessCdPtrOutputWithContext(context.Background())
+}
+
+func (o IdpIntegrationHarnessCdOutput) ToIdpIntegrationHarnessCdPtrOutputWithContext(ctx context.Context) IdpIntegrationHarnessCdPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdpIntegrationHarnessCd) *IdpIntegrationHarnessCd {
+		return &v
+	}).(IdpIntegrationHarnessCdPtrOutput)
+}
+
+// Days of deployments to read.
+func (o IdpIntegrationHarnessCdOutput) DeploymentCycle() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v IdpIntegrationHarnessCd) *int { return v.DeploymentCycle }).(pulumi.IntPtrOutput)
+}
+
+// Fields to map per kind; omit to map all.
+func (o IdpIntegrationHarnessCdOutput) MappingFields() IdpIntegrationHarnessCdMappingFieldArrayOutput {
+	return o.ApplyT(func(v IdpIntegrationHarnessCd) []IdpIntegrationHarnessCdMappingField { return v.MappingFields }).(IdpIntegrationHarnessCdMappingFieldArrayOutput)
+}
+
+type IdpIntegrationHarnessCdPtrOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationHarnessCdPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpIntegrationHarnessCd)(nil)).Elem()
+}
+
+func (o IdpIntegrationHarnessCdPtrOutput) ToIdpIntegrationHarnessCdPtrOutput() IdpIntegrationHarnessCdPtrOutput {
+	return o
+}
+
+func (o IdpIntegrationHarnessCdPtrOutput) ToIdpIntegrationHarnessCdPtrOutputWithContext(ctx context.Context) IdpIntegrationHarnessCdPtrOutput {
+	return o
+}
+
+func (o IdpIntegrationHarnessCdPtrOutput) Elem() IdpIntegrationHarnessCdOutput {
+	return o.ApplyT(func(v *IdpIntegrationHarnessCd) IdpIntegrationHarnessCd {
+		if v != nil {
+			return *v
+		}
+		var ret IdpIntegrationHarnessCd
+		return ret
+	}).(IdpIntegrationHarnessCdOutput)
+}
+
+// Days of deployments to read.
+func (o IdpIntegrationHarnessCdPtrOutput) DeploymentCycle() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationHarnessCd) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DeploymentCycle
+	}).(pulumi.IntPtrOutput)
+}
+
+// Fields to map per kind; omit to map all.
+func (o IdpIntegrationHarnessCdPtrOutput) MappingFields() IdpIntegrationHarnessCdMappingFieldArrayOutput {
+	return o.ApplyT(func(v *IdpIntegrationHarnessCd) []IdpIntegrationHarnessCdMappingField {
+		if v == nil {
+			return nil
+		}
+		return v.MappingFields
+	}).(IdpIntegrationHarnessCdMappingFieldArrayOutput)
+}
+
+type IdpIntegrationHarnessCdMappingField struct {
+	// Fields.
+	Fields []string `pulumi:"fields"`
+	// Kind.
+	Kind string `pulumi:"kind"`
+}
+
+// IdpIntegrationHarnessCdMappingFieldInput is an input type that accepts IdpIntegrationHarnessCdMappingFieldArgs and IdpIntegrationHarnessCdMappingFieldOutput values.
+// You can construct a concrete instance of `IdpIntegrationHarnessCdMappingFieldInput` via:
+//
+//	IdpIntegrationHarnessCdMappingFieldArgs{...}
+type IdpIntegrationHarnessCdMappingFieldInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationHarnessCdMappingFieldOutput() IdpIntegrationHarnessCdMappingFieldOutput
+	ToIdpIntegrationHarnessCdMappingFieldOutputWithContext(context.Context) IdpIntegrationHarnessCdMappingFieldOutput
+}
+
+type IdpIntegrationHarnessCdMappingFieldArgs struct {
+	// Fields.
+	Fields pulumi.StringArrayInput `pulumi:"fields"`
+	// Kind.
+	Kind pulumi.StringInput `pulumi:"kind"`
+}
+
+func (IdpIntegrationHarnessCdMappingFieldArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationHarnessCdMappingField)(nil)).Elem()
+}
+
+func (i IdpIntegrationHarnessCdMappingFieldArgs) ToIdpIntegrationHarnessCdMappingFieldOutput() IdpIntegrationHarnessCdMappingFieldOutput {
+	return i.ToIdpIntegrationHarnessCdMappingFieldOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationHarnessCdMappingFieldArgs) ToIdpIntegrationHarnessCdMappingFieldOutputWithContext(ctx context.Context) IdpIntegrationHarnessCdMappingFieldOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationHarnessCdMappingFieldOutput)
+}
+
+// IdpIntegrationHarnessCdMappingFieldArrayInput is an input type that accepts IdpIntegrationHarnessCdMappingFieldArray and IdpIntegrationHarnessCdMappingFieldArrayOutput values.
+// You can construct a concrete instance of `IdpIntegrationHarnessCdMappingFieldArrayInput` via:
+//
+//	IdpIntegrationHarnessCdMappingFieldArray{ IdpIntegrationHarnessCdMappingFieldArgs{...} }
+type IdpIntegrationHarnessCdMappingFieldArrayInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationHarnessCdMappingFieldArrayOutput() IdpIntegrationHarnessCdMappingFieldArrayOutput
+	ToIdpIntegrationHarnessCdMappingFieldArrayOutputWithContext(context.Context) IdpIntegrationHarnessCdMappingFieldArrayOutput
+}
+
+type IdpIntegrationHarnessCdMappingFieldArray []IdpIntegrationHarnessCdMappingFieldInput
+
+func (IdpIntegrationHarnessCdMappingFieldArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IdpIntegrationHarnessCdMappingField)(nil)).Elem()
+}
+
+func (i IdpIntegrationHarnessCdMappingFieldArray) ToIdpIntegrationHarnessCdMappingFieldArrayOutput() IdpIntegrationHarnessCdMappingFieldArrayOutput {
+	return i.ToIdpIntegrationHarnessCdMappingFieldArrayOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationHarnessCdMappingFieldArray) ToIdpIntegrationHarnessCdMappingFieldArrayOutputWithContext(ctx context.Context) IdpIntegrationHarnessCdMappingFieldArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationHarnessCdMappingFieldArrayOutput)
+}
+
+type IdpIntegrationHarnessCdMappingFieldOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationHarnessCdMappingFieldOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationHarnessCdMappingField)(nil)).Elem()
+}
+
+func (o IdpIntegrationHarnessCdMappingFieldOutput) ToIdpIntegrationHarnessCdMappingFieldOutput() IdpIntegrationHarnessCdMappingFieldOutput {
+	return o
+}
+
+func (o IdpIntegrationHarnessCdMappingFieldOutput) ToIdpIntegrationHarnessCdMappingFieldOutputWithContext(ctx context.Context) IdpIntegrationHarnessCdMappingFieldOutput {
+	return o
+}
+
+// Fields.
+func (o IdpIntegrationHarnessCdMappingFieldOutput) Fields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IdpIntegrationHarnessCdMappingField) []string { return v.Fields }).(pulumi.StringArrayOutput)
+}
+
+// Kind.
+func (o IdpIntegrationHarnessCdMappingFieldOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v IdpIntegrationHarnessCdMappingField) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+type IdpIntegrationHarnessCdMappingFieldArrayOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationHarnessCdMappingFieldArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IdpIntegrationHarnessCdMappingField)(nil)).Elem()
+}
+
+func (o IdpIntegrationHarnessCdMappingFieldArrayOutput) ToIdpIntegrationHarnessCdMappingFieldArrayOutput() IdpIntegrationHarnessCdMappingFieldArrayOutput {
+	return o
+}
+
+func (o IdpIntegrationHarnessCdMappingFieldArrayOutput) ToIdpIntegrationHarnessCdMappingFieldArrayOutputWithContext(ctx context.Context) IdpIntegrationHarnessCdMappingFieldArrayOutput {
+	return o
+}
+
+func (o IdpIntegrationHarnessCdMappingFieldArrayOutput) Index(i pulumi.IntInput) IdpIntegrationHarnessCdMappingFieldOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IdpIntegrationHarnessCdMappingField {
+		return vs[0].([]IdpIntegrationHarnessCdMappingField)[vs[1].(int)]
+	}).(IdpIntegrationHarnessCdMappingFieldOutput)
+}
+
+type IdpIntegrationHarnessCode struct {
+	// Agents file to detect in repositories.
+	AgentFileName *string `pulumi:"agentFileName"`
+}
+
+// IdpIntegrationHarnessCodeInput is an input type that accepts IdpIntegrationHarnessCodeArgs and IdpIntegrationHarnessCodeOutput values.
+// You can construct a concrete instance of `IdpIntegrationHarnessCodeInput` via:
+//
+//	IdpIntegrationHarnessCodeArgs{...}
+type IdpIntegrationHarnessCodeInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationHarnessCodeOutput() IdpIntegrationHarnessCodeOutput
+	ToIdpIntegrationHarnessCodeOutputWithContext(context.Context) IdpIntegrationHarnessCodeOutput
+}
+
+type IdpIntegrationHarnessCodeArgs struct {
+	// Agents file to detect in repositories.
+	AgentFileName pulumi.StringPtrInput `pulumi:"agentFileName"`
+}
+
+func (IdpIntegrationHarnessCodeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationHarnessCode)(nil)).Elem()
+}
+
+func (i IdpIntegrationHarnessCodeArgs) ToIdpIntegrationHarnessCodeOutput() IdpIntegrationHarnessCodeOutput {
+	return i.ToIdpIntegrationHarnessCodeOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationHarnessCodeArgs) ToIdpIntegrationHarnessCodeOutputWithContext(ctx context.Context) IdpIntegrationHarnessCodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationHarnessCodeOutput)
+}
+
+func (i IdpIntegrationHarnessCodeArgs) ToIdpIntegrationHarnessCodePtrOutput() IdpIntegrationHarnessCodePtrOutput {
+	return i.ToIdpIntegrationHarnessCodePtrOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationHarnessCodeArgs) ToIdpIntegrationHarnessCodePtrOutputWithContext(ctx context.Context) IdpIntegrationHarnessCodePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationHarnessCodeOutput).ToIdpIntegrationHarnessCodePtrOutputWithContext(ctx)
+}
+
+// IdpIntegrationHarnessCodePtrInput is an input type that accepts IdpIntegrationHarnessCodeArgs, IdpIntegrationHarnessCodePtr and IdpIntegrationHarnessCodePtrOutput values.
+// You can construct a concrete instance of `IdpIntegrationHarnessCodePtrInput` via:
+//
+//	        IdpIntegrationHarnessCodeArgs{...}
+//
+//	or:
+//
+//	        nil
+type IdpIntegrationHarnessCodePtrInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationHarnessCodePtrOutput() IdpIntegrationHarnessCodePtrOutput
+	ToIdpIntegrationHarnessCodePtrOutputWithContext(context.Context) IdpIntegrationHarnessCodePtrOutput
+}
+
+type idpIntegrationHarnessCodePtrType IdpIntegrationHarnessCodeArgs
+
+func IdpIntegrationHarnessCodePtr(v *IdpIntegrationHarnessCodeArgs) IdpIntegrationHarnessCodePtrInput {
+	return (*idpIntegrationHarnessCodePtrType)(v)
+}
+
+func (*idpIntegrationHarnessCodePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpIntegrationHarnessCode)(nil)).Elem()
+}
+
+func (i *idpIntegrationHarnessCodePtrType) ToIdpIntegrationHarnessCodePtrOutput() IdpIntegrationHarnessCodePtrOutput {
+	return i.ToIdpIntegrationHarnessCodePtrOutputWithContext(context.Background())
+}
+
+func (i *idpIntegrationHarnessCodePtrType) ToIdpIntegrationHarnessCodePtrOutputWithContext(ctx context.Context) IdpIntegrationHarnessCodePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationHarnessCodePtrOutput)
+}
+
+type IdpIntegrationHarnessCodeOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationHarnessCodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationHarnessCode)(nil)).Elem()
+}
+
+func (o IdpIntegrationHarnessCodeOutput) ToIdpIntegrationHarnessCodeOutput() IdpIntegrationHarnessCodeOutput {
+	return o
+}
+
+func (o IdpIntegrationHarnessCodeOutput) ToIdpIntegrationHarnessCodeOutputWithContext(ctx context.Context) IdpIntegrationHarnessCodeOutput {
+	return o
+}
+
+func (o IdpIntegrationHarnessCodeOutput) ToIdpIntegrationHarnessCodePtrOutput() IdpIntegrationHarnessCodePtrOutput {
+	return o.ToIdpIntegrationHarnessCodePtrOutputWithContext(context.Background())
+}
+
+func (o IdpIntegrationHarnessCodeOutput) ToIdpIntegrationHarnessCodePtrOutputWithContext(ctx context.Context) IdpIntegrationHarnessCodePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdpIntegrationHarnessCode) *IdpIntegrationHarnessCode {
+		return &v
+	}).(IdpIntegrationHarnessCodePtrOutput)
+}
+
+// Agents file to detect in repositories.
+func (o IdpIntegrationHarnessCodeOutput) AgentFileName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpIntegrationHarnessCode) *string { return v.AgentFileName }).(pulumi.StringPtrOutput)
+}
+
+type IdpIntegrationHarnessCodePtrOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationHarnessCodePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpIntegrationHarnessCode)(nil)).Elem()
+}
+
+func (o IdpIntegrationHarnessCodePtrOutput) ToIdpIntegrationHarnessCodePtrOutput() IdpIntegrationHarnessCodePtrOutput {
+	return o
+}
+
+func (o IdpIntegrationHarnessCodePtrOutput) ToIdpIntegrationHarnessCodePtrOutputWithContext(ctx context.Context) IdpIntegrationHarnessCodePtrOutput {
+	return o
+}
+
+func (o IdpIntegrationHarnessCodePtrOutput) Elem() IdpIntegrationHarnessCodeOutput {
+	return o.ApplyT(func(v *IdpIntegrationHarnessCode) IdpIntegrationHarnessCode {
+		if v != nil {
+			return *v
+		}
+		var ret IdpIntegrationHarnessCode
+		return ret
+	}).(IdpIntegrationHarnessCodeOutput)
+}
+
+// Agents file to detect in repositories.
+func (o IdpIntegrationHarnessCodePtrOutput) AgentFileName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationHarnessCode) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AgentFileName
+	}).(pulumi.StringPtrOutput)
+}
+
+type IdpIntegrationHarnessK8s struct {
+	// Environment.
+	EnvironmentIdentifier string `pulumi:"environmentIdentifier"`
+	// Service discovery agent.
+	ServiceDiscoveryAgentIdentifier string `pulumi:"serviceDiscoveryAgentIdentifier"`
+}
+
+// IdpIntegrationHarnessK8sInput is an input type that accepts IdpIntegrationHarnessK8sArgs and IdpIntegrationHarnessK8sOutput values.
+// You can construct a concrete instance of `IdpIntegrationHarnessK8sInput` via:
+//
+//	IdpIntegrationHarnessK8sArgs{...}
+type IdpIntegrationHarnessK8sInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationHarnessK8sOutput() IdpIntegrationHarnessK8sOutput
+	ToIdpIntegrationHarnessK8sOutputWithContext(context.Context) IdpIntegrationHarnessK8sOutput
+}
+
+type IdpIntegrationHarnessK8sArgs struct {
+	// Environment.
+	EnvironmentIdentifier pulumi.StringInput `pulumi:"environmentIdentifier"`
+	// Service discovery agent.
+	ServiceDiscoveryAgentIdentifier pulumi.StringInput `pulumi:"serviceDiscoveryAgentIdentifier"`
+}
+
+func (IdpIntegrationHarnessK8sArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationHarnessK8s)(nil)).Elem()
+}
+
+func (i IdpIntegrationHarnessK8sArgs) ToIdpIntegrationHarnessK8sOutput() IdpIntegrationHarnessK8sOutput {
+	return i.ToIdpIntegrationHarnessK8sOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationHarnessK8sArgs) ToIdpIntegrationHarnessK8sOutputWithContext(ctx context.Context) IdpIntegrationHarnessK8sOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationHarnessK8sOutput)
+}
+
+func (i IdpIntegrationHarnessK8sArgs) ToIdpIntegrationHarnessK8sPtrOutput() IdpIntegrationHarnessK8sPtrOutput {
+	return i.ToIdpIntegrationHarnessK8sPtrOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationHarnessK8sArgs) ToIdpIntegrationHarnessK8sPtrOutputWithContext(ctx context.Context) IdpIntegrationHarnessK8sPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationHarnessK8sOutput).ToIdpIntegrationHarnessK8sPtrOutputWithContext(ctx)
+}
+
+// IdpIntegrationHarnessK8sPtrInput is an input type that accepts IdpIntegrationHarnessK8sArgs, IdpIntegrationHarnessK8sPtr and IdpIntegrationHarnessK8sPtrOutput values.
+// You can construct a concrete instance of `IdpIntegrationHarnessK8sPtrInput` via:
+//
+//	        IdpIntegrationHarnessK8sArgs{...}
+//
+//	or:
+//
+//	        nil
+type IdpIntegrationHarnessK8sPtrInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationHarnessK8sPtrOutput() IdpIntegrationHarnessK8sPtrOutput
+	ToIdpIntegrationHarnessK8sPtrOutputWithContext(context.Context) IdpIntegrationHarnessK8sPtrOutput
+}
+
+type idpIntegrationHarnessK8sPtrType IdpIntegrationHarnessK8sArgs
+
+func IdpIntegrationHarnessK8sPtr(v *IdpIntegrationHarnessK8sArgs) IdpIntegrationHarnessK8sPtrInput {
+	return (*idpIntegrationHarnessK8sPtrType)(v)
+}
+
+func (*idpIntegrationHarnessK8sPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpIntegrationHarnessK8s)(nil)).Elem()
+}
+
+func (i *idpIntegrationHarnessK8sPtrType) ToIdpIntegrationHarnessK8sPtrOutput() IdpIntegrationHarnessK8sPtrOutput {
+	return i.ToIdpIntegrationHarnessK8sPtrOutputWithContext(context.Background())
+}
+
+func (i *idpIntegrationHarnessK8sPtrType) ToIdpIntegrationHarnessK8sPtrOutputWithContext(ctx context.Context) IdpIntegrationHarnessK8sPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationHarnessK8sPtrOutput)
+}
+
+type IdpIntegrationHarnessK8sOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationHarnessK8sOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationHarnessK8s)(nil)).Elem()
+}
+
+func (o IdpIntegrationHarnessK8sOutput) ToIdpIntegrationHarnessK8sOutput() IdpIntegrationHarnessK8sOutput {
+	return o
+}
+
+func (o IdpIntegrationHarnessK8sOutput) ToIdpIntegrationHarnessK8sOutputWithContext(ctx context.Context) IdpIntegrationHarnessK8sOutput {
+	return o
+}
+
+func (o IdpIntegrationHarnessK8sOutput) ToIdpIntegrationHarnessK8sPtrOutput() IdpIntegrationHarnessK8sPtrOutput {
+	return o.ToIdpIntegrationHarnessK8sPtrOutputWithContext(context.Background())
+}
+
+func (o IdpIntegrationHarnessK8sOutput) ToIdpIntegrationHarnessK8sPtrOutputWithContext(ctx context.Context) IdpIntegrationHarnessK8sPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdpIntegrationHarnessK8s) *IdpIntegrationHarnessK8s {
+		return &v
+	}).(IdpIntegrationHarnessK8sPtrOutput)
+}
+
+// Environment.
+func (o IdpIntegrationHarnessK8sOutput) EnvironmentIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v IdpIntegrationHarnessK8s) string { return v.EnvironmentIdentifier }).(pulumi.StringOutput)
+}
+
+// Service discovery agent.
+func (o IdpIntegrationHarnessK8sOutput) ServiceDiscoveryAgentIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v IdpIntegrationHarnessK8s) string { return v.ServiceDiscoveryAgentIdentifier }).(pulumi.StringOutput)
+}
+
+type IdpIntegrationHarnessK8sPtrOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationHarnessK8sPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpIntegrationHarnessK8s)(nil)).Elem()
+}
+
+func (o IdpIntegrationHarnessK8sPtrOutput) ToIdpIntegrationHarnessK8sPtrOutput() IdpIntegrationHarnessK8sPtrOutput {
+	return o
+}
+
+func (o IdpIntegrationHarnessK8sPtrOutput) ToIdpIntegrationHarnessK8sPtrOutputWithContext(ctx context.Context) IdpIntegrationHarnessK8sPtrOutput {
+	return o
+}
+
+func (o IdpIntegrationHarnessK8sPtrOutput) Elem() IdpIntegrationHarnessK8sOutput {
+	return o.ApplyT(func(v *IdpIntegrationHarnessK8s) IdpIntegrationHarnessK8s {
+		if v != nil {
+			return *v
+		}
+		var ret IdpIntegrationHarnessK8s
+		return ret
+	}).(IdpIntegrationHarnessK8sOutput)
+}
+
+// Environment.
+func (o IdpIntegrationHarnessK8sPtrOutput) EnvironmentIdentifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationHarnessK8s) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EnvironmentIdentifier
+	}).(pulumi.StringPtrOutput)
+}
+
+// Service discovery agent.
+func (o IdpIntegrationHarnessK8sPtrOutput) ServiceDiscoveryAgentIdentifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationHarnessK8s) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServiceDiscoveryAgentIdentifier
+	}).(pulumi.StringPtrOutput)
+}
+
+type IdpIntegrationJira struct {
+	// Custom field IDs to sync, like customfield_10456.
+	CustomFields []string `pulumi:"customFields"`
+	// Lower bound for the first sync, RFC3339; 365 days back when omitted.
+	StartDate *string `pulumi:"startDate"`
+}
+
+// IdpIntegrationJiraInput is an input type that accepts IdpIntegrationJiraArgs and IdpIntegrationJiraOutput values.
+// You can construct a concrete instance of `IdpIntegrationJiraInput` via:
+//
+//	IdpIntegrationJiraArgs{...}
+type IdpIntegrationJiraInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationJiraOutput() IdpIntegrationJiraOutput
+	ToIdpIntegrationJiraOutputWithContext(context.Context) IdpIntegrationJiraOutput
+}
+
+type IdpIntegrationJiraArgs struct {
+	// Custom field IDs to sync, like customfield_10456.
+	CustomFields pulumi.StringArrayInput `pulumi:"customFields"`
+	// Lower bound for the first sync, RFC3339; 365 days back when omitted.
+	StartDate pulumi.StringPtrInput `pulumi:"startDate"`
+}
+
+func (IdpIntegrationJiraArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationJira)(nil)).Elem()
+}
+
+func (i IdpIntegrationJiraArgs) ToIdpIntegrationJiraOutput() IdpIntegrationJiraOutput {
+	return i.ToIdpIntegrationJiraOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationJiraArgs) ToIdpIntegrationJiraOutputWithContext(ctx context.Context) IdpIntegrationJiraOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationJiraOutput)
+}
+
+func (i IdpIntegrationJiraArgs) ToIdpIntegrationJiraPtrOutput() IdpIntegrationJiraPtrOutput {
+	return i.ToIdpIntegrationJiraPtrOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationJiraArgs) ToIdpIntegrationJiraPtrOutputWithContext(ctx context.Context) IdpIntegrationJiraPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationJiraOutput).ToIdpIntegrationJiraPtrOutputWithContext(ctx)
+}
+
+// IdpIntegrationJiraPtrInput is an input type that accepts IdpIntegrationJiraArgs, IdpIntegrationJiraPtr and IdpIntegrationJiraPtrOutput values.
+// You can construct a concrete instance of `IdpIntegrationJiraPtrInput` via:
+//
+//	        IdpIntegrationJiraArgs{...}
+//
+//	or:
+//
+//	        nil
+type IdpIntegrationJiraPtrInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationJiraPtrOutput() IdpIntegrationJiraPtrOutput
+	ToIdpIntegrationJiraPtrOutputWithContext(context.Context) IdpIntegrationJiraPtrOutput
+}
+
+type idpIntegrationJiraPtrType IdpIntegrationJiraArgs
+
+func IdpIntegrationJiraPtr(v *IdpIntegrationJiraArgs) IdpIntegrationJiraPtrInput {
+	return (*idpIntegrationJiraPtrType)(v)
+}
+
+func (*idpIntegrationJiraPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpIntegrationJira)(nil)).Elem()
+}
+
+func (i *idpIntegrationJiraPtrType) ToIdpIntegrationJiraPtrOutput() IdpIntegrationJiraPtrOutput {
+	return i.ToIdpIntegrationJiraPtrOutputWithContext(context.Background())
+}
+
+func (i *idpIntegrationJiraPtrType) ToIdpIntegrationJiraPtrOutputWithContext(ctx context.Context) IdpIntegrationJiraPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationJiraPtrOutput)
+}
+
+type IdpIntegrationJiraOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationJiraOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationJira)(nil)).Elem()
+}
+
+func (o IdpIntegrationJiraOutput) ToIdpIntegrationJiraOutput() IdpIntegrationJiraOutput {
+	return o
+}
+
+func (o IdpIntegrationJiraOutput) ToIdpIntegrationJiraOutputWithContext(ctx context.Context) IdpIntegrationJiraOutput {
+	return o
+}
+
+func (o IdpIntegrationJiraOutput) ToIdpIntegrationJiraPtrOutput() IdpIntegrationJiraPtrOutput {
+	return o.ToIdpIntegrationJiraPtrOutputWithContext(context.Background())
+}
+
+func (o IdpIntegrationJiraOutput) ToIdpIntegrationJiraPtrOutputWithContext(ctx context.Context) IdpIntegrationJiraPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdpIntegrationJira) *IdpIntegrationJira {
+		return &v
+	}).(IdpIntegrationJiraPtrOutput)
+}
+
+// Custom field IDs to sync, like customfield_10456.
+func (o IdpIntegrationJiraOutput) CustomFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IdpIntegrationJira) []string { return v.CustomFields }).(pulumi.StringArrayOutput)
+}
+
+// Lower bound for the first sync, RFC3339; 365 days back when omitted.
+func (o IdpIntegrationJiraOutput) StartDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpIntegrationJira) *string { return v.StartDate }).(pulumi.StringPtrOutput)
+}
+
+type IdpIntegrationJiraPtrOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationJiraPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpIntegrationJira)(nil)).Elem()
+}
+
+func (o IdpIntegrationJiraPtrOutput) ToIdpIntegrationJiraPtrOutput() IdpIntegrationJiraPtrOutput {
+	return o
+}
+
+func (o IdpIntegrationJiraPtrOutput) ToIdpIntegrationJiraPtrOutputWithContext(ctx context.Context) IdpIntegrationJiraPtrOutput {
+	return o
+}
+
+func (o IdpIntegrationJiraPtrOutput) Elem() IdpIntegrationJiraOutput {
+	return o.ApplyT(func(v *IdpIntegrationJira) IdpIntegrationJira {
+		if v != nil {
+			return *v
+		}
+		var ret IdpIntegrationJira
+		return ret
+	}).(IdpIntegrationJiraOutput)
+}
+
+// Custom field IDs to sync, like customfield_10456.
+func (o IdpIntegrationJiraPtrOutput) CustomFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *IdpIntegrationJira) []string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomFields
+	}).(pulumi.StringArrayOutput)
+}
+
+// Lower bound for the first sync, RFC3339; 365 days back when omitted.
+func (o IdpIntegrationJiraPtrOutput) StartDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationJira) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StartDate
+	}).(pulumi.StringPtrOutput)
+}
+
+type IdpIntegrationKind struct {
+	// register, merge or merge_register; the type's default when omitted.
+	Action *string `pulumi:"action"`
+	// Import new entities automatically.
+	AutoImport *bool `pulumi:"autoImport"`
+	// JQ that returns true for records to keep; the type's default when omitted.
+	Filter *string `pulumi:"filter"`
+	// Airbyte types: entity kind, e.g. component; the type's default when omitted. Set at create only; required for kinds with no default, such as ServiceNow's.
+	IdpKind *string `pulumi:"idpKind"`
+	// Airbyte types: entity type, e.g. service; the type's default when omitted. Set at create only.
+	IdpType *string `pulumi:"idpType"`
+	// Kind name.
+	Kind string `pulumi:"kind"`
+	// The kind's mapping, sent with the create so the first sync uses it. Omitted fields keep the type's defaults. Create only: it can't be added or changed afterwards, and removing it leaves the mapping as it is. Use harness*platform*idp*integration*kind_mapping to manage the mapping after the create, and don't use both for the same kind.
+	Mapping *IdpIntegrationKindMappingType `pulumi:"mapping"`
+	// Airbyte types: the stream's sync mode, fullRefresh or incremental.
+	ReplicationMode *string `pulumi:"replicationMode"`
+}
+
+// IdpIntegrationKindInput is an input type that accepts IdpIntegrationKindArgs and IdpIntegrationKindOutput values.
+// You can construct a concrete instance of `IdpIntegrationKindInput` via:
+//
+//	IdpIntegrationKindArgs{...}
+type IdpIntegrationKindInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationKindOutput() IdpIntegrationKindOutput
+	ToIdpIntegrationKindOutputWithContext(context.Context) IdpIntegrationKindOutput
+}
+
+type IdpIntegrationKindArgs struct {
+	// register, merge or merge_register; the type's default when omitted.
+	Action pulumi.StringPtrInput `pulumi:"action"`
+	// Import new entities automatically.
+	AutoImport pulumi.BoolPtrInput `pulumi:"autoImport"`
+	// JQ that returns true for records to keep; the type's default when omitted.
+	Filter pulumi.StringPtrInput `pulumi:"filter"`
+	// Airbyte types: entity kind, e.g. component; the type's default when omitted. Set at create only; required for kinds with no default, such as ServiceNow's.
+	IdpKind pulumi.StringPtrInput `pulumi:"idpKind"`
+	// Airbyte types: entity type, e.g. service; the type's default when omitted. Set at create only.
+	IdpType pulumi.StringPtrInput `pulumi:"idpType"`
+	// Kind name.
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// The kind's mapping, sent with the create so the first sync uses it. Omitted fields keep the type's defaults. Create only: it can't be added or changed afterwards, and removing it leaves the mapping as it is. Use harness*platform*idp*integration*kind_mapping to manage the mapping after the create, and don't use both for the same kind.
+	Mapping IdpIntegrationKindMappingTypePtrInput `pulumi:"mapping"`
+	// Airbyte types: the stream's sync mode, fullRefresh or incremental.
+	ReplicationMode pulumi.StringPtrInput `pulumi:"replicationMode"`
+}
+
+func (IdpIntegrationKindArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationKind)(nil)).Elem()
+}
+
+func (i IdpIntegrationKindArgs) ToIdpIntegrationKindOutput() IdpIntegrationKindOutput {
+	return i.ToIdpIntegrationKindOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationKindArgs) ToIdpIntegrationKindOutputWithContext(ctx context.Context) IdpIntegrationKindOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationKindOutput)
+}
+
+// IdpIntegrationKindArrayInput is an input type that accepts IdpIntegrationKindArray and IdpIntegrationKindArrayOutput values.
+// You can construct a concrete instance of `IdpIntegrationKindArrayInput` via:
+//
+//	IdpIntegrationKindArray{ IdpIntegrationKindArgs{...} }
+type IdpIntegrationKindArrayInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationKindArrayOutput() IdpIntegrationKindArrayOutput
+	ToIdpIntegrationKindArrayOutputWithContext(context.Context) IdpIntegrationKindArrayOutput
+}
+
+type IdpIntegrationKindArray []IdpIntegrationKindInput
+
+func (IdpIntegrationKindArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IdpIntegrationKind)(nil)).Elem()
+}
+
+func (i IdpIntegrationKindArray) ToIdpIntegrationKindArrayOutput() IdpIntegrationKindArrayOutput {
+	return i.ToIdpIntegrationKindArrayOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationKindArray) ToIdpIntegrationKindArrayOutputWithContext(ctx context.Context) IdpIntegrationKindArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationKindArrayOutput)
+}
+
+type IdpIntegrationKindOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationKindOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationKind)(nil)).Elem()
+}
+
+func (o IdpIntegrationKindOutput) ToIdpIntegrationKindOutput() IdpIntegrationKindOutput {
+	return o
+}
+
+func (o IdpIntegrationKindOutput) ToIdpIntegrationKindOutputWithContext(ctx context.Context) IdpIntegrationKindOutput {
+	return o
+}
+
+// register, merge or merge_register; the type's default when omitted.
+func (o IdpIntegrationKindOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpIntegrationKind) *string { return v.Action }).(pulumi.StringPtrOutput)
+}
+
+// Import new entities automatically.
+func (o IdpIntegrationKindOutput) AutoImport() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v IdpIntegrationKind) *bool { return v.AutoImport }).(pulumi.BoolPtrOutput)
+}
+
+// JQ that returns true for records to keep; the type's default when omitted.
+func (o IdpIntegrationKindOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpIntegrationKind) *string { return v.Filter }).(pulumi.StringPtrOutput)
+}
+
+// Airbyte types: entity kind, e.g. component; the type's default when omitted. Set at create only; required for kinds with no default, such as ServiceNow's.
+func (o IdpIntegrationKindOutput) IdpKind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpIntegrationKind) *string { return v.IdpKind }).(pulumi.StringPtrOutput)
+}
+
+// Airbyte types: entity type, e.g. service; the type's default when omitted. Set at create only.
+func (o IdpIntegrationKindOutput) IdpType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpIntegrationKind) *string { return v.IdpType }).(pulumi.StringPtrOutput)
+}
+
+// Kind name.
+func (o IdpIntegrationKindOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v IdpIntegrationKind) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The kind's mapping, sent with the create so the first sync uses it. Omitted fields keep the type's defaults. Create only: it can't be added or changed afterwards, and removing it leaves the mapping as it is. Use harness*platform*idp*integration*kind_mapping to manage the mapping after the create, and don't use both for the same kind.
+func (o IdpIntegrationKindOutput) Mapping() IdpIntegrationKindMappingTypePtrOutput {
+	return o.ApplyT(func(v IdpIntegrationKind) *IdpIntegrationKindMappingType { return v.Mapping }).(IdpIntegrationKindMappingTypePtrOutput)
+}
+
+// Airbyte types: the stream's sync mode, fullRefresh or incremental.
+func (o IdpIntegrationKindOutput) ReplicationMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpIntegrationKind) *string { return v.ReplicationMode }).(pulumi.StringPtrOutput)
+}
+
+type IdpIntegrationKindArrayOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationKindArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IdpIntegrationKind)(nil)).Elem()
+}
+
+func (o IdpIntegrationKindArrayOutput) ToIdpIntegrationKindArrayOutput() IdpIntegrationKindArrayOutput {
+	return o
+}
+
+func (o IdpIntegrationKindArrayOutput) ToIdpIntegrationKindArrayOutputWithContext(ctx context.Context) IdpIntegrationKindArrayOutput {
+	return o
+}
+
+func (o IdpIntegrationKindArrayOutput) Index(i pulumi.IntInput) IdpIntegrationKindOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IdpIntegrationKind {
+		return vs[0].([]IdpIntegrationKind)[vs[1].(int)]
+	}).(IdpIntegrationKindOutput)
+}
+
+type IdpIntegrationKindMappingType struct {
+	// Links records to existing entities; the server's when omitted.
+	Correlation *IdpIntegrationKindMappingCorrelation `pulumi:"correlation"`
+	// Source field used as the entity's name.
+	DisplayNameField *string `pulumi:"displayNameField"`
+	// Maps a source field to an entity field. Airbyte types. Omitted, the type's defaults apply; removing it from the config keeps the last value, so destroy the mapping resource to go back to them.
+	FieldMappings []IdpIntegrationKindMappingFieldMapping `pulumi:"fieldMappings"`
+	// Entity kind, e.g. component.
+	IdpKind *string `pulumi:"idpKind"`
+	// Entity type, e.g. service.
+	IdpType *string `pulumi:"idpType"`
+	// Custom types: JQ that builds the entity from a payload.
+	Ingestion *IdpIntegrationKindMappingIngestion `pulumi:"ingestion"`
+	// Custom types, custom kind: JSON Schema of the payload.
+	PayloadSchema *string `pulumi:"payloadSchema"`
+	// Source field that identifies an entity. Can't change on Airbyte types.
+	UniqueIdentifierField *string `pulumi:"uniqueIdentifierField"`
+}
+
+// IdpIntegrationKindMappingTypeInput is an input type that accepts IdpIntegrationKindMappingTypeArgs and IdpIntegrationKindMappingTypeOutput values.
+// You can construct a concrete instance of `IdpIntegrationKindMappingTypeInput` via:
+//
+//	IdpIntegrationKindMappingTypeArgs{...}
+type IdpIntegrationKindMappingTypeInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationKindMappingTypeOutput() IdpIntegrationKindMappingTypeOutput
+	ToIdpIntegrationKindMappingTypeOutputWithContext(context.Context) IdpIntegrationKindMappingTypeOutput
+}
+
+type IdpIntegrationKindMappingTypeArgs struct {
+	// Links records to existing entities; the server's when omitted.
+	Correlation IdpIntegrationKindMappingCorrelationPtrInput `pulumi:"correlation"`
+	// Source field used as the entity's name.
+	DisplayNameField pulumi.StringPtrInput `pulumi:"displayNameField"`
+	// Maps a source field to an entity field. Airbyte types. Omitted, the type's defaults apply; removing it from the config keeps the last value, so destroy the mapping resource to go back to them.
+	FieldMappings IdpIntegrationKindMappingFieldMappingArrayInput `pulumi:"fieldMappings"`
+	// Entity kind, e.g. component.
+	IdpKind pulumi.StringPtrInput `pulumi:"idpKind"`
+	// Entity type, e.g. service.
+	IdpType pulumi.StringPtrInput `pulumi:"idpType"`
+	// Custom types: JQ that builds the entity from a payload.
+	Ingestion IdpIntegrationKindMappingIngestionPtrInput `pulumi:"ingestion"`
+	// Custom types, custom kind: JSON Schema of the payload.
+	PayloadSchema pulumi.StringPtrInput `pulumi:"payloadSchema"`
+	// Source field that identifies an entity. Can't change on Airbyte types.
+	UniqueIdentifierField pulumi.StringPtrInput `pulumi:"uniqueIdentifierField"`
+}
+
+func (IdpIntegrationKindMappingTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationKindMappingType)(nil)).Elem()
+}
+
+func (i IdpIntegrationKindMappingTypeArgs) ToIdpIntegrationKindMappingTypeOutput() IdpIntegrationKindMappingTypeOutput {
+	return i.ToIdpIntegrationKindMappingTypeOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationKindMappingTypeArgs) ToIdpIntegrationKindMappingTypeOutputWithContext(ctx context.Context) IdpIntegrationKindMappingTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationKindMappingTypeOutput)
+}
+
+func (i IdpIntegrationKindMappingTypeArgs) ToIdpIntegrationKindMappingTypePtrOutput() IdpIntegrationKindMappingTypePtrOutput {
+	return i.ToIdpIntegrationKindMappingTypePtrOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationKindMappingTypeArgs) ToIdpIntegrationKindMappingTypePtrOutputWithContext(ctx context.Context) IdpIntegrationKindMappingTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationKindMappingTypeOutput).ToIdpIntegrationKindMappingTypePtrOutputWithContext(ctx)
+}
+
+// IdpIntegrationKindMappingTypePtrInput is an input type that accepts IdpIntegrationKindMappingTypeArgs, IdpIntegrationKindMappingTypePtr and IdpIntegrationKindMappingTypePtrOutput values.
+// You can construct a concrete instance of `IdpIntegrationKindMappingTypePtrInput` via:
+//
+//	        IdpIntegrationKindMappingTypeArgs{...}
+//
+//	or:
+//
+//	        nil
+type IdpIntegrationKindMappingTypePtrInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationKindMappingTypePtrOutput() IdpIntegrationKindMappingTypePtrOutput
+	ToIdpIntegrationKindMappingTypePtrOutputWithContext(context.Context) IdpIntegrationKindMappingTypePtrOutput
+}
+
+type idpIntegrationKindMappingTypePtrType IdpIntegrationKindMappingTypeArgs
+
+func IdpIntegrationKindMappingTypePtr(v *IdpIntegrationKindMappingTypeArgs) IdpIntegrationKindMappingTypePtrInput {
+	return (*idpIntegrationKindMappingTypePtrType)(v)
+}
+
+func (*idpIntegrationKindMappingTypePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpIntegrationKindMappingType)(nil)).Elem()
+}
+
+func (i *idpIntegrationKindMappingTypePtrType) ToIdpIntegrationKindMappingTypePtrOutput() IdpIntegrationKindMappingTypePtrOutput {
+	return i.ToIdpIntegrationKindMappingTypePtrOutputWithContext(context.Background())
+}
+
+func (i *idpIntegrationKindMappingTypePtrType) ToIdpIntegrationKindMappingTypePtrOutputWithContext(ctx context.Context) IdpIntegrationKindMappingTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationKindMappingTypePtrOutput)
+}
+
+type IdpIntegrationKindMappingTypeOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationKindMappingTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationKindMappingType)(nil)).Elem()
+}
+
+func (o IdpIntegrationKindMappingTypeOutput) ToIdpIntegrationKindMappingTypeOutput() IdpIntegrationKindMappingTypeOutput {
+	return o
+}
+
+func (o IdpIntegrationKindMappingTypeOutput) ToIdpIntegrationKindMappingTypeOutputWithContext(ctx context.Context) IdpIntegrationKindMappingTypeOutput {
+	return o
+}
+
+func (o IdpIntegrationKindMappingTypeOutput) ToIdpIntegrationKindMappingTypePtrOutput() IdpIntegrationKindMappingTypePtrOutput {
+	return o.ToIdpIntegrationKindMappingTypePtrOutputWithContext(context.Background())
+}
+
+func (o IdpIntegrationKindMappingTypeOutput) ToIdpIntegrationKindMappingTypePtrOutputWithContext(ctx context.Context) IdpIntegrationKindMappingTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdpIntegrationKindMappingType) *IdpIntegrationKindMappingType {
+		return &v
+	}).(IdpIntegrationKindMappingTypePtrOutput)
+}
+
+// Links records to existing entities; the server's when omitted.
+func (o IdpIntegrationKindMappingTypeOutput) Correlation() IdpIntegrationKindMappingCorrelationPtrOutput {
+	return o.ApplyT(func(v IdpIntegrationKindMappingType) *IdpIntegrationKindMappingCorrelation { return v.Correlation }).(IdpIntegrationKindMappingCorrelationPtrOutput)
+}
+
+// Source field used as the entity's name.
+func (o IdpIntegrationKindMappingTypeOutput) DisplayNameField() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpIntegrationKindMappingType) *string { return v.DisplayNameField }).(pulumi.StringPtrOutput)
+}
+
+// Maps a source field to an entity field. Airbyte types. Omitted, the type's defaults apply; removing it from the config keeps the last value, so destroy the mapping resource to go back to them.
+func (o IdpIntegrationKindMappingTypeOutput) FieldMappings() IdpIntegrationKindMappingFieldMappingArrayOutput {
+	return o.ApplyT(func(v IdpIntegrationKindMappingType) []IdpIntegrationKindMappingFieldMapping { return v.FieldMappings }).(IdpIntegrationKindMappingFieldMappingArrayOutput)
+}
+
+// Entity kind, e.g. component.
+func (o IdpIntegrationKindMappingTypeOutput) IdpKind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpIntegrationKindMappingType) *string { return v.IdpKind }).(pulumi.StringPtrOutput)
+}
+
+// Entity type, e.g. service.
+func (o IdpIntegrationKindMappingTypeOutput) IdpType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpIntegrationKindMappingType) *string { return v.IdpType }).(pulumi.StringPtrOutput)
+}
+
+// Custom types: JQ that builds the entity from a payload.
+func (o IdpIntegrationKindMappingTypeOutput) Ingestion() IdpIntegrationKindMappingIngestionPtrOutput {
+	return o.ApplyT(func(v IdpIntegrationKindMappingType) *IdpIntegrationKindMappingIngestion { return v.Ingestion }).(IdpIntegrationKindMappingIngestionPtrOutput)
+}
+
+// Custom types, custom kind: JSON Schema of the payload.
+func (o IdpIntegrationKindMappingTypeOutput) PayloadSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpIntegrationKindMappingType) *string { return v.PayloadSchema }).(pulumi.StringPtrOutput)
+}
+
+// Source field that identifies an entity. Can't change on Airbyte types.
+func (o IdpIntegrationKindMappingTypeOutput) UniqueIdentifierField() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpIntegrationKindMappingType) *string { return v.UniqueIdentifierField }).(pulumi.StringPtrOutput)
+}
+
+type IdpIntegrationKindMappingTypePtrOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationKindMappingTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpIntegrationKindMappingType)(nil)).Elem()
+}
+
+func (o IdpIntegrationKindMappingTypePtrOutput) ToIdpIntegrationKindMappingTypePtrOutput() IdpIntegrationKindMappingTypePtrOutput {
+	return o
+}
+
+func (o IdpIntegrationKindMappingTypePtrOutput) ToIdpIntegrationKindMappingTypePtrOutputWithContext(ctx context.Context) IdpIntegrationKindMappingTypePtrOutput {
+	return o
+}
+
+func (o IdpIntegrationKindMappingTypePtrOutput) Elem() IdpIntegrationKindMappingTypeOutput {
+	return o.ApplyT(func(v *IdpIntegrationKindMappingType) IdpIntegrationKindMappingType {
+		if v != nil {
+			return *v
+		}
+		var ret IdpIntegrationKindMappingType
+		return ret
+	}).(IdpIntegrationKindMappingTypeOutput)
+}
+
+// Links records to existing entities; the server's when omitted.
+func (o IdpIntegrationKindMappingTypePtrOutput) Correlation() IdpIntegrationKindMappingCorrelationPtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationKindMappingType) *IdpIntegrationKindMappingCorrelation {
+		if v == nil {
+			return nil
+		}
+		return v.Correlation
+	}).(IdpIntegrationKindMappingCorrelationPtrOutput)
+}
+
+// Source field used as the entity's name.
+func (o IdpIntegrationKindMappingTypePtrOutput) DisplayNameField() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationKindMappingType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayNameField
+	}).(pulumi.StringPtrOutput)
+}
+
+// Maps a source field to an entity field. Airbyte types. Omitted, the type's defaults apply; removing it from the config keeps the last value, so destroy the mapping resource to go back to them.
+func (o IdpIntegrationKindMappingTypePtrOutput) FieldMappings() IdpIntegrationKindMappingFieldMappingArrayOutput {
+	return o.ApplyT(func(v *IdpIntegrationKindMappingType) []IdpIntegrationKindMappingFieldMapping {
+		if v == nil {
+			return nil
+		}
+		return v.FieldMappings
+	}).(IdpIntegrationKindMappingFieldMappingArrayOutput)
+}
+
+// Entity kind, e.g. component.
+func (o IdpIntegrationKindMappingTypePtrOutput) IdpKind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationKindMappingType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdpKind
+	}).(pulumi.StringPtrOutput)
+}
+
+// Entity type, e.g. service.
+func (o IdpIntegrationKindMappingTypePtrOutput) IdpType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationKindMappingType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdpType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Custom types: JQ that builds the entity from a payload.
+func (o IdpIntegrationKindMappingTypePtrOutput) Ingestion() IdpIntegrationKindMappingIngestionPtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationKindMappingType) *IdpIntegrationKindMappingIngestion {
+		if v == nil {
+			return nil
+		}
+		return v.Ingestion
+	}).(IdpIntegrationKindMappingIngestionPtrOutput)
+}
+
+// Custom types, custom kind: JSON Schema of the payload.
+func (o IdpIntegrationKindMappingTypePtrOutput) PayloadSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationKindMappingType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PayloadSchema
+	}).(pulumi.StringPtrOutput)
+}
+
+// Source field that identifies an entity. Can't change on Airbyte types.
+func (o IdpIntegrationKindMappingTypePtrOutput) UniqueIdentifierField() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationKindMappingType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UniqueIdentifierField
+	}).(pulumi.StringPtrOutput)
+}
+
+type IdpIntegrationKindMappingCorrelation struct {
+	// Match operator; eq when omitted.
+	Operator *string `pulumi:"operator"`
+	// Field to match. Airbyte types: a path in the emitted entity data, e.g. identifier or spec.owner; Custom: a payload field.
+	SourcePath string `pulumi:"sourcePath"`
+	// Entity field to match, e.g. metadata.identifier.
+	TargetPath string `pulumi:"targetPath"`
+}
+
+// IdpIntegrationKindMappingCorrelationInput is an input type that accepts IdpIntegrationKindMappingCorrelationArgs and IdpIntegrationKindMappingCorrelationOutput values.
+// You can construct a concrete instance of `IdpIntegrationKindMappingCorrelationInput` via:
+//
+//	IdpIntegrationKindMappingCorrelationArgs{...}
+type IdpIntegrationKindMappingCorrelationInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationKindMappingCorrelationOutput() IdpIntegrationKindMappingCorrelationOutput
+	ToIdpIntegrationKindMappingCorrelationOutputWithContext(context.Context) IdpIntegrationKindMappingCorrelationOutput
+}
+
+type IdpIntegrationKindMappingCorrelationArgs struct {
+	// Match operator; eq when omitted.
+	Operator pulumi.StringPtrInput `pulumi:"operator"`
+	// Field to match. Airbyte types: a path in the emitted entity data, e.g. identifier or spec.owner; Custom: a payload field.
+	SourcePath pulumi.StringInput `pulumi:"sourcePath"`
+	// Entity field to match, e.g. metadata.identifier.
+	TargetPath pulumi.StringInput `pulumi:"targetPath"`
+}
+
+func (IdpIntegrationKindMappingCorrelationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationKindMappingCorrelation)(nil)).Elem()
+}
+
+func (i IdpIntegrationKindMappingCorrelationArgs) ToIdpIntegrationKindMappingCorrelationOutput() IdpIntegrationKindMappingCorrelationOutput {
+	return i.ToIdpIntegrationKindMappingCorrelationOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationKindMappingCorrelationArgs) ToIdpIntegrationKindMappingCorrelationOutputWithContext(ctx context.Context) IdpIntegrationKindMappingCorrelationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationKindMappingCorrelationOutput)
+}
+
+func (i IdpIntegrationKindMappingCorrelationArgs) ToIdpIntegrationKindMappingCorrelationPtrOutput() IdpIntegrationKindMappingCorrelationPtrOutput {
+	return i.ToIdpIntegrationKindMappingCorrelationPtrOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationKindMappingCorrelationArgs) ToIdpIntegrationKindMappingCorrelationPtrOutputWithContext(ctx context.Context) IdpIntegrationKindMappingCorrelationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationKindMappingCorrelationOutput).ToIdpIntegrationKindMappingCorrelationPtrOutputWithContext(ctx)
+}
+
+// IdpIntegrationKindMappingCorrelationPtrInput is an input type that accepts IdpIntegrationKindMappingCorrelationArgs, IdpIntegrationKindMappingCorrelationPtr and IdpIntegrationKindMappingCorrelationPtrOutput values.
+// You can construct a concrete instance of `IdpIntegrationKindMappingCorrelationPtrInput` via:
+//
+//	        IdpIntegrationKindMappingCorrelationArgs{...}
+//
+//	or:
+//
+//	        nil
+type IdpIntegrationKindMappingCorrelationPtrInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationKindMappingCorrelationPtrOutput() IdpIntegrationKindMappingCorrelationPtrOutput
+	ToIdpIntegrationKindMappingCorrelationPtrOutputWithContext(context.Context) IdpIntegrationKindMappingCorrelationPtrOutput
+}
+
+type idpIntegrationKindMappingCorrelationPtrType IdpIntegrationKindMappingCorrelationArgs
+
+func IdpIntegrationKindMappingCorrelationPtr(v *IdpIntegrationKindMappingCorrelationArgs) IdpIntegrationKindMappingCorrelationPtrInput {
+	return (*idpIntegrationKindMappingCorrelationPtrType)(v)
+}
+
+func (*idpIntegrationKindMappingCorrelationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpIntegrationKindMappingCorrelation)(nil)).Elem()
+}
+
+func (i *idpIntegrationKindMappingCorrelationPtrType) ToIdpIntegrationKindMappingCorrelationPtrOutput() IdpIntegrationKindMappingCorrelationPtrOutput {
+	return i.ToIdpIntegrationKindMappingCorrelationPtrOutputWithContext(context.Background())
+}
+
+func (i *idpIntegrationKindMappingCorrelationPtrType) ToIdpIntegrationKindMappingCorrelationPtrOutputWithContext(ctx context.Context) IdpIntegrationKindMappingCorrelationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationKindMappingCorrelationPtrOutput)
+}
+
+type IdpIntegrationKindMappingCorrelationOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationKindMappingCorrelationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationKindMappingCorrelation)(nil)).Elem()
+}
+
+func (o IdpIntegrationKindMappingCorrelationOutput) ToIdpIntegrationKindMappingCorrelationOutput() IdpIntegrationKindMappingCorrelationOutput {
+	return o
+}
+
+func (o IdpIntegrationKindMappingCorrelationOutput) ToIdpIntegrationKindMappingCorrelationOutputWithContext(ctx context.Context) IdpIntegrationKindMappingCorrelationOutput {
+	return o
+}
+
+func (o IdpIntegrationKindMappingCorrelationOutput) ToIdpIntegrationKindMappingCorrelationPtrOutput() IdpIntegrationKindMappingCorrelationPtrOutput {
+	return o.ToIdpIntegrationKindMappingCorrelationPtrOutputWithContext(context.Background())
+}
+
+func (o IdpIntegrationKindMappingCorrelationOutput) ToIdpIntegrationKindMappingCorrelationPtrOutputWithContext(ctx context.Context) IdpIntegrationKindMappingCorrelationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdpIntegrationKindMappingCorrelation) *IdpIntegrationKindMappingCorrelation {
+		return &v
+	}).(IdpIntegrationKindMappingCorrelationPtrOutput)
+}
+
+// Match operator; eq when omitted.
+func (o IdpIntegrationKindMappingCorrelationOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpIntegrationKindMappingCorrelation) *string { return v.Operator }).(pulumi.StringPtrOutput)
+}
+
+// Field to match. Airbyte types: a path in the emitted entity data, e.g. identifier or spec.owner; Custom: a payload field.
+func (o IdpIntegrationKindMappingCorrelationOutput) SourcePath() pulumi.StringOutput {
+	return o.ApplyT(func(v IdpIntegrationKindMappingCorrelation) string { return v.SourcePath }).(pulumi.StringOutput)
+}
+
+// Entity field to match, e.g. metadata.identifier.
+func (o IdpIntegrationKindMappingCorrelationOutput) TargetPath() pulumi.StringOutput {
+	return o.ApplyT(func(v IdpIntegrationKindMappingCorrelation) string { return v.TargetPath }).(pulumi.StringOutput)
+}
+
+type IdpIntegrationKindMappingCorrelationPtrOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationKindMappingCorrelationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpIntegrationKindMappingCorrelation)(nil)).Elem()
+}
+
+func (o IdpIntegrationKindMappingCorrelationPtrOutput) ToIdpIntegrationKindMappingCorrelationPtrOutput() IdpIntegrationKindMappingCorrelationPtrOutput {
+	return o
+}
+
+func (o IdpIntegrationKindMappingCorrelationPtrOutput) ToIdpIntegrationKindMappingCorrelationPtrOutputWithContext(ctx context.Context) IdpIntegrationKindMappingCorrelationPtrOutput {
+	return o
+}
+
+func (o IdpIntegrationKindMappingCorrelationPtrOutput) Elem() IdpIntegrationKindMappingCorrelationOutput {
+	return o.ApplyT(func(v *IdpIntegrationKindMappingCorrelation) IdpIntegrationKindMappingCorrelation {
+		if v != nil {
+			return *v
+		}
+		var ret IdpIntegrationKindMappingCorrelation
+		return ret
+	}).(IdpIntegrationKindMappingCorrelationOutput)
+}
+
+// Match operator; eq when omitted.
+func (o IdpIntegrationKindMappingCorrelationPtrOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationKindMappingCorrelation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Operator
+	}).(pulumi.StringPtrOutput)
+}
+
+// Field to match. Airbyte types: a path in the emitted entity data, e.g. identifier or spec.owner; Custom: a payload field.
+func (o IdpIntegrationKindMappingCorrelationPtrOutput) SourcePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationKindMappingCorrelation) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SourcePath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Entity field to match, e.g. metadata.identifier.
+func (o IdpIntegrationKindMappingCorrelationPtrOutput) TargetPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationKindMappingCorrelation) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TargetPath
+	}).(pulumi.StringPtrOutput)
+}
+
+type IdpIntegrationKindMappingEmission struct {
+	Identifier *string `pulumi:"identifier"`
+	Name       *string `pulumi:"name"`
+	// JSON object.
+	Properties *string `pulumi:"properties"`
+}
+
+// IdpIntegrationKindMappingEmissionInput is an input type that accepts IdpIntegrationKindMappingEmissionArgs and IdpIntegrationKindMappingEmissionOutput values.
+// You can construct a concrete instance of `IdpIntegrationKindMappingEmissionInput` via:
+//
+//	IdpIntegrationKindMappingEmissionArgs{...}
+type IdpIntegrationKindMappingEmissionInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationKindMappingEmissionOutput() IdpIntegrationKindMappingEmissionOutput
+	ToIdpIntegrationKindMappingEmissionOutputWithContext(context.Context) IdpIntegrationKindMappingEmissionOutput
+}
+
+type IdpIntegrationKindMappingEmissionArgs struct {
+	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
+	Name       pulumi.StringPtrInput `pulumi:"name"`
+	// JSON object.
+	Properties pulumi.StringPtrInput `pulumi:"properties"`
+}
+
+func (IdpIntegrationKindMappingEmissionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationKindMappingEmission)(nil)).Elem()
+}
+
+func (i IdpIntegrationKindMappingEmissionArgs) ToIdpIntegrationKindMappingEmissionOutput() IdpIntegrationKindMappingEmissionOutput {
+	return i.ToIdpIntegrationKindMappingEmissionOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationKindMappingEmissionArgs) ToIdpIntegrationKindMappingEmissionOutputWithContext(ctx context.Context) IdpIntegrationKindMappingEmissionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationKindMappingEmissionOutput)
+}
+
+// IdpIntegrationKindMappingEmissionArrayInput is an input type that accepts IdpIntegrationKindMappingEmissionArray and IdpIntegrationKindMappingEmissionArrayOutput values.
+// You can construct a concrete instance of `IdpIntegrationKindMappingEmissionArrayInput` via:
+//
+//	IdpIntegrationKindMappingEmissionArray{ IdpIntegrationKindMappingEmissionArgs{...} }
+type IdpIntegrationKindMappingEmissionArrayInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationKindMappingEmissionArrayOutput() IdpIntegrationKindMappingEmissionArrayOutput
+	ToIdpIntegrationKindMappingEmissionArrayOutputWithContext(context.Context) IdpIntegrationKindMappingEmissionArrayOutput
+}
+
+type IdpIntegrationKindMappingEmissionArray []IdpIntegrationKindMappingEmissionInput
+
+func (IdpIntegrationKindMappingEmissionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IdpIntegrationKindMappingEmission)(nil)).Elem()
+}
+
+func (i IdpIntegrationKindMappingEmissionArray) ToIdpIntegrationKindMappingEmissionArrayOutput() IdpIntegrationKindMappingEmissionArrayOutput {
+	return i.ToIdpIntegrationKindMappingEmissionArrayOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationKindMappingEmissionArray) ToIdpIntegrationKindMappingEmissionArrayOutputWithContext(ctx context.Context) IdpIntegrationKindMappingEmissionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationKindMappingEmissionArrayOutput)
+}
+
+type IdpIntegrationKindMappingEmissionOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationKindMappingEmissionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationKindMappingEmission)(nil)).Elem()
+}
+
+func (o IdpIntegrationKindMappingEmissionOutput) ToIdpIntegrationKindMappingEmissionOutput() IdpIntegrationKindMappingEmissionOutput {
+	return o
+}
+
+func (o IdpIntegrationKindMappingEmissionOutput) ToIdpIntegrationKindMappingEmissionOutputWithContext(ctx context.Context) IdpIntegrationKindMappingEmissionOutput {
+	return o
+}
+
+func (o IdpIntegrationKindMappingEmissionOutput) Identifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpIntegrationKindMappingEmission) *string { return v.Identifier }).(pulumi.StringPtrOutput)
+}
+
+func (o IdpIntegrationKindMappingEmissionOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpIntegrationKindMappingEmission) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// JSON object.
+func (o IdpIntegrationKindMappingEmissionOutput) Properties() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpIntegrationKindMappingEmission) *string { return v.Properties }).(pulumi.StringPtrOutput)
+}
+
+type IdpIntegrationKindMappingEmissionArrayOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationKindMappingEmissionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IdpIntegrationKindMappingEmission)(nil)).Elem()
+}
+
+func (o IdpIntegrationKindMappingEmissionArrayOutput) ToIdpIntegrationKindMappingEmissionArrayOutput() IdpIntegrationKindMappingEmissionArrayOutput {
+	return o
+}
+
+func (o IdpIntegrationKindMappingEmissionArrayOutput) ToIdpIntegrationKindMappingEmissionArrayOutputWithContext(ctx context.Context) IdpIntegrationKindMappingEmissionArrayOutput {
+	return o
+}
+
+func (o IdpIntegrationKindMappingEmissionArrayOutput) Index(i pulumi.IntInput) IdpIntegrationKindMappingEmissionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IdpIntegrationKindMappingEmission {
+		return vs[0].([]IdpIntegrationKindMappingEmission)[vs[1].(int)]
+	}).(IdpIntegrationKindMappingEmissionOutput)
+}
+
+type IdpIntegrationKindMappingFieldMapping struct {
+	// Source field.
+	SourceField string `pulumi:"sourceField"`
+	// Entity field, e.g. spec.owner.
+	TargetField string `pulumi:"targetField"`
+}
+
+// IdpIntegrationKindMappingFieldMappingInput is an input type that accepts IdpIntegrationKindMappingFieldMappingArgs and IdpIntegrationKindMappingFieldMappingOutput values.
+// You can construct a concrete instance of `IdpIntegrationKindMappingFieldMappingInput` via:
+//
+//	IdpIntegrationKindMappingFieldMappingArgs{...}
+type IdpIntegrationKindMappingFieldMappingInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationKindMappingFieldMappingOutput() IdpIntegrationKindMappingFieldMappingOutput
+	ToIdpIntegrationKindMappingFieldMappingOutputWithContext(context.Context) IdpIntegrationKindMappingFieldMappingOutput
+}
+
+type IdpIntegrationKindMappingFieldMappingArgs struct {
+	// Source field.
+	SourceField pulumi.StringInput `pulumi:"sourceField"`
+	// Entity field, e.g. spec.owner.
+	TargetField pulumi.StringInput `pulumi:"targetField"`
+}
+
+func (IdpIntegrationKindMappingFieldMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationKindMappingFieldMapping)(nil)).Elem()
+}
+
+func (i IdpIntegrationKindMappingFieldMappingArgs) ToIdpIntegrationKindMappingFieldMappingOutput() IdpIntegrationKindMappingFieldMappingOutput {
+	return i.ToIdpIntegrationKindMappingFieldMappingOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationKindMappingFieldMappingArgs) ToIdpIntegrationKindMappingFieldMappingOutputWithContext(ctx context.Context) IdpIntegrationKindMappingFieldMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationKindMappingFieldMappingOutput)
+}
+
+// IdpIntegrationKindMappingFieldMappingArrayInput is an input type that accepts IdpIntegrationKindMappingFieldMappingArray and IdpIntegrationKindMappingFieldMappingArrayOutput values.
+// You can construct a concrete instance of `IdpIntegrationKindMappingFieldMappingArrayInput` via:
+//
+//	IdpIntegrationKindMappingFieldMappingArray{ IdpIntegrationKindMappingFieldMappingArgs{...} }
+type IdpIntegrationKindMappingFieldMappingArrayInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationKindMappingFieldMappingArrayOutput() IdpIntegrationKindMappingFieldMappingArrayOutput
+	ToIdpIntegrationKindMappingFieldMappingArrayOutputWithContext(context.Context) IdpIntegrationKindMappingFieldMappingArrayOutput
+}
+
+type IdpIntegrationKindMappingFieldMappingArray []IdpIntegrationKindMappingFieldMappingInput
+
+func (IdpIntegrationKindMappingFieldMappingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IdpIntegrationKindMappingFieldMapping)(nil)).Elem()
+}
+
+func (i IdpIntegrationKindMappingFieldMappingArray) ToIdpIntegrationKindMappingFieldMappingArrayOutput() IdpIntegrationKindMappingFieldMappingArrayOutput {
+	return i.ToIdpIntegrationKindMappingFieldMappingArrayOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationKindMappingFieldMappingArray) ToIdpIntegrationKindMappingFieldMappingArrayOutputWithContext(ctx context.Context) IdpIntegrationKindMappingFieldMappingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationKindMappingFieldMappingArrayOutput)
+}
+
+type IdpIntegrationKindMappingFieldMappingOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationKindMappingFieldMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationKindMappingFieldMapping)(nil)).Elem()
+}
+
+func (o IdpIntegrationKindMappingFieldMappingOutput) ToIdpIntegrationKindMappingFieldMappingOutput() IdpIntegrationKindMappingFieldMappingOutput {
+	return o
+}
+
+func (o IdpIntegrationKindMappingFieldMappingOutput) ToIdpIntegrationKindMappingFieldMappingOutputWithContext(ctx context.Context) IdpIntegrationKindMappingFieldMappingOutput {
+	return o
+}
+
+// Source field.
+func (o IdpIntegrationKindMappingFieldMappingOutput) SourceField() pulumi.StringOutput {
+	return o.ApplyT(func(v IdpIntegrationKindMappingFieldMapping) string { return v.SourceField }).(pulumi.StringOutput)
+}
+
+// Entity field, e.g. spec.owner.
+func (o IdpIntegrationKindMappingFieldMappingOutput) TargetField() pulumi.StringOutput {
+	return o.ApplyT(func(v IdpIntegrationKindMappingFieldMapping) string { return v.TargetField }).(pulumi.StringOutput)
+}
+
+type IdpIntegrationKindMappingFieldMappingArrayOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationKindMappingFieldMappingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IdpIntegrationKindMappingFieldMapping)(nil)).Elem()
+}
+
+func (o IdpIntegrationKindMappingFieldMappingArrayOutput) ToIdpIntegrationKindMappingFieldMappingArrayOutput() IdpIntegrationKindMappingFieldMappingArrayOutput {
+	return o
+}
+
+func (o IdpIntegrationKindMappingFieldMappingArrayOutput) ToIdpIntegrationKindMappingFieldMappingArrayOutputWithContext(ctx context.Context) IdpIntegrationKindMappingFieldMappingArrayOutput {
+	return o
+}
+
+func (o IdpIntegrationKindMappingFieldMappingArrayOutput) Index(i pulumi.IntInput) IdpIntegrationKindMappingFieldMappingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IdpIntegrationKindMappingFieldMapping {
+		return vs[0].([]IdpIntegrationKindMappingFieldMapping)[vs[1].(int)]
+	}).(IdpIntegrationKindMappingFieldMappingOutput)
+}
+
+type IdpIntegrationKindMappingIngestion struct {
+	// JQ for the entity identifier.
+	Identifier string `pulumi:"identifier"`
+	// JQ for the entity name.
+	Name *string `pulumi:"name"`
+	// JQ per entity property; derived from the payload schema when omitted.
+	Properties map[string]string `pulumi:"properties"`
+}
+
+// IdpIntegrationKindMappingIngestionInput is an input type that accepts IdpIntegrationKindMappingIngestionArgs and IdpIntegrationKindMappingIngestionOutput values.
+// You can construct a concrete instance of `IdpIntegrationKindMappingIngestionInput` via:
+//
+//	IdpIntegrationKindMappingIngestionArgs{...}
+type IdpIntegrationKindMappingIngestionInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationKindMappingIngestionOutput() IdpIntegrationKindMappingIngestionOutput
+	ToIdpIntegrationKindMappingIngestionOutputWithContext(context.Context) IdpIntegrationKindMappingIngestionOutput
+}
+
+type IdpIntegrationKindMappingIngestionArgs struct {
+	// JQ for the entity identifier.
+	Identifier pulumi.StringInput `pulumi:"identifier"`
+	// JQ for the entity name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// JQ per entity property; derived from the payload schema when omitted.
+	Properties pulumi.StringMapInput `pulumi:"properties"`
+}
+
+func (IdpIntegrationKindMappingIngestionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationKindMappingIngestion)(nil)).Elem()
+}
+
+func (i IdpIntegrationKindMappingIngestionArgs) ToIdpIntegrationKindMappingIngestionOutput() IdpIntegrationKindMappingIngestionOutput {
+	return i.ToIdpIntegrationKindMappingIngestionOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationKindMappingIngestionArgs) ToIdpIntegrationKindMappingIngestionOutputWithContext(ctx context.Context) IdpIntegrationKindMappingIngestionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationKindMappingIngestionOutput)
+}
+
+func (i IdpIntegrationKindMappingIngestionArgs) ToIdpIntegrationKindMappingIngestionPtrOutput() IdpIntegrationKindMappingIngestionPtrOutput {
+	return i.ToIdpIntegrationKindMappingIngestionPtrOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationKindMappingIngestionArgs) ToIdpIntegrationKindMappingIngestionPtrOutputWithContext(ctx context.Context) IdpIntegrationKindMappingIngestionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationKindMappingIngestionOutput).ToIdpIntegrationKindMappingIngestionPtrOutputWithContext(ctx)
+}
+
+// IdpIntegrationKindMappingIngestionPtrInput is an input type that accepts IdpIntegrationKindMappingIngestionArgs, IdpIntegrationKindMappingIngestionPtr and IdpIntegrationKindMappingIngestionPtrOutput values.
+// You can construct a concrete instance of `IdpIntegrationKindMappingIngestionPtrInput` via:
+//
+//	        IdpIntegrationKindMappingIngestionArgs{...}
+//
+//	or:
+//
+//	        nil
+type IdpIntegrationKindMappingIngestionPtrInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationKindMappingIngestionPtrOutput() IdpIntegrationKindMappingIngestionPtrOutput
+	ToIdpIntegrationKindMappingIngestionPtrOutputWithContext(context.Context) IdpIntegrationKindMappingIngestionPtrOutput
+}
+
+type idpIntegrationKindMappingIngestionPtrType IdpIntegrationKindMappingIngestionArgs
+
+func IdpIntegrationKindMappingIngestionPtr(v *IdpIntegrationKindMappingIngestionArgs) IdpIntegrationKindMappingIngestionPtrInput {
+	return (*idpIntegrationKindMappingIngestionPtrType)(v)
+}
+
+func (*idpIntegrationKindMappingIngestionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpIntegrationKindMappingIngestion)(nil)).Elem()
+}
+
+func (i *idpIntegrationKindMappingIngestionPtrType) ToIdpIntegrationKindMappingIngestionPtrOutput() IdpIntegrationKindMappingIngestionPtrOutput {
+	return i.ToIdpIntegrationKindMappingIngestionPtrOutputWithContext(context.Background())
+}
+
+func (i *idpIntegrationKindMappingIngestionPtrType) ToIdpIntegrationKindMappingIngestionPtrOutputWithContext(ctx context.Context) IdpIntegrationKindMappingIngestionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationKindMappingIngestionPtrOutput)
+}
+
+type IdpIntegrationKindMappingIngestionOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationKindMappingIngestionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationKindMappingIngestion)(nil)).Elem()
+}
+
+func (o IdpIntegrationKindMappingIngestionOutput) ToIdpIntegrationKindMappingIngestionOutput() IdpIntegrationKindMappingIngestionOutput {
+	return o
+}
+
+func (o IdpIntegrationKindMappingIngestionOutput) ToIdpIntegrationKindMappingIngestionOutputWithContext(ctx context.Context) IdpIntegrationKindMappingIngestionOutput {
+	return o
+}
+
+func (o IdpIntegrationKindMappingIngestionOutput) ToIdpIntegrationKindMappingIngestionPtrOutput() IdpIntegrationKindMappingIngestionPtrOutput {
+	return o.ToIdpIntegrationKindMappingIngestionPtrOutputWithContext(context.Background())
+}
+
+func (o IdpIntegrationKindMappingIngestionOutput) ToIdpIntegrationKindMappingIngestionPtrOutputWithContext(ctx context.Context) IdpIntegrationKindMappingIngestionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdpIntegrationKindMappingIngestion) *IdpIntegrationKindMappingIngestion {
+		return &v
+	}).(IdpIntegrationKindMappingIngestionPtrOutput)
+}
+
+// JQ for the entity identifier.
+func (o IdpIntegrationKindMappingIngestionOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v IdpIntegrationKindMappingIngestion) string { return v.Identifier }).(pulumi.StringOutput)
+}
+
+// JQ for the entity name.
+func (o IdpIntegrationKindMappingIngestionOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpIntegrationKindMappingIngestion) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// JQ per entity property; derived from the payload schema when omitted.
+func (o IdpIntegrationKindMappingIngestionOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v IdpIntegrationKindMappingIngestion) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+type IdpIntegrationKindMappingIngestionPtrOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationKindMappingIngestionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpIntegrationKindMappingIngestion)(nil)).Elem()
+}
+
+func (o IdpIntegrationKindMappingIngestionPtrOutput) ToIdpIntegrationKindMappingIngestionPtrOutput() IdpIntegrationKindMappingIngestionPtrOutput {
+	return o
+}
+
+func (o IdpIntegrationKindMappingIngestionPtrOutput) ToIdpIntegrationKindMappingIngestionPtrOutputWithContext(ctx context.Context) IdpIntegrationKindMappingIngestionPtrOutput {
+	return o
+}
+
+func (o IdpIntegrationKindMappingIngestionPtrOutput) Elem() IdpIntegrationKindMappingIngestionOutput {
+	return o.ApplyT(func(v *IdpIntegrationKindMappingIngestion) IdpIntegrationKindMappingIngestion {
+		if v != nil {
+			return *v
+		}
+		var ret IdpIntegrationKindMappingIngestion
+		return ret
+	}).(IdpIntegrationKindMappingIngestionOutput)
+}
+
+// JQ for the entity identifier.
+func (o IdpIntegrationKindMappingIngestionPtrOutput) Identifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationKindMappingIngestion) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Identifier
+	}).(pulumi.StringPtrOutput)
+}
+
+// JQ for the entity name.
+func (o IdpIntegrationKindMappingIngestionPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationKindMappingIngestion) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// JQ per entity property; derived from the payload schema when omitted.
+func (o IdpIntegrationKindMappingIngestionPtrOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *IdpIntegrationKindMappingIngestion) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Properties
+	}).(pulumi.StringMapOutput)
+}
+
+type IdpIntegrationPagerduty struct {
+	// Months of analytics to aggregate.
+	AnalyticsDurationMonths *int `pulumi:"analyticsDurationMonths"`
+	// Lower bound for the first sync, RFC3339.
+	StartDate *string `pulumi:"startDate"`
+}
+
+// IdpIntegrationPagerdutyInput is an input type that accepts IdpIntegrationPagerdutyArgs and IdpIntegrationPagerdutyOutput values.
+// You can construct a concrete instance of `IdpIntegrationPagerdutyInput` via:
+//
+//	IdpIntegrationPagerdutyArgs{...}
+type IdpIntegrationPagerdutyInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationPagerdutyOutput() IdpIntegrationPagerdutyOutput
+	ToIdpIntegrationPagerdutyOutputWithContext(context.Context) IdpIntegrationPagerdutyOutput
+}
+
+type IdpIntegrationPagerdutyArgs struct {
+	// Months of analytics to aggregate.
+	AnalyticsDurationMonths pulumi.IntPtrInput `pulumi:"analyticsDurationMonths"`
+	// Lower bound for the first sync, RFC3339.
+	StartDate pulumi.StringPtrInput `pulumi:"startDate"`
+}
+
+func (IdpIntegrationPagerdutyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationPagerduty)(nil)).Elem()
+}
+
+func (i IdpIntegrationPagerdutyArgs) ToIdpIntegrationPagerdutyOutput() IdpIntegrationPagerdutyOutput {
+	return i.ToIdpIntegrationPagerdutyOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationPagerdutyArgs) ToIdpIntegrationPagerdutyOutputWithContext(ctx context.Context) IdpIntegrationPagerdutyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationPagerdutyOutput)
+}
+
+func (i IdpIntegrationPagerdutyArgs) ToIdpIntegrationPagerdutyPtrOutput() IdpIntegrationPagerdutyPtrOutput {
+	return i.ToIdpIntegrationPagerdutyPtrOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationPagerdutyArgs) ToIdpIntegrationPagerdutyPtrOutputWithContext(ctx context.Context) IdpIntegrationPagerdutyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationPagerdutyOutput).ToIdpIntegrationPagerdutyPtrOutputWithContext(ctx)
+}
+
+// IdpIntegrationPagerdutyPtrInput is an input type that accepts IdpIntegrationPagerdutyArgs, IdpIntegrationPagerdutyPtr and IdpIntegrationPagerdutyPtrOutput values.
+// You can construct a concrete instance of `IdpIntegrationPagerdutyPtrInput` via:
+//
+//	        IdpIntegrationPagerdutyArgs{...}
+//
+//	or:
+//
+//	        nil
+type IdpIntegrationPagerdutyPtrInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationPagerdutyPtrOutput() IdpIntegrationPagerdutyPtrOutput
+	ToIdpIntegrationPagerdutyPtrOutputWithContext(context.Context) IdpIntegrationPagerdutyPtrOutput
+}
+
+type idpIntegrationPagerdutyPtrType IdpIntegrationPagerdutyArgs
+
+func IdpIntegrationPagerdutyPtr(v *IdpIntegrationPagerdutyArgs) IdpIntegrationPagerdutyPtrInput {
+	return (*idpIntegrationPagerdutyPtrType)(v)
+}
+
+func (*idpIntegrationPagerdutyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpIntegrationPagerduty)(nil)).Elem()
+}
+
+func (i *idpIntegrationPagerdutyPtrType) ToIdpIntegrationPagerdutyPtrOutput() IdpIntegrationPagerdutyPtrOutput {
+	return i.ToIdpIntegrationPagerdutyPtrOutputWithContext(context.Background())
+}
+
+func (i *idpIntegrationPagerdutyPtrType) ToIdpIntegrationPagerdutyPtrOutputWithContext(ctx context.Context) IdpIntegrationPagerdutyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationPagerdutyPtrOutput)
+}
+
+type IdpIntegrationPagerdutyOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationPagerdutyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationPagerduty)(nil)).Elem()
+}
+
+func (o IdpIntegrationPagerdutyOutput) ToIdpIntegrationPagerdutyOutput() IdpIntegrationPagerdutyOutput {
+	return o
+}
+
+func (o IdpIntegrationPagerdutyOutput) ToIdpIntegrationPagerdutyOutputWithContext(ctx context.Context) IdpIntegrationPagerdutyOutput {
+	return o
+}
+
+func (o IdpIntegrationPagerdutyOutput) ToIdpIntegrationPagerdutyPtrOutput() IdpIntegrationPagerdutyPtrOutput {
+	return o.ToIdpIntegrationPagerdutyPtrOutputWithContext(context.Background())
+}
+
+func (o IdpIntegrationPagerdutyOutput) ToIdpIntegrationPagerdutyPtrOutputWithContext(ctx context.Context) IdpIntegrationPagerdutyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdpIntegrationPagerduty) *IdpIntegrationPagerduty {
+		return &v
+	}).(IdpIntegrationPagerdutyPtrOutput)
+}
+
+// Months of analytics to aggregate.
+func (o IdpIntegrationPagerdutyOutput) AnalyticsDurationMonths() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v IdpIntegrationPagerduty) *int { return v.AnalyticsDurationMonths }).(pulumi.IntPtrOutput)
+}
+
+// Lower bound for the first sync, RFC3339.
+func (o IdpIntegrationPagerdutyOutput) StartDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpIntegrationPagerduty) *string { return v.StartDate }).(pulumi.StringPtrOutput)
+}
+
+type IdpIntegrationPagerdutyPtrOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationPagerdutyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpIntegrationPagerduty)(nil)).Elem()
+}
+
+func (o IdpIntegrationPagerdutyPtrOutput) ToIdpIntegrationPagerdutyPtrOutput() IdpIntegrationPagerdutyPtrOutput {
+	return o
+}
+
+func (o IdpIntegrationPagerdutyPtrOutput) ToIdpIntegrationPagerdutyPtrOutputWithContext(ctx context.Context) IdpIntegrationPagerdutyPtrOutput {
+	return o
+}
+
+func (o IdpIntegrationPagerdutyPtrOutput) Elem() IdpIntegrationPagerdutyOutput {
+	return o.ApplyT(func(v *IdpIntegrationPagerduty) IdpIntegrationPagerduty {
+		if v != nil {
+			return *v
+		}
+		var ret IdpIntegrationPagerduty
+		return ret
+	}).(IdpIntegrationPagerdutyOutput)
+}
+
+// Months of analytics to aggregate.
+func (o IdpIntegrationPagerdutyPtrOutput) AnalyticsDurationMonths() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationPagerduty) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AnalyticsDurationMonths
+	}).(pulumi.IntPtrOutput)
+}
+
+// Lower bound for the first sync, RFC3339.
+func (o IdpIntegrationPagerdutyPtrOutput) StartDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationPagerduty) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StartDate
+	}).(pulumi.StringPtrOutput)
+}
+
+type IdpIntegrationScopes struct {
+	// Read from every scope.
+	All *bool `pulumi:"all"`
+	// Scopes to read from: "" for the account, "org" or "org/project".
+	Selecteds []string `pulumi:"selecteds"`
+}
+
+// IdpIntegrationScopesInput is an input type that accepts IdpIntegrationScopesArgs and IdpIntegrationScopesOutput values.
+// You can construct a concrete instance of `IdpIntegrationScopesInput` via:
+//
+//	IdpIntegrationScopesArgs{...}
+type IdpIntegrationScopesInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationScopesOutput() IdpIntegrationScopesOutput
+	ToIdpIntegrationScopesOutputWithContext(context.Context) IdpIntegrationScopesOutput
+}
+
+type IdpIntegrationScopesArgs struct {
+	// Read from every scope.
+	All pulumi.BoolPtrInput `pulumi:"all"`
+	// Scopes to read from: "" for the account, "org" or "org/project".
+	Selecteds pulumi.StringArrayInput `pulumi:"selecteds"`
+}
+
+func (IdpIntegrationScopesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationScopes)(nil)).Elem()
+}
+
+func (i IdpIntegrationScopesArgs) ToIdpIntegrationScopesOutput() IdpIntegrationScopesOutput {
+	return i.ToIdpIntegrationScopesOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationScopesArgs) ToIdpIntegrationScopesOutputWithContext(ctx context.Context) IdpIntegrationScopesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationScopesOutput)
+}
+
+func (i IdpIntegrationScopesArgs) ToIdpIntegrationScopesPtrOutput() IdpIntegrationScopesPtrOutput {
+	return i.ToIdpIntegrationScopesPtrOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationScopesArgs) ToIdpIntegrationScopesPtrOutputWithContext(ctx context.Context) IdpIntegrationScopesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationScopesOutput).ToIdpIntegrationScopesPtrOutputWithContext(ctx)
+}
+
+// IdpIntegrationScopesPtrInput is an input type that accepts IdpIntegrationScopesArgs, IdpIntegrationScopesPtr and IdpIntegrationScopesPtrOutput values.
+// You can construct a concrete instance of `IdpIntegrationScopesPtrInput` via:
+//
+//	        IdpIntegrationScopesArgs{...}
+//
+//	or:
+//
+//	        nil
+type IdpIntegrationScopesPtrInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationScopesPtrOutput() IdpIntegrationScopesPtrOutput
+	ToIdpIntegrationScopesPtrOutputWithContext(context.Context) IdpIntegrationScopesPtrOutput
+}
+
+type idpIntegrationScopesPtrType IdpIntegrationScopesArgs
+
+func IdpIntegrationScopesPtr(v *IdpIntegrationScopesArgs) IdpIntegrationScopesPtrInput {
+	return (*idpIntegrationScopesPtrType)(v)
+}
+
+func (*idpIntegrationScopesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpIntegrationScopes)(nil)).Elem()
+}
+
+func (i *idpIntegrationScopesPtrType) ToIdpIntegrationScopesPtrOutput() IdpIntegrationScopesPtrOutput {
+	return i.ToIdpIntegrationScopesPtrOutputWithContext(context.Background())
+}
+
+func (i *idpIntegrationScopesPtrType) ToIdpIntegrationScopesPtrOutputWithContext(ctx context.Context) IdpIntegrationScopesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationScopesPtrOutput)
+}
+
+type IdpIntegrationScopesOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationScopesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationScopes)(nil)).Elem()
+}
+
+func (o IdpIntegrationScopesOutput) ToIdpIntegrationScopesOutput() IdpIntegrationScopesOutput {
+	return o
+}
+
+func (o IdpIntegrationScopesOutput) ToIdpIntegrationScopesOutputWithContext(ctx context.Context) IdpIntegrationScopesOutput {
+	return o
+}
+
+func (o IdpIntegrationScopesOutput) ToIdpIntegrationScopesPtrOutput() IdpIntegrationScopesPtrOutput {
+	return o.ToIdpIntegrationScopesPtrOutputWithContext(context.Background())
+}
+
+func (o IdpIntegrationScopesOutput) ToIdpIntegrationScopesPtrOutputWithContext(ctx context.Context) IdpIntegrationScopesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdpIntegrationScopes) *IdpIntegrationScopes {
+		return &v
+	}).(IdpIntegrationScopesPtrOutput)
+}
+
+// Read from every scope.
+func (o IdpIntegrationScopesOutput) All() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v IdpIntegrationScopes) *bool { return v.All }).(pulumi.BoolPtrOutput)
+}
+
+// Scopes to read from: "" for the account, "org" or "org/project".
+func (o IdpIntegrationScopesOutput) Selecteds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IdpIntegrationScopes) []string { return v.Selecteds }).(pulumi.StringArrayOutput)
+}
+
+type IdpIntegrationScopesPtrOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationScopesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpIntegrationScopes)(nil)).Elem()
+}
+
+func (o IdpIntegrationScopesPtrOutput) ToIdpIntegrationScopesPtrOutput() IdpIntegrationScopesPtrOutput {
+	return o
+}
+
+func (o IdpIntegrationScopesPtrOutput) ToIdpIntegrationScopesPtrOutputWithContext(ctx context.Context) IdpIntegrationScopesPtrOutput {
+	return o
+}
+
+func (o IdpIntegrationScopesPtrOutput) Elem() IdpIntegrationScopesOutput {
+	return o.ApplyT(func(v *IdpIntegrationScopes) IdpIntegrationScopes {
+		if v != nil {
+			return *v
+		}
+		var ret IdpIntegrationScopes
+		return ret
+	}).(IdpIntegrationScopesOutput)
+}
+
+// Read from every scope.
+func (o IdpIntegrationScopesPtrOutput) All() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationScopes) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.All
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Scopes to read from: "" for the account, "org" or "org/project".
+func (o IdpIntegrationScopesPtrOutput) Selecteds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *IdpIntegrationScopes) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Selecteds
+	}).(pulumi.StringArrayOutput)
+}
+
+type IdpIntegrationSonarqube struct {
+	// Set exactly one of server or cloud.
+	Instance IdpIntegrationSonarqubeInstance `pulumi:"instance"`
+	// Filters for the issues stream.
+	Issues *IdpIntegrationSonarqubeIssues `pulumi:"issues"`
+	// Projects to sync; omit to sync all. Set exactly one of include or exclude.
+	Projects *IdpIntegrationSonarqubeProjects `pulumi:"projects"`
+	// Lower bound for the first sync, RFC3339.
+	StartDate *string `pulumi:"startDate"`
+	// Secret reference to a SonarQube user token.
+	TokenRef string `pulumi:"tokenRef"`
+}
+
+// IdpIntegrationSonarqubeInput is an input type that accepts IdpIntegrationSonarqubeArgs and IdpIntegrationSonarqubeOutput values.
+// You can construct a concrete instance of `IdpIntegrationSonarqubeInput` via:
+//
+//	IdpIntegrationSonarqubeArgs{...}
+type IdpIntegrationSonarqubeInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationSonarqubeOutput() IdpIntegrationSonarqubeOutput
+	ToIdpIntegrationSonarqubeOutputWithContext(context.Context) IdpIntegrationSonarqubeOutput
+}
+
+type IdpIntegrationSonarqubeArgs struct {
+	// Set exactly one of server or cloud.
+	Instance IdpIntegrationSonarqubeInstanceInput `pulumi:"instance"`
+	// Filters for the issues stream.
+	Issues IdpIntegrationSonarqubeIssuesPtrInput `pulumi:"issues"`
+	// Projects to sync; omit to sync all. Set exactly one of include or exclude.
+	Projects IdpIntegrationSonarqubeProjectsPtrInput `pulumi:"projects"`
+	// Lower bound for the first sync, RFC3339.
+	StartDate pulumi.StringPtrInput `pulumi:"startDate"`
+	// Secret reference to a SonarQube user token.
+	TokenRef pulumi.StringInput `pulumi:"tokenRef"`
+}
+
+func (IdpIntegrationSonarqubeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationSonarqube)(nil)).Elem()
+}
+
+func (i IdpIntegrationSonarqubeArgs) ToIdpIntegrationSonarqubeOutput() IdpIntegrationSonarqubeOutput {
+	return i.ToIdpIntegrationSonarqubeOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationSonarqubeArgs) ToIdpIntegrationSonarqubeOutputWithContext(ctx context.Context) IdpIntegrationSonarqubeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationSonarqubeOutput)
+}
+
+func (i IdpIntegrationSonarqubeArgs) ToIdpIntegrationSonarqubePtrOutput() IdpIntegrationSonarqubePtrOutput {
+	return i.ToIdpIntegrationSonarqubePtrOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationSonarqubeArgs) ToIdpIntegrationSonarqubePtrOutputWithContext(ctx context.Context) IdpIntegrationSonarqubePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationSonarqubeOutput).ToIdpIntegrationSonarqubePtrOutputWithContext(ctx)
+}
+
+// IdpIntegrationSonarqubePtrInput is an input type that accepts IdpIntegrationSonarqubeArgs, IdpIntegrationSonarqubePtr and IdpIntegrationSonarqubePtrOutput values.
+// You can construct a concrete instance of `IdpIntegrationSonarqubePtrInput` via:
+//
+//	        IdpIntegrationSonarqubeArgs{...}
+//
+//	or:
+//
+//	        nil
+type IdpIntegrationSonarqubePtrInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationSonarqubePtrOutput() IdpIntegrationSonarqubePtrOutput
+	ToIdpIntegrationSonarqubePtrOutputWithContext(context.Context) IdpIntegrationSonarqubePtrOutput
+}
+
+type idpIntegrationSonarqubePtrType IdpIntegrationSonarqubeArgs
+
+func IdpIntegrationSonarqubePtr(v *IdpIntegrationSonarqubeArgs) IdpIntegrationSonarqubePtrInput {
+	return (*idpIntegrationSonarqubePtrType)(v)
+}
+
+func (*idpIntegrationSonarqubePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpIntegrationSonarqube)(nil)).Elem()
+}
+
+func (i *idpIntegrationSonarqubePtrType) ToIdpIntegrationSonarqubePtrOutput() IdpIntegrationSonarqubePtrOutput {
+	return i.ToIdpIntegrationSonarqubePtrOutputWithContext(context.Background())
+}
+
+func (i *idpIntegrationSonarqubePtrType) ToIdpIntegrationSonarqubePtrOutputWithContext(ctx context.Context) IdpIntegrationSonarqubePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationSonarqubePtrOutput)
+}
+
+type IdpIntegrationSonarqubeOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationSonarqubeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationSonarqube)(nil)).Elem()
+}
+
+func (o IdpIntegrationSonarqubeOutput) ToIdpIntegrationSonarqubeOutput() IdpIntegrationSonarqubeOutput {
+	return o
+}
+
+func (o IdpIntegrationSonarqubeOutput) ToIdpIntegrationSonarqubeOutputWithContext(ctx context.Context) IdpIntegrationSonarqubeOutput {
+	return o
+}
+
+func (o IdpIntegrationSonarqubeOutput) ToIdpIntegrationSonarqubePtrOutput() IdpIntegrationSonarqubePtrOutput {
+	return o.ToIdpIntegrationSonarqubePtrOutputWithContext(context.Background())
+}
+
+func (o IdpIntegrationSonarqubeOutput) ToIdpIntegrationSonarqubePtrOutputWithContext(ctx context.Context) IdpIntegrationSonarqubePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdpIntegrationSonarqube) *IdpIntegrationSonarqube {
+		return &v
+	}).(IdpIntegrationSonarqubePtrOutput)
+}
+
+// Set exactly one of server or cloud.
+func (o IdpIntegrationSonarqubeOutput) Instance() IdpIntegrationSonarqubeInstanceOutput {
+	return o.ApplyT(func(v IdpIntegrationSonarqube) IdpIntegrationSonarqubeInstance { return v.Instance }).(IdpIntegrationSonarqubeInstanceOutput)
+}
+
+// Filters for the issues stream.
+func (o IdpIntegrationSonarqubeOutput) Issues() IdpIntegrationSonarqubeIssuesPtrOutput {
+	return o.ApplyT(func(v IdpIntegrationSonarqube) *IdpIntegrationSonarqubeIssues { return v.Issues }).(IdpIntegrationSonarqubeIssuesPtrOutput)
+}
+
+// Projects to sync; omit to sync all. Set exactly one of include or exclude.
+func (o IdpIntegrationSonarqubeOutput) Projects() IdpIntegrationSonarqubeProjectsPtrOutput {
+	return o.ApplyT(func(v IdpIntegrationSonarqube) *IdpIntegrationSonarqubeProjects { return v.Projects }).(IdpIntegrationSonarqubeProjectsPtrOutput)
+}
+
+// Lower bound for the first sync, RFC3339.
+func (o IdpIntegrationSonarqubeOutput) StartDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpIntegrationSonarqube) *string { return v.StartDate }).(pulumi.StringPtrOutput)
+}
+
+// Secret reference to a SonarQube user token.
+func (o IdpIntegrationSonarqubeOutput) TokenRef() pulumi.StringOutput {
+	return o.ApplyT(func(v IdpIntegrationSonarqube) string { return v.TokenRef }).(pulumi.StringOutput)
+}
+
+type IdpIntegrationSonarqubePtrOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationSonarqubePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpIntegrationSonarqube)(nil)).Elem()
+}
+
+func (o IdpIntegrationSonarqubePtrOutput) ToIdpIntegrationSonarqubePtrOutput() IdpIntegrationSonarqubePtrOutput {
+	return o
+}
+
+func (o IdpIntegrationSonarqubePtrOutput) ToIdpIntegrationSonarqubePtrOutputWithContext(ctx context.Context) IdpIntegrationSonarqubePtrOutput {
+	return o
+}
+
+func (o IdpIntegrationSonarqubePtrOutput) Elem() IdpIntegrationSonarqubeOutput {
+	return o.ApplyT(func(v *IdpIntegrationSonarqube) IdpIntegrationSonarqube {
+		if v != nil {
+			return *v
+		}
+		var ret IdpIntegrationSonarqube
+		return ret
+	}).(IdpIntegrationSonarqubeOutput)
+}
+
+// Set exactly one of server or cloud.
+func (o IdpIntegrationSonarqubePtrOutput) Instance() IdpIntegrationSonarqubeInstancePtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationSonarqube) *IdpIntegrationSonarqubeInstance {
+		if v == nil {
+			return nil
+		}
+		return &v.Instance
+	}).(IdpIntegrationSonarqubeInstancePtrOutput)
+}
+
+// Filters for the issues stream.
+func (o IdpIntegrationSonarqubePtrOutput) Issues() IdpIntegrationSonarqubeIssuesPtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationSonarqube) *IdpIntegrationSonarqubeIssues {
+		if v == nil {
+			return nil
+		}
+		return v.Issues
+	}).(IdpIntegrationSonarqubeIssuesPtrOutput)
+}
+
+// Projects to sync; omit to sync all. Set exactly one of include or exclude.
+func (o IdpIntegrationSonarqubePtrOutput) Projects() IdpIntegrationSonarqubeProjectsPtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationSonarqube) *IdpIntegrationSonarqubeProjects {
+		if v == nil {
+			return nil
+		}
+		return v.Projects
+	}).(IdpIntegrationSonarqubeProjectsPtrOutput)
+}
+
+// Lower bound for the first sync, RFC3339.
+func (o IdpIntegrationSonarqubePtrOutput) StartDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationSonarqube) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StartDate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Secret reference to a SonarQube user token.
+func (o IdpIntegrationSonarqubePtrOutput) TokenRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationSonarqube) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TokenRef
+	}).(pulumi.StringPtrOutput)
+}
+
+type IdpIntegrationSonarqubeInstance struct {
+	// SonarQube Cloud.
+	Cloud *IdpIntegrationSonarqubeInstanceCloud `pulumi:"cloud"`
+	// Self-hosted SonarQube Server.
+	Server *IdpIntegrationSonarqubeInstanceServer `pulumi:"server"`
+}
+
+// IdpIntegrationSonarqubeInstanceInput is an input type that accepts IdpIntegrationSonarqubeInstanceArgs and IdpIntegrationSonarqubeInstanceOutput values.
+// You can construct a concrete instance of `IdpIntegrationSonarqubeInstanceInput` via:
+//
+//	IdpIntegrationSonarqubeInstanceArgs{...}
+type IdpIntegrationSonarqubeInstanceInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationSonarqubeInstanceOutput() IdpIntegrationSonarqubeInstanceOutput
+	ToIdpIntegrationSonarqubeInstanceOutputWithContext(context.Context) IdpIntegrationSonarqubeInstanceOutput
+}
+
+type IdpIntegrationSonarqubeInstanceArgs struct {
+	// SonarQube Cloud.
+	Cloud IdpIntegrationSonarqubeInstanceCloudPtrInput `pulumi:"cloud"`
+	// Self-hosted SonarQube Server.
+	Server IdpIntegrationSonarqubeInstanceServerPtrInput `pulumi:"server"`
+}
+
+func (IdpIntegrationSonarqubeInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationSonarqubeInstance)(nil)).Elem()
+}
+
+func (i IdpIntegrationSonarqubeInstanceArgs) ToIdpIntegrationSonarqubeInstanceOutput() IdpIntegrationSonarqubeInstanceOutput {
+	return i.ToIdpIntegrationSonarqubeInstanceOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationSonarqubeInstanceArgs) ToIdpIntegrationSonarqubeInstanceOutputWithContext(ctx context.Context) IdpIntegrationSonarqubeInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationSonarqubeInstanceOutput)
+}
+
+func (i IdpIntegrationSonarqubeInstanceArgs) ToIdpIntegrationSonarqubeInstancePtrOutput() IdpIntegrationSonarqubeInstancePtrOutput {
+	return i.ToIdpIntegrationSonarqubeInstancePtrOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationSonarqubeInstanceArgs) ToIdpIntegrationSonarqubeInstancePtrOutputWithContext(ctx context.Context) IdpIntegrationSonarqubeInstancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationSonarqubeInstanceOutput).ToIdpIntegrationSonarqubeInstancePtrOutputWithContext(ctx)
+}
+
+// IdpIntegrationSonarqubeInstancePtrInput is an input type that accepts IdpIntegrationSonarqubeInstanceArgs, IdpIntegrationSonarqubeInstancePtr and IdpIntegrationSonarqubeInstancePtrOutput values.
+// You can construct a concrete instance of `IdpIntegrationSonarqubeInstancePtrInput` via:
+//
+//	        IdpIntegrationSonarqubeInstanceArgs{...}
+//
+//	or:
+//
+//	        nil
+type IdpIntegrationSonarqubeInstancePtrInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationSonarqubeInstancePtrOutput() IdpIntegrationSonarqubeInstancePtrOutput
+	ToIdpIntegrationSonarqubeInstancePtrOutputWithContext(context.Context) IdpIntegrationSonarqubeInstancePtrOutput
+}
+
+type idpIntegrationSonarqubeInstancePtrType IdpIntegrationSonarqubeInstanceArgs
+
+func IdpIntegrationSonarqubeInstancePtr(v *IdpIntegrationSonarqubeInstanceArgs) IdpIntegrationSonarqubeInstancePtrInput {
+	return (*idpIntegrationSonarqubeInstancePtrType)(v)
+}
+
+func (*idpIntegrationSonarqubeInstancePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpIntegrationSonarqubeInstance)(nil)).Elem()
+}
+
+func (i *idpIntegrationSonarqubeInstancePtrType) ToIdpIntegrationSonarqubeInstancePtrOutput() IdpIntegrationSonarqubeInstancePtrOutput {
+	return i.ToIdpIntegrationSonarqubeInstancePtrOutputWithContext(context.Background())
+}
+
+func (i *idpIntegrationSonarqubeInstancePtrType) ToIdpIntegrationSonarqubeInstancePtrOutputWithContext(ctx context.Context) IdpIntegrationSonarqubeInstancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationSonarqubeInstancePtrOutput)
+}
+
+type IdpIntegrationSonarqubeInstanceOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationSonarqubeInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationSonarqubeInstance)(nil)).Elem()
+}
+
+func (o IdpIntegrationSonarqubeInstanceOutput) ToIdpIntegrationSonarqubeInstanceOutput() IdpIntegrationSonarqubeInstanceOutput {
+	return o
+}
+
+func (o IdpIntegrationSonarqubeInstanceOutput) ToIdpIntegrationSonarqubeInstanceOutputWithContext(ctx context.Context) IdpIntegrationSonarqubeInstanceOutput {
+	return o
+}
+
+func (o IdpIntegrationSonarqubeInstanceOutput) ToIdpIntegrationSonarqubeInstancePtrOutput() IdpIntegrationSonarqubeInstancePtrOutput {
+	return o.ToIdpIntegrationSonarqubeInstancePtrOutputWithContext(context.Background())
+}
+
+func (o IdpIntegrationSonarqubeInstanceOutput) ToIdpIntegrationSonarqubeInstancePtrOutputWithContext(ctx context.Context) IdpIntegrationSonarqubeInstancePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdpIntegrationSonarqubeInstance) *IdpIntegrationSonarqubeInstance {
+		return &v
+	}).(IdpIntegrationSonarqubeInstancePtrOutput)
+}
+
+// SonarQube Cloud.
+func (o IdpIntegrationSonarqubeInstanceOutput) Cloud() IdpIntegrationSonarqubeInstanceCloudPtrOutput {
+	return o.ApplyT(func(v IdpIntegrationSonarqubeInstance) *IdpIntegrationSonarqubeInstanceCloud { return v.Cloud }).(IdpIntegrationSonarqubeInstanceCloudPtrOutput)
+}
+
+// Self-hosted SonarQube Server.
+func (o IdpIntegrationSonarqubeInstanceOutput) Server() IdpIntegrationSonarqubeInstanceServerPtrOutput {
+	return o.ApplyT(func(v IdpIntegrationSonarqubeInstance) *IdpIntegrationSonarqubeInstanceServer { return v.Server }).(IdpIntegrationSonarqubeInstanceServerPtrOutput)
+}
+
+type IdpIntegrationSonarqubeInstancePtrOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationSonarqubeInstancePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpIntegrationSonarqubeInstance)(nil)).Elem()
+}
+
+func (o IdpIntegrationSonarqubeInstancePtrOutput) ToIdpIntegrationSonarqubeInstancePtrOutput() IdpIntegrationSonarqubeInstancePtrOutput {
+	return o
+}
+
+func (o IdpIntegrationSonarqubeInstancePtrOutput) ToIdpIntegrationSonarqubeInstancePtrOutputWithContext(ctx context.Context) IdpIntegrationSonarqubeInstancePtrOutput {
+	return o
+}
+
+func (o IdpIntegrationSonarqubeInstancePtrOutput) Elem() IdpIntegrationSonarqubeInstanceOutput {
+	return o.ApplyT(func(v *IdpIntegrationSonarqubeInstance) IdpIntegrationSonarqubeInstance {
+		if v != nil {
+			return *v
+		}
+		var ret IdpIntegrationSonarqubeInstance
+		return ret
+	}).(IdpIntegrationSonarqubeInstanceOutput)
+}
+
+// SonarQube Cloud.
+func (o IdpIntegrationSonarqubeInstancePtrOutput) Cloud() IdpIntegrationSonarqubeInstanceCloudPtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationSonarqubeInstance) *IdpIntegrationSonarqubeInstanceCloud {
+		if v == nil {
+			return nil
+		}
+		return v.Cloud
+	}).(IdpIntegrationSonarqubeInstanceCloudPtrOutput)
+}
+
+// Self-hosted SonarQube Server.
+func (o IdpIntegrationSonarqubeInstancePtrOutput) Server() IdpIntegrationSonarqubeInstanceServerPtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationSonarqubeInstance) *IdpIntegrationSonarqubeInstanceServer {
+		if v == nil {
+			return nil
+		}
+		return v.Server
+	}).(IdpIntegrationSonarqubeInstanceServerPtrOutput)
+}
+
+type IdpIntegrationSonarqubeInstanceCloud struct {
+	// Cloud URL.
+	HostUrl *string `pulumi:"hostUrl"`
+	// Organization key.
+	Organization string `pulumi:"organization"`
+}
+
+// IdpIntegrationSonarqubeInstanceCloudInput is an input type that accepts IdpIntegrationSonarqubeInstanceCloudArgs and IdpIntegrationSonarqubeInstanceCloudOutput values.
+// You can construct a concrete instance of `IdpIntegrationSonarqubeInstanceCloudInput` via:
+//
+//	IdpIntegrationSonarqubeInstanceCloudArgs{...}
+type IdpIntegrationSonarqubeInstanceCloudInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationSonarqubeInstanceCloudOutput() IdpIntegrationSonarqubeInstanceCloudOutput
+	ToIdpIntegrationSonarqubeInstanceCloudOutputWithContext(context.Context) IdpIntegrationSonarqubeInstanceCloudOutput
+}
+
+type IdpIntegrationSonarqubeInstanceCloudArgs struct {
+	// Cloud URL.
+	HostUrl pulumi.StringPtrInput `pulumi:"hostUrl"`
+	// Organization key.
+	Organization pulumi.StringInput `pulumi:"organization"`
+}
+
+func (IdpIntegrationSonarqubeInstanceCloudArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationSonarqubeInstanceCloud)(nil)).Elem()
+}
+
+func (i IdpIntegrationSonarqubeInstanceCloudArgs) ToIdpIntegrationSonarqubeInstanceCloudOutput() IdpIntegrationSonarqubeInstanceCloudOutput {
+	return i.ToIdpIntegrationSonarqubeInstanceCloudOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationSonarqubeInstanceCloudArgs) ToIdpIntegrationSonarqubeInstanceCloudOutputWithContext(ctx context.Context) IdpIntegrationSonarqubeInstanceCloudOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationSonarqubeInstanceCloudOutput)
+}
+
+func (i IdpIntegrationSonarqubeInstanceCloudArgs) ToIdpIntegrationSonarqubeInstanceCloudPtrOutput() IdpIntegrationSonarqubeInstanceCloudPtrOutput {
+	return i.ToIdpIntegrationSonarqubeInstanceCloudPtrOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationSonarqubeInstanceCloudArgs) ToIdpIntegrationSonarqubeInstanceCloudPtrOutputWithContext(ctx context.Context) IdpIntegrationSonarqubeInstanceCloudPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationSonarqubeInstanceCloudOutput).ToIdpIntegrationSonarqubeInstanceCloudPtrOutputWithContext(ctx)
+}
+
+// IdpIntegrationSonarqubeInstanceCloudPtrInput is an input type that accepts IdpIntegrationSonarqubeInstanceCloudArgs, IdpIntegrationSonarqubeInstanceCloudPtr and IdpIntegrationSonarqubeInstanceCloudPtrOutput values.
+// You can construct a concrete instance of `IdpIntegrationSonarqubeInstanceCloudPtrInput` via:
+//
+//	        IdpIntegrationSonarqubeInstanceCloudArgs{...}
+//
+//	or:
+//
+//	        nil
+type IdpIntegrationSonarqubeInstanceCloudPtrInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationSonarqubeInstanceCloudPtrOutput() IdpIntegrationSonarqubeInstanceCloudPtrOutput
+	ToIdpIntegrationSonarqubeInstanceCloudPtrOutputWithContext(context.Context) IdpIntegrationSonarqubeInstanceCloudPtrOutput
+}
+
+type idpIntegrationSonarqubeInstanceCloudPtrType IdpIntegrationSonarqubeInstanceCloudArgs
+
+func IdpIntegrationSonarqubeInstanceCloudPtr(v *IdpIntegrationSonarqubeInstanceCloudArgs) IdpIntegrationSonarqubeInstanceCloudPtrInput {
+	return (*idpIntegrationSonarqubeInstanceCloudPtrType)(v)
+}
+
+func (*idpIntegrationSonarqubeInstanceCloudPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpIntegrationSonarqubeInstanceCloud)(nil)).Elem()
+}
+
+func (i *idpIntegrationSonarqubeInstanceCloudPtrType) ToIdpIntegrationSonarqubeInstanceCloudPtrOutput() IdpIntegrationSonarqubeInstanceCloudPtrOutput {
+	return i.ToIdpIntegrationSonarqubeInstanceCloudPtrOutputWithContext(context.Background())
+}
+
+func (i *idpIntegrationSonarqubeInstanceCloudPtrType) ToIdpIntegrationSonarqubeInstanceCloudPtrOutputWithContext(ctx context.Context) IdpIntegrationSonarqubeInstanceCloudPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationSonarqubeInstanceCloudPtrOutput)
+}
+
+type IdpIntegrationSonarqubeInstanceCloudOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationSonarqubeInstanceCloudOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationSonarqubeInstanceCloud)(nil)).Elem()
+}
+
+func (o IdpIntegrationSonarqubeInstanceCloudOutput) ToIdpIntegrationSonarqubeInstanceCloudOutput() IdpIntegrationSonarqubeInstanceCloudOutput {
+	return o
+}
+
+func (o IdpIntegrationSonarqubeInstanceCloudOutput) ToIdpIntegrationSonarqubeInstanceCloudOutputWithContext(ctx context.Context) IdpIntegrationSonarqubeInstanceCloudOutput {
+	return o
+}
+
+func (o IdpIntegrationSonarqubeInstanceCloudOutput) ToIdpIntegrationSonarqubeInstanceCloudPtrOutput() IdpIntegrationSonarqubeInstanceCloudPtrOutput {
+	return o.ToIdpIntegrationSonarqubeInstanceCloudPtrOutputWithContext(context.Background())
+}
+
+func (o IdpIntegrationSonarqubeInstanceCloudOutput) ToIdpIntegrationSonarqubeInstanceCloudPtrOutputWithContext(ctx context.Context) IdpIntegrationSonarqubeInstanceCloudPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdpIntegrationSonarqubeInstanceCloud) *IdpIntegrationSonarqubeInstanceCloud {
+		return &v
+	}).(IdpIntegrationSonarqubeInstanceCloudPtrOutput)
+}
+
+// Cloud URL.
+func (o IdpIntegrationSonarqubeInstanceCloudOutput) HostUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpIntegrationSonarqubeInstanceCloud) *string { return v.HostUrl }).(pulumi.StringPtrOutput)
+}
+
+// Organization key.
+func (o IdpIntegrationSonarqubeInstanceCloudOutput) Organization() pulumi.StringOutput {
+	return o.ApplyT(func(v IdpIntegrationSonarqubeInstanceCloud) string { return v.Organization }).(pulumi.StringOutput)
+}
+
+type IdpIntegrationSonarqubeInstanceCloudPtrOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationSonarqubeInstanceCloudPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpIntegrationSonarqubeInstanceCloud)(nil)).Elem()
+}
+
+func (o IdpIntegrationSonarqubeInstanceCloudPtrOutput) ToIdpIntegrationSonarqubeInstanceCloudPtrOutput() IdpIntegrationSonarqubeInstanceCloudPtrOutput {
+	return o
+}
+
+func (o IdpIntegrationSonarqubeInstanceCloudPtrOutput) ToIdpIntegrationSonarqubeInstanceCloudPtrOutputWithContext(ctx context.Context) IdpIntegrationSonarqubeInstanceCloudPtrOutput {
+	return o
+}
+
+func (o IdpIntegrationSonarqubeInstanceCloudPtrOutput) Elem() IdpIntegrationSonarqubeInstanceCloudOutput {
+	return o.ApplyT(func(v *IdpIntegrationSonarqubeInstanceCloud) IdpIntegrationSonarqubeInstanceCloud {
+		if v != nil {
+			return *v
+		}
+		var ret IdpIntegrationSonarqubeInstanceCloud
+		return ret
+	}).(IdpIntegrationSonarqubeInstanceCloudOutput)
+}
+
+// Cloud URL.
+func (o IdpIntegrationSonarqubeInstanceCloudPtrOutput) HostUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationSonarqubeInstanceCloud) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HostUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Organization key.
+func (o IdpIntegrationSonarqubeInstanceCloudPtrOutput) Organization() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationSonarqubeInstanceCloud) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Organization
+	}).(pulumi.StringPtrOutput)
+}
+
+type IdpIntegrationSonarqubeInstanceServer struct {
+	// Server URL.
+	HostUrl string `pulumi:"hostUrl"`
+}
+
+// IdpIntegrationSonarqubeInstanceServerInput is an input type that accepts IdpIntegrationSonarqubeInstanceServerArgs and IdpIntegrationSonarqubeInstanceServerOutput values.
+// You can construct a concrete instance of `IdpIntegrationSonarqubeInstanceServerInput` via:
+//
+//	IdpIntegrationSonarqubeInstanceServerArgs{...}
+type IdpIntegrationSonarqubeInstanceServerInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationSonarqubeInstanceServerOutput() IdpIntegrationSonarqubeInstanceServerOutput
+	ToIdpIntegrationSonarqubeInstanceServerOutputWithContext(context.Context) IdpIntegrationSonarqubeInstanceServerOutput
+}
+
+type IdpIntegrationSonarqubeInstanceServerArgs struct {
+	// Server URL.
+	HostUrl pulumi.StringInput `pulumi:"hostUrl"`
+}
+
+func (IdpIntegrationSonarqubeInstanceServerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationSonarqubeInstanceServer)(nil)).Elem()
+}
+
+func (i IdpIntegrationSonarqubeInstanceServerArgs) ToIdpIntegrationSonarqubeInstanceServerOutput() IdpIntegrationSonarqubeInstanceServerOutput {
+	return i.ToIdpIntegrationSonarqubeInstanceServerOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationSonarqubeInstanceServerArgs) ToIdpIntegrationSonarqubeInstanceServerOutputWithContext(ctx context.Context) IdpIntegrationSonarqubeInstanceServerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationSonarqubeInstanceServerOutput)
+}
+
+func (i IdpIntegrationSonarqubeInstanceServerArgs) ToIdpIntegrationSonarqubeInstanceServerPtrOutput() IdpIntegrationSonarqubeInstanceServerPtrOutput {
+	return i.ToIdpIntegrationSonarqubeInstanceServerPtrOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationSonarqubeInstanceServerArgs) ToIdpIntegrationSonarqubeInstanceServerPtrOutputWithContext(ctx context.Context) IdpIntegrationSonarqubeInstanceServerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationSonarqubeInstanceServerOutput).ToIdpIntegrationSonarqubeInstanceServerPtrOutputWithContext(ctx)
+}
+
+// IdpIntegrationSonarqubeInstanceServerPtrInput is an input type that accepts IdpIntegrationSonarqubeInstanceServerArgs, IdpIntegrationSonarqubeInstanceServerPtr and IdpIntegrationSonarqubeInstanceServerPtrOutput values.
+// You can construct a concrete instance of `IdpIntegrationSonarqubeInstanceServerPtrInput` via:
+//
+//	        IdpIntegrationSonarqubeInstanceServerArgs{...}
+//
+//	or:
+//
+//	        nil
+type IdpIntegrationSonarqubeInstanceServerPtrInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationSonarqubeInstanceServerPtrOutput() IdpIntegrationSonarqubeInstanceServerPtrOutput
+	ToIdpIntegrationSonarqubeInstanceServerPtrOutputWithContext(context.Context) IdpIntegrationSonarqubeInstanceServerPtrOutput
+}
+
+type idpIntegrationSonarqubeInstanceServerPtrType IdpIntegrationSonarqubeInstanceServerArgs
+
+func IdpIntegrationSonarqubeInstanceServerPtr(v *IdpIntegrationSonarqubeInstanceServerArgs) IdpIntegrationSonarqubeInstanceServerPtrInput {
+	return (*idpIntegrationSonarqubeInstanceServerPtrType)(v)
+}
+
+func (*idpIntegrationSonarqubeInstanceServerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpIntegrationSonarqubeInstanceServer)(nil)).Elem()
+}
+
+func (i *idpIntegrationSonarqubeInstanceServerPtrType) ToIdpIntegrationSonarqubeInstanceServerPtrOutput() IdpIntegrationSonarqubeInstanceServerPtrOutput {
+	return i.ToIdpIntegrationSonarqubeInstanceServerPtrOutputWithContext(context.Background())
+}
+
+func (i *idpIntegrationSonarqubeInstanceServerPtrType) ToIdpIntegrationSonarqubeInstanceServerPtrOutputWithContext(ctx context.Context) IdpIntegrationSonarqubeInstanceServerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationSonarqubeInstanceServerPtrOutput)
+}
+
+type IdpIntegrationSonarqubeInstanceServerOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationSonarqubeInstanceServerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationSonarqubeInstanceServer)(nil)).Elem()
+}
+
+func (o IdpIntegrationSonarqubeInstanceServerOutput) ToIdpIntegrationSonarqubeInstanceServerOutput() IdpIntegrationSonarqubeInstanceServerOutput {
+	return o
+}
+
+func (o IdpIntegrationSonarqubeInstanceServerOutput) ToIdpIntegrationSonarqubeInstanceServerOutputWithContext(ctx context.Context) IdpIntegrationSonarqubeInstanceServerOutput {
+	return o
+}
+
+func (o IdpIntegrationSonarqubeInstanceServerOutput) ToIdpIntegrationSonarqubeInstanceServerPtrOutput() IdpIntegrationSonarqubeInstanceServerPtrOutput {
+	return o.ToIdpIntegrationSonarqubeInstanceServerPtrOutputWithContext(context.Background())
+}
+
+func (o IdpIntegrationSonarqubeInstanceServerOutput) ToIdpIntegrationSonarqubeInstanceServerPtrOutputWithContext(ctx context.Context) IdpIntegrationSonarqubeInstanceServerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdpIntegrationSonarqubeInstanceServer) *IdpIntegrationSonarqubeInstanceServer {
+		return &v
+	}).(IdpIntegrationSonarqubeInstanceServerPtrOutput)
+}
+
+// Server URL.
+func (o IdpIntegrationSonarqubeInstanceServerOutput) HostUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v IdpIntegrationSonarqubeInstanceServer) string { return v.HostUrl }).(pulumi.StringOutput)
+}
+
+type IdpIntegrationSonarqubeInstanceServerPtrOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationSonarqubeInstanceServerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpIntegrationSonarqubeInstanceServer)(nil)).Elem()
+}
+
+func (o IdpIntegrationSonarqubeInstanceServerPtrOutput) ToIdpIntegrationSonarqubeInstanceServerPtrOutput() IdpIntegrationSonarqubeInstanceServerPtrOutput {
+	return o
+}
+
+func (o IdpIntegrationSonarqubeInstanceServerPtrOutput) ToIdpIntegrationSonarqubeInstanceServerPtrOutputWithContext(ctx context.Context) IdpIntegrationSonarqubeInstanceServerPtrOutput {
+	return o
+}
+
+func (o IdpIntegrationSonarqubeInstanceServerPtrOutput) Elem() IdpIntegrationSonarqubeInstanceServerOutput {
+	return o.ApplyT(func(v *IdpIntegrationSonarqubeInstanceServer) IdpIntegrationSonarqubeInstanceServer {
+		if v != nil {
+			return *v
+		}
+		var ret IdpIntegrationSonarqubeInstanceServer
+		return ret
+	}).(IdpIntegrationSonarqubeInstanceServerOutput)
+}
+
+// Server URL.
+func (o IdpIntegrationSonarqubeInstanceServerPtrOutput) HostUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationSonarqubeInstanceServer) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.HostUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+type IdpIntegrationSonarqubeIssues struct {
+	// INFO, LOW, MEDIUM, HIGH or BLOCKER.
+	ImpactSeverities []string `pulumi:"impactSeverities"`
+	// OPEN, CONFIRMED, FALSE*POSITIVE, ACCEPTED, FIXED or IN*SANDBOX.
+	IssueStatuses []string `pulumi:"issueStatuses"`
+	// "true" for resolved issues only, "false" for unresolved only; omit for both.
+	Resolved *string `pulumi:"resolved"`
+	// INFO, MINOR, MAJOR, CRITICAL or BLOCKER.
+	Severities []string `pulumi:"severities"`
+	// CODE_SMELL, BUG or VULNERABILITY.
+	Types []string `pulumi:"types"`
+}
+
+// IdpIntegrationSonarqubeIssuesInput is an input type that accepts IdpIntegrationSonarqubeIssuesArgs and IdpIntegrationSonarqubeIssuesOutput values.
+// You can construct a concrete instance of `IdpIntegrationSonarqubeIssuesInput` via:
+//
+//	IdpIntegrationSonarqubeIssuesArgs{...}
+type IdpIntegrationSonarqubeIssuesInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationSonarqubeIssuesOutput() IdpIntegrationSonarqubeIssuesOutput
+	ToIdpIntegrationSonarqubeIssuesOutputWithContext(context.Context) IdpIntegrationSonarqubeIssuesOutput
+}
+
+type IdpIntegrationSonarqubeIssuesArgs struct {
+	// INFO, LOW, MEDIUM, HIGH or BLOCKER.
+	ImpactSeverities pulumi.StringArrayInput `pulumi:"impactSeverities"`
+	// OPEN, CONFIRMED, FALSE*POSITIVE, ACCEPTED, FIXED or IN*SANDBOX.
+	IssueStatuses pulumi.StringArrayInput `pulumi:"issueStatuses"`
+	// "true" for resolved issues only, "false" for unresolved only; omit for both.
+	Resolved pulumi.StringPtrInput `pulumi:"resolved"`
+	// INFO, MINOR, MAJOR, CRITICAL or BLOCKER.
+	Severities pulumi.StringArrayInput `pulumi:"severities"`
+	// CODE_SMELL, BUG or VULNERABILITY.
+	Types pulumi.StringArrayInput `pulumi:"types"`
+}
+
+func (IdpIntegrationSonarqubeIssuesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationSonarqubeIssues)(nil)).Elem()
+}
+
+func (i IdpIntegrationSonarqubeIssuesArgs) ToIdpIntegrationSonarqubeIssuesOutput() IdpIntegrationSonarqubeIssuesOutput {
+	return i.ToIdpIntegrationSonarqubeIssuesOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationSonarqubeIssuesArgs) ToIdpIntegrationSonarqubeIssuesOutputWithContext(ctx context.Context) IdpIntegrationSonarqubeIssuesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationSonarqubeIssuesOutput)
+}
+
+func (i IdpIntegrationSonarqubeIssuesArgs) ToIdpIntegrationSonarqubeIssuesPtrOutput() IdpIntegrationSonarqubeIssuesPtrOutput {
+	return i.ToIdpIntegrationSonarqubeIssuesPtrOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationSonarqubeIssuesArgs) ToIdpIntegrationSonarqubeIssuesPtrOutputWithContext(ctx context.Context) IdpIntegrationSonarqubeIssuesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationSonarqubeIssuesOutput).ToIdpIntegrationSonarqubeIssuesPtrOutputWithContext(ctx)
+}
+
+// IdpIntegrationSonarqubeIssuesPtrInput is an input type that accepts IdpIntegrationSonarqubeIssuesArgs, IdpIntegrationSonarqubeIssuesPtr and IdpIntegrationSonarqubeIssuesPtrOutput values.
+// You can construct a concrete instance of `IdpIntegrationSonarqubeIssuesPtrInput` via:
+//
+//	        IdpIntegrationSonarqubeIssuesArgs{...}
+//
+//	or:
+//
+//	        nil
+type IdpIntegrationSonarqubeIssuesPtrInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationSonarqubeIssuesPtrOutput() IdpIntegrationSonarqubeIssuesPtrOutput
+	ToIdpIntegrationSonarqubeIssuesPtrOutputWithContext(context.Context) IdpIntegrationSonarqubeIssuesPtrOutput
+}
+
+type idpIntegrationSonarqubeIssuesPtrType IdpIntegrationSonarqubeIssuesArgs
+
+func IdpIntegrationSonarqubeIssuesPtr(v *IdpIntegrationSonarqubeIssuesArgs) IdpIntegrationSonarqubeIssuesPtrInput {
+	return (*idpIntegrationSonarqubeIssuesPtrType)(v)
+}
+
+func (*idpIntegrationSonarqubeIssuesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpIntegrationSonarqubeIssues)(nil)).Elem()
+}
+
+func (i *idpIntegrationSonarqubeIssuesPtrType) ToIdpIntegrationSonarqubeIssuesPtrOutput() IdpIntegrationSonarqubeIssuesPtrOutput {
+	return i.ToIdpIntegrationSonarqubeIssuesPtrOutputWithContext(context.Background())
+}
+
+func (i *idpIntegrationSonarqubeIssuesPtrType) ToIdpIntegrationSonarqubeIssuesPtrOutputWithContext(ctx context.Context) IdpIntegrationSonarqubeIssuesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationSonarqubeIssuesPtrOutput)
+}
+
+type IdpIntegrationSonarqubeIssuesOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationSonarqubeIssuesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationSonarqubeIssues)(nil)).Elem()
+}
+
+func (o IdpIntegrationSonarqubeIssuesOutput) ToIdpIntegrationSonarqubeIssuesOutput() IdpIntegrationSonarqubeIssuesOutput {
+	return o
+}
+
+func (o IdpIntegrationSonarqubeIssuesOutput) ToIdpIntegrationSonarqubeIssuesOutputWithContext(ctx context.Context) IdpIntegrationSonarqubeIssuesOutput {
+	return o
+}
+
+func (o IdpIntegrationSonarqubeIssuesOutput) ToIdpIntegrationSonarqubeIssuesPtrOutput() IdpIntegrationSonarqubeIssuesPtrOutput {
+	return o.ToIdpIntegrationSonarqubeIssuesPtrOutputWithContext(context.Background())
+}
+
+func (o IdpIntegrationSonarqubeIssuesOutput) ToIdpIntegrationSonarqubeIssuesPtrOutputWithContext(ctx context.Context) IdpIntegrationSonarqubeIssuesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdpIntegrationSonarqubeIssues) *IdpIntegrationSonarqubeIssues {
+		return &v
+	}).(IdpIntegrationSonarqubeIssuesPtrOutput)
+}
+
+// INFO, LOW, MEDIUM, HIGH or BLOCKER.
+func (o IdpIntegrationSonarqubeIssuesOutput) ImpactSeverities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IdpIntegrationSonarqubeIssues) []string { return v.ImpactSeverities }).(pulumi.StringArrayOutput)
+}
+
+// OPEN, CONFIRMED, FALSE*POSITIVE, ACCEPTED, FIXED or IN*SANDBOX.
+func (o IdpIntegrationSonarqubeIssuesOutput) IssueStatuses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IdpIntegrationSonarqubeIssues) []string { return v.IssueStatuses }).(pulumi.StringArrayOutput)
+}
+
+// "true" for resolved issues only, "false" for unresolved only; omit for both.
+func (o IdpIntegrationSonarqubeIssuesOutput) Resolved() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpIntegrationSonarqubeIssues) *string { return v.Resolved }).(pulumi.StringPtrOutput)
+}
+
+// INFO, MINOR, MAJOR, CRITICAL or BLOCKER.
+func (o IdpIntegrationSonarqubeIssuesOutput) Severities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IdpIntegrationSonarqubeIssues) []string { return v.Severities }).(pulumi.StringArrayOutput)
+}
+
+// CODE_SMELL, BUG or VULNERABILITY.
+func (o IdpIntegrationSonarqubeIssuesOutput) Types() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IdpIntegrationSonarqubeIssues) []string { return v.Types }).(pulumi.StringArrayOutput)
+}
+
+type IdpIntegrationSonarqubeIssuesPtrOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationSonarqubeIssuesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpIntegrationSonarqubeIssues)(nil)).Elem()
+}
+
+func (o IdpIntegrationSonarqubeIssuesPtrOutput) ToIdpIntegrationSonarqubeIssuesPtrOutput() IdpIntegrationSonarqubeIssuesPtrOutput {
+	return o
+}
+
+func (o IdpIntegrationSonarqubeIssuesPtrOutput) ToIdpIntegrationSonarqubeIssuesPtrOutputWithContext(ctx context.Context) IdpIntegrationSonarqubeIssuesPtrOutput {
+	return o
+}
+
+func (o IdpIntegrationSonarqubeIssuesPtrOutput) Elem() IdpIntegrationSonarqubeIssuesOutput {
+	return o.ApplyT(func(v *IdpIntegrationSonarqubeIssues) IdpIntegrationSonarqubeIssues {
+		if v != nil {
+			return *v
+		}
+		var ret IdpIntegrationSonarqubeIssues
+		return ret
+	}).(IdpIntegrationSonarqubeIssuesOutput)
+}
+
+// INFO, LOW, MEDIUM, HIGH or BLOCKER.
+func (o IdpIntegrationSonarqubeIssuesPtrOutput) ImpactSeverities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *IdpIntegrationSonarqubeIssues) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ImpactSeverities
+	}).(pulumi.StringArrayOutput)
+}
+
+// OPEN, CONFIRMED, FALSE*POSITIVE, ACCEPTED, FIXED or IN*SANDBOX.
+func (o IdpIntegrationSonarqubeIssuesPtrOutput) IssueStatuses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *IdpIntegrationSonarqubeIssues) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IssueStatuses
+	}).(pulumi.StringArrayOutput)
+}
+
+// "true" for resolved issues only, "false" for unresolved only; omit for both.
+func (o IdpIntegrationSonarqubeIssuesPtrOutput) Resolved() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdpIntegrationSonarqubeIssues) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Resolved
+	}).(pulumi.StringPtrOutput)
+}
+
+// INFO, MINOR, MAJOR, CRITICAL or BLOCKER.
+func (o IdpIntegrationSonarqubeIssuesPtrOutput) Severities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *IdpIntegrationSonarqubeIssues) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Severities
+	}).(pulumi.StringArrayOutput)
+}
+
+// CODE_SMELL, BUG or VULNERABILITY.
+func (o IdpIntegrationSonarqubeIssuesPtrOutput) Types() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *IdpIntegrationSonarqubeIssues) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Types
+	}).(pulumi.StringArrayOutput)
+}
+
+type IdpIntegrationSonarqubeProjects struct {
+	// Every project except these keys.
+	Excludes []string `pulumi:"excludes"`
+	// Only these project keys.
+	Includes []string `pulumi:"includes"`
+}
+
+// IdpIntegrationSonarqubeProjectsInput is an input type that accepts IdpIntegrationSonarqubeProjectsArgs and IdpIntegrationSonarqubeProjectsOutput values.
+// You can construct a concrete instance of `IdpIntegrationSonarqubeProjectsInput` via:
+//
+//	IdpIntegrationSonarqubeProjectsArgs{...}
+type IdpIntegrationSonarqubeProjectsInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationSonarqubeProjectsOutput() IdpIntegrationSonarqubeProjectsOutput
+	ToIdpIntegrationSonarqubeProjectsOutputWithContext(context.Context) IdpIntegrationSonarqubeProjectsOutput
+}
+
+type IdpIntegrationSonarqubeProjectsArgs struct {
+	// Every project except these keys.
+	Excludes pulumi.StringArrayInput `pulumi:"excludes"`
+	// Only these project keys.
+	Includes pulumi.StringArrayInput `pulumi:"includes"`
+}
+
+func (IdpIntegrationSonarqubeProjectsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationSonarqubeProjects)(nil)).Elem()
+}
+
+func (i IdpIntegrationSonarqubeProjectsArgs) ToIdpIntegrationSonarqubeProjectsOutput() IdpIntegrationSonarqubeProjectsOutput {
+	return i.ToIdpIntegrationSonarqubeProjectsOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationSonarqubeProjectsArgs) ToIdpIntegrationSonarqubeProjectsOutputWithContext(ctx context.Context) IdpIntegrationSonarqubeProjectsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationSonarqubeProjectsOutput)
+}
+
+func (i IdpIntegrationSonarqubeProjectsArgs) ToIdpIntegrationSonarqubeProjectsPtrOutput() IdpIntegrationSonarqubeProjectsPtrOutput {
+	return i.ToIdpIntegrationSonarqubeProjectsPtrOutputWithContext(context.Background())
+}
+
+func (i IdpIntegrationSonarqubeProjectsArgs) ToIdpIntegrationSonarqubeProjectsPtrOutputWithContext(ctx context.Context) IdpIntegrationSonarqubeProjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationSonarqubeProjectsOutput).ToIdpIntegrationSonarqubeProjectsPtrOutputWithContext(ctx)
+}
+
+// IdpIntegrationSonarqubeProjectsPtrInput is an input type that accepts IdpIntegrationSonarqubeProjectsArgs, IdpIntegrationSonarqubeProjectsPtr and IdpIntegrationSonarqubeProjectsPtrOutput values.
+// You can construct a concrete instance of `IdpIntegrationSonarqubeProjectsPtrInput` via:
+//
+//	        IdpIntegrationSonarqubeProjectsArgs{...}
+//
+//	or:
+//
+//	        nil
+type IdpIntegrationSonarqubeProjectsPtrInput interface {
+	pulumi.Input
+
+	ToIdpIntegrationSonarqubeProjectsPtrOutput() IdpIntegrationSonarqubeProjectsPtrOutput
+	ToIdpIntegrationSonarqubeProjectsPtrOutputWithContext(context.Context) IdpIntegrationSonarqubeProjectsPtrOutput
+}
+
+type idpIntegrationSonarqubeProjectsPtrType IdpIntegrationSonarqubeProjectsArgs
+
+func IdpIntegrationSonarqubeProjectsPtr(v *IdpIntegrationSonarqubeProjectsArgs) IdpIntegrationSonarqubeProjectsPtrInput {
+	return (*idpIntegrationSonarqubeProjectsPtrType)(v)
+}
+
+func (*idpIntegrationSonarqubeProjectsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpIntegrationSonarqubeProjects)(nil)).Elem()
+}
+
+func (i *idpIntegrationSonarqubeProjectsPtrType) ToIdpIntegrationSonarqubeProjectsPtrOutput() IdpIntegrationSonarqubeProjectsPtrOutput {
+	return i.ToIdpIntegrationSonarqubeProjectsPtrOutputWithContext(context.Background())
+}
+
+func (i *idpIntegrationSonarqubeProjectsPtrType) ToIdpIntegrationSonarqubeProjectsPtrOutputWithContext(ctx context.Context) IdpIntegrationSonarqubeProjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpIntegrationSonarqubeProjectsPtrOutput)
+}
+
+type IdpIntegrationSonarqubeProjectsOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationSonarqubeProjectsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpIntegrationSonarqubeProjects)(nil)).Elem()
+}
+
+func (o IdpIntegrationSonarqubeProjectsOutput) ToIdpIntegrationSonarqubeProjectsOutput() IdpIntegrationSonarqubeProjectsOutput {
+	return o
+}
+
+func (o IdpIntegrationSonarqubeProjectsOutput) ToIdpIntegrationSonarqubeProjectsOutputWithContext(ctx context.Context) IdpIntegrationSonarqubeProjectsOutput {
+	return o
+}
+
+func (o IdpIntegrationSonarqubeProjectsOutput) ToIdpIntegrationSonarqubeProjectsPtrOutput() IdpIntegrationSonarqubeProjectsPtrOutput {
+	return o.ToIdpIntegrationSonarqubeProjectsPtrOutputWithContext(context.Background())
+}
+
+func (o IdpIntegrationSonarqubeProjectsOutput) ToIdpIntegrationSonarqubeProjectsPtrOutputWithContext(ctx context.Context) IdpIntegrationSonarqubeProjectsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdpIntegrationSonarqubeProjects) *IdpIntegrationSonarqubeProjects {
+		return &v
+	}).(IdpIntegrationSonarqubeProjectsPtrOutput)
+}
+
+// Every project except these keys.
+func (o IdpIntegrationSonarqubeProjectsOutput) Excludes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IdpIntegrationSonarqubeProjects) []string { return v.Excludes }).(pulumi.StringArrayOutput)
+}
+
+// Only these project keys.
+func (o IdpIntegrationSonarqubeProjectsOutput) Includes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IdpIntegrationSonarqubeProjects) []string { return v.Includes }).(pulumi.StringArrayOutput)
+}
+
+type IdpIntegrationSonarqubeProjectsPtrOutput struct{ *pulumi.OutputState }
+
+func (IdpIntegrationSonarqubeProjectsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpIntegrationSonarqubeProjects)(nil)).Elem()
+}
+
+func (o IdpIntegrationSonarqubeProjectsPtrOutput) ToIdpIntegrationSonarqubeProjectsPtrOutput() IdpIntegrationSonarqubeProjectsPtrOutput {
+	return o
+}
+
+func (o IdpIntegrationSonarqubeProjectsPtrOutput) ToIdpIntegrationSonarqubeProjectsPtrOutputWithContext(ctx context.Context) IdpIntegrationSonarqubeProjectsPtrOutput {
+	return o
+}
+
+func (o IdpIntegrationSonarqubeProjectsPtrOutput) Elem() IdpIntegrationSonarqubeProjectsOutput {
+	return o.ApplyT(func(v *IdpIntegrationSonarqubeProjects) IdpIntegrationSonarqubeProjects {
+		if v != nil {
+			return *v
+		}
+		var ret IdpIntegrationSonarqubeProjects
+		return ret
+	}).(IdpIntegrationSonarqubeProjectsOutput)
+}
+
+// Every project except these keys.
+func (o IdpIntegrationSonarqubeProjectsPtrOutput) Excludes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *IdpIntegrationSonarqubeProjects) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Excludes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Only these project keys.
+func (o IdpIntegrationSonarqubeProjectsPtrOutput) Includes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *IdpIntegrationSonarqubeProjects) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Includes
+	}).(pulumi.StringArrayOutput)
+}
+
 type IdpPluginEnvVariable struct {
 	// Name of the environment variable.
 	EnvName string `pulumi:"envName"`
@@ -51053,6 +56741,3869 @@ func (o GetIdpCatalogEntityGitDetailArrayOutput) Index(i pulumi.IntInput) GetIdp
 	}).(GetIdpCatalogEntityGitDetailOutput)
 }
 
+type GetIdpIntegrationBitbucketCloud struct {
+	// Lower bound for the first sync, RFC3339.
+	StartDate string `pulumi:"startDate"`
+}
+
+// GetIdpIntegrationBitbucketCloudInput is an input type that accepts GetIdpIntegrationBitbucketCloudArgs and GetIdpIntegrationBitbucketCloudOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationBitbucketCloudInput` via:
+//
+//	GetIdpIntegrationBitbucketCloudArgs{...}
+type GetIdpIntegrationBitbucketCloudInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationBitbucketCloudOutput() GetIdpIntegrationBitbucketCloudOutput
+	ToGetIdpIntegrationBitbucketCloudOutputWithContext(context.Context) GetIdpIntegrationBitbucketCloudOutput
+}
+
+type GetIdpIntegrationBitbucketCloudArgs struct {
+	// Lower bound for the first sync, RFC3339.
+	StartDate pulumi.StringInput `pulumi:"startDate"`
+}
+
+func (GetIdpIntegrationBitbucketCloudArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationBitbucketCloud)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationBitbucketCloudArgs) ToGetIdpIntegrationBitbucketCloudOutput() GetIdpIntegrationBitbucketCloudOutput {
+	return i.ToGetIdpIntegrationBitbucketCloudOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationBitbucketCloudArgs) ToGetIdpIntegrationBitbucketCloudOutputWithContext(ctx context.Context) GetIdpIntegrationBitbucketCloudOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationBitbucketCloudOutput)
+}
+
+// GetIdpIntegrationBitbucketCloudArrayInput is an input type that accepts GetIdpIntegrationBitbucketCloudArray and GetIdpIntegrationBitbucketCloudArrayOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationBitbucketCloudArrayInput` via:
+//
+//	GetIdpIntegrationBitbucketCloudArray{ GetIdpIntegrationBitbucketCloudArgs{...} }
+type GetIdpIntegrationBitbucketCloudArrayInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationBitbucketCloudArrayOutput() GetIdpIntegrationBitbucketCloudArrayOutput
+	ToGetIdpIntegrationBitbucketCloudArrayOutputWithContext(context.Context) GetIdpIntegrationBitbucketCloudArrayOutput
+}
+
+type GetIdpIntegrationBitbucketCloudArray []GetIdpIntegrationBitbucketCloudInput
+
+func (GetIdpIntegrationBitbucketCloudArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationBitbucketCloud)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationBitbucketCloudArray) ToGetIdpIntegrationBitbucketCloudArrayOutput() GetIdpIntegrationBitbucketCloudArrayOutput {
+	return i.ToGetIdpIntegrationBitbucketCloudArrayOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationBitbucketCloudArray) ToGetIdpIntegrationBitbucketCloudArrayOutputWithContext(ctx context.Context) GetIdpIntegrationBitbucketCloudArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationBitbucketCloudArrayOutput)
+}
+
+type GetIdpIntegrationBitbucketCloudOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationBitbucketCloudOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationBitbucketCloud)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationBitbucketCloudOutput) ToGetIdpIntegrationBitbucketCloudOutput() GetIdpIntegrationBitbucketCloudOutput {
+	return o
+}
+
+func (o GetIdpIntegrationBitbucketCloudOutput) ToGetIdpIntegrationBitbucketCloudOutputWithContext(ctx context.Context) GetIdpIntegrationBitbucketCloudOutput {
+	return o
+}
+
+// Lower bound for the first sync, RFC3339.
+func (o GetIdpIntegrationBitbucketCloudOutput) StartDate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpIntegrationBitbucketCloud) string { return v.StartDate }).(pulumi.StringOutput)
+}
+
+type GetIdpIntegrationBitbucketCloudArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationBitbucketCloudArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationBitbucketCloud)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationBitbucketCloudArrayOutput) ToGetIdpIntegrationBitbucketCloudArrayOutput() GetIdpIntegrationBitbucketCloudArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationBitbucketCloudArrayOutput) ToGetIdpIntegrationBitbucketCloudArrayOutputWithContext(ctx context.Context) GetIdpIntegrationBitbucketCloudArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationBitbucketCloudArrayOutput) Index(i pulumi.IntInput) GetIdpIntegrationBitbucketCloudOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIdpIntegrationBitbucketCloud {
+		return vs[0].([]GetIdpIntegrationBitbucketCloud)[vs[1].(int)]
+	}).(GetIdpIntegrationBitbucketCloudOutput)
+}
+
+type GetIdpIntegrationCatalogInfo struct {
+	// Branch to read; omit for each repository's default branch.
+	Branch string `pulumi:"branch"`
+	// Catalog file glob, relative to the repository root.
+	CatalogPath string `pulumi:"catalogPath"`
+	// Writes converted Harness YAML to git.
+	GitSyncs []GetIdpIntegrationCatalogInfoGitSync `pulumi:"gitSyncs"`
+	// Repositories to scan; omit to scan all.
+	Repositories []string `pulumi:"repositories"`
+	// github or bitbucket.
+	SourceType string `pulumi:"sourceType"`
+}
+
+// GetIdpIntegrationCatalogInfoInput is an input type that accepts GetIdpIntegrationCatalogInfoArgs and GetIdpIntegrationCatalogInfoOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationCatalogInfoInput` via:
+//
+//	GetIdpIntegrationCatalogInfoArgs{...}
+type GetIdpIntegrationCatalogInfoInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationCatalogInfoOutput() GetIdpIntegrationCatalogInfoOutput
+	ToGetIdpIntegrationCatalogInfoOutputWithContext(context.Context) GetIdpIntegrationCatalogInfoOutput
+}
+
+type GetIdpIntegrationCatalogInfoArgs struct {
+	// Branch to read; omit for each repository's default branch.
+	Branch pulumi.StringInput `pulumi:"branch"`
+	// Catalog file glob, relative to the repository root.
+	CatalogPath pulumi.StringInput `pulumi:"catalogPath"`
+	// Writes converted Harness YAML to git.
+	GitSyncs GetIdpIntegrationCatalogInfoGitSyncArrayInput `pulumi:"gitSyncs"`
+	// Repositories to scan; omit to scan all.
+	Repositories pulumi.StringArrayInput `pulumi:"repositories"`
+	// github or bitbucket.
+	SourceType pulumi.StringInput `pulumi:"sourceType"`
+}
+
+func (GetIdpIntegrationCatalogInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationCatalogInfo)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationCatalogInfoArgs) ToGetIdpIntegrationCatalogInfoOutput() GetIdpIntegrationCatalogInfoOutput {
+	return i.ToGetIdpIntegrationCatalogInfoOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationCatalogInfoArgs) ToGetIdpIntegrationCatalogInfoOutputWithContext(ctx context.Context) GetIdpIntegrationCatalogInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationCatalogInfoOutput)
+}
+
+// GetIdpIntegrationCatalogInfoArrayInput is an input type that accepts GetIdpIntegrationCatalogInfoArray and GetIdpIntegrationCatalogInfoArrayOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationCatalogInfoArrayInput` via:
+//
+//	GetIdpIntegrationCatalogInfoArray{ GetIdpIntegrationCatalogInfoArgs{...} }
+type GetIdpIntegrationCatalogInfoArrayInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationCatalogInfoArrayOutput() GetIdpIntegrationCatalogInfoArrayOutput
+	ToGetIdpIntegrationCatalogInfoArrayOutputWithContext(context.Context) GetIdpIntegrationCatalogInfoArrayOutput
+}
+
+type GetIdpIntegrationCatalogInfoArray []GetIdpIntegrationCatalogInfoInput
+
+func (GetIdpIntegrationCatalogInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationCatalogInfo)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationCatalogInfoArray) ToGetIdpIntegrationCatalogInfoArrayOutput() GetIdpIntegrationCatalogInfoArrayOutput {
+	return i.ToGetIdpIntegrationCatalogInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationCatalogInfoArray) ToGetIdpIntegrationCatalogInfoArrayOutputWithContext(ctx context.Context) GetIdpIntegrationCatalogInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationCatalogInfoArrayOutput)
+}
+
+type GetIdpIntegrationCatalogInfoOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationCatalogInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationCatalogInfo)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationCatalogInfoOutput) ToGetIdpIntegrationCatalogInfoOutput() GetIdpIntegrationCatalogInfoOutput {
+	return o
+}
+
+func (o GetIdpIntegrationCatalogInfoOutput) ToGetIdpIntegrationCatalogInfoOutputWithContext(ctx context.Context) GetIdpIntegrationCatalogInfoOutput {
+	return o
+}
+
+// Branch to read; omit for each repository's default branch.
+func (o GetIdpIntegrationCatalogInfoOutput) Branch() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpIntegrationCatalogInfo) string { return v.Branch }).(pulumi.StringOutput)
+}
+
+// Catalog file glob, relative to the repository root.
+func (o GetIdpIntegrationCatalogInfoOutput) CatalogPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpIntegrationCatalogInfo) string { return v.CatalogPath }).(pulumi.StringOutput)
+}
+
+// Writes converted Harness YAML to git.
+func (o GetIdpIntegrationCatalogInfoOutput) GitSyncs() GetIdpIntegrationCatalogInfoGitSyncArrayOutput {
+	return o.ApplyT(func(v GetIdpIntegrationCatalogInfo) []GetIdpIntegrationCatalogInfoGitSync { return v.GitSyncs }).(GetIdpIntegrationCatalogInfoGitSyncArrayOutput)
+}
+
+// Repositories to scan; omit to scan all.
+func (o GetIdpIntegrationCatalogInfoOutput) Repositories() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIdpIntegrationCatalogInfo) []string { return v.Repositories }).(pulumi.StringArrayOutput)
+}
+
+// github or bitbucket.
+func (o GetIdpIntegrationCatalogInfoOutput) SourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpIntegrationCatalogInfo) string { return v.SourceType }).(pulumi.StringOutput)
+}
+
+type GetIdpIntegrationCatalogInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationCatalogInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationCatalogInfo)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationCatalogInfoArrayOutput) ToGetIdpIntegrationCatalogInfoArrayOutput() GetIdpIntegrationCatalogInfoArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationCatalogInfoArrayOutput) ToGetIdpIntegrationCatalogInfoArrayOutputWithContext(ctx context.Context) GetIdpIntegrationCatalogInfoArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationCatalogInfoArrayOutput) Index(i pulumi.IntInput) GetIdpIntegrationCatalogInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIdpIntegrationCatalogInfo {
+		return vs[0].([]GetIdpIntegrationCatalogInfo)[vs[1].(int)]
+	}).(GetIdpIntegrationCatalogInfoOutput)
+}
+
+type GetIdpIntegrationCatalogInfoGitSync struct {
+	// Directory the files are written to.
+	BasePath string `pulumi:"basePath"`
+	// Connector used to push.
+	ConnectorRef string `pulumi:"connectorRef"`
+	// Where to push. Set exactly one of sourceRepo or repo.
+	Targets []GetIdpIntegrationCatalogInfoGitSyncTarget `pulumi:"targets"`
+}
+
+// GetIdpIntegrationCatalogInfoGitSyncInput is an input type that accepts GetIdpIntegrationCatalogInfoGitSyncArgs and GetIdpIntegrationCatalogInfoGitSyncOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationCatalogInfoGitSyncInput` via:
+//
+//	GetIdpIntegrationCatalogInfoGitSyncArgs{...}
+type GetIdpIntegrationCatalogInfoGitSyncInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationCatalogInfoGitSyncOutput() GetIdpIntegrationCatalogInfoGitSyncOutput
+	ToGetIdpIntegrationCatalogInfoGitSyncOutputWithContext(context.Context) GetIdpIntegrationCatalogInfoGitSyncOutput
+}
+
+type GetIdpIntegrationCatalogInfoGitSyncArgs struct {
+	// Directory the files are written to.
+	BasePath pulumi.StringInput `pulumi:"basePath"`
+	// Connector used to push.
+	ConnectorRef pulumi.StringInput `pulumi:"connectorRef"`
+	// Where to push. Set exactly one of sourceRepo or repo.
+	Targets GetIdpIntegrationCatalogInfoGitSyncTargetArrayInput `pulumi:"targets"`
+}
+
+func (GetIdpIntegrationCatalogInfoGitSyncArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationCatalogInfoGitSync)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationCatalogInfoGitSyncArgs) ToGetIdpIntegrationCatalogInfoGitSyncOutput() GetIdpIntegrationCatalogInfoGitSyncOutput {
+	return i.ToGetIdpIntegrationCatalogInfoGitSyncOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationCatalogInfoGitSyncArgs) ToGetIdpIntegrationCatalogInfoGitSyncOutputWithContext(ctx context.Context) GetIdpIntegrationCatalogInfoGitSyncOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationCatalogInfoGitSyncOutput)
+}
+
+// GetIdpIntegrationCatalogInfoGitSyncArrayInput is an input type that accepts GetIdpIntegrationCatalogInfoGitSyncArray and GetIdpIntegrationCatalogInfoGitSyncArrayOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationCatalogInfoGitSyncArrayInput` via:
+//
+//	GetIdpIntegrationCatalogInfoGitSyncArray{ GetIdpIntegrationCatalogInfoGitSyncArgs{...} }
+type GetIdpIntegrationCatalogInfoGitSyncArrayInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationCatalogInfoGitSyncArrayOutput() GetIdpIntegrationCatalogInfoGitSyncArrayOutput
+	ToGetIdpIntegrationCatalogInfoGitSyncArrayOutputWithContext(context.Context) GetIdpIntegrationCatalogInfoGitSyncArrayOutput
+}
+
+type GetIdpIntegrationCatalogInfoGitSyncArray []GetIdpIntegrationCatalogInfoGitSyncInput
+
+func (GetIdpIntegrationCatalogInfoGitSyncArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationCatalogInfoGitSync)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationCatalogInfoGitSyncArray) ToGetIdpIntegrationCatalogInfoGitSyncArrayOutput() GetIdpIntegrationCatalogInfoGitSyncArrayOutput {
+	return i.ToGetIdpIntegrationCatalogInfoGitSyncArrayOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationCatalogInfoGitSyncArray) ToGetIdpIntegrationCatalogInfoGitSyncArrayOutputWithContext(ctx context.Context) GetIdpIntegrationCatalogInfoGitSyncArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationCatalogInfoGitSyncArrayOutput)
+}
+
+type GetIdpIntegrationCatalogInfoGitSyncOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationCatalogInfoGitSyncOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationCatalogInfoGitSync)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationCatalogInfoGitSyncOutput) ToGetIdpIntegrationCatalogInfoGitSyncOutput() GetIdpIntegrationCatalogInfoGitSyncOutput {
+	return o
+}
+
+func (o GetIdpIntegrationCatalogInfoGitSyncOutput) ToGetIdpIntegrationCatalogInfoGitSyncOutputWithContext(ctx context.Context) GetIdpIntegrationCatalogInfoGitSyncOutput {
+	return o
+}
+
+// Directory the files are written to.
+func (o GetIdpIntegrationCatalogInfoGitSyncOutput) BasePath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpIntegrationCatalogInfoGitSync) string { return v.BasePath }).(pulumi.StringOutput)
+}
+
+// Connector used to push.
+func (o GetIdpIntegrationCatalogInfoGitSyncOutput) ConnectorRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpIntegrationCatalogInfoGitSync) string { return v.ConnectorRef }).(pulumi.StringOutput)
+}
+
+// Where to push. Set exactly one of sourceRepo or repo.
+func (o GetIdpIntegrationCatalogInfoGitSyncOutput) Targets() GetIdpIntegrationCatalogInfoGitSyncTargetArrayOutput {
+	return o.ApplyT(func(v GetIdpIntegrationCatalogInfoGitSync) []GetIdpIntegrationCatalogInfoGitSyncTarget {
+		return v.Targets
+	}).(GetIdpIntegrationCatalogInfoGitSyncTargetArrayOutput)
+}
+
+type GetIdpIntegrationCatalogInfoGitSyncArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationCatalogInfoGitSyncArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationCatalogInfoGitSync)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationCatalogInfoGitSyncArrayOutput) ToGetIdpIntegrationCatalogInfoGitSyncArrayOutput() GetIdpIntegrationCatalogInfoGitSyncArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationCatalogInfoGitSyncArrayOutput) ToGetIdpIntegrationCatalogInfoGitSyncArrayOutputWithContext(ctx context.Context) GetIdpIntegrationCatalogInfoGitSyncArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationCatalogInfoGitSyncArrayOutput) Index(i pulumi.IntInput) GetIdpIntegrationCatalogInfoGitSyncOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIdpIntegrationCatalogInfoGitSync {
+		return vs[0].([]GetIdpIntegrationCatalogInfoGitSync)[vs[1].(int)]
+	}).(GetIdpIntegrationCatalogInfoGitSyncOutput)
+}
+
+type GetIdpIntegrationCatalogInfoGitSyncTarget struct {
+	// Push to one repository.
+	Repos []GetIdpIntegrationCatalogInfoGitSyncTargetRepo `pulumi:"repos"`
+	// Push to the repository each file was read from.
+	SourceRepo bool `pulumi:"sourceRepo"`
+}
+
+// GetIdpIntegrationCatalogInfoGitSyncTargetInput is an input type that accepts GetIdpIntegrationCatalogInfoGitSyncTargetArgs and GetIdpIntegrationCatalogInfoGitSyncTargetOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationCatalogInfoGitSyncTargetInput` via:
+//
+//	GetIdpIntegrationCatalogInfoGitSyncTargetArgs{...}
+type GetIdpIntegrationCatalogInfoGitSyncTargetInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationCatalogInfoGitSyncTargetOutput() GetIdpIntegrationCatalogInfoGitSyncTargetOutput
+	ToGetIdpIntegrationCatalogInfoGitSyncTargetOutputWithContext(context.Context) GetIdpIntegrationCatalogInfoGitSyncTargetOutput
+}
+
+type GetIdpIntegrationCatalogInfoGitSyncTargetArgs struct {
+	// Push to one repository.
+	Repos GetIdpIntegrationCatalogInfoGitSyncTargetRepoArrayInput `pulumi:"repos"`
+	// Push to the repository each file was read from.
+	SourceRepo pulumi.BoolInput `pulumi:"sourceRepo"`
+}
+
+func (GetIdpIntegrationCatalogInfoGitSyncTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationCatalogInfoGitSyncTarget)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationCatalogInfoGitSyncTargetArgs) ToGetIdpIntegrationCatalogInfoGitSyncTargetOutput() GetIdpIntegrationCatalogInfoGitSyncTargetOutput {
+	return i.ToGetIdpIntegrationCatalogInfoGitSyncTargetOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationCatalogInfoGitSyncTargetArgs) ToGetIdpIntegrationCatalogInfoGitSyncTargetOutputWithContext(ctx context.Context) GetIdpIntegrationCatalogInfoGitSyncTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationCatalogInfoGitSyncTargetOutput)
+}
+
+// GetIdpIntegrationCatalogInfoGitSyncTargetArrayInput is an input type that accepts GetIdpIntegrationCatalogInfoGitSyncTargetArray and GetIdpIntegrationCatalogInfoGitSyncTargetArrayOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationCatalogInfoGitSyncTargetArrayInput` via:
+//
+//	GetIdpIntegrationCatalogInfoGitSyncTargetArray{ GetIdpIntegrationCatalogInfoGitSyncTargetArgs{...} }
+type GetIdpIntegrationCatalogInfoGitSyncTargetArrayInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationCatalogInfoGitSyncTargetArrayOutput() GetIdpIntegrationCatalogInfoGitSyncTargetArrayOutput
+	ToGetIdpIntegrationCatalogInfoGitSyncTargetArrayOutputWithContext(context.Context) GetIdpIntegrationCatalogInfoGitSyncTargetArrayOutput
+}
+
+type GetIdpIntegrationCatalogInfoGitSyncTargetArray []GetIdpIntegrationCatalogInfoGitSyncTargetInput
+
+func (GetIdpIntegrationCatalogInfoGitSyncTargetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationCatalogInfoGitSyncTarget)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationCatalogInfoGitSyncTargetArray) ToGetIdpIntegrationCatalogInfoGitSyncTargetArrayOutput() GetIdpIntegrationCatalogInfoGitSyncTargetArrayOutput {
+	return i.ToGetIdpIntegrationCatalogInfoGitSyncTargetArrayOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationCatalogInfoGitSyncTargetArray) ToGetIdpIntegrationCatalogInfoGitSyncTargetArrayOutputWithContext(ctx context.Context) GetIdpIntegrationCatalogInfoGitSyncTargetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationCatalogInfoGitSyncTargetArrayOutput)
+}
+
+type GetIdpIntegrationCatalogInfoGitSyncTargetOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationCatalogInfoGitSyncTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationCatalogInfoGitSyncTarget)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationCatalogInfoGitSyncTargetOutput) ToGetIdpIntegrationCatalogInfoGitSyncTargetOutput() GetIdpIntegrationCatalogInfoGitSyncTargetOutput {
+	return o
+}
+
+func (o GetIdpIntegrationCatalogInfoGitSyncTargetOutput) ToGetIdpIntegrationCatalogInfoGitSyncTargetOutputWithContext(ctx context.Context) GetIdpIntegrationCatalogInfoGitSyncTargetOutput {
+	return o
+}
+
+// Push to one repository.
+func (o GetIdpIntegrationCatalogInfoGitSyncTargetOutput) Repos() GetIdpIntegrationCatalogInfoGitSyncTargetRepoArrayOutput {
+	return o.ApplyT(func(v GetIdpIntegrationCatalogInfoGitSyncTarget) []GetIdpIntegrationCatalogInfoGitSyncTargetRepo {
+		return v.Repos
+	}).(GetIdpIntegrationCatalogInfoGitSyncTargetRepoArrayOutput)
+}
+
+// Push to the repository each file was read from.
+func (o GetIdpIntegrationCatalogInfoGitSyncTargetOutput) SourceRepo() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetIdpIntegrationCatalogInfoGitSyncTarget) bool { return v.SourceRepo }).(pulumi.BoolOutput)
+}
+
+type GetIdpIntegrationCatalogInfoGitSyncTargetArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationCatalogInfoGitSyncTargetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationCatalogInfoGitSyncTarget)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationCatalogInfoGitSyncTargetArrayOutput) ToGetIdpIntegrationCatalogInfoGitSyncTargetArrayOutput() GetIdpIntegrationCatalogInfoGitSyncTargetArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationCatalogInfoGitSyncTargetArrayOutput) ToGetIdpIntegrationCatalogInfoGitSyncTargetArrayOutputWithContext(ctx context.Context) GetIdpIntegrationCatalogInfoGitSyncTargetArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationCatalogInfoGitSyncTargetArrayOutput) Index(i pulumi.IntInput) GetIdpIntegrationCatalogInfoGitSyncTargetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIdpIntegrationCatalogInfoGitSyncTarget {
+		return vs[0].([]GetIdpIntegrationCatalogInfoGitSyncTarget)[vs[1].(int)]
+	}).(GetIdpIntegrationCatalogInfoGitSyncTargetOutput)
+}
+
+type GetIdpIntegrationCatalogInfoGitSyncTargetRepo struct {
+	// Branch.
+	Branch string `pulumi:"branch"`
+	// Repository.
+	Name string `pulumi:"name"`
+}
+
+// GetIdpIntegrationCatalogInfoGitSyncTargetRepoInput is an input type that accepts GetIdpIntegrationCatalogInfoGitSyncTargetRepoArgs and GetIdpIntegrationCatalogInfoGitSyncTargetRepoOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationCatalogInfoGitSyncTargetRepoInput` via:
+//
+//	GetIdpIntegrationCatalogInfoGitSyncTargetRepoArgs{...}
+type GetIdpIntegrationCatalogInfoGitSyncTargetRepoInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationCatalogInfoGitSyncTargetRepoOutput() GetIdpIntegrationCatalogInfoGitSyncTargetRepoOutput
+	ToGetIdpIntegrationCatalogInfoGitSyncTargetRepoOutputWithContext(context.Context) GetIdpIntegrationCatalogInfoGitSyncTargetRepoOutput
+}
+
+type GetIdpIntegrationCatalogInfoGitSyncTargetRepoArgs struct {
+	// Branch.
+	Branch pulumi.StringInput `pulumi:"branch"`
+	// Repository.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetIdpIntegrationCatalogInfoGitSyncTargetRepoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationCatalogInfoGitSyncTargetRepo)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationCatalogInfoGitSyncTargetRepoArgs) ToGetIdpIntegrationCatalogInfoGitSyncTargetRepoOutput() GetIdpIntegrationCatalogInfoGitSyncTargetRepoOutput {
+	return i.ToGetIdpIntegrationCatalogInfoGitSyncTargetRepoOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationCatalogInfoGitSyncTargetRepoArgs) ToGetIdpIntegrationCatalogInfoGitSyncTargetRepoOutputWithContext(ctx context.Context) GetIdpIntegrationCatalogInfoGitSyncTargetRepoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationCatalogInfoGitSyncTargetRepoOutput)
+}
+
+// GetIdpIntegrationCatalogInfoGitSyncTargetRepoArrayInput is an input type that accepts GetIdpIntegrationCatalogInfoGitSyncTargetRepoArray and GetIdpIntegrationCatalogInfoGitSyncTargetRepoArrayOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationCatalogInfoGitSyncTargetRepoArrayInput` via:
+//
+//	GetIdpIntegrationCatalogInfoGitSyncTargetRepoArray{ GetIdpIntegrationCatalogInfoGitSyncTargetRepoArgs{...} }
+type GetIdpIntegrationCatalogInfoGitSyncTargetRepoArrayInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationCatalogInfoGitSyncTargetRepoArrayOutput() GetIdpIntegrationCatalogInfoGitSyncTargetRepoArrayOutput
+	ToGetIdpIntegrationCatalogInfoGitSyncTargetRepoArrayOutputWithContext(context.Context) GetIdpIntegrationCatalogInfoGitSyncTargetRepoArrayOutput
+}
+
+type GetIdpIntegrationCatalogInfoGitSyncTargetRepoArray []GetIdpIntegrationCatalogInfoGitSyncTargetRepoInput
+
+func (GetIdpIntegrationCatalogInfoGitSyncTargetRepoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationCatalogInfoGitSyncTargetRepo)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationCatalogInfoGitSyncTargetRepoArray) ToGetIdpIntegrationCatalogInfoGitSyncTargetRepoArrayOutput() GetIdpIntegrationCatalogInfoGitSyncTargetRepoArrayOutput {
+	return i.ToGetIdpIntegrationCatalogInfoGitSyncTargetRepoArrayOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationCatalogInfoGitSyncTargetRepoArray) ToGetIdpIntegrationCatalogInfoGitSyncTargetRepoArrayOutputWithContext(ctx context.Context) GetIdpIntegrationCatalogInfoGitSyncTargetRepoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationCatalogInfoGitSyncTargetRepoArrayOutput)
+}
+
+type GetIdpIntegrationCatalogInfoGitSyncTargetRepoOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationCatalogInfoGitSyncTargetRepoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationCatalogInfoGitSyncTargetRepo)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationCatalogInfoGitSyncTargetRepoOutput) ToGetIdpIntegrationCatalogInfoGitSyncTargetRepoOutput() GetIdpIntegrationCatalogInfoGitSyncTargetRepoOutput {
+	return o
+}
+
+func (o GetIdpIntegrationCatalogInfoGitSyncTargetRepoOutput) ToGetIdpIntegrationCatalogInfoGitSyncTargetRepoOutputWithContext(ctx context.Context) GetIdpIntegrationCatalogInfoGitSyncTargetRepoOutput {
+	return o
+}
+
+// Branch.
+func (o GetIdpIntegrationCatalogInfoGitSyncTargetRepoOutput) Branch() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpIntegrationCatalogInfoGitSyncTargetRepo) string { return v.Branch }).(pulumi.StringOutput)
+}
+
+// Repository.
+func (o GetIdpIntegrationCatalogInfoGitSyncTargetRepoOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpIntegrationCatalogInfoGitSyncTargetRepo) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetIdpIntegrationCatalogInfoGitSyncTargetRepoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationCatalogInfoGitSyncTargetRepoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationCatalogInfoGitSyncTargetRepo)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationCatalogInfoGitSyncTargetRepoArrayOutput) ToGetIdpIntegrationCatalogInfoGitSyncTargetRepoArrayOutput() GetIdpIntegrationCatalogInfoGitSyncTargetRepoArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationCatalogInfoGitSyncTargetRepoArrayOutput) ToGetIdpIntegrationCatalogInfoGitSyncTargetRepoArrayOutputWithContext(ctx context.Context) GetIdpIntegrationCatalogInfoGitSyncTargetRepoArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationCatalogInfoGitSyncTargetRepoArrayOutput) Index(i pulumi.IntInput) GetIdpIntegrationCatalogInfoGitSyncTargetRepoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIdpIntegrationCatalogInfoGitSyncTargetRepo {
+		return vs[0].([]GetIdpIntegrationCatalogInfoGitSyncTargetRepo)[vs[1].(int)]
+	}).(GetIdpIntegrationCatalogInfoGitSyncTargetRepoOutput)
+}
+
+type GetIdpIntegrationConnector struct {
+	// Credentials stored on the integration.
+	Inlines []GetIdpIntegrationConnectorInline `pulumi:"inlines"`
+	// Reference to a standalone IDP connector.
+	Ref string `pulumi:"ref"`
+}
+
+// GetIdpIntegrationConnectorInput is an input type that accepts GetIdpIntegrationConnectorArgs and GetIdpIntegrationConnectorOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationConnectorInput` via:
+//
+//	GetIdpIntegrationConnectorArgs{...}
+type GetIdpIntegrationConnectorInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationConnectorOutput() GetIdpIntegrationConnectorOutput
+	ToGetIdpIntegrationConnectorOutputWithContext(context.Context) GetIdpIntegrationConnectorOutput
+}
+
+type GetIdpIntegrationConnectorArgs struct {
+	// Credentials stored on the integration.
+	Inlines GetIdpIntegrationConnectorInlineArrayInput `pulumi:"inlines"`
+	// Reference to a standalone IDP connector.
+	Ref pulumi.StringInput `pulumi:"ref"`
+}
+
+func (GetIdpIntegrationConnectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationConnector)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationConnectorArgs) ToGetIdpIntegrationConnectorOutput() GetIdpIntegrationConnectorOutput {
+	return i.ToGetIdpIntegrationConnectorOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationConnectorArgs) ToGetIdpIntegrationConnectorOutputWithContext(ctx context.Context) GetIdpIntegrationConnectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationConnectorOutput)
+}
+
+// GetIdpIntegrationConnectorArrayInput is an input type that accepts GetIdpIntegrationConnectorArray and GetIdpIntegrationConnectorArrayOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationConnectorArrayInput` via:
+//
+//	GetIdpIntegrationConnectorArray{ GetIdpIntegrationConnectorArgs{...} }
+type GetIdpIntegrationConnectorArrayInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationConnectorArrayOutput() GetIdpIntegrationConnectorArrayOutput
+	ToGetIdpIntegrationConnectorArrayOutputWithContext(context.Context) GetIdpIntegrationConnectorArrayOutput
+}
+
+type GetIdpIntegrationConnectorArray []GetIdpIntegrationConnectorInput
+
+func (GetIdpIntegrationConnectorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationConnector)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationConnectorArray) ToGetIdpIntegrationConnectorArrayOutput() GetIdpIntegrationConnectorArrayOutput {
+	return i.ToGetIdpIntegrationConnectorArrayOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationConnectorArray) ToGetIdpIntegrationConnectorArrayOutputWithContext(ctx context.Context) GetIdpIntegrationConnectorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationConnectorArrayOutput)
+}
+
+type GetIdpIntegrationConnectorOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationConnectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationConnector)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationConnectorOutput) ToGetIdpIntegrationConnectorOutput() GetIdpIntegrationConnectorOutput {
+	return o
+}
+
+func (o GetIdpIntegrationConnectorOutput) ToGetIdpIntegrationConnectorOutputWithContext(ctx context.Context) GetIdpIntegrationConnectorOutput {
+	return o
+}
+
+// Credentials stored on the integration.
+func (o GetIdpIntegrationConnectorOutput) Inlines() GetIdpIntegrationConnectorInlineArrayOutput {
+	return o.ApplyT(func(v GetIdpIntegrationConnector) []GetIdpIntegrationConnectorInline { return v.Inlines }).(GetIdpIntegrationConnectorInlineArrayOutput)
+}
+
+// Reference to a standalone IDP connector.
+func (o GetIdpIntegrationConnectorOutput) Ref() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpIntegrationConnector) string { return v.Ref }).(pulumi.StringOutput)
+}
+
+type GetIdpIntegrationConnectorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationConnectorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationConnector)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationConnectorArrayOutput) ToGetIdpIntegrationConnectorArrayOutput() GetIdpIntegrationConnectorArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationConnectorArrayOutput) ToGetIdpIntegrationConnectorArrayOutputWithContext(ctx context.Context) GetIdpIntegrationConnectorArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationConnectorArrayOutput) Index(i pulumi.IntInput) GetIdpIntegrationConnectorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIdpIntegrationConnector {
+		return vs[0].([]GetIdpIntegrationConnector)[vs[1].(int)]
+	}).(GetIdpIntegrationConnectorOutput)
+}
+
+type GetIdpIntegrationConnectorInline struct {
+	// Harness connector reference, e.g. account.snow. Can't change.
+	CredentialsRef string `pulumi:"credentialsRef"`
+}
+
+// GetIdpIntegrationConnectorInlineInput is an input type that accepts GetIdpIntegrationConnectorInlineArgs and GetIdpIntegrationConnectorInlineOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationConnectorInlineInput` via:
+//
+//	GetIdpIntegrationConnectorInlineArgs{...}
+type GetIdpIntegrationConnectorInlineInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationConnectorInlineOutput() GetIdpIntegrationConnectorInlineOutput
+	ToGetIdpIntegrationConnectorInlineOutputWithContext(context.Context) GetIdpIntegrationConnectorInlineOutput
+}
+
+type GetIdpIntegrationConnectorInlineArgs struct {
+	// Harness connector reference, e.g. account.snow. Can't change.
+	CredentialsRef pulumi.StringInput `pulumi:"credentialsRef"`
+}
+
+func (GetIdpIntegrationConnectorInlineArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationConnectorInline)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationConnectorInlineArgs) ToGetIdpIntegrationConnectorInlineOutput() GetIdpIntegrationConnectorInlineOutput {
+	return i.ToGetIdpIntegrationConnectorInlineOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationConnectorInlineArgs) ToGetIdpIntegrationConnectorInlineOutputWithContext(ctx context.Context) GetIdpIntegrationConnectorInlineOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationConnectorInlineOutput)
+}
+
+// GetIdpIntegrationConnectorInlineArrayInput is an input type that accepts GetIdpIntegrationConnectorInlineArray and GetIdpIntegrationConnectorInlineArrayOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationConnectorInlineArrayInput` via:
+//
+//	GetIdpIntegrationConnectorInlineArray{ GetIdpIntegrationConnectorInlineArgs{...} }
+type GetIdpIntegrationConnectorInlineArrayInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationConnectorInlineArrayOutput() GetIdpIntegrationConnectorInlineArrayOutput
+	ToGetIdpIntegrationConnectorInlineArrayOutputWithContext(context.Context) GetIdpIntegrationConnectorInlineArrayOutput
+}
+
+type GetIdpIntegrationConnectorInlineArray []GetIdpIntegrationConnectorInlineInput
+
+func (GetIdpIntegrationConnectorInlineArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationConnectorInline)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationConnectorInlineArray) ToGetIdpIntegrationConnectorInlineArrayOutput() GetIdpIntegrationConnectorInlineArrayOutput {
+	return i.ToGetIdpIntegrationConnectorInlineArrayOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationConnectorInlineArray) ToGetIdpIntegrationConnectorInlineArrayOutputWithContext(ctx context.Context) GetIdpIntegrationConnectorInlineArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationConnectorInlineArrayOutput)
+}
+
+type GetIdpIntegrationConnectorInlineOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationConnectorInlineOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationConnectorInline)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationConnectorInlineOutput) ToGetIdpIntegrationConnectorInlineOutput() GetIdpIntegrationConnectorInlineOutput {
+	return o
+}
+
+func (o GetIdpIntegrationConnectorInlineOutput) ToGetIdpIntegrationConnectorInlineOutputWithContext(ctx context.Context) GetIdpIntegrationConnectorInlineOutput {
+	return o
+}
+
+// Harness connector reference, e.g. account.snow. Can't change.
+func (o GetIdpIntegrationConnectorInlineOutput) CredentialsRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpIntegrationConnectorInline) string { return v.CredentialsRef }).(pulumi.StringOutput)
+}
+
+type GetIdpIntegrationConnectorInlineArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationConnectorInlineArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationConnectorInline)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationConnectorInlineArrayOutput) ToGetIdpIntegrationConnectorInlineArrayOutput() GetIdpIntegrationConnectorInlineArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationConnectorInlineArrayOutput) ToGetIdpIntegrationConnectorInlineArrayOutputWithContext(ctx context.Context) GetIdpIntegrationConnectorInlineArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationConnectorInlineArrayOutput) Index(i pulumi.IntInput) GetIdpIntegrationConnectorInlineOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIdpIntegrationConnectorInline {
+		return vs[0].([]GetIdpIntegrationConnectorInline)[vs[1].(int)]
+	}).(GetIdpIntegrationConnectorInlineOutput)
+}
+
+type GetIdpIntegrationCustom struct {
+	// Columns shown for the integration's entities.
+	Layouts []GetIdpIntegrationCustomLayout `pulumi:"layouts"`
+	// webhook or api.
+	Mode string `pulumi:"mode"`
+	// Label for the sending system.
+	SourceLabel string `pulumi:"sourceLabel"`
+	// Webhook authentication. Required in webhook mode.
+	WebhookAuths []GetIdpIntegrationCustomWebhookAuth `pulumi:"webhookAuths"`
+}
+
+// GetIdpIntegrationCustomInput is an input type that accepts GetIdpIntegrationCustomArgs and GetIdpIntegrationCustomOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationCustomInput` via:
+//
+//	GetIdpIntegrationCustomArgs{...}
+type GetIdpIntegrationCustomInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationCustomOutput() GetIdpIntegrationCustomOutput
+	ToGetIdpIntegrationCustomOutputWithContext(context.Context) GetIdpIntegrationCustomOutput
+}
+
+type GetIdpIntegrationCustomArgs struct {
+	// Columns shown for the integration's entities.
+	Layouts GetIdpIntegrationCustomLayoutArrayInput `pulumi:"layouts"`
+	// webhook or api.
+	Mode pulumi.StringInput `pulumi:"mode"`
+	// Label for the sending system.
+	SourceLabel pulumi.StringInput `pulumi:"sourceLabel"`
+	// Webhook authentication. Required in webhook mode.
+	WebhookAuths GetIdpIntegrationCustomWebhookAuthArrayInput `pulumi:"webhookAuths"`
+}
+
+func (GetIdpIntegrationCustomArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationCustom)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationCustomArgs) ToGetIdpIntegrationCustomOutput() GetIdpIntegrationCustomOutput {
+	return i.ToGetIdpIntegrationCustomOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationCustomArgs) ToGetIdpIntegrationCustomOutputWithContext(ctx context.Context) GetIdpIntegrationCustomOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationCustomOutput)
+}
+
+// GetIdpIntegrationCustomArrayInput is an input type that accepts GetIdpIntegrationCustomArray and GetIdpIntegrationCustomArrayOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationCustomArrayInput` via:
+//
+//	GetIdpIntegrationCustomArray{ GetIdpIntegrationCustomArgs{...} }
+type GetIdpIntegrationCustomArrayInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationCustomArrayOutput() GetIdpIntegrationCustomArrayOutput
+	ToGetIdpIntegrationCustomArrayOutputWithContext(context.Context) GetIdpIntegrationCustomArrayOutput
+}
+
+type GetIdpIntegrationCustomArray []GetIdpIntegrationCustomInput
+
+func (GetIdpIntegrationCustomArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationCustom)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationCustomArray) ToGetIdpIntegrationCustomArrayOutput() GetIdpIntegrationCustomArrayOutput {
+	return i.ToGetIdpIntegrationCustomArrayOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationCustomArray) ToGetIdpIntegrationCustomArrayOutputWithContext(ctx context.Context) GetIdpIntegrationCustomArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationCustomArrayOutput)
+}
+
+type GetIdpIntegrationCustomOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationCustomOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationCustom)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationCustomOutput) ToGetIdpIntegrationCustomOutput() GetIdpIntegrationCustomOutput {
+	return o
+}
+
+func (o GetIdpIntegrationCustomOutput) ToGetIdpIntegrationCustomOutputWithContext(ctx context.Context) GetIdpIntegrationCustomOutput {
+	return o
+}
+
+// Columns shown for the integration's entities.
+func (o GetIdpIntegrationCustomOutput) Layouts() GetIdpIntegrationCustomLayoutArrayOutput {
+	return o.ApplyT(func(v GetIdpIntegrationCustom) []GetIdpIntegrationCustomLayout { return v.Layouts }).(GetIdpIntegrationCustomLayoutArrayOutput)
+}
+
+// webhook or api.
+func (o GetIdpIntegrationCustomOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpIntegrationCustom) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+// Label for the sending system.
+func (o GetIdpIntegrationCustomOutput) SourceLabel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpIntegrationCustom) string { return v.SourceLabel }).(pulumi.StringOutput)
+}
+
+// Webhook authentication. Required in webhook mode.
+func (o GetIdpIntegrationCustomOutput) WebhookAuths() GetIdpIntegrationCustomWebhookAuthArrayOutput {
+	return o.ApplyT(func(v GetIdpIntegrationCustom) []GetIdpIntegrationCustomWebhookAuth { return v.WebhookAuths }).(GetIdpIntegrationCustomWebhookAuthArrayOutput)
+}
+
+type GetIdpIntegrationCustomArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationCustomArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationCustom)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationCustomArrayOutput) ToGetIdpIntegrationCustomArrayOutput() GetIdpIntegrationCustomArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationCustomArrayOutput) ToGetIdpIntegrationCustomArrayOutputWithContext(ctx context.Context) GetIdpIntegrationCustomArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationCustomArrayOutput) Index(i pulumi.IntInput) GetIdpIntegrationCustomOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIdpIntegrationCustom {
+		return vs[0].([]GetIdpIntegrationCustom)[vs[1].(int)]
+	}).(GetIdpIntegrationCustomOutput)
+}
+
+type GetIdpIntegrationCustomLayout struct {
+	// A column.
+	Columns []GetIdpIntegrationCustomLayoutColumn `pulumi:"columns"`
+}
+
+// GetIdpIntegrationCustomLayoutInput is an input type that accepts GetIdpIntegrationCustomLayoutArgs and GetIdpIntegrationCustomLayoutOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationCustomLayoutInput` via:
+//
+//	GetIdpIntegrationCustomLayoutArgs{...}
+type GetIdpIntegrationCustomLayoutInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationCustomLayoutOutput() GetIdpIntegrationCustomLayoutOutput
+	ToGetIdpIntegrationCustomLayoutOutputWithContext(context.Context) GetIdpIntegrationCustomLayoutOutput
+}
+
+type GetIdpIntegrationCustomLayoutArgs struct {
+	// A column.
+	Columns GetIdpIntegrationCustomLayoutColumnArrayInput `pulumi:"columns"`
+}
+
+func (GetIdpIntegrationCustomLayoutArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationCustomLayout)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationCustomLayoutArgs) ToGetIdpIntegrationCustomLayoutOutput() GetIdpIntegrationCustomLayoutOutput {
+	return i.ToGetIdpIntegrationCustomLayoutOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationCustomLayoutArgs) ToGetIdpIntegrationCustomLayoutOutputWithContext(ctx context.Context) GetIdpIntegrationCustomLayoutOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationCustomLayoutOutput)
+}
+
+// GetIdpIntegrationCustomLayoutArrayInput is an input type that accepts GetIdpIntegrationCustomLayoutArray and GetIdpIntegrationCustomLayoutArrayOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationCustomLayoutArrayInput` via:
+//
+//	GetIdpIntegrationCustomLayoutArray{ GetIdpIntegrationCustomLayoutArgs{...} }
+type GetIdpIntegrationCustomLayoutArrayInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationCustomLayoutArrayOutput() GetIdpIntegrationCustomLayoutArrayOutput
+	ToGetIdpIntegrationCustomLayoutArrayOutputWithContext(context.Context) GetIdpIntegrationCustomLayoutArrayOutput
+}
+
+type GetIdpIntegrationCustomLayoutArray []GetIdpIntegrationCustomLayoutInput
+
+func (GetIdpIntegrationCustomLayoutArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationCustomLayout)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationCustomLayoutArray) ToGetIdpIntegrationCustomLayoutArrayOutput() GetIdpIntegrationCustomLayoutArrayOutput {
+	return i.ToGetIdpIntegrationCustomLayoutArrayOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationCustomLayoutArray) ToGetIdpIntegrationCustomLayoutArrayOutputWithContext(ctx context.Context) GetIdpIntegrationCustomLayoutArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationCustomLayoutArrayOutput)
+}
+
+type GetIdpIntegrationCustomLayoutOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationCustomLayoutOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationCustomLayout)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationCustomLayoutOutput) ToGetIdpIntegrationCustomLayoutOutput() GetIdpIntegrationCustomLayoutOutput {
+	return o
+}
+
+func (o GetIdpIntegrationCustomLayoutOutput) ToGetIdpIntegrationCustomLayoutOutputWithContext(ctx context.Context) GetIdpIntegrationCustomLayoutOutput {
+	return o
+}
+
+// A column.
+func (o GetIdpIntegrationCustomLayoutOutput) Columns() GetIdpIntegrationCustomLayoutColumnArrayOutput {
+	return o.ApplyT(func(v GetIdpIntegrationCustomLayout) []GetIdpIntegrationCustomLayoutColumn { return v.Columns }).(GetIdpIntegrationCustomLayoutColumnArrayOutput)
+}
+
+type GetIdpIntegrationCustomLayoutArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationCustomLayoutArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationCustomLayout)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationCustomLayoutArrayOutput) ToGetIdpIntegrationCustomLayoutArrayOutput() GetIdpIntegrationCustomLayoutArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationCustomLayoutArrayOutput) ToGetIdpIntegrationCustomLayoutArrayOutputWithContext(ctx context.Context) GetIdpIntegrationCustomLayoutArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationCustomLayoutArrayOutput) Index(i pulumi.IntInput) GetIdpIntegrationCustomLayoutOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIdpIntegrationCustomLayout {
+		return vs[0].([]GetIdpIntegrationCustomLayout)[vs[1].(int)]
+	}).(GetIdpIntegrationCustomLayoutOutput)
+}
+
+type GetIdpIntegrationCustomLayoutColumn struct {
+	// JQ path of the value.
+	Path string `pulumi:"path"`
+	// Column title.
+	Title string `pulumi:"title"`
+}
+
+// GetIdpIntegrationCustomLayoutColumnInput is an input type that accepts GetIdpIntegrationCustomLayoutColumnArgs and GetIdpIntegrationCustomLayoutColumnOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationCustomLayoutColumnInput` via:
+//
+//	GetIdpIntegrationCustomLayoutColumnArgs{...}
+type GetIdpIntegrationCustomLayoutColumnInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationCustomLayoutColumnOutput() GetIdpIntegrationCustomLayoutColumnOutput
+	ToGetIdpIntegrationCustomLayoutColumnOutputWithContext(context.Context) GetIdpIntegrationCustomLayoutColumnOutput
+}
+
+type GetIdpIntegrationCustomLayoutColumnArgs struct {
+	// JQ path of the value.
+	Path pulumi.StringInput `pulumi:"path"`
+	// Column title.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (GetIdpIntegrationCustomLayoutColumnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationCustomLayoutColumn)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationCustomLayoutColumnArgs) ToGetIdpIntegrationCustomLayoutColumnOutput() GetIdpIntegrationCustomLayoutColumnOutput {
+	return i.ToGetIdpIntegrationCustomLayoutColumnOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationCustomLayoutColumnArgs) ToGetIdpIntegrationCustomLayoutColumnOutputWithContext(ctx context.Context) GetIdpIntegrationCustomLayoutColumnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationCustomLayoutColumnOutput)
+}
+
+// GetIdpIntegrationCustomLayoutColumnArrayInput is an input type that accepts GetIdpIntegrationCustomLayoutColumnArray and GetIdpIntegrationCustomLayoutColumnArrayOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationCustomLayoutColumnArrayInput` via:
+//
+//	GetIdpIntegrationCustomLayoutColumnArray{ GetIdpIntegrationCustomLayoutColumnArgs{...} }
+type GetIdpIntegrationCustomLayoutColumnArrayInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationCustomLayoutColumnArrayOutput() GetIdpIntegrationCustomLayoutColumnArrayOutput
+	ToGetIdpIntegrationCustomLayoutColumnArrayOutputWithContext(context.Context) GetIdpIntegrationCustomLayoutColumnArrayOutput
+}
+
+type GetIdpIntegrationCustomLayoutColumnArray []GetIdpIntegrationCustomLayoutColumnInput
+
+func (GetIdpIntegrationCustomLayoutColumnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationCustomLayoutColumn)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationCustomLayoutColumnArray) ToGetIdpIntegrationCustomLayoutColumnArrayOutput() GetIdpIntegrationCustomLayoutColumnArrayOutput {
+	return i.ToGetIdpIntegrationCustomLayoutColumnArrayOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationCustomLayoutColumnArray) ToGetIdpIntegrationCustomLayoutColumnArrayOutputWithContext(ctx context.Context) GetIdpIntegrationCustomLayoutColumnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationCustomLayoutColumnArrayOutput)
+}
+
+type GetIdpIntegrationCustomLayoutColumnOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationCustomLayoutColumnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationCustomLayoutColumn)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationCustomLayoutColumnOutput) ToGetIdpIntegrationCustomLayoutColumnOutput() GetIdpIntegrationCustomLayoutColumnOutput {
+	return o
+}
+
+func (o GetIdpIntegrationCustomLayoutColumnOutput) ToGetIdpIntegrationCustomLayoutColumnOutputWithContext(ctx context.Context) GetIdpIntegrationCustomLayoutColumnOutput {
+	return o
+}
+
+// JQ path of the value.
+func (o GetIdpIntegrationCustomLayoutColumnOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpIntegrationCustomLayoutColumn) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// Column title.
+func (o GetIdpIntegrationCustomLayoutColumnOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpIntegrationCustomLayoutColumn) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type GetIdpIntegrationCustomLayoutColumnArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationCustomLayoutColumnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationCustomLayoutColumn)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationCustomLayoutColumnArrayOutput) ToGetIdpIntegrationCustomLayoutColumnArrayOutput() GetIdpIntegrationCustomLayoutColumnArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationCustomLayoutColumnArrayOutput) ToGetIdpIntegrationCustomLayoutColumnArrayOutputWithContext(ctx context.Context) GetIdpIntegrationCustomLayoutColumnArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationCustomLayoutColumnArrayOutput) Index(i pulumi.IntInput) GetIdpIntegrationCustomLayoutColumnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIdpIntegrationCustomLayoutColumn {
+		return vs[0].([]GetIdpIntegrationCustomLayoutColumn)[vs[1].(int)]
+	}).(GetIdpIntegrationCustomLayoutColumnOutput)
+}
+
+type GetIdpIntegrationCustomWebhookAuth struct {
+	// Header carrying the signature or token.
+	AuthHeader string `pulumi:"authHeader"`
+	// hmac_auth or jwt_auth.
+	AuthType string `pulumi:"authType"`
+	// HMAC hash: hmac_sha224, hmac_sha256, hmacSha384 or hmac_sha512.
+	HashAlgo string `pulumi:"hashAlgo"`
+	// Secret reference holding the shared secret.
+	SecretRef string `pulumi:"secretRef"`
+}
+
+// GetIdpIntegrationCustomWebhookAuthInput is an input type that accepts GetIdpIntegrationCustomWebhookAuthArgs and GetIdpIntegrationCustomWebhookAuthOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationCustomWebhookAuthInput` via:
+//
+//	GetIdpIntegrationCustomWebhookAuthArgs{...}
+type GetIdpIntegrationCustomWebhookAuthInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationCustomWebhookAuthOutput() GetIdpIntegrationCustomWebhookAuthOutput
+	ToGetIdpIntegrationCustomWebhookAuthOutputWithContext(context.Context) GetIdpIntegrationCustomWebhookAuthOutput
+}
+
+type GetIdpIntegrationCustomWebhookAuthArgs struct {
+	// Header carrying the signature or token.
+	AuthHeader pulumi.StringInput `pulumi:"authHeader"`
+	// hmac_auth or jwt_auth.
+	AuthType pulumi.StringInput `pulumi:"authType"`
+	// HMAC hash: hmac_sha224, hmac_sha256, hmacSha384 or hmac_sha512.
+	HashAlgo pulumi.StringInput `pulumi:"hashAlgo"`
+	// Secret reference holding the shared secret.
+	SecretRef pulumi.StringInput `pulumi:"secretRef"`
+}
+
+func (GetIdpIntegrationCustomWebhookAuthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationCustomWebhookAuth)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationCustomWebhookAuthArgs) ToGetIdpIntegrationCustomWebhookAuthOutput() GetIdpIntegrationCustomWebhookAuthOutput {
+	return i.ToGetIdpIntegrationCustomWebhookAuthOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationCustomWebhookAuthArgs) ToGetIdpIntegrationCustomWebhookAuthOutputWithContext(ctx context.Context) GetIdpIntegrationCustomWebhookAuthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationCustomWebhookAuthOutput)
+}
+
+// GetIdpIntegrationCustomWebhookAuthArrayInput is an input type that accepts GetIdpIntegrationCustomWebhookAuthArray and GetIdpIntegrationCustomWebhookAuthArrayOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationCustomWebhookAuthArrayInput` via:
+//
+//	GetIdpIntegrationCustomWebhookAuthArray{ GetIdpIntegrationCustomWebhookAuthArgs{...} }
+type GetIdpIntegrationCustomWebhookAuthArrayInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationCustomWebhookAuthArrayOutput() GetIdpIntegrationCustomWebhookAuthArrayOutput
+	ToGetIdpIntegrationCustomWebhookAuthArrayOutputWithContext(context.Context) GetIdpIntegrationCustomWebhookAuthArrayOutput
+}
+
+type GetIdpIntegrationCustomWebhookAuthArray []GetIdpIntegrationCustomWebhookAuthInput
+
+func (GetIdpIntegrationCustomWebhookAuthArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationCustomWebhookAuth)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationCustomWebhookAuthArray) ToGetIdpIntegrationCustomWebhookAuthArrayOutput() GetIdpIntegrationCustomWebhookAuthArrayOutput {
+	return i.ToGetIdpIntegrationCustomWebhookAuthArrayOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationCustomWebhookAuthArray) ToGetIdpIntegrationCustomWebhookAuthArrayOutputWithContext(ctx context.Context) GetIdpIntegrationCustomWebhookAuthArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationCustomWebhookAuthArrayOutput)
+}
+
+type GetIdpIntegrationCustomWebhookAuthOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationCustomWebhookAuthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationCustomWebhookAuth)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationCustomWebhookAuthOutput) ToGetIdpIntegrationCustomWebhookAuthOutput() GetIdpIntegrationCustomWebhookAuthOutput {
+	return o
+}
+
+func (o GetIdpIntegrationCustomWebhookAuthOutput) ToGetIdpIntegrationCustomWebhookAuthOutputWithContext(ctx context.Context) GetIdpIntegrationCustomWebhookAuthOutput {
+	return o
+}
+
+// Header carrying the signature or token.
+func (o GetIdpIntegrationCustomWebhookAuthOutput) AuthHeader() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpIntegrationCustomWebhookAuth) string { return v.AuthHeader }).(pulumi.StringOutput)
+}
+
+// hmac_auth or jwt_auth.
+func (o GetIdpIntegrationCustomWebhookAuthOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpIntegrationCustomWebhookAuth) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// HMAC hash: hmac_sha224, hmac_sha256, hmacSha384 or hmac_sha512.
+func (o GetIdpIntegrationCustomWebhookAuthOutput) HashAlgo() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpIntegrationCustomWebhookAuth) string { return v.HashAlgo }).(pulumi.StringOutput)
+}
+
+// Secret reference holding the shared secret.
+func (o GetIdpIntegrationCustomWebhookAuthOutput) SecretRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpIntegrationCustomWebhookAuth) string { return v.SecretRef }).(pulumi.StringOutput)
+}
+
+type GetIdpIntegrationCustomWebhookAuthArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationCustomWebhookAuthArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationCustomWebhookAuth)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationCustomWebhookAuthArrayOutput) ToGetIdpIntegrationCustomWebhookAuthArrayOutput() GetIdpIntegrationCustomWebhookAuthArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationCustomWebhookAuthArrayOutput) ToGetIdpIntegrationCustomWebhookAuthArrayOutputWithContext(ctx context.Context) GetIdpIntegrationCustomWebhookAuthArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationCustomWebhookAuthArrayOutput) Index(i pulumi.IntInput) GetIdpIntegrationCustomWebhookAuthOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIdpIntegrationCustomWebhookAuth {
+		return vs[0].([]GetIdpIntegrationCustomWebhookAuth)[vs[1].(int)]
+	}).(GetIdpIntegrationCustomWebhookAuthOutput)
+}
+
+type GetIdpIntegrationDatadog struct {
+	// Environment used to add service dependencies.
+	ServiceDependenciesEnv string `pulumi:"serviceDependenciesEnv"`
+}
+
+// GetIdpIntegrationDatadogInput is an input type that accepts GetIdpIntegrationDatadogArgs and GetIdpIntegrationDatadogOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationDatadogInput` via:
+//
+//	GetIdpIntegrationDatadogArgs{...}
+type GetIdpIntegrationDatadogInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationDatadogOutput() GetIdpIntegrationDatadogOutput
+	ToGetIdpIntegrationDatadogOutputWithContext(context.Context) GetIdpIntegrationDatadogOutput
+}
+
+type GetIdpIntegrationDatadogArgs struct {
+	// Environment used to add service dependencies.
+	ServiceDependenciesEnv pulumi.StringInput `pulumi:"serviceDependenciesEnv"`
+}
+
+func (GetIdpIntegrationDatadogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationDatadog)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationDatadogArgs) ToGetIdpIntegrationDatadogOutput() GetIdpIntegrationDatadogOutput {
+	return i.ToGetIdpIntegrationDatadogOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationDatadogArgs) ToGetIdpIntegrationDatadogOutputWithContext(ctx context.Context) GetIdpIntegrationDatadogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationDatadogOutput)
+}
+
+// GetIdpIntegrationDatadogArrayInput is an input type that accepts GetIdpIntegrationDatadogArray and GetIdpIntegrationDatadogArrayOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationDatadogArrayInput` via:
+//
+//	GetIdpIntegrationDatadogArray{ GetIdpIntegrationDatadogArgs{...} }
+type GetIdpIntegrationDatadogArrayInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationDatadogArrayOutput() GetIdpIntegrationDatadogArrayOutput
+	ToGetIdpIntegrationDatadogArrayOutputWithContext(context.Context) GetIdpIntegrationDatadogArrayOutput
+}
+
+type GetIdpIntegrationDatadogArray []GetIdpIntegrationDatadogInput
+
+func (GetIdpIntegrationDatadogArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationDatadog)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationDatadogArray) ToGetIdpIntegrationDatadogArrayOutput() GetIdpIntegrationDatadogArrayOutput {
+	return i.ToGetIdpIntegrationDatadogArrayOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationDatadogArray) ToGetIdpIntegrationDatadogArrayOutputWithContext(ctx context.Context) GetIdpIntegrationDatadogArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationDatadogArrayOutput)
+}
+
+type GetIdpIntegrationDatadogOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationDatadogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationDatadog)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationDatadogOutput) ToGetIdpIntegrationDatadogOutput() GetIdpIntegrationDatadogOutput {
+	return o
+}
+
+func (o GetIdpIntegrationDatadogOutput) ToGetIdpIntegrationDatadogOutputWithContext(ctx context.Context) GetIdpIntegrationDatadogOutput {
+	return o
+}
+
+// Environment used to add service dependencies.
+func (o GetIdpIntegrationDatadogOutput) ServiceDependenciesEnv() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpIntegrationDatadog) string { return v.ServiceDependenciesEnv }).(pulumi.StringOutput)
+}
+
+type GetIdpIntegrationDatadogArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationDatadogArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationDatadog)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationDatadogArrayOutput) ToGetIdpIntegrationDatadogArrayOutput() GetIdpIntegrationDatadogArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationDatadogArrayOutput) ToGetIdpIntegrationDatadogArrayOutputWithContext(ctx context.Context) GetIdpIntegrationDatadogArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationDatadogArrayOutput) Index(i pulumi.IntInput) GetIdpIntegrationDatadogOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIdpIntegrationDatadog {
+		return vs[0].([]GetIdpIntegrationDatadog)[vs[1].(int)]
+	}).(GetIdpIntegrationDatadogOutput)
+}
+
+type GetIdpIntegrationDynatrace struct {
+	// Secret reference to a Platform API token.
+	PlatformTokenRef string `pulumi:"platformTokenRef"`
+	// Lower bound for incremental streams, RFC3339.
+	StartDate string `pulumi:"startDate"`
+}
+
+// GetIdpIntegrationDynatraceInput is an input type that accepts GetIdpIntegrationDynatraceArgs and GetIdpIntegrationDynatraceOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationDynatraceInput` via:
+//
+//	GetIdpIntegrationDynatraceArgs{...}
+type GetIdpIntegrationDynatraceInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationDynatraceOutput() GetIdpIntegrationDynatraceOutput
+	ToGetIdpIntegrationDynatraceOutputWithContext(context.Context) GetIdpIntegrationDynatraceOutput
+}
+
+type GetIdpIntegrationDynatraceArgs struct {
+	// Secret reference to a Platform API token.
+	PlatformTokenRef pulumi.StringInput `pulumi:"platformTokenRef"`
+	// Lower bound for incremental streams, RFC3339.
+	StartDate pulumi.StringInput `pulumi:"startDate"`
+}
+
+func (GetIdpIntegrationDynatraceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationDynatrace)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationDynatraceArgs) ToGetIdpIntegrationDynatraceOutput() GetIdpIntegrationDynatraceOutput {
+	return i.ToGetIdpIntegrationDynatraceOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationDynatraceArgs) ToGetIdpIntegrationDynatraceOutputWithContext(ctx context.Context) GetIdpIntegrationDynatraceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationDynatraceOutput)
+}
+
+// GetIdpIntegrationDynatraceArrayInput is an input type that accepts GetIdpIntegrationDynatraceArray and GetIdpIntegrationDynatraceArrayOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationDynatraceArrayInput` via:
+//
+//	GetIdpIntegrationDynatraceArray{ GetIdpIntegrationDynatraceArgs{...} }
+type GetIdpIntegrationDynatraceArrayInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationDynatraceArrayOutput() GetIdpIntegrationDynatraceArrayOutput
+	ToGetIdpIntegrationDynatraceArrayOutputWithContext(context.Context) GetIdpIntegrationDynatraceArrayOutput
+}
+
+type GetIdpIntegrationDynatraceArray []GetIdpIntegrationDynatraceInput
+
+func (GetIdpIntegrationDynatraceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationDynatrace)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationDynatraceArray) ToGetIdpIntegrationDynatraceArrayOutput() GetIdpIntegrationDynatraceArrayOutput {
+	return i.ToGetIdpIntegrationDynatraceArrayOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationDynatraceArray) ToGetIdpIntegrationDynatraceArrayOutputWithContext(ctx context.Context) GetIdpIntegrationDynatraceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationDynatraceArrayOutput)
+}
+
+type GetIdpIntegrationDynatraceOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationDynatraceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationDynatrace)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationDynatraceOutput) ToGetIdpIntegrationDynatraceOutput() GetIdpIntegrationDynatraceOutput {
+	return o
+}
+
+func (o GetIdpIntegrationDynatraceOutput) ToGetIdpIntegrationDynatraceOutputWithContext(ctx context.Context) GetIdpIntegrationDynatraceOutput {
+	return o
+}
+
+// Secret reference to a Platform API token.
+func (o GetIdpIntegrationDynatraceOutput) PlatformTokenRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpIntegrationDynatrace) string { return v.PlatformTokenRef }).(pulumi.StringOutput)
+}
+
+// Lower bound for incremental streams, RFC3339.
+func (o GetIdpIntegrationDynatraceOutput) StartDate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpIntegrationDynatrace) string { return v.StartDate }).(pulumi.StringOutput)
+}
+
+type GetIdpIntegrationDynatraceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationDynatraceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationDynatrace)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationDynatraceArrayOutput) ToGetIdpIntegrationDynatraceArrayOutput() GetIdpIntegrationDynatraceArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationDynatraceArrayOutput) ToGetIdpIntegrationDynatraceArrayOutputWithContext(ctx context.Context) GetIdpIntegrationDynatraceArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationDynatraceArrayOutput) Index(i pulumi.IntInput) GetIdpIntegrationDynatraceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIdpIntegrationDynatrace {
+		return vs[0].([]GetIdpIntegrationDynatrace)[vs[1].(int)]
+	}).(GetIdpIntegrationDynatraceOutput)
+}
+
+type GetIdpIntegrationEndpoint struct {
+	// Kind.
+	Kind string `pulumi:"kind"`
+	// HTTP method.
+	Method string `pulumi:"method"`
+	// Path relative to the integration manager, e.g. https://app.harness.io/gateway/integration.
+	Url string `pulumi:"url"`
+}
+
+// GetIdpIntegrationEndpointInput is an input type that accepts GetIdpIntegrationEndpointArgs and GetIdpIntegrationEndpointOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationEndpointInput` via:
+//
+//	GetIdpIntegrationEndpointArgs{...}
+type GetIdpIntegrationEndpointInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationEndpointOutput() GetIdpIntegrationEndpointOutput
+	ToGetIdpIntegrationEndpointOutputWithContext(context.Context) GetIdpIntegrationEndpointOutput
+}
+
+type GetIdpIntegrationEndpointArgs struct {
+	// Kind.
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// HTTP method.
+	Method pulumi.StringInput `pulumi:"method"`
+	// Path relative to the integration manager, e.g. https://app.harness.io/gateway/integration.
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (GetIdpIntegrationEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationEndpoint)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationEndpointArgs) ToGetIdpIntegrationEndpointOutput() GetIdpIntegrationEndpointOutput {
+	return i.ToGetIdpIntegrationEndpointOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationEndpointArgs) ToGetIdpIntegrationEndpointOutputWithContext(ctx context.Context) GetIdpIntegrationEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationEndpointOutput)
+}
+
+// GetIdpIntegrationEndpointArrayInput is an input type that accepts GetIdpIntegrationEndpointArray and GetIdpIntegrationEndpointArrayOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationEndpointArrayInput` via:
+//
+//	GetIdpIntegrationEndpointArray{ GetIdpIntegrationEndpointArgs{...} }
+type GetIdpIntegrationEndpointArrayInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationEndpointArrayOutput() GetIdpIntegrationEndpointArrayOutput
+	ToGetIdpIntegrationEndpointArrayOutputWithContext(context.Context) GetIdpIntegrationEndpointArrayOutput
+}
+
+type GetIdpIntegrationEndpointArray []GetIdpIntegrationEndpointInput
+
+func (GetIdpIntegrationEndpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationEndpoint)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationEndpointArray) ToGetIdpIntegrationEndpointArrayOutput() GetIdpIntegrationEndpointArrayOutput {
+	return i.ToGetIdpIntegrationEndpointArrayOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationEndpointArray) ToGetIdpIntegrationEndpointArrayOutputWithContext(ctx context.Context) GetIdpIntegrationEndpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationEndpointArrayOutput)
+}
+
+type GetIdpIntegrationEndpointOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationEndpoint)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationEndpointOutput) ToGetIdpIntegrationEndpointOutput() GetIdpIntegrationEndpointOutput {
+	return o
+}
+
+func (o GetIdpIntegrationEndpointOutput) ToGetIdpIntegrationEndpointOutputWithContext(ctx context.Context) GetIdpIntegrationEndpointOutput {
+	return o
+}
+
+// Kind.
+func (o GetIdpIntegrationEndpointOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpIntegrationEndpoint) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// HTTP method.
+func (o GetIdpIntegrationEndpointOutput) Method() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpIntegrationEndpoint) string { return v.Method }).(pulumi.StringOutput)
+}
+
+// Path relative to the integration manager, e.g. https://app.harness.io/gateway/integration.
+func (o GetIdpIntegrationEndpointOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpIntegrationEndpoint) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type GetIdpIntegrationEndpointArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationEndpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationEndpoint)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationEndpointArrayOutput) ToGetIdpIntegrationEndpointArrayOutput() GetIdpIntegrationEndpointArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationEndpointArrayOutput) ToGetIdpIntegrationEndpointArrayOutputWithContext(ctx context.Context) GetIdpIntegrationEndpointArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationEndpointArrayOutput) Index(i pulumi.IntInput) GetIdpIntegrationEndpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIdpIntegrationEndpoint {
+		return vs[0].([]GetIdpIntegrationEndpoint)[vs[1].(int)]
+	}).(GetIdpIntegrationEndpointOutput)
+}
+
+type GetIdpIntegrationGcp struct {
+	// The organization or folder whose assets are synced. Set exactly one field.
+	Parents []GetIdpIntegrationGcpParent `pulumi:"parents"`
+}
+
+// GetIdpIntegrationGcpInput is an input type that accepts GetIdpIntegrationGcpArgs and GetIdpIntegrationGcpOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationGcpInput` via:
+//
+//	GetIdpIntegrationGcpArgs{...}
+type GetIdpIntegrationGcpInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationGcpOutput() GetIdpIntegrationGcpOutput
+	ToGetIdpIntegrationGcpOutputWithContext(context.Context) GetIdpIntegrationGcpOutput
+}
+
+type GetIdpIntegrationGcpArgs struct {
+	// The organization or folder whose assets are synced. Set exactly one field.
+	Parents GetIdpIntegrationGcpParentArrayInput `pulumi:"parents"`
+}
+
+func (GetIdpIntegrationGcpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationGcp)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationGcpArgs) ToGetIdpIntegrationGcpOutput() GetIdpIntegrationGcpOutput {
+	return i.ToGetIdpIntegrationGcpOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationGcpArgs) ToGetIdpIntegrationGcpOutputWithContext(ctx context.Context) GetIdpIntegrationGcpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationGcpOutput)
+}
+
+// GetIdpIntegrationGcpArrayInput is an input type that accepts GetIdpIntegrationGcpArray and GetIdpIntegrationGcpArrayOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationGcpArrayInput` via:
+//
+//	GetIdpIntegrationGcpArray{ GetIdpIntegrationGcpArgs{...} }
+type GetIdpIntegrationGcpArrayInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationGcpArrayOutput() GetIdpIntegrationGcpArrayOutput
+	ToGetIdpIntegrationGcpArrayOutputWithContext(context.Context) GetIdpIntegrationGcpArrayOutput
+}
+
+type GetIdpIntegrationGcpArray []GetIdpIntegrationGcpInput
+
+func (GetIdpIntegrationGcpArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationGcp)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationGcpArray) ToGetIdpIntegrationGcpArrayOutput() GetIdpIntegrationGcpArrayOutput {
+	return i.ToGetIdpIntegrationGcpArrayOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationGcpArray) ToGetIdpIntegrationGcpArrayOutputWithContext(ctx context.Context) GetIdpIntegrationGcpArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationGcpArrayOutput)
+}
+
+type GetIdpIntegrationGcpOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationGcpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationGcp)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationGcpOutput) ToGetIdpIntegrationGcpOutput() GetIdpIntegrationGcpOutput {
+	return o
+}
+
+func (o GetIdpIntegrationGcpOutput) ToGetIdpIntegrationGcpOutputWithContext(ctx context.Context) GetIdpIntegrationGcpOutput {
+	return o
+}
+
+// The organization or folder whose assets are synced. Set exactly one field.
+func (o GetIdpIntegrationGcpOutput) Parents() GetIdpIntegrationGcpParentArrayOutput {
+	return o.ApplyT(func(v GetIdpIntegrationGcp) []GetIdpIntegrationGcpParent { return v.Parents }).(GetIdpIntegrationGcpParentArrayOutput)
+}
+
+type GetIdpIntegrationGcpArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationGcpArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationGcp)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationGcpArrayOutput) ToGetIdpIntegrationGcpArrayOutput() GetIdpIntegrationGcpArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationGcpArrayOutput) ToGetIdpIntegrationGcpArrayOutputWithContext(ctx context.Context) GetIdpIntegrationGcpArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationGcpArrayOutput) Index(i pulumi.IntInput) GetIdpIntegrationGcpOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIdpIntegrationGcp {
+		return vs[0].([]GetIdpIntegrationGcp)[vs[1].(int)]
+	}).(GetIdpIntegrationGcpOutput)
+}
+
+type GetIdpIntegrationGcpParent struct {
+	// Folder ID.
+	FolderId string `pulumi:"folderId"`
+	// Organization ID.
+	OrgId string `pulumi:"orgId"`
+}
+
+// GetIdpIntegrationGcpParentInput is an input type that accepts GetIdpIntegrationGcpParentArgs and GetIdpIntegrationGcpParentOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationGcpParentInput` via:
+//
+//	GetIdpIntegrationGcpParentArgs{...}
+type GetIdpIntegrationGcpParentInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationGcpParentOutput() GetIdpIntegrationGcpParentOutput
+	ToGetIdpIntegrationGcpParentOutputWithContext(context.Context) GetIdpIntegrationGcpParentOutput
+}
+
+type GetIdpIntegrationGcpParentArgs struct {
+	// Folder ID.
+	FolderId pulumi.StringInput `pulumi:"folderId"`
+	// Organization ID.
+	OrgId pulumi.StringInput `pulumi:"orgId"`
+}
+
+func (GetIdpIntegrationGcpParentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationGcpParent)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationGcpParentArgs) ToGetIdpIntegrationGcpParentOutput() GetIdpIntegrationGcpParentOutput {
+	return i.ToGetIdpIntegrationGcpParentOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationGcpParentArgs) ToGetIdpIntegrationGcpParentOutputWithContext(ctx context.Context) GetIdpIntegrationGcpParentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationGcpParentOutput)
+}
+
+// GetIdpIntegrationGcpParentArrayInput is an input type that accepts GetIdpIntegrationGcpParentArray and GetIdpIntegrationGcpParentArrayOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationGcpParentArrayInput` via:
+//
+//	GetIdpIntegrationGcpParentArray{ GetIdpIntegrationGcpParentArgs{...} }
+type GetIdpIntegrationGcpParentArrayInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationGcpParentArrayOutput() GetIdpIntegrationGcpParentArrayOutput
+	ToGetIdpIntegrationGcpParentArrayOutputWithContext(context.Context) GetIdpIntegrationGcpParentArrayOutput
+}
+
+type GetIdpIntegrationGcpParentArray []GetIdpIntegrationGcpParentInput
+
+func (GetIdpIntegrationGcpParentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationGcpParent)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationGcpParentArray) ToGetIdpIntegrationGcpParentArrayOutput() GetIdpIntegrationGcpParentArrayOutput {
+	return i.ToGetIdpIntegrationGcpParentArrayOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationGcpParentArray) ToGetIdpIntegrationGcpParentArrayOutputWithContext(ctx context.Context) GetIdpIntegrationGcpParentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationGcpParentArrayOutput)
+}
+
+type GetIdpIntegrationGcpParentOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationGcpParentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationGcpParent)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationGcpParentOutput) ToGetIdpIntegrationGcpParentOutput() GetIdpIntegrationGcpParentOutput {
+	return o
+}
+
+func (o GetIdpIntegrationGcpParentOutput) ToGetIdpIntegrationGcpParentOutputWithContext(ctx context.Context) GetIdpIntegrationGcpParentOutput {
+	return o
+}
+
+// Folder ID.
+func (o GetIdpIntegrationGcpParentOutput) FolderId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpIntegrationGcpParent) string { return v.FolderId }).(pulumi.StringOutput)
+}
+
+// Organization ID.
+func (o GetIdpIntegrationGcpParentOutput) OrgId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpIntegrationGcpParent) string { return v.OrgId }).(pulumi.StringOutput)
+}
+
+type GetIdpIntegrationGcpParentArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationGcpParentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationGcpParent)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationGcpParentArrayOutput) ToGetIdpIntegrationGcpParentArrayOutput() GetIdpIntegrationGcpParentArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationGcpParentArrayOutput) ToGetIdpIntegrationGcpParentArrayOutputWithContext(ctx context.Context) GetIdpIntegrationGcpParentArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationGcpParentArrayOutput) Index(i pulumi.IntInput) GetIdpIntegrationGcpParentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIdpIntegrationGcpParent {
+		return vs[0].([]GetIdpIntegrationGcpParent)[vs[1].(int)]
+	}).(GetIdpIntegrationGcpParentOutput)
+}
+
+type GetIdpIntegrationGithub struct {
+	// Agents file to detect in repositories.
+	AgentFileName string `pulumi:"agentFileName"`
+	// Organizations to sync.
+	Orgs []string `pulumi:"orgs"`
+	// Lower bound for the first sync, RFC3339.
+	StartDate string `pulumi:"startDate"`
+}
+
+// GetIdpIntegrationGithubInput is an input type that accepts GetIdpIntegrationGithubArgs and GetIdpIntegrationGithubOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationGithubInput` via:
+//
+//	GetIdpIntegrationGithubArgs{...}
+type GetIdpIntegrationGithubInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationGithubOutput() GetIdpIntegrationGithubOutput
+	ToGetIdpIntegrationGithubOutputWithContext(context.Context) GetIdpIntegrationGithubOutput
+}
+
+type GetIdpIntegrationGithubArgs struct {
+	// Agents file to detect in repositories.
+	AgentFileName pulumi.StringInput `pulumi:"agentFileName"`
+	// Organizations to sync.
+	Orgs pulumi.StringArrayInput `pulumi:"orgs"`
+	// Lower bound for the first sync, RFC3339.
+	StartDate pulumi.StringInput `pulumi:"startDate"`
+}
+
+func (GetIdpIntegrationGithubArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationGithub)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationGithubArgs) ToGetIdpIntegrationGithubOutput() GetIdpIntegrationGithubOutput {
+	return i.ToGetIdpIntegrationGithubOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationGithubArgs) ToGetIdpIntegrationGithubOutputWithContext(ctx context.Context) GetIdpIntegrationGithubOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationGithubOutput)
+}
+
+// GetIdpIntegrationGithubArrayInput is an input type that accepts GetIdpIntegrationGithubArray and GetIdpIntegrationGithubArrayOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationGithubArrayInput` via:
+//
+//	GetIdpIntegrationGithubArray{ GetIdpIntegrationGithubArgs{...} }
+type GetIdpIntegrationGithubArrayInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationGithubArrayOutput() GetIdpIntegrationGithubArrayOutput
+	ToGetIdpIntegrationGithubArrayOutputWithContext(context.Context) GetIdpIntegrationGithubArrayOutput
+}
+
+type GetIdpIntegrationGithubArray []GetIdpIntegrationGithubInput
+
+func (GetIdpIntegrationGithubArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationGithub)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationGithubArray) ToGetIdpIntegrationGithubArrayOutput() GetIdpIntegrationGithubArrayOutput {
+	return i.ToGetIdpIntegrationGithubArrayOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationGithubArray) ToGetIdpIntegrationGithubArrayOutputWithContext(ctx context.Context) GetIdpIntegrationGithubArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationGithubArrayOutput)
+}
+
+type GetIdpIntegrationGithubOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationGithubOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationGithub)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationGithubOutput) ToGetIdpIntegrationGithubOutput() GetIdpIntegrationGithubOutput {
+	return o
+}
+
+func (o GetIdpIntegrationGithubOutput) ToGetIdpIntegrationGithubOutputWithContext(ctx context.Context) GetIdpIntegrationGithubOutput {
+	return o
+}
+
+// Agents file to detect in repositories.
+func (o GetIdpIntegrationGithubOutput) AgentFileName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpIntegrationGithub) string { return v.AgentFileName }).(pulumi.StringOutput)
+}
+
+// Organizations to sync.
+func (o GetIdpIntegrationGithubOutput) Orgs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIdpIntegrationGithub) []string { return v.Orgs }).(pulumi.StringArrayOutput)
+}
+
+// Lower bound for the first sync, RFC3339.
+func (o GetIdpIntegrationGithubOutput) StartDate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpIntegrationGithub) string { return v.StartDate }).(pulumi.StringOutput)
+}
+
+type GetIdpIntegrationGithubArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationGithubArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationGithub)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationGithubArrayOutput) ToGetIdpIntegrationGithubArrayOutput() GetIdpIntegrationGithubArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationGithubArrayOutput) ToGetIdpIntegrationGithubArrayOutputWithContext(ctx context.Context) GetIdpIntegrationGithubArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationGithubArrayOutput) Index(i pulumi.IntInput) GetIdpIntegrationGithubOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIdpIntegrationGithub {
+		return vs[0].([]GetIdpIntegrationGithub)[vs[1].(int)]
+	}).(GetIdpIntegrationGithubOutput)
+}
+
+type GetIdpIntegrationHarnessCd struct {
+	// Days of deployments to read.
+	DeploymentCycle int `pulumi:"deploymentCycle"`
+	// Fields to map per kind; omit to map all.
+	MappingFields []GetIdpIntegrationHarnessCdMappingField `pulumi:"mappingFields"`
+}
+
+// GetIdpIntegrationHarnessCdInput is an input type that accepts GetIdpIntegrationHarnessCdArgs and GetIdpIntegrationHarnessCdOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationHarnessCdInput` via:
+//
+//	GetIdpIntegrationHarnessCdArgs{...}
+type GetIdpIntegrationHarnessCdInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationHarnessCdOutput() GetIdpIntegrationHarnessCdOutput
+	ToGetIdpIntegrationHarnessCdOutputWithContext(context.Context) GetIdpIntegrationHarnessCdOutput
+}
+
+type GetIdpIntegrationHarnessCdArgs struct {
+	// Days of deployments to read.
+	DeploymentCycle pulumi.IntInput `pulumi:"deploymentCycle"`
+	// Fields to map per kind; omit to map all.
+	MappingFields GetIdpIntegrationHarnessCdMappingFieldArrayInput `pulumi:"mappingFields"`
+}
+
+func (GetIdpIntegrationHarnessCdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationHarnessCd)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationHarnessCdArgs) ToGetIdpIntegrationHarnessCdOutput() GetIdpIntegrationHarnessCdOutput {
+	return i.ToGetIdpIntegrationHarnessCdOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationHarnessCdArgs) ToGetIdpIntegrationHarnessCdOutputWithContext(ctx context.Context) GetIdpIntegrationHarnessCdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationHarnessCdOutput)
+}
+
+// GetIdpIntegrationHarnessCdArrayInput is an input type that accepts GetIdpIntegrationHarnessCdArray and GetIdpIntegrationHarnessCdArrayOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationHarnessCdArrayInput` via:
+//
+//	GetIdpIntegrationHarnessCdArray{ GetIdpIntegrationHarnessCdArgs{...} }
+type GetIdpIntegrationHarnessCdArrayInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationHarnessCdArrayOutput() GetIdpIntegrationHarnessCdArrayOutput
+	ToGetIdpIntegrationHarnessCdArrayOutputWithContext(context.Context) GetIdpIntegrationHarnessCdArrayOutput
+}
+
+type GetIdpIntegrationHarnessCdArray []GetIdpIntegrationHarnessCdInput
+
+func (GetIdpIntegrationHarnessCdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationHarnessCd)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationHarnessCdArray) ToGetIdpIntegrationHarnessCdArrayOutput() GetIdpIntegrationHarnessCdArrayOutput {
+	return i.ToGetIdpIntegrationHarnessCdArrayOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationHarnessCdArray) ToGetIdpIntegrationHarnessCdArrayOutputWithContext(ctx context.Context) GetIdpIntegrationHarnessCdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationHarnessCdArrayOutput)
+}
+
+type GetIdpIntegrationHarnessCdOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationHarnessCdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationHarnessCd)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationHarnessCdOutput) ToGetIdpIntegrationHarnessCdOutput() GetIdpIntegrationHarnessCdOutput {
+	return o
+}
+
+func (o GetIdpIntegrationHarnessCdOutput) ToGetIdpIntegrationHarnessCdOutputWithContext(ctx context.Context) GetIdpIntegrationHarnessCdOutput {
+	return o
+}
+
+// Days of deployments to read.
+func (o GetIdpIntegrationHarnessCdOutput) DeploymentCycle() pulumi.IntOutput {
+	return o.ApplyT(func(v GetIdpIntegrationHarnessCd) int { return v.DeploymentCycle }).(pulumi.IntOutput)
+}
+
+// Fields to map per kind; omit to map all.
+func (o GetIdpIntegrationHarnessCdOutput) MappingFields() GetIdpIntegrationHarnessCdMappingFieldArrayOutput {
+	return o.ApplyT(func(v GetIdpIntegrationHarnessCd) []GetIdpIntegrationHarnessCdMappingField { return v.MappingFields }).(GetIdpIntegrationHarnessCdMappingFieldArrayOutput)
+}
+
+type GetIdpIntegrationHarnessCdArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationHarnessCdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationHarnessCd)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationHarnessCdArrayOutput) ToGetIdpIntegrationHarnessCdArrayOutput() GetIdpIntegrationHarnessCdArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationHarnessCdArrayOutput) ToGetIdpIntegrationHarnessCdArrayOutputWithContext(ctx context.Context) GetIdpIntegrationHarnessCdArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationHarnessCdArrayOutput) Index(i pulumi.IntInput) GetIdpIntegrationHarnessCdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIdpIntegrationHarnessCd {
+		return vs[0].([]GetIdpIntegrationHarnessCd)[vs[1].(int)]
+	}).(GetIdpIntegrationHarnessCdOutput)
+}
+
+type GetIdpIntegrationHarnessCdMappingField struct {
+	// Fields.
+	Fields []string `pulumi:"fields"`
+	// Kind.
+	Kind string `pulumi:"kind"`
+}
+
+// GetIdpIntegrationHarnessCdMappingFieldInput is an input type that accepts GetIdpIntegrationHarnessCdMappingFieldArgs and GetIdpIntegrationHarnessCdMappingFieldOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationHarnessCdMappingFieldInput` via:
+//
+//	GetIdpIntegrationHarnessCdMappingFieldArgs{...}
+type GetIdpIntegrationHarnessCdMappingFieldInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationHarnessCdMappingFieldOutput() GetIdpIntegrationHarnessCdMappingFieldOutput
+	ToGetIdpIntegrationHarnessCdMappingFieldOutputWithContext(context.Context) GetIdpIntegrationHarnessCdMappingFieldOutput
+}
+
+type GetIdpIntegrationHarnessCdMappingFieldArgs struct {
+	// Fields.
+	Fields pulumi.StringArrayInput `pulumi:"fields"`
+	// Kind.
+	Kind pulumi.StringInput `pulumi:"kind"`
+}
+
+func (GetIdpIntegrationHarnessCdMappingFieldArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationHarnessCdMappingField)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationHarnessCdMappingFieldArgs) ToGetIdpIntegrationHarnessCdMappingFieldOutput() GetIdpIntegrationHarnessCdMappingFieldOutput {
+	return i.ToGetIdpIntegrationHarnessCdMappingFieldOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationHarnessCdMappingFieldArgs) ToGetIdpIntegrationHarnessCdMappingFieldOutputWithContext(ctx context.Context) GetIdpIntegrationHarnessCdMappingFieldOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationHarnessCdMappingFieldOutput)
+}
+
+// GetIdpIntegrationHarnessCdMappingFieldArrayInput is an input type that accepts GetIdpIntegrationHarnessCdMappingFieldArray and GetIdpIntegrationHarnessCdMappingFieldArrayOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationHarnessCdMappingFieldArrayInput` via:
+//
+//	GetIdpIntegrationHarnessCdMappingFieldArray{ GetIdpIntegrationHarnessCdMappingFieldArgs{...} }
+type GetIdpIntegrationHarnessCdMappingFieldArrayInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationHarnessCdMappingFieldArrayOutput() GetIdpIntegrationHarnessCdMappingFieldArrayOutput
+	ToGetIdpIntegrationHarnessCdMappingFieldArrayOutputWithContext(context.Context) GetIdpIntegrationHarnessCdMappingFieldArrayOutput
+}
+
+type GetIdpIntegrationHarnessCdMappingFieldArray []GetIdpIntegrationHarnessCdMappingFieldInput
+
+func (GetIdpIntegrationHarnessCdMappingFieldArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationHarnessCdMappingField)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationHarnessCdMappingFieldArray) ToGetIdpIntegrationHarnessCdMappingFieldArrayOutput() GetIdpIntegrationHarnessCdMappingFieldArrayOutput {
+	return i.ToGetIdpIntegrationHarnessCdMappingFieldArrayOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationHarnessCdMappingFieldArray) ToGetIdpIntegrationHarnessCdMappingFieldArrayOutputWithContext(ctx context.Context) GetIdpIntegrationHarnessCdMappingFieldArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationHarnessCdMappingFieldArrayOutput)
+}
+
+type GetIdpIntegrationHarnessCdMappingFieldOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationHarnessCdMappingFieldOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationHarnessCdMappingField)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationHarnessCdMappingFieldOutput) ToGetIdpIntegrationHarnessCdMappingFieldOutput() GetIdpIntegrationHarnessCdMappingFieldOutput {
+	return o
+}
+
+func (o GetIdpIntegrationHarnessCdMappingFieldOutput) ToGetIdpIntegrationHarnessCdMappingFieldOutputWithContext(ctx context.Context) GetIdpIntegrationHarnessCdMappingFieldOutput {
+	return o
+}
+
+// Fields.
+func (o GetIdpIntegrationHarnessCdMappingFieldOutput) Fields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIdpIntegrationHarnessCdMappingField) []string { return v.Fields }).(pulumi.StringArrayOutput)
+}
+
+// Kind.
+func (o GetIdpIntegrationHarnessCdMappingFieldOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpIntegrationHarnessCdMappingField) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+type GetIdpIntegrationHarnessCdMappingFieldArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationHarnessCdMappingFieldArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationHarnessCdMappingField)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationHarnessCdMappingFieldArrayOutput) ToGetIdpIntegrationHarnessCdMappingFieldArrayOutput() GetIdpIntegrationHarnessCdMappingFieldArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationHarnessCdMappingFieldArrayOutput) ToGetIdpIntegrationHarnessCdMappingFieldArrayOutputWithContext(ctx context.Context) GetIdpIntegrationHarnessCdMappingFieldArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationHarnessCdMappingFieldArrayOutput) Index(i pulumi.IntInput) GetIdpIntegrationHarnessCdMappingFieldOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIdpIntegrationHarnessCdMappingField {
+		return vs[0].([]GetIdpIntegrationHarnessCdMappingField)[vs[1].(int)]
+	}).(GetIdpIntegrationHarnessCdMappingFieldOutput)
+}
+
+type GetIdpIntegrationHarnessCode struct {
+	// Agents file to detect in repositories.
+	AgentFileName string `pulumi:"agentFileName"`
+}
+
+// GetIdpIntegrationHarnessCodeInput is an input type that accepts GetIdpIntegrationHarnessCodeArgs and GetIdpIntegrationHarnessCodeOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationHarnessCodeInput` via:
+//
+//	GetIdpIntegrationHarnessCodeArgs{...}
+type GetIdpIntegrationHarnessCodeInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationHarnessCodeOutput() GetIdpIntegrationHarnessCodeOutput
+	ToGetIdpIntegrationHarnessCodeOutputWithContext(context.Context) GetIdpIntegrationHarnessCodeOutput
+}
+
+type GetIdpIntegrationHarnessCodeArgs struct {
+	// Agents file to detect in repositories.
+	AgentFileName pulumi.StringInput `pulumi:"agentFileName"`
+}
+
+func (GetIdpIntegrationHarnessCodeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationHarnessCode)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationHarnessCodeArgs) ToGetIdpIntegrationHarnessCodeOutput() GetIdpIntegrationHarnessCodeOutput {
+	return i.ToGetIdpIntegrationHarnessCodeOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationHarnessCodeArgs) ToGetIdpIntegrationHarnessCodeOutputWithContext(ctx context.Context) GetIdpIntegrationHarnessCodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationHarnessCodeOutput)
+}
+
+// GetIdpIntegrationHarnessCodeArrayInput is an input type that accepts GetIdpIntegrationHarnessCodeArray and GetIdpIntegrationHarnessCodeArrayOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationHarnessCodeArrayInput` via:
+//
+//	GetIdpIntegrationHarnessCodeArray{ GetIdpIntegrationHarnessCodeArgs{...} }
+type GetIdpIntegrationHarnessCodeArrayInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationHarnessCodeArrayOutput() GetIdpIntegrationHarnessCodeArrayOutput
+	ToGetIdpIntegrationHarnessCodeArrayOutputWithContext(context.Context) GetIdpIntegrationHarnessCodeArrayOutput
+}
+
+type GetIdpIntegrationHarnessCodeArray []GetIdpIntegrationHarnessCodeInput
+
+func (GetIdpIntegrationHarnessCodeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationHarnessCode)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationHarnessCodeArray) ToGetIdpIntegrationHarnessCodeArrayOutput() GetIdpIntegrationHarnessCodeArrayOutput {
+	return i.ToGetIdpIntegrationHarnessCodeArrayOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationHarnessCodeArray) ToGetIdpIntegrationHarnessCodeArrayOutputWithContext(ctx context.Context) GetIdpIntegrationHarnessCodeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationHarnessCodeArrayOutput)
+}
+
+type GetIdpIntegrationHarnessCodeOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationHarnessCodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationHarnessCode)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationHarnessCodeOutput) ToGetIdpIntegrationHarnessCodeOutput() GetIdpIntegrationHarnessCodeOutput {
+	return o
+}
+
+func (o GetIdpIntegrationHarnessCodeOutput) ToGetIdpIntegrationHarnessCodeOutputWithContext(ctx context.Context) GetIdpIntegrationHarnessCodeOutput {
+	return o
+}
+
+// Agents file to detect in repositories.
+func (o GetIdpIntegrationHarnessCodeOutput) AgentFileName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpIntegrationHarnessCode) string { return v.AgentFileName }).(pulumi.StringOutput)
+}
+
+type GetIdpIntegrationHarnessCodeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationHarnessCodeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationHarnessCode)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationHarnessCodeArrayOutput) ToGetIdpIntegrationHarnessCodeArrayOutput() GetIdpIntegrationHarnessCodeArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationHarnessCodeArrayOutput) ToGetIdpIntegrationHarnessCodeArrayOutputWithContext(ctx context.Context) GetIdpIntegrationHarnessCodeArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationHarnessCodeArrayOutput) Index(i pulumi.IntInput) GetIdpIntegrationHarnessCodeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIdpIntegrationHarnessCode {
+		return vs[0].([]GetIdpIntegrationHarnessCode)[vs[1].(int)]
+	}).(GetIdpIntegrationHarnessCodeOutput)
+}
+
+type GetIdpIntegrationHarnessK8 struct {
+	// Environment.
+	EnvironmentIdentifier string `pulumi:"environmentIdentifier"`
+	// Service discovery agent.
+	ServiceDiscoveryAgentIdentifier string `pulumi:"serviceDiscoveryAgentIdentifier"`
+}
+
+// GetIdpIntegrationHarnessK8Input is an input type that accepts GetIdpIntegrationHarnessK8Args and GetIdpIntegrationHarnessK8Output values.
+// You can construct a concrete instance of `GetIdpIntegrationHarnessK8Input` via:
+//
+//	GetIdpIntegrationHarnessK8Args{...}
+type GetIdpIntegrationHarnessK8Input interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationHarnessK8Output() GetIdpIntegrationHarnessK8Output
+	ToGetIdpIntegrationHarnessK8OutputWithContext(context.Context) GetIdpIntegrationHarnessK8Output
+}
+
+type GetIdpIntegrationHarnessK8Args struct {
+	// Environment.
+	EnvironmentIdentifier pulumi.StringInput `pulumi:"environmentIdentifier"`
+	// Service discovery agent.
+	ServiceDiscoveryAgentIdentifier pulumi.StringInput `pulumi:"serviceDiscoveryAgentIdentifier"`
+}
+
+func (GetIdpIntegrationHarnessK8Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationHarnessK8)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationHarnessK8Args) ToGetIdpIntegrationHarnessK8Output() GetIdpIntegrationHarnessK8Output {
+	return i.ToGetIdpIntegrationHarnessK8OutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationHarnessK8Args) ToGetIdpIntegrationHarnessK8OutputWithContext(ctx context.Context) GetIdpIntegrationHarnessK8Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationHarnessK8Output)
+}
+
+// GetIdpIntegrationHarnessK8ArrayInput is an input type that accepts GetIdpIntegrationHarnessK8Array and GetIdpIntegrationHarnessK8ArrayOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationHarnessK8ArrayInput` via:
+//
+//	GetIdpIntegrationHarnessK8Array{ GetIdpIntegrationHarnessK8Args{...} }
+type GetIdpIntegrationHarnessK8ArrayInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationHarnessK8ArrayOutput() GetIdpIntegrationHarnessK8ArrayOutput
+	ToGetIdpIntegrationHarnessK8ArrayOutputWithContext(context.Context) GetIdpIntegrationHarnessK8ArrayOutput
+}
+
+type GetIdpIntegrationHarnessK8Array []GetIdpIntegrationHarnessK8Input
+
+func (GetIdpIntegrationHarnessK8Array) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationHarnessK8)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationHarnessK8Array) ToGetIdpIntegrationHarnessK8ArrayOutput() GetIdpIntegrationHarnessK8ArrayOutput {
+	return i.ToGetIdpIntegrationHarnessK8ArrayOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationHarnessK8Array) ToGetIdpIntegrationHarnessK8ArrayOutputWithContext(ctx context.Context) GetIdpIntegrationHarnessK8ArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationHarnessK8ArrayOutput)
+}
+
+type GetIdpIntegrationHarnessK8Output struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationHarnessK8Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationHarnessK8)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationHarnessK8Output) ToGetIdpIntegrationHarnessK8Output() GetIdpIntegrationHarnessK8Output {
+	return o
+}
+
+func (o GetIdpIntegrationHarnessK8Output) ToGetIdpIntegrationHarnessK8OutputWithContext(ctx context.Context) GetIdpIntegrationHarnessK8Output {
+	return o
+}
+
+// Environment.
+func (o GetIdpIntegrationHarnessK8Output) EnvironmentIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpIntegrationHarnessK8) string { return v.EnvironmentIdentifier }).(pulumi.StringOutput)
+}
+
+// Service discovery agent.
+func (o GetIdpIntegrationHarnessK8Output) ServiceDiscoveryAgentIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpIntegrationHarnessK8) string { return v.ServiceDiscoveryAgentIdentifier }).(pulumi.StringOutput)
+}
+
+type GetIdpIntegrationHarnessK8ArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationHarnessK8ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationHarnessK8)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationHarnessK8ArrayOutput) ToGetIdpIntegrationHarnessK8ArrayOutput() GetIdpIntegrationHarnessK8ArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationHarnessK8ArrayOutput) ToGetIdpIntegrationHarnessK8ArrayOutputWithContext(ctx context.Context) GetIdpIntegrationHarnessK8ArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationHarnessK8ArrayOutput) Index(i pulumi.IntInput) GetIdpIntegrationHarnessK8Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIdpIntegrationHarnessK8 {
+		return vs[0].([]GetIdpIntegrationHarnessK8)[vs[1].(int)]
+	}).(GetIdpIntegrationHarnessK8Output)
+}
+
+type GetIdpIntegrationJira struct {
+	// Custom field IDs to sync, like customfield_10456.
+	CustomFields []string `pulumi:"customFields"`
+	// Lower bound for the first sync, RFC3339; 365 days back when omitted.
+	StartDate string `pulumi:"startDate"`
+}
+
+// GetIdpIntegrationJiraInput is an input type that accepts GetIdpIntegrationJiraArgs and GetIdpIntegrationJiraOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationJiraInput` via:
+//
+//	GetIdpIntegrationJiraArgs{...}
+type GetIdpIntegrationJiraInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationJiraOutput() GetIdpIntegrationJiraOutput
+	ToGetIdpIntegrationJiraOutputWithContext(context.Context) GetIdpIntegrationJiraOutput
+}
+
+type GetIdpIntegrationJiraArgs struct {
+	// Custom field IDs to sync, like customfield_10456.
+	CustomFields pulumi.StringArrayInput `pulumi:"customFields"`
+	// Lower bound for the first sync, RFC3339; 365 days back when omitted.
+	StartDate pulumi.StringInput `pulumi:"startDate"`
+}
+
+func (GetIdpIntegrationJiraArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationJira)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationJiraArgs) ToGetIdpIntegrationJiraOutput() GetIdpIntegrationJiraOutput {
+	return i.ToGetIdpIntegrationJiraOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationJiraArgs) ToGetIdpIntegrationJiraOutputWithContext(ctx context.Context) GetIdpIntegrationJiraOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationJiraOutput)
+}
+
+// GetIdpIntegrationJiraArrayInput is an input type that accepts GetIdpIntegrationJiraArray and GetIdpIntegrationJiraArrayOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationJiraArrayInput` via:
+//
+//	GetIdpIntegrationJiraArray{ GetIdpIntegrationJiraArgs{...} }
+type GetIdpIntegrationJiraArrayInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationJiraArrayOutput() GetIdpIntegrationJiraArrayOutput
+	ToGetIdpIntegrationJiraArrayOutputWithContext(context.Context) GetIdpIntegrationJiraArrayOutput
+}
+
+type GetIdpIntegrationJiraArray []GetIdpIntegrationJiraInput
+
+func (GetIdpIntegrationJiraArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationJira)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationJiraArray) ToGetIdpIntegrationJiraArrayOutput() GetIdpIntegrationJiraArrayOutput {
+	return i.ToGetIdpIntegrationJiraArrayOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationJiraArray) ToGetIdpIntegrationJiraArrayOutputWithContext(ctx context.Context) GetIdpIntegrationJiraArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationJiraArrayOutput)
+}
+
+type GetIdpIntegrationJiraOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationJiraOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationJira)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationJiraOutput) ToGetIdpIntegrationJiraOutput() GetIdpIntegrationJiraOutput {
+	return o
+}
+
+func (o GetIdpIntegrationJiraOutput) ToGetIdpIntegrationJiraOutputWithContext(ctx context.Context) GetIdpIntegrationJiraOutput {
+	return o
+}
+
+// Custom field IDs to sync, like customfield_10456.
+func (o GetIdpIntegrationJiraOutput) CustomFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIdpIntegrationJira) []string { return v.CustomFields }).(pulumi.StringArrayOutput)
+}
+
+// Lower bound for the first sync, RFC3339; 365 days back when omitted.
+func (o GetIdpIntegrationJiraOutput) StartDate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpIntegrationJira) string { return v.StartDate }).(pulumi.StringOutput)
+}
+
+type GetIdpIntegrationJiraArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationJiraArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationJira)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationJiraArrayOutput) ToGetIdpIntegrationJiraArrayOutput() GetIdpIntegrationJiraArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationJiraArrayOutput) ToGetIdpIntegrationJiraArrayOutputWithContext(ctx context.Context) GetIdpIntegrationJiraArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationJiraArrayOutput) Index(i pulumi.IntInput) GetIdpIntegrationJiraOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIdpIntegrationJira {
+		return vs[0].([]GetIdpIntegrationJira)[vs[1].(int)]
+	}).(GetIdpIntegrationJiraOutput)
+}
+
+type GetIdpIntegrationKind struct {
+	// register, merge or merge_register; the type's default when omitted.
+	Action string `pulumi:"action"`
+	// Import new entities automatically.
+	AutoImport bool `pulumi:"autoImport"`
+	// JQ that returns true for records to keep; the type's default when omitted.
+	Filter string `pulumi:"filter"`
+	// Airbyte types: entity kind, e.g. component; the type's default when omitted. Set at create only; required for kinds with no default, such as ServiceNow's.
+	IdpKind string `pulumi:"idpKind"`
+	// Airbyte types: entity type, e.g. service; the type's default when omitted. Set at create only.
+	IdpType string `pulumi:"idpType"`
+	// Kind name.
+	Kind string `pulumi:"kind"`
+	// Airbyte types: the stream's sync mode, fullRefresh or incremental.
+	ReplicationMode string `pulumi:"replicationMode"`
+}
+
+// GetIdpIntegrationKindInput is an input type that accepts GetIdpIntegrationKindArgs and GetIdpIntegrationKindOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationKindInput` via:
+//
+//	GetIdpIntegrationKindArgs{...}
+type GetIdpIntegrationKindInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationKindOutput() GetIdpIntegrationKindOutput
+	ToGetIdpIntegrationKindOutputWithContext(context.Context) GetIdpIntegrationKindOutput
+}
+
+type GetIdpIntegrationKindArgs struct {
+	// register, merge or merge_register; the type's default when omitted.
+	Action pulumi.StringInput `pulumi:"action"`
+	// Import new entities automatically.
+	AutoImport pulumi.BoolInput `pulumi:"autoImport"`
+	// JQ that returns true for records to keep; the type's default when omitted.
+	Filter pulumi.StringInput `pulumi:"filter"`
+	// Airbyte types: entity kind, e.g. component; the type's default when omitted. Set at create only; required for kinds with no default, such as ServiceNow's.
+	IdpKind pulumi.StringInput `pulumi:"idpKind"`
+	// Airbyte types: entity type, e.g. service; the type's default when omitted. Set at create only.
+	IdpType pulumi.StringInput `pulumi:"idpType"`
+	// Kind name.
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// Airbyte types: the stream's sync mode, fullRefresh or incremental.
+	ReplicationMode pulumi.StringInput `pulumi:"replicationMode"`
+}
+
+func (GetIdpIntegrationKindArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationKind)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationKindArgs) ToGetIdpIntegrationKindOutput() GetIdpIntegrationKindOutput {
+	return i.ToGetIdpIntegrationKindOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationKindArgs) ToGetIdpIntegrationKindOutputWithContext(ctx context.Context) GetIdpIntegrationKindOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationKindOutput)
+}
+
+// GetIdpIntegrationKindArrayInput is an input type that accepts GetIdpIntegrationKindArray and GetIdpIntegrationKindArrayOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationKindArrayInput` via:
+//
+//	GetIdpIntegrationKindArray{ GetIdpIntegrationKindArgs{...} }
+type GetIdpIntegrationKindArrayInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationKindArrayOutput() GetIdpIntegrationKindArrayOutput
+	ToGetIdpIntegrationKindArrayOutputWithContext(context.Context) GetIdpIntegrationKindArrayOutput
+}
+
+type GetIdpIntegrationKindArray []GetIdpIntegrationKindInput
+
+func (GetIdpIntegrationKindArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationKind)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationKindArray) ToGetIdpIntegrationKindArrayOutput() GetIdpIntegrationKindArrayOutput {
+	return i.ToGetIdpIntegrationKindArrayOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationKindArray) ToGetIdpIntegrationKindArrayOutputWithContext(ctx context.Context) GetIdpIntegrationKindArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationKindArrayOutput)
+}
+
+type GetIdpIntegrationKindOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationKindOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationKind)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationKindOutput) ToGetIdpIntegrationKindOutput() GetIdpIntegrationKindOutput {
+	return o
+}
+
+func (o GetIdpIntegrationKindOutput) ToGetIdpIntegrationKindOutputWithContext(ctx context.Context) GetIdpIntegrationKindOutput {
+	return o
+}
+
+// register, merge or merge_register; the type's default when omitted.
+func (o GetIdpIntegrationKindOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpIntegrationKind) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// Import new entities automatically.
+func (o GetIdpIntegrationKindOutput) AutoImport() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetIdpIntegrationKind) bool { return v.AutoImport }).(pulumi.BoolOutput)
+}
+
+// JQ that returns true for records to keep; the type's default when omitted.
+func (o GetIdpIntegrationKindOutput) Filter() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpIntegrationKind) string { return v.Filter }).(pulumi.StringOutput)
+}
+
+// Airbyte types: entity kind, e.g. component; the type's default when omitted. Set at create only; required for kinds with no default, such as ServiceNow's.
+func (o GetIdpIntegrationKindOutput) IdpKind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpIntegrationKind) string { return v.IdpKind }).(pulumi.StringOutput)
+}
+
+// Airbyte types: entity type, e.g. service; the type's default when omitted. Set at create only.
+func (o GetIdpIntegrationKindOutput) IdpType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpIntegrationKind) string { return v.IdpType }).(pulumi.StringOutput)
+}
+
+// Kind name.
+func (o GetIdpIntegrationKindOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpIntegrationKind) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// Airbyte types: the stream's sync mode, fullRefresh or incremental.
+func (o GetIdpIntegrationKindOutput) ReplicationMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpIntegrationKind) string { return v.ReplicationMode }).(pulumi.StringOutput)
+}
+
+type GetIdpIntegrationKindArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationKindArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationKind)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationKindArrayOutput) ToGetIdpIntegrationKindArrayOutput() GetIdpIntegrationKindArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationKindArrayOutput) ToGetIdpIntegrationKindArrayOutputWithContext(ctx context.Context) GetIdpIntegrationKindArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationKindArrayOutput) Index(i pulumi.IntInput) GetIdpIntegrationKindOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIdpIntegrationKind {
+		return vs[0].([]GetIdpIntegrationKind)[vs[1].(int)]
+	}).(GetIdpIntegrationKindOutput)
+}
+
+type GetIdpIntegrationKindMappingCorrelation struct {
+	// Match operator; eq when omitted.
+	Operator string `pulumi:"operator"`
+	// Field to match. Airbyte types: a path in the emitted entity data, e.g. identifier or spec.owner; Custom: a payload field.
+	SourcePath string `pulumi:"sourcePath"`
+	// Entity field to match, e.g. metadata.identifier.
+	TargetPath string `pulumi:"targetPath"`
+}
+
+// GetIdpIntegrationKindMappingCorrelationInput is an input type that accepts GetIdpIntegrationKindMappingCorrelationArgs and GetIdpIntegrationKindMappingCorrelationOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationKindMappingCorrelationInput` via:
+//
+//	GetIdpIntegrationKindMappingCorrelationArgs{...}
+type GetIdpIntegrationKindMappingCorrelationInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationKindMappingCorrelationOutput() GetIdpIntegrationKindMappingCorrelationOutput
+	ToGetIdpIntegrationKindMappingCorrelationOutputWithContext(context.Context) GetIdpIntegrationKindMappingCorrelationOutput
+}
+
+type GetIdpIntegrationKindMappingCorrelationArgs struct {
+	// Match operator; eq when omitted.
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// Field to match. Airbyte types: a path in the emitted entity data, e.g. identifier or spec.owner; Custom: a payload field.
+	SourcePath pulumi.StringInput `pulumi:"sourcePath"`
+	// Entity field to match, e.g. metadata.identifier.
+	TargetPath pulumi.StringInput `pulumi:"targetPath"`
+}
+
+func (GetIdpIntegrationKindMappingCorrelationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationKindMappingCorrelation)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationKindMappingCorrelationArgs) ToGetIdpIntegrationKindMappingCorrelationOutput() GetIdpIntegrationKindMappingCorrelationOutput {
+	return i.ToGetIdpIntegrationKindMappingCorrelationOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationKindMappingCorrelationArgs) ToGetIdpIntegrationKindMappingCorrelationOutputWithContext(ctx context.Context) GetIdpIntegrationKindMappingCorrelationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationKindMappingCorrelationOutput)
+}
+
+// GetIdpIntegrationKindMappingCorrelationArrayInput is an input type that accepts GetIdpIntegrationKindMappingCorrelationArray and GetIdpIntegrationKindMappingCorrelationArrayOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationKindMappingCorrelationArrayInput` via:
+//
+//	GetIdpIntegrationKindMappingCorrelationArray{ GetIdpIntegrationKindMappingCorrelationArgs{...} }
+type GetIdpIntegrationKindMappingCorrelationArrayInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationKindMappingCorrelationArrayOutput() GetIdpIntegrationKindMappingCorrelationArrayOutput
+	ToGetIdpIntegrationKindMappingCorrelationArrayOutputWithContext(context.Context) GetIdpIntegrationKindMappingCorrelationArrayOutput
+}
+
+type GetIdpIntegrationKindMappingCorrelationArray []GetIdpIntegrationKindMappingCorrelationInput
+
+func (GetIdpIntegrationKindMappingCorrelationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationKindMappingCorrelation)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationKindMappingCorrelationArray) ToGetIdpIntegrationKindMappingCorrelationArrayOutput() GetIdpIntegrationKindMappingCorrelationArrayOutput {
+	return i.ToGetIdpIntegrationKindMappingCorrelationArrayOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationKindMappingCorrelationArray) ToGetIdpIntegrationKindMappingCorrelationArrayOutputWithContext(ctx context.Context) GetIdpIntegrationKindMappingCorrelationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationKindMappingCorrelationArrayOutput)
+}
+
+type GetIdpIntegrationKindMappingCorrelationOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationKindMappingCorrelationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationKindMappingCorrelation)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationKindMappingCorrelationOutput) ToGetIdpIntegrationKindMappingCorrelationOutput() GetIdpIntegrationKindMappingCorrelationOutput {
+	return o
+}
+
+func (o GetIdpIntegrationKindMappingCorrelationOutput) ToGetIdpIntegrationKindMappingCorrelationOutputWithContext(ctx context.Context) GetIdpIntegrationKindMappingCorrelationOutput {
+	return o
+}
+
+// Match operator; eq when omitted.
+func (o GetIdpIntegrationKindMappingCorrelationOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpIntegrationKindMappingCorrelation) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// Field to match. Airbyte types: a path in the emitted entity data, e.g. identifier or spec.owner; Custom: a payload field.
+func (o GetIdpIntegrationKindMappingCorrelationOutput) SourcePath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpIntegrationKindMappingCorrelation) string { return v.SourcePath }).(pulumi.StringOutput)
+}
+
+// Entity field to match, e.g. metadata.identifier.
+func (o GetIdpIntegrationKindMappingCorrelationOutput) TargetPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpIntegrationKindMappingCorrelation) string { return v.TargetPath }).(pulumi.StringOutput)
+}
+
+type GetIdpIntegrationKindMappingCorrelationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationKindMappingCorrelationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationKindMappingCorrelation)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationKindMappingCorrelationArrayOutput) ToGetIdpIntegrationKindMappingCorrelationArrayOutput() GetIdpIntegrationKindMappingCorrelationArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationKindMappingCorrelationArrayOutput) ToGetIdpIntegrationKindMappingCorrelationArrayOutputWithContext(ctx context.Context) GetIdpIntegrationKindMappingCorrelationArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationKindMappingCorrelationArrayOutput) Index(i pulumi.IntInput) GetIdpIntegrationKindMappingCorrelationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIdpIntegrationKindMappingCorrelation {
+		return vs[0].([]GetIdpIntegrationKindMappingCorrelation)[vs[1].(int)]
+	}).(GetIdpIntegrationKindMappingCorrelationOutput)
+}
+
+type GetIdpIntegrationKindMappingEmission struct {
+	Identifier string `pulumi:"identifier"`
+	Name       string `pulumi:"name"`
+	// JSON object.
+	Properties string `pulumi:"properties"`
+}
+
+// GetIdpIntegrationKindMappingEmissionInput is an input type that accepts GetIdpIntegrationKindMappingEmissionArgs and GetIdpIntegrationKindMappingEmissionOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationKindMappingEmissionInput` via:
+//
+//	GetIdpIntegrationKindMappingEmissionArgs{...}
+type GetIdpIntegrationKindMappingEmissionInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationKindMappingEmissionOutput() GetIdpIntegrationKindMappingEmissionOutput
+	ToGetIdpIntegrationKindMappingEmissionOutputWithContext(context.Context) GetIdpIntegrationKindMappingEmissionOutput
+}
+
+type GetIdpIntegrationKindMappingEmissionArgs struct {
+	Identifier pulumi.StringInput `pulumi:"identifier"`
+	Name       pulumi.StringInput `pulumi:"name"`
+	// JSON object.
+	Properties pulumi.StringInput `pulumi:"properties"`
+}
+
+func (GetIdpIntegrationKindMappingEmissionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationKindMappingEmission)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationKindMappingEmissionArgs) ToGetIdpIntegrationKindMappingEmissionOutput() GetIdpIntegrationKindMappingEmissionOutput {
+	return i.ToGetIdpIntegrationKindMappingEmissionOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationKindMappingEmissionArgs) ToGetIdpIntegrationKindMappingEmissionOutputWithContext(ctx context.Context) GetIdpIntegrationKindMappingEmissionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationKindMappingEmissionOutput)
+}
+
+// GetIdpIntegrationKindMappingEmissionArrayInput is an input type that accepts GetIdpIntegrationKindMappingEmissionArray and GetIdpIntegrationKindMappingEmissionArrayOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationKindMappingEmissionArrayInput` via:
+//
+//	GetIdpIntegrationKindMappingEmissionArray{ GetIdpIntegrationKindMappingEmissionArgs{...} }
+type GetIdpIntegrationKindMappingEmissionArrayInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationKindMappingEmissionArrayOutput() GetIdpIntegrationKindMappingEmissionArrayOutput
+	ToGetIdpIntegrationKindMappingEmissionArrayOutputWithContext(context.Context) GetIdpIntegrationKindMappingEmissionArrayOutput
+}
+
+type GetIdpIntegrationKindMappingEmissionArray []GetIdpIntegrationKindMappingEmissionInput
+
+func (GetIdpIntegrationKindMappingEmissionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationKindMappingEmission)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationKindMappingEmissionArray) ToGetIdpIntegrationKindMappingEmissionArrayOutput() GetIdpIntegrationKindMappingEmissionArrayOutput {
+	return i.ToGetIdpIntegrationKindMappingEmissionArrayOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationKindMappingEmissionArray) ToGetIdpIntegrationKindMappingEmissionArrayOutputWithContext(ctx context.Context) GetIdpIntegrationKindMappingEmissionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationKindMappingEmissionArrayOutput)
+}
+
+type GetIdpIntegrationKindMappingEmissionOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationKindMappingEmissionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationKindMappingEmission)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationKindMappingEmissionOutput) ToGetIdpIntegrationKindMappingEmissionOutput() GetIdpIntegrationKindMappingEmissionOutput {
+	return o
+}
+
+func (o GetIdpIntegrationKindMappingEmissionOutput) ToGetIdpIntegrationKindMappingEmissionOutputWithContext(ctx context.Context) GetIdpIntegrationKindMappingEmissionOutput {
+	return o
+}
+
+func (o GetIdpIntegrationKindMappingEmissionOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpIntegrationKindMappingEmission) string { return v.Identifier }).(pulumi.StringOutput)
+}
+
+func (o GetIdpIntegrationKindMappingEmissionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpIntegrationKindMappingEmission) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// JSON object.
+func (o GetIdpIntegrationKindMappingEmissionOutput) Properties() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpIntegrationKindMappingEmission) string { return v.Properties }).(pulumi.StringOutput)
+}
+
+type GetIdpIntegrationKindMappingEmissionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationKindMappingEmissionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationKindMappingEmission)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationKindMappingEmissionArrayOutput) ToGetIdpIntegrationKindMappingEmissionArrayOutput() GetIdpIntegrationKindMappingEmissionArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationKindMappingEmissionArrayOutput) ToGetIdpIntegrationKindMappingEmissionArrayOutputWithContext(ctx context.Context) GetIdpIntegrationKindMappingEmissionArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationKindMappingEmissionArrayOutput) Index(i pulumi.IntInput) GetIdpIntegrationKindMappingEmissionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIdpIntegrationKindMappingEmission {
+		return vs[0].([]GetIdpIntegrationKindMappingEmission)[vs[1].(int)]
+	}).(GetIdpIntegrationKindMappingEmissionOutput)
+}
+
+type GetIdpIntegrationKindMappingFieldMapping struct {
+	// Source field.
+	SourceField string `pulumi:"sourceField"`
+	// Entity field, e.g. spec.owner.
+	TargetField string `pulumi:"targetField"`
+}
+
+// GetIdpIntegrationKindMappingFieldMappingInput is an input type that accepts GetIdpIntegrationKindMappingFieldMappingArgs and GetIdpIntegrationKindMappingFieldMappingOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationKindMappingFieldMappingInput` via:
+//
+//	GetIdpIntegrationKindMappingFieldMappingArgs{...}
+type GetIdpIntegrationKindMappingFieldMappingInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationKindMappingFieldMappingOutput() GetIdpIntegrationKindMappingFieldMappingOutput
+	ToGetIdpIntegrationKindMappingFieldMappingOutputWithContext(context.Context) GetIdpIntegrationKindMappingFieldMappingOutput
+}
+
+type GetIdpIntegrationKindMappingFieldMappingArgs struct {
+	// Source field.
+	SourceField pulumi.StringInput `pulumi:"sourceField"`
+	// Entity field, e.g. spec.owner.
+	TargetField pulumi.StringInput `pulumi:"targetField"`
+}
+
+func (GetIdpIntegrationKindMappingFieldMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationKindMappingFieldMapping)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationKindMappingFieldMappingArgs) ToGetIdpIntegrationKindMappingFieldMappingOutput() GetIdpIntegrationKindMappingFieldMappingOutput {
+	return i.ToGetIdpIntegrationKindMappingFieldMappingOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationKindMappingFieldMappingArgs) ToGetIdpIntegrationKindMappingFieldMappingOutputWithContext(ctx context.Context) GetIdpIntegrationKindMappingFieldMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationKindMappingFieldMappingOutput)
+}
+
+// GetIdpIntegrationKindMappingFieldMappingArrayInput is an input type that accepts GetIdpIntegrationKindMappingFieldMappingArray and GetIdpIntegrationKindMappingFieldMappingArrayOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationKindMappingFieldMappingArrayInput` via:
+//
+//	GetIdpIntegrationKindMappingFieldMappingArray{ GetIdpIntegrationKindMappingFieldMappingArgs{...} }
+type GetIdpIntegrationKindMappingFieldMappingArrayInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationKindMappingFieldMappingArrayOutput() GetIdpIntegrationKindMappingFieldMappingArrayOutput
+	ToGetIdpIntegrationKindMappingFieldMappingArrayOutputWithContext(context.Context) GetIdpIntegrationKindMappingFieldMappingArrayOutput
+}
+
+type GetIdpIntegrationKindMappingFieldMappingArray []GetIdpIntegrationKindMappingFieldMappingInput
+
+func (GetIdpIntegrationKindMappingFieldMappingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationKindMappingFieldMapping)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationKindMappingFieldMappingArray) ToGetIdpIntegrationKindMappingFieldMappingArrayOutput() GetIdpIntegrationKindMappingFieldMappingArrayOutput {
+	return i.ToGetIdpIntegrationKindMappingFieldMappingArrayOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationKindMappingFieldMappingArray) ToGetIdpIntegrationKindMappingFieldMappingArrayOutputWithContext(ctx context.Context) GetIdpIntegrationKindMappingFieldMappingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationKindMappingFieldMappingArrayOutput)
+}
+
+type GetIdpIntegrationKindMappingFieldMappingOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationKindMappingFieldMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationKindMappingFieldMapping)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationKindMappingFieldMappingOutput) ToGetIdpIntegrationKindMappingFieldMappingOutput() GetIdpIntegrationKindMappingFieldMappingOutput {
+	return o
+}
+
+func (o GetIdpIntegrationKindMappingFieldMappingOutput) ToGetIdpIntegrationKindMappingFieldMappingOutputWithContext(ctx context.Context) GetIdpIntegrationKindMappingFieldMappingOutput {
+	return o
+}
+
+// Source field.
+func (o GetIdpIntegrationKindMappingFieldMappingOutput) SourceField() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpIntegrationKindMappingFieldMapping) string { return v.SourceField }).(pulumi.StringOutput)
+}
+
+// Entity field, e.g. spec.owner.
+func (o GetIdpIntegrationKindMappingFieldMappingOutput) TargetField() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpIntegrationKindMappingFieldMapping) string { return v.TargetField }).(pulumi.StringOutput)
+}
+
+type GetIdpIntegrationKindMappingFieldMappingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationKindMappingFieldMappingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationKindMappingFieldMapping)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationKindMappingFieldMappingArrayOutput) ToGetIdpIntegrationKindMappingFieldMappingArrayOutput() GetIdpIntegrationKindMappingFieldMappingArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationKindMappingFieldMappingArrayOutput) ToGetIdpIntegrationKindMappingFieldMappingArrayOutputWithContext(ctx context.Context) GetIdpIntegrationKindMappingFieldMappingArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationKindMappingFieldMappingArrayOutput) Index(i pulumi.IntInput) GetIdpIntegrationKindMappingFieldMappingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIdpIntegrationKindMappingFieldMapping {
+		return vs[0].([]GetIdpIntegrationKindMappingFieldMapping)[vs[1].(int)]
+	}).(GetIdpIntegrationKindMappingFieldMappingOutput)
+}
+
+type GetIdpIntegrationKindMappingIngestion struct {
+	// JQ for the entity identifier.
+	Identifier string `pulumi:"identifier"`
+	// JQ for the entity name.
+	Name string `pulumi:"name"`
+	// JQ per entity property; derived from the payload schema when omitted.
+	Properties map[string]string `pulumi:"properties"`
+}
+
+// GetIdpIntegrationKindMappingIngestionInput is an input type that accepts GetIdpIntegrationKindMappingIngestionArgs and GetIdpIntegrationKindMappingIngestionOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationKindMappingIngestionInput` via:
+//
+//	GetIdpIntegrationKindMappingIngestionArgs{...}
+type GetIdpIntegrationKindMappingIngestionInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationKindMappingIngestionOutput() GetIdpIntegrationKindMappingIngestionOutput
+	ToGetIdpIntegrationKindMappingIngestionOutputWithContext(context.Context) GetIdpIntegrationKindMappingIngestionOutput
+}
+
+type GetIdpIntegrationKindMappingIngestionArgs struct {
+	// JQ for the entity identifier.
+	Identifier pulumi.StringInput `pulumi:"identifier"`
+	// JQ for the entity name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// JQ per entity property; derived from the payload schema when omitted.
+	Properties pulumi.StringMapInput `pulumi:"properties"`
+}
+
+func (GetIdpIntegrationKindMappingIngestionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationKindMappingIngestion)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationKindMappingIngestionArgs) ToGetIdpIntegrationKindMappingIngestionOutput() GetIdpIntegrationKindMappingIngestionOutput {
+	return i.ToGetIdpIntegrationKindMappingIngestionOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationKindMappingIngestionArgs) ToGetIdpIntegrationKindMappingIngestionOutputWithContext(ctx context.Context) GetIdpIntegrationKindMappingIngestionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationKindMappingIngestionOutput)
+}
+
+// GetIdpIntegrationKindMappingIngestionArrayInput is an input type that accepts GetIdpIntegrationKindMappingIngestionArray and GetIdpIntegrationKindMappingIngestionArrayOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationKindMappingIngestionArrayInput` via:
+//
+//	GetIdpIntegrationKindMappingIngestionArray{ GetIdpIntegrationKindMappingIngestionArgs{...} }
+type GetIdpIntegrationKindMappingIngestionArrayInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationKindMappingIngestionArrayOutput() GetIdpIntegrationKindMappingIngestionArrayOutput
+	ToGetIdpIntegrationKindMappingIngestionArrayOutputWithContext(context.Context) GetIdpIntegrationKindMappingIngestionArrayOutput
+}
+
+type GetIdpIntegrationKindMappingIngestionArray []GetIdpIntegrationKindMappingIngestionInput
+
+func (GetIdpIntegrationKindMappingIngestionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationKindMappingIngestion)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationKindMappingIngestionArray) ToGetIdpIntegrationKindMappingIngestionArrayOutput() GetIdpIntegrationKindMappingIngestionArrayOutput {
+	return i.ToGetIdpIntegrationKindMappingIngestionArrayOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationKindMappingIngestionArray) ToGetIdpIntegrationKindMappingIngestionArrayOutputWithContext(ctx context.Context) GetIdpIntegrationKindMappingIngestionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationKindMappingIngestionArrayOutput)
+}
+
+type GetIdpIntegrationKindMappingIngestionOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationKindMappingIngestionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationKindMappingIngestion)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationKindMappingIngestionOutput) ToGetIdpIntegrationKindMappingIngestionOutput() GetIdpIntegrationKindMappingIngestionOutput {
+	return o
+}
+
+func (o GetIdpIntegrationKindMappingIngestionOutput) ToGetIdpIntegrationKindMappingIngestionOutputWithContext(ctx context.Context) GetIdpIntegrationKindMappingIngestionOutput {
+	return o
+}
+
+// JQ for the entity identifier.
+func (o GetIdpIntegrationKindMappingIngestionOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpIntegrationKindMappingIngestion) string { return v.Identifier }).(pulumi.StringOutput)
+}
+
+// JQ for the entity name.
+func (o GetIdpIntegrationKindMappingIngestionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpIntegrationKindMappingIngestion) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// JQ per entity property; derived from the payload schema when omitted.
+func (o GetIdpIntegrationKindMappingIngestionOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetIdpIntegrationKindMappingIngestion) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+type GetIdpIntegrationKindMappingIngestionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationKindMappingIngestionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationKindMappingIngestion)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationKindMappingIngestionArrayOutput) ToGetIdpIntegrationKindMappingIngestionArrayOutput() GetIdpIntegrationKindMappingIngestionArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationKindMappingIngestionArrayOutput) ToGetIdpIntegrationKindMappingIngestionArrayOutputWithContext(ctx context.Context) GetIdpIntegrationKindMappingIngestionArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationKindMappingIngestionArrayOutput) Index(i pulumi.IntInput) GetIdpIntegrationKindMappingIngestionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIdpIntegrationKindMappingIngestion {
+		return vs[0].([]GetIdpIntegrationKindMappingIngestion)[vs[1].(int)]
+	}).(GetIdpIntegrationKindMappingIngestionOutput)
+}
+
+type GetIdpIntegrationPagerduty struct {
+	// Months of analytics to aggregate.
+	AnalyticsDurationMonths int `pulumi:"analyticsDurationMonths"`
+	// Lower bound for the first sync, RFC3339.
+	StartDate string `pulumi:"startDate"`
+}
+
+// GetIdpIntegrationPagerdutyInput is an input type that accepts GetIdpIntegrationPagerdutyArgs and GetIdpIntegrationPagerdutyOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationPagerdutyInput` via:
+//
+//	GetIdpIntegrationPagerdutyArgs{...}
+type GetIdpIntegrationPagerdutyInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationPagerdutyOutput() GetIdpIntegrationPagerdutyOutput
+	ToGetIdpIntegrationPagerdutyOutputWithContext(context.Context) GetIdpIntegrationPagerdutyOutput
+}
+
+type GetIdpIntegrationPagerdutyArgs struct {
+	// Months of analytics to aggregate.
+	AnalyticsDurationMonths pulumi.IntInput `pulumi:"analyticsDurationMonths"`
+	// Lower bound for the first sync, RFC3339.
+	StartDate pulumi.StringInput `pulumi:"startDate"`
+}
+
+func (GetIdpIntegrationPagerdutyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationPagerduty)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationPagerdutyArgs) ToGetIdpIntegrationPagerdutyOutput() GetIdpIntegrationPagerdutyOutput {
+	return i.ToGetIdpIntegrationPagerdutyOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationPagerdutyArgs) ToGetIdpIntegrationPagerdutyOutputWithContext(ctx context.Context) GetIdpIntegrationPagerdutyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationPagerdutyOutput)
+}
+
+// GetIdpIntegrationPagerdutyArrayInput is an input type that accepts GetIdpIntegrationPagerdutyArray and GetIdpIntegrationPagerdutyArrayOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationPagerdutyArrayInput` via:
+//
+//	GetIdpIntegrationPagerdutyArray{ GetIdpIntegrationPagerdutyArgs{...} }
+type GetIdpIntegrationPagerdutyArrayInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationPagerdutyArrayOutput() GetIdpIntegrationPagerdutyArrayOutput
+	ToGetIdpIntegrationPagerdutyArrayOutputWithContext(context.Context) GetIdpIntegrationPagerdutyArrayOutput
+}
+
+type GetIdpIntegrationPagerdutyArray []GetIdpIntegrationPagerdutyInput
+
+func (GetIdpIntegrationPagerdutyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationPagerduty)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationPagerdutyArray) ToGetIdpIntegrationPagerdutyArrayOutput() GetIdpIntegrationPagerdutyArrayOutput {
+	return i.ToGetIdpIntegrationPagerdutyArrayOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationPagerdutyArray) ToGetIdpIntegrationPagerdutyArrayOutputWithContext(ctx context.Context) GetIdpIntegrationPagerdutyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationPagerdutyArrayOutput)
+}
+
+type GetIdpIntegrationPagerdutyOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationPagerdutyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationPagerduty)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationPagerdutyOutput) ToGetIdpIntegrationPagerdutyOutput() GetIdpIntegrationPagerdutyOutput {
+	return o
+}
+
+func (o GetIdpIntegrationPagerdutyOutput) ToGetIdpIntegrationPagerdutyOutputWithContext(ctx context.Context) GetIdpIntegrationPagerdutyOutput {
+	return o
+}
+
+// Months of analytics to aggregate.
+func (o GetIdpIntegrationPagerdutyOutput) AnalyticsDurationMonths() pulumi.IntOutput {
+	return o.ApplyT(func(v GetIdpIntegrationPagerduty) int { return v.AnalyticsDurationMonths }).(pulumi.IntOutput)
+}
+
+// Lower bound for the first sync, RFC3339.
+func (o GetIdpIntegrationPagerdutyOutput) StartDate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpIntegrationPagerduty) string { return v.StartDate }).(pulumi.StringOutput)
+}
+
+type GetIdpIntegrationPagerdutyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationPagerdutyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationPagerduty)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationPagerdutyArrayOutput) ToGetIdpIntegrationPagerdutyArrayOutput() GetIdpIntegrationPagerdutyArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationPagerdutyArrayOutput) ToGetIdpIntegrationPagerdutyArrayOutputWithContext(ctx context.Context) GetIdpIntegrationPagerdutyArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationPagerdutyArrayOutput) Index(i pulumi.IntInput) GetIdpIntegrationPagerdutyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIdpIntegrationPagerduty {
+		return vs[0].([]GetIdpIntegrationPagerduty)[vs[1].(int)]
+	}).(GetIdpIntegrationPagerdutyOutput)
+}
+
+type GetIdpIntegrationScope struct {
+	// Read from every scope.
+	All bool `pulumi:"all"`
+	// Scopes to read from: "" for the account, "org" or "org/project".
+	Selecteds []string `pulumi:"selecteds"`
+}
+
+// GetIdpIntegrationScopeInput is an input type that accepts GetIdpIntegrationScopeArgs and GetIdpIntegrationScopeOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationScopeInput` via:
+//
+//	GetIdpIntegrationScopeArgs{...}
+type GetIdpIntegrationScopeInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationScopeOutput() GetIdpIntegrationScopeOutput
+	ToGetIdpIntegrationScopeOutputWithContext(context.Context) GetIdpIntegrationScopeOutput
+}
+
+type GetIdpIntegrationScopeArgs struct {
+	// Read from every scope.
+	All pulumi.BoolInput `pulumi:"all"`
+	// Scopes to read from: "" for the account, "org" or "org/project".
+	Selecteds pulumi.StringArrayInput `pulumi:"selecteds"`
+}
+
+func (GetIdpIntegrationScopeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationScope)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationScopeArgs) ToGetIdpIntegrationScopeOutput() GetIdpIntegrationScopeOutput {
+	return i.ToGetIdpIntegrationScopeOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationScopeArgs) ToGetIdpIntegrationScopeOutputWithContext(ctx context.Context) GetIdpIntegrationScopeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationScopeOutput)
+}
+
+// GetIdpIntegrationScopeArrayInput is an input type that accepts GetIdpIntegrationScopeArray and GetIdpIntegrationScopeArrayOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationScopeArrayInput` via:
+//
+//	GetIdpIntegrationScopeArray{ GetIdpIntegrationScopeArgs{...} }
+type GetIdpIntegrationScopeArrayInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationScopeArrayOutput() GetIdpIntegrationScopeArrayOutput
+	ToGetIdpIntegrationScopeArrayOutputWithContext(context.Context) GetIdpIntegrationScopeArrayOutput
+}
+
+type GetIdpIntegrationScopeArray []GetIdpIntegrationScopeInput
+
+func (GetIdpIntegrationScopeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationScope)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationScopeArray) ToGetIdpIntegrationScopeArrayOutput() GetIdpIntegrationScopeArrayOutput {
+	return i.ToGetIdpIntegrationScopeArrayOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationScopeArray) ToGetIdpIntegrationScopeArrayOutputWithContext(ctx context.Context) GetIdpIntegrationScopeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationScopeArrayOutput)
+}
+
+type GetIdpIntegrationScopeOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationScopeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationScope)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationScopeOutput) ToGetIdpIntegrationScopeOutput() GetIdpIntegrationScopeOutput {
+	return o
+}
+
+func (o GetIdpIntegrationScopeOutput) ToGetIdpIntegrationScopeOutputWithContext(ctx context.Context) GetIdpIntegrationScopeOutput {
+	return o
+}
+
+// Read from every scope.
+func (o GetIdpIntegrationScopeOutput) All() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetIdpIntegrationScope) bool { return v.All }).(pulumi.BoolOutput)
+}
+
+// Scopes to read from: "" for the account, "org" or "org/project".
+func (o GetIdpIntegrationScopeOutput) Selecteds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIdpIntegrationScope) []string { return v.Selecteds }).(pulumi.StringArrayOutput)
+}
+
+type GetIdpIntegrationScopeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationScopeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationScope)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationScopeArrayOutput) ToGetIdpIntegrationScopeArrayOutput() GetIdpIntegrationScopeArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationScopeArrayOutput) ToGetIdpIntegrationScopeArrayOutputWithContext(ctx context.Context) GetIdpIntegrationScopeArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationScopeArrayOutput) Index(i pulumi.IntInput) GetIdpIntegrationScopeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIdpIntegrationScope {
+		return vs[0].([]GetIdpIntegrationScope)[vs[1].(int)]
+	}).(GetIdpIntegrationScopeOutput)
+}
+
+type GetIdpIntegrationSonarqube struct {
+	// Set exactly one of server or cloud.
+	Instances []GetIdpIntegrationSonarqubeInstance `pulumi:"instances"`
+	// Filters for the issues stream.
+	Issues []GetIdpIntegrationSonarqubeIssue `pulumi:"issues"`
+	// Projects to sync; omit to sync all. Set exactly one of include or exclude.
+	Projects []GetIdpIntegrationSonarqubeProject `pulumi:"projects"`
+	// Lower bound for the first sync, RFC3339.
+	StartDate string `pulumi:"startDate"`
+	// Secret reference to a SonarQube user token.
+	TokenRef string `pulumi:"tokenRef"`
+}
+
+// GetIdpIntegrationSonarqubeInput is an input type that accepts GetIdpIntegrationSonarqubeArgs and GetIdpIntegrationSonarqubeOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationSonarqubeInput` via:
+//
+//	GetIdpIntegrationSonarqubeArgs{...}
+type GetIdpIntegrationSonarqubeInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationSonarqubeOutput() GetIdpIntegrationSonarqubeOutput
+	ToGetIdpIntegrationSonarqubeOutputWithContext(context.Context) GetIdpIntegrationSonarqubeOutput
+}
+
+type GetIdpIntegrationSonarqubeArgs struct {
+	// Set exactly one of server or cloud.
+	Instances GetIdpIntegrationSonarqubeInstanceArrayInput `pulumi:"instances"`
+	// Filters for the issues stream.
+	Issues GetIdpIntegrationSonarqubeIssueArrayInput `pulumi:"issues"`
+	// Projects to sync; omit to sync all. Set exactly one of include or exclude.
+	Projects GetIdpIntegrationSonarqubeProjectArrayInput `pulumi:"projects"`
+	// Lower bound for the first sync, RFC3339.
+	StartDate pulumi.StringInput `pulumi:"startDate"`
+	// Secret reference to a SonarQube user token.
+	TokenRef pulumi.StringInput `pulumi:"tokenRef"`
+}
+
+func (GetIdpIntegrationSonarqubeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationSonarqube)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationSonarqubeArgs) ToGetIdpIntegrationSonarqubeOutput() GetIdpIntegrationSonarqubeOutput {
+	return i.ToGetIdpIntegrationSonarqubeOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationSonarqubeArgs) ToGetIdpIntegrationSonarqubeOutputWithContext(ctx context.Context) GetIdpIntegrationSonarqubeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationSonarqubeOutput)
+}
+
+// GetIdpIntegrationSonarqubeArrayInput is an input type that accepts GetIdpIntegrationSonarqubeArray and GetIdpIntegrationSonarqubeArrayOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationSonarqubeArrayInput` via:
+//
+//	GetIdpIntegrationSonarqubeArray{ GetIdpIntegrationSonarqubeArgs{...} }
+type GetIdpIntegrationSonarqubeArrayInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationSonarqubeArrayOutput() GetIdpIntegrationSonarqubeArrayOutput
+	ToGetIdpIntegrationSonarqubeArrayOutputWithContext(context.Context) GetIdpIntegrationSonarqubeArrayOutput
+}
+
+type GetIdpIntegrationSonarqubeArray []GetIdpIntegrationSonarqubeInput
+
+func (GetIdpIntegrationSonarqubeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationSonarqube)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationSonarqubeArray) ToGetIdpIntegrationSonarqubeArrayOutput() GetIdpIntegrationSonarqubeArrayOutput {
+	return i.ToGetIdpIntegrationSonarqubeArrayOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationSonarqubeArray) ToGetIdpIntegrationSonarqubeArrayOutputWithContext(ctx context.Context) GetIdpIntegrationSonarqubeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationSonarqubeArrayOutput)
+}
+
+type GetIdpIntegrationSonarqubeOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationSonarqubeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationSonarqube)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationSonarqubeOutput) ToGetIdpIntegrationSonarqubeOutput() GetIdpIntegrationSonarqubeOutput {
+	return o
+}
+
+func (o GetIdpIntegrationSonarqubeOutput) ToGetIdpIntegrationSonarqubeOutputWithContext(ctx context.Context) GetIdpIntegrationSonarqubeOutput {
+	return o
+}
+
+// Set exactly one of server or cloud.
+func (o GetIdpIntegrationSonarqubeOutput) Instances() GetIdpIntegrationSonarqubeInstanceArrayOutput {
+	return o.ApplyT(func(v GetIdpIntegrationSonarqube) []GetIdpIntegrationSonarqubeInstance { return v.Instances }).(GetIdpIntegrationSonarqubeInstanceArrayOutput)
+}
+
+// Filters for the issues stream.
+func (o GetIdpIntegrationSonarqubeOutput) Issues() GetIdpIntegrationSonarqubeIssueArrayOutput {
+	return o.ApplyT(func(v GetIdpIntegrationSonarqube) []GetIdpIntegrationSonarqubeIssue { return v.Issues }).(GetIdpIntegrationSonarqubeIssueArrayOutput)
+}
+
+// Projects to sync; omit to sync all. Set exactly one of include or exclude.
+func (o GetIdpIntegrationSonarqubeOutput) Projects() GetIdpIntegrationSonarqubeProjectArrayOutput {
+	return o.ApplyT(func(v GetIdpIntegrationSonarqube) []GetIdpIntegrationSonarqubeProject { return v.Projects }).(GetIdpIntegrationSonarqubeProjectArrayOutput)
+}
+
+// Lower bound for the first sync, RFC3339.
+func (o GetIdpIntegrationSonarqubeOutput) StartDate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpIntegrationSonarqube) string { return v.StartDate }).(pulumi.StringOutput)
+}
+
+// Secret reference to a SonarQube user token.
+func (o GetIdpIntegrationSonarqubeOutput) TokenRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpIntegrationSonarqube) string { return v.TokenRef }).(pulumi.StringOutput)
+}
+
+type GetIdpIntegrationSonarqubeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationSonarqubeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationSonarqube)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationSonarqubeArrayOutput) ToGetIdpIntegrationSonarqubeArrayOutput() GetIdpIntegrationSonarqubeArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationSonarqubeArrayOutput) ToGetIdpIntegrationSonarqubeArrayOutputWithContext(ctx context.Context) GetIdpIntegrationSonarqubeArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationSonarqubeArrayOutput) Index(i pulumi.IntInput) GetIdpIntegrationSonarqubeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIdpIntegrationSonarqube {
+		return vs[0].([]GetIdpIntegrationSonarqube)[vs[1].(int)]
+	}).(GetIdpIntegrationSonarqubeOutput)
+}
+
+type GetIdpIntegrationSonarqubeInstance struct {
+	// SonarQube Cloud.
+	Clouds []GetIdpIntegrationSonarqubeInstanceCloud `pulumi:"clouds"`
+	// Self-hosted SonarQube Server.
+	Servers []GetIdpIntegrationSonarqubeInstanceServer `pulumi:"servers"`
+}
+
+// GetIdpIntegrationSonarqubeInstanceInput is an input type that accepts GetIdpIntegrationSonarqubeInstanceArgs and GetIdpIntegrationSonarqubeInstanceOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationSonarqubeInstanceInput` via:
+//
+//	GetIdpIntegrationSonarqubeInstanceArgs{...}
+type GetIdpIntegrationSonarqubeInstanceInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationSonarqubeInstanceOutput() GetIdpIntegrationSonarqubeInstanceOutput
+	ToGetIdpIntegrationSonarqubeInstanceOutputWithContext(context.Context) GetIdpIntegrationSonarqubeInstanceOutput
+}
+
+type GetIdpIntegrationSonarqubeInstanceArgs struct {
+	// SonarQube Cloud.
+	Clouds GetIdpIntegrationSonarqubeInstanceCloudArrayInput `pulumi:"clouds"`
+	// Self-hosted SonarQube Server.
+	Servers GetIdpIntegrationSonarqubeInstanceServerArrayInput `pulumi:"servers"`
+}
+
+func (GetIdpIntegrationSonarqubeInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationSonarqubeInstance)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationSonarqubeInstanceArgs) ToGetIdpIntegrationSonarqubeInstanceOutput() GetIdpIntegrationSonarqubeInstanceOutput {
+	return i.ToGetIdpIntegrationSonarqubeInstanceOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationSonarqubeInstanceArgs) ToGetIdpIntegrationSonarqubeInstanceOutputWithContext(ctx context.Context) GetIdpIntegrationSonarqubeInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationSonarqubeInstanceOutput)
+}
+
+// GetIdpIntegrationSonarqubeInstanceArrayInput is an input type that accepts GetIdpIntegrationSonarqubeInstanceArray and GetIdpIntegrationSonarqubeInstanceArrayOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationSonarqubeInstanceArrayInput` via:
+//
+//	GetIdpIntegrationSonarqubeInstanceArray{ GetIdpIntegrationSonarqubeInstanceArgs{...} }
+type GetIdpIntegrationSonarqubeInstanceArrayInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationSonarqubeInstanceArrayOutput() GetIdpIntegrationSonarqubeInstanceArrayOutput
+	ToGetIdpIntegrationSonarqubeInstanceArrayOutputWithContext(context.Context) GetIdpIntegrationSonarqubeInstanceArrayOutput
+}
+
+type GetIdpIntegrationSonarqubeInstanceArray []GetIdpIntegrationSonarqubeInstanceInput
+
+func (GetIdpIntegrationSonarqubeInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationSonarqubeInstance)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationSonarqubeInstanceArray) ToGetIdpIntegrationSonarqubeInstanceArrayOutput() GetIdpIntegrationSonarqubeInstanceArrayOutput {
+	return i.ToGetIdpIntegrationSonarqubeInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationSonarqubeInstanceArray) ToGetIdpIntegrationSonarqubeInstanceArrayOutputWithContext(ctx context.Context) GetIdpIntegrationSonarqubeInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationSonarqubeInstanceArrayOutput)
+}
+
+type GetIdpIntegrationSonarqubeInstanceOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationSonarqubeInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationSonarqubeInstance)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationSonarqubeInstanceOutput) ToGetIdpIntegrationSonarqubeInstanceOutput() GetIdpIntegrationSonarqubeInstanceOutput {
+	return o
+}
+
+func (o GetIdpIntegrationSonarqubeInstanceOutput) ToGetIdpIntegrationSonarqubeInstanceOutputWithContext(ctx context.Context) GetIdpIntegrationSonarqubeInstanceOutput {
+	return o
+}
+
+// SonarQube Cloud.
+func (o GetIdpIntegrationSonarqubeInstanceOutput) Clouds() GetIdpIntegrationSonarqubeInstanceCloudArrayOutput {
+	return o.ApplyT(func(v GetIdpIntegrationSonarqubeInstance) []GetIdpIntegrationSonarqubeInstanceCloud { return v.Clouds }).(GetIdpIntegrationSonarqubeInstanceCloudArrayOutput)
+}
+
+// Self-hosted SonarQube Server.
+func (o GetIdpIntegrationSonarqubeInstanceOutput) Servers() GetIdpIntegrationSonarqubeInstanceServerArrayOutput {
+	return o.ApplyT(func(v GetIdpIntegrationSonarqubeInstance) []GetIdpIntegrationSonarqubeInstanceServer {
+		return v.Servers
+	}).(GetIdpIntegrationSonarqubeInstanceServerArrayOutput)
+}
+
+type GetIdpIntegrationSonarqubeInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationSonarqubeInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationSonarqubeInstance)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationSonarqubeInstanceArrayOutput) ToGetIdpIntegrationSonarqubeInstanceArrayOutput() GetIdpIntegrationSonarqubeInstanceArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationSonarqubeInstanceArrayOutput) ToGetIdpIntegrationSonarqubeInstanceArrayOutputWithContext(ctx context.Context) GetIdpIntegrationSonarqubeInstanceArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationSonarqubeInstanceArrayOutput) Index(i pulumi.IntInput) GetIdpIntegrationSonarqubeInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIdpIntegrationSonarqubeInstance {
+		return vs[0].([]GetIdpIntegrationSonarqubeInstance)[vs[1].(int)]
+	}).(GetIdpIntegrationSonarqubeInstanceOutput)
+}
+
+type GetIdpIntegrationSonarqubeInstanceCloud struct {
+	// Cloud URL.
+	HostUrl string `pulumi:"hostUrl"`
+	// Organization key.
+	Organization string `pulumi:"organization"`
+}
+
+// GetIdpIntegrationSonarqubeInstanceCloudInput is an input type that accepts GetIdpIntegrationSonarqubeInstanceCloudArgs and GetIdpIntegrationSonarqubeInstanceCloudOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationSonarqubeInstanceCloudInput` via:
+//
+//	GetIdpIntegrationSonarqubeInstanceCloudArgs{...}
+type GetIdpIntegrationSonarqubeInstanceCloudInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationSonarqubeInstanceCloudOutput() GetIdpIntegrationSonarqubeInstanceCloudOutput
+	ToGetIdpIntegrationSonarqubeInstanceCloudOutputWithContext(context.Context) GetIdpIntegrationSonarqubeInstanceCloudOutput
+}
+
+type GetIdpIntegrationSonarqubeInstanceCloudArgs struct {
+	// Cloud URL.
+	HostUrl pulumi.StringInput `pulumi:"hostUrl"`
+	// Organization key.
+	Organization pulumi.StringInput `pulumi:"organization"`
+}
+
+func (GetIdpIntegrationSonarqubeInstanceCloudArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationSonarqubeInstanceCloud)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationSonarqubeInstanceCloudArgs) ToGetIdpIntegrationSonarqubeInstanceCloudOutput() GetIdpIntegrationSonarqubeInstanceCloudOutput {
+	return i.ToGetIdpIntegrationSonarqubeInstanceCloudOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationSonarqubeInstanceCloudArgs) ToGetIdpIntegrationSonarqubeInstanceCloudOutputWithContext(ctx context.Context) GetIdpIntegrationSonarqubeInstanceCloudOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationSonarqubeInstanceCloudOutput)
+}
+
+// GetIdpIntegrationSonarqubeInstanceCloudArrayInput is an input type that accepts GetIdpIntegrationSonarqubeInstanceCloudArray and GetIdpIntegrationSonarqubeInstanceCloudArrayOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationSonarqubeInstanceCloudArrayInput` via:
+//
+//	GetIdpIntegrationSonarqubeInstanceCloudArray{ GetIdpIntegrationSonarqubeInstanceCloudArgs{...} }
+type GetIdpIntegrationSonarqubeInstanceCloudArrayInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationSonarqubeInstanceCloudArrayOutput() GetIdpIntegrationSonarqubeInstanceCloudArrayOutput
+	ToGetIdpIntegrationSonarqubeInstanceCloudArrayOutputWithContext(context.Context) GetIdpIntegrationSonarqubeInstanceCloudArrayOutput
+}
+
+type GetIdpIntegrationSonarqubeInstanceCloudArray []GetIdpIntegrationSonarqubeInstanceCloudInput
+
+func (GetIdpIntegrationSonarqubeInstanceCloudArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationSonarqubeInstanceCloud)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationSonarqubeInstanceCloudArray) ToGetIdpIntegrationSonarqubeInstanceCloudArrayOutput() GetIdpIntegrationSonarqubeInstanceCloudArrayOutput {
+	return i.ToGetIdpIntegrationSonarqubeInstanceCloudArrayOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationSonarqubeInstanceCloudArray) ToGetIdpIntegrationSonarqubeInstanceCloudArrayOutputWithContext(ctx context.Context) GetIdpIntegrationSonarqubeInstanceCloudArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationSonarqubeInstanceCloudArrayOutput)
+}
+
+type GetIdpIntegrationSonarqubeInstanceCloudOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationSonarqubeInstanceCloudOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationSonarqubeInstanceCloud)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationSonarqubeInstanceCloudOutput) ToGetIdpIntegrationSonarqubeInstanceCloudOutput() GetIdpIntegrationSonarqubeInstanceCloudOutput {
+	return o
+}
+
+func (o GetIdpIntegrationSonarqubeInstanceCloudOutput) ToGetIdpIntegrationSonarqubeInstanceCloudOutputWithContext(ctx context.Context) GetIdpIntegrationSonarqubeInstanceCloudOutput {
+	return o
+}
+
+// Cloud URL.
+func (o GetIdpIntegrationSonarqubeInstanceCloudOutput) HostUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpIntegrationSonarqubeInstanceCloud) string { return v.HostUrl }).(pulumi.StringOutput)
+}
+
+// Organization key.
+func (o GetIdpIntegrationSonarqubeInstanceCloudOutput) Organization() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpIntegrationSonarqubeInstanceCloud) string { return v.Organization }).(pulumi.StringOutput)
+}
+
+type GetIdpIntegrationSonarqubeInstanceCloudArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationSonarqubeInstanceCloudArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationSonarqubeInstanceCloud)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationSonarqubeInstanceCloudArrayOutput) ToGetIdpIntegrationSonarqubeInstanceCloudArrayOutput() GetIdpIntegrationSonarqubeInstanceCloudArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationSonarqubeInstanceCloudArrayOutput) ToGetIdpIntegrationSonarqubeInstanceCloudArrayOutputWithContext(ctx context.Context) GetIdpIntegrationSonarqubeInstanceCloudArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationSonarqubeInstanceCloudArrayOutput) Index(i pulumi.IntInput) GetIdpIntegrationSonarqubeInstanceCloudOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIdpIntegrationSonarqubeInstanceCloud {
+		return vs[0].([]GetIdpIntegrationSonarqubeInstanceCloud)[vs[1].(int)]
+	}).(GetIdpIntegrationSonarqubeInstanceCloudOutput)
+}
+
+type GetIdpIntegrationSonarqubeInstanceServer struct {
+	// Server URL.
+	HostUrl string `pulumi:"hostUrl"`
+}
+
+// GetIdpIntegrationSonarqubeInstanceServerInput is an input type that accepts GetIdpIntegrationSonarqubeInstanceServerArgs and GetIdpIntegrationSonarqubeInstanceServerOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationSonarqubeInstanceServerInput` via:
+//
+//	GetIdpIntegrationSonarqubeInstanceServerArgs{...}
+type GetIdpIntegrationSonarqubeInstanceServerInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationSonarqubeInstanceServerOutput() GetIdpIntegrationSonarqubeInstanceServerOutput
+	ToGetIdpIntegrationSonarqubeInstanceServerOutputWithContext(context.Context) GetIdpIntegrationSonarqubeInstanceServerOutput
+}
+
+type GetIdpIntegrationSonarqubeInstanceServerArgs struct {
+	// Server URL.
+	HostUrl pulumi.StringInput `pulumi:"hostUrl"`
+}
+
+func (GetIdpIntegrationSonarqubeInstanceServerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationSonarqubeInstanceServer)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationSonarqubeInstanceServerArgs) ToGetIdpIntegrationSonarqubeInstanceServerOutput() GetIdpIntegrationSonarqubeInstanceServerOutput {
+	return i.ToGetIdpIntegrationSonarqubeInstanceServerOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationSonarqubeInstanceServerArgs) ToGetIdpIntegrationSonarqubeInstanceServerOutputWithContext(ctx context.Context) GetIdpIntegrationSonarqubeInstanceServerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationSonarqubeInstanceServerOutput)
+}
+
+// GetIdpIntegrationSonarqubeInstanceServerArrayInput is an input type that accepts GetIdpIntegrationSonarqubeInstanceServerArray and GetIdpIntegrationSonarqubeInstanceServerArrayOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationSonarqubeInstanceServerArrayInput` via:
+//
+//	GetIdpIntegrationSonarqubeInstanceServerArray{ GetIdpIntegrationSonarqubeInstanceServerArgs{...} }
+type GetIdpIntegrationSonarqubeInstanceServerArrayInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationSonarqubeInstanceServerArrayOutput() GetIdpIntegrationSonarqubeInstanceServerArrayOutput
+	ToGetIdpIntegrationSonarqubeInstanceServerArrayOutputWithContext(context.Context) GetIdpIntegrationSonarqubeInstanceServerArrayOutput
+}
+
+type GetIdpIntegrationSonarqubeInstanceServerArray []GetIdpIntegrationSonarqubeInstanceServerInput
+
+func (GetIdpIntegrationSonarqubeInstanceServerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationSonarqubeInstanceServer)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationSonarqubeInstanceServerArray) ToGetIdpIntegrationSonarqubeInstanceServerArrayOutput() GetIdpIntegrationSonarqubeInstanceServerArrayOutput {
+	return i.ToGetIdpIntegrationSonarqubeInstanceServerArrayOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationSonarqubeInstanceServerArray) ToGetIdpIntegrationSonarqubeInstanceServerArrayOutputWithContext(ctx context.Context) GetIdpIntegrationSonarqubeInstanceServerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationSonarqubeInstanceServerArrayOutput)
+}
+
+type GetIdpIntegrationSonarqubeInstanceServerOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationSonarqubeInstanceServerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationSonarqubeInstanceServer)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationSonarqubeInstanceServerOutput) ToGetIdpIntegrationSonarqubeInstanceServerOutput() GetIdpIntegrationSonarqubeInstanceServerOutput {
+	return o
+}
+
+func (o GetIdpIntegrationSonarqubeInstanceServerOutput) ToGetIdpIntegrationSonarqubeInstanceServerOutputWithContext(ctx context.Context) GetIdpIntegrationSonarqubeInstanceServerOutput {
+	return o
+}
+
+// Server URL.
+func (o GetIdpIntegrationSonarqubeInstanceServerOutput) HostUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpIntegrationSonarqubeInstanceServer) string { return v.HostUrl }).(pulumi.StringOutput)
+}
+
+type GetIdpIntegrationSonarqubeInstanceServerArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationSonarqubeInstanceServerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationSonarqubeInstanceServer)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationSonarqubeInstanceServerArrayOutput) ToGetIdpIntegrationSonarqubeInstanceServerArrayOutput() GetIdpIntegrationSonarqubeInstanceServerArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationSonarqubeInstanceServerArrayOutput) ToGetIdpIntegrationSonarqubeInstanceServerArrayOutputWithContext(ctx context.Context) GetIdpIntegrationSonarqubeInstanceServerArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationSonarqubeInstanceServerArrayOutput) Index(i pulumi.IntInput) GetIdpIntegrationSonarqubeInstanceServerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIdpIntegrationSonarqubeInstanceServer {
+		return vs[0].([]GetIdpIntegrationSonarqubeInstanceServer)[vs[1].(int)]
+	}).(GetIdpIntegrationSonarqubeInstanceServerOutput)
+}
+
+type GetIdpIntegrationSonarqubeIssue struct {
+	// INFO, LOW, MEDIUM, HIGH or BLOCKER.
+	ImpactSeverities []string `pulumi:"impactSeverities"`
+	// OPEN, CONFIRMED, FALSE_POSITIVE, ACCEPTED, FIXED or IN_SANDBOX.
+	IssueStatuses []string `pulumi:"issueStatuses"`
+	// "true" for resolved issues only, "false" for unresolved only; omit for both.
+	Resolved string `pulumi:"resolved"`
+	// INFO, MINOR, MAJOR, CRITICAL or BLOCKER.
+	Severities []string `pulumi:"severities"`
+	// CODE_SMELL, BUG or VULNERABILITY.
+	Types []string `pulumi:"types"`
+}
+
+// GetIdpIntegrationSonarqubeIssueInput is an input type that accepts GetIdpIntegrationSonarqubeIssueArgs and GetIdpIntegrationSonarqubeIssueOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationSonarqubeIssueInput` via:
+//
+//	GetIdpIntegrationSonarqubeIssueArgs{...}
+type GetIdpIntegrationSonarqubeIssueInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationSonarqubeIssueOutput() GetIdpIntegrationSonarqubeIssueOutput
+	ToGetIdpIntegrationSonarqubeIssueOutputWithContext(context.Context) GetIdpIntegrationSonarqubeIssueOutput
+}
+
+type GetIdpIntegrationSonarqubeIssueArgs struct {
+	// INFO, LOW, MEDIUM, HIGH or BLOCKER.
+	ImpactSeverities pulumi.StringArrayInput `pulumi:"impactSeverities"`
+	// OPEN, CONFIRMED, FALSE_POSITIVE, ACCEPTED, FIXED or IN_SANDBOX.
+	IssueStatuses pulumi.StringArrayInput `pulumi:"issueStatuses"`
+	// "true" for resolved issues only, "false" for unresolved only; omit for both.
+	Resolved pulumi.StringInput `pulumi:"resolved"`
+	// INFO, MINOR, MAJOR, CRITICAL or BLOCKER.
+	Severities pulumi.StringArrayInput `pulumi:"severities"`
+	// CODE_SMELL, BUG or VULNERABILITY.
+	Types pulumi.StringArrayInput `pulumi:"types"`
+}
+
+func (GetIdpIntegrationSonarqubeIssueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationSonarqubeIssue)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationSonarqubeIssueArgs) ToGetIdpIntegrationSonarqubeIssueOutput() GetIdpIntegrationSonarqubeIssueOutput {
+	return i.ToGetIdpIntegrationSonarqubeIssueOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationSonarqubeIssueArgs) ToGetIdpIntegrationSonarqubeIssueOutputWithContext(ctx context.Context) GetIdpIntegrationSonarqubeIssueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationSonarqubeIssueOutput)
+}
+
+// GetIdpIntegrationSonarqubeIssueArrayInput is an input type that accepts GetIdpIntegrationSonarqubeIssueArray and GetIdpIntegrationSonarqubeIssueArrayOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationSonarqubeIssueArrayInput` via:
+//
+//	GetIdpIntegrationSonarqubeIssueArray{ GetIdpIntegrationSonarqubeIssueArgs{...} }
+type GetIdpIntegrationSonarqubeIssueArrayInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationSonarqubeIssueArrayOutput() GetIdpIntegrationSonarqubeIssueArrayOutput
+	ToGetIdpIntegrationSonarqubeIssueArrayOutputWithContext(context.Context) GetIdpIntegrationSonarqubeIssueArrayOutput
+}
+
+type GetIdpIntegrationSonarqubeIssueArray []GetIdpIntegrationSonarqubeIssueInput
+
+func (GetIdpIntegrationSonarqubeIssueArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationSonarqubeIssue)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationSonarqubeIssueArray) ToGetIdpIntegrationSonarqubeIssueArrayOutput() GetIdpIntegrationSonarqubeIssueArrayOutput {
+	return i.ToGetIdpIntegrationSonarqubeIssueArrayOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationSonarqubeIssueArray) ToGetIdpIntegrationSonarqubeIssueArrayOutputWithContext(ctx context.Context) GetIdpIntegrationSonarqubeIssueArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationSonarqubeIssueArrayOutput)
+}
+
+type GetIdpIntegrationSonarqubeIssueOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationSonarqubeIssueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationSonarqubeIssue)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationSonarqubeIssueOutput) ToGetIdpIntegrationSonarqubeIssueOutput() GetIdpIntegrationSonarqubeIssueOutput {
+	return o
+}
+
+func (o GetIdpIntegrationSonarqubeIssueOutput) ToGetIdpIntegrationSonarqubeIssueOutputWithContext(ctx context.Context) GetIdpIntegrationSonarqubeIssueOutput {
+	return o
+}
+
+// INFO, LOW, MEDIUM, HIGH or BLOCKER.
+func (o GetIdpIntegrationSonarqubeIssueOutput) ImpactSeverities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIdpIntegrationSonarqubeIssue) []string { return v.ImpactSeverities }).(pulumi.StringArrayOutput)
+}
+
+// OPEN, CONFIRMED, FALSE_POSITIVE, ACCEPTED, FIXED or IN_SANDBOX.
+func (o GetIdpIntegrationSonarqubeIssueOutput) IssueStatuses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIdpIntegrationSonarqubeIssue) []string { return v.IssueStatuses }).(pulumi.StringArrayOutput)
+}
+
+// "true" for resolved issues only, "false" for unresolved only; omit for both.
+func (o GetIdpIntegrationSonarqubeIssueOutput) Resolved() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpIntegrationSonarqubeIssue) string { return v.Resolved }).(pulumi.StringOutput)
+}
+
+// INFO, MINOR, MAJOR, CRITICAL or BLOCKER.
+func (o GetIdpIntegrationSonarqubeIssueOutput) Severities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIdpIntegrationSonarqubeIssue) []string { return v.Severities }).(pulumi.StringArrayOutput)
+}
+
+// CODE_SMELL, BUG or VULNERABILITY.
+func (o GetIdpIntegrationSonarqubeIssueOutput) Types() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIdpIntegrationSonarqubeIssue) []string { return v.Types }).(pulumi.StringArrayOutput)
+}
+
+type GetIdpIntegrationSonarqubeIssueArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationSonarqubeIssueArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationSonarqubeIssue)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationSonarqubeIssueArrayOutput) ToGetIdpIntegrationSonarqubeIssueArrayOutput() GetIdpIntegrationSonarqubeIssueArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationSonarqubeIssueArrayOutput) ToGetIdpIntegrationSonarqubeIssueArrayOutputWithContext(ctx context.Context) GetIdpIntegrationSonarqubeIssueArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationSonarqubeIssueArrayOutput) Index(i pulumi.IntInput) GetIdpIntegrationSonarqubeIssueOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIdpIntegrationSonarqubeIssue {
+		return vs[0].([]GetIdpIntegrationSonarqubeIssue)[vs[1].(int)]
+	}).(GetIdpIntegrationSonarqubeIssueOutput)
+}
+
+type GetIdpIntegrationSonarqubeProject struct {
+	// Every project except these keys.
+	Excludes []string `pulumi:"excludes"`
+	// Only these project keys.
+	Includes []string `pulumi:"includes"`
+}
+
+// GetIdpIntegrationSonarqubeProjectInput is an input type that accepts GetIdpIntegrationSonarqubeProjectArgs and GetIdpIntegrationSonarqubeProjectOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationSonarqubeProjectInput` via:
+//
+//	GetIdpIntegrationSonarqubeProjectArgs{...}
+type GetIdpIntegrationSonarqubeProjectInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationSonarqubeProjectOutput() GetIdpIntegrationSonarqubeProjectOutput
+	ToGetIdpIntegrationSonarqubeProjectOutputWithContext(context.Context) GetIdpIntegrationSonarqubeProjectOutput
+}
+
+type GetIdpIntegrationSonarqubeProjectArgs struct {
+	// Every project except these keys.
+	Excludes pulumi.StringArrayInput `pulumi:"excludes"`
+	// Only these project keys.
+	Includes pulumi.StringArrayInput `pulumi:"includes"`
+}
+
+func (GetIdpIntegrationSonarqubeProjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationSonarqubeProject)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationSonarqubeProjectArgs) ToGetIdpIntegrationSonarqubeProjectOutput() GetIdpIntegrationSonarqubeProjectOutput {
+	return i.ToGetIdpIntegrationSonarqubeProjectOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationSonarqubeProjectArgs) ToGetIdpIntegrationSonarqubeProjectOutputWithContext(ctx context.Context) GetIdpIntegrationSonarqubeProjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationSonarqubeProjectOutput)
+}
+
+// GetIdpIntegrationSonarqubeProjectArrayInput is an input type that accepts GetIdpIntegrationSonarqubeProjectArray and GetIdpIntegrationSonarqubeProjectArrayOutput values.
+// You can construct a concrete instance of `GetIdpIntegrationSonarqubeProjectArrayInput` via:
+//
+//	GetIdpIntegrationSonarqubeProjectArray{ GetIdpIntegrationSonarqubeProjectArgs{...} }
+type GetIdpIntegrationSonarqubeProjectArrayInput interface {
+	pulumi.Input
+
+	ToGetIdpIntegrationSonarqubeProjectArrayOutput() GetIdpIntegrationSonarqubeProjectArrayOutput
+	ToGetIdpIntegrationSonarqubeProjectArrayOutputWithContext(context.Context) GetIdpIntegrationSonarqubeProjectArrayOutput
+}
+
+type GetIdpIntegrationSonarqubeProjectArray []GetIdpIntegrationSonarqubeProjectInput
+
+func (GetIdpIntegrationSonarqubeProjectArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationSonarqubeProject)(nil)).Elem()
+}
+
+func (i GetIdpIntegrationSonarqubeProjectArray) ToGetIdpIntegrationSonarqubeProjectArrayOutput() GetIdpIntegrationSonarqubeProjectArrayOutput {
+	return i.ToGetIdpIntegrationSonarqubeProjectArrayOutputWithContext(context.Background())
+}
+
+func (i GetIdpIntegrationSonarqubeProjectArray) ToGetIdpIntegrationSonarqubeProjectArrayOutputWithContext(ctx context.Context) GetIdpIntegrationSonarqubeProjectArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpIntegrationSonarqubeProjectArrayOutput)
+}
+
+type GetIdpIntegrationSonarqubeProjectOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationSonarqubeProjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpIntegrationSonarqubeProject)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationSonarqubeProjectOutput) ToGetIdpIntegrationSonarqubeProjectOutput() GetIdpIntegrationSonarqubeProjectOutput {
+	return o
+}
+
+func (o GetIdpIntegrationSonarqubeProjectOutput) ToGetIdpIntegrationSonarqubeProjectOutputWithContext(ctx context.Context) GetIdpIntegrationSonarqubeProjectOutput {
+	return o
+}
+
+// Every project except these keys.
+func (o GetIdpIntegrationSonarqubeProjectOutput) Excludes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIdpIntegrationSonarqubeProject) []string { return v.Excludes }).(pulumi.StringArrayOutput)
+}
+
+// Only these project keys.
+func (o GetIdpIntegrationSonarqubeProjectOutput) Includes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIdpIntegrationSonarqubeProject) []string { return v.Includes }).(pulumi.StringArrayOutput)
+}
+
+type GetIdpIntegrationSonarqubeProjectArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIdpIntegrationSonarqubeProjectArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpIntegrationSonarqubeProject)(nil)).Elem()
+}
+
+func (o GetIdpIntegrationSonarqubeProjectArrayOutput) ToGetIdpIntegrationSonarqubeProjectArrayOutput() GetIdpIntegrationSonarqubeProjectArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationSonarqubeProjectArrayOutput) ToGetIdpIntegrationSonarqubeProjectArrayOutputWithContext(ctx context.Context) GetIdpIntegrationSonarqubeProjectArrayOutput {
+	return o
+}
+
+func (o GetIdpIntegrationSonarqubeProjectArrayOutput) Index(i pulumi.IntInput) GetIdpIntegrationSonarqubeProjectOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIdpIntegrationSonarqubeProject {
+		return vs[0].([]GetIdpIntegrationSonarqubeProject)[vs[1].(int)]
+	}).(GetIdpIntegrationSonarqubeProjectOutput)
+}
+
 type GetIdpPluginEnvVariable struct {
 	// Name of the environment variable.
 	EnvName string `pulumi:"envName"`
@@ -61490,3413 +71041,6 @@ func (o GetSecretWinrmKerberoTgtPasswordSpecArrayOutput) Index(i pulumi.IntInput
 	}).(GetSecretWinrmKerberoTgtPasswordSpecOutput)
 }
 
-type GetSecretWinrmNtlm struct {
-	// Domain name for NTLM authentication.
-	Domain string `pulumi:"domain"`
-	// Reference to a secret containing the password to use for authentication.
-	PasswordRef string `pulumi:"passwordRef"`
-	// Skip certificate verification.
-	SkipCertCheck bool `pulumi:"skipCertCheck"`
-	// Use no profile.
-	UseNoProfile bool `pulumi:"useNoProfile"`
-	// Use SSL/TLS for WinRM communication.
-	UseSsl bool `pulumi:"useSsl"`
-	// Username to use for authentication.
-	Username string `pulumi:"username"`
-}
-
-// GetSecretWinrmNtlmInput is an input type that accepts GetSecretWinrmNtlmArgs and GetSecretWinrmNtlmOutput values.
-// You can construct a concrete instance of `GetSecretWinrmNtlmInput` via:
-//
-//	GetSecretWinrmNtlmArgs{...}
-type GetSecretWinrmNtlmInput interface {
-	pulumi.Input
-
-	ToGetSecretWinrmNtlmOutput() GetSecretWinrmNtlmOutput
-	ToGetSecretWinrmNtlmOutputWithContext(context.Context) GetSecretWinrmNtlmOutput
-}
-
-type GetSecretWinrmNtlmArgs struct {
-	// Domain name for NTLM authentication.
-	Domain pulumi.StringInput `pulumi:"domain"`
-	// Reference to a secret containing the password to use for authentication.
-	PasswordRef pulumi.StringInput `pulumi:"passwordRef"`
-	// Skip certificate verification.
-	SkipCertCheck pulumi.BoolInput `pulumi:"skipCertCheck"`
-	// Use no profile.
-	UseNoProfile pulumi.BoolInput `pulumi:"useNoProfile"`
-	// Use SSL/TLS for WinRM communication.
-	UseSsl pulumi.BoolInput `pulumi:"useSsl"`
-	// Username to use for authentication.
-	Username pulumi.StringInput `pulumi:"username"`
-}
-
-func (GetSecretWinrmNtlmArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSecretWinrmNtlm)(nil)).Elem()
-}
-
-func (i GetSecretWinrmNtlmArgs) ToGetSecretWinrmNtlmOutput() GetSecretWinrmNtlmOutput {
-	return i.ToGetSecretWinrmNtlmOutputWithContext(context.Background())
-}
-
-func (i GetSecretWinrmNtlmArgs) ToGetSecretWinrmNtlmOutputWithContext(ctx context.Context) GetSecretWinrmNtlmOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetSecretWinrmNtlmOutput)
-}
-
-// GetSecretWinrmNtlmArrayInput is an input type that accepts GetSecretWinrmNtlmArray and GetSecretWinrmNtlmArrayOutput values.
-// You can construct a concrete instance of `GetSecretWinrmNtlmArrayInput` via:
-//
-//	GetSecretWinrmNtlmArray{ GetSecretWinrmNtlmArgs{...} }
-type GetSecretWinrmNtlmArrayInput interface {
-	pulumi.Input
-
-	ToGetSecretWinrmNtlmArrayOutput() GetSecretWinrmNtlmArrayOutput
-	ToGetSecretWinrmNtlmArrayOutputWithContext(context.Context) GetSecretWinrmNtlmArrayOutput
-}
-
-type GetSecretWinrmNtlmArray []GetSecretWinrmNtlmInput
-
-func (GetSecretWinrmNtlmArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetSecretWinrmNtlm)(nil)).Elem()
-}
-
-func (i GetSecretWinrmNtlmArray) ToGetSecretWinrmNtlmArrayOutput() GetSecretWinrmNtlmArrayOutput {
-	return i.ToGetSecretWinrmNtlmArrayOutputWithContext(context.Background())
-}
-
-func (i GetSecretWinrmNtlmArray) ToGetSecretWinrmNtlmArrayOutputWithContext(ctx context.Context) GetSecretWinrmNtlmArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetSecretWinrmNtlmArrayOutput)
-}
-
-type GetSecretWinrmNtlmOutput struct{ *pulumi.OutputState }
-
-func (GetSecretWinrmNtlmOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSecretWinrmNtlm)(nil)).Elem()
-}
-
-func (o GetSecretWinrmNtlmOutput) ToGetSecretWinrmNtlmOutput() GetSecretWinrmNtlmOutput {
-	return o
-}
-
-func (o GetSecretWinrmNtlmOutput) ToGetSecretWinrmNtlmOutputWithContext(ctx context.Context) GetSecretWinrmNtlmOutput {
-	return o
-}
-
-// Domain name for NTLM authentication.
-func (o GetSecretWinrmNtlmOutput) Domain() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSecretWinrmNtlm) string { return v.Domain }).(pulumi.StringOutput)
-}
-
-// Reference to a secret containing the password to use for authentication.
-func (o GetSecretWinrmNtlmOutput) PasswordRef() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSecretWinrmNtlm) string { return v.PasswordRef }).(pulumi.StringOutput)
-}
-
-// Skip certificate verification.
-func (o GetSecretWinrmNtlmOutput) SkipCertCheck() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetSecretWinrmNtlm) bool { return v.SkipCertCheck }).(pulumi.BoolOutput)
-}
-
-// Use no profile.
-func (o GetSecretWinrmNtlmOutput) UseNoProfile() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetSecretWinrmNtlm) bool { return v.UseNoProfile }).(pulumi.BoolOutput)
-}
-
-// Use SSL/TLS for WinRM communication.
-func (o GetSecretWinrmNtlmOutput) UseSsl() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetSecretWinrmNtlm) bool { return v.UseSsl }).(pulumi.BoolOutput)
-}
-
-// Username to use for authentication.
-func (o GetSecretWinrmNtlmOutput) Username() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSecretWinrmNtlm) string { return v.Username }).(pulumi.StringOutput)
-}
-
-type GetSecretWinrmNtlmArrayOutput struct{ *pulumi.OutputState }
-
-func (GetSecretWinrmNtlmArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetSecretWinrmNtlm)(nil)).Elem()
-}
-
-func (o GetSecretWinrmNtlmArrayOutput) ToGetSecretWinrmNtlmArrayOutput() GetSecretWinrmNtlmArrayOutput {
-	return o
-}
-
-func (o GetSecretWinrmNtlmArrayOutput) ToGetSecretWinrmNtlmArrayOutputWithContext(ctx context.Context) GetSecretWinrmNtlmArrayOutput {
-	return o
-}
-
-func (o GetSecretWinrmNtlmArrayOutput) Index(i pulumi.IntInput) GetSecretWinrmNtlmOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecretWinrmNtlm {
-		return vs[0].([]GetSecretWinrmNtlm)[vs[1].(int)]
-	}).(GetSecretWinrmNtlmOutput)
-}
-
-type GetServiceGitDetails struct {
-	// Name of the branch.
-	Branch string `pulumi:"branch"`
-	// Load service yaml from fallback branch
-	LoadFromFallbackBranch bool `pulumi:"loadFromFallbackBranch"`
-	// Repo name of remote service
-	RepoName string `pulumi:"repoName"`
-}
-
-// GetServiceGitDetailsInput is an input type that accepts GetServiceGitDetailsArgs and GetServiceGitDetailsOutput values.
-// You can construct a concrete instance of `GetServiceGitDetailsInput` via:
-//
-//	GetServiceGitDetailsArgs{...}
-type GetServiceGitDetailsInput interface {
-	pulumi.Input
-
-	ToGetServiceGitDetailsOutput() GetServiceGitDetailsOutput
-	ToGetServiceGitDetailsOutputWithContext(context.Context) GetServiceGitDetailsOutput
-}
-
-type GetServiceGitDetailsArgs struct {
-	// Name of the branch.
-	Branch pulumi.StringInput `pulumi:"branch"`
-	// Load service yaml from fallback branch
-	LoadFromFallbackBranch pulumi.BoolInput `pulumi:"loadFromFallbackBranch"`
-	// Repo name of remote service
-	RepoName pulumi.StringInput `pulumi:"repoName"`
-}
-
-func (GetServiceGitDetailsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceGitDetails)(nil)).Elem()
-}
-
-func (i GetServiceGitDetailsArgs) ToGetServiceGitDetailsOutput() GetServiceGitDetailsOutput {
-	return i.ToGetServiceGitDetailsOutputWithContext(context.Background())
-}
-
-func (i GetServiceGitDetailsArgs) ToGetServiceGitDetailsOutputWithContext(ctx context.Context) GetServiceGitDetailsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceGitDetailsOutput)
-}
-
-func (i GetServiceGitDetailsArgs) ToGetServiceGitDetailsPtrOutput() GetServiceGitDetailsPtrOutput {
-	return i.ToGetServiceGitDetailsPtrOutputWithContext(context.Background())
-}
-
-func (i GetServiceGitDetailsArgs) ToGetServiceGitDetailsPtrOutputWithContext(ctx context.Context) GetServiceGitDetailsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceGitDetailsOutput).ToGetServiceGitDetailsPtrOutputWithContext(ctx)
-}
-
-// GetServiceGitDetailsPtrInput is an input type that accepts GetServiceGitDetailsArgs, GetServiceGitDetailsPtr and GetServiceGitDetailsPtrOutput values.
-// You can construct a concrete instance of `GetServiceGitDetailsPtrInput` via:
-//
-//	        GetServiceGitDetailsArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetServiceGitDetailsPtrInput interface {
-	pulumi.Input
-
-	ToGetServiceGitDetailsPtrOutput() GetServiceGitDetailsPtrOutput
-	ToGetServiceGitDetailsPtrOutputWithContext(context.Context) GetServiceGitDetailsPtrOutput
-}
-
-type getServiceGitDetailsPtrType GetServiceGitDetailsArgs
-
-func GetServiceGitDetailsPtr(v *GetServiceGitDetailsArgs) GetServiceGitDetailsPtrInput {
-	return (*getServiceGitDetailsPtrType)(v)
-}
-
-func (*getServiceGitDetailsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetServiceGitDetails)(nil)).Elem()
-}
-
-func (i *getServiceGitDetailsPtrType) ToGetServiceGitDetailsPtrOutput() GetServiceGitDetailsPtrOutput {
-	return i.ToGetServiceGitDetailsPtrOutputWithContext(context.Background())
-}
-
-func (i *getServiceGitDetailsPtrType) ToGetServiceGitDetailsPtrOutputWithContext(ctx context.Context) GetServiceGitDetailsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceGitDetailsPtrOutput)
-}
-
-type GetServiceGitDetailsOutput struct{ *pulumi.OutputState }
-
-func (GetServiceGitDetailsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceGitDetails)(nil)).Elem()
-}
-
-func (o GetServiceGitDetailsOutput) ToGetServiceGitDetailsOutput() GetServiceGitDetailsOutput {
-	return o
-}
-
-func (o GetServiceGitDetailsOutput) ToGetServiceGitDetailsOutputWithContext(ctx context.Context) GetServiceGitDetailsOutput {
-	return o
-}
-
-func (o GetServiceGitDetailsOutput) ToGetServiceGitDetailsPtrOutput() GetServiceGitDetailsPtrOutput {
-	return o.ToGetServiceGitDetailsPtrOutputWithContext(context.Background())
-}
-
-func (o GetServiceGitDetailsOutput) ToGetServiceGitDetailsPtrOutputWithContext(ctx context.Context) GetServiceGitDetailsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetServiceGitDetails) *GetServiceGitDetails {
-		return &v
-	}).(GetServiceGitDetailsPtrOutput)
-}
-
-// Name of the branch.
-func (o GetServiceGitDetailsOutput) Branch() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceGitDetails) string { return v.Branch }).(pulumi.StringOutput)
-}
-
-// Load service yaml from fallback branch
-func (o GetServiceGitDetailsOutput) LoadFromFallbackBranch() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetServiceGitDetails) bool { return v.LoadFromFallbackBranch }).(pulumi.BoolOutput)
-}
-
-// Repo name of remote service
-func (o GetServiceGitDetailsOutput) RepoName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceGitDetails) string { return v.RepoName }).(pulumi.StringOutput)
-}
-
-type GetServiceGitDetailsPtrOutput struct{ *pulumi.OutputState }
-
-func (GetServiceGitDetailsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetServiceGitDetails)(nil)).Elem()
-}
-
-func (o GetServiceGitDetailsPtrOutput) ToGetServiceGitDetailsPtrOutput() GetServiceGitDetailsPtrOutput {
-	return o
-}
-
-func (o GetServiceGitDetailsPtrOutput) ToGetServiceGitDetailsPtrOutputWithContext(ctx context.Context) GetServiceGitDetailsPtrOutput {
-	return o
-}
-
-func (o GetServiceGitDetailsPtrOutput) Elem() GetServiceGitDetailsOutput {
-	return o.ApplyT(func(v *GetServiceGitDetails) GetServiceGitDetails {
-		if v != nil {
-			return *v
-		}
-		var ret GetServiceGitDetails
-		return ret
-	}).(GetServiceGitDetailsOutput)
-}
-
-// Name of the branch.
-func (o GetServiceGitDetailsPtrOutput) Branch() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetServiceGitDetails) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Branch
-	}).(pulumi.StringPtrOutput)
-}
-
-// Load service yaml from fallback branch
-func (o GetServiceGitDetailsPtrOutput) LoadFromFallbackBranch() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetServiceGitDetails) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.LoadFromFallbackBranch
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Repo name of remote service
-func (o GetServiceGitDetailsPtrOutput) RepoName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetServiceGitDetails) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.RepoName
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetServiceListService struct {
-	Identifier string `pulumi:"identifier"`
-	Name       string `pulumi:"name"`
-}
-
-// GetServiceListServiceInput is an input type that accepts GetServiceListServiceArgs and GetServiceListServiceOutput values.
-// You can construct a concrete instance of `GetServiceListServiceInput` via:
-//
-//	GetServiceListServiceArgs{...}
-type GetServiceListServiceInput interface {
-	pulumi.Input
-
-	ToGetServiceListServiceOutput() GetServiceListServiceOutput
-	ToGetServiceListServiceOutputWithContext(context.Context) GetServiceListServiceOutput
-}
-
-type GetServiceListServiceArgs struct {
-	Identifier pulumi.StringInput `pulumi:"identifier"`
-	Name       pulumi.StringInput `pulumi:"name"`
-}
-
-func (GetServiceListServiceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceListService)(nil)).Elem()
-}
-
-func (i GetServiceListServiceArgs) ToGetServiceListServiceOutput() GetServiceListServiceOutput {
-	return i.ToGetServiceListServiceOutputWithContext(context.Background())
-}
-
-func (i GetServiceListServiceArgs) ToGetServiceListServiceOutputWithContext(ctx context.Context) GetServiceListServiceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceListServiceOutput)
-}
-
-// GetServiceListServiceArrayInput is an input type that accepts GetServiceListServiceArray and GetServiceListServiceArrayOutput values.
-// You can construct a concrete instance of `GetServiceListServiceArrayInput` via:
-//
-//	GetServiceListServiceArray{ GetServiceListServiceArgs{...} }
-type GetServiceListServiceArrayInput interface {
-	pulumi.Input
-
-	ToGetServiceListServiceArrayOutput() GetServiceListServiceArrayOutput
-	ToGetServiceListServiceArrayOutputWithContext(context.Context) GetServiceListServiceArrayOutput
-}
-
-type GetServiceListServiceArray []GetServiceListServiceInput
-
-func (GetServiceListServiceArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceListService)(nil)).Elem()
-}
-
-func (i GetServiceListServiceArray) ToGetServiceListServiceArrayOutput() GetServiceListServiceArrayOutput {
-	return i.ToGetServiceListServiceArrayOutputWithContext(context.Background())
-}
-
-func (i GetServiceListServiceArray) ToGetServiceListServiceArrayOutputWithContext(ctx context.Context) GetServiceListServiceArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceListServiceArrayOutput)
-}
-
-type GetServiceListServiceOutput struct{ *pulumi.OutputState }
-
-func (GetServiceListServiceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceListService)(nil)).Elem()
-}
-
-func (o GetServiceListServiceOutput) ToGetServiceListServiceOutput() GetServiceListServiceOutput {
-	return o
-}
-
-func (o GetServiceListServiceOutput) ToGetServiceListServiceOutputWithContext(ctx context.Context) GetServiceListServiceOutput {
-	return o
-}
-
-func (o GetServiceListServiceOutput) Identifier() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceListService) string { return v.Identifier }).(pulumi.StringOutput)
-}
-
-func (o GetServiceListServiceOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceListService) string { return v.Name }).(pulumi.StringOutput)
-}
-
-type GetServiceListServiceArrayOutput struct{ *pulumi.OutputState }
-
-func (GetServiceListServiceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceListService)(nil)).Elem()
-}
-
-func (o GetServiceListServiceArrayOutput) ToGetServiceListServiceArrayOutput() GetServiceListServiceArrayOutput {
-	return o
-}
-
-func (o GetServiceListServiceArrayOutput) ToGetServiceListServiceArrayOutputWithContext(ctx context.Context) GetServiceListServiceArrayOutput {
-	return o
-}
-
-func (o GetServiceListServiceArrayOutput) Index(i pulumi.IntInput) GetServiceListServiceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceListService {
-		return vs[0].([]GetServiceListService)[vs[1].(int)]
-	}).(GetServiceListServiceOutput)
-}
-
-type GetServiceNowConnectorAuth struct {
-	// Authenticate using adfs client credentials with certificate.
-	Adfs []GetServiceNowConnectorAuthAdf `pulumi:"adfs"`
-	// Authentication types for Jira connector
-	AuthType string `pulumi:"authType"`
-	// Authenticate using refresh token grant type.
-	RefreshTokens []GetServiceNowConnectorAuthRefreshToken `pulumi:"refreshTokens"`
-	// Authenticate using username password.
-	UsernamePasswords []GetServiceNowConnectorAuthUsernamePassword `pulumi:"usernamePasswords"`
-}
-
-// GetServiceNowConnectorAuthInput is an input type that accepts GetServiceNowConnectorAuthArgs and GetServiceNowConnectorAuthOutput values.
-// You can construct a concrete instance of `GetServiceNowConnectorAuthInput` via:
-//
-//	GetServiceNowConnectorAuthArgs{...}
-type GetServiceNowConnectorAuthInput interface {
-	pulumi.Input
-
-	ToGetServiceNowConnectorAuthOutput() GetServiceNowConnectorAuthOutput
-	ToGetServiceNowConnectorAuthOutputWithContext(context.Context) GetServiceNowConnectorAuthOutput
-}
-
-type GetServiceNowConnectorAuthArgs struct {
-	// Authenticate using adfs client credentials with certificate.
-	Adfs GetServiceNowConnectorAuthAdfArrayInput `pulumi:"adfs"`
-	// Authentication types for Jira connector
-	AuthType pulumi.StringInput `pulumi:"authType"`
-	// Authenticate using refresh token grant type.
-	RefreshTokens GetServiceNowConnectorAuthRefreshTokenArrayInput `pulumi:"refreshTokens"`
-	// Authenticate using username password.
-	UsernamePasswords GetServiceNowConnectorAuthUsernamePasswordArrayInput `pulumi:"usernamePasswords"`
-}
-
-func (GetServiceNowConnectorAuthArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceNowConnectorAuth)(nil)).Elem()
-}
-
-func (i GetServiceNowConnectorAuthArgs) ToGetServiceNowConnectorAuthOutput() GetServiceNowConnectorAuthOutput {
-	return i.ToGetServiceNowConnectorAuthOutputWithContext(context.Background())
-}
-
-func (i GetServiceNowConnectorAuthArgs) ToGetServiceNowConnectorAuthOutputWithContext(ctx context.Context) GetServiceNowConnectorAuthOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceNowConnectorAuthOutput)
-}
-
-// GetServiceNowConnectorAuthArrayInput is an input type that accepts GetServiceNowConnectorAuthArray and GetServiceNowConnectorAuthArrayOutput values.
-// You can construct a concrete instance of `GetServiceNowConnectorAuthArrayInput` via:
-//
-//	GetServiceNowConnectorAuthArray{ GetServiceNowConnectorAuthArgs{...} }
-type GetServiceNowConnectorAuthArrayInput interface {
-	pulumi.Input
-
-	ToGetServiceNowConnectorAuthArrayOutput() GetServiceNowConnectorAuthArrayOutput
-	ToGetServiceNowConnectorAuthArrayOutputWithContext(context.Context) GetServiceNowConnectorAuthArrayOutput
-}
-
-type GetServiceNowConnectorAuthArray []GetServiceNowConnectorAuthInput
-
-func (GetServiceNowConnectorAuthArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceNowConnectorAuth)(nil)).Elem()
-}
-
-func (i GetServiceNowConnectorAuthArray) ToGetServiceNowConnectorAuthArrayOutput() GetServiceNowConnectorAuthArrayOutput {
-	return i.ToGetServiceNowConnectorAuthArrayOutputWithContext(context.Background())
-}
-
-func (i GetServiceNowConnectorAuthArray) ToGetServiceNowConnectorAuthArrayOutputWithContext(ctx context.Context) GetServiceNowConnectorAuthArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceNowConnectorAuthArrayOutput)
-}
-
-type GetServiceNowConnectorAuthOutput struct{ *pulumi.OutputState }
-
-func (GetServiceNowConnectorAuthOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceNowConnectorAuth)(nil)).Elem()
-}
-
-func (o GetServiceNowConnectorAuthOutput) ToGetServiceNowConnectorAuthOutput() GetServiceNowConnectorAuthOutput {
-	return o
-}
-
-func (o GetServiceNowConnectorAuthOutput) ToGetServiceNowConnectorAuthOutputWithContext(ctx context.Context) GetServiceNowConnectorAuthOutput {
-	return o
-}
-
-// Authenticate using adfs client credentials with certificate.
-func (o GetServiceNowConnectorAuthOutput) Adfs() GetServiceNowConnectorAuthAdfArrayOutput {
-	return o.ApplyT(func(v GetServiceNowConnectorAuth) []GetServiceNowConnectorAuthAdf { return v.Adfs }).(GetServiceNowConnectorAuthAdfArrayOutput)
-}
-
-// Authentication types for Jira connector
-func (o GetServiceNowConnectorAuthOutput) AuthType() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceNowConnectorAuth) string { return v.AuthType }).(pulumi.StringOutput)
-}
-
-// Authenticate using refresh token grant type.
-func (o GetServiceNowConnectorAuthOutput) RefreshTokens() GetServiceNowConnectorAuthRefreshTokenArrayOutput {
-	return o.ApplyT(func(v GetServiceNowConnectorAuth) []GetServiceNowConnectorAuthRefreshToken { return v.RefreshTokens }).(GetServiceNowConnectorAuthRefreshTokenArrayOutput)
-}
-
-// Authenticate using username password.
-func (o GetServiceNowConnectorAuthOutput) UsernamePasswords() GetServiceNowConnectorAuthUsernamePasswordArrayOutput {
-	return o.ApplyT(func(v GetServiceNowConnectorAuth) []GetServiceNowConnectorAuthUsernamePassword {
-		return v.UsernamePasswords
-	}).(GetServiceNowConnectorAuthUsernamePasswordArrayOutput)
-}
-
-type GetServiceNowConnectorAuthArrayOutput struct{ *pulumi.OutputState }
-
-func (GetServiceNowConnectorAuthArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceNowConnectorAuth)(nil)).Elem()
-}
-
-func (o GetServiceNowConnectorAuthArrayOutput) ToGetServiceNowConnectorAuthArrayOutput() GetServiceNowConnectorAuthArrayOutput {
-	return o
-}
-
-func (o GetServiceNowConnectorAuthArrayOutput) ToGetServiceNowConnectorAuthArrayOutputWithContext(ctx context.Context) GetServiceNowConnectorAuthArrayOutput {
-	return o
-}
-
-func (o GetServiceNowConnectorAuthArrayOutput) Index(i pulumi.IntInput) GetServiceNowConnectorAuthOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceNowConnectorAuth {
-		return vs[0].([]GetServiceNowConnectorAuth)[vs[1].(int)]
-	}).(GetServiceNowConnectorAuthOutput)
-}
-
-type GetServiceNowConnectorAuthAdf struct {
-	// asdf URL.
-	AdfsUrl string `pulumi:"adfsUrl"`
-	// Reference to a secret containing the certificate to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-	CertificateRef string `pulumi:"certificateRef"`
-	// Reference to a secret containing the clientIdRef to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-	ClientIdRef string `pulumi:"clientIdRef"`
-	// Reference to a secret containing the privateKeyRef to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-	PrivateKeyRef string `pulumi:"privateKeyRef"`
-	// Reference to a secret containing the resourceIdRef to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-	ResourceIdRef string `pulumi:"resourceIdRef"`
-}
-
-// GetServiceNowConnectorAuthAdfInput is an input type that accepts GetServiceNowConnectorAuthAdfArgs and GetServiceNowConnectorAuthAdfOutput values.
-// You can construct a concrete instance of `GetServiceNowConnectorAuthAdfInput` via:
-//
-//	GetServiceNowConnectorAuthAdfArgs{...}
-type GetServiceNowConnectorAuthAdfInput interface {
-	pulumi.Input
-
-	ToGetServiceNowConnectorAuthAdfOutput() GetServiceNowConnectorAuthAdfOutput
-	ToGetServiceNowConnectorAuthAdfOutputWithContext(context.Context) GetServiceNowConnectorAuthAdfOutput
-}
-
-type GetServiceNowConnectorAuthAdfArgs struct {
-	// asdf URL.
-	AdfsUrl pulumi.StringInput `pulumi:"adfsUrl"`
-	// Reference to a secret containing the certificate to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-	CertificateRef pulumi.StringInput `pulumi:"certificateRef"`
-	// Reference to a secret containing the clientIdRef to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-	ClientIdRef pulumi.StringInput `pulumi:"clientIdRef"`
-	// Reference to a secret containing the privateKeyRef to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-	PrivateKeyRef pulumi.StringInput `pulumi:"privateKeyRef"`
-	// Reference to a secret containing the resourceIdRef to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-	ResourceIdRef pulumi.StringInput `pulumi:"resourceIdRef"`
-}
-
-func (GetServiceNowConnectorAuthAdfArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceNowConnectorAuthAdf)(nil)).Elem()
-}
-
-func (i GetServiceNowConnectorAuthAdfArgs) ToGetServiceNowConnectorAuthAdfOutput() GetServiceNowConnectorAuthAdfOutput {
-	return i.ToGetServiceNowConnectorAuthAdfOutputWithContext(context.Background())
-}
-
-func (i GetServiceNowConnectorAuthAdfArgs) ToGetServiceNowConnectorAuthAdfOutputWithContext(ctx context.Context) GetServiceNowConnectorAuthAdfOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceNowConnectorAuthAdfOutput)
-}
-
-// GetServiceNowConnectorAuthAdfArrayInput is an input type that accepts GetServiceNowConnectorAuthAdfArray and GetServiceNowConnectorAuthAdfArrayOutput values.
-// You can construct a concrete instance of `GetServiceNowConnectorAuthAdfArrayInput` via:
-//
-//	GetServiceNowConnectorAuthAdfArray{ GetServiceNowConnectorAuthAdfArgs{...} }
-type GetServiceNowConnectorAuthAdfArrayInput interface {
-	pulumi.Input
-
-	ToGetServiceNowConnectorAuthAdfArrayOutput() GetServiceNowConnectorAuthAdfArrayOutput
-	ToGetServiceNowConnectorAuthAdfArrayOutputWithContext(context.Context) GetServiceNowConnectorAuthAdfArrayOutput
-}
-
-type GetServiceNowConnectorAuthAdfArray []GetServiceNowConnectorAuthAdfInput
-
-func (GetServiceNowConnectorAuthAdfArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceNowConnectorAuthAdf)(nil)).Elem()
-}
-
-func (i GetServiceNowConnectorAuthAdfArray) ToGetServiceNowConnectorAuthAdfArrayOutput() GetServiceNowConnectorAuthAdfArrayOutput {
-	return i.ToGetServiceNowConnectorAuthAdfArrayOutputWithContext(context.Background())
-}
-
-func (i GetServiceNowConnectorAuthAdfArray) ToGetServiceNowConnectorAuthAdfArrayOutputWithContext(ctx context.Context) GetServiceNowConnectorAuthAdfArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceNowConnectorAuthAdfArrayOutput)
-}
-
-type GetServiceNowConnectorAuthAdfOutput struct{ *pulumi.OutputState }
-
-func (GetServiceNowConnectorAuthAdfOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceNowConnectorAuthAdf)(nil)).Elem()
-}
-
-func (o GetServiceNowConnectorAuthAdfOutput) ToGetServiceNowConnectorAuthAdfOutput() GetServiceNowConnectorAuthAdfOutput {
-	return o
-}
-
-func (o GetServiceNowConnectorAuthAdfOutput) ToGetServiceNowConnectorAuthAdfOutputWithContext(ctx context.Context) GetServiceNowConnectorAuthAdfOutput {
-	return o
-}
-
-// asdf URL.
-func (o GetServiceNowConnectorAuthAdfOutput) AdfsUrl() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceNowConnectorAuthAdf) string { return v.AdfsUrl }).(pulumi.StringOutput)
-}
-
-// Reference to a secret containing the certificate to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-func (o GetServiceNowConnectorAuthAdfOutput) CertificateRef() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceNowConnectorAuthAdf) string { return v.CertificateRef }).(pulumi.StringOutput)
-}
-
-// Reference to a secret containing the clientIdRef to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-func (o GetServiceNowConnectorAuthAdfOutput) ClientIdRef() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceNowConnectorAuthAdf) string { return v.ClientIdRef }).(pulumi.StringOutput)
-}
-
-// Reference to a secret containing the privateKeyRef to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-func (o GetServiceNowConnectorAuthAdfOutput) PrivateKeyRef() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceNowConnectorAuthAdf) string { return v.PrivateKeyRef }).(pulumi.StringOutput)
-}
-
-// Reference to a secret containing the resourceIdRef to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-func (o GetServiceNowConnectorAuthAdfOutput) ResourceIdRef() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceNowConnectorAuthAdf) string { return v.ResourceIdRef }).(pulumi.StringOutput)
-}
-
-type GetServiceNowConnectorAuthAdfArrayOutput struct{ *pulumi.OutputState }
-
-func (GetServiceNowConnectorAuthAdfArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceNowConnectorAuthAdf)(nil)).Elem()
-}
-
-func (o GetServiceNowConnectorAuthAdfArrayOutput) ToGetServiceNowConnectorAuthAdfArrayOutput() GetServiceNowConnectorAuthAdfArrayOutput {
-	return o
-}
-
-func (o GetServiceNowConnectorAuthAdfArrayOutput) ToGetServiceNowConnectorAuthAdfArrayOutputWithContext(ctx context.Context) GetServiceNowConnectorAuthAdfArrayOutput {
-	return o
-}
-
-func (o GetServiceNowConnectorAuthAdfArrayOutput) Index(i pulumi.IntInput) GetServiceNowConnectorAuthAdfOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceNowConnectorAuthAdf {
-		return vs[0].([]GetServiceNowConnectorAuthAdf)[vs[1].(int)]
-	}).(GetServiceNowConnectorAuthAdfOutput)
-}
-
-type GetServiceNowConnectorAuthRefreshToken struct {
-	// Reference to a secret containing the client id to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-	ClientIdRef string `pulumi:"clientIdRef"`
-	// Reference to a secret containing the client secret to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-	ClientSecretRef string `pulumi:"clientSecretRef"`
-	// Reference to a secret containing the refresh token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-	RefreshTokenRef string `pulumi:"refreshTokenRef"`
-	// Scope string to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-	Scope string `pulumi:"scope"`
-	// Token url to use for authentication.
-	TokenUrl string `pulumi:"tokenUrl"`
-}
-
-// GetServiceNowConnectorAuthRefreshTokenInput is an input type that accepts GetServiceNowConnectorAuthRefreshTokenArgs and GetServiceNowConnectorAuthRefreshTokenOutput values.
-// You can construct a concrete instance of `GetServiceNowConnectorAuthRefreshTokenInput` via:
-//
-//	GetServiceNowConnectorAuthRefreshTokenArgs{...}
-type GetServiceNowConnectorAuthRefreshTokenInput interface {
-	pulumi.Input
-
-	ToGetServiceNowConnectorAuthRefreshTokenOutput() GetServiceNowConnectorAuthRefreshTokenOutput
-	ToGetServiceNowConnectorAuthRefreshTokenOutputWithContext(context.Context) GetServiceNowConnectorAuthRefreshTokenOutput
-}
-
-type GetServiceNowConnectorAuthRefreshTokenArgs struct {
-	// Reference to a secret containing the client id to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-	ClientIdRef pulumi.StringInput `pulumi:"clientIdRef"`
-	// Reference to a secret containing the client secret to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-	ClientSecretRef pulumi.StringInput `pulumi:"clientSecretRef"`
-	// Reference to a secret containing the refresh token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-	RefreshTokenRef pulumi.StringInput `pulumi:"refreshTokenRef"`
-	// Scope string to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-	Scope pulumi.StringInput `pulumi:"scope"`
-	// Token url to use for authentication.
-	TokenUrl pulumi.StringInput `pulumi:"tokenUrl"`
-}
-
-func (GetServiceNowConnectorAuthRefreshTokenArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceNowConnectorAuthRefreshToken)(nil)).Elem()
-}
-
-func (i GetServiceNowConnectorAuthRefreshTokenArgs) ToGetServiceNowConnectorAuthRefreshTokenOutput() GetServiceNowConnectorAuthRefreshTokenOutput {
-	return i.ToGetServiceNowConnectorAuthRefreshTokenOutputWithContext(context.Background())
-}
-
-func (i GetServiceNowConnectorAuthRefreshTokenArgs) ToGetServiceNowConnectorAuthRefreshTokenOutputWithContext(ctx context.Context) GetServiceNowConnectorAuthRefreshTokenOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceNowConnectorAuthRefreshTokenOutput)
-}
-
-// GetServiceNowConnectorAuthRefreshTokenArrayInput is an input type that accepts GetServiceNowConnectorAuthRefreshTokenArray and GetServiceNowConnectorAuthRefreshTokenArrayOutput values.
-// You can construct a concrete instance of `GetServiceNowConnectorAuthRefreshTokenArrayInput` via:
-//
-//	GetServiceNowConnectorAuthRefreshTokenArray{ GetServiceNowConnectorAuthRefreshTokenArgs{...} }
-type GetServiceNowConnectorAuthRefreshTokenArrayInput interface {
-	pulumi.Input
-
-	ToGetServiceNowConnectorAuthRefreshTokenArrayOutput() GetServiceNowConnectorAuthRefreshTokenArrayOutput
-	ToGetServiceNowConnectorAuthRefreshTokenArrayOutputWithContext(context.Context) GetServiceNowConnectorAuthRefreshTokenArrayOutput
-}
-
-type GetServiceNowConnectorAuthRefreshTokenArray []GetServiceNowConnectorAuthRefreshTokenInput
-
-func (GetServiceNowConnectorAuthRefreshTokenArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceNowConnectorAuthRefreshToken)(nil)).Elem()
-}
-
-func (i GetServiceNowConnectorAuthRefreshTokenArray) ToGetServiceNowConnectorAuthRefreshTokenArrayOutput() GetServiceNowConnectorAuthRefreshTokenArrayOutput {
-	return i.ToGetServiceNowConnectorAuthRefreshTokenArrayOutputWithContext(context.Background())
-}
-
-func (i GetServiceNowConnectorAuthRefreshTokenArray) ToGetServiceNowConnectorAuthRefreshTokenArrayOutputWithContext(ctx context.Context) GetServiceNowConnectorAuthRefreshTokenArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceNowConnectorAuthRefreshTokenArrayOutput)
-}
-
-type GetServiceNowConnectorAuthRefreshTokenOutput struct{ *pulumi.OutputState }
-
-func (GetServiceNowConnectorAuthRefreshTokenOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceNowConnectorAuthRefreshToken)(nil)).Elem()
-}
-
-func (o GetServiceNowConnectorAuthRefreshTokenOutput) ToGetServiceNowConnectorAuthRefreshTokenOutput() GetServiceNowConnectorAuthRefreshTokenOutput {
-	return o
-}
-
-func (o GetServiceNowConnectorAuthRefreshTokenOutput) ToGetServiceNowConnectorAuthRefreshTokenOutputWithContext(ctx context.Context) GetServiceNowConnectorAuthRefreshTokenOutput {
-	return o
-}
-
-// Reference to a secret containing the client id to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-func (o GetServiceNowConnectorAuthRefreshTokenOutput) ClientIdRef() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceNowConnectorAuthRefreshToken) string { return v.ClientIdRef }).(pulumi.StringOutput)
-}
-
-// Reference to a secret containing the client secret to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-func (o GetServiceNowConnectorAuthRefreshTokenOutput) ClientSecretRef() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceNowConnectorAuthRefreshToken) string { return v.ClientSecretRef }).(pulumi.StringOutput)
-}
-
-// Reference to a secret containing the refresh token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-func (o GetServiceNowConnectorAuthRefreshTokenOutput) RefreshTokenRef() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceNowConnectorAuthRefreshToken) string { return v.RefreshTokenRef }).(pulumi.StringOutput)
-}
-
-// Scope string to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-func (o GetServiceNowConnectorAuthRefreshTokenOutput) Scope() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceNowConnectorAuthRefreshToken) string { return v.Scope }).(pulumi.StringOutput)
-}
-
-// Token url to use for authentication.
-func (o GetServiceNowConnectorAuthRefreshTokenOutput) TokenUrl() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceNowConnectorAuthRefreshToken) string { return v.TokenUrl }).(pulumi.StringOutput)
-}
-
-type GetServiceNowConnectorAuthRefreshTokenArrayOutput struct{ *pulumi.OutputState }
-
-func (GetServiceNowConnectorAuthRefreshTokenArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceNowConnectorAuthRefreshToken)(nil)).Elem()
-}
-
-func (o GetServiceNowConnectorAuthRefreshTokenArrayOutput) ToGetServiceNowConnectorAuthRefreshTokenArrayOutput() GetServiceNowConnectorAuthRefreshTokenArrayOutput {
-	return o
-}
-
-func (o GetServiceNowConnectorAuthRefreshTokenArrayOutput) ToGetServiceNowConnectorAuthRefreshTokenArrayOutputWithContext(ctx context.Context) GetServiceNowConnectorAuthRefreshTokenArrayOutput {
-	return o
-}
-
-func (o GetServiceNowConnectorAuthRefreshTokenArrayOutput) Index(i pulumi.IntInput) GetServiceNowConnectorAuthRefreshTokenOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceNowConnectorAuthRefreshToken {
-		return vs[0].([]GetServiceNowConnectorAuthRefreshToken)[vs[1].(int)]
-	}).(GetServiceNowConnectorAuthRefreshTokenOutput)
-}
-
-type GetServiceNowConnectorAuthUsernamePassword struct {
-	// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-	PasswordRef string `pulumi:"passwordRef"`
-	// Username to use for authentication.
-	Username string `pulumi:"username"`
-	// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-	UsernameRef string `pulumi:"usernameRef"`
-}
-
-// GetServiceNowConnectorAuthUsernamePasswordInput is an input type that accepts GetServiceNowConnectorAuthUsernamePasswordArgs and GetServiceNowConnectorAuthUsernamePasswordOutput values.
-// You can construct a concrete instance of `GetServiceNowConnectorAuthUsernamePasswordInput` via:
-//
-//	GetServiceNowConnectorAuthUsernamePasswordArgs{...}
-type GetServiceNowConnectorAuthUsernamePasswordInput interface {
-	pulumi.Input
-
-	ToGetServiceNowConnectorAuthUsernamePasswordOutput() GetServiceNowConnectorAuthUsernamePasswordOutput
-	ToGetServiceNowConnectorAuthUsernamePasswordOutputWithContext(context.Context) GetServiceNowConnectorAuthUsernamePasswordOutput
-}
-
-type GetServiceNowConnectorAuthUsernamePasswordArgs struct {
-	// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-	PasswordRef pulumi.StringInput `pulumi:"passwordRef"`
-	// Username to use for authentication.
-	Username pulumi.StringInput `pulumi:"username"`
-	// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-	UsernameRef pulumi.StringInput `pulumi:"usernameRef"`
-}
-
-func (GetServiceNowConnectorAuthUsernamePasswordArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceNowConnectorAuthUsernamePassword)(nil)).Elem()
-}
-
-func (i GetServiceNowConnectorAuthUsernamePasswordArgs) ToGetServiceNowConnectorAuthUsernamePasswordOutput() GetServiceNowConnectorAuthUsernamePasswordOutput {
-	return i.ToGetServiceNowConnectorAuthUsernamePasswordOutputWithContext(context.Background())
-}
-
-func (i GetServiceNowConnectorAuthUsernamePasswordArgs) ToGetServiceNowConnectorAuthUsernamePasswordOutputWithContext(ctx context.Context) GetServiceNowConnectorAuthUsernamePasswordOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceNowConnectorAuthUsernamePasswordOutput)
-}
-
-// GetServiceNowConnectorAuthUsernamePasswordArrayInput is an input type that accepts GetServiceNowConnectorAuthUsernamePasswordArray and GetServiceNowConnectorAuthUsernamePasswordArrayOutput values.
-// You can construct a concrete instance of `GetServiceNowConnectorAuthUsernamePasswordArrayInput` via:
-//
-//	GetServiceNowConnectorAuthUsernamePasswordArray{ GetServiceNowConnectorAuthUsernamePasswordArgs{...} }
-type GetServiceNowConnectorAuthUsernamePasswordArrayInput interface {
-	pulumi.Input
-
-	ToGetServiceNowConnectorAuthUsernamePasswordArrayOutput() GetServiceNowConnectorAuthUsernamePasswordArrayOutput
-	ToGetServiceNowConnectorAuthUsernamePasswordArrayOutputWithContext(context.Context) GetServiceNowConnectorAuthUsernamePasswordArrayOutput
-}
-
-type GetServiceNowConnectorAuthUsernamePasswordArray []GetServiceNowConnectorAuthUsernamePasswordInput
-
-func (GetServiceNowConnectorAuthUsernamePasswordArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceNowConnectorAuthUsernamePassword)(nil)).Elem()
-}
-
-func (i GetServiceNowConnectorAuthUsernamePasswordArray) ToGetServiceNowConnectorAuthUsernamePasswordArrayOutput() GetServiceNowConnectorAuthUsernamePasswordArrayOutput {
-	return i.ToGetServiceNowConnectorAuthUsernamePasswordArrayOutputWithContext(context.Background())
-}
-
-func (i GetServiceNowConnectorAuthUsernamePasswordArray) ToGetServiceNowConnectorAuthUsernamePasswordArrayOutputWithContext(ctx context.Context) GetServiceNowConnectorAuthUsernamePasswordArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceNowConnectorAuthUsernamePasswordArrayOutput)
-}
-
-type GetServiceNowConnectorAuthUsernamePasswordOutput struct{ *pulumi.OutputState }
-
-func (GetServiceNowConnectorAuthUsernamePasswordOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceNowConnectorAuthUsernamePassword)(nil)).Elem()
-}
-
-func (o GetServiceNowConnectorAuthUsernamePasswordOutput) ToGetServiceNowConnectorAuthUsernamePasswordOutput() GetServiceNowConnectorAuthUsernamePasswordOutput {
-	return o
-}
-
-func (o GetServiceNowConnectorAuthUsernamePasswordOutput) ToGetServiceNowConnectorAuthUsernamePasswordOutputWithContext(ctx context.Context) GetServiceNowConnectorAuthUsernamePasswordOutput {
-	return o
-}
-
-// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-func (o GetServiceNowConnectorAuthUsernamePasswordOutput) PasswordRef() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceNowConnectorAuthUsernamePassword) string { return v.PasswordRef }).(pulumi.StringOutput)
-}
-
-// Username to use for authentication.
-func (o GetServiceNowConnectorAuthUsernamePasswordOutput) Username() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceNowConnectorAuthUsernamePassword) string { return v.Username }).(pulumi.StringOutput)
-}
-
-// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-func (o GetServiceNowConnectorAuthUsernamePasswordOutput) UsernameRef() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceNowConnectorAuthUsernamePassword) string { return v.UsernameRef }).(pulumi.StringOutput)
-}
-
-type GetServiceNowConnectorAuthUsernamePasswordArrayOutput struct{ *pulumi.OutputState }
-
-func (GetServiceNowConnectorAuthUsernamePasswordArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceNowConnectorAuthUsernamePassword)(nil)).Elem()
-}
-
-func (o GetServiceNowConnectorAuthUsernamePasswordArrayOutput) ToGetServiceNowConnectorAuthUsernamePasswordArrayOutput() GetServiceNowConnectorAuthUsernamePasswordArrayOutput {
-	return o
-}
-
-func (o GetServiceNowConnectorAuthUsernamePasswordArrayOutput) ToGetServiceNowConnectorAuthUsernamePasswordArrayOutputWithContext(ctx context.Context) GetServiceNowConnectorAuthUsernamePasswordArrayOutput {
-	return o
-}
-
-func (o GetServiceNowConnectorAuthUsernamePasswordArrayOutput) Index(i pulumi.IntInput) GetServiceNowConnectorAuthUsernamePasswordOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceNowConnectorAuthUsernamePassword {
-		return vs[0].([]GetServiceNowConnectorAuthUsernamePassword)[vs[1].(int)]
-	}).(GetServiceNowConnectorAuthUsernamePasswordOutput)
-}
-
-type GetServiceOverridesV2GitDetails struct {
-	// Name of the branch.
-	Branch string `pulumi:"branch"`
-	// Load service yaml from fallback branch
-	LoadFromCache bool `pulumi:"loadFromCache"`
-	// Load service yaml from fallback branch
-	LoadFromFallbackBranch bool `pulumi:"loadFromFallbackBranch"`
-	// Repo name of remote service override
-	RepoName string `pulumi:"repoName"`
-}
-
-// GetServiceOverridesV2GitDetailsInput is an input type that accepts GetServiceOverridesV2GitDetailsArgs and GetServiceOverridesV2GitDetailsOutput values.
-// You can construct a concrete instance of `GetServiceOverridesV2GitDetailsInput` via:
-//
-//	GetServiceOverridesV2GitDetailsArgs{...}
-type GetServiceOverridesV2GitDetailsInput interface {
-	pulumi.Input
-
-	ToGetServiceOverridesV2GitDetailsOutput() GetServiceOverridesV2GitDetailsOutput
-	ToGetServiceOverridesV2GitDetailsOutputWithContext(context.Context) GetServiceOverridesV2GitDetailsOutput
-}
-
-type GetServiceOverridesV2GitDetailsArgs struct {
-	// Name of the branch.
-	Branch pulumi.StringInput `pulumi:"branch"`
-	// Load service yaml from fallback branch
-	LoadFromCache pulumi.BoolInput `pulumi:"loadFromCache"`
-	// Load service yaml from fallback branch
-	LoadFromFallbackBranch pulumi.BoolInput `pulumi:"loadFromFallbackBranch"`
-	// Repo name of remote service override
-	RepoName pulumi.StringInput `pulumi:"repoName"`
-}
-
-func (GetServiceOverridesV2GitDetailsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceOverridesV2GitDetails)(nil)).Elem()
-}
-
-func (i GetServiceOverridesV2GitDetailsArgs) ToGetServiceOverridesV2GitDetailsOutput() GetServiceOverridesV2GitDetailsOutput {
-	return i.ToGetServiceOverridesV2GitDetailsOutputWithContext(context.Background())
-}
-
-func (i GetServiceOverridesV2GitDetailsArgs) ToGetServiceOverridesV2GitDetailsOutputWithContext(ctx context.Context) GetServiceOverridesV2GitDetailsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceOverridesV2GitDetailsOutput)
-}
-
-func (i GetServiceOverridesV2GitDetailsArgs) ToGetServiceOverridesV2GitDetailsPtrOutput() GetServiceOverridesV2GitDetailsPtrOutput {
-	return i.ToGetServiceOverridesV2GitDetailsPtrOutputWithContext(context.Background())
-}
-
-func (i GetServiceOverridesV2GitDetailsArgs) ToGetServiceOverridesV2GitDetailsPtrOutputWithContext(ctx context.Context) GetServiceOverridesV2GitDetailsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceOverridesV2GitDetailsOutput).ToGetServiceOverridesV2GitDetailsPtrOutputWithContext(ctx)
-}
-
-// GetServiceOverridesV2GitDetailsPtrInput is an input type that accepts GetServiceOverridesV2GitDetailsArgs, GetServiceOverridesV2GitDetailsPtr and GetServiceOverridesV2GitDetailsPtrOutput values.
-// You can construct a concrete instance of `GetServiceOverridesV2GitDetailsPtrInput` via:
-//
-//	        GetServiceOverridesV2GitDetailsArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetServiceOverridesV2GitDetailsPtrInput interface {
-	pulumi.Input
-
-	ToGetServiceOverridesV2GitDetailsPtrOutput() GetServiceOverridesV2GitDetailsPtrOutput
-	ToGetServiceOverridesV2GitDetailsPtrOutputWithContext(context.Context) GetServiceOverridesV2GitDetailsPtrOutput
-}
-
-type getServiceOverridesV2GitDetailsPtrType GetServiceOverridesV2GitDetailsArgs
-
-func GetServiceOverridesV2GitDetailsPtr(v *GetServiceOverridesV2GitDetailsArgs) GetServiceOverridesV2GitDetailsPtrInput {
-	return (*getServiceOverridesV2GitDetailsPtrType)(v)
-}
-
-func (*getServiceOverridesV2GitDetailsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetServiceOverridesV2GitDetails)(nil)).Elem()
-}
-
-func (i *getServiceOverridesV2GitDetailsPtrType) ToGetServiceOverridesV2GitDetailsPtrOutput() GetServiceOverridesV2GitDetailsPtrOutput {
-	return i.ToGetServiceOverridesV2GitDetailsPtrOutputWithContext(context.Background())
-}
-
-func (i *getServiceOverridesV2GitDetailsPtrType) ToGetServiceOverridesV2GitDetailsPtrOutputWithContext(ctx context.Context) GetServiceOverridesV2GitDetailsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceOverridesV2GitDetailsPtrOutput)
-}
-
-type GetServiceOverridesV2GitDetailsOutput struct{ *pulumi.OutputState }
-
-func (GetServiceOverridesV2GitDetailsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceOverridesV2GitDetails)(nil)).Elem()
-}
-
-func (o GetServiceOverridesV2GitDetailsOutput) ToGetServiceOverridesV2GitDetailsOutput() GetServiceOverridesV2GitDetailsOutput {
-	return o
-}
-
-func (o GetServiceOverridesV2GitDetailsOutput) ToGetServiceOverridesV2GitDetailsOutputWithContext(ctx context.Context) GetServiceOverridesV2GitDetailsOutput {
-	return o
-}
-
-func (o GetServiceOverridesV2GitDetailsOutput) ToGetServiceOverridesV2GitDetailsPtrOutput() GetServiceOverridesV2GitDetailsPtrOutput {
-	return o.ToGetServiceOverridesV2GitDetailsPtrOutputWithContext(context.Background())
-}
-
-func (o GetServiceOverridesV2GitDetailsOutput) ToGetServiceOverridesV2GitDetailsPtrOutputWithContext(ctx context.Context) GetServiceOverridesV2GitDetailsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetServiceOverridesV2GitDetails) *GetServiceOverridesV2GitDetails {
-		return &v
-	}).(GetServiceOverridesV2GitDetailsPtrOutput)
-}
-
-// Name of the branch.
-func (o GetServiceOverridesV2GitDetailsOutput) Branch() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceOverridesV2GitDetails) string { return v.Branch }).(pulumi.StringOutput)
-}
-
-// Load service yaml from fallback branch
-func (o GetServiceOverridesV2GitDetailsOutput) LoadFromCache() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetServiceOverridesV2GitDetails) bool { return v.LoadFromCache }).(pulumi.BoolOutput)
-}
-
-// Load service yaml from fallback branch
-func (o GetServiceOverridesV2GitDetailsOutput) LoadFromFallbackBranch() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetServiceOverridesV2GitDetails) bool { return v.LoadFromFallbackBranch }).(pulumi.BoolOutput)
-}
-
-// Repo name of remote service override
-func (o GetServiceOverridesV2GitDetailsOutput) RepoName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceOverridesV2GitDetails) string { return v.RepoName }).(pulumi.StringOutput)
-}
-
-type GetServiceOverridesV2GitDetailsPtrOutput struct{ *pulumi.OutputState }
-
-func (GetServiceOverridesV2GitDetailsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetServiceOverridesV2GitDetails)(nil)).Elem()
-}
-
-func (o GetServiceOverridesV2GitDetailsPtrOutput) ToGetServiceOverridesV2GitDetailsPtrOutput() GetServiceOverridesV2GitDetailsPtrOutput {
-	return o
-}
-
-func (o GetServiceOverridesV2GitDetailsPtrOutput) ToGetServiceOverridesV2GitDetailsPtrOutputWithContext(ctx context.Context) GetServiceOverridesV2GitDetailsPtrOutput {
-	return o
-}
-
-func (o GetServiceOverridesV2GitDetailsPtrOutput) Elem() GetServiceOverridesV2GitDetailsOutput {
-	return o.ApplyT(func(v *GetServiceOverridesV2GitDetails) GetServiceOverridesV2GitDetails {
-		if v != nil {
-			return *v
-		}
-		var ret GetServiceOverridesV2GitDetails
-		return ret
-	}).(GetServiceOverridesV2GitDetailsOutput)
-}
-
-// Name of the branch.
-func (o GetServiceOverridesV2GitDetailsPtrOutput) Branch() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetServiceOverridesV2GitDetails) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Branch
-	}).(pulumi.StringPtrOutput)
-}
-
-// Load service yaml from fallback branch
-func (o GetServiceOverridesV2GitDetailsPtrOutput) LoadFromCache() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetServiceOverridesV2GitDetails) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.LoadFromCache
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Load service yaml from fallback branch
-func (o GetServiceOverridesV2GitDetailsPtrOutput) LoadFromFallbackBranch() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetServiceOverridesV2GitDetails) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.LoadFromFallbackBranch
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Repo name of remote service override
-func (o GetServiceOverridesV2GitDetailsPtrOutput) RepoName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetServiceOverridesV2GitDetails) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.RepoName
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetSplunkConnectorBearerToken struct {
-	// Reference to the Harness secret containing the Splunk bearer token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-	BearerTokenRef string `pulumi:"bearerTokenRef"`
-}
-
-// GetSplunkConnectorBearerTokenInput is an input type that accepts GetSplunkConnectorBearerTokenArgs and GetSplunkConnectorBearerTokenOutput values.
-// You can construct a concrete instance of `GetSplunkConnectorBearerTokenInput` via:
-//
-//	GetSplunkConnectorBearerTokenArgs{...}
-type GetSplunkConnectorBearerTokenInput interface {
-	pulumi.Input
-
-	ToGetSplunkConnectorBearerTokenOutput() GetSplunkConnectorBearerTokenOutput
-	ToGetSplunkConnectorBearerTokenOutputWithContext(context.Context) GetSplunkConnectorBearerTokenOutput
-}
-
-type GetSplunkConnectorBearerTokenArgs struct {
-	// Reference to the Harness secret containing the Splunk bearer token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-	BearerTokenRef pulumi.StringInput `pulumi:"bearerTokenRef"`
-}
-
-func (GetSplunkConnectorBearerTokenArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSplunkConnectorBearerToken)(nil)).Elem()
-}
-
-func (i GetSplunkConnectorBearerTokenArgs) ToGetSplunkConnectorBearerTokenOutput() GetSplunkConnectorBearerTokenOutput {
-	return i.ToGetSplunkConnectorBearerTokenOutputWithContext(context.Background())
-}
-
-func (i GetSplunkConnectorBearerTokenArgs) ToGetSplunkConnectorBearerTokenOutputWithContext(ctx context.Context) GetSplunkConnectorBearerTokenOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetSplunkConnectorBearerTokenOutput)
-}
-
-// GetSplunkConnectorBearerTokenArrayInput is an input type that accepts GetSplunkConnectorBearerTokenArray and GetSplunkConnectorBearerTokenArrayOutput values.
-// You can construct a concrete instance of `GetSplunkConnectorBearerTokenArrayInput` via:
-//
-//	GetSplunkConnectorBearerTokenArray{ GetSplunkConnectorBearerTokenArgs{...} }
-type GetSplunkConnectorBearerTokenArrayInput interface {
-	pulumi.Input
-
-	ToGetSplunkConnectorBearerTokenArrayOutput() GetSplunkConnectorBearerTokenArrayOutput
-	ToGetSplunkConnectorBearerTokenArrayOutputWithContext(context.Context) GetSplunkConnectorBearerTokenArrayOutput
-}
-
-type GetSplunkConnectorBearerTokenArray []GetSplunkConnectorBearerTokenInput
-
-func (GetSplunkConnectorBearerTokenArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetSplunkConnectorBearerToken)(nil)).Elem()
-}
-
-func (i GetSplunkConnectorBearerTokenArray) ToGetSplunkConnectorBearerTokenArrayOutput() GetSplunkConnectorBearerTokenArrayOutput {
-	return i.ToGetSplunkConnectorBearerTokenArrayOutputWithContext(context.Background())
-}
-
-func (i GetSplunkConnectorBearerTokenArray) ToGetSplunkConnectorBearerTokenArrayOutputWithContext(ctx context.Context) GetSplunkConnectorBearerTokenArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetSplunkConnectorBearerTokenArrayOutput)
-}
-
-type GetSplunkConnectorBearerTokenOutput struct{ *pulumi.OutputState }
-
-func (GetSplunkConnectorBearerTokenOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSplunkConnectorBearerToken)(nil)).Elem()
-}
-
-func (o GetSplunkConnectorBearerTokenOutput) ToGetSplunkConnectorBearerTokenOutput() GetSplunkConnectorBearerTokenOutput {
-	return o
-}
-
-func (o GetSplunkConnectorBearerTokenOutput) ToGetSplunkConnectorBearerTokenOutputWithContext(ctx context.Context) GetSplunkConnectorBearerTokenOutput {
-	return o
-}
-
-// Reference to the Harness secret containing the Splunk bearer token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-func (o GetSplunkConnectorBearerTokenOutput) BearerTokenRef() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSplunkConnectorBearerToken) string { return v.BearerTokenRef }).(pulumi.StringOutput)
-}
-
-type GetSplunkConnectorBearerTokenArrayOutput struct{ *pulumi.OutputState }
-
-func (GetSplunkConnectorBearerTokenArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetSplunkConnectorBearerToken)(nil)).Elem()
-}
-
-func (o GetSplunkConnectorBearerTokenArrayOutput) ToGetSplunkConnectorBearerTokenArrayOutput() GetSplunkConnectorBearerTokenArrayOutput {
-	return o
-}
-
-func (o GetSplunkConnectorBearerTokenArrayOutput) ToGetSplunkConnectorBearerTokenArrayOutputWithContext(ctx context.Context) GetSplunkConnectorBearerTokenArrayOutput {
-	return o
-}
-
-func (o GetSplunkConnectorBearerTokenArrayOutput) Index(i pulumi.IntInput) GetSplunkConnectorBearerTokenOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSplunkConnectorBearerToken {
-		return vs[0].([]GetSplunkConnectorBearerToken)[vs[1].(int)]
-	}).(GetSplunkConnectorBearerTokenOutput)
-}
-
-type GetSplunkConnectorHecToken struct {
-	// Reference to the Harness secret containing the Splunk HEC token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-	HecTokenRef string `pulumi:"hecTokenRef"`
-}
-
-// GetSplunkConnectorHecTokenInput is an input type that accepts GetSplunkConnectorHecTokenArgs and GetSplunkConnectorHecTokenOutput values.
-// You can construct a concrete instance of `GetSplunkConnectorHecTokenInput` via:
-//
-//	GetSplunkConnectorHecTokenArgs{...}
-type GetSplunkConnectorHecTokenInput interface {
-	pulumi.Input
-
-	ToGetSplunkConnectorHecTokenOutput() GetSplunkConnectorHecTokenOutput
-	ToGetSplunkConnectorHecTokenOutputWithContext(context.Context) GetSplunkConnectorHecTokenOutput
-}
-
-type GetSplunkConnectorHecTokenArgs struct {
-	// Reference to the Harness secret containing the Splunk HEC token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-	HecTokenRef pulumi.StringInput `pulumi:"hecTokenRef"`
-}
-
-func (GetSplunkConnectorHecTokenArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSplunkConnectorHecToken)(nil)).Elem()
-}
-
-func (i GetSplunkConnectorHecTokenArgs) ToGetSplunkConnectorHecTokenOutput() GetSplunkConnectorHecTokenOutput {
-	return i.ToGetSplunkConnectorHecTokenOutputWithContext(context.Background())
-}
-
-func (i GetSplunkConnectorHecTokenArgs) ToGetSplunkConnectorHecTokenOutputWithContext(ctx context.Context) GetSplunkConnectorHecTokenOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetSplunkConnectorHecTokenOutput)
-}
-
-// GetSplunkConnectorHecTokenArrayInput is an input type that accepts GetSplunkConnectorHecTokenArray and GetSplunkConnectorHecTokenArrayOutput values.
-// You can construct a concrete instance of `GetSplunkConnectorHecTokenArrayInput` via:
-//
-//	GetSplunkConnectorHecTokenArray{ GetSplunkConnectorHecTokenArgs{...} }
-type GetSplunkConnectorHecTokenArrayInput interface {
-	pulumi.Input
-
-	ToGetSplunkConnectorHecTokenArrayOutput() GetSplunkConnectorHecTokenArrayOutput
-	ToGetSplunkConnectorHecTokenArrayOutputWithContext(context.Context) GetSplunkConnectorHecTokenArrayOutput
-}
-
-type GetSplunkConnectorHecTokenArray []GetSplunkConnectorHecTokenInput
-
-func (GetSplunkConnectorHecTokenArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetSplunkConnectorHecToken)(nil)).Elem()
-}
-
-func (i GetSplunkConnectorHecTokenArray) ToGetSplunkConnectorHecTokenArrayOutput() GetSplunkConnectorHecTokenArrayOutput {
-	return i.ToGetSplunkConnectorHecTokenArrayOutputWithContext(context.Background())
-}
-
-func (i GetSplunkConnectorHecTokenArray) ToGetSplunkConnectorHecTokenArrayOutputWithContext(ctx context.Context) GetSplunkConnectorHecTokenArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetSplunkConnectorHecTokenArrayOutput)
-}
-
-type GetSplunkConnectorHecTokenOutput struct{ *pulumi.OutputState }
-
-func (GetSplunkConnectorHecTokenOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSplunkConnectorHecToken)(nil)).Elem()
-}
-
-func (o GetSplunkConnectorHecTokenOutput) ToGetSplunkConnectorHecTokenOutput() GetSplunkConnectorHecTokenOutput {
-	return o
-}
-
-func (o GetSplunkConnectorHecTokenOutput) ToGetSplunkConnectorHecTokenOutputWithContext(ctx context.Context) GetSplunkConnectorHecTokenOutput {
-	return o
-}
-
-// Reference to the Harness secret containing the Splunk HEC token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-func (o GetSplunkConnectorHecTokenOutput) HecTokenRef() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSplunkConnectorHecToken) string { return v.HecTokenRef }).(pulumi.StringOutput)
-}
-
-type GetSplunkConnectorHecTokenArrayOutput struct{ *pulumi.OutputState }
-
-func (GetSplunkConnectorHecTokenArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetSplunkConnectorHecToken)(nil)).Elem()
-}
-
-func (o GetSplunkConnectorHecTokenArrayOutput) ToGetSplunkConnectorHecTokenArrayOutput() GetSplunkConnectorHecTokenArrayOutput {
-	return o
-}
-
-func (o GetSplunkConnectorHecTokenArrayOutput) ToGetSplunkConnectorHecTokenArrayOutputWithContext(ctx context.Context) GetSplunkConnectorHecTokenArrayOutput {
-	return o
-}
-
-func (o GetSplunkConnectorHecTokenArrayOutput) Index(i pulumi.IntInput) GetSplunkConnectorHecTokenOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSplunkConnectorHecToken {
-		return vs[0].([]GetSplunkConnectorHecToken)[vs[1].(int)]
-	}).(GetSplunkConnectorHecTokenOutput)
-}
-
-type GetSplunkConnectorNoAuthentication struct {
-}
-
-// GetSplunkConnectorNoAuthenticationInput is an input type that accepts GetSplunkConnectorNoAuthenticationArgs and GetSplunkConnectorNoAuthenticationOutput values.
-// You can construct a concrete instance of `GetSplunkConnectorNoAuthenticationInput` via:
-//
-//	GetSplunkConnectorNoAuthenticationArgs{...}
-type GetSplunkConnectorNoAuthenticationInput interface {
-	pulumi.Input
-
-	ToGetSplunkConnectorNoAuthenticationOutput() GetSplunkConnectorNoAuthenticationOutput
-	ToGetSplunkConnectorNoAuthenticationOutputWithContext(context.Context) GetSplunkConnectorNoAuthenticationOutput
-}
-
-type GetSplunkConnectorNoAuthenticationArgs struct {
-}
-
-func (GetSplunkConnectorNoAuthenticationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSplunkConnectorNoAuthentication)(nil)).Elem()
-}
-
-func (i GetSplunkConnectorNoAuthenticationArgs) ToGetSplunkConnectorNoAuthenticationOutput() GetSplunkConnectorNoAuthenticationOutput {
-	return i.ToGetSplunkConnectorNoAuthenticationOutputWithContext(context.Background())
-}
-
-func (i GetSplunkConnectorNoAuthenticationArgs) ToGetSplunkConnectorNoAuthenticationOutputWithContext(ctx context.Context) GetSplunkConnectorNoAuthenticationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetSplunkConnectorNoAuthenticationOutput)
-}
-
-// GetSplunkConnectorNoAuthenticationArrayInput is an input type that accepts GetSplunkConnectorNoAuthenticationArray and GetSplunkConnectorNoAuthenticationArrayOutput values.
-// You can construct a concrete instance of `GetSplunkConnectorNoAuthenticationArrayInput` via:
-//
-//	GetSplunkConnectorNoAuthenticationArray{ GetSplunkConnectorNoAuthenticationArgs{...} }
-type GetSplunkConnectorNoAuthenticationArrayInput interface {
-	pulumi.Input
-
-	ToGetSplunkConnectorNoAuthenticationArrayOutput() GetSplunkConnectorNoAuthenticationArrayOutput
-	ToGetSplunkConnectorNoAuthenticationArrayOutputWithContext(context.Context) GetSplunkConnectorNoAuthenticationArrayOutput
-}
-
-type GetSplunkConnectorNoAuthenticationArray []GetSplunkConnectorNoAuthenticationInput
-
-func (GetSplunkConnectorNoAuthenticationArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetSplunkConnectorNoAuthentication)(nil)).Elem()
-}
-
-func (i GetSplunkConnectorNoAuthenticationArray) ToGetSplunkConnectorNoAuthenticationArrayOutput() GetSplunkConnectorNoAuthenticationArrayOutput {
-	return i.ToGetSplunkConnectorNoAuthenticationArrayOutputWithContext(context.Background())
-}
-
-func (i GetSplunkConnectorNoAuthenticationArray) ToGetSplunkConnectorNoAuthenticationArrayOutputWithContext(ctx context.Context) GetSplunkConnectorNoAuthenticationArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetSplunkConnectorNoAuthenticationArrayOutput)
-}
-
-type GetSplunkConnectorNoAuthenticationOutput struct{ *pulumi.OutputState }
-
-func (GetSplunkConnectorNoAuthenticationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSplunkConnectorNoAuthentication)(nil)).Elem()
-}
-
-func (o GetSplunkConnectorNoAuthenticationOutput) ToGetSplunkConnectorNoAuthenticationOutput() GetSplunkConnectorNoAuthenticationOutput {
-	return o
-}
-
-func (o GetSplunkConnectorNoAuthenticationOutput) ToGetSplunkConnectorNoAuthenticationOutputWithContext(ctx context.Context) GetSplunkConnectorNoAuthenticationOutput {
-	return o
-}
-
-type GetSplunkConnectorNoAuthenticationArrayOutput struct{ *pulumi.OutputState }
-
-func (GetSplunkConnectorNoAuthenticationArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetSplunkConnectorNoAuthentication)(nil)).Elem()
-}
-
-func (o GetSplunkConnectorNoAuthenticationArrayOutput) ToGetSplunkConnectorNoAuthenticationArrayOutput() GetSplunkConnectorNoAuthenticationArrayOutput {
-	return o
-}
-
-func (o GetSplunkConnectorNoAuthenticationArrayOutput) ToGetSplunkConnectorNoAuthenticationArrayOutputWithContext(ctx context.Context) GetSplunkConnectorNoAuthenticationArrayOutput {
-	return o
-}
-
-func (o GetSplunkConnectorNoAuthenticationArrayOutput) Index(i pulumi.IntInput) GetSplunkConnectorNoAuthenticationOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSplunkConnectorNoAuthentication {
-		return vs[0].([]GetSplunkConnectorNoAuthentication)[vs[1].(int)]
-	}).(GetSplunkConnectorNoAuthenticationOutput)
-}
-
-type GetSplunkConnectorUsernamePassword struct {
-	// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-	PasswordRef string `pulumi:"passwordRef"`
-	// Username to use for authentication.
-	Username string `pulumi:"username"`
-}
-
-// GetSplunkConnectorUsernamePasswordInput is an input type that accepts GetSplunkConnectorUsernamePasswordArgs and GetSplunkConnectorUsernamePasswordOutput values.
-// You can construct a concrete instance of `GetSplunkConnectorUsernamePasswordInput` via:
-//
-//	GetSplunkConnectorUsernamePasswordArgs{...}
-type GetSplunkConnectorUsernamePasswordInput interface {
-	pulumi.Input
-
-	ToGetSplunkConnectorUsernamePasswordOutput() GetSplunkConnectorUsernamePasswordOutput
-	ToGetSplunkConnectorUsernamePasswordOutputWithContext(context.Context) GetSplunkConnectorUsernamePasswordOutput
-}
-
-type GetSplunkConnectorUsernamePasswordArgs struct {
-	// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-	PasswordRef pulumi.StringInput `pulumi:"passwordRef"`
-	// Username to use for authentication.
-	Username pulumi.StringInput `pulumi:"username"`
-}
-
-func (GetSplunkConnectorUsernamePasswordArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSplunkConnectorUsernamePassword)(nil)).Elem()
-}
-
-func (i GetSplunkConnectorUsernamePasswordArgs) ToGetSplunkConnectorUsernamePasswordOutput() GetSplunkConnectorUsernamePasswordOutput {
-	return i.ToGetSplunkConnectorUsernamePasswordOutputWithContext(context.Background())
-}
-
-func (i GetSplunkConnectorUsernamePasswordArgs) ToGetSplunkConnectorUsernamePasswordOutputWithContext(ctx context.Context) GetSplunkConnectorUsernamePasswordOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetSplunkConnectorUsernamePasswordOutput)
-}
-
-// GetSplunkConnectorUsernamePasswordArrayInput is an input type that accepts GetSplunkConnectorUsernamePasswordArray and GetSplunkConnectorUsernamePasswordArrayOutput values.
-// You can construct a concrete instance of `GetSplunkConnectorUsernamePasswordArrayInput` via:
-//
-//	GetSplunkConnectorUsernamePasswordArray{ GetSplunkConnectorUsernamePasswordArgs{...} }
-type GetSplunkConnectorUsernamePasswordArrayInput interface {
-	pulumi.Input
-
-	ToGetSplunkConnectorUsernamePasswordArrayOutput() GetSplunkConnectorUsernamePasswordArrayOutput
-	ToGetSplunkConnectorUsernamePasswordArrayOutputWithContext(context.Context) GetSplunkConnectorUsernamePasswordArrayOutput
-}
-
-type GetSplunkConnectorUsernamePasswordArray []GetSplunkConnectorUsernamePasswordInput
-
-func (GetSplunkConnectorUsernamePasswordArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetSplunkConnectorUsernamePassword)(nil)).Elem()
-}
-
-func (i GetSplunkConnectorUsernamePasswordArray) ToGetSplunkConnectorUsernamePasswordArrayOutput() GetSplunkConnectorUsernamePasswordArrayOutput {
-	return i.ToGetSplunkConnectorUsernamePasswordArrayOutputWithContext(context.Background())
-}
-
-func (i GetSplunkConnectorUsernamePasswordArray) ToGetSplunkConnectorUsernamePasswordArrayOutputWithContext(ctx context.Context) GetSplunkConnectorUsernamePasswordArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetSplunkConnectorUsernamePasswordArrayOutput)
-}
-
-type GetSplunkConnectorUsernamePasswordOutput struct{ *pulumi.OutputState }
-
-func (GetSplunkConnectorUsernamePasswordOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSplunkConnectorUsernamePassword)(nil)).Elem()
-}
-
-func (o GetSplunkConnectorUsernamePasswordOutput) ToGetSplunkConnectorUsernamePasswordOutput() GetSplunkConnectorUsernamePasswordOutput {
-	return o
-}
-
-func (o GetSplunkConnectorUsernamePasswordOutput) ToGetSplunkConnectorUsernamePasswordOutputWithContext(ctx context.Context) GetSplunkConnectorUsernamePasswordOutput {
-	return o
-}
-
-// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-func (o GetSplunkConnectorUsernamePasswordOutput) PasswordRef() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSplunkConnectorUsernamePassword) string { return v.PasswordRef }).(pulumi.StringOutput)
-}
-
-// Username to use for authentication.
-func (o GetSplunkConnectorUsernamePasswordOutput) Username() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSplunkConnectorUsernamePassword) string { return v.Username }).(pulumi.StringOutput)
-}
-
-type GetSplunkConnectorUsernamePasswordArrayOutput struct{ *pulumi.OutputState }
-
-func (GetSplunkConnectorUsernamePasswordArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetSplunkConnectorUsernamePassword)(nil)).Elem()
-}
-
-func (o GetSplunkConnectorUsernamePasswordArrayOutput) ToGetSplunkConnectorUsernamePasswordArrayOutput() GetSplunkConnectorUsernamePasswordArrayOutput {
-	return o
-}
-
-func (o GetSplunkConnectorUsernamePasswordArrayOutput) ToGetSplunkConnectorUsernamePasswordArrayOutputWithContext(ctx context.Context) GetSplunkConnectorUsernamePasswordArrayOutput {
-	return o
-}
-
-func (o GetSplunkConnectorUsernamePasswordArrayOutput) Index(i pulumi.IntInput) GetSplunkConnectorUsernamePasswordOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSplunkConnectorUsernamePassword {
-		return vs[0].([]GetSplunkConnectorUsernamePassword)[vs[1].(int)]
-	}).(GetSplunkConnectorUsernamePasswordOutput)
-}
-
-type GetSpotConnectorPermanentToken struct {
-	// Reference to the Harness secret containing the permanent api token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-	ApiTokenRef string `pulumi:"apiTokenRef"`
-	// Connect only using delegates with these tags.
-	DelegateSelectors []string `pulumi:"delegateSelectors"`
-	// Execute on delegate or not.
-	ExecuteOnDelegate bool `pulumi:"executeOnDelegate"`
-	// Spot account id.
-	SpotAccountId string `pulumi:"spotAccountId"`
-	// Reference to the Harness secret containing the spot account id. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-	SpotAccountIdRef string `pulumi:"spotAccountIdRef"`
-}
-
-// GetSpotConnectorPermanentTokenInput is an input type that accepts GetSpotConnectorPermanentTokenArgs and GetSpotConnectorPermanentTokenOutput values.
-// You can construct a concrete instance of `GetSpotConnectorPermanentTokenInput` via:
-//
-//	GetSpotConnectorPermanentTokenArgs{...}
-type GetSpotConnectorPermanentTokenInput interface {
-	pulumi.Input
-
-	ToGetSpotConnectorPermanentTokenOutput() GetSpotConnectorPermanentTokenOutput
-	ToGetSpotConnectorPermanentTokenOutputWithContext(context.Context) GetSpotConnectorPermanentTokenOutput
-}
-
-type GetSpotConnectorPermanentTokenArgs struct {
-	// Reference to the Harness secret containing the permanent api token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-	ApiTokenRef pulumi.StringInput `pulumi:"apiTokenRef"`
-	// Connect only using delegates with these tags.
-	DelegateSelectors pulumi.StringArrayInput `pulumi:"delegateSelectors"`
-	// Execute on delegate or not.
-	ExecuteOnDelegate pulumi.BoolInput `pulumi:"executeOnDelegate"`
-	// Spot account id.
-	SpotAccountId pulumi.StringInput `pulumi:"spotAccountId"`
-	// Reference to the Harness secret containing the spot account id. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-	SpotAccountIdRef pulumi.StringInput `pulumi:"spotAccountIdRef"`
-}
-
-func (GetSpotConnectorPermanentTokenArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSpotConnectorPermanentToken)(nil)).Elem()
-}
-
-func (i GetSpotConnectorPermanentTokenArgs) ToGetSpotConnectorPermanentTokenOutput() GetSpotConnectorPermanentTokenOutput {
-	return i.ToGetSpotConnectorPermanentTokenOutputWithContext(context.Background())
-}
-
-func (i GetSpotConnectorPermanentTokenArgs) ToGetSpotConnectorPermanentTokenOutputWithContext(ctx context.Context) GetSpotConnectorPermanentTokenOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetSpotConnectorPermanentTokenOutput)
-}
-
-// GetSpotConnectorPermanentTokenArrayInput is an input type that accepts GetSpotConnectorPermanentTokenArray and GetSpotConnectorPermanentTokenArrayOutput values.
-// You can construct a concrete instance of `GetSpotConnectorPermanentTokenArrayInput` via:
-//
-//	GetSpotConnectorPermanentTokenArray{ GetSpotConnectorPermanentTokenArgs{...} }
-type GetSpotConnectorPermanentTokenArrayInput interface {
-	pulumi.Input
-
-	ToGetSpotConnectorPermanentTokenArrayOutput() GetSpotConnectorPermanentTokenArrayOutput
-	ToGetSpotConnectorPermanentTokenArrayOutputWithContext(context.Context) GetSpotConnectorPermanentTokenArrayOutput
-}
-
-type GetSpotConnectorPermanentTokenArray []GetSpotConnectorPermanentTokenInput
-
-func (GetSpotConnectorPermanentTokenArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetSpotConnectorPermanentToken)(nil)).Elem()
-}
-
-func (i GetSpotConnectorPermanentTokenArray) ToGetSpotConnectorPermanentTokenArrayOutput() GetSpotConnectorPermanentTokenArrayOutput {
-	return i.ToGetSpotConnectorPermanentTokenArrayOutputWithContext(context.Background())
-}
-
-func (i GetSpotConnectorPermanentTokenArray) ToGetSpotConnectorPermanentTokenArrayOutputWithContext(ctx context.Context) GetSpotConnectorPermanentTokenArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetSpotConnectorPermanentTokenArrayOutput)
-}
-
-type GetSpotConnectorPermanentTokenOutput struct{ *pulumi.OutputState }
-
-func (GetSpotConnectorPermanentTokenOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSpotConnectorPermanentToken)(nil)).Elem()
-}
-
-func (o GetSpotConnectorPermanentTokenOutput) ToGetSpotConnectorPermanentTokenOutput() GetSpotConnectorPermanentTokenOutput {
-	return o
-}
-
-func (o GetSpotConnectorPermanentTokenOutput) ToGetSpotConnectorPermanentTokenOutputWithContext(ctx context.Context) GetSpotConnectorPermanentTokenOutput {
-	return o
-}
-
-// Reference to the Harness secret containing the permanent api token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-func (o GetSpotConnectorPermanentTokenOutput) ApiTokenRef() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSpotConnectorPermanentToken) string { return v.ApiTokenRef }).(pulumi.StringOutput)
-}
-
-// Connect only using delegates with these tags.
-func (o GetSpotConnectorPermanentTokenOutput) DelegateSelectors() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetSpotConnectorPermanentToken) []string { return v.DelegateSelectors }).(pulumi.StringArrayOutput)
-}
-
-// Execute on delegate or not.
-func (o GetSpotConnectorPermanentTokenOutput) ExecuteOnDelegate() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetSpotConnectorPermanentToken) bool { return v.ExecuteOnDelegate }).(pulumi.BoolOutput)
-}
-
-// Spot account id.
-func (o GetSpotConnectorPermanentTokenOutput) SpotAccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSpotConnectorPermanentToken) string { return v.SpotAccountId }).(pulumi.StringOutput)
-}
-
-// Reference to the Harness secret containing the spot account id. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-func (o GetSpotConnectorPermanentTokenOutput) SpotAccountIdRef() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSpotConnectorPermanentToken) string { return v.SpotAccountIdRef }).(pulumi.StringOutput)
-}
-
-type GetSpotConnectorPermanentTokenArrayOutput struct{ *pulumi.OutputState }
-
-func (GetSpotConnectorPermanentTokenArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetSpotConnectorPermanentToken)(nil)).Elem()
-}
-
-func (o GetSpotConnectorPermanentTokenArrayOutput) ToGetSpotConnectorPermanentTokenArrayOutput() GetSpotConnectorPermanentTokenArrayOutput {
-	return o
-}
-
-func (o GetSpotConnectorPermanentTokenArrayOutput) ToGetSpotConnectorPermanentTokenArrayOutputWithContext(ctx context.Context) GetSpotConnectorPermanentTokenArrayOutput {
-	return o
-}
-
-func (o GetSpotConnectorPermanentTokenArrayOutput) Index(i pulumi.IntInput) GetSpotConnectorPermanentTokenOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSpotConnectorPermanentToken {
-		return vs[0].([]GetSpotConnectorPermanentToken)[vs[1].(int)]
-	}).(GetSpotConnectorPermanentTokenOutput)
-}
-
-type GetTasConnectorCredential struct {
-	// Authenticate to Tas using manual details.
-	TasManualDetails []GetTasConnectorCredentialTasManualDetail `pulumi:"tasManualDetails"`
-	// Type can be ManualConfig.
-	Type string `pulumi:"type"`
-}
-
-// GetTasConnectorCredentialInput is an input type that accepts GetTasConnectorCredentialArgs and GetTasConnectorCredentialOutput values.
-// You can construct a concrete instance of `GetTasConnectorCredentialInput` via:
-//
-//	GetTasConnectorCredentialArgs{...}
-type GetTasConnectorCredentialInput interface {
-	pulumi.Input
-
-	ToGetTasConnectorCredentialOutput() GetTasConnectorCredentialOutput
-	ToGetTasConnectorCredentialOutputWithContext(context.Context) GetTasConnectorCredentialOutput
-}
-
-type GetTasConnectorCredentialArgs struct {
-	// Authenticate to Tas using manual details.
-	TasManualDetails GetTasConnectorCredentialTasManualDetailArrayInput `pulumi:"tasManualDetails"`
-	// Type can be ManualConfig.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (GetTasConnectorCredentialArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetTasConnectorCredential)(nil)).Elem()
-}
-
-func (i GetTasConnectorCredentialArgs) ToGetTasConnectorCredentialOutput() GetTasConnectorCredentialOutput {
-	return i.ToGetTasConnectorCredentialOutputWithContext(context.Background())
-}
-
-func (i GetTasConnectorCredentialArgs) ToGetTasConnectorCredentialOutputWithContext(ctx context.Context) GetTasConnectorCredentialOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetTasConnectorCredentialOutput)
-}
-
-// GetTasConnectorCredentialArrayInput is an input type that accepts GetTasConnectorCredentialArray and GetTasConnectorCredentialArrayOutput values.
-// You can construct a concrete instance of `GetTasConnectorCredentialArrayInput` via:
-//
-//	GetTasConnectorCredentialArray{ GetTasConnectorCredentialArgs{...} }
-type GetTasConnectorCredentialArrayInput interface {
-	pulumi.Input
-
-	ToGetTasConnectorCredentialArrayOutput() GetTasConnectorCredentialArrayOutput
-	ToGetTasConnectorCredentialArrayOutputWithContext(context.Context) GetTasConnectorCredentialArrayOutput
-}
-
-type GetTasConnectorCredentialArray []GetTasConnectorCredentialInput
-
-func (GetTasConnectorCredentialArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetTasConnectorCredential)(nil)).Elem()
-}
-
-func (i GetTasConnectorCredentialArray) ToGetTasConnectorCredentialArrayOutput() GetTasConnectorCredentialArrayOutput {
-	return i.ToGetTasConnectorCredentialArrayOutputWithContext(context.Background())
-}
-
-func (i GetTasConnectorCredentialArray) ToGetTasConnectorCredentialArrayOutputWithContext(ctx context.Context) GetTasConnectorCredentialArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetTasConnectorCredentialArrayOutput)
-}
-
-type GetTasConnectorCredentialOutput struct{ *pulumi.OutputState }
-
-func (GetTasConnectorCredentialOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetTasConnectorCredential)(nil)).Elem()
-}
-
-func (o GetTasConnectorCredentialOutput) ToGetTasConnectorCredentialOutput() GetTasConnectorCredentialOutput {
-	return o
-}
-
-func (o GetTasConnectorCredentialOutput) ToGetTasConnectorCredentialOutputWithContext(ctx context.Context) GetTasConnectorCredentialOutput {
-	return o
-}
-
-// Authenticate to Tas using manual details.
-func (o GetTasConnectorCredentialOutput) TasManualDetails() GetTasConnectorCredentialTasManualDetailArrayOutput {
-	return o.ApplyT(func(v GetTasConnectorCredential) []GetTasConnectorCredentialTasManualDetail {
-		return v.TasManualDetails
-	}).(GetTasConnectorCredentialTasManualDetailArrayOutput)
-}
-
-// Type can be ManualConfig.
-func (o GetTasConnectorCredentialOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetTasConnectorCredential) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type GetTasConnectorCredentialArrayOutput struct{ *pulumi.OutputState }
-
-func (GetTasConnectorCredentialArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetTasConnectorCredential)(nil)).Elem()
-}
-
-func (o GetTasConnectorCredentialArrayOutput) ToGetTasConnectorCredentialArrayOutput() GetTasConnectorCredentialArrayOutput {
-	return o
-}
-
-func (o GetTasConnectorCredentialArrayOutput) ToGetTasConnectorCredentialArrayOutputWithContext(ctx context.Context) GetTasConnectorCredentialArrayOutput {
-	return o
-}
-
-func (o GetTasConnectorCredentialArrayOutput) Index(i pulumi.IntInput) GetTasConnectorCredentialOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTasConnectorCredential {
-		return vs[0].([]GetTasConnectorCredential)[vs[1].(int)]
-	}).(GetTasConnectorCredentialOutput)
-}
-
-type GetTasConnectorCredentialTasManualDetail struct {
-	// URL of the Tas server.
-	EndpointUrl string `pulumi:"endpointUrl"`
-	// Reference of the secret for the password.
-	PasswordRef string `pulumi:"passwordRef"`
-	// Username to use for authentication.
-	Username string `pulumi:"username"`
-	// Reference to a secret containing the username to use for authentication.
-	UsernameRef string `pulumi:"usernameRef"`
-}
-
-// GetTasConnectorCredentialTasManualDetailInput is an input type that accepts GetTasConnectorCredentialTasManualDetailArgs and GetTasConnectorCredentialTasManualDetailOutput values.
-// You can construct a concrete instance of `GetTasConnectorCredentialTasManualDetailInput` via:
-//
-//	GetTasConnectorCredentialTasManualDetailArgs{...}
-type GetTasConnectorCredentialTasManualDetailInput interface {
-	pulumi.Input
-
-	ToGetTasConnectorCredentialTasManualDetailOutput() GetTasConnectorCredentialTasManualDetailOutput
-	ToGetTasConnectorCredentialTasManualDetailOutputWithContext(context.Context) GetTasConnectorCredentialTasManualDetailOutput
-}
-
-type GetTasConnectorCredentialTasManualDetailArgs struct {
-	// URL of the Tas server.
-	EndpointUrl pulumi.StringInput `pulumi:"endpointUrl"`
-	// Reference of the secret for the password.
-	PasswordRef pulumi.StringInput `pulumi:"passwordRef"`
-	// Username to use for authentication.
-	Username pulumi.StringInput `pulumi:"username"`
-	// Reference to a secret containing the username to use for authentication.
-	UsernameRef pulumi.StringInput `pulumi:"usernameRef"`
-}
-
-func (GetTasConnectorCredentialTasManualDetailArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetTasConnectorCredentialTasManualDetail)(nil)).Elem()
-}
-
-func (i GetTasConnectorCredentialTasManualDetailArgs) ToGetTasConnectorCredentialTasManualDetailOutput() GetTasConnectorCredentialTasManualDetailOutput {
-	return i.ToGetTasConnectorCredentialTasManualDetailOutputWithContext(context.Background())
-}
-
-func (i GetTasConnectorCredentialTasManualDetailArgs) ToGetTasConnectorCredentialTasManualDetailOutputWithContext(ctx context.Context) GetTasConnectorCredentialTasManualDetailOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetTasConnectorCredentialTasManualDetailOutput)
-}
-
-// GetTasConnectorCredentialTasManualDetailArrayInput is an input type that accepts GetTasConnectorCredentialTasManualDetailArray and GetTasConnectorCredentialTasManualDetailArrayOutput values.
-// You can construct a concrete instance of `GetTasConnectorCredentialTasManualDetailArrayInput` via:
-//
-//	GetTasConnectorCredentialTasManualDetailArray{ GetTasConnectorCredentialTasManualDetailArgs{...} }
-type GetTasConnectorCredentialTasManualDetailArrayInput interface {
-	pulumi.Input
-
-	ToGetTasConnectorCredentialTasManualDetailArrayOutput() GetTasConnectorCredentialTasManualDetailArrayOutput
-	ToGetTasConnectorCredentialTasManualDetailArrayOutputWithContext(context.Context) GetTasConnectorCredentialTasManualDetailArrayOutput
-}
-
-type GetTasConnectorCredentialTasManualDetailArray []GetTasConnectorCredentialTasManualDetailInput
-
-func (GetTasConnectorCredentialTasManualDetailArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetTasConnectorCredentialTasManualDetail)(nil)).Elem()
-}
-
-func (i GetTasConnectorCredentialTasManualDetailArray) ToGetTasConnectorCredentialTasManualDetailArrayOutput() GetTasConnectorCredentialTasManualDetailArrayOutput {
-	return i.ToGetTasConnectorCredentialTasManualDetailArrayOutputWithContext(context.Background())
-}
-
-func (i GetTasConnectorCredentialTasManualDetailArray) ToGetTasConnectorCredentialTasManualDetailArrayOutputWithContext(ctx context.Context) GetTasConnectorCredentialTasManualDetailArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetTasConnectorCredentialTasManualDetailArrayOutput)
-}
-
-type GetTasConnectorCredentialTasManualDetailOutput struct{ *pulumi.OutputState }
-
-func (GetTasConnectorCredentialTasManualDetailOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetTasConnectorCredentialTasManualDetail)(nil)).Elem()
-}
-
-func (o GetTasConnectorCredentialTasManualDetailOutput) ToGetTasConnectorCredentialTasManualDetailOutput() GetTasConnectorCredentialTasManualDetailOutput {
-	return o
-}
-
-func (o GetTasConnectorCredentialTasManualDetailOutput) ToGetTasConnectorCredentialTasManualDetailOutputWithContext(ctx context.Context) GetTasConnectorCredentialTasManualDetailOutput {
-	return o
-}
-
-// URL of the Tas server.
-func (o GetTasConnectorCredentialTasManualDetailOutput) EndpointUrl() pulumi.StringOutput {
-	return o.ApplyT(func(v GetTasConnectorCredentialTasManualDetail) string { return v.EndpointUrl }).(pulumi.StringOutput)
-}
-
-// Reference of the secret for the password.
-func (o GetTasConnectorCredentialTasManualDetailOutput) PasswordRef() pulumi.StringOutput {
-	return o.ApplyT(func(v GetTasConnectorCredentialTasManualDetail) string { return v.PasswordRef }).(pulumi.StringOutput)
-}
-
-// Username to use for authentication.
-func (o GetTasConnectorCredentialTasManualDetailOutput) Username() pulumi.StringOutput {
-	return o.ApplyT(func(v GetTasConnectorCredentialTasManualDetail) string { return v.Username }).(pulumi.StringOutput)
-}
-
-// Reference to a secret containing the username to use for authentication.
-func (o GetTasConnectorCredentialTasManualDetailOutput) UsernameRef() pulumi.StringOutput {
-	return o.ApplyT(func(v GetTasConnectorCredentialTasManualDetail) string { return v.UsernameRef }).(pulumi.StringOutput)
-}
-
-type GetTasConnectorCredentialTasManualDetailArrayOutput struct{ *pulumi.OutputState }
-
-func (GetTasConnectorCredentialTasManualDetailArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetTasConnectorCredentialTasManualDetail)(nil)).Elem()
-}
-
-func (o GetTasConnectorCredentialTasManualDetailArrayOutput) ToGetTasConnectorCredentialTasManualDetailArrayOutput() GetTasConnectorCredentialTasManualDetailArrayOutput {
-	return o
-}
-
-func (o GetTasConnectorCredentialTasManualDetailArrayOutput) ToGetTasConnectorCredentialTasManualDetailArrayOutputWithContext(ctx context.Context) GetTasConnectorCredentialTasManualDetailArrayOutput {
-	return o
-}
-
-func (o GetTasConnectorCredentialTasManualDetailArrayOutput) Index(i pulumi.IntInput) GetTasConnectorCredentialTasManualDetailOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTasConnectorCredentialTasManualDetail {
-		return vs[0].([]GetTasConnectorCredentialTasManualDetail)[vs[1].(int)]
-	}).(GetTasConnectorCredentialTasManualDetailOutput)
-}
-
-type GetTemplateFiltersFilterProperty struct {
-	// Corresponding Entity of the filters. Currently supported types are {Connector, DelegateProfile, Delegate, TemplateSetup, TemplateExecution, Deployment, Audit, Template, EnvironmentGroup, FileStore, CCMRecommendation, Anomaly, Environment}.
-	FilterType string `pulumi:"filterType"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
-	Tags []string `pulumi:"tags"`
-}
-
-// GetTemplateFiltersFilterPropertyInput is an input type that accepts GetTemplateFiltersFilterPropertyArgs and GetTemplateFiltersFilterPropertyOutput values.
-// You can construct a concrete instance of `GetTemplateFiltersFilterPropertyInput` via:
-//
-//	GetTemplateFiltersFilterPropertyArgs{...}
-type GetTemplateFiltersFilterPropertyInput interface {
-	pulumi.Input
-
-	ToGetTemplateFiltersFilterPropertyOutput() GetTemplateFiltersFilterPropertyOutput
-	ToGetTemplateFiltersFilterPropertyOutputWithContext(context.Context) GetTemplateFiltersFilterPropertyOutput
-}
-
-type GetTemplateFiltersFilterPropertyArgs struct {
-	// Corresponding Entity of the filters. Currently supported types are {Connector, DelegateProfile, Delegate, TemplateSetup, TemplateExecution, Deployment, Audit, Template, EnvironmentGroup, FileStore, CCMRecommendation, Anomaly, Environment}.
-	FilterType pulumi.StringInput `pulumi:"filterType"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
-	Tags pulumi.StringArrayInput `pulumi:"tags"`
-}
-
-func (GetTemplateFiltersFilterPropertyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetTemplateFiltersFilterProperty)(nil)).Elem()
-}
-
-func (i GetTemplateFiltersFilterPropertyArgs) ToGetTemplateFiltersFilterPropertyOutput() GetTemplateFiltersFilterPropertyOutput {
-	return i.ToGetTemplateFiltersFilterPropertyOutputWithContext(context.Background())
-}
-
-func (i GetTemplateFiltersFilterPropertyArgs) ToGetTemplateFiltersFilterPropertyOutputWithContext(ctx context.Context) GetTemplateFiltersFilterPropertyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetTemplateFiltersFilterPropertyOutput)
-}
-
-// GetTemplateFiltersFilterPropertyArrayInput is an input type that accepts GetTemplateFiltersFilterPropertyArray and GetTemplateFiltersFilterPropertyArrayOutput values.
-// You can construct a concrete instance of `GetTemplateFiltersFilterPropertyArrayInput` via:
-//
-//	GetTemplateFiltersFilterPropertyArray{ GetTemplateFiltersFilterPropertyArgs{...} }
-type GetTemplateFiltersFilterPropertyArrayInput interface {
-	pulumi.Input
-
-	ToGetTemplateFiltersFilterPropertyArrayOutput() GetTemplateFiltersFilterPropertyArrayOutput
-	ToGetTemplateFiltersFilterPropertyArrayOutputWithContext(context.Context) GetTemplateFiltersFilterPropertyArrayOutput
-}
-
-type GetTemplateFiltersFilterPropertyArray []GetTemplateFiltersFilterPropertyInput
-
-func (GetTemplateFiltersFilterPropertyArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetTemplateFiltersFilterProperty)(nil)).Elem()
-}
-
-func (i GetTemplateFiltersFilterPropertyArray) ToGetTemplateFiltersFilterPropertyArrayOutput() GetTemplateFiltersFilterPropertyArrayOutput {
-	return i.ToGetTemplateFiltersFilterPropertyArrayOutputWithContext(context.Background())
-}
-
-func (i GetTemplateFiltersFilterPropertyArray) ToGetTemplateFiltersFilterPropertyArrayOutputWithContext(ctx context.Context) GetTemplateFiltersFilterPropertyArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetTemplateFiltersFilterPropertyArrayOutput)
-}
-
-type GetTemplateFiltersFilterPropertyOutput struct{ *pulumi.OutputState }
-
-func (GetTemplateFiltersFilterPropertyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetTemplateFiltersFilterProperty)(nil)).Elem()
-}
-
-func (o GetTemplateFiltersFilterPropertyOutput) ToGetTemplateFiltersFilterPropertyOutput() GetTemplateFiltersFilterPropertyOutput {
-	return o
-}
-
-func (o GetTemplateFiltersFilterPropertyOutput) ToGetTemplateFiltersFilterPropertyOutputWithContext(ctx context.Context) GetTemplateFiltersFilterPropertyOutput {
-	return o
-}
-
-// Corresponding Entity of the filters. Currently supported types are {Connector, DelegateProfile, Delegate, TemplateSetup, TemplateExecution, Deployment, Audit, Template, EnvironmentGroup, FileStore, CCMRecommendation, Anomaly, Environment}.
-func (o GetTemplateFiltersFilterPropertyOutput) FilterType() pulumi.StringOutput {
-	return o.ApplyT(func(v GetTemplateFiltersFilterProperty) string { return v.FilterType }).(pulumi.StringOutput)
-}
-
-// Tags to associate with the resource. Tags should be in the form `name:value`.
-func (o GetTemplateFiltersFilterPropertyOutput) Tags() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetTemplateFiltersFilterProperty) []string { return v.Tags }).(pulumi.StringArrayOutput)
-}
-
-type GetTemplateFiltersFilterPropertyArrayOutput struct{ *pulumi.OutputState }
-
-func (GetTemplateFiltersFilterPropertyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetTemplateFiltersFilterProperty)(nil)).Elem()
-}
-
-func (o GetTemplateFiltersFilterPropertyArrayOutput) ToGetTemplateFiltersFilterPropertyArrayOutput() GetTemplateFiltersFilterPropertyArrayOutput {
-	return o
-}
-
-func (o GetTemplateFiltersFilterPropertyArrayOutput) ToGetTemplateFiltersFilterPropertyArrayOutputWithContext(ctx context.Context) GetTemplateFiltersFilterPropertyArrayOutput {
-	return o
-}
-
-func (o GetTemplateFiltersFilterPropertyArrayOutput) Index(i pulumi.IntInput) GetTemplateFiltersFilterPropertyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTemplateFiltersFilterProperty {
-		return vs[0].([]GetTemplateFiltersFilterProperty)[vs[1].(int)]
-	}).(GetTemplateFiltersFilterPropertyOutput)
-}
-
-type GetTemplateGitDetails struct {
-	// Name of the branch.
-	BranchName *string `pulumi:"branchName"`
-	// File path of the Entity in the repository.
-	FilePath *string `pulumi:"filePath"`
-	// File url of the Entity in the repository.
-	FileUrl *string `pulumi:"fileUrl"`
-	// Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
-	LastCommitId string `pulumi:"lastCommitId"`
-	// Last object identifier (for Github). To be provided only when updating Pipeline.
-	LastObjectId string `pulumi:"lastObjectId"`
-	// Name of the repository.
-	RepoName *string `pulumi:"repoName"`
-	// Repo url of the Entity in the repository.
-	RepoUrl *string `pulumi:"repoUrl"`
-}
-
-// GetTemplateGitDetailsInput is an input type that accepts GetTemplateGitDetailsArgs and GetTemplateGitDetailsOutput values.
-// You can construct a concrete instance of `GetTemplateGitDetailsInput` via:
-//
-//	GetTemplateGitDetailsArgs{...}
-type GetTemplateGitDetailsInput interface {
-	pulumi.Input
-
-	ToGetTemplateGitDetailsOutput() GetTemplateGitDetailsOutput
-	ToGetTemplateGitDetailsOutputWithContext(context.Context) GetTemplateGitDetailsOutput
-}
-
-type GetTemplateGitDetailsArgs struct {
-	// Name of the branch.
-	BranchName pulumi.StringPtrInput `pulumi:"branchName"`
-	// File path of the Entity in the repository.
-	FilePath pulumi.StringPtrInput `pulumi:"filePath"`
-	// File url of the Entity in the repository.
-	FileUrl pulumi.StringPtrInput `pulumi:"fileUrl"`
-	// Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
-	LastCommitId pulumi.StringInput `pulumi:"lastCommitId"`
-	// Last object identifier (for Github). To be provided only when updating Pipeline.
-	LastObjectId pulumi.StringInput `pulumi:"lastObjectId"`
-	// Name of the repository.
-	RepoName pulumi.StringPtrInput `pulumi:"repoName"`
-	// Repo url of the Entity in the repository.
-	RepoUrl pulumi.StringPtrInput `pulumi:"repoUrl"`
-}
-
-func (GetTemplateGitDetailsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetTemplateGitDetails)(nil)).Elem()
-}
-
-func (i GetTemplateGitDetailsArgs) ToGetTemplateGitDetailsOutput() GetTemplateGitDetailsOutput {
-	return i.ToGetTemplateGitDetailsOutputWithContext(context.Background())
-}
-
-func (i GetTemplateGitDetailsArgs) ToGetTemplateGitDetailsOutputWithContext(ctx context.Context) GetTemplateGitDetailsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetTemplateGitDetailsOutput)
-}
-
-func (i GetTemplateGitDetailsArgs) ToGetTemplateGitDetailsPtrOutput() GetTemplateGitDetailsPtrOutput {
-	return i.ToGetTemplateGitDetailsPtrOutputWithContext(context.Background())
-}
-
-func (i GetTemplateGitDetailsArgs) ToGetTemplateGitDetailsPtrOutputWithContext(ctx context.Context) GetTemplateGitDetailsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetTemplateGitDetailsOutput).ToGetTemplateGitDetailsPtrOutputWithContext(ctx)
-}
-
-// GetTemplateGitDetailsPtrInput is an input type that accepts GetTemplateGitDetailsArgs, GetTemplateGitDetailsPtr and GetTemplateGitDetailsPtrOutput values.
-// You can construct a concrete instance of `GetTemplateGitDetailsPtrInput` via:
-//
-//	        GetTemplateGitDetailsArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetTemplateGitDetailsPtrInput interface {
-	pulumi.Input
-
-	ToGetTemplateGitDetailsPtrOutput() GetTemplateGitDetailsPtrOutput
-	ToGetTemplateGitDetailsPtrOutputWithContext(context.Context) GetTemplateGitDetailsPtrOutput
-}
-
-type getTemplateGitDetailsPtrType GetTemplateGitDetailsArgs
-
-func GetTemplateGitDetailsPtr(v *GetTemplateGitDetailsArgs) GetTemplateGitDetailsPtrInput {
-	return (*getTemplateGitDetailsPtrType)(v)
-}
-
-func (*getTemplateGitDetailsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetTemplateGitDetails)(nil)).Elem()
-}
-
-func (i *getTemplateGitDetailsPtrType) ToGetTemplateGitDetailsPtrOutput() GetTemplateGitDetailsPtrOutput {
-	return i.ToGetTemplateGitDetailsPtrOutputWithContext(context.Background())
-}
-
-func (i *getTemplateGitDetailsPtrType) ToGetTemplateGitDetailsPtrOutputWithContext(ctx context.Context) GetTemplateGitDetailsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetTemplateGitDetailsPtrOutput)
-}
-
-type GetTemplateGitDetailsOutput struct{ *pulumi.OutputState }
-
-func (GetTemplateGitDetailsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetTemplateGitDetails)(nil)).Elem()
-}
-
-func (o GetTemplateGitDetailsOutput) ToGetTemplateGitDetailsOutput() GetTemplateGitDetailsOutput {
-	return o
-}
-
-func (o GetTemplateGitDetailsOutput) ToGetTemplateGitDetailsOutputWithContext(ctx context.Context) GetTemplateGitDetailsOutput {
-	return o
-}
-
-func (o GetTemplateGitDetailsOutput) ToGetTemplateGitDetailsPtrOutput() GetTemplateGitDetailsPtrOutput {
-	return o.ToGetTemplateGitDetailsPtrOutputWithContext(context.Background())
-}
-
-func (o GetTemplateGitDetailsOutput) ToGetTemplateGitDetailsPtrOutputWithContext(ctx context.Context) GetTemplateGitDetailsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetTemplateGitDetails) *GetTemplateGitDetails {
-		return &v
-	}).(GetTemplateGitDetailsPtrOutput)
-}
-
-// Name of the branch.
-func (o GetTemplateGitDetailsOutput) BranchName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetTemplateGitDetails) *string { return v.BranchName }).(pulumi.StringPtrOutput)
-}
-
-// File path of the Entity in the repository.
-func (o GetTemplateGitDetailsOutput) FilePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetTemplateGitDetails) *string { return v.FilePath }).(pulumi.StringPtrOutput)
-}
-
-// File url of the Entity in the repository.
-func (o GetTemplateGitDetailsOutput) FileUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetTemplateGitDetails) *string { return v.FileUrl }).(pulumi.StringPtrOutput)
-}
-
-// Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
-func (o GetTemplateGitDetailsOutput) LastCommitId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetTemplateGitDetails) string { return v.LastCommitId }).(pulumi.StringOutput)
-}
-
-// Last object identifier (for Github). To be provided only when updating Pipeline.
-func (o GetTemplateGitDetailsOutput) LastObjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetTemplateGitDetails) string { return v.LastObjectId }).(pulumi.StringOutput)
-}
-
-// Name of the repository.
-func (o GetTemplateGitDetailsOutput) RepoName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetTemplateGitDetails) *string { return v.RepoName }).(pulumi.StringPtrOutput)
-}
-
-// Repo url of the Entity in the repository.
-func (o GetTemplateGitDetailsOutput) RepoUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetTemplateGitDetails) *string { return v.RepoUrl }).(pulumi.StringPtrOutput)
-}
-
-type GetTemplateGitDetailsPtrOutput struct{ *pulumi.OutputState }
-
-func (GetTemplateGitDetailsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetTemplateGitDetails)(nil)).Elem()
-}
-
-func (o GetTemplateGitDetailsPtrOutput) ToGetTemplateGitDetailsPtrOutput() GetTemplateGitDetailsPtrOutput {
-	return o
-}
-
-func (o GetTemplateGitDetailsPtrOutput) ToGetTemplateGitDetailsPtrOutputWithContext(ctx context.Context) GetTemplateGitDetailsPtrOutput {
-	return o
-}
-
-func (o GetTemplateGitDetailsPtrOutput) Elem() GetTemplateGitDetailsOutput {
-	return o.ApplyT(func(v *GetTemplateGitDetails) GetTemplateGitDetails {
-		if v != nil {
-			return *v
-		}
-		var ret GetTemplateGitDetails
-		return ret
-	}).(GetTemplateGitDetailsOutput)
-}
-
-// Name of the branch.
-func (o GetTemplateGitDetailsPtrOutput) BranchName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetTemplateGitDetails) *string {
-		if v == nil {
-			return nil
-		}
-		return v.BranchName
-	}).(pulumi.StringPtrOutput)
-}
-
-// File path of the Entity in the repository.
-func (o GetTemplateGitDetailsPtrOutput) FilePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetTemplateGitDetails) *string {
-		if v == nil {
-			return nil
-		}
-		return v.FilePath
-	}).(pulumi.StringPtrOutput)
-}
-
-// File url of the Entity in the repository.
-func (o GetTemplateGitDetailsPtrOutput) FileUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetTemplateGitDetails) *string {
-		if v == nil {
-			return nil
-		}
-		return v.FileUrl
-	}).(pulumi.StringPtrOutput)
-}
-
-// Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
-func (o GetTemplateGitDetailsPtrOutput) LastCommitId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetTemplateGitDetails) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.LastCommitId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Last object identifier (for Github). To be provided only when updating Pipeline.
-func (o GetTemplateGitDetailsPtrOutput) LastObjectId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetTemplateGitDetails) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.LastObjectId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Name of the repository.
-func (o GetTemplateGitDetailsPtrOutput) RepoName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetTemplateGitDetails) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RepoName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Repo url of the Entity in the repository.
-func (o GetTemplateGitDetailsPtrOutput) RepoUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetTemplateGitDetails) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RepoUrl
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetTerraformCloudConnectorCredential struct {
-	// API token credentials to use for authentication.
-	ApiTokens []GetTerraformCloudConnectorCredentialApiToken `pulumi:"apiTokens"`
-}
-
-// GetTerraformCloudConnectorCredentialInput is an input type that accepts GetTerraformCloudConnectorCredentialArgs and GetTerraformCloudConnectorCredentialOutput values.
-// You can construct a concrete instance of `GetTerraformCloudConnectorCredentialInput` via:
-//
-//	GetTerraformCloudConnectorCredentialArgs{...}
-type GetTerraformCloudConnectorCredentialInput interface {
-	pulumi.Input
-
-	ToGetTerraformCloudConnectorCredentialOutput() GetTerraformCloudConnectorCredentialOutput
-	ToGetTerraformCloudConnectorCredentialOutputWithContext(context.Context) GetTerraformCloudConnectorCredentialOutput
-}
-
-type GetTerraformCloudConnectorCredentialArgs struct {
-	// API token credentials to use for authentication.
-	ApiTokens GetTerraformCloudConnectorCredentialApiTokenArrayInput `pulumi:"apiTokens"`
-}
-
-func (GetTerraformCloudConnectorCredentialArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetTerraformCloudConnectorCredential)(nil)).Elem()
-}
-
-func (i GetTerraformCloudConnectorCredentialArgs) ToGetTerraformCloudConnectorCredentialOutput() GetTerraformCloudConnectorCredentialOutput {
-	return i.ToGetTerraformCloudConnectorCredentialOutputWithContext(context.Background())
-}
-
-func (i GetTerraformCloudConnectorCredentialArgs) ToGetTerraformCloudConnectorCredentialOutputWithContext(ctx context.Context) GetTerraformCloudConnectorCredentialOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetTerraformCloudConnectorCredentialOutput)
-}
-
-// GetTerraformCloudConnectorCredentialArrayInput is an input type that accepts GetTerraformCloudConnectorCredentialArray and GetTerraformCloudConnectorCredentialArrayOutput values.
-// You can construct a concrete instance of `GetTerraformCloudConnectorCredentialArrayInput` via:
-//
-//	GetTerraformCloudConnectorCredentialArray{ GetTerraformCloudConnectorCredentialArgs{...} }
-type GetTerraformCloudConnectorCredentialArrayInput interface {
-	pulumi.Input
-
-	ToGetTerraformCloudConnectorCredentialArrayOutput() GetTerraformCloudConnectorCredentialArrayOutput
-	ToGetTerraformCloudConnectorCredentialArrayOutputWithContext(context.Context) GetTerraformCloudConnectorCredentialArrayOutput
-}
-
-type GetTerraformCloudConnectorCredentialArray []GetTerraformCloudConnectorCredentialInput
-
-func (GetTerraformCloudConnectorCredentialArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetTerraformCloudConnectorCredential)(nil)).Elem()
-}
-
-func (i GetTerraformCloudConnectorCredentialArray) ToGetTerraformCloudConnectorCredentialArrayOutput() GetTerraformCloudConnectorCredentialArrayOutput {
-	return i.ToGetTerraformCloudConnectorCredentialArrayOutputWithContext(context.Background())
-}
-
-func (i GetTerraformCloudConnectorCredentialArray) ToGetTerraformCloudConnectorCredentialArrayOutputWithContext(ctx context.Context) GetTerraformCloudConnectorCredentialArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetTerraformCloudConnectorCredentialArrayOutput)
-}
-
-type GetTerraformCloudConnectorCredentialOutput struct{ *pulumi.OutputState }
-
-func (GetTerraformCloudConnectorCredentialOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetTerraformCloudConnectorCredential)(nil)).Elem()
-}
-
-func (o GetTerraformCloudConnectorCredentialOutput) ToGetTerraformCloudConnectorCredentialOutput() GetTerraformCloudConnectorCredentialOutput {
-	return o
-}
-
-func (o GetTerraformCloudConnectorCredentialOutput) ToGetTerraformCloudConnectorCredentialOutputWithContext(ctx context.Context) GetTerraformCloudConnectorCredentialOutput {
-	return o
-}
-
-// API token credentials to use for authentication.
-func (o GetTerraformCloudConnectorCredentialOutput) ApiTokens() GetTerraformCloudConnectorCredentialApiTokenArrayOutput {
-	return o.ApplyT(func(v GetTerraformCloudConnectorCredential) []GetTerraformCloudConnectorCredentialApiToken {
-		return v.ApiTokens
-	}).(GetTerraformCloudConnectorCredentialApiTokenArrayOutput)
-}
-
-type GetTerraformCloudConnectorCredentialArrayOutput struct{ *pulumi.OutputState }
-
-func (GetTerraformCloudConnectorCredentialArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetTerraformCloudConnectorCredential)(nil)).Elem()
-}
-
-func (o GetTerraformCloudConnectorCredentialArrayOutput) ToGetTerraformCloudConnectorCredentialArrayOutput() GetTerraformCloudConnectorCredentialArrayOutput {
-	return o
-}
-
-func (o GetTerraformCloudConnectorCredentialArrayOutput) ToGetTerraformCloudConnectorCredentialArrayOutputWithContext(ctx context.Context) GetTerraformCloudConnectorCredentialArrayOutput {
-	return o
-}
-
-func (o GetTerraformCloudConnectorCredentialArrayOutput) Index(i pulumi.IntInput) GetTerraformCloudConnectorCredentialOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTerraformCloudConnectorCredential {
-		return vs[0].([]GetTerraformCloudConnectorCredential)[vs[1].(int)]
-	}).(GetTerraformCloudConnectorCredentialOutput)
-}
-
-type GetTerraformCloudConnectorCredentialApiToken struct {
-	// Reference to a secret containing the API token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-	ApiTokenRef string `pulumi:"apiTokenRef"`
-}
-
-// GetTerraformCloudConnectorCredentialApiTokenInput is an input type that accepts GetTerraformCloudConnectorCredentialApiTokenArgs and GetTerraformCloudConnectorCredentialApiTokenOutput values.
-// You can construct a concrete instance of `GetTerraformCloudConnectorCredentialApiTokenInput` via:
-//
-//	GetTerraformCloudConnectorCredentialApiTokenArgs{...}
-type GetTerraformCloudConnectorCredentialApiTokenInput interface {
-	pulumi.Input
-
-	ToGetTerraformCloudConnectorCredentialApiTokenOutput() GetTerraformCloudConnectorCredentialApiTokenOutput
-	ToGetTerraformCloudConnectorCredentialApiTokenOutputWithContext(context.Context) GetTerraformCloudConnectorCredentialApiTokenOutput
-}
-
-type GetTerraformCloudConnectorCredentialApiTokenArgs struct {
-	// Reference to a secret containing the API token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-	ApiTokenRef pulumi.StringInput `pulumi:"apiTokenRef"`
-}
-
-func (GetTerraformCloudConnectorCredentialApiTokenArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetTerraformCloudConnectorCredentialApiToken)(nil)).Elem()
-}
-
-func (i GetTerraformCloudConnectorCredentialApiTokenArgs) ToGetTerraformCloudConnectorCredentialApiTokenOutput() GetTerraformCloudConnectorCredentialApiTokenOutput {
-	return i.ToGetTerraformCloudConnectorCredentialApiTokenOutputWithContext(context.Background())
-}
-
-func (i GetTerraformCloudConnectorCredentialApiTokenArgs) ToGetTerraformCloudConnectorCredentialApiTokenOutputWithContext(ctx context.Context) GetTerraformCloudConnectorCredentialApiTokenOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetTerraformCloudConnectorCredentialApiTokenOutput)
-}
-
-// GetTerraformCloudConnectorCredentialApiTokenArrayInput is an input type that accepts GetTerraformCloudConnectorCredentialApiTokenArray and GetTerraformCloudConnectorCredentialApiTokenArrayOutput values.
-// You can construct a concrete instance of `GetTerraformCloudConnectorCredentialApiTokenArrayInput` via:
-//
-//	GetTerraformCloudConnectorCredentialApiTokenArray{ GetTerraformCloudConnectorCredentialApiTokenArgs{...} }
-type GetTerraformCloudConnectorCredentialApiTokenArrayInput interface {
-	pulumi.Input
-
-	ToGetTerraformCloudConnectorCredentialApiTokenArrayOutput() GetTerraformCloudConnectorCredentialApiTokenArrayOutput
-	ToGetTerraformCloudConnectorCredentialApiTokenArrayOutputWithContext(context.Context) GetTerraformCloudConnectorCredentialApiTokenArrayOutput
-}
-
-type GetTerraformCloudConnectorCredentialApiTokenArray []GetTerraformCloudConnectorCredentialApiTokenInput
-
-func (GetTerraformCloudConnectorCredentialApiTokenArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetTerraformCloudConnectorCredentialApiToken)(nil)).Elem()
-}
-
-func (i GetTerraformCloudConnectorCredentialApiTokenArray) ToGetTerraformCloudConnectorCredentialApiTokenArrayOutput() GetTerraformCloudConnectorCredentialApiTokenArrayOutput {
-	return i.ToGetTerraformCloudConnectorCredentialApiTokenArrayOutputWithContext(context.Background())
-}
-
-func (i GetTerraformCloudConnectorCredentialApiTokenArray) ToGetTerraformCloudConnectorCredentialApiTokenArrayOutputWithContext(ctx context.Context) GetTerraformCloudConnectorCredentialApiTokenArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetTerraformCloudConnectorCredentialApiTokenArrayOutput)
-}
-
-type GetTerraformCloudConnectorCredentialApiTokenOutput struct{ *pulumi.OutputState }
-
-func (GetTerraformCloudConnectorCredentialApiTokenOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetTerraformCloudConnectorCredentialApiToken)(nil)).Elem()
-}
-
-func (o GetTerraformCloudConnectorCredentialApiTokenOutput) ToGetTerraformCloudConnectorCredentialApiTokenOutput() GetTerraformCloudConnectorCredentialApiTokenOutput {
-	return o
-}
-
-func (o GetTerraformCloudConnectorCredentialApiTokenOutput) ToGetTerraformCloudConnectorCredentialApiTokenOutputWithContext(ctx context.Context) GetTerraformCloudConnectorCredentialApiTokenOutput {
-	return o
-}
-
-// Reference to a secret containing the API token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-func (o GetTerraformCloudConnectorCredentialApiTokenOutput) ApiTokenRef() pulumi.StringOutput {
-	return o.ApplyT(func(v GetTerraformCloudConnectorCredentialApiToken) string { return v.ApiTokenRef }).(pulumi.StringOutput)
-}
-
-type GetTerraformCloudConnectorCredentialApiTokenArrayOutput struct{ *pulumi.OutputState }
-
-func (GetTerraformCloudConnectorCredentialApiTokenArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetTerraformCloudConnectorCredentialApiToken)(nil)).Elem()
-}
-
-func (o GetTerraformCloudConnectorCredentialApiTokenArrayOutput) ToGetTerraformCloudConnectorCredentialApiTokenArrayOutput() GetTerraformCloudConnectorCredentialApiTokenArrayOutput {
-	return o
-}
-
-func (o GetTerraformCloudConnectorCredentialApiTokenArrayOutput) ToGetTerraformCloudConnectorCredentialApiTokenArrayOutputWithContext(ctx context.Context) GetTerraformCloudConnectorCredentialApiTokenArrayOutput {
-	return o
-}
-
-func (o GetTerraformCloudConnectorCredentialApiTokenArrayOutput) Index(i pulumi.IntInput) GetTerraformCloudConnectorCredentialApiTokenOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTerraformCloudConnectorCredentialApiToken {
-		return vs[0].([]GetTerraformCloudConnectorCredentialApiToken)[vs[1].(int)]
-	}).(GetTerraformCloudConnectorCredentialApiTokenOutput)
-}
-
-type GetUsergroupNotificationConfig struct {
-	// Group email.
-	GroupEmail string `pulumi:"groupEmail"`
-	// Url of Microsoft teams webhook.
-	MicrosoftTeamsWebhookUrl string `pulumi:"microsoftTeamsWebhookUrl"`
-	// Pager duty key.
-	PagerDutyKey string `pulumi:"pagerDutyKey"`
-	// Send email to all the group members.
-	SendEmailToAllUsers bool `pulumi:"sendEmailToAllUsers"`
-	// Url of slack webhook.
-	SlackWebhookUrl string `pulumi:"slackWebhookUrl"`
-	// Can be one of EMAIL, SLACK, PAGERDUTY, MSTEAMS.
-	Type string `pulumi:"type"`
-}
-
-// GetUsergroupNotificationConfigInput is an input type that accepts GetUsergroupNotificationConfigArgs and GetUsergroupNotificationConfigOutput values.
-// You can construct a concrete instance of `GetUsergroupNotificationConfigInput` via:
-//
-//	GetUsergroupNotificationConfigArgs{...}
-type GetUsergroupNotificationConfigInput interface {
-	pulumi.Input
-
-	ToGetUsergroupNotificationConfigOutput() GetUsergroupNotificationConfigOutput
-	ToGetUsergroupNotificationConfigOutputWithContext(context.Context) GetUsergroupNotificationConfigOutput
-}
-
-type GetUsergroupNotificationConfigArgs struct {
-	// Group email.
-	GroupEmail pulumi.StringInput `pulumi:"groupEmail"`
-	// Url of Microsoft teams webhook.
-	MicrosoftTeamsWebhookUrl pulumi.StringInput `pulumi:"microsoftTeamsWebhookUrl"`
-	// Pager duty key.
-	PagerDutyKey pulumi.StringInput `pulumi:"pagerDutyKey"`
-	// Send email to all the group members.
-	SendEmailToAllUsers pulumi.BoolInput `pulumi:"sendEmailToAllUsers"`
-	// Url of slack webhook.
-	SlackWebhookUrl pulumi.StringInput `pulumi:"slackWebhookUrl"`
-	// Can be one of EMAIL, SLACK, PAGERDUTY, MSTEAMS.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (GetUsergroupNotificationConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetUsergroupNotificationConfig)(nil)).Elem()
-}
-
-func (i GetUsergroupNotificationConfigArgs) ToGetUsergroupNotificationConfigOutput() GetUsergroupNotificationConfigOutput {
-	return i.ToGetUsergroupNotificationConfigOutputWithContext(context.Background())
-}
-
-func (i GetUsergroupNotificationConfigArgs) ToGetUsergroupNotificationConfigOutputWithContext(ctx context.Context) GetUsergroupNotificationConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetUsergroupNotificationConfigOutput)
-}
-
-// GetUsergroupNotificationConfigArrayInput is an input type that accepts GetUsergroupNotificationConfigArray and GetUsergroupNotificationConfigArrayOutput values.
-// You can construct a concrete instance of `GetUsergroupNotificationConfigArrayInput` via:
-//
-//	GetUsergroupNotificationConfigArray{ GetUsergroupNotificationConfigArgs{...} }
-type GetUsergroupNotificationConfigArrayInput interface {
-	pulumi.Input
-
-	ToGetUsergroupNotificationConfigArrayOutput() GetUsergroupNotificationConfigArrayOutput
-	ToGetUsergroupNotificationConfigArrayOutputWithContext(context.Context) GetUsergroupNotificationConfigArrayOutput
-}
-
-type GetUsergroupNotificationConfigArray []GetUsergroupNotificationConfigInput
-
-func (GetUsergroupNotificationConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetUsergroupNotificationConfig)(nil)).Elem()
-}
-
-func (i GetUsergroupNotificationConfigArray) ToGetUsergroupNotificationConfigArrayOutput() GetUsergroupNotificationConfigArrayOutput {
-	return i.ToGetUsergroupNotificationConfigArrayOutputWithContext(context.Background())
-}
-
-func (i GetUsergroupNotificationConfigArray) ToGetUsergroupNotificationConfigArrayOutputWithContext(ctx context.Context) GetUsergroupNotificationConfigArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetUsergroupNotificationConfigArrayOutput)
-}
-
-type GetUsergroupNotificationConfigOutput struct{ *pulumi.OutputState }
-
-func (GetUsergroupNotificationConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetUsergroupNotificationConfig)(nil)).Elem()
-}
-
-func (o GetUsergroupNotificationConfigOutput) ToGetUsergroupNotificationConfigOutput() GetUsergroupNotificationConfigOutput {
-	return o
-}
-
-func (o GetUsergroupNotificationConfigOutput) ToGetUsergroupNotificationConfigOutputWithContext(ctx context.Context) GetUsergroupNotificationConfigOutput {
-	return o
-}
-
-// Group email.
-func (o GetUsergroupNotificationConfigOutput) GroupEmail() pulumi.StringOutput {
-	return o.ApplyT(func(v GetUsergroupNotificationConfig) string { return v.GroupEmail }).(pulumi.StringOutput)
-}
-
-// Url of Microsoft teams webhook.
-func (o GetUsergroupNotificationConfigOutput) MicrosoftTeamsWebhookUrl() pulumi.StringOutput {
-	return o.ApplyT(func(v GetUsergroupNotificationConfig) string { return v.MicrosoftTeamsWebhookUrl }).(pulumi.StringOutput)
-}
-
-// Pager duty key.
-func (o GetUsergroupNotificationConfigOutput) PagerDutyKey() pulumi.StringOutput {
-	return o.ApplyT(func(v GetUsergroupNotificationConfig) string { return v.PagerDutyKey }).(pulumi.StringOutput)
-}
-
-// Send email to all the group members.
-func (o GetUsergroupNotificationConfigOutput) SendEmailToAllUsers() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetUsergroupNotificationConfig) bool { return v.SendEmailToAllUsers }).(pulumi.BoolOutput)
-}
-
-// Url of slack webhook.
-func (o GetUsergroupNotificationConfigOutput) SlackWebhookUrl() pulumi.StringOutput {
-	return o.ApplyT(func(v GetUsergroupNotificationConfig) string { return v.SlackWebhookUrl }).(pulumi.StringOutput)
-}
-
-// Can be one of EMAIL, SLACK, PAGERDUTY, MSTEAMS.
-func (o GetUsergroupNotificationConfigOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetUsergroupNotificationConfig) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type GetUsergroupNotificationConfigArrayOutput struct{ *pulumi.OutputState }
-
-func (GetUsergroupNotificationConfigArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetUsergroupNotificationConfig)(nil)).Elem()
-}
-
-func (o GetUsergroupNotificationConfigArrayOutput) ToGetUsergroupNotificationConfigArrayOutput() GetUsergroupNotificationConfigArrayOutput {
-	return o
-}
-
-func (o GetUsergroupNotificationConfigArrayOutput) ToGetUsergroupNotificationConfigArrayOutputWithContext(ctx context.Context) GetUsergroupNotificationConfigArrayOutput {
-	return o
-}
-
-func (o GetUsergroupNotificationConfigArrayOutput) Index(i pulumi.IntInput) GetUsergroupNotificationConfigOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetUsergroupNotificationConfig {
-		return vs[0].([]GetUsergroupNotificationConfig)[vs[1].(int)]
-	}).(GetUsergroupNotificationConfigOutput)
-}
-
-type GetVariablesSpec struct {
-	// FixedValue of the variable
-	FixedValue string `pulumi:"fixedValue"`
-	// Type of Value of the Variable. For now only FIXED is supported
-	ValueType string `pulumi:"valueType"`
-}
-
-// GetVariablesSpecInput is an input type that accepts GetVariablesSpecArgs and GetVariablesSpecOutput values.
-// You can construct a concrete instance of `GetVariablesSpecInput` via:
-//
-//	GetVariablesSpecArgs{...}
-type GetVariablesSpecInput interface {
-	pulumi.Input
-
-	ToGetVariablesSpecOutput() GetVariablesSpecOutput
-	ToGetVariablesSpecOutputWithContext(context.Context) GetVariablesSpecOutput
-}
-
-type GetVariablesSpecArgs struct {
-	// FixedValue of the variable
-	FixedValue pulumi.StringInput `pulumi:"fixedValue"`
-	// Type of Value of the Variable. For now only FIXED is supported
-	ValueType pulumi.StringInput `pulumi:"valueType"`
-}
-
-func (GetVariablesSpecArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVariablesSpec)(nil)).Elem()
-}
-
-func (i GetVariablesSpecArgs) ToGetVariablesSpecOutput() GetVariablesSpecOutput {
-	return i.ToGetVariablesSpecOutputWithContext(context.Background())
-}
-
-func (i GetVariablesSpecArgs) ToGetVariablesSpecOutputWithContext(ctx context.Context) GetVariablesSpecOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVariablesSpecOutput)
-}
-
-// GetVariablesSpecArrayInput is an input type that accepts GetVariablesSpecArray and GetVariablesSpecArrayOutput values.
-// You can construct a concrete instance of `GetVariablesSpecArrayInput` via:
-//
-//	GetVariablesSpecArray{ GetVariablesSpecArgs{...} }
-type GetVariablesSpecArrayInput interface {
-	pulumi.Input
-
-	ToGetVariablesSpecArrayOutput() GetVariablesSpecArrayOutput
-	ToGetVariablesSpecArrayOutputWithContext(context.Context) GetVariablesSpecArrayOutput
-}
-
-type GetVariablesSpecArray []GetVariablesSpecInput
-
-func (GetVariablesSpecArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetVariablesSpec)(nil)).Elem()
-}
-
-func (i GetVariablesSpecArray) ToGetVariablesSpecArrayOutput() GetVariablesSpecArrayOutput {
-	return i.ToGetVariablesSpecArrayOutputWithContext(context.Background())
-}
-
-func (i GetVariablesSpecArray) ToGetVariablesSpecArrayOutputWithContext(ctx context.Context) GetVariablesSpecArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVariablesSpecArrayOutput)
-}
-
-type GetVariablesSpecOutput struct{ *pulumi.OutputState }
-
-func (GetVariablesSpecOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVariablesSpec)(nil)).Elem()
-}
-
-func (o GetVariablesSpecOutput) ToGetVariablesSpecOutput() GetVariablesSpecOutput {
-	return o
-}
-
-func (o GetVariablesSpecOutput) ToGetVariablesSpecOutputWithContext(ctx context.Context) GetVariablesSpecOutput {
-	return o
-}
-
-// FixedValue of the variable
-func (o GetVariablesSpecOutput) FixedValue() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVariablesSpec) string { return v.FixedValue }).(pulumi.StringOutput)
-}
-
-// Type of Value of the Variable. For now only FIXED is supported
-func (o GetVariablesSpecOutput) ValueType() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVariablesSpec) string { return v.ValueType }).(pulumi.StringOutput)
-}
-
-type GetVariablesSpecArrayOutput struct{ *pulumi.OutputState }
-
-func (GetVariablesSpecArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetVariablesSpec)(nil)).Elem()
-}
-
-func (o GetVariablesSpecArrayOutput) ToGetVariablesSpecArrayOutput() GetVariablesSpecArrayOutput {
-	return o
-}
-
-func (o GetVariablesSpecArrayOutput) ToGetVariablesSpecArrayOutputWithContext(ctx context.Context) GetVariablesSpecArrayOutput {
-	return o
-}
-
-func (o GetVariablesSpecArrayOutput) Index(i pulumi.IntInput) GetVariablesSpecOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVariablesSpec {
-		return vs[0].([]GetVariablesSpec)[vs[1].(int)]
-	}).(GetVariablesSpecOutput)
-}
-
-type GetWorkspaceConnector struct {
-	// Connector Ref is the reference to the connector
-	ConnectorRef string `pulumi:"connectorRef"`
-	// Type is the connector type of the connector. Supported types: aws, azure, gcp
-	Type string `pulumi:"type"`
-}
-
-// GetWorkspaceConnectorInput is an input type that accepts GetWorkspaceConnectorArgs and GetWorkspaceConnectorOutput values.
-// You can construct a concrete instance of `GetWorkspaceConnectorInput` via:
-//
-//	GetWorkspaceConnectorArgs{...}
-type GetWorkspaceConnectorInput interface {
-	pulumi.Input
-
-	ToGetWorkspaceConnectorOutput() GetWorkspaceConnectorOutput
-	ToGetWorkspaceConnectorOutputWithContext(context.Context) GetWorkspaceConnectorOutput
-}
-
-type GetWorkspaceConnectorArgs struct {
-	// Connector Ref is the reference to the connector
-	ConnectorRef pulumi.StringInput `pulumi:"connectorRef"`
-	// Type is the connector type of the connector. Supported types: aws, azure, gcp
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (GetWorkspaceConnectorArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetWorkspaceConnector)(nil)).Elem()
-}
-
-func (i GetWorkspaceConnectorArgs) ToGetWorkspaceConnectorOutput() GetWorkspaceConnectorOutput {
-	return i.ToGetWorkspaceConnectorOutputWithContext(context.Background())
-}
-
-func (i GetWorkspaceConnectorArgs) ToGetWorkspaceConnectorOutputWithContext(ctx context.Context) GetWorkspaceConnectorOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspaceConnectorOutput)
-}
-
-// GetWorkspaceConnectorArrayInput is an input type that accepts GetWorkspaceConnectorArray and GetWorkspaceConnectorArrayOutput values.
-// You can construct a concrete instance of `GetWorkspaceConnectorArrayInput` via:
-//
-//	GetWorkspaceConnectorArray{ GetWorkspaceConnectorArgs{...} }
-type GetWorkspaceConnectorArrayInput interface {
-	pulumi.Input
-
-	ToGetWorkspaceConnectorArrayOutput() GetWorkspaceConnectorArrayOutput
-	ToGetWorkspaceConnectorArrayOutputWithContext(context.Context) GetWorkspaceConnectorArrayOutput
-}
-
-type GetWorkspaceConnectorArray []GetWorkspaceConnectorInput
-
-func (GetWorkspaceConnectorArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetWorkspaceConnector)(nil)).Elem()
-}
-
-func (i GetWorkspaceConnectorArray) ToGetWorkspaceConnectorArrayOutput() GetWorkspaceConnectorArrayOutput {
-	return i.ToGetWorkspaceConnectorArrayOutputWithContext(context.Background())
-}
-
-func (i GetWorkspaceConnectorArray) ToGetWorkspaceConnectorArrayOutputWithContext(ctx context.Context) GetWorkspaceConnectorArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspaceConnectorArrayOutput)
-}
-
-type GetWorkspaceConnectorOutput struct{ *pulumi.OutputState }
-
-func (GetWorkspaceConnectorOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetWorkspaceConnector)(nil)).Elem()
-}
-
-func (o GetWorkspaceConnectorOutput) ToGetWorkspaceConnectorOutput() GetWorkspaceConnectorOutput {
-	return o
-}
-
-func (o GetWorkspaceConnectorOutput) ToGetWorkspaceConnectorOutputWithContext(ctx context.Context) GetWorkspaceConnectorOutput {
-	return o
-}
-
-// Connector Ref is the reference to the connector
-func (o GetWorkspaceConnectorOutput) ConnectorRef() pulumi.StringOutput {
-	return o.ApplyT(func(v GetWorkspaceConnector) string { return v.ConnectorRef }).(pulumi.StringOutput)
-}
-
-// Type is the connector type of the connector. Supported types: aws, azure, gcp
-func (o GetWorkspaceConnectorOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetWorkspaceConnector) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type GetWorkspaceConnectorArrayOutput struct{ *pulumi.OutputState }
-
-func (GetWorkspaceConnectorArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetWorkspaceConnector)(nil)).Elem()
-}
-
-func (o GetWorkspaceConnectorArrayOutput) ToGetWorkspaceConnectorArrayOutput() GetWorkspaceConnectorArrayOutput {
-	return o
-}
-
-func (o GetWorkspaceConnectorArrayOutput) ToGetWorkspaceConnectorArrayOutputWithContext(ctx context.Context) GetWorkspaceConnectorArrayOutput {
-	return o
-}
-
-func (o GetWorkspaceConnectorArrayOutput) Index(i pulumi.IntInput) GetWorkspaceConnectorOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWorkspaceConnector {
-		return vs[0].([]GetWorkspaceConnector)[vs[1].(int)]
-	}).(GetWorkspaceConnectorOutput)
-}
-
-type GetWorkspaceEnvironmentVariable struct {
-	// Key is the identifier for the variable`
-	Key string `pulumi:"key"`
-	// value is the value of the variable
-	Value string `pulumi:"value"`
-	// Value type indicates the value type of the variable, text or secret
-	ValueType string `pulumi:"valueType"`
-}
-
-// GetWorkspaceEnvironmentVariableInput is an input type that accepts GetWorkspaceEnvironmentVariableArgs and GetWorkspaceEnvironmentVariableOutput values.
-// You can construct a concrete instance of `GetWorkspaceEnvironmentVariableInput` via:
-//
-//	GetWorkspaceEnvironmentVariableArgs{...}
-type GetWorkspaceEnvironmentVariableInput interface {
-	pulumi.Input
-
-	ToGetWorkspaceEnvironmentVariableOutput() GetWorkspaceEnvironmentVariableOutput
-	ToGetWorkspaceEnvironmentVariableOutputWithContext(context.Context) GetWorkspaceEnvironmentVariableOutput
-}
-
-type GetWorkspaceEnvironmentVariableArgs struct {
-	// Key is the identifier for the variable`
-	Key pulumi.StringInput `pulumi:"key"`
-	// value is the value of the variable
-	Value pulumi.StringInput `pulumi:"value"`
-	// Value type indicates the value type of the variable, text or secret
-	ValueType pulumi.StringInput `pulumi:"valueType"`
-}
-
-func (GetWorkspaceEnvironmentVariableArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetWorkspaceEnvironmentVariable)(nil)).Elem()
-}
-
-func (i GetWorkspaceEnvironmentVariableArgs) ToGetWorkspaceEnvironmentVariableOutput() GetWorkspaceEnvironmentVariableOutput {
-	return i.ToGetWorkspaceEnvironmentVariableOutputWithContext(context.Background())
-}
-
-func (i GetWorkspaceEnvironmentVariableArgs) ToGetWorkspaceEnvironmentVariableOutputWithContext(ctx context.Context) GetWorkspaceEnvironmentVariableOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspaceEnvironmentVariableOutput)
-}
-
-// GetWorkspaceEnvironmentVariableArrayInput is an input type that accepts GetWorkspaceEnvironmentVariableArray and GetWorkspaceEnvironmentVariableArrayOutput values.
-// You can construct a concrete instance of `GetWorkspaceEnvironmentVariableArrayInput` via:
-//
-//	GetWorkspaceEnvironmentVariableArray{ GetWorkspaceEnvironmentVariableArgs{...} }
-type GetWorkspaceEnvironmentVariableArrayInput interface {
-	pulumi.Input
-
-	ToGetWorkspaceEnvironmentVariableArrayOutput() GetWorkspaceEnvironmentVariableArrayOutput
-	ToGetWorkspaceEnvironmentVariableArrayOutputWithContext(context.Context) GetWorkspaceEnvironmentVariableArrayOutput
-}
-
-type GetWorkspaceEnvironmentVariableArray []GetWorkspaceEnvironmentVariableInput
-
-func (GetWorkspaceEnvironmentVariableArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetWorkspaceEnvironmentVariable)(nil)).Elem()
-}
-
-func (i GetWorkspaceEnvironmentVariableArray) ToGetWorkspaceEnvironmentVariableArrayOutput() GetWorkspaceEnvironmentVariableArrayOutput {
-	return i.ToGetWorkspaceEnvironmentVariableArrayOutputWithContext(context.Background())
-}
-
-func (i GetWorkspaceEnvironmentVariableArray) ToGetWorkspaceEnvironmentVariableArrayOutputWithContext(ctx context.Context) GetWorkspaceEnvironmentVariableArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspaceEnvironmentVariableArrayOutput)
-}
-
-type GetWorkspaceEnvironmentVariableOutput struct{ *pulumi.OutputState }
-
-func (GetWorkspaceEnvironmentVariableOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetWorkspaceEnvironmentVariable)(nil)).Elem()
-}
-
-func (o GetWorkspaceEnvironmentVariableOutput) ToGetWorkspaceEnvironmentVariableOutput() GetWorkspaceEnvironmentVariableOutput {
-	return o
-}
-
-func (o GetWorkspaceEnvironmentVariableOutput) ToGetWorkspaceEnvironmentVariableOutputWithContext(ctx context.Context) GetWorkspaceEnvironmentVariableOutput {
-	return o
-}
-
-// Key is the identifier for the variable`
-func (o GetWorkspaceEnvironmentVariableOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func(v GetWorkspaceEnvironmentVariable) string { return v.Key }).(pulumi.StringOutput)
-}
-
-// value is the value of the variable
-func (o GetWorkspaceEnvironmentVariableOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v GetWorkspaceEnvironmentVariable) string { return v.Value }).(pulumi.StringOutput)
-}
-
-// Value type indicates the value type of the variable, text or secret
-func (o GetWorkspaceEnvironmentVariableOutput) ValueType() pulumi.StringOutput {
-	return o.ApplyT(func(v GetWorkspaceEnvironmentVariable) string { return v.ValueType }).(pulumi.StringOutput)
-}
-
-type GetWorkspaceEnvironmentVariableArrayOutput struct{ *pulumi.OutputState }
-
-func (GetWorkspaceEnvironmentVariableArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetWorkspaceEnvironmentVariable)(nil)).Elem()
-}
-
-func (o GetWorkspaceEnvironmentVariableArrayOutput) ToGetWorkspaceEnvironmentVariableArrayOutput() GetWorkspaceEnvironmentVariableArrayOutput {
-	return o
-}
-
-func (o GetWorkspaceEnvironmentVariableArrayOutput) ToGetWorkspaceEnvironmentVariableArrayOutputWithContext(ctx context.Context) GetWorkspaceEnvironmentVariableArrayOutput {
-	return o
-}
-
-func (o GetWorkspaceEnvironmentVariableArrayOutput) Index(i pulumi.IntInput) GetWorkspaceEnvironmentVariableOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWorkspaceEnvironmentVariable {
-		return vs[0].([]GetWorkspaceEnvironmentVariable)[vs[1].(int)]
-	}).(GetWorkspaceEnvironmentVariableOutput)
-}
-
-type GetWorkspaceOutputValueOutputValue struct {
-	// Name associated with the output.
-	Name string `pulumi:"name"`
-	// Indicates if the output is sensitive.
-	Sensitive bool `pulumi:"sensitive"`
-	// Value of the output.
-	Value string `pulumi:"value"`
-}
-
-// GetWorkspaceOutputValueOutputValueInput is an input type that accepts GetWorkspaceOutputValueOutputValueArgs and GetWorkspaceOutputValueOutputValueOutput values.
-// You can construct a concrete instance of `GetWorkspaceOutputValueOutputValueInput` via:
-//
-//	GetWorkspaceOutputValueOutputValueArgs{...}
-type GetWorkspaceOutputValueOutputValueInput interface {
-	pulumi.Input
-
-	ToGetWorkspaceOutputValueOutputValueOutput() GetWorkspaceOutputValueOutputValueOutput
-	ToGetWorkspaceOutputValueOutputValueOutputWithContext(context.Context) GetWorkspaceOutputValueOutputValueOutput
-}
-
-type GetWorkspaceOutputValueOutputValueArgs struct {
-	// Name associated with the output.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Indicates if the output is sensitive.
-	Sensitive pulumi.BoolInput `pulumi:"sensitive"`
-	// Value of the output.
-	Value pulumi.StringInput `pulumi:"value"`
-}
-
-func (GetWorkspaceOutputValueOutputValueArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetWorkspaceOutputValueOutputValue)(nil)).Elem()
-}
-
-func (i GetWorkspaceOutputValueOutputValueArgs) ToGetWorkspaceOutputValueOutputValueOutput() GetWorkspaceOutputValueOutputValueOutput {
-	return i.ToGetWorkspaceOutputValueOutputValueOutputWithContext(context.Background())
-}
-
-func (i GetWorkspaceOutputValueOutputValueArgs) ToGetWorkspaceOutputValueOutputValueOutputWithContext(ctx context.Context) GetWorkspaceOutputValueOutputValueOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspaceOutputValueOutputValueOutput)
-}
-
-// GetWorkspaceOutputValueOutputValueArrayInput is an input type that accepts GetWorkspaceOutputValueOutputValueArray and GetWorkspaceOutputValueOutputValueArrayOutput values.
-// You can construct a concrete instance of `GetWorkspaceOutputValueOutputValueArrayInput` via:
-//
-//	GetWorkspaceOutputValueOutputValueArray{ GetWorkspaceOutputValueOutputValueArgs{...} }
-type GetWorkspaceOutputValueOutputValueArrayInput interface {
-	pulumi.Input
-
-	ToGetWorkspaceOutputValueOutputValueArrayOutput() GetWorkspaceOutputValueOutputValueArrayOutput
-	ToGetWorkspaceOutputValueOutputValueArrayOutputWithContext(context.Context) GetWorkspaceOutputValueOutputValueArrayOutput
-}
-
-type GetWorkspaceOutputValueOutputValueArray []GetWorkspaceOutputValueOutputValueInput
-
-func (GetWorkspaceOutputValueOutputValueArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetWorkspaceOutputValueOutputValue)(nil)).Elem()
-}
-
-func (i GetWorkspaceOutputValueOutputValueArray) ToGetWorkspaceOutputValueOutputValueArrayOutput() GetWorkspaceOutputValueOutputValueArrayOutput {
-	return i.ToGetWorkspaceOutputValueOutputValueArrayOutputWithContext(context.Background())
-}
-
-func (i GetWorkspaceOutputValueOutputValueArray) ToGetWorkspaceOutputValueOutputValueArrayOutputWithContext(ctx context.Context) GetWorkspaceOutputValueOutputValueArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspaceOutputValueOutputValueArrayOutput)
-}
-
-type GetWorkspaceOutputValueOutputValueOutput struct{ *pulumi.OutputState }
-
-func (GetWorkspaceOutputValueOutputValueOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetWorkspaceOutputValueOutputValue)(nil)).Elem()
-}
-
-func (o GetWorkspaceOutputValueOutputValueOutput) ToGetWorkspaceOutputValueOutputValueOutput() GetWorkspaceOutputValueOutputValueOutput {
-	return o
-}
-
-func (o GetWorkspaceOutputValueOutputValueOutput) ToGetWorkspaceOutputValueOutputValueOutputWithContext(ctx context.Context) GetWorkspaceOutputValueOutputValueOutput {
-	return o
-}
-
-// Name associated with the output.
-func (o GetWorkspaceOutputValueOutputValueOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetWorkspaceOutputValueOutputValue) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Indicates if the output is sensitive.
-func (o GetWorkspaceOutputValueOutputValueOutput) Sensitive() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetWorkspaceOutputValueOutputValue) bool { return v.Sensitive }).(pulumi.BoolOutput)
-}
-
-// Value of the output.
-func (o GetWorkspaceOutputValueOutputValueOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v GetWorkspaceOutputValueOutputValue) string { return v.Value }).(pulumi.StringOutput)
-}
-
-type GetWorkspaceOutputValueOutputValueArrayOutput struct{ *pulumi.OutputState }
-
-func (GetWorkspaceOutputValueOutputValueArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetWorkspaceOutputValueOutputValue)(nil)).Elem()
-}
-
-func (o GetWorkspaceOutputValueOutputValueArrayOutput) ToGetWorkspaceOutputValueOutputValueArrayOutput() GetWorkspaceOutputValueOutputValueArrayOutput {
-	return o
-}
-
-func (o GetWorkspaceOutputValueOutputValueArrayOutput) ToGetWorkspaceOutputValueOutputValueArrayOutputWithContext(ctx context.Context) GetWorkspaceOutputValueOutputValueArrayOutput {
-	return o
-}
-
-func (o GetWorkspaceOutputValueOutputValueArrayOutput) Index(i pulumi.IntInput) GetWorkspaceOutputValueOutputValueOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWorkspaceOutputValueOutputValue {
-		return vs[0].([]GetWorkspaceOutputValueOutputValue)[vs[1].(int)]
-	}).(GetWorkspaceOutputValueOutputValueOutput)
-}
-
-type GetWorkspaceTerraformVariable struct {
-	// Key is the identifier for the variable`
-	Key string `pulumi:"key"`
-	// value is the value of the variable
-	Value string `pulumi:"value"`
-	// Value type indicates the value type of the variable, text or secret
-	ValueType string `pulumi:"valueType"`
-}
-
-// GetWorkspaceTerraformVariableInput is an input type that accepts GetWorkspaceTerraformVariableArgs and GetWorkspaceTerraformVariableOutput values.
-// You can construct a concrete instance of `GetWorkspaceTerraformVariableInput` via:
-//
-//	GetWorkspaceTerraformVariableArgs{...}
-type GetWorkspaceTerraformVariableInput interface {
-	pulumi.Input
-
-	ToGetWorkspaceTerraformVariableOutput() GetWorkspaceTerraformVariableOutput
-	ToGetWorkspaceTerraformVariableOutputWithContext(context.Context) GetWorkspaceTerraformVariableOutput
-}
-
-type GetWorkspaceTerraformVariableArgs struct {
-	// Key is the identifier for the variable`
-	Key pulumi.StringInput `pulumi:"key"`
-	// value is the value of the variable
-	Value pulumi.StringInput `pulumi:"value"`
-	// Value type indicates the value type of the variable, text or secret
-	ValueType pulumi.StringInput `pulumi:"valueType"`
-}
-
-func (GetWorkspaceTerraformVariableArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetWorkspaceTerraformVariable)(nil)).Elem()
-}
-
-func (i GetWorkspaceTerraformVariableArgs) ToGetWorkspaceTerraformVariableOutput() GetWorkspaceTerraformVariableOutput {
-	return i.ToGetWorkspaceTerraformVariableOutputWithContext(context.Background())
-}
-
-func (i GetWorkspaceTerraformVariableArgs) ToGetWorkspaceTerraformVariableOutputWithContext(ctx context.Context) GetWorkspaceTerraformVariableOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspaceTerraformVariableOutput)
-}
-
-// GetWorkspaceTerraformVariableArrayInput is an input type that accepts GetWorkspaceTerraformVariableArray and GetWorkspaceTerraformVariableArrayOutput values.
-// You can construct a concrete instance of `GetWorkspaceTerraformVariableArrayInput` via:
-//
-//	GetWorkspaceTerraformVariableArray{ GetWorkspaceTerraformVariableArgs{...} }
-type GetWorkspaceTerraformVariableArrayInput interface {
-	pulumi.Input
-
-	ToGetWorkspaceTerraformVariableArrayOutput() GetWorkspaceTerraformVariableArrayOutput
-	ToGetWorkspaceTerraformVariableArrayOutputWithContext(context.Context) GetWorkspaceTerraformVariableArrayOutput
-}
-
-type GetWorkspaceTerraformVariableArray []GetWorkspaceTerraformVariableInput
-
-func (GetWorkspaceTerraformVariableArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetWorkspaceTerraformVariable)(nil)).Elem()
-}
-
-func (i GetWorkspaceTerraformVariableArray) ToGetWorkspaceTerraformVariableArrayOutput() GetWorkspaceTerraformVariableArrayOutput {
-	return i.ToGetWorkspaceTerraformVariableArrayOutputWithContext(context.Background())
-}
-
-func (i GetWorkspaceTerraformVariableArray) ToGetWorkspaceTerraformVariableArrayOutputWithContext(ctx context.Context) GetWorkspaceTerraformVariableArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspaceTerraformVariableArrayOutput)
-}
-
-type GetWorkspaceTerraformVariableOutput struct{ *pulumi.OutputState }
-
-func (GetWorkspaceTerraformVariableOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetWorkspaceTerraformVariable)(nil)).Elem()
-}
-
-func (o GetWorkspaceTerraformVariableOutput) ToGetWorkspaceTerraformVariableOutput() GetWorkspaceTerraformVariableOutput {
-	return o
-}
-
-func (o GetWorkspaceTerraformVariableOutput) ToGetWorkspaceTerraformVariableOutputWithContext(ctx context.Context) GetWorkspaceTerraformVariableOutput {
-	return o
-}
-
-// Key is the identifier for the variable`
-func (o GetWorkspaceTerraformVariableOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func(v GetWorkspaceTerraformVariable) string { return v.Key }).(pulumi.StringOutput)
-}
-
-// value is the value of the variable
-func (o GetWorkspaceTerraformVariableOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v GetWorkspaceTerraformVariable) string { return v.Value }).(pulumi.StringOutput)
-}
-
-// Value type indicates the value type of the variable, text or secret
-func (o GetWorkspaceTerraformVariableOutput) ValueType() pulumi.StringOutput {
-	return o.ApplyT(func(v GetWorkspaceTerraformVariable) string { return v.ValueType }).(pulumi.StringOutput)
-}
-
-type GetWorkspaceTerraformVariableArrayOutput struct{ *pulumi.OutputState }
-
-func (GetWorkspaceTerraformVariableArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetWorkspaceTerraformVariable)(nil)).Elem()
-}
-
-func (o GetWorkspaceTerraformVariableArrayOutput) ToGetWorkspaceTerraformVariableArrayOutput() GetWorkspaceTerraformVariableArrayOutput {
-	return o
-}
-
-func (o GetWorkspaceTerraformVariableArrayOutput) ToGetWorkspaceTerraformVariableArrayOutputWithContext(ctx context.Context) GetWorkspaceTerraformVariableArrayOutput {
-	return o
-}
-
-func (o GetWorkspaceTerraformVariableArrayOutput) Index(i pulumi.IntInput) GetWorkspaceTerraformVariableOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWorkspaceTerraformVariable {
-		return vs[0].([]GetWorkspaceTerraformVariable)[vs[1].(int)]
-	}).(GetWorkspaceTerraformVariableOutput)
-}
-
-type GetWorkspaceTerraformVariableFile struct {
-	// Repository is the name of the repository to fetch the code from.
-	Repository string `pulumi:"repository"`
-	// Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit or sha is set
-	RepositoryBranch string `pulumi:"repositoryBranch"`
-	// Repository commit is tag to fetch the variables from. This cannot be set if repository branch or sha is set.
-	RepositoryCommit string `pulumi:"repositoryCommit"`
-	// Repository connector is the reference to the connector used to fetch the variables.
-	RepositoryConnector string `pulumi:"repositoryConnector"`
-	// Repository path is the path in which the variables reside.
-	RepositoryPath string `pulumi:"repositoryPath"`
-	// Repository commit is SHA to fetch the variables from. This cannot be set if repository branch or commit is set.
-	RepositorySha string `pulumi:"repositorySha"`
-}
-
-// GetWorkspaceTerraformVariableFileInput is an input type that accepts GetWorkspaceTerraformVariableFileArgs and GetWorkspaceTerraformVariableFileOutput values.
-// You can construct a concrete instance of `GetWorkspaceTerraformVariableFileInput` via:
-//
-//	GetWorkspaceTerraformVariableFileArgs{...}
-type GetWorkspaceTerraformVariableFileInput interface {
-	pulumi.Input
-
-	ToGetWorkspaceTerraformVariableFileOutput() GetWorkspaceTerraformVariableFileOutput
-	ToGetWorkspaceTerraformVariableFileOutputWithContext(context.Context) GetWorkspaceTerraformVariableFileOutput
-}
-
-type GetWorkspaceTerraformVariableFileArgs struct {
-	// Repository is the name of the repository to fetch the code from.
-	Repository pulumi.StringInput `pulumi:"repository"`
-	// Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit or sha is set
-	RepositoryBranch pulumi.StringInput `pulumi:"repositoryBranch"`
-	// Repository commit is tag to fetch the variables from. This cannot be set if repository branch or sha is set.
-	RepositoryCommit pulumi.StringInput `pulumi:"repositoryCommit"`
-	// Repository connector is the reference to the connector used to fetch the variables.
-	RepositoryConnector pulumi.StringInput `pulumi:"repositoryConnector"`
-	// Repository path is the path in which the variables reside.
-	RepositoryPath pulumi.StringInput `pulumi:"repositoryPath"`
-	// Repository commit is SHA to fetch the variables from. This cannot be set if repository branch or commit is set.
-	RepositorySha pulumi.StringInput `pulumi:"repositorySha"`
-}
-
-func (GetWorkspaceTerraformVariableFileArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetWorkspaceTerraformVariableFile)(nil)).Elem()
-}
-
-func (i GetWorkspaceTerraformVariableFileArgs) ToGetWorkspaceTerraformVariableFileOutput() GetWorkspaceTerraformVariableFileOutput {
-	return i.ToGetWorkspaceTerraformVariableFileOutputWithContext(context.Background())
-}
-
-func (i GetWorkspaceTerraformVariableFileArgs) ToGetWorkspaceTerraformVariableFileOutputWithContext(ctx context.Context) GetWorkspaceTerraformVariableFileOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspaceTerraformVariableFileOutput)
-}
-
-// GetWorkspaceTerraformVariableFileArrayInput is an input type that accepts GetWorkspaceTerraformVariableFileArray and GetWorkspaceTerraformVariableFileArrayOutput values.
-// You can construct a concrete instance of `GetWorkspaceTerraformVariableFileArrayInput` via:
-//
-//	GetWorkspaceTerraformVariableFileArray{ GetWorkspaceTerraformVariableFileArgs{...} }
-type GetWorkspaceTerraformVariableFileArrayInput interface {
-	pulumi.Input
-
-	ToGetWorkspaceTerraformVariableFileArrayOutput() GetWorkspaceTerraformVariableFileArrayOutput
-	ToGetWorkspaceTerraformVariableFileArrayOutputWithContext(context.Context) GetWorkspaceTerraformVariableFileArrayOutput
-}
-
-type GetWorkspaceTerraformVariableFileArray []GetWorkspaceTerraformVariableFileInput
-
-func (GetWorkspaceTerraformVariableFileArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetWorkspaceTerraformVariableFile)(nil)).Elem()
-}
-
-func (i GetWorkspaceTerraformVariableFileArray) ToGetWorkspaceTerraformVariableFileArrayOutput() GetWorkspaceTerraformVariableFileArrayOutput {
-	return i.ToGetWorkspaceTerraformVariableFileArrayOutputWithContext(context.Background())
-}
-
-func (i GetWorkspaceTerraformVariableFileArray) ToGetWorkspaceTerraformVariableFileArrayOutputWithContext(ctx context.Context) GetWorkspaceTerraformVariableFileArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspaceTerraformVariableFileArrayOutput)
-}
-
-type GetWorkspaceTerraformVariableFileOutput struct{ *pulumi.OutputState }
-
-func (GetWorkspaceTerraformVariableFileOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetWorkspaceTerraformVariableFile)(nil)).Elem()
-}
-
-func (o GetWorkspaceTerraformVariableFileOutput) ToGetWorkspaceTerraformVariableFileOutput() GetWorkspaceTerraformVariableFileOutput {
-	return o
-}
-
-func (o GetWorkspaceTerraformVariableFileOutput) ToGetWorkspaceTerraformVariableFileOutputWithContext(ctx context.Context) GetWorkspaceTerraformVariableFileOutput {
-	return o
-}
-
-// Repository is the name of the repository to fetch the code from.
-func (o GetWorkspaceTerraformVariableFileOutput) Repository() pulumi.StringOutput {
-	return o.ApplyT(func(v GetWorkspaceTerraformVariableFile) string { return v.Repository }).(pulumi.StringOutput)
-}
-
-// Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit or sha is set
-func (o GetWorkspaceTerraformVariableFileOutput) RepositoryBranch() pulumi.StringOutput {
-	return o.ApplyT(func(v GetWorkspaceTerraformVariableFile) string { return v.RepositoryBranch }).(pulumi.StringOutput)
-}
-
-// Repository commit is tag to fetch the variables from. This cannot be set if repository branch or sha is set.
-func (o GetWorkspaceTerraformVariableFileOutput) RepositoryCommit() pulumi.StringOutput {
-	return o.ApplyT(func(v GetWorkspaceTerraformVariableFile) string { return v.RepositoryCommit }).(pulumi.StringOutput)
-}
-
-// Repository connector is the reference to the connector used to fetch the variables.
-func (o GetWorkspaceTerraformVariableFileOutput) RepositoryConnector() pulumi.StringOutput {
-	return o.ApplyT(func(v GetWorkspaceTerraformVariableFile) string { return v.RepositoryConnector }).(pulumi.StringOutput)
-}
-
-// Repository path is the path in which the variables reside.
-func (o GetWorkspaceTerraformVariableFileOutput) RepositoryPath() pulumi.StringOutput {
-	return o.ApplyT(func(v GetWorkspaceTerraformVariableFile) string { return v.RepositoryPath }).(pulumi.StringOutput)
-}
-
-// Repository commit is SHA to fetch the variables from. This cannot be set if repository branch or commit is set.
-func (o GetWorkspaceTerraformVariableFileOutput) RepositorySha() pulumi.StringOutput {
-	return o.ApplyT(func(v GetWorkspaceTerraformVariableFile) string { return v.RepositorySha }).(pulumi.StringOutput)
-}
-
-type GetWorkspaceTerraformVariableFileArrayOutput struct{ *pulumi.OutputState }
-
-func (GetWorkspaceTerraformVariableFileArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetWorkspaceTerraformVariableFile)(nil)).Elem()
-}
-
-func (o GetWorkspaceTerraformVariableFileArrayOutput) ToGetWorkspaceTerraformVariableFileArrayOutput() GetWorkspaceTerraformVariableFileArrayOutput {
-	return o
-}
-
-func (o GetWorkspaceTerraformVariableFileArrayOutput) ToGetWorkspaceTerraformVariableFileArrayOutputWithContext(ctx context.Context) GetWorkspaceTerraformVariableFileArrayOutput {
-	return o
-}
-
-func (o GetWorkspaceTerraformVariableFileArrayOutput) Index(i pulumi.IntInput) GetWorkspaceTerraformVariableFileOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWorkspaceTerraformVariableFile {
-		return vs[0].([]GetWorkspaceTerraformVariableFile)[vs[1].(int)]
-	}).(GetWorkspaceTerraformVariableFileOutput)
-}
-
-type GetWorkspacesWorkspace struct {
-	AccountId   string `pulumi:"accountId"`
-	Created     int    `pulumi:"created"`
-	Description string `pulumi:"description"`
-	Identifier  string `pulumi:"identifier"`
-	Name        string `pulumi:"name"`
-	OrgId       string `pulumi:"orgId"`
-	ProjectId   string `pulumi:"projectId"`
-	Status      string `pulumi:"status"`
-	Updated     int    `pulumi:"updated"`
-}
-
-// GetWorkspacesWorkspaceInput is an input type that accepts GetWorkspacesWorkspaceArgs and GetWorkspacesWorkspaceOutput values.
-// You can construct a concrete instance of `GetWorkspacesWorkspaceInput` via:
-//
-//	GetWorkspacesWorkspaceArgs{...}
-type GetWorkspacesWorkspaceInput interface {
-	pulumi.Input
-
-	ToGetWorkspacesWorkspaceOutput() GetWorkspacesWorkspaceOutput
-	ToGetWorkspacesWorkspaceOutputWithContext(context.Context) GetWorkspacesWorkspaceOutput
-}
-
-type GetWorkspacesWorkspaceArgs struct {
-	AccountId   pulumi.StringInput `pulumi:"accountId"`
-	Created     pulumi.IntInput    `pulumi:"created"`
-	Description pulumi.StringInput `pulumi:"description"`
-	Identifier  pulumi.StringInput `pulumi:"identifier"`
-	Name        pulumi.StringInput `pulumi:"name"`
-	OrgId       pulumi.StringInput `pulumi:"orgId"`
-	ProjectId   pulumi.StringInput `pulumi:"projectId"`
-	Status      pulumi.StringInput `pulumi:"status"`
-	Updated     pulumi.IntInput    `pulumi:"updated"`
-}
-
-func (GetWorkspacesWorkspaceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetWorkspacesWorkspace)(nil)).Elem()
-}
-
-func (i GetWorkspacesWorkspaceArgs) ToGetWorkspacesWorkspaceOutput() GetWorkspacesWorkspaceOutput {
-	return i.ToGetWorkspacesWorkspaceOutputWithContext(context.Background())
-}
-
-func (i GetWorkspacesWorkspaceArgs) ToGetWorkspacesWorkspaceOutputWithContext(ctx context.Context) GetWorkspacesWorkspaceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspacesWorkspaceOutput)
-}
-
-// GetWorkspacesWorkspaceArrayInput is an input type that accepts GetWorkspacesWorkspaceArray and GetWorkspacesWorkspaceArrayOutput values.
-// You can construct a concrete instance of `GetWorkspacesWorkspaceArrayInput` via:
-//
-//	GetWorkspacesWorkspaceArray{ GetWorkspacesWorkspaceArgs{...} }
-type GetWorkspacesWorkspaceArrayInput interface {
-	pulumi.Input
-
-	ToGetWorkspacesWorkspaceArrayOutput() GetWorkspacesWorkspaceArrayOutput
-	ToGetWorkspacesWorkspaceArrayOutputWithContext(context.Context) GetWorkspacesWorkspaceArrayOutput
-}
-
-type GetWorkspacesWorkspaceArray []GetWorkspacesWorkspaceInput
-
-func (GetWorkspacesWorkspaceArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetWorkspacesWorkspace)(nil)).Elem()
-}
-
-func (i GetWorkspacesWorkspaceArray) ToGetWorkspacesWorkspaceArrayOutput() GetWorkspacesWorkspaceArrayOutput {
-	return i.ToGetWorkspacesWorkspaceArrayOutputWithContext(context.Background())
-}
-
-func (i GetWorkspacesWorkspaceArray) ToGetWorkspacesWorkspaceArrayOutputWithContext(ctx context.Context) GetWorkspacesWorkspaceArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspacesWorkspaceArrayOutput)
-}
-
-type GetWorkspacesWorkspaceOutput struct{ *pulumi.OutputState }
-
-func (GetWorkspacesWorkspaceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetWorkspacesWorkspace)(nil)).Elem()
-}
-
-func (o GetWorkspacesWorkspaceOutput) ToGetWorkspacesWorkspaceOutput() GetWorkspacesWorkspaceOutput {
-	return o
-}
-
-func (o GetWorkspacesWorkspaceOutput) ToGetWorkspacesWorkspaceOutputWithContext(ctx context.Context) GetWorkspacesWorkspaceOutput {
-	return o
-}
-
-func (o GetWorkspacesWorkspaceOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetWorkspacesWorkspace) string { return v.AccountId }).(pulumi.StringOutput)
-}
-
-func (o GetWorkspacesWorkspaceOutput) Created() pulumi.IntOutput {
-	return o.ApplyT(func(v GetWorkspacesWorkspace) int { return v.Created }).(pulumi.IntOutput)
-}
-
-func (o GetWorkspacesWorkspaceOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v GetWorkspacesWorkspace) string { return v.Description }).(pulumi.StringOutput)
-}
-
-func (o GetWorkspacesWorkspaceOutput) Identifier() pulumi.StringOutput {
-	return o.ApplyT(func(v GetWorkspacesWorkspace) string { return v.Identifier }).(pulumi.StringOutput)
-}
-
-func (o GetWorkspacesWorkspaceOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetWorkspacesWorkspace) string { return v.Name }).(pulumi.StringOutput)
-}
-
-func (o GetWorkspacesWorkspaceOutput) OrgId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetWorkspacesWorkspace) string { return v.OrgId }).(pulumi.StringOutput)
-}
-
-func (o GetWorkspacesWorkspaceOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetWorkspacesWorkspace) string { return v.ProjectId }).(pulumi.StringOutput)
-}
-
-func (o GetWorkspacesWorkspaceOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func(v GetWorkspacesWorkspace) string { return v.Status }).(pulumi.StringOutput)
-}
-
-func (o GetWorkspacesWorkspaceOutput) Updated() pulumi.IntOutput {
-	return o.ApplyT(func(v GetWorkspacesWorkspace) int { return v.Updated }).(pulumi.IntOutput)
-}
-
-type GetWorkspacesWorkspaceArrayOutput struct{ *pulumi.OutputState }
-
-func (GetWorkspacesWorkspaceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetWorkspacesWorkspace)(nil)).Elem()
-}
-
-func (o GetWorkspacesWorkspaceArrayOutput) ToGetWorkspacesWorkspaceArrayOutput() GetWorkspacesWorkspaceArrayOutput {
-	return o
-}
-
-func (o GetWorkspacesWorkspaceArrayOutput) ToGetWorkspacesWorkspaceArrayOutputWithContext(ctx context.Context) GetWorkspacesWorkspaceArrayOutput {
-	return o
-}
-
-func (o GetWorkspacesWorkspaceArrayOutput) Index(i pulumi.IntInput) GetWorkspacesWorkspaceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWorkspacesWorkspace {
-		return vs[0].([]GetWorkspacesWorkspace)[vs[1].(int)]
-	}).(GetWorkspacesWorkspaceOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArrayInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArray{})
@@ -65032,6 +71176,78 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*IacmAnsiblePlaybookVarArrayInput)(nil)).Elem(), IacmAnsiblePlaybookVarArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IdpCatalogEntityGitDetailsInput)(nil)).Elem(), IdpCatalogEntityGitDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IdpCatalogEntityGitDetailsPtrInput)(nil)).Elem(), IdpCatalogEntityGitDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationBitbucketCloudInput)(nil)).Elem(), IdpIntegrationBitbucketCloudArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationBitbucketCloudPtrInput)(nil)).Elem(), IdpIntegrationBitbucketCloudArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationCatalogInfoInput)(nil)).Elem(), IdpIntegrationCatalogInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationCatalogInfoPtrInput)(nil)).Elem(), IdpIntegrationCatalogInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationCatalogInfoGitSyncInput)(nil)).Elem(), IdpIntegrationCatalogInfoGitSyncArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationCatalogInfoGitSyncPtrInput)(nil)).Elem(), IdpIntegrationCatalogInfoGitSyncArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationCatalogInfoGitSyncTargetInput)(nil)).Elem(), IdpIntegrationCatalogInfoGitSyncTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationCatalogInfoGitSyncTargetPtrInput)(nil)).Elem(), IdpIntegrationCatalogInfoGitSyncTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationCatalogInfoGitSyncTargetRepoInput)(nil)).Elem(), IdpIntegrationCatalogInfoGitSyncTargetRepoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationCatalogInfoGitSyncTargetRepoPtrInput)(nil)).Elem(), IdpIntegrationCatalogInfoGitSyncTargetRepoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationConnectorInput)(nil)).Elem(), IdpIntegrationConnectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationConnectorPtrInput)(nil)).Elem(), IdpIntegrationConnectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationConnectorInlineInput)(nil)).Elem(), IdpIntegrationConnectorInlineArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationConnectorInlinePtrInput)(nil)).Elem(), IdpIntegrationConnectorInlineArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationCustomInput)(nil)).Elem(), IdpIntegrationCustomArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationCustomPtrInput)(nil)).Elem(), IdpIntegrationCustomArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationCustomLayoutInput)(nil)).Elem(), IdpIntegrationCustomLayoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationCustomLayoutPtrInput)(nil)).Elem(), IdpIntegrationCustomLayoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationCustomLayoutColumnInput)(nil)).Elem(), IdpIntegrationCustomLayoutColumnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationCustomLayoutColumnArrayInput)(nil)).Elem(), IdpIntegrationCustomLayoutColumnArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationCustomWebhookAuthInput)(nil)).Elem(), IdpIntegrationCustomWebhookAuthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationCustomWebhookAuthPtrInput)(nil)).Elem(), IdpIntegrationCustomWebhookAuthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationDatadogInput)(nil)).Elem(), IdpIntegrationDatadogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationDatadogPtrInput)(nil)).Elem(), IdpIntegrationDatadogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationDynatraceInput)(nil)).Elem(), IdpIntegrationDynatraceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationDynatracePtrInput)(nil)).Elem(), IdpIntegrationDynatraceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationEndpointInput)(nil)).Elem(), IdpIntegrationEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationEndpointArrayInput)(nil)).Elem(), IdpIntegrationEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationGcpInput)(nil)).Elem(), IdpIntegrationGcpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationGcpPtrInput)(nil)).Elem(), IdpIntegrationGcpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationGcpParentInput)(nil)).Elem(), IdpIntegrationGcpParentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationGcpParentPtrInput)(nil)).Elem(), IdpIntegrationGcpParentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationGithubInput)(nil)).Elem(), IdpIntegrationGithubArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationGithubPtrInput)(nil)).Elem(), IdpIntegrationGithubArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationHarnessCdInput)(nil)).Elem(), IdpIntegrationHarnessCdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationHarnessCdPtrInput)(nil)).Elem(), IdpIntegrationHarnessCdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationHarnessCdMappingFieldInput)(nil)).Elem(), IdpIntegrationHarnessCdMappingFieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationHarnessCdMappingFieldArrayInput)(nil)).Elem(), IdpIntegrationHarnessCdMappingFieldArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationHarnessCodeInput)(nil)).Elem(), IdpIntegrationHarnessCodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationHarnessCodePtrInput)(nil)).Elem(), IdpIntegrationHarnessCodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationHarnessK8sInput)(nil)).Elem(), IdpIntegrationHarnessK8sArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationHarnessK8sPtrInput)(nil)).Elem(), IdpIntegrationHarnessK8sArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationJiraInput)(nil)).Elem(), IdpIntegrationJiraArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationJiraPtrInput)(nil)).Elem(), IdpIntegrationJiraArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationKindInput)(nil)).Elem(), IdpIntegrationKindArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationKindArrayInput)(nil)).Elem(), IdpIntegrationKindArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationKindMappingTypeInput)(nil)).Elem(), IdpIntegrationKindMappingTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationKindMappingTypePtrInput)(nil)).Elem(), IdpIntegrationKindMappingTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationKindMappingCorrelationInput)(nil)).Elem(), IdpIntegrationKindMappingCorrelationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationKindMappingCorrelationPtrInput)(nil)).Elem(), IdpIntegrationKindMappingCorrelationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationKindMappingEmissionInput)(nil)).Elem(), IdpIntegrationKindMappingEmissionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationKindMappingEmissionArrayInput)(nil)).Elem(), IdpIntegrationKindMappingEmissionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationKindMappingFieldMappingInput)(nil)).Elem(), IdpIntegrationKindMappingFieldMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationKindMappingFieldMappingArrayInput)(nil)).Elem(), IdpIntegrationKindMappingFieldMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationKindMappingIngestionInput)(nil)).Elem(), IdpIntegrationKindMappingIngestionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationKindMappingIngestionPtrInput)(nil)).Elem(), IdpIntegrationKindMappingIngestionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationPagerdutyInput)(nil)).Elem(), IdpIntegrationPagerdutyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationPagerdutyPtrInput)(nil)).Elem(), IdpIntegrationPagerdutyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationScopesInput)(nil)).Elem(), IdpIntegrationScopesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationScopesPtrInput)(nil)).Elem(), IdpIntegrationScopesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationSonarqubeInput)(nil)).Elem(), IdpIntegrationSonarqubeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationSonarqubePtrInput)(nil)).Elem(), IdpIntegrationSonarqubeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationSonarqubeInstanceInput)(nil)).Elem(), IdpIntegrationSonarqubeInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationSonarqubeInstancePtrInput)(nil)).Elem(), IdpIntegrationSonarqubeInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationSonarqubeInstanceCloudInput)(nil)).Elem(), IdpIntegrationSonarqubeInstanceCloudArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationSonarqubeInstanceCloudPtrInput)(nil)).Elem(), IdpIntegrationSonarqubeInstanceCloudArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationSonarqubeInstanceServerInput)(nil)).Elem(), IdpIntegrationSonarqubeInstanceServerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationSonarqubeInstanceServerPtrInput)(nil)).Elem(), IdpIntegrationSonarqubeInstanceServerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationSonarqubeIssuesInput)(nil)).Elem(), IdpIntegrationSonarqubeIssuesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationSonarqubeIssuesPtrInput)(nil)).Elem(), IdpIntegrationSonarqubeIssuesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationSonarqubeProjectsInput)(nil)).Elem(), IdpIntegrationSonarqubeProjectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpIntegrationSonarqubeProjectsPtrInput)(nil)).Elem(), IdpIntegrationSonarqubeProjectsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IdpPluginEnvVariableInput)(nil)).Elem(), IdpPluginEnvVariableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IdpPluginEnvVariableArrayInput)(nil)).Elem(), IdpPluginEnvVariableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IdpPluginProxyInput)(nil)).Elem(), IdpPluginProxyArgs{})
@@ -65592,6 +71808,76 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIacmAnsiblePlaybookVarArrayInput)(nil)).Elem(), GetIacmAnsiblePlaybookVarArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpCatalogEntityGitDetailInput)(nil)).Elem(), GetIdpCatalogEntityGitDetailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpCatalogEntityGitDetailArrayInput)(nil)).Elem(), GetIdpCatalogEntityGitDetailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationBitbucketCloudInput)(nil)).Elem(), GetIdpIntegrationBitbucketCloudArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationBitbucketCloudArrayInput)(nil)).Elem(), GetIdpIntegrationBitbucketCloudArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationCatalogInfoInput)(nil)).Elem(), GetIdpIntegrationCatalogInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationCatalogInfoArrayInput)(nil)).Elem(), GetIdpIntegrationCatalogInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationCatalogInfoGitSyncInput)(nil)).Elem(), GetIdpIntegrationCatalogInfoGitSyncArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationCatalogInfoGitSyncArrayInput)(nil)).Elem(), GetIdpIntegrationCatalogInfoGitSyncArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationCatalogInfoGitSyncTargetInput)(nil)).Elem(), GetIdpIntegrationCatalogInfoGitSyncTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationCatalogInfoGitSyncTargetArrayInput)(nil)).Elem(), GetIdpIntegrationCatalogInfoGitSyncTargetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationCatalogInfoGitSyncTargetRepoInput)(nil)).Elem(), GetIdpIntegrationCatalogInfoGitSyncTargetRepoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationCatalogInfoGitSyncTargetRepoArrayInput)(nil)).Elem(), GetIdpIntegrationCatalogInfoGitSyncTargetRepoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationConnectorInput)(nil)).Elem(), GetIdpIntegrationConnectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationConnectorArrayInput)(nil)).Elem(), GetIdpIntegrationConnectorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationConnectorInlineInput)(nil)).Elem(), GetIdpIntegrationConnectorInlineArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationConnectorInlineArrayInput)(nil)).Elem(), GetIdpIntegrationConnectorInlineArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationCustomInput)(nil)).Elem(), GetIdpIntegrationCustomArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationCustomArrayInput)(nil)).Elem(), GetIdpIntegrationCustomArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationCustomLayoutInput)(nil)).Elem(), GetIdpIntegrationCustomLayoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationCustomLayoutArrayInput)(nil)).Elem(), GetIdpIntegrationCustomLayoutArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationCustomLayoutColumnInput)(nil)).Elem(), GetIdpIntegrationCustomLayoutColumnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationCustomLayoutColumnArrayInput)(nil)).Elem(), GetIdpIntegrationCustomLayoutColumnArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationCustomWebhookAuthInput)(nil)).Elem(), GetIdpIntegrationCustomWebhookAuthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationCustomWebhookAuthArrayInput)(nil)).Elem(), GetIdpIntegrationCustomWebhookAuthArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationDatadogInput)(nil)).Elem(), GetIdpIntegrationDatadogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationDatadogArrayInput)(nil)).Elem(), GetIdpIntegrationDatadogArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationDynatraceInput)(nil)).Elem(), GetIdpIntegrationDynatraceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationDynatraceArrayInput)(nil)).Elem(), GetIdpIntegrationDynatraceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationEndpointInput)(nil)).Elem(), GetIdpIntegrationEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationEndpointArrayInput)(nil)).Elem(), GetIdpIntegrationEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationGcpInput)(nil)).Elem(), GetIdpIntegrationGcpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationGcpArrayInput)(nil)).Elem(), GetIdpIntegrationGcpArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationGcpParentInput)(nil)).Elem(), GetIdpIntegrationGcpParentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationGcpParentArrayInput)(nil)).Elem(), GetIdpIntegrationGcpParentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationGithubInput)(nil)).Elem(), GetIdpIntegrationGithubArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationGithubArrayInput)(nil)).Elem(), GetIdpIntegrationGithubArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationHarnessCdInput)(nil)).Elem(), GetIdpIntegrationHarnessCdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationHarnessCdArrayInput)(nil)).Elem(), GetIdpIntegrationHarnessCdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationHarnessCdMappingFieldInput)(nil)).Elem(), GetIdpIntegrationHarnessCdMappingFieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationHarnessCdMappingFieldArrayInput)(nil)).Elem(), GetIdpIntegrationHarnessCdMappingFieldArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationHarnessCodeInput)(nil)).Elem(), GetIdpIntegrationHarnessCodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationHarnessCodeArrayInput)(nil)).Elem(), GetIdpIntegrationHarnessCodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationHarnessK8Input)(nil)).Elem(), GetIdpIntegrationHarnessK8Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationHarnessK8ArrayInput)(nil)).Elem(), GetIdpIntegrationHarnessK8Array{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationJiraInput)(nil)).Elem(), GetIdpIntegrationJiraArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationJiraArrayInput)(nil)).Elem(), GetIdpIntegrationJiraArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationKindInput)(nil)).Elem(), GetIdpIntegrationKindArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationKindArrayInput)(nil)).Elem(), GetIdpIntegrationKindArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationKindMappingCorrelationInput)(nil)).Elem(), GetIdpIntegrationKindMappingCorrelationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationKindMappingCorrelationArrayInput)(nil)).Elem(), GetIdpIntegrationKindMappingCorrelationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationKindMappingEmissionInput)(nil)).Elem(), GetIdpIntegrationKindMappingEmissionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationKindMappingEmissionArrayInput)(nil)).Elem(), GetIdpIntegrationKindMappingEmissionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationKindMappingFieldMappingInput)(nil)).Elem(), GetIdpIntegrationKindMappingFieldMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationKindMappingFieldMappingArrayInput)(nil)).Elem(), GetIdpIntegrationKindMappingFieldMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationKindMappingIngestionInput)(nil)).Elem(), GetIdpIntegrationKindMappingIngestionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationKindMappingIngestionArrayInput)(nil)).Elem(), GetIdpIntegrationKindMappingIngestionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationPagerdutyInput)(nil)).Elem(), GetIdpIntegrationPagerdutyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationPagerdutyArrayInput)(nil)).Elem(), GetIdpIntegrationPagerdutyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationScopeInput)(nil)).Elem(), GetIdpIntegrationScopeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationScopeArrayInput)(nil)).Elem(), GetIdpIntegrationScopeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationSonarqubeInput)(nil)).Elem(), GetIdpIntegrationSonarqubeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationSonarqubeArrayInput)(nil)).Elem(), GetIdpIntegrationSonarqubeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationSonarqubeInstanceInput)(nil)).Elem(), GetIdpIntegrationSonarqubeInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationSonarqubeInstanceArrayInput)(nil)).Elem(), GetIdpIntegrationSonarqubeInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationSonarqubeInstanceCloudInput)(nil)).Elem(), GetIdpIntegrationSonarqubeInstanceCloudArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationSonarqubeInstanceCloudArrayInput)(nil)).Elem(), GetIdpIntegrationSonarqubeInstanceCloudArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationSonarqubeInstanceServerInput)(nil)).Elem(), GetIdpIntegrationSonarqubeInstanceServerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationSonarqubeInstanceServerArrayInput)(nil)).Elem(), GetIdpIntegrationSonarqubeInstanceServerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationSonarqubeIssueInput)(nil)).Elem(), GetIdpIntegrationSonarqubeIssueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationSonarqubeIssueArrayInput)(nil)).Elem(), GetIdpIntegrationSonarqubeIssueArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationSonarqubeProjectInput)(nil)).Elem(), GetIdpIntegrationSonarqubeProjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpIntegrationSonarqubeProjectArrayInput)(nil)).Elem(), GetIdpIntegrationSonarqubeProjectArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpPluginEnvVariableInput)(nil)).Elem(), GetIdpPluginEnvVariableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpPluginEnvVariableArrayInput)(nil)).Elem(), GetIdpPluginEnvVariableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpPluginProxyInput)(nil)).Elem(), GetIdpPluginProxyArgs{})
@@ -65749,60 +72035,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretWinrmKerberoTgtKeyTabFilePathSpecArrayInput)(nil)).Elem(), GetSecretWinrmKerberoTgtKeyTabFilePathSpecArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretWinrmKerberoTgtPasswordSpecInput)(nil)).Elem(), GetSecretWinrmKerberoTgtPasswordSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretWinrmKerberoTgtPasswordSpecArrayInput)(nil)).Elem(), GetSecretWinrmKerberoTgtPasswordSpecArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretWinrmNtlmInput)(nil)).Elem(), GetSecretWinrmNtlmArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretWinrmNtlmArrayInput)(nil)).Elem(), GetSecretWinrmNtlmArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceGitDetailsInput)(nil)).Elem(), GetServiceGitDetailsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceGitDetailsPtrInput)(nil)).Elem(), GetServiceGitDetailsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceListServiceInput)(nil)).Elem(), GetServiceListServiceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceListServiceArrayInput)(nil)).Elem(), GetServiceListServiceArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceNowConnectorAuthInput)(nil)).Elem(), GetServiceNowConnectorAuthArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceNowConnectorAuthArrayInput)(nil)).Elem(), GetServiceNowConnectorAuthArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceNowConnectorAuthAdfInput)(nil)).Elem(), GetServiceNowConnectorAuthAdfArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceNowConnectorAuthAdfArrayInput)(nil)).Elem(), GetServiceNowConnectorAuthAdfArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceNowConnectorAuthRefreshTokenInput)(nil)).Elem(), GetServiceNowConnectorAuthRefreshTokenArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceNowConnectorAuthRefreshTokenArrayInput)(nil)).Elem(), GetServiceNowConnectorAuthRefreshTokenArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceNowConnectorAuthUsernamePasswordInput)(nil)).Elem(), GetServiceNowConnectorAuthUsernamePasswordArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceNowConnectorAuthUsernamePasswordArrayInput)(nil)).Elem(), GetServiceNowConnectorAuthUsernamePasswordArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceOverridesV2GitDetailsInput)(nil)).Elem(), GetServiceOverridesV2GitDetailsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceOverridesV2GitDetailsPtrInput)(nil)).Elem(), GetServiceOverridesV2GitDetailsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetSplunkConnectorBearerTokenInput)(nil)).Elem(), GetSplunkConnectorBearerTokenArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetSplunkConnectorBearerTokenArrayInput)(nil)).Elem(), GetSplunkConnectorBearerTokenArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetSplunkConnectorHecTokenInput)(nil)).Elem(), GetSplunkConnectorHecTokenArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetSplunkConnectorHecTokenArrayInput)(nil)).Elem(), GetSplunkConnectorHecTokenArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetSplunkConnectorNoAuthenticationInput)(nil)).Elem(), GetSplunkConnectorNoAuthenticationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetSplunkConnectorNoAuthenticationArrayInput)(nil)).Elem(), GetSplunkConnectorNoAuthenticationArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetSplunkConnectorUsernamePasswordInput)(nil)).Elem(), GetSplunkConnectorUsernamePasswordArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetSplunkConnectorUsernamePasswordArrayInput)(nil)).Elem(), GetSplunkConnectorUsernamePasswordArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetSpotConnectorPermanentTokenInput)(nil)).Elem(), GetSpotConnectorPermanentTokenArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetSpotConnectorPermanentTokenArrayInput)(nil)).Elem(), GetSpotConnectorPermanentTokenArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetTasConnectorCredentialInput)(nil)).Elem(), GetTasConnectorCredentialArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetTasConnectorCredentialArrayInput)(nil)).Elem(), GetTasConnectorCredentialArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetTasConnectorCredentialTasManualDetailInput)(nil)).Elem(), GetTasConnectorCredentialTasManualDetailArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetTasConnectorCredentialTasManualDetailArrayInput)(nil)).Elem(), GetTasConnectorCredentialTasManualDetailArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetTemplateFiltersFilterPropertyInput)(nil)).Elem(), GetTemplateFiltersFilterPropertyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetTemplateFiltersFilterPropertyArrayInput)(nil)).Elem(), GetTemplateFiltersFilterPropertyArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetTemplateGitDetailsInput)(nil)).Elem(), GetTemplateGitDetailsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetTemplateGitDetailsPtrInput)(nil)).Elem(), GetTemplateGitDetailsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetTerraformCloudConnectorCredentialInput)(nil)).Elem(), GetTerraformCloudConnectorCredentialArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetTerraformCloudConnectorCredentialArrayInput)(nil)).Elem(), GetTerraformCloudConnectorCredentialArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetTerraformCloudConnectorCredentialApiTokenInput)(nil)).Elem(), GetTerraformCloudConnectorCredentialApiTokenArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetTerraformCloudConnectorCredentialApiTokenArrayInput)(nil)).Elem(), GetTerraformCloudConnectorCredentialApiTokenArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetUsergroupNotificationConfigInput)(nil)).Elem(), GetUsergroupNotificationConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetUsergroupNotificationConfigArrayInput)(nil)).Elem(), GetUsergroupNotificationConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVariablesSpecInput)(nil)).Elem(), GetVariablesSpecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVariablesSpecArrayInput)(nil)).Elem(), GetVariablesSpecArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceConnectorInput)(nil)).Elem(), GetWorkspaceConnectorArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceConnectorArrayInput)(nil)).Elem(), GetWorkspaceConnectorArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceEnvironmentVariableInput)(nil)).Elem(), GetWorkspaceEnvironmentVariableArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceEnvironmentVariableArrayInput)(nil)).Elem(), GetWorkspaceEnvironmentVariableArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceOutputValueOutputValueInput)(nil)).Elem(), GetWorkspaceOutputValueOutputValueArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceOutputValueOutputValueArrayInput)(nil)).Elem(), GetWorkspaceOutputValueOutputValueArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceTerraformVariableInput)(nil)).Elem(), GetWorkspaceTerraformVariableArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceTerraformVariableArrayInput)(nil)).Elem(), GetWorkspaceTerraformVariableArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceTerraformVariableFileInput)(nil)).Elem(), GetWorkspaceTerraformVariableFileArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceTerraformVariableFileArrayInput)(nil)).Elem(), GetWorkspaceTerraformVariableFileArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspacesWorkspaceInput)(nil)).Elem(), GetWorkspacesWorkspaceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspacesWorkspaceArrayInput)(nil)).Elem(), GetWorkspacesWorkspaceArray{})
 	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutput{})
 	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArrayOutput{})
 	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryOutput{})
@@ -65937,6 +72169,78 @@ func init() {
 	pulumi.RegisterOutputType(IacmAnsiblePlaybookVarArrayOutput{})
 	pulumi.RegisterOutputType(IdpCatalogEntityGitDetailsOutput{})
 	pulumi.RegisterOutputType(IdpCatalogEntityGitDetailsPtrOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationBitbucketCloudOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationBitbucketCloudPtrOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationCatalogInfoOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationCatalogInfoPtrOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationCatalogInfoGitSyncOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationCatalogInfoGitSyncPtrOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationCatalogInfoGitSyncTargetOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationCatalogInfoGitSyncTargetPtrOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationCatalogInfoGitSyncTargetRepoOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationCatalogInfoGitSyncTargetRepoPtrOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationConnectorOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationConnectorPtrOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationConnectorInlineOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationConnectorInlinePtrOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationCustomOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationCustomPtrOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationCustomLayoutOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationCustomLayoutPtrOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationCustomLayoutColumnOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationCustomLayoutColumnArrayOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationCustomWebhookAuthOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationCustomWebhookAuthPtrOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationDatadogOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationDatadogPtrOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationDynatraceOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationDynatracePtrOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationEndpointOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationEndpointArrayOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationGcpOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationGcpPtrOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationGcpParentOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationGcpParentPtrOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationGithubOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationGithubPtrOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationHarnessCdOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationHarnessCdPtrOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationHarnessCdMappingFieldOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationHarnessCdMappingFieldArrayOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationHarnessCodeOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationHarnessCodePtrOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationHarnessK8sOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationHarnessK8sPtrOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationJiraOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationJiraPtrOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationKindOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationKindArrayOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationKindMappingTypeOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationKindMappingTypePtrOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationKindMappingCorrelationOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationKindMappingCorrelationPtrOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationKindMappingEmissionOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationKindMappingEmissionArrayOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationKindMappingFieldMappingOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationKindMappingFieldMappingArrayOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationKindMappingIngestionOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationKindMappingIngestionPtrOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationPagerdutyOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationPagerdutyPtrOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationScopesOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationScopesPtrOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationSonarqubeOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationSonarqubePtrOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationSonarqubeInstanceOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationSonarqubeInstancePtrOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationSonarqubeInstanceCloudOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationSonarqubeInstanceCloudPtrOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationSonarqubeInstanceServerOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationSonarqubeInstanceServerPtrOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationSonarqubeIssuesOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationSonarqubeIssuesPtrOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationSonarqubeProjectsOutput{})
+	pulumi.RegisterOutputType(IdpIntegrationSonarqubeProjectsPtrOutput{})
 	pulumi.RegisterOutputType(IdpPluginEnvVariableOutput{})
 	pulumi.RegisterOutputType(IdpPluginEnvVariableArrayOutput{})
 	pulumi.RegisterOutputType(IdpPluginProxyOutput{})
@@ -66497,6 +72801,76 @@ func init() {
 	pulumi.RegisterOutputType(GetIacmAnsiblePlaybookVarArrayOutput{})
 	pulumi.RegisterOutputType(GetIdpCatalogEntityGitDetailOutput{})
 	pulumi.RegisterOutputType(GetIdpCatalogEntityGitDetailArrayOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationBitbucketCloudOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationBitbucketCloudArrayOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationCatalogInfoOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationCatalogInfoArrayOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationCatalogInfoGitSyncOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationCatalogInfoGitSyncArrayOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationCatalogInfoGitSyncTargetOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationCatalogInfoGitSyncTargetArrayOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationCatalogInfoGitSyncTargetRepoOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationCatalogInfoGitSyncTargetRepoArrayOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationConnectorOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationConnectorArrayOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationConnectorInlineOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationConnectorInlineArrayOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationCustomOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationCustomArrayOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationCustomLayoutOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationCustomLayoutArrayOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationCustomLayoutColumnOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationCustomLayoutColumnArrayOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationCustomWebhookAuthOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationCustomWebhookAuthArrayOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationDatadogOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationDatadogArrayOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationDynatraceOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationDynatraceArrayOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationEndpointOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationEndpointArrayOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationGcpOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationGcpArrayOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationGcpParentOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationGcpParentArrayOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationGithubOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationGithubArrayOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationHarnessCdOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationHarnessCdArrayOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationHarnessCdMappingFieldOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationHarnessCdMappingFieldArrayOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationHarnessCodeOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationHarnessCodeArrayOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationHarnessK8Output{})
+	pulumi.RegisterOutputType(GetIdpIntegrationHarnessK8ArrayOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationJiraOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationJiraArrayOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationKindOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationKindArrayOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationKindMappingCorrelationOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationKindMappingCorrelationArrayOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationKindMappingEmissionOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationKindMappingEmissionArrayOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationKindMappingFieldMappingOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationKindMappingFieldMappingArrayOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationKindMappingIngestionOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationKindMappingIngestionArrayOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationPagerdutyOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationPagerdutyArrayOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationScopeOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationScopeArrayOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationSonarqubeOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationSonarqubeArrayOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationSonarqubeInstanceOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationSonarqubeInstanceArrayOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationSonarqubeInstanceCloudOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationSonarqubeInstanceCloudArrayOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationSonarqubeInstanceServerOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationSonarqubeInstanceServerArrayOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationSonarqubeIssueOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationSonarqubeIssueArrayOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationSonarqubeProjectOutput{})
+	pulumi.RegisterOutputType(GetIdpIntegrationSonarqubeProjectArrayOutput{})
 	pulumi.RegisterOutputType(GetIdpPluginEnvVariableOutput{})
 	pulumi.RegisterOutputType(GetIdpPluginEnvVariableArrayOutput{})
 	pulumi.RegisterOutputType(GetIdpPluginProxyOutput{})
@@ -66654,58 +73028,4 @@ func init() {
 	pulumi.RegisterOutputType(GetSecretWinrmKerberoTgtKeyTabFilePathSpecArrayOutput{})
 	pulumi.RegisterOutputType(GetSecretWinrmKerberoTgtPasswordSpecOutput{})
 	pulumi.RegisterOutputType(GetSecretWinrmKerberoTgtPasswordSpecArrayOutput{})
-	pulumi.RegisterOutputType(GetSecretWinrmNtlmOutput{})
-	pulumi.RegisterOutputType(GetSecretWinrmNtlmArrayOutput{})
-	pulumi.RegisterOutputType(GetServiceGitDetailsOutput{})
-	pulumi.RegisterOutputType(GetServiceGitDetailsPtrOutput{})
-	pulumi.RegisterOutputType(GetServiceListServiceOutput{})
-	pulumi.RegisterOutputType(GetServiceListServiceArrayOutput{})
-	pulumi.RegisterOutputType(GetServiceNowConnectorAuthOutput{})
-	pulumi.RegisterOutputType(GetServiceNowConnectorAuthArrayOutput{})
-	pulumi.RegisterOutputType(GetServiceNowConnectorAuthAdfOutput{})
-	pulumi.RegisterOutputType(GetServiceNowConnectorAuthAdfArrayOutput{})
-	pulumi.RegisterOutputType(GetServiceNowConnectorAuthRefreshTokenOutput{})
-	pulumi.RegisterOutputType(GetServiceNowConnectorAuthRefreshTokenArrayOutput{})
-	pulumi.RegisterOutputType(GetServiceNowConnectorAuthUsernamePasswordOutput{})
-	pulumi.RegisterOutputType(GetServiceNowConnectorAuthUsernamePasswordArrayOutput{})
-	pulumi.RegisterOutputType(GetServiceOverridesV2GitDetailsOutput{})
-	pulumi.RegisterOutputType(GetServiceOverridesV2GitDetailsPtrOutput{})
-	pulumi.RegisterOutputType(GetSplunkConnectorBearerTokenOutput{})
-	pulumi.RegisterOutputType(GetSplunkConnectorBearerTokenArrayOutput{})
-	pulumi.RegisterOutputType(GetSplunkConnectorHecTokenOutput{})
-	pulumi.RegisterOutputType(GetSplunkConnectorHecTokenArrayOutput{})
-	pulumi.RegisterOutputType(GetSplunkConnectorNoAuthenticationOutput{})
-	pulumi.RegisterOutputType(GetSplunkConnectorNoAuthenticationArrayOutput{})
-	pulumi.RegisterOutputType(GetSplunkConnectorUsernamePasswordOutput{})
-	pulumi.RegisterOutputType(GetSplunkConnectorUsernamePasswordArrayOutput{})
-	pulumi.RegisterOutputType(GetSpotConnectorPermanentTokenOutput{})
-	pulumi.RegisterOutputType(GetSpotConnectorPermanentTokenArrayOutput{})
-	pulumi.RegisterOutputType(GetTasConnectorCredentialOutput{})
-	pulumi.RegisterOutputType(GetTasConnectorCredentialArrayOutput{})
-	pulumi.RegisterOutputType(GetTasConnectorCredentialTasManualDetailOutput{})
-	pulumi.RegisterOutputType(GetTasConnectorCredentialTasManualDetailArrayOutput{})
-	pulumi.RegisterOutputType(GetTemplateFiltersFilterPropertyOutput{})
-	pulumi.RegisterOutputType(GetTemplateFiltersFilterPropertyArrayOutput{})
-	pulumi.RegisterOutputType(GetTemplateGitDetailsOutput{})
-	pulumi.RegisterOutputType(GetTemplateGitDetailsPtrOutput{})
-	pulumi.RegisterOutputType(GetTerraformCloudConnectorCredentialOutput{})
-	pulumi.RegisterOutputType(GetTerraformCloudConnectorCredentialArrayOutput{})
-	pulumi.RegisterOutputType(GetTerraformCloudConnectorCredentialApiTokenOutput{})
-	pulumi.RegisterOutputType(GetTerraformCloudConnectorCredentialApiTokenArrayOutput{})
-	pulumi.RegisterOutputType(GetUsergroupNotificationConfigOutput{})
-	pulumi.RegisterOutputType(GetUsergroupNotificationConfigArrayOutput{})
-	pulumi.RegisterOutputType(GetVariablesSpecOutput{})
-	pulumi.RegisterOutputType(GetVariablesSpecArrayOutput{})
-	pulumi.RegisterOutputType(GetWorkspaceConnectorOutput{})
-	pulumi.RegisterOutputType(GetWorkspaceConnectorArrayOutput{})
-	pulumi.RegisterOutputType(GetWorkspaceEnvironmentVariableOutput{})
-	pulumi.RegisterOutputType(GetWorkspaceEnvironmentVariableArrayOutput{})
-	pulumi.RegisterOutputType(GetWorkspaceOutputValueOutputValueOutput{})
-	pulumi.RegisterOutputType(GetWorkspaceOutputValueOutputValueArrayOutput{})
-	pulumi.RegisterOutputType(GetWorkspaceTerraformVariableOutput{})
-	pulumi.RegisterOutputType(GetWorkspaceTerraformVariableArrayOutput{})
-	pulumi.RegisterOutputType(GetWorkspaceTerraformVariableFileOutput{})
-	pulumi.RegisterOutputType(GetWorkspaceTerraformVariableFileArrayOutput{})
-	pulumi.RegisterOutputType(GetWorkspacesWorkspaceOutput{})
-	pulumi.RegisterOutputType(GetWorkspacesWorkspaceArrayOutput{})
 }

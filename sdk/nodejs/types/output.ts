@@ -9864,6 +9864,453 @@ export namespace platform {
         storeType: string;
     }
 
+    export interface GetIdpIntegrationBitbucketCloud {
+        /**
+         * Lower bound for the first sync, RFC3339.
+         */
+        startDate: string;
+    }
+
+    export interface GetIdpIntegrationCatalogInfo {
+        /**
+         * Branch to read; omit for each repository's default branch.
+         */
+        branch: string;
+        /**
+         * Catalog file glob, relative to the repository root.
+         */
+        catalogPath: string;
+        /**
+         * Writes converted Harness YAML to git.
+         */
+        gitSyncs: outputs.platform.GetIdpIntegrationCatalogInfoGitSync[];
+        /**
+         * Repositories to scan; omit to scan all.
+         */
+        repositories: string[];
+        /**
+         * github or bitbucket.
+         */
+        sourceType: string;
+    }
+
+    export interface GetIdpIntegrationCatalogInfoGitSync {
+        /**
+         * Directory the files are written to.
+         */
+        basePath: string;
+        /**
+         * Connector used to push.
+         */
+        connectorRef: string;
+        /**
+         * Where to push. Set exactly one of sourceRepo or repo.
+         */
+        targets: outputs.platform.GetIdpIntegrationCatalogInfoGitSyncTarget[];
+    }
+
+    export interface GetIdpIntegrationCatalogInfoGitSyncTarget {
+        /**
+         * Push to one repository.
+         */
+        repos: outputs.platform.GetIdpIntegrationCatalogInfoGitSyncTargetRepo[];
+        /**
+         * Push to the repository each file was read from.
+         */
+        sourceRepo: boolean;
+    }
+
+    export interface GetIdpIntegrationCatalogInfoGitSyncTargetRepo {
+        /**
+         * Branch.
+         */
+        branch: string;
+        /**
+         * Repository.
+         */
+        name: string;
+    }
+
+    export interface GetIdpIntegrationConnector {
+        /**
+         * Credentials stored on the integration.
+         */
+        inlines: outputs.platform.GetIdpIntegrationConnectorInline[];
+        /**
+         * Reference to a standalone IDP connector.
+         */
+        ref: string;
+    }
+
+    export interface GetIdpIntegrationConnectorInline {
+        /**
+         * Harness connector reference, e.g. account.snow. Can't change.
+         */
+        credentialsRef: string;
+    }
+
+    export interface GetIdpIntegrationCustom {
+        /**
+         * Columns shown for the integration's entities.
+         */
+        layouts: outputs.platform.GetIdpIntegrationCustomLayout[];
+        /**
+         * webhook or api.
+         */
+        mode: string;
+        /**
+         * Label for the sending system.
+         */
+        sourceLabel: string;
+        /**
+         * Webhook authentication. Required in webhook mode.
+         */
+        webhookAuths: outputs.platform.GetIdpIntegrationCustomWebhookAuth[];
+    }
+
+    export interface GetIdpIntegrationCustomLayout {
+        /**
+         * A column.
+         */
+        columns: outputs.platform.GetIdpIntegrationCustomLayoutColumn[];
+    }
+
+    export interface GetIdpIntegrationCustomLayoutColumn {
+        /**
+         * JQ path of the value.
+         */
+        path: string;
+        /**
+         * Column title.
+         */
+        title: string;
+    }
+
+    export interface GetIdpIntegrationCustomWebhookAuth {
+        /**
+         * Header carrying the signature or token.
+         */
+        authHeader: string;
+        /**
+         * hmac_auth or jwt_auth.
+         */
+        authType: string;
+        /**
+         * HMAC hash: hmac_sha224, hmac_sha256, hmacSha384 or hmac_sha512.
+         */
+        hashAlgo: string;
+        /**
+         * Secret reference holding the shared secret.
+         */
+        secretRef: string;
+    }
+
+    export interface GetIdpIntegrationDatadog {
+        /**
+         * Environment used to add service dependencies.
+         */
+        serviceDependenciesEnv: string;
+    }
+
+    export interface GetIdpIntegrationDynatrace {
+        /**
+         * Secret reference to a Platform API token.
+         */
+        platformTokenRef: string;
+        /**
+         * Lower bound for incremental streams, RFC3339.
+         */
+        startDate: string;
+    }
+
+    export interface GetIdpIntegrationEndpoint {
+        /**
+         * Kind.
+         */
+        kind: string;
+        /**
+         * HTTP method.
+         */
+        method: string;
+        /**
+         * Path relative to the integration manager, e.g. https://app.harness.io/gateway/integration.
+         */
+        url: string;
+    }
+
+    export interface GetIdpIntegrationGcp {
+        /**
+         * The organization or folder whose assets are synced. Set exactly one field.
+         */
+        parents: outputs.platform.GetIdpIntegrationGcpParent[];
+    }
+
+    export interface GetIdpIntegrationGcpParent {
+        /**
+         * Folder ID.
+         */
+        folderId: string;
+        /**
+         * Organization ID.
+         */
+        orgId: string;
+    }
+
+    export interface GetIdpIntegrationGithub {
+        /**
+         * Agents file to detect in repositories.
+         */
+        agentFileName: string;
+        /**
+         * Organizations to sync.
+         */
+        orgs: string[];
+        /**
+         * Lower bound for the first sync, RFC3339.
+         */
+        startDate: string;
+    }
+
+    export interface GetIdpIntegrationHarnessCd {
+        /**
+         * Days of deployments to read.
+         */
+        deploymentCycle: number;
+        /**
+         * Fields to map per kind; omit to map all.
+         */
+        mappingFields: outputs.platform.GetIdpIntegrationHarnessCdMappingField[];
+    }
+
+    export interface GetIdpIntegrationHarnessCdMappingField {
+        /**
+         * Fields.
+         */
+        fields: string[];
+        /**
+         * Kind.
+         */
+        kind: string;
+    }
+
+    export interface GetIdpIntegrationHarnessCode {
+        /**
+         * Agents file to detect in repositories.
+         */
+        agentFileName: string;
+    }
+
+    export interface GetIdpIntegrationHarnessK8 {
+        /**
+         * Environment.
+         */
+        environmentIdentifier: string;
+        /**
+         * Service discovery agent.
+         */
+        serviceDiscoveryAgentIdentifier: string;
+    }
+
+    export interface GetIdpIntegrationJira {
+        /**
+         * Custom field IDs to sync, like customfield_10456.
+         */
+        customFields: string[];
+        /**
+         * Lower bound for the first sync, RFC3339; 365 days back when omitted.
+         */
+        startDate: string;
+    }
+
+    export interface GetIdpIntegrationKind {
+        /**
+         * register, merge or merge_register; the type's default when omitted.
+         */
+        action: string;
+        /**
+         * Import new entities automatically.
+         */
+        autoImport: boolean;
+        /**
+         * JQ that returns true for records to keep; the type's default when omitted.
+         */
+        filter: string;
+        /**
+         * Airbyte types: entity kind, e.g. component; the type's default when omitted. Set at create only; required for kinds with no default, such as ServiceNow's.
+         */
+        idpKind: string;
+        /**
+         * Airbyte types: entity type, e.g. service; the type's default when omitted. Set at create only.
+         */
+        idpType: string;
+        /**
+         * Kind name.
+         */
+        kind: string;
+        /**
+         * Airbyte types: the stream's sync mode, fullRefresh or incremental.
+         */
+        replicationMode: string;
+    }
+
+    export interface GetIdpIntegrationKindMappingCorrelation {
+        /**
+         * Match operator; eq when omitted.
+         */
+        operator: string;
+        /**
+         * Field to match. Airbyte types: a path in the emitted entity data, e.g. identifier or spec.owner; Custom: a payload field.
+         */
+        sourcePath: string;
+        /**
+         * Entity field to match, e.g. metadata.identifier.
+         */
+        targetPath: string;
+    }
+
+    export interface GetIdpIntegrationKindMappingEmission {
+        identifier: string;
+        name: string;
+        /**
+         * JSON object.
+         */
+        properties: string;
+    }
+
+    export interface GetIdpIntegrationKindMappingFieldMapping {
+        /**
+         * Source field.
+         */
+        sourceField: string;
+        /**
+         * Entity field, e.g. spec.owner.
+         */
+        targetField: string;
+    }
+
+    export interface GetIdpIntegrationKindMappingIngestion {
+        /**
+         * JQ for the entity identifier.
+         */
+        identifier: string;
+        /**
+         * JQ for the entity name.
+         */
+        name: string;
+        /**
+         * JQ per entity property; derived from the payload schema when omitted.
+         */
+        properties: {[key: string]: string};
+    }
+
+    export interface GetIdpIntegrationPagerduty {
+        /**
+         * Months of analytics to aggregate.
+         */
+        analyticsDurationMonths: number;
+        /**
+         * Lower bound for the first sync, RFC3339.
+         */
+        startDate: string;
+    }
+
+    export interface GetIdpIntegrationScope {
+        /**
+         * Read from every scope.
+         */
+        all: boolean;
+        /**
+         * Scopes to read from: "" for the account, "org" or "org/project".
+         */
+        selecteds: string[];
+    }
+
+    export interface GetIdpIntegrationSonarqube {
+        /**
+         * Set exactly one of server or cloud.
+         */
+        instances: outputs.platform.GetIdpIntegrationSonarqubeInstance[];
+        /**
+         * Filters for the issues stream.
+         */
+        issues: outputs.platform.GetIdpIntegrationSonarqubeIssue[];
+        /**
+         * Projects to sync; omit to sync all. Set exactly one of include or exclude.
+         */
+        projects: outputs.platform.GetIdpIntegrationSonarqubeProject[];
+        /**
+         * Lower bound for the first sync, RFC3339.
+         */
+        startDate: string;
+        /**
+         * Secret reference to a SonarQube user token.
+         */
+        tokenRef: string;
+    }
+
+    export interface GetIdpIntegrationSonarqubeInstance {
+        /**
+         * SonarQube Cloud.
+         */
+        clouds: outputs.platform.GetIdpIntegrationSonarqubeInstanceCloud[];
+        /**
+         * Self-hosted SonarQube Server.
+         */
+        servers: outputs.platform.GetIdpIntegrationSonarqubeInstanceServer[];
+    }
+
+    export interface GetIdpIntegrationSonarqubeInstanceCloud {
+        /**
+         * Cloud URL.
+         */
+        hostUrl: string;
+        /**
+         * Organization key.
+         */
+        organization: string;
+    }
+
+    export interface GetIdpIntegrationSonarqubeInstanceServer {
+        /**
+         * Server URL.
+         */
+        hostUrl: string;
+    }
+
+    export interface GetIdpIntegrationSonarqubeIssue {
+        /**
+         * INFO, LOW, MEDIUM, HIGH or BLOCKER.
+         */
+        impactSeverities: string[];
+        /**
+         * OPEN, CONFIRMED, FALSE_POSITIVE, ACCEPTED, FIXED or IN_SANDBOX.
+         */
+        issueStatuses: string[];
+        /**
+         * "true" for resolved issues only, "false" for unresolved only; omit for both.
+         */
+        resolved: string;
+        /**
+         * INFO, MINOR, MAJOR, CRITICAL or BLOCKER.
+         */
+        severities: string[];
+        /**
+         * CODE_SMELL, BUG or VULNERABILITY.
+         */
+        types: string[];
+    }
+
+    export interface GetIdpIntegrationSonarqubeProject {
+        /**
+         * Every project except these keys.
+         */
+        excludes: string[];
+        /**
+         * Only these project keys.
+         */
+        includes: string[];
+    }
+
     export interface GetIdpPluginEnvVariable {
         /**
          * Name of the environment variable.
@@ -40145,6 +40592,492 @@ export namespace platform {
          * Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
          */
         storeType: string;
+    }
+
+    export interface IdpIntegrationBitbucketCloud {
+        /**
+         * Lower bound for the first sync, RFC3339.
+         */
+        startDate: string;
+    }
+
+    export interface IdpIntegrationCatalogInfo {
+        /**
+         * Branch to read; omit for each repository's default branch.
+         */
+        branch?: string;
+        /**
+         * Catalog file glob, relative to the repository root.
+         */
+        catalogPath: string;
+        /**
+         * Writes converted Harness YAML to git.
+         */
+        gitSync?: outputs.platform.IdpIntegrationCatalogInfoGitSync;
+        /**
+         * Repositories to scan; omit to scan all.
+         */
+        repositories?: string[];
+        /**
+         * github or bitbucket.
+         */
+        sourceType: string;
+    }
+
+    export interface IdpIntegrationCatalogInfoGitSync {
+        /**
+         * Directory the files are written to.
+         */
+        basePath: string;
+        /**
+         * Connector used to push.
+         */
+        connectorRef: string;
+        /**
+         * Where to push. Set exactly one of source*repo or repo.
+         */
+        target: outputs.platform.IdpIntegrationCatalogInfoGitSyncTarget;
+    }
+
+    export interface IdpIntegrationCatalogInfoGitSyncTarget {
+        /**
+         * Push to one repository.
+         */
+        repo?: outputs.platform.IdpIntegrationCatalogInfoGitSyncTargetRepo;
+        /**
+         * Push to the repository each file was read from.
+         */
+        sourceRepo?: boolean;
+    }
+
+    export interface IdpIntegrationCatalogInfoGitSyncTargetRepo {
+        /**
+         * Branch.
+         */
+        branch: string;
+        /**
+         * Repository.
+         */
+        name: string;
+    }
+
+    export interface IdpIntegrationConnector {
+        /**
+         * Credentials stored on the integration.
+         */
+        inline?: outputs.platform.IdpIntegrationConnectorInline;
+        /**
+         * Reference to a standalone IDP connector.
+         */
+        ref?: string;
+    }
+
+    export interface IdpIntegrationConnectorInline {
+        /**
+         * Harness connector reference, e.g. account.snow. Can't change.
+         */
+        credentialsRef: string;
+    }
+
+    export interface IdpIntegrationCustom {
+        /**
+         * Columns shown for the integration's entities.
+         */
+        layout: outputs.platform.IdpIntegrationCustomLayout;
+        /**
+         * webhook or api.
+         */
+        mode: string;
+        /**
+         * Label for the sending system.
+         */
+        sourceLabel: string;
+        /**
+         * Webhook authentication. Required in webhook mode.
+         */
+        webhookAuth?: outputs.platform.IdpIntegrationCustomWebhookAuth;
+    }
+
+    export interface IdpIntegrationCustomLayout {
+        /**
+         * A column.
+         */
+        columns: outputs.platform.IdpIntegrationCustomLayoutColumn[];
+    }
+
+    export interface IdpIntegrationCustomLayoutColumn {
+        /**
+         * JQ path of the value.
+         */
+        path: string;
+        /**
+         * Column title.
+         */
+        title: string;
+    }
+
+    export interface IdpIntegrationCustomWebhookAuth {
+        /**
+         * Header carrying the signature or token.
+         */
+        authHeader?: string;
+        /**
+         * hmac*auth or jwt*auth.
+         */
+        authType: string;
+        /**
+         * HMAC hash: hmac*sha224, hmac*sha256, hmac*sha384 or hmac*sha512.
+         */
+        hashAlgo?: string;
+        /**
+         * Secret reference holding the shared secret.
+         */
+        secretRef?: string;
+    }
+
+    export interface IdpIntegrationDatadog {
+        /**
+         * Environment used to add service dependencies.
+         */
+        serviceDependenciesEnv?: string;
+    }
+
+    export interface IdpIntegrationDynatrace {
+        /**
+         * Secret reference to a Platform API token.
+         */
+        platformTokenRef?: string;
+        /**
+         * Lower bound for incremental streams, RFC3339.
+         */
+        startDate: string;
+    }
+
+    export interface IdpIntegrationEndpoint {
+        /**
+         * Kind.
+         */
+        kind: string;
+        /**
+         * HTTP method.
+         */
+        method: string;
+        /**
+         * Path relative to the integration manager, e.g. https://app.harness.io/gateway/integration.
+         */
+        url: string;
+    }
+
+    export interface IdpIntegrationGcp {
+        /**
+         * The organization or folder whose assets are synced. Set exactly one field.
+         */
+        parent: outputs.platform.IdpIntegrationGcpParent;
+    }
+
+    export interface IdpIntegrationGcpParent {
+        /**
+         * Folder ID.
+         */
+        folderId?: string;
+        /**
+         * Organization ID.
+         */
+        orgId?: string;
+    }
+
+    export interface IdpIntegrationGithub {
+        /**
+         * Agents file to detect in repositories.
+         */
+        agentFileName: string;
+        /**
+         * Organizations to sync.
+         */
+        orgs: string[];
+        /**
+         * Lower bound for the first sync, RFC3339.
+         */
+        startDate: string;
+    }
+
+    export interface IdpIntegrationHarnessCd {
+        /**
+         * Days of deployments to read.
+         */
+        deploymentCycle: number;
+        /**
+         * Fields to map per kind; omit to map all.
+         */
+        mappingFields?: outputs.platform.IdpIntegrationHarnessCdMappingField[];
+    }
+
+    export interface IdpIntegrationHarnessCdMappingField {
+        /**
+         * Fields.
+         */
+        fields: string[];
+        /**
+         * Kind.
+         */
+        kind: string;
+    }
+
+    export interface IdpIntegrationHarnessCode {
+        /**
+         * Agents file to detect in repositories.
+         */
+        agentFileName: string;
+    }
+
+    export interface IdpIntegrationHarnessK8s {
+        /**
+         * Environment.
+         */
+        environmentIdentifier: string;
+        /**
+         * Service discovery agent.
+         */
+        serviceDiscoveryAgentIdentifier: string;
+    }
+
+    export interface IdpIntegrationJira {
+        /**
+         * Custom field IDs to sync, like customfield_10456.
+         */
+        customFields?: string[];
+        /**
+         * Lower bound for the first sync, RFC3339; 365 days back when omitted.
+         */
+        startDate: string;
+    }
+
+    export interface IdpIntegrationKind {
+        /**
+         * register, merge or merge_register; the type's default when omitted.
+         */
+        action: string;
+        /**
+         * Import new entities automatically.
+         */
+        autoImport?: boolean;
+        /**
+         * JQ that returns true for records to keep; the type's default when omitted.
+         */
+        filter: string;
+        /**
+         * Airbyte types: entity kind, e.g. component; the type's default when omitted. Set at create only; required for kinds with no default, such as ServiceNow's.
+         */
+        idpKind: string;
+        /**
+         * Airbyte types: entity type, e.g. service; the type's default when omitted. Set at create only.
+         */
+        idpType: string;
+        /**
+         * Kind name.
+         */
+        kind: string;
+        /**
+         * The kind's mapping, sent with the create so the first sync uses it. Omitted fields keep the type's defaults. Create only: it can't be added or changed afterwards, and removing it leaves the mapping as it is. Use harness*platform*idp*integration*kind_mapping to manage the mapping after the create, and don't use both for the same kind.
+         */
+        mapping?: outputs.platform.IdpIntegrationKindMapping;
+        /**
+         * Airbyte types: the stream's sync mode, fullRefresh or incremental.
+         */
+        replicationMode: string;
+    }
+
+    export interface IdpIntegrationKindMapping {
+        /**
+         * Links records to existing entities; the server's when omitted.
+         */
+        correlation?: outputs.platform.IdpIntegrationKindMappingCorrelation;
+        /**
+         * Source field used as the entity's name.
+         */
+        displayNameField?: string;
+        /**
+         * Maps a source field to an entity field. Airbyte types. Omitted, the type's defaults apply; removing it from the config keeps the last value, so destroy the mapping resource to go back to them.
+         */
+        fieldMappings?: outputs.platform.IdpIntegrationKindMappingFieldMapping[];
+        /**
+         * Entity kind, e.g. component.
+         */
+        idpKind?: string;
+        /**
+         * Entity type, e.g. service.
+         */
+        idpType?: string;
+        /**
+         * Custom types: JQ that builds the entity from a payload.
+         */
+        ingestion?: outputs.platform.IdpIntegrationKindMappingIngestion;
+        /**
+         * Custom types, custom kind: JSON Schema of the payload.
+         */
+        payloadSchema?: string;
+        /**
+         * Source field that identifies an entity. Can't change on Airbyte types.
+         */
+        uniqueIdentifierField?: string;
+    }
+
+    export interface IdpIntegrationKindMappingCorrelation {
+        /**
+         * Match operator; eq when omitted.
+         */
+        operator: string;
+        /**
+         * Field to match. Airbyte types: a path in the emitted entity data, e.g. identifier or spec.owner; Custom: a payload field.
+         */
+        sourcePath: string;
+        /**
+         * Entity field to match, e.g. metadata.identifier.
+         */
+        targetPath: string;
+    }
+
+    export interface IdpIntegrationKindMappingEmission {
+        identifier: string;
+        name: string;
+        /**
+         * JSON object.
+         */
+        properties: string;
+    }
+
+    export interface IdpIntegrationKindMappingFieldMapping {
+        /**
+         * Source field.
+         */
+        sourceField: string;
+        /**
+         * Entity field, e.g. spec.owner.
+         */
+        targetField: string;
+    }
+
+    export interface IdpIntegrationKindMappingIngestion {
+        /**
+         * JQ for the entity identifier.
+         */
+        identifier: string;
+        /**
+         * JQ for the entity name.
+         */
+        name?: string;
+        /**
+         * JQ per entity property; derived from the payload schema when omitted.
+         */
+        properties: {[key: string]: string};
+    }
+
+    export interface IdpIntegrationPagerduty {
+        /**
+         * Months of analytics to aggregate.
+         */
+        analyticsDurationMonths: number;
+        /**
+         * Lower bound for the first sync, RFC3339.
+         */
+        startDate: string;
+    }
+
+    export interface IdpIntegrationScopes {
+        /**
+         * Read from every scope.
+         */
+        all?: boolean;
+        /**
+         * Scopes to read from: "" for the account, "org" or "org/project".
+         */
+        selecteds?: string[];
+    }
+
+    export interface IdpIntegrationSonarqube {
+        /**
+         * Set exactly one of server or cloud.
+         */
+        instance: outputs.platform.IdpIntegrationSonarqubeInstance;
+        /**
+         * Filters for the issues stream.
+         */
+        issues?: outputs.platform.IdpIntegrationSonarqubeIssues;
+        /**
+         * Projects to sync; omit to sync all. Set exactly one of include or exclude.
+         */
+        projects?: outputs.platform.IdpIntegrationSonarqubeProjects;
+        /**
+         * Lower bound for the first sync, RFC3339.
+         */
+        startDate: string;
+        /**
+         * Secret reference to a SonarQube user token.
+         */
+        tokenRef: string;
+    }
+
+    export interface IdpIntegrationSonarqubeInstance {
+        /**
+         * SonarQube Cloud.
+         */
+        cloud?: outputs.platform.IdpIntegrationSonarqubeInstanceCloud;
+        /**
+         * Self-hosted SonarQube Server.
+         */
+        server?: outputs.platform.IdpIntegrationSonarqubeInstanceServer;
+    }
+
+    export interface IdpIntegrationSonarqubeInstanceCloud {
+        /**
+         * Cloud URL.
+         */
+        hostUrl: string;
+        /**
+         * Organization key.
+         */
+        organization: string;
+    }
+
+    export interface IdpIntegrationSonarqubeInstanceServer {
+        /**
+         * Server URL.
+         */
+        hostUrl: string;
+    }
+
+    export interface IdpIntegrationSonarqubeIssues {
+        /**
+         * INFO, LOW, MEDIUM, HIGH or BLOCKER.
+         */
+        impactSeverities?: string[];
+        /**
+         * OPEN, CONFIRMED, FALSE*POSITIVE, ACCEPTED, FIXED or IN*SANDBOX.
+         */
+        issueStatuses?: string[];
+        /**
+         * "true" for resolved issues only, "false" for unresolved only; omit for both.
+         */
+        resolved?: string;
+        /**
+         * INFO, MINOR, MAJOR, CRITICAL or BLOCKER.
+         */
+        severities?: string[];
+        /**
+         * CODE_SMELL, BUG or VULNERABILITY.
+         */
+        types?: string[];
+    }
+
+    export interface IdpIntegrationSonarqubeProjects {
+        /**
+         * Every project except these keys.
+         */
+        excludes?: string[];
+        /**
+         * Only these project keys.
+         */
+        includes?: string[];
     }
 
     export interface IdpPluginEnvVariable {

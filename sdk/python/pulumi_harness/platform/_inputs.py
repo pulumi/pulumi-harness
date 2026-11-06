@@ -3149,6 +3149,78 @@ __all__ = [
     'IacmAnsiblePlaybookVarArgsDict',
     'IdpCatalogEntityGitDetailsArgs',
     'IdpCatalogEntityGitDetailsArgsDict',
+    'IdpIntegrationBitbucketCloudArgs',
+    'IdpIntegrationBitbucketCloudArgsDict',
+    'IdpIntegrationCatalogInfoArgs',
+    'IdpIntegrationCatalogInfoArgsDict',
+    'IdpIntegrationCatalogInfoGitSyncArgs',
+    'IdpIntegrationCatalogInfoGitSyncArgsDict',
+    'IdpIntegrationCatalogInfoGitSyncTargetArgs',
+    'IdpIntegrationCatalogInfoGitSyncTargetArgsDict',
+    'IdpIntegrationCatalogInfoGitSyncTargetRepoArgs',
+    'IdpIntegrationCatalogInfoGitSyncTargetRepoArgsDict',
+    'IdpIntegrationConnectorArgs',
+    'IdpIntegrationConnectorArgsDict',
+    'IdpIntegrationConnectorInlineArgs',
+    'IdpIntegrationConnectorInlineArgsDict',
+    'IdpIntegrationCustomArgs',
+    'IdpIntegrationCustomArgsDict',
+    'IdpIntegrationCustomLayoutArgs',
+    'IdpIntegrationCustomLayoutArgsDict',
+    'IdpIntegrationCustomLayoutColumnArgs',
+    'IdpIntegrationCustomLayoutColumnArgsDict',
+    'IdpIntegrationCustomWebhookAuthArgs',
+    'IdpIntegrationCustomWebhookAuthArgsDict',
+    'IdpIntegrationDatadogArgs',
+    'IdpIntegrationDatadogArgsDict',
+    'IdpIntegrationDynatraceArgs',
+    'IdpIntegrationDynatraceArgsDict',
+    'IdpIntegrationEndpointArgs',
+    'IdpIntegrationEndpointArgsDict',
+    'IdpIntegrationGcpArgs',
+    'IdpIntegrationGcpArgsDict',
+    'IdpIntegrationGcpParentArgs',
+    'IdpIntegrationGcpParentArgsDict',
+    'IdpIntegrationGithubArgs',
+    'IdpIntegrationGithubArgsDict',
+    'IdpIntegrationHarnessCdArgs',
+    'IdpIntegrationHarnessCdArgsDict',
+    'IdpIntegrationHarnessCdMappingFieldArgs',
+    'IdpIntegrationHarnessCdMappingFieldArgsDict',
+    'IdpIntegrationHarnessCodeArgs',
+    'IdpIntegrationHarnessCodeArgsDict',
+    'IdpIntegrationHarnessK8sArgs',
+    'IdpIntegrationHarnessK8sArgsDict',
+    'IdpIntegrationJiraArgs',
+    'IdpIntegrationJiraArgsDict',
+    'IdpIntegrationKindArgs',
+    'IdpIntegrationKindArgsDict',
+    'IdpIntegrationKindMappingArgs',
+    'IdpIntegrationKindMappingArgsDict',
+    'IdpIntegrationKindMappingCorrelationArgs',
+    'IdpIntegrationKindMappingCorrelationArgsDict',
+    'IdpIntegrationKindMappingEmissionArgs',
+    'IdpIntegrationKindMappingEmissionArgsDict',
+    'IdpIntegrationKindMappingFieldMappingArgs',
+    'IdpIntegrationKindMappingFieldMappingArgsDict',
+    'IdpIntegrationKindMappingIngestionArgs',
+    'IdpIntegrationKindMappingIngestionArgsDict',
+    'IdpIntegrationPagerdutyArgs',
+    'IdpIntegrationPagerdutyArgsDict',
+    'IdpIntegrationScopesArgs',
+    'IdpIntegrationScopesArgsDict',
+    'IdpIntegrationSonarqubeArgs',
+    'IdpIntegrationSonarqubeArgsDict',
+    'IdpIntegrationSonarqubeInstanceArgs',
+    'IdpIntegrationSonarqubeInstanceArgsDict',
+    'IdpIntegrationSonarqubeInstanceCloudArgs',
+    'IdpIntegrationSonarqubeInstanceCloudArgsDict',
+    'IdpIntegrationSonarqubeInstanceServerArgs',
+    'IdpIntegrationSonarqubeInstanceServerArgsDict',
+    'IdpIntegrationSonarqubeIssuesArgs',
+    'IdpIntegrationSonarqubeIssuesArgsDict',
+    'IdpIntegrationSonarqubeProjectsArgs',
+    'IdpIntegrationSonarqubeProjectsArgsDict',
     'IdpPluginEnvVariableArgs',
     'IdpPluginEnvVariableArgsDict',
     'IdpPluginProxyArgs',
@@ -142406,6 +142478,2210 @@ class IdpCatalogEntityGitDetailsArgs:
     @store_type.setter
     def store_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "store_type", value)
+
+
+class IdpIntegrationBitbucketCloudArgsDict(TypedDict):
+    start_date: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Lower bound for the first sync, RFC3339.
+    """
+
+@pulumi.input_type
+class IdpIntegrationBitbucketCloudArgs:
+    def __init__(__self__, *,
+                 start_date: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] start_date: Lower bound for the first sync, RFC3339.
+        """
+        if start_date is not None:
+            pulumi.set(__self__, "start_date", start_date)
+
+    @_builtins.property
+    @pulumi.getter(name="startDate")
+    def start_date(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Lower bound for the first sync, RFC3339.
+        """
+        return pulumi.get(self, "start_date")
+
+    @start_date.setter
+    def start_date(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "start_date", value)
+
+
+class IdpIntegrationCatalogInfoArgsDict(TypedDict):
+    branch: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Branch to read; omit for each repository's default branch.
+    """
+    catalog_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Catalog file glob, relative to the repository root.
+    """
+    git_sync: NotRequired[pulumi.Input[Optional['IdpIntegrationCatalogInfoGitSyncArgsDict']]]
+    """
+    Writes converted Harness YAML to git.
+    """
+    repositories: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Repositories to scan; omit to scan all.
+    """
+    source_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    github or bitbucket.
+    """
+
+@pulumi.input_type
+class IdpIntegrationCatalogInfoArgs:
+    def __init__(__self__, *,
+                 branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 catalog_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_sync: pulumi.Input[Optional['IdpIntegrationCatalogInfoGitSyncArgs']] = None,
+                 repositories: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 source_type: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] branch: Branch to read; omit for each repository's default branch.
+        :param pulumi.Input[_builtins.str] catalog_path: Catalog file glob, relative to the repository root.
+        :param pulumi.Input['IdpIntegrationCatalogInfoGitSyncArgs'] git_sync: Writes converted Harness YAML to git.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] repositories: Repositories to scan; omit to scan all.
+        :param pulumi.Input[_builtins.str] source_type: github or bitbucket.
+        """
+        if branch is not None:
+            pulumi.set(__self__, "branch", branch)
+        if catalog_path is not None:
+            pulumi.set(__self__, "catalog_path", catalog_path)
+        if git_sync is not None:
+            pulumi.set(__self__, "git_sync", git_sync)
+        if repositories is not None:
+            pulumi.set(__self__, "repositories", repositories)
+        if source_type is not None:
+            pulumi.set(__self__, "source_type", source_type)
+
+    @_builtins.property
+    @pulumi.getter
+    def branch(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Branch to read; omit for each repository's default branch.
+        """
+        return pulumi.get(self, "branch")
+
+    @branch.setter
+    def branch(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "branch", value)
+
+    @_builtins.property
+    @pulumi.getter(name="catalogPath")
+    def catalog_path(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Catalog file glob, relative to the repository root.
+        """
+        return pulumi.get(self, "catalog_path")
+
+    @catalog_path.setter
+    def catalog_path(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "catalog_path", value)
+
+    @_builtins.property
+    @pulumi.getter(name="gitSync")
+    def git_sync(self) -> pulumi.Input[Optional['IdpIntegrationCatalogInfoGitSyncArgs']]:
+        """
+        Writes converted Harness YAML to git.
+        """
+        return pulumi.get(self, "git_sync")
+
+    @git_sync.setter
+    def git_sync(self, value: pulumi.Input[Optional['IdpIntegrationCatalogInfoGitSyncArgs']]):
+        pulumi.set(self, "git_sync", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def repositories(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Repositories to scan; omit to scan all.
+        """
+        return pulumi.get(self, "repositories")
+
+    @repositories.setter
+    def repositories(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "repositories", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sourceType")
+    def source_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        github or bitbucket.
+        """
+        return pulumi.get(self, "source_type")
+
+    @source_type.setter
+    def source_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "source_type", value)
+
+
+class IdpIntegrationCatalogInfoGitSyncArgsDict(TypedDict):
+    connector_ref: pulumi.Input[_builtins.str]
+    """
+    Connector used to push.
+    """
+    target: pulumi.Input['IdpIntegrationCatalogInfoGitSyncTargetArgsDict']
+    """
+    Where to push. Set exactly one of source*repo or repo.
+    """
+    base_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Directory the files are written to.
+    """
+
+@pulumi.input_type
+class IdpIntegrationCatalogInfoGitSyncArgs:
+    def __init__(__self__, *,
+                 connector_ref: pulumi.Input[_builtins.str],
+                 target: pulumi.Input['IdpIntegrationCatalogInfoGitSyncTargetArgs'],
+                 base_path: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] connector_ref: Connector used to push.
+        :param pulumi.Input['IdpIntegrationCatalogInfoGitSyncTargetArgs'] target: Where to push. Set exactly one of source*repo or repo.
+        :param pulumi.Input[_builtins.str] base_path: Directory the files are written to.
+        """
+        pulumi.set(__self__, "connector_ref", connector_ref)
+        pulumi.set(__self__, "target", target)
+        if base_path is not None:
+            pulumi.set(__self__, "base_path", base_path)
+
+    @_builtins.property
+    @pulumi.getter(name="connectorRef")
+    def connector_ref(self) -> pulumi.Input[_builtins.str]:
+        """
+        Connector used to push.
+        """
+        return pulumi.get(self, "connector_ref")
+
+    @connector_ref.setter
+    def connector_ref(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "connector_ref", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def target(self) -> pulumi.Input['IdpIntegrationCatalogInfoGitSyncTargetArgs']:
+        """
+        Where to push. Set exactly one of source*repo or repo.
+        """
+        return pulumi.get(self, "target")
+
+    @target.setter
+    def target(self, value: pulumi.Input['IdpIntegrationCatalogInfoGitSyncTargetArgs']):
+        pulumi.set(self, "target", value)
+
+    @_builtins.property
+    @pulumi.getter(name="basePath")
+    def base_path(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Directory the files are written to.
+        """
+        return pulumi.get(self, "base_path")
+
+    @base_path.setter
+    def base_path(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "base_path", value)
+
+
+class IdpIntegrationCatalogInfoGitSyncTargetArgsDict(TypedDict):
+    repo: NotRequired[pulumi.Input[Optional['IdpIntegrationCatalogInfoGitSyncTargetRepoArgsDict']]]
+    """
+    Push to one repository.
+    """
+    source_repo: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Push to the repository each file was read from.
+    """
+
+@pulumi.input_type
+class IdpIntegrationCatalogInfoGitSyncTargetArgs:
+    def __init__(__self__, *,
+                 repo: pulumi.Input[Optional['IdpIntegrationCatalogInfoGitSyncTargetRepoArgs']] = None,
+                 source_repo: pulumi.Input[Optional[_builtins.bool]] = None):
+        """
+        :param pulumi.Input['IdpIntegrationCatalogInfoGitSyncTargetRepoArgs'] repo: Push to one repository.
+        :param pulumi.Input[_builtins.bool] source_repo: Push to the repository each file was read from.
+        """
+        if repo is not None:
+            pulumi.set(__self__, "repo", repo)
+        if source_repo is not None:
+            pulumi.set(__self__, "source_repo", source_repo)
+
+    @_builtins.property
+    @pulumi.getter
+    def repo(self) -> pulumi.Input[Optional['IdpIntegrationCatalogInfoGitSyncTargetRepoArgs']]:
+        """
+        Push to one repository.
+        """
+        return pulumi.get(self, "repo")
+
+    @repo.setter
+    def repo(self, value: pulumi.Input[Optional['IdpIntegrationCatalogInfoGitSyncTargetRepoArgs']]):
+        pulumi.set(self, "repo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sourceRepo")
+    def source_repo(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Push to the repository each file was read from.
+        """
+        return pulumi.get(self, "source_repo")
+
+    @source_repo.setter
+    def source_repo(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "source_repo", value)
+
+
+class IdpIntegrationCatalogInfoGitSyncTargetRepoArgsDict(TypedDict):
+    branch: pulumi.Input[_builtins.str]
+    """
+    Branch.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Repository.
+    """
+
+@pulumi.input_type
+class IdpIntegrationCatalogInfoGitSyncTargetRepoArgs:
+    def __init__(__self__, *,
+                 branch: pulumi.Input[_builtins.str],
+                 name: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] branch: Branch.
+        :param pulumi.Input[_builtins.str] name: Repository.
+        """
+        pulumi.set(__self__, "branch", branch)
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def branch(self) -> pulumi.Input[_builtins.str]:
+        """
+        Branch.
+        """
+        return pulumi.get(self, "branch")
+
+    @branch.setter
+    def branch(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "branch", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Repository.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+
+class IdpIntegrationConnectorArgsDict(TypedDict):
+    inline: NotRequired[pulumi.Input[Optional['IdpIntegrationConnectorInlineArgsDict']]]
+    """
+    Credentials stored on the integration.
+    """
+    ref: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Reference to a standalone IDP connector.
+    """
+
+@pulumi.input_type
+class IdpIntegrationConnectorArgs:
+    def __init__(__self__, *,
+                 inline: pulumi.Input[Optional['IdpIntegrationConnectorInlineArgs']] = None,
+                 ref: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input['IdpIntegrationConnectorInlineArgs'] inline: Credentials stored on the integration.
+        :param pulumi.Input[_builtins.str] ref: Reference to a standalone IDP connector.
+        """
+        if inline is not None:
+            pulumi.set(__self__, "inline", inline)
+        if ref is not None:
+            pulumi.set(__self__, "ref", ref)
+
+    @_builtins.property
+    @pulumi.getter
+    def inline(self) -> pulumi.Input[Optional['IdpIntegrationConnectorInlineArgs']]:
+        """
+        Credentials stored on the integration.
+        """
+        return pulumi.get(self, "inline")
+
+    @inline.setter
+    def inline(self, value: pulumi.Input[Optional['IdpIntegrationConnectorInlineArgs']]):
+        pulumi.set(self, "inline", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ref(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Reference to a standalone IDP connector.
+        """
+        return pulumi.get(self, "ref")
+
+    @ref.setter
+    def ref(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "ref", value)
+
+
+class IdpIntegrationConnectorInlineArgsDict(TypedDict):
+    credentials_ref: pulumi.Input[_builtins.str]
+    """
+    Harness connector reference, e.g. account.snow. Can't change.
+    """
+
+@pulumi.input_type
+class IdpIntegrationConnectorInlineArgs:
+    def __init__(__self__, *,
+                 credentials_ref: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] credentials_ref: Harness connector reference, e.g. account.snow. Can't change.
+        """
+        pulumi.set(__self__, "credentials_ref", credentials_ref)
+
+    @_builtins.property
+    @pulumi.getter(name="credentialsRef")
+    def credentials_ref(self) -> pulumi.Input[_builtins.str]:
+        """
+        Harness connector reference, e.g. account.snow. Can't change.
+        """
+        return pulumi.get(self, "credentials_ref")
+
+    @credentials_ref.setter
+    def credentials_ref(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "credentials_ref", value)
+
+
+class IdpIntegrationCustomArgsDict(TypedDict):
+    mode: pulumi.Input[_builtins.str]
+    """
+    webhook or api.
+    """
+    layout: NotRequired[pulumi.Input[Optional['IdpIntegrationCustomLayoutArgsDict']]]
+    """
+    Columns shown for the integration's entities.
+    """
+    source_label: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Label for the sending system.
+    """
+    webhook_auth: NotRequired[pulumi.Input[Optional['IdpIntegrationCustomWebhookAuthArgsDict']]]
+    """
+    Webhook authentication. Required in webhook mode.
+    """
+
+@pulumi.input_type
+class IdpIntegrationCustomArgs:
+    def __init__(__self__, *,
+                 mode: pulumi.Input[_builtins.str],
+                 layout: pulumi.Input[Optional['IdpIntegrationCustomLayoutArgs']] = None,
+                 source_label: pulumi.Input[Optional[_builtins.str]] = None,
+                 webhook_auth: pulumi.Input[Optional['IdpIntegrationCustomWebhookAuthArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.str] mode: webhook or api.
+        :param pulumi.Input['IdpIntegrationCustomLayoutArgs'] layout: Columns shown for the integration's entities.
+        :param pulumi.Input[_builtins.str] source_label: Label for the sending system.
+        :param pulumi.Input['IdpIntegrationCustomWebhookAuthArgs'] webhook_auth: Webhook authentication. Required in webhook mode.
+        """
+        pulumi.set(__self__, "mode", mode)
+        if layout is not None:
+            pulumi.set(__self__, "layout", layout)
+        if source_label is not None:
+            pulumi.set(__self__, "source_label", source_label)
+        if webhook_auth is not None:
+            pulumi.set(__self__, "webhook_auth", webhook_auth)
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> pulumi.Input[_builtins.str]:
+        """
+        webhook or api.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "mode", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def layout(self) -> pulumi.Input[Optional['IdpIntegrationCustomLayoutArgs']]:
+        """
+        Columns shown for the integration's entities.
+        """
+        return pulumi.get(self, "layout")
+
+    @layout.setter
+    def layout(self, value: pulumi.Input[Optional['IdpIntegrationCustomLayoutArgs']]):
+        pulumi.set(self, "layout", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sourceLabel")
+    def source_label(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Label for the sending system.
+        """
+        return pulumi.get(self, "source_label")
+
+    @source_label.setter
+    def source_label(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "source_label", value)
+
+    @_builtins.property
+    @pulumi.getter(name="webhookAuth")
+    def webhook_auth(self) -> pulumi.Input[Optional['IdpIntegrationCustomWebhookAuthArgs']]:
+        """
+        Webhook authentication. Required in webhook mode.
+        """
+        return pulumi.get(self, "webhook_auth")
+
+    @webhook_auth.setter
+    def webhook_auth(self, value: pulumi.Input[Optional['IdpIntegrationCustomWebhookAuthArgs']]):
+        pulumi.set(self, "webhook_auth", value)
+
+
+class IdpIntegrationCustomLayoutArgsDict(TypedDict):
+    columns: pulumi.Input[Sequence[pulumi.Input['IdpIntegrationCustomLayoutColumnArgsDict']]]
+    """
+    A column.
+    """
+
+@pulumi.input_type
+class IdpIntegrationCustomLayoutArgs:
+    def __init__(__self__, *,
+                 columns: pulumi.Input[Sequence[pulumi.Input['IdpIntegrationCustomLayoutColumnArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['IdpIntegrationCustomLayoutColumnArgs']]] columns: A column.
+        """
+        pulumi.set(__self__, "columns", columns)
+
+    @_builtins.property
+    @pulumi.getter
+    def columns(self) -> pulumi.Input[Sequence[pulumi.Input['IdpIntegrationCustomLayoutColumnArgs']]]:
+        """
+        A column.
+        """
+        return pulumi.get(self, "columns")
+
+    @columns.setter
+    def columns(self, value: pulumi.Input[Sequence[pulumi.Input['IdpIntegrationCustomLayoutColumnArgs']]]):
+        pulumi.set(self, "columns", value)
+
+
+class IdpIntegrationCustomLayoutColumnArgsDict(TypedDict):
+    path: pulumi.Input[_builtins.str]
+    """
+    JQ path of the value.
+    """
+    title: pulumi.Input[_builtins.str]
+    """
+    Column title.
+    """
+
+@pulumi.input_type
+class IdpIntegrationCustomLayoutColumnArgs:
+    def __init__(__self__, *,
+                 path: pulumi.Input[_builtins.str],
+                 title: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] path: JQ path of the value.
+        :param pulumi.Input[_builtins.str] title: Column title.
+        """
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "title", title)
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> pulumi.Input[_builtins.str]:
+        """
+        JQ path of the value.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "path", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[_builtins.str]:
+        """
+        Column title.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "title", value)
+
+
+class IdpIntegrationCustomWebhookAuthArgsDict(TypedDict):
+    auth_type: pulumi.Input[_builtins.str]
+    """
+    hmac*auth or jwt*auth.
+    """
+    auth_header: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Header carrying the signature or token.
+    """
+    hash_algo: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    HMAC hash: hmac*sha224, hmac*sha256, hmac*sha384 or hmac*sha512.
+    """
+    secret_ref: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Secret reference holding the shared secret.
+    """
+
+@pulumi.input_type
+class IdpIntegrationCustomWebhookAuthArgs:
+    def __init__(__self__, *,
+                 auth_type: pulumi.Input[_builtins.str],
+                 auth_header: pulumi.Input[Optional[_builtins.str]] = None,
+                 hash_algo: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_ref: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] auth_type: hmac*auth or jwt*auth.
+        :param pulumi.Input[_builtins.str] auth_header: Header carrying the signature or token.
+        :param pulumi.Input[_builtins.str] hash_algo: HMAC hash: hmac*sha224, hmac*sha256, hmac*sha384 or hmac*sha512.
+        :param pulumi.Input[_builtins.str] secret_ref: Secret reference holding the shared secret.
+        """
+        pulumi.set(__self__, "auth_type", auth_type)
+        if auth_header is not None:
+            pulumi.set(__self__, "auth_header", auth_header)
+        if hash_algo is not None:
+            pulumi.set(__self__, "hash_algo", hash_algo)
+        if secret_ref is not None:
+            pulumi.set(__self__, "secret_ref", secret_ref)
+
+    @_builtins.property
+    @pulumi.getter(name="authType")
+    def auth_type(self) -> pulumi.Input[_builtins.str]:
+        """
+        hmac*auth or jwt*auth.
+        """
+        return pulumi.get(self, "auth_type")
+
+    @auth_type.setter
+    def auth_type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "auth_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="authHeader")
+    def auth_header(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Header carrying the signature or token.
+        """
+        return pulumi.get(self, "auth_header")
+
+    @auth_header.setter
+    def auth_header(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "auth_header", value)
+
+    @_builtins.property
+    @pulumi.getter(name="hashAlgo")
+    def hash_algo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        HMAC hash: hmac*sha224, hmac*sha256, hmac*sha384 or hmac*sha512.
+        """
+        return pulumi.get(self, "hash_algo")
+
+    @hash_algo.setter
+    def hash_algo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "hash_algo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="secretRef")
+    def secret_ref(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Secret reference holding the shared secret.
+        """
+        return pulumi.get(self, "secret_ref")
+
+    @secret_ref.setter
+    def secret_ref(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "secret_ref", value)
+
+
+class IdpIntegrationDatadogArgsDict(TypedDict):
+    service_dependencies_env: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Environment used to add service dependencies.
+    """
+
+@pulumi.input_type
+class IdpIntegrationDatadogArgs:
+    def __init__(__self__, *,
+                 service_dependencies_env: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] service_dependencies_env: Environment used to add service dependencies.
+        """
+        if service_dependencies_env is not None:
+            pulumi.set(__self__, "service_dependencies_env", service_dependencies_env)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceDependenciesEnv")
+    def service_dependencies_env(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Environment used to add service dependencies.
+        """
+        return pulumi.get(self, "service_dependencies_env")
+
+    @service_dependencies_env.setter
+    def service_dependencies_env(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "service_dependencies_env", value)
+
+
+class IdpIntegrationDynatraceArgsDict(TypedDict):
+    platform_token_ref: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Secret reference to a Platform API token.
+    """
+    start_date: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Lower bound for incremental streams, RFC3339.
+    """
+
+@pulumi.input_type
+class IdpIntegrationDynatraceArgs:
+    def __init__(__self__, *,
+                 platform_token_ref: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_date: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] platform_token_ref: Secret reference to a Platform API token.
+        :param pulumi.Input[_builtins.str] start_date: Lower bound for incremental streams, RFC3339.
+        """
+        if platform_token_ref is not None:
+            pulumi.set(__self__, "platform_token_ref", platform_token_ref)
+        if start_date is not None:
+            pulumi.set(__self__, "start_date", start_date)
+
+    @_builtins.property
+    @pulumi.getter(name="platformTokenRef")
+    def platform_token_ref(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Secret reference to a Platform API token.
+        """
+        return pulumi.get(self, "platform_token_ref")
+
+    @platform_token_ref.setter
+    def platform_token_ref(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "platform_token_ref", value)
+
+    @_builtins.property
+    @pulumi.getter(name="startDate")
+    def start_date(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Lower bound for incremental streams, RFC3339.
+        """
+        return pulumi.get(self, "start_date")
+
+    @start_date.setter
+    def start_date(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "start_date", value)
+
+
+class IdpIntegrationEndpointArgsDict(TypedDict):
+    kind: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Kind.
+    """
+    method: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    HTTP method.
+    """
+    url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Path relative to the integration manager, e.g. https://app.harness.io/gateway/integration.
+    """
+
+@pulumi.input_type
+class IdpIntegrationEndpointArgs:
+    def __init__(__self__, *,
+                 kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 method: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] kind: Kind.
+        :param pulumi.Input[_builtins.str] method: HTTP method.
+        :param pulumi.Input[_builtins.str] url: Path relative to the integration manager, e.g. https://app.harness.io/gateway/integration.
+        """
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+        if method is not None:
+            pulumi.set(__self__, "method", method)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @_builtins.property
+    @pulumi.getter
+    def kind(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Kind.
+        """
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "kind", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def method(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        HTTP method.
+        """
+        return pulumi.get(self, "method")
+
+    @method.setter
+    def method(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "method", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Path relative to the integration manager, e.g. https://app.harness.io/gateway/integration.
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "url", value)
+
+
+class IdpIntegrationGcpArgsDict(TypedDict):
+    parent: pulumi.Input['IdpIntegrationGcpParentArgsDict']
+    """
+    The organization or folder whose assets are synced. Set exactly one field.
+    """
+
+@pulumi.input_type
+class IdpIntegrationGcpArgs:
+    def __init__(__self__, *,
+                 parent: pulumi.Input['IdpIntegrationGcpParentArgs']):
+        """
+        :param pulumi.Input['IdpIntegrationGcpParentArgs'] parent: The organization or folder whose assets are synced. Set exactly one field.
+        """
+        pulumi.set(__self__, "parent", parent)
+
+    @_builtins.property
+    @pulumi.getter
+    def parent(self) -> pulumi.Input['IdpIntegrationGcpParentArgs']:
+        """
+        The organization or folder whose assets are synced. Set exactly one field.
+        """
+        return pulumi.get(self, "parent")
+
+    @parent.setter
+    def parent(self, value: pulumi.Input['IdpIntegrationGcpParentArgs']):
+        pulumi.set(self, "parent", value)
+
+
+class IdpIntegrationGcpParentArgsDict(TypedDict):
+    folder_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Folder ID.
+    """
+    org_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Organization ID.
+    """
+
+@pulumi.input_type
+class IdpIntegrationGcpParentArgs:
+    def __init__(__self__, *,
+                 folder_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] folder_id: Folder ID.
+        :param pulumi.Input[_builtins.str] org_id: Organization ID.
+        """
+        if folder_id is not None:
+            pulumi.set(__self__, "folder_id", folder_id)
+        if org_id is not None:
+            pulumi.set(__self__, "org_id", org_id)
+
+    @_builtins.property
+    @pulumi.getter(name="folderId")
+    def folder_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Folder ID.
+        """
+        return pulumi.get(self, "folder_id")
+
+    @folder_id.setter
+    def folder_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "folder_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="orgId")
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Organization ID.
+        """
+        return pulumi.get(self, "org_id")
+
+    @org_id.setter
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "org_id", value)
+
+
+class IdpIntegrationGithubArgsDict(TypedDict):
+    orgs: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Organizations to sync.
+    """
+    agent_file_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Agents file to detect in repositories.
+    """
+    start_date: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Lower bound for the first sync, RFC3339.
+    """
+
+@pulumi.input_type
+class IdpIntegrationGithubArgs:
+    def __init__(__self__, *,
+                 orgs: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
+                 agent_file_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_date: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] orgs: Organizations to sync.
+        :param pulumi.Input[_builtins.str] agent_file_name: Agents file to detect in repositories.
+        :param pulumi.Input[_builtins.str] start_date: Lower bound for the first sync, RFC3339.
+        """
+        pulumi.set(__self__, "orgs", orgs)
+        if agent_file_name is not None:
+            pulumi.set(__self__, "agent_file_name", agent_file_name)
+        if start_date is not None:
+            pulumi.set(__self__, "start_date", start_date)
+
+    @_builtins.property
+    @pulumi.getter
+    def orgs(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        Organizations to sync.
+        """
+        return pulumi.get(self, "orgs")
+
+    @orgs.setter
+    def orgs(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "orgs", value)
+
+    @_builtins.property
+    @pulumi.getter(name="agentFileName")
+    def agent_file_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Agents file to detect in repositories.
+        """
+        return pulumi.get(self, "agent_file_name")
+
+    @agent_file_name.setter
+    def agent_file_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "agent_file_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="startDate")
+    def start_date(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Lower bound for the first sync, RFC3339.
+        """
+        return pulumi.get(self, "start_date")
+
+    @start_date.setter
+    def start_date(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "start_date", value)
+
+
+class IdpIntegrationHarnessCdArgsDict(TypedDict):
+    deployment_cycle: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Days of deployments to read.
+    """
+    mapping_fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['IdpIntegrationHarnessCdMappingFieldArgsDict']]]]]
+    """
+    Fields to map per kind; omit to map all.
+    """
+
+@pulumi.input_type
+class IdpIntegrationHarnessCdArgs:
+    def __init__(__self__, *,
+                 deployment_cycle: pulumi.Input[Optional[_builtins.int]] = None,
+                 mapping_fields: pulumi.Input[Optional[Sequence[pulumi.Input['IdpIntegrationHarnessCdMappingFieldArgs']]]] = None):
+        """
+        :param pulumi.Input[_builtins.int] deployment_cycle: Days of deployments to read.
+        :param pulumi.Input[Sequence[pulumi.Input['IdpIntegrationHarnessCdMappingFieldArgs']]] mapping_fields: Fields to map per kind; omit to map all.
+        """
+        if deployment_cycle is not None:
+            pulumi.set(__self__, "deployment_cycle", deployment_cycle)
+        if mapping_fields is not None:
+            pulumi.set(__self__, "mapping_fields", mapping_fields)
+
+    @_builtins.property
+    @pulumi.getter(name="deploymentCycle")
+    def deployment_cycle(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Days of deployments to read.
+        """
+        return pulumi.get(self, "deployment_cycle")
+
+    @deployment_cycle.setter
+    def deployment_cycle(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "deployment_cycle", value)
+
+    @_builtins.property
+    @pulumi.getter(name="mappingFields")
+    def mapping_fields(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['IdpIntegrationHarnessCdMappingFieldArgs']]]]:
+        """
+        Fields to map per kind; omit to map all.
+        """
+        return pulumi.get(self, "mapping_fields")
+
+    @mapping_fields.setter
+    def mapping_fields(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['IdpIntegrationHarnessCdMappingFieldArgs']]]]):
+        pulumi.set(self, "mapping_fields", value)
+
+
+class IdpIntegrationHarnessCdMappingFieldArgsDict(TypedDict):
+    fields: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Fields.
+    """
+    kind: pulumi.Input[_builtins.str]
+    """
+    Kind.
+    """
+
+@pulumi.input_type
+class IdpIntegrationHarnessCdMappingFieldArgs:
+    def __init__(__self__, *,
+                 fields: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
+                 kind: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] fields: Fields.
+        :param pulumi.Input[_builtins.str] kind: Kind.
+        """
+        pulumi.set(__self__, "fields", fields)
+        pulumi.set(__self__, "kind", kind)
+
+    @_builtins.property
+    @pulumi.getter
+    def fields(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        Fields.
+        """
+        return pulumi.get(self, "fields")
+
+    @fields.setter
+    def fields(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "fields", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def kind(self) -> pulumi.Input[_builtins.str]:
+        """
+        Kind.
+        """
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "kind", value)
+
+
+class IdpIntegrationHarnessCodeArgsDict(TypedDict):
+    agent_file_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Agents file to detect in repositories.
+    """
+
+@pulumi.input_type
+class IdpIntegrationHarnessCodeArgs:
+    def __init__(__self__, *,
+                 agent_file_name: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] agent_file_name: Agents file to detect in repositories.
+        """
+        if agent_file_name is not None:
+            pulumi.set(__self__, "agent_file_name", agent_file_name)
+
+    @_builtins.property
+    @pulumi.getter(name="agentFileName")
+    def agent_file_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Agents file to detect in repositories.
+        """
+        return pulumi.get(self, "agent_file_name")
+
+    @agent_file_name.setter
+    def agent_file_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "agent_file_name", value)
+
+
+class IdpIntegrationHarnessK8sArgsDict(TypedDict):
+    environment_identifier: pulumi.Input[_builtins.str]
+    """
+    Environment.
+    """
+    service_discovery_agent_identifier: pulumi.Input[_builtins.str]
+    """
+    Service discovery agent.
+    """
+
+@pulumi.input_type
+class IdpIntegrationHarnessK8sArgs:
+    def __init__(__self__, *,
+                 environment_identifier: pulumi.Input[_builtins.str],
+                 service_discovery_agent_identifier: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] environment_identifier: Environment.
+        :param pulumi.Input[_builtins.str] service_discovery_agent_identifier: Service discovery agent.
+        """
+        pulumi.set(__self__, "environment_identifier", environment_identifier)
+        pulumi.set(__self__, "service_discovery_agent_identifier", service_discovery_agent_identifier)
+
+    @_builtins.property
+    @pulumi.getter(name="environmentIdentifier")
+    def environment_identifier(self) -> pulumi.Input[_builtins.str]:
+        """
+        Environment.
+        """
+        return pulumi.get(self, "environment_identifier")
+
+    @environment_identifier.setter
+    def environment_identifier(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "environment_identifier", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceDiscoveryAgentIdentifier")
+    def service_discovery_agent_identifier(self) -> pulumi.Input[_builtins.str]:
+        """
+        Service discovery agent.
+        """
+        return pulumi.get(self, "service_discovery_agent_identifier")
+
+    @service_discovery_agent_identifier.setter
+    def service_discovery_agent_identifier(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "service_discovery_agent_identifier", value)
+
+
+class IdpIntegrationJiraArgsDict(TypedDict):
+    custom_fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Custom field IDs to sync, like customfield_10456.
+    """
+    start_date: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Lower bound for the first sync, RFC3339; 365 days back when omitted.
+    """
+
+@pulumi.input_type
+class IdpIntegrationJiraArgs:
+    def __init__(__self__, *,
+                 custom_fields: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 start_date: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_fields: Custom field IDs to sync, like customfield_10456.
+        :param pulumi.Input[_builtins.str] start_date: Lower bound for the first sync, RFC3339; 365 days back when omitted.
+        """
+        if custom_fields is not None:
+            pulumi.set(__self__, "custom_fields", custom_fields)
+        if start_date is not None:
+            pulumi.set(__self__, "start_date", start_date)
+
+    @_builtins.property
+    @pulumi.getter(name="customFields")
+    def custom_fields(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Custom field IDs to sync, like customfield_10456.
+        """
+        return pulumi.get(self, "custom_fields")
+
+    @custom_fields.setter
+    def custom_fields(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "custom_fields", value)
+
+    @_builtins.property
+    @pulumi.getter(name="startDate")
+    def start_date(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Lower bound for the first sync, RFC3339; 365 days back when omitted.
+        """
+        return pulumi.get(self, "start_date")
+
+    @start_date.setter
+    def start_date(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "start_date", value)
+
+
+class IdpIntegrationKindArgsDict(TypedDict):
+    kind: pulumi.Input[_builtins.str]
+    """
+    Kind name.
+    """
+    action: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    register, merge or merge_register; the type's default when omitted.
+    """
+    auto_import: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Import new entities automatically.
+    """
+    filter: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    JQ that returns true for records to keep; the type's default when omitted.
+    """
+    idp_kind: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Airbyte types: entity kind, e.g. component; the type's default when omitted. Set at create only; required for kinds with no default, such as ServiceNow's.
+    """
+    idp_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Airbyte types: entity type, e.g. service; the type's default when omitted. Set at create only.
+    """
+    mapping: NotRequired[pulumi.Input[Optional['IdpIntegrationKindMappingArgsDict']]]
+    """
+    The kind's mapping, sent with the create so the first sync uses it. Omitted fields keep the type's defaults. Create only: it can't be added or changed afterwards, and removing it leaves the mapping as it is. Use harness*platform*idp*integration*kind_mapping to manage the mapping after the create, and don't use both for the same kind.
+    """
+    replication_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Airbyte types: the stream's sync mode, full_refresh or incremental.
+    """
+
+@pulumi.input_type
+class IdpIntegrationKindArgs:
+    def __init__(__self__, *,
+                 kind: pulumi.Input[_builtins.str],
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_import: pulumi.Input[Optional[_builtins.bool]] = None,
+                 filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 idp_kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 idp_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 mapping: pulumi.Input[Optional['IdpIntegrationKindMappingArgs']] = None,
+                 replication_mode: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] kind: Kind name.
+        :param pulumi.Input[_builtins.str] action: register, merge or merge_register; the type's default when omitted.
+        :param pulumi.Input[_builtins.bool] auto_import: Import new entities automatically.
+        :param pulumi.Input[_builtins.str] filter: JQ that returns true for records to keep; the type's default when omitted.
+        :param pulumi.Input[_builtins.str] idp_kind: Airbyte types: entity kind, e.g. component; the type's default when omitted. Set at create only; required for kinds with no default, such as ServiceNow's.
+        :param pulumi.Input[_builtins.str] idp_type: Airbyte types: entity type, e.g. service; the type's default when omitted. Set at create only.
+        :param pulumi.Input['IdpIntegrationKindMappingArgs'] mapping: The kind's mapping, sent with the create so the first sync uses it. Omitted fields keep the type's defaults. Create only: it can't be added or changed afterwards, and removing it leaves the mapping as it is. Use harness*platform*idp*integration*kind_mapping to manage the mapping after the create, and don't use both for the same kind.
+        :param pulumi.Input[_builtins.str] replication_mode: Airbyte types: the stream's sync mode, full_refresh or incremental.
+        """
+        pulumi.set(__self__, "kind", kind)
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+        if auto_import is not None:
+            pulumi.set(__self__, "auto_import", auto_import)
+        if filter is not None:
+            pulumi.set(__self__, "filter", filter)
+        if idp_kind is not None:
+            pulumi.set(__self__, "idp_kind", idp_kind)
+        if idp_type is not None:
+            pulumi.set(__self__, "idp_type", idp_type)
+        if mapping is not None:
+            pulumi.set(__self__, "mapping", mapping)
+        if replication_mode is not None:
+            pulumi.set(__self__, "replication_mode", replication_mode)
+
+    @_builtins.property
+    @pulumi.getter
+    def kind(self) -> pulumi.Input[_builtins.str]:
+        """
+        Kind name.
+        """
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "kind", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def action(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        register, merge or merge_register; the type's default when omitted.
+        """
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "action", value)
+
+    @_builtins.property
+    @pulumi.getter(name="autoImport")
+    def auto_import(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Import new entities automatically.
+        """
+        return pulumi.get(self, "auto_import")
+
+    @auto_import.setter
+    def auto_import(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "auto_import", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def filter(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        JQ that returns true for records to keep; the type's default when omitted.
+        """
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "filter", value)
+
+    @_builtins.property
+    @pulumi.getter(name="idpKind")
+    def idp_kind(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Airbyte types: entity kind, e.g. component; the type's default when omitted. Set at create only; required for kinds with no default, such as ServiceNow's.
+        """
+        return pulumi.get(self, "idp_kind")
+
+    @idp_kind.setter
+    def idp_kind(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "idp_kind", value)
+
+    @_builtins.property
+    @pulumi.getter(name="idpType")
+    def idp_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Airbyte types: entity type, e.g. service; the type's default when omitted. Set at create only.
+        """
+        return pulumi.get(self, "idp_type")
+
+    @idp_type.setter
+    def idp_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "idp_type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def mapping(self) -> pulumi.Input[Optional['IdpIntegrationKindMappingArgs']]:
+        """
+        The kind's mapping, sent with the create so the first sync uses it. Omitted fields keep the type's defaults. Create only: it can't be added or changed afterwards, and removing it leaves the mapping as it is. Use harness*platform*idp*integration*kind_mapping to manage the mapping after the create, and don't use both for the same kind.
+        """
+        return pulumi.get(self, "mapping")
+
+    @mapping.setter
+    def mapping(self, value: pulumi.Input[Optional['IdpIntegrationKindMappingArgs']]):
+        pulumi.set(self, "mapping", value)
+
+    @_builtins.property
+    @pulumi.getter(name="replicationMode")
+    def replication_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Airbyte types: the stream's sync mode, full_refresh or incremental.
+        """
+        return pulumi.get(self, "replication_mode")
+
+    @replication_mode.setter
+    def replication_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "replication_mode", value)
+
+
+class IdpIntegrationKindMappingArgsDict(TypedDict):
+    correlation: NotRequired[pulumi.Input[Optional['IdpIntegrationKindMappingCorrelationArgsDict']]]
+    """
+    Links records to existing entities; the server's when omitted.
+    """
+    display_name_field: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Source field used as the entity's name.
+    """
+    field_mappings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['IdpIntegrationKindMappingFieldMappingArgsDict']]]]]
+    """
+    Maps a source field to an entity field. Airbyte types. Omitted, the type's defaults apply; removing it from the config keeps the last value, so destroy the mapping resource to go back to them.
+    """
+    idp_kind: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Entity kind, e.g. component.
+    """
+    idp_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Entity type, e.g. service.
+    """
+    ingestion: NotRequired[pulumi.Input[Optional['IdpIntegrationKindMappingIngestionArgsDict']]]
+    """
+    Custom types: JQ that builds the entity from a payload.
+    """
+    payload_schema: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Custom types, custom kind: JSON Schema of the payload.
+    """
+    unique_identifier_field: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Source field that identifies an entity. Can't change on Airbyte types.
+    """
+
+@pulumi.input_type
+class IdpIntegrationKindMappingArgs:
+    def __init__(__self__, *,
+                 correlation: pulumi.Input[Optional['IdpIntegrationKindMappingCorrelationArgs']] = None,
+                 display_name_field: pulumi.Input[Optional[_builtins.str]] = None,
+                 field_mappings: pulumi.Input[Optional[Sequence[pulumi.Input['IdpIntegrationKindMappingFieldMappingArgs']]]] = None,
+                 idp_kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 idp_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ingestion: pulumi.Input[Optional['IdpIntegrationKindMappingIngestionArgs']] = None,
+                 payload_schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 unique_identifier_field: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input['IdpIntegrationKindMappingCorrelationArgs'] correlation: Links records to existing entities; the server's when omitted.
+        :param pulumi.Input[_builtins.str] display_name_field: Source field used as the entity's name.
+        :param pulumi.Input[Sequence[pulumi.Input['IdpIntegrationKindMappingFieldMappingArgs']]] field_mappings: Maps a source field to an entity field. Airbyte types. Omitted, the type's defaults apply; removing it from the config keeps the last value, so destroy the mapping resource to go back to them.
+        :param pulumi.Input[_builtins.str] idp_kind: Entity kind, e.g. component.
+        :param pulumi.Input[_builtins.str] idp_type: Entity type, e.g. service.
+        :param pulumi.Input['IdpIntegrationKindMappingIngestionArgs'] ingestion: Custom types: JQ that builds the entity from a payload.
+        :param pulumi.Input[_builtins.str] payload_schema: Custom types, custom kind: JSON Schema of the payload.
+        :param pulumi.Input[_builtins.str] unique_identifier_field: Source field that identifies an entity. Can't change on Airbyte types.
+        """
+        if correlation is not None:
+            pulumi.set(__self__, "correlation", correlation)
+        if display_name_field is not None:
+            pulumi.set(__self__, "display_name_field", display_name_field)
+        if field_mappings is not None:
+            pulumi.set(__self__, "field_mappings", field_mappings)
+        if idp_kind is not None:
+            pulumi.set(__self__, "idp_kind", idp_kind)
+        if idp_type is not None:
+            pulumi.set(__self__, "idp_type", idp_type)
+        if ingestion is not None:
+            pulumi.set(__self__, "ingestion", ingestion)
+        if payload_schema is not None:
+            pulumi.set(__self__, "payload_schema", payload_schema)
+        if unique_identifier_field is not None:
+            pulumi.set(__self__, "unique_identifier_field", unique_identifier_field)
+
+    @_builtins.property
+    @pulumi.getter
+    def correlation(self) -> pulumi.Input[Optional['IdpIntegrationKindMappingCorrelationArgs']]:
+        """
+        Links records to existing entities; the server's when omitted.
+        """
+        return pulumi.get(self, "correlation")
+
+    @correlation.setter
+    def correlation(self, value: pulumi.Input[Optional['IdpIntegrationKindMappingCorrelationArgs']]):
+        pulumi.set(self, "correlation", value)
+
+    @_builtins.property
+    @pulumi.getter(name="displayNameField")
+    def display_name_field(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Source field used as the entity's name.
+        """
+        return pulumi.get(self, "display_name_field")
+
+    @display_name_field.setter
+    def display_name_field(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "display_name_field", value)
+
+    @_builtins.property
+    @pulumi.getter(name="fieldMappings")
+    def field_mappings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['IdpIntegrationKindMappingFieldMappingArgs']]]]:
+        """
+        Maps a source field to an entity field. Airbyte types. Omitted, the type's defaults apply; removing it from the config keeps the last value, so destroy the mapping resource to go back to them.
+        """
+        return pulumi.get(self, "field_mappings")
+
+    @field_mappings.setter
+    def field_mappings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['IdpIntegrationKindMappingFieldMappingArgs']]]]):
+        pulumi.set(self, "field_mappings", value)
+
+    @_builtins.property
+    @pulumi.getter(name="idpKind")
+    def idp_kind(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Entity kind, e.g. component.
+        """
+        return pulumi.get(self, "idp_kind")
+
+    @idp_kind.setter
+    def idp_kind(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "idp_kind", value)
+
+    @_builtins.property
+    @pulumi.getter(name="idpType")
+    def idp_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Entity type, e.g. service.
+        """
+        return pulumi.get(self, "idp_type")
+
+    @idp_type.setter
+    def idp_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "idp_type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ingestion(self) -> pulumi.Input[Optional['IdpIntegrationKindMappingIngestionArgs']]:
+        """
+        Custom types: JQ that builds the entity from a payload.
+        """
+        return pulumi.get(self, "ingestion")
+
+    @ingestion.setter
+    def ingestion(self, value: pulumi.Input[Optional['IdpIntegrationKindMappingIngestionArgs']]):
+        pulumi.set(self, "ingestion", value)
+
+    @_builtins.property
+    @pulumi.getter(name="payloadSchema")
+    def payload_schema(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Custom types, custom kind: JSON Schema of the payload.
+        """
+        return pulumi.get(self, "payload_schema")
+
+    @payload_schema.setter
+    def payload_schema(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "payload_schema", value)
+
+    @_builtins.property
+    @pulumi.getter(name="uniqueIdentifierField")
+    def unique_identifier_field(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Source field that identifies an entity. Can't change on Airbyte types.
+        """
+        return pulumi.get(self, "unique_identifier_field")
+
+    @unique_identifier_field.setter
+    def unique_identifier_field(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "unique_identifier_field", value)
+
+
+class IdpIntegrationKindMappingCorrelationArgsDict(TypedDict):
+    source_path: pulumi.Input[_builtins.str]
+    """
+    Field to match. Airbyte types: a path in the emitted entity data, e.g. identifier or spec.owner; Custom: a payload field.
+    """
+    target_path: pulumi.Input[_builtins.str]
+    """
+    Entity field to match, e.g. metadata.identifier.
+    """
+    operator: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Match operator; eq when omitted.
+    """
+
+@pulumi.input_type
+class IdpIntegrationKindMappingCorrelationArgs:
+    def __init__(__self__, *,
+                 source_path: pulumi.Input[_builtins.str],
+                 target_path: pulumi.Input[_builtins.str],
+                 operator: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] source_path: Field to match. Airbyte types: a path in the emitted entity data, e.g. identifier or spec.owner; Custom: a payload field.
+        :param pulumi.Input[_builtins.str] target_path: Entity field to match, e.g. metadata.identifier.
+        :param pulumi.Input[_builtins.str] operator: Match operator; eq when omitted.
+        """
+        pulumi.set(__self__, "source_path", source_path)
+        pulumi.set(__self__, "target_path", target_path)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+
+    @_builtins.property
+    @pulumi.getter(name="sourcePath")
+    def source_path(self) -> pulumi.Input[_builtins.str]:
+        """
+        Field to match. Airbyte types: a path in the emitted entity data, e.g. identifier or spec.owner; Custom: a payload field.
+        """
+        return pulumi.get(self, "source_path")
+
+    @source_path.setter
+    def source_path(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "source_path", value)
+
+    @_builtins.property
+    @pulumi.getter(name="targetPath")
+    def target_path(self) -> pulumi.Input[_builtins.str]:
+        """
+        Entity field to match, e.g. metadata.identifier.
+        """
+        return pulumi.get(self, "target_path")
+
+    @target_path.setter
+    def target_path(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "target_path", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Match operator; eq when omitted.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "operator", value)
+
+
+class IdpIntegrationKindMappingEmissionArgsDict(TypedDict):
+    identifier: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    properties: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    JSON object.
+    """
+
+@pulumi.input_type
+class IdpIntegrationKindMappingEmissionArgs:
+    def __init__(__self__, *,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 properties: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] properties: JSON object.
+        """
+        if identifier is not None:
+            pulumi.set(__self__, "identifier", identifier)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if properties is not None:
+            pulumi.set(__self__, "properties", properties)
+
+    @_builtins.property
+    @pulumi.getter
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "identifier")
+
+    @identifier.setter
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "identifier", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def properties(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        JSON object.
+        """
+        return pulumi.get(self, "properties")
+
+    @properties.setter
+    def properties(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "properties", value)
+
+
+class IdpIntegrationKindMappingFieldMappingArgsDict(TypedDict):
+    source_field: pulumi.Input[_builtins.str]
+    """
+    Source field.
+    """
+    target_field: pulumi.Input[_builtins.str]
+    """
+    Entity field, e.g. spec.owner.
+    """
+
+@pulumi.input_type
+class IdpIntegrationKindMappingFieldMappingArgs:
+    def __init__(__self__, *,
+                 source_field: pulumi.Input[_builtins.str],
+                 target_field: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] source_field: Source field.
+        :param pulumi.Input[_builtins.str] target_field: Entity field, e.g. spec.owner.
+        """
+        pulumi.set(__self__, "source_field", source_field)
+        pulumi.set(__self__, "target_field", target_field)
+
+    @_builtins.property
+    @pulumi.getter(name="sourceField")
+    def source_field(self) -> pulumi.Input[_builtins.str]:
+        """
+        Source field.
+        """
+        return pulumi.get(self, "source_field")
+
+    @source_field.setter
+    def source_field(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "source_field", value)
+
+    @_builtins.property
+    @pulumi.getter(name="targetField")
+    def target_field(self) -> pulumi.Input[_builtins.str]:
+        """
+        Entity field, e.g. spec.owner.
+        """
+        return pulumi.get(self, "target_field")
+
+    @target_field.setter
+    def target_field(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "target_field", value)
+
+
+class IdpIntegrationKindMappingIngestionArgsDict(TypedDict):
+    identifier: pulumi.Input[_builtins.str]
+    """
+    JQ for the entity identifier.
+    """
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    JQ for the entity name.
+    """
+    properties: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
+    """
+    JQ per entity property; derived from the payload schema when omitted.
+    """
+
+@pulumi.input_type
+class IdpIntegrationKindMappingIngestionArgs:
+    def __init__(__self__, *,
+                 identifier: pulumi.Input[_builtins.str],
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] identifier: JQ for the entity identifier.
+        :param pulumi.Input[_builtins.str] name: JQ for the entity name.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: JQ per entity property; derived from the payload schema when omitted.
+        """
+        pulumi.set(__self__, "identifier", identifier)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if properties is not None:
+            pulumi.set(__self__, "properties", properties)
+
+    @_builtins.property
+    @pulumi.getter
+    def identifier(self) -> pulumi.Input[_builtins.str]:
+        """
+        JQ for the entity identifier.
+        """
+        return pulumi.get(self, "identifier")
+
+    @identifier.setter
+    def identifier(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "identifier", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        JQ for the entity name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def properties(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        JQ per entity property; derived from the payload schema when omitted.
+        """
+        return pulumi.get(self, "properties")
+
+    @properties.setter
+    def properties(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "properties", value)
+
+
+class IdpIntegrationPagerdutyArgsDict(TypedDict):
+    analytics_duration_months: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Months of analytics to aggregate.
+    """
+    start_date: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Lower bound for the first sync, RFC3339.
+    """
+
+@pulumi.input_type
+class IdpIntegrationPagerdutyArgs:
+    def __init__(__self__, *,
+                 analytics_duration_months: pulumi.Input[Optional[_builtins.int]] = None,
+                 start_date: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.int] analytics_duration_months: Months of analytics to aggregate.
+        :param pulumi.Input[_builtins.str] start_date: Lower bound for the first sync, RFC3339.
+        """
+        if analytics_duration_months is not None:
+            pulumi.set(__self__, "analytics_duration_months", analytics_duration_months)
+        if start_date is not None:
+            pulumi.set(__self__, "start_date", start_date)
+
+    @_builtins.property
+    @pulumi.getter(name="analyticsDurationMonths")
+    def analytics_duration_months(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Months of analytics to aggregate.
+        """
+        return pulumi.get(self, "analytics_duration_months")
+
+    @analytics_duration_months.setter
+    def analytics_duration_months(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "analytics_duration_months", value)
+
+    @_builtins.property
+    @pulumi.getter(name="startDate")
+    def start_date(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Lower bound for the first sync, RFC3339.
+        """
+        return pulumi.get(self, "start_date")
+
+    @start_date.setter
+    def start_date(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "start_date", value)
+
+
+class IdpIntegrationScopesArgsDict(TypedDict):
+    all: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Read from every scope.
+    """
+    selecteds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Scopes to read from: "" for the account, "org" or "org/project".
+    """
+
+@pulumi.input_type
+class IdpIntegrationScopesArgs:
+    def __init__(__self__, *,
+                 all: pulumi.Input[Optional[_builtins.bool]] = None,
+                 selecteds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] all: Read from every scope.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] selecteds: Scopes to read from: "" for the account, "org" or "org/project".
+        """
+        if all is not None:
+            pulumi.set(__self__, "all", all)
+        if selecteds is not None:
+            pulumi.set(__self__, "selecteds", selecteds)
+
+    @_builtins.property
+    @pulumi.getter
+    def all(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Read from every scope.
+        """
+        return pulumi.get(self, "all")
+
+    @all.setter
+    def all(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "all", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def selecteds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Scopes to read from: "" for the account, "org" or "org/project".
+        """
+        return pulumi.get(self, "selecteds")
+
+    @selecteds.setter
+    def selecteds(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "selecteds", value)
+
+
+class IdpIntegrationSonarqubeArgsDict(TypedDict):
+    instance: pulumi.Input['IdpIntegrationSonarqubeInstanceArgsDict']
+    """
+    Set exactly one of server or cloud.
+    """
+    token_ref: pulumi.Input[_builtins.str]
+    """
+    Secret reference to a SonarQube user token.
+    """
+    issues: NotRequired[pulumi.Input[Optional['IdpIntegrationSonarqubeIssuesArgsDict']]]
+    """
+    Filters for the issues stream.
+    """
+    projects: NotRequired[pulumi.Input[Optional['IdpIntegrationSonarqubeProjectsArgsDict']]]
+    """
+    Projects to sync; omit to sync all. Set exactly one of include or exclude.
+    """
+    start_date: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Lower bound for the first sync, RFC3339.
+    """
+
+@pulumi.input_type
+class IdpIntegrationSonarqubeArgs:
+    def __init__(__self__, *,
+                 instance: pulumi.Input['IdpIntegrationSonarqubeInstanceArgs'],
+                 token_ref: pulumi.Input[_builtins.str],
+                 issues: pulumi.Input[Optional['IdpIntegrationSonarqubeIssuesArgs']] = None,
+                 projects: pulumi.Input[Optional['IdpIntegrationSonarqubeProjectsArgs']] = None,
+                 start_date: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input['IdpIntegrationSonarqubeInstanceArgs'] instance: Set exactly one of server or cloud.
+        :param pulumi.Input[_builtins.str] token_ref: Secret reference to a SonarQube user token.
+        :param pulumi.Input['IdpIntegrationSonarqubeIssuesArgs'] issues: Filters for the issues stream.
+        :param pulumi.Input['IdpIntegrationSonarqubeProjectsArgs'] projects: Projects to sync; omit to sync all. Set exactly one of include or exclude.
+        :param pulumi.Input[_builtins.str] start_date: Lower bound for the first sync, RFC3339.
+        """
+        pulumi.set(__self__, "instance", instance)
+        pulumi.set(__self__, "token_ref", token_ref)
+        if issues is not None:
+            pulumi.set(__self__, "issues", issues)
+        if projects is not None:
+            pulumi.set(__self__, "projects", projects)
+        if start_date is not None:
+            pulumi.set(__self__, "start_date", start_date)
+
+    @_builtins.property
+    @pulumi.getter
+    def instance(self) -> pulumi.Input['IdpIntegrationSonarqubeInstanceArgs']:
+        """
+        Set exactly one of server or cloud.
+        """
+        return pulumi.get(self, "instance")
+
+    @instance.setter
+    def instance(self, value: pulumi.Input['IdpIntegrationSonarqubeInstanceArgs']):
+        pulumi.set(self, "instance", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tokenRef")
+    def token_ref(self) -> pulumi.Input[_builtins.str]:
+        """
+        Secret reference to a SonarQube user token.
+        """
+        return pulumi.get(self, "token_ref")
+
+    @token_ref.setter
+    def token_ref(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "token_ref", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def issues(self) -> pulumi.Input[Optional['IdpIntegrationSonarqubeIssuesArgs']]:
+        """
+        Filters for the issues stream.
+        """
+        return pulumi.get(self, "issues")
+
+    @issues.setter
+    def issues(self, value: pulumi.Input[Optional['IdpIntegrationSonarqubeIssuesArgs']]):
+        pulumi.set(self, "issues", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def projects(self) -> pulumi.Input[Optional['IdpIntegrationSonarqubeProjectsArgs']]:
+        """
+        Projects to sync; omit to sync all. Set exactly one of include or exclude.
+        """
+        return pulumi.get(self, "projects")
+
+    @projects.setter
+    def projects(self, value: pulumi.Input[Optional['IdpIntegrationSonarqubeProjectsArgs']]):
+        pulumi.set(self, "projects", value)
+
+    @_builtins.property
+    @pulumi.getter(name="startDate")
+    def start_date(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Lower bound for the first sync, RFC3339.
+        """
+        return pulumi.get(self, "start_date")
+
+    @start_date.setter
+    def start_date(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "start_date", value)
+
+
+class IdpIntegrationSonarqubeInstanceArgsDict(TypedDict):
+    cloud: NotRequired[pulumi.Input[Optional['IdpIntegrationSonarqubeInstanceCloudArgsDict']]]
+    """
+    SonarQube Cloud.
+    """
+    server: NotRequired[pulumi.Input[Optional['IdpIntegrationSonarqubeInstanceServerArgsDict']]]
+    """
+    Self-hosted SonarQube Server.
+    """
+
+@pulumi.input_type
+class IdpIntegrationSonarqubeInstanceArgs:
+    def __init__(__self__, *,
+                 cloud: pulumi.Input[Optional['IdpIntegrationSonarqubeInstanceCloudArgs']] = None,
+                 server: pulumi.Input[Optional['IdpIntegrationSonarqubeInstanceServerArgs']] = None):
+        """
+        :param pulumi.Input['IdpIntegrationSonarqubeInstanceCloudArgs'] cloud: SonarQube Cloud.
+        :param pulumi.Input['IdpIntegrationSonarqubeInstanceServerArgs'] server: Self-hosted SonarQube Server.
+        """
+        if cloud is not None:
+            pulumi.set(__self__, "cloud", cloud)
+        if server is not None:
+            pulumi.set(__self__, "server", server)
+
+    @_builtins.property
+    @pulumi.getter
+    def cloud(self) -> pulumi.Input[Optional['IdpIntegrationSonarqubeInstanceCloudArgs']]:
+        """
+        SonarQube Cloud.
+        """
+        return pulumi.get(self, "cloud")
+
+    @cloud.setter
+    def cloud(self, value: pulumi.Input[Optional['IdpIntegrationSonarqubeInstanceCloudArgs']]):
+        pulumi.set(self, "cloud", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def server(self) -> pulumi.Input[Optional['IdpIntegrationSonarqubeInstanceServerArgs']]:
+        """
+        Self-hosted SonarQube Server.
+        """
+        return pulumi.get(self, "server")
+
+    @server.setter
+    def server(self, value: pulumi.Input[Optional['IdpIntegrationSonarqubeInstanceServerArgs']]):
+        pulumi.set(self, "server", value)
+
+
+class IdpIntegrationSonarqubeInstanceCloudArgsDict(TypedDict):
+    organization: pulumi.Input[_builtins.str]
+    """
+    Organization key.
+    """
+    host_url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Cloud URL.
+    """
+
+@pulumi.input_type
+class IdpIntegrationSonarqubeInstanceCloudArgs:
+    def __init__(__self__, *,
+                 organization: pulumi.Input[_builtins.str],
+                 host_url: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] organization: Organization key.
+        :param pulumi.Input[_builtins.str] host_url: Cloud URL.
+        """
+        pulumi.set(__self__, "organization", organization)
+        if host_url is not None:
+            pulumi.set(__self__, "host_url", host_url)
+
+    @_builtins.property
+    @pulumi.getter
+    def organization(self) -> pulumi.Input[_builtins.str]:
+        """
+        Organization key.
+        """
+        return pulumi.get(self, "organization")
+
+    @organization.setter
+    def organization(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "organization", value)
+
+    @_builtins.property
+    @pulumi.getter(name="hostUrl")
+    def host_url(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Cloud URL.
+        """
+        return pulumi.get(self, "host_url")
+
+    @host_url.setter
+    def host_url(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "host_url", value)
+
+
+class IdpIntegrationSonarqubeInstanceServerArgsDict(TypedDict):
+    host_url: pulumi.Input[_builtins.str]
+    """
+    Server URL.
+    """
+
+@pulumi.input_type
+class IdpIntegrationSonarqubeInstanceServerArgs:
+    def __init__(__self__, *,
+                 host_url: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] host_url: Server URL.
+        """
+        pulumi.set(__self__, "host_url", host_url)
+
+    @_builtins.property
+    @pulumi.getter(name="hostUrl")
+    def host_url(self) -> pulumi.Input[_builtins.str]:
+        """
+        Server URL.
+        """
+        return pulumi.get(self, "host_url")
+
+    @host_url.setter
+    def host_url(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "host_url", value)
+
+
+class IdpIntegrationSonarqubeIssuesArgsDict(TypedDict):
+    impact_severities: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    INFO, LOW, MEDIUM, HIGH or BLOCKER.
+    """
+    issue_statuses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    OPEN, CONFIRMED, FALSE*POSITIVE, ACCEPTED, FIXED or IN*SANDBOX.
+    """
+    resolved: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    "true" for resolved issues only, "false" for unresolved only; omit for both.
+    """
+    severities: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    INFO, MINOR, MAJOR, CRITICAL or BLOCKER.
+    """
+    types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    CODE_SMELL, BUG or VULNERABILITY.
+    """
+
+@pulumi.input_type
+class IdpIntegrationSonarqubeIssuesArgs:
+    def __init__(__self__, *,
+                 impact_severities: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 issue_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resolved: pulumi.Input[Optional[_builtins.str]] = None,
+                 severities: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] impact_severities: INFO, LOW, MEDIUM, HIGH or BLOCKER.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] issue_statuses: OPEN, CONFIRMED, FALSE*POSITIVE, ACCEPTED, FIXED or IN*SANDBOX.
+        :param pulumi.Input[_builtins.str] resolved: "true" for resolved issues only, "false" for unresolved only; omit for both.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] severities: INFO, MINOR, MAJOR, CRITICAL or BLOCKER.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] types: CODE_SMELL, BUG or VULNERABILITY.
+        """
+        if impact_severities is not None:
+            pulumi.set(__self__, "impact_severities", impact_severities)
+        if issue_statuses is not None:
+            pulumi.set(__self__, "issue_statuses", issue_statuses)
+        if resolved is not None:
+            pulumi.set(__self__, "resolved", resolved)
+        if severities is not None:
+            pulumi.set(__self__, "severities", severities)
+        if types is not None:
+            pulumi.set(__self__, "types", types)
+
+    @_builtins.property
+    @pulumi.getter(name="impactSeverities")
+    def impact_severities(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        INFO, LOW, MEDIUM, HIGH or BLOCKER.
+        """
+        return pulumi.get(self, "impact_severities")
+
+    @impact_severities.setter
+    def impact_severities(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "impact_severities", value)
+
+    @_builtins.property
+    @pulumi.getter(name="issueStatuses")
+    def issue_statuses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        OPEN, CONFIRMED, FALSE*POSITIVE, ACCEPTED, FIXED or IN*SANDBOX.
+        """
+        return pulumi.get(self, "issue_statuses")
+
+    @issue_statuses.setter
+    def issue_statuses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "issue_statuses", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def resolved(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        "true" for resolved issues only, "false" for unresolved only; omit for both.
+        """
+        return pulumi.get(self, "resolved")
+
+    @resolved.setter
+    def resolved(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "resolved", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def severities(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        INFO, MINOR, MAJOR, CRITICAL or BLOCKER.
+        """
+        return pulumi.get(self, "severities")
+
+    @severities.setter
+    def severities(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "severities", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        CODE_SMELL, BUG or VULNERABILITY.
+        """
+        return pulumi.get(self, "types")
+
+    @types.setter
+    def types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "types", value)
+
+
+class IdpIntegrationSonarqubeProjectsArgsDict(TypedDict):
+    excludes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Every project except these keys.
+    """
+    includes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Only these project keys.
+    """
+
+@pulumi.input_type
+class IdpIntegrationSonarqubeProjectsArgs:
+    def __init__(__self__, *,
+                 excludes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 includes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] excludes: Every project except these keys.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] includes: Only these project keys.
+        """
+        if excludes is not None:
+            pulumi.set(__self__, "excludes", excludes)
+        if includes is not None:
+            pulumi.set(__self__, "includes", includes)
+
+    @_builtins.property
+    @pulumi.getter
+    def excludes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Every project except these keys.
+        """
+        return pulumi.get(self, "excludes")
+
+    @excludes.setter
+    def excludes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "excludes", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def includes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Only these project keys.
+        """
+        return pulumi.get(self, "includes")
+
+    @includes.setter
+    def includes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "includes", value)
 
 
 class IdpPluginEnvVariableArgsDict(TypedDict):

@@ -157,6 +157,10 @@ import com.pulumi.harness.platform.inputs.GetIdpEnvironmentArgs;
 import com.pulumi.harness.platform.inputs.GetIdpEnvironmentBlueprintArgs;
 import com.pulumi.harness.platform.inputs.GetIdpEnvironmentBlueprintPlainArgs;
 import com.pulumi.harness.platform.inputs.GetIdpEnvironmentPlainArgs;
+import com.pulumi.harness.platform.inputs.GetIdpIntegrationArgs;
+import com.pulumi.harness.platform.inputs.GetIdpIntegrationKindMappingArgs;
+import com.pulumi.harness.platform.inputs.GetIdpIntegrationKindMappingPlainArgs;
+import com.pulumi.harness.platform.inputs.GetIdpIntegrationPlainArgs;
 import com.pulumi.harness.platform.inputs.GetIdpPluginArgs;
 import com.pulumi.harness.platform.inputs.GetIdpPluginPlainArgs;
 import com.pulumi.harness.platform.inputs.GetIdpScorecardArgs;
@@ -366,6 +370,8 @@ import com.pulumi.harness.platform.outputs.GetIacmDefaultPipelineResult;
 import com.pulumi.harness.platform.outputs.GetIdpCatalogEntityResult;
 import com.pulumi.harness.platform.outputs.GetIdpEnvironmentBlueprintResult;
 import com.pulumi.harness.platform.outputs.GetIdpEnvironmentResult;
+import com.pulumi.harness.platform.outputs.GetIdpIntegrationKindMappingResult;
+import com.pulumi.harness.platform.outputs.GetIdpIntegrationResult;
 import com.pulumi.harness.platform.outputs.GetIdpPluginResult;
 import com.pulumi.harness.platform.outputs.GetIdpScorecardCheckResult;
 import com.pulumi.harness.platform.outputs.GetIdpScorecardResult;
@@ -15269,6 +15275,426 @@ public final class PlatformFunctions {
      */
     public static CompletableFuture<GetIdpEnvironmentBlueprintResult> getIdpEnvironmentBlueprintPlain(GetIdpEnvironmentBlueprintPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:platform/getIdpEnvironmentBlueprint:getIdpEnvironmentBlueprint", TypeShape.of(GetIdpEnvironmentBlueprintResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for an IDP integration.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetIdpIntegrationArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Webhook URLs of a Custom integration, to configure in the sending system.
+     *         final var example = PlatformFunctions.getIdpIntegration(GetIdpIntegrationArgs.builder()
+     *             .identifier("orders_webhook")
+     *             .build());
+     * 
+     *         ctx.export("webhookUrls", example.endpoints().stream().map(element -> element.url()).collect(toList()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetIdpIntegrationResult> getIdpIntegration(GetIdpIntegrationArgs args) {
+        return getIdpIntegration(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for an IDP integration.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetIdpIntegrationArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Webhook URLs of a Custom integration, to configure in the sending system.
+     *         final var example = PlatformFunctions.getIdpIntegration(GetIdpIntegrationArgs.builder()
+     *             .identifier("orders_webhook")
+     *             .build());
+     * 
+     *         ctx.export("webhookUrls", example.endpoints().stream().map(element -> element.url()).collect(toList()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetIdpIntegrationResult> getIdpIntegrationPlain(GetIdpIntegrationPlainArgs args) {
+        return getIdpIntegrationPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for an IDP integration.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetIdpIntegrationArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Webhook URLs of a Custom integration, to configure in the sending system.
+     *         final var example = PlatformFunctions.getIdpIntegration(GetIdpIntegrationArgs.builder()
+     *             .identifier("orders_webhook")
+     *             .build());
+     * 
+     *         ctx.export("webhookUrls", example.endpoints().stream().map(element -> element.url()).collect(toList()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetIdpIntegrationResult> getIdpIntegration(GetIdpIntegrationArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getIdpIntegration:getIdpIntegration", TypeShape.of(GetIdpIntegrationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for an IDP integration.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetIdpIntegrationArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Webhook URLs of a Custom integration, to configure in the sending system.
+     *         final var example = PlatformFunctions.getIdpIntegration(GetIdpIntegrationArgs.builder()
+     *             .identifier("orders_webhook")
+     *             .build());
+     * 
+     *         ctx.export("webhookUrls", example.endpoints().stream().map(element -> element.url()).collect(toList()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetIdpIntegrationResult> getIdpIntegration(GetIdpIntegrationArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getIdpIntegration:getIdpIntegration", TypeShape.of(GetIdpIntegrationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for an IDP integration.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetIdpIntegrationArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Webhook URLs of a Custom integration, to configure in the sending system.
+     *         final var example = PlatformFunctions.getIdpIntegration(GetIdpIntegrationArgs.builder()
+     *             .identifier("orders_webhook")
+     *             .build());
+     * 
+     *         ctx.export("webhookUrls", example.endpoints().stream().map(element -> element.url()).collect(toList()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetIdpIntegrationResult> getIdpIntegrationPlain(GetIdpIntegrationPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:platform/getIdpIntegration:getIdpIntegration", TypeShape.of(GetIdpIntegrationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for the mapping of one kind of an IDP integration.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetIdpIntegrationKindMappingArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getIdpIntegrationKindMapping(GetIdpIntegrationKindMappingArgs.builder()
+     *             .integrationId("servicenow_prod")
+     *             .orgId("default")
+     *             .kind("cmdb_ci_service")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetIdpIntegrationKindMappingResult> getIdpIntegrationKindMapping(GetIdpIntegrationKindMappingArgs args) {
+        return getIdpIntegrationKindMapping(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for the mapping of one kind of an IDP integration.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetIdpIntegrationKindMappingArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getIdpIntegrationKindMapping(GetIdpIntegrationKindMappingArgs.builder()
+     *             .integrationId("servicenow_prod")
+     *             .orgId("default")
+     *             .kind("cmdb_ci_service")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetIdpIntegrationKindMappingResult> getIdpIntegrationKindMappingPlain(GetIdpIntegrationKindMappingPlainArgs args) {
+        return getIdpIntegrationKindMappingPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for the mapping of one kind of an IDP integration.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetIdpIntegrationKindMappingArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getIdpIntegrationKindMapping(GetIdpIntegrationKindMappingArgs.builder()
+     *             .integrationId("servicenow_prod")
+     *             .orgId("default")
+     *             .kind("cmdb_ci_service")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetIdpIntegrationKindMappingResult> getIdpIntegrationKindMapping(GetIdpIntegrationKindMappingArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getIdpIntegrationKindMapping:getIdpIntegrationKindMapping", TypeShape.of(GetIdpIntegrationKindMappingResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for the mapping of one kind of an IDP integration.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetIdpIntegrationKindMappingArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getIdpIntegrationKindMapping(GetIdpIntegrationKindMappingArgs.builder()
+     *             .integrationId("servicenow_prod")
+     *             .orgId("default")
+     *             .kind("cmdb_ci_service")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetIdpIntegrationKindMappingResult> getIdpIntegrationKindMapping(GetIdpIntegrationKindMappingArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getIdpIntegrationKindMapping:getIdpIntegrationKindMapping", TypeShape.of(GetIdpIntegrationKindMappingResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for the mapping of one kind of an IDP integration.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetIdpIntegrationKindMappingArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getIdpIntegrationKindMapping(GetIdpIntegrationKindMappingArgs.builder()
+     *             .integrationId("servicenow_prod")
+     *             .orgId("default")
+     *             .kind("cmdb_ci_service")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetIdpIntegrationKindMappingResult> getIdpIntegrationKindMappingPlain(GetIdpIntegrationKindMappingPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:platform/getIdpIntegrationKindMapping:getIdpIntegrationKindMapping", TypeShape.of(GetIdpIntegrationKindMappingResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source for retrieving IDP plugin configuration.

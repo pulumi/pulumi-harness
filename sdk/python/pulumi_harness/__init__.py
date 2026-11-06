@@ -1232,6 +1232,22 @@ _utilities.register(
  },
  {
   "pkg": "harness",
+  "mod": "platform/idpIntegration",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/idpIntegration:IdpIntegration": "IdpIntegration"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/idpIntegrationKindMapping",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/idpIntegrationKindMapping:IdpIntegrationKindMapping": "IdpIntegrationKindMapping"
+  }
+ },
+ {
+  "pkg": "harness",
   "mod": "platform/idpPlugin",
   "fqn": "pulumi_harness.platform",
   "classes": {

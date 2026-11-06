@@ -620,6 +620,16 @@ export const getIdpEnvironmentBlueprint: typeof import("./getIdpEnvironmentBluep
 export const getIdpEnvironmentBlueprintOutput: typeof import("./getIdpEnvironmentBlueprint").getIdpEnvironmentBlueprintOutput = null as any;
 utilities.lazyLoad(exports, ["getIdpEnvironmentBlueprint","getIdpEnvironmentBlueprintOutput"], () => require("./getIdpEnvironmentBlueprint"));
 
+export { GetIdpIntegrationArgs, GetIdpIntegrationResult, GetIdpIntegrationOutputArgs } from "./getIdpIntegration";
+export const getIdpIntegration: typeof import("./getIdpIntegration").getIdpIntegration = null as any;
+export const getIdpIntegrationOutput: typeof import("./getIdpIntegration").getIdpIntegrationOutput = null as any;
+utilities.lazyLoad(exports, ["getIdpIntegration","getIdpIntegrationOutput"], () => require("./getIdpIntegration"));
+
+export { GetIdpIntegrationKindMappingArgs, GetIdpIntegrationKindMappingResult, GetIdpIntegrationKindMappingOutputArgs } from "./getIdpIntegrationKindMapping";
+export const getIdpIntegrationKindMapping: typeof import("./getIdpIntegrationKindMapping").getIdpIntegrationKindMapping = null as any;
+export const getIdpIntegrationKindMappingOutput: typeof import("./getIdpIntegrationKindMapping").getIdpIntegrationKindMappingOutput = null as any;
+utilities.lazyLoad(exports, ["getIdpIntegrationKindMapping","getIdpIntegrationKindMappingOutput"], () => require("./getIdpIntegrationKindMapping"));
+
 export { GetIdpPluginArgs, GetIdpPluginResult, GetIdpPluginOutputArgs } from "./getIdpPlugin";
 export const getIdpPlugin: typeof import("./getIdpPlugin").getIdpPlugin = null as any;
 export const getIdpPluginOutput: typeof import("./getIdpPlugin").getIdpPluginOutput = null as any;
@@ -1094,6 +1104,16 @@ export { IdpEnvironmentBlueprintArgs, IdpEnvironmentBlueprintState } from "./idp
 export type IdpEnvironmentBlueprint = import("./idpEnvironmentBlueprint").IdpEnvironmentBlueprint;
 export const IdpEnvironmentBlueprint: typeof import("./idpEnvironmentBlueprint").IdpEnvironmentBlueprint = null as any;
 utilities.lazyLoad(exports, ["IdpEnvironmentBlueprint"], () => require("./idpEnvironmentBlueprint"));
+
+export { IdpIntegrationArgs, IdpIntegrationState } from "./idpIntegration";
+export type IdpIntegration = import("./idpIntegration").IdpIntegration;
+export const IdpIntegration: typeof import("./idpIntegration").IdpIntegration = null as any;
+utilities.lazyLoad(exports, ["IdpIntegration"], () => require("./idpIntegration"));
+
+export { IdpIntegrationKindMappingArgs, IdpIntegrationKindMappingState } from "./idpIntegrationKindMapping";
+export type IdpIntegrationKindMapping = import("./idpIntegrationKindMapping").IdpIntegrationKindMapping;
+export const IdpIntegrationKindMapping: typeof import("./idpIntegrationKindMapping").IdpIntegrationKindMapping = null as any;
+utilities.lazyLoad(exports, ["IdpIntegrationKindMapping"], () => require("./idpIntegrationKindMapping"));
 
 export { IdpPluginArgs, IdpPluginState } from "./idpPlugin";
 export type IdpPlugin = import("./idpPlugin").IdpPlugin;
@@ -1576,6 +1596,10 @@ const _module = {
                 return new IdpEnvironment(name, <any>undefined, { urn })
             case "harness:platform/idpEnvironmentBlueprint:IdpEnvironmentBlueprint":
                 return new IdpEnvironmentBlueprint(name, <any>undefined, { urn })
+            case "harness:platform/idpIntegration:IdpIntegration":
+                return new IdpIntegration(name, <any>undefined, { urn })
+            case "harness:platform/idpIntegrationKindMapping:IdpIntegrationKindMapping":
+                return new IdpIntegrationKindMapping(name, <any>undefined, { urn })
             case "harness:platform/idpPlugin:IdpPlugin":
                 return new IdpPlugin(name, <any>undefined, { urn })
             case "harness:platform/idpScorecard:IdpScorecard":
@@ -1786,6 +1810,8 @@ pulumi.runtime.registerResourceModule("harness", "platform/iacmWorkspaceTemplate
 pulumi.runtime.registerResourceModule("harness", "platform/idpCatalogEntity", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/idpEnvironment", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/idpEnvironmentBlueprint", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/idpIntegration", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/idpIntegrationKindMapping", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/idpPlugin", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/idpScorecard", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/idpScorecardCheck", _module)
