@@ -15153,6 +15153,247 @@
             "harness_platform_idp_environment_blueprint": {
                 "current": "harness:platform/idpEnvironmentBlueprint:IdpEnvironmentBlueprint"
             },
+            "harness_platform_idp_integration": {
+                "current": "harness:platform/idpIntegration:IdpIntegration",
+                "fields": {
+                    "bitbucket_cloud": {
+                        "maxItemsOne": true
+                    },
+                    "catalog_info": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "git_sync": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "target": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "repo": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "repositories": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "connector": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "inline": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "custom": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "layout": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "column": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "webhook_auth": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "datadog": {
+                        "maxItemsOne": true
+                    },
+                    "dynatrace": {
+                        "maxItemsOne": true
+                    },
+                    "effective_kinds": {
+                        "maxItemsOne": false
+                    },
+                    "endpoints": {
+                        "maxItemsOne": false
+                    },
+                    "gcp": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "parent": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "github": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "orgs": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "harness_cd": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "mapping_fields": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "fields": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "harness_code": {
+                        "maxItemsOne": true
+                    },
+                    "harness_k8s": {
+                        "maxItemsOne": true
+                    },
+                    "jira": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "custom_fields": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "kind": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "mapping": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "correlation": {
+                                                "maxItemsOne": true
+                                            },
+                                            "field_mapping": {
+                                                "maxItemsOne": false
+                                            },
+                                            "ingestion": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "pagerduty": {
+                        "maxItemsOne": true
+                    },
+                    "scopes": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "selected": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "secondary_kinds": {
+                        "maxItemsOne": false
+                    },
+                    "sonarqube": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "instance": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "cloud": {
+                                                "maxItemsOne": true
+                                            },
+                                            "server": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "issues": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "impact_severities": {
+                                                "maxItemsOne": false
+                                            },
+                                            "issue_statuses": {
+                                                "maxItemsOne": false
+                                            },
+                                            "severities": {
+                                                "maxItemsOne": false
+                                            },
+                                            "types": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "projects": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "exclude": {
+                                                "maxItemsOne": false
+                                            },
+                                            "include": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_platform_idp_integration_kind_mapping": {
+                "current": "harness:platform/idpIntegrationKindMapping:IdpIntegrationKindMapping",
+                "fields": {
+                    "correlation": {
+                        "maxItemsOne": true
+                    },
+                    "emission": {
+                        "maxItemsOne": false
+                    },
+                    "field_mapping": {
+                        "maxItemsOne": false
+                    },
+                    "ingestion": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
             "harness_platform_idp_plugin": {
                 "current": "harness:platform/idpPlugin:IdpPlugin",
                 "fields": {
@@ -19241,6 +19482,227 @@
             },
             "harness_platform_idp_environment_blueprint": {
                 "current": "harness:platform/getIdpEnvironmentBlueprint:getIdpEnvironmentBlueprint"
+            },
+            "harness_platform_idp_integration": {
+                "current": "harness:platform/getIdpIntegration:getIdpIntegration",
+                "fields": {
+                    "bitbucket_cloud": {
+                        "maxItemsOne": false
+                    },
+                    "catalog_info": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "git_sync": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "target": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "repo": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "repositories": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "connector": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "inline": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "custom": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "layout": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "column": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "webhook_auth": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "datadog": {
+                        "maxItemsOne": false
+                    },
+                    "dynatrace": {
+                        "maxItemsOne": false
+                    },
+                    "effective_kinds": {
+                        "maxItemsOne": false
+                    },
+                    "endpoints": {
+                        "maxItemsOne": false
+                    },
+                    "gcp": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "parent": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "github": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "orgs": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "harness_cd": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "mapping_fields": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "fields": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "harness_code": {
+                        "maxItemsOne": false
+                    },
+                    "harness_k8s": {
+                        "maxItemsOne": false
+                    },
+                    "jira": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "custom_fields": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "kind": {
+                        "maxItemsOne": false
+                    },
+                    "pagerduty": {
+                        "maxItemsOne": false
+                    },
+                    "scopes": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "selected": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "secondary_kinds": {
+                        "maxItemsOne": false
+                    },
+                    "sonarqube": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "instance": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "cloud": {
+                                                "maxItemsOne": false
+                                            },
+                                            "server": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "issues": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "impact_severities": {
+                                                "maxItemsOne": false
+                                            },
+                                            "issue_statuses": {
+                                                "maxItemsOne": false
+                                            },
+                                            "severities": {
+                                                "maxItemsOne": false
+                                            },
+                                            "types": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "projects": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "exclude": {
+                                                "maxItemsOne": false
+                                            },
+                                            "include": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_platform_idp_integration_kind_mapping": {
+                "current": "harness:platform/getIdpIntegrationKindMapping:getIdpIntegrationKindMapping",
+                "fields": {
+                    "correlation": {
+                        "maxItemsOne": false
+                    },
+                    "emission": {
+                        "maxItemsOne": false
+                    },
+                    "field_mapping": {
+                        "maxItemsOne": false
+                    },
+                    "ingestion": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "harness_platform_idp_plugin": {
                 "current": "harness:platform/getIdpPlugin:getIdpPlugin",

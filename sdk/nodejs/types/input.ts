@@ -37839,6 +37839,492 @@ export namespace platform {
         storeType?: pulumi.Input<string | undefined>;
     }
 
+    export interface IdpIntegrationBitbucketCloud {
+        /**
+         * Lower bound for the first sync, RFC3339.
+         */
+        startDate?: pulumi.Input<string | undefined>;
+    }
+
+    export interface IdpIntegrationCatalogInfo {
+        /**
+         * Branch to read; omit for each repository's default branch.
+         */
+        branch?: pulumi.Input<string | undefined>;
+        /**
+         * Catalog file glob, relative to the repository root.
+         */
+        catalogPath?: pulumi.Input<string | undefined>;
+        /**
+         * Writes converted Harness YAML to git.
+         */
+        gitSync?: pulumi.Input<inputs.platform.IdpIntegrationCatalogInfoGitSync | undefined>;
+        /**
+         * Repositories to scan; omit to scan all.
+         */
+        repositories?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * github or bitbucket.
+         */
+        sourceType?: pulumi.Input<string | undefined>;
+    }
+
+    export interface IdpIntegrationCatalogInfoGitSync {
+        /**
+         * Directory the files are written to.
+         */
+        basePath?: pulumi.Input<string | undefined>;
+        /**
+         * Connector used to push.
+         */
+        connectorRef: pulumi.Input<string>;
+        /**
+         * Where to push. Set exactly one of source*repo or repo.
+         */
+        target: pulumi.Input<inputs.platform.IdpIntegrationCatalogInfoGitSyncTarget>;
+    }
+
+    export interface IdpIntegrationCatalogInfoGitSyncTarget {
+        /**
+         * Push to one repository.
+         */
+        repo?: pulumi.Input<inputs.platform.IdpIntegrationCatalogInfoGitSyncTargetRepo | undefined>;
+        /**
+         * Push to the repository each file was read from.
+         */
+        sourceRepo?: pulumi.Input<boolean | undefined>;
+    }
+
+    export interface IdpIntegrationCatalogInfoGitSyncTargetRepo {
+        /**
+         * Branch.
+         */
+        branch: pulumi.Input<string>;
+        /**
+         * Repository.
+         */
+        name: pulumi.Input<string>;
+    }
+
+    export interface IdpIntegrationConnector {
+        /**
+         * Credentials stored on the integration.
+         */
+        inline?: pulumi.Input<inputs.platform.IdpIntegrationConnectorInline | undefined>;
+        /**
+         * Reference to a standalone IDP connector.
+         */
+        ref?: pulumi.Input<string | undefined>;
+    }
+
+    export interface IdpIntegrationConnectorInline {
+        /**
+         * Harness connector reference, e.g. account.snow. Can't change.
+         */
+        credentialsRef: pulumi.Input<string>;
+    }
+
+    export interface IdpIntegrationCustom {
+        /**
+         * Columns shown for the integration's entities.
+         */
+        layout?: pulumi.Input<inputs.platform.IdpIntegrationCustomLayout | undefined>;
+        /**
+         * webhook or api.
+         */
+        mode: pulumi.Input<string>;
+        /**
+         * Label for the sending system.
+         */
+        sourceLabel?: pulumi.Input<string | undefined>;
+        /**
+         * Webhook authentication. Required in webhook mode.
+         */
+        webhookAuth?: pulumi.Input<inputs.platform.IdpIntegrationCustomWebhookAuth | undefined>;
+    }
+
+    export interface IdpIntegrationCustomLayout {
+        /**
+         * A column.
+         */
+        columns: pulumi.Input<pulumi.Input<inputs.platform.IdpIntegrationCustomLayoutColumn>[]>;
+    }
+
+    export interface IdpIntegrationCustomLayoutColumn {
+        /**
+         * JQ path of the value.
+         */
+        path: pulumi.Input<string>;
+        /**
+         * Column title.
+         */
+        title: pulumi.Input<string>;
+    }
+
+    export interface IdpIntegrationCustomWebhookAuth {
+        /**
+         * Header carrying the signature or token.
+         */
+        authHeader?: pulumi.Input<string | undefined>;
+        /**
+         * hmac*auth or jwt*auth.
+         */
+        authType: pulumi.Input<string>;
+        /**
+         * HMAC hash: hmac*sha224, hmac*sha256, hmac*sha384 or hmac*sha512.
+         */
+        hashAlgo?: pulumi.Input<string | undefined>;
+        /**
+         * Secret reference holding the shared secret.
+         */
+        secretRef?: pulumi.Input<string | undefined>;
+    }
+
+    export interface IdpIntegrationDatadog {
+        /**
+         * Environment used to add service dependencies.
+         */
+        serviceDependenciesEnv?: pulumi.Input<string | undefined>;
+    }
+
+    export interface IdpIntegrationDynatrace {
+        /**
+         * Secret reference to a Platform API token.
+         */
+        platformTokenRef?: pulumi.Input<string | undefined>;
+        /**
+         * Lower bound for incremental streams, RFC3339.
+         */
+        startDate?: pulumi.Input<string | undefined>;
+    }
+
+    export interface IdpIntegrationEndpoint {
+        /**
+         * Kind.
+         */
+        kind?: pulumi.Input<string | undefined>;
+        /**
+         * HTTP method.
+         */
+        method?: pulumi.Input<string | undefined>;
+        /**
+         * Path relative to the integration manager, e.g. https://app.harness.io/gateway/integration.
+         */
+        url?: pulumi.Input<string | undefined>;
+    }
+
+    export interface IdpIntegrationGcp {
+        /**
+         * The organization or folder whose assets are synced. Set exactly one field.
+         */
+        parent: pulumi.Input<inputs.platform.IdpIntegrationGcpParent>;
+    }
+
+    export interface IdpIntegrationGcpParent {
+        /**
+         * Folder ID.
+         */
+        folderId?: pulumi.Input<string | undefined>;
+        /**
+         * Organization ID.
+         */
+        orgId?: pulumi.Input<string | undefined>;
+    }
+
+    export interface IdpIntegrationGithub {
+        /**
+         * Agents file to detect in repositories.
+         */
+        agentFileName?: pulumi.Input<string | undefined>;
+        /**
+         * Organizations to sync.
+         */
+        orgs: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Lower bound for the first sync, RFC3339.
+         */
+        startDate?: pulumi.Input<string | undefined>;
+    }
+
+    export interface IdpIntegrationHarnessCd {
+        /**
+         * Days of deployments to read.
+         */
+        deploymentCycle?: pulumi.Input<number | undefined>;
+        /**
+         * Fields to map per kind; omit to map all.
+         */
+        mappingFields?: pulumi.Input<pulumi.Input<inputs.platform.IdpIntegrationHarnessCdMappingField>[] | undefined>;
+    }
+
+    export interface IdpIntegrationHarnessCdMappingField {
+        /**
+         * Fields.
+         */
+        fields: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Kind.
+         */
+        kind: pulumi.Input<string>;
+    }
+
+    export interface IdpIntegrationHarnessCode {
+        /**
+         * Agents file to detect in repositories.
+         */
+        agentFileName?: pulumi.Input<string | undefined>;
+    }
+
+    export interface IdpIntegrationHarnessK8s {
+        /**
+         * Environment.
+         */
+        environmentIdentifier: pulumi.Input<string>;
+        /**
+         * Service discovery agent.
+         */
+        serviceDiscoveryAgentIdentifier: pulumi.Input<string>;
+    }
+
+    export interface IdpIntegrationJira {
+        /**
+         * Custom field IDs to sync, like customfield_10456.
+         */
+        customFields?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * Lower bound for the first sync, RFC3339; 365 days back when omitted.
+         */
+        startDate?: pulumi.Input<string | undefined>;
+    }
+
+    export interface IdpIntegrationKind {
+        /**
+         * register, merge or merge_register; the type's default when omitted.
+         */
+        action?: pulumi.Input<string | undefined>;
+        /**
+         * Import new entities automatically.
+         */
+        autoImport?: pulumi.Input<boolean | undefined>;
+        /**
+         * JQ that returns true for records to keep; the type's default when omitted.
+         */
+        filter?: pulumi.Input<string | undefined>;
+        /**
+         * Airbyte types: entity kind, e.g. component; the type's default when omitted. Set at create only; required for kinds with no default, such as ServiceNow's.
+         */
+        idpKind?: pulumi.Input<string | undefined>;
+        /**
+         * Airbyte types: entity type, e.g. service; the type's default when omitted. Set at create only.
+         */
+        idpType?: pulumi.Input<string | undefined>;
+        /**
+         * Kind name.
+         */
+        kind: pulumi.Input<string>;
+        /**
+         * The kind's mapping, sent with the create so the first sync uses it. Omitted fields keep the type's defaults. Create only: it can't be added or changed afterwards, and removing it leaves the mapping as it is. Use harness*platform*idp*integration*kind_mapping to manage the mapping after the create, and don't use both for the same kind.
+         */
+        mapping?: pulumi.Input<inputs.platform.IdpIntegrationKindMapping | undefined>;
+        /**
+         * Airbyte types: the stream's sync mode, fullRefresh or incremental.
+         */
+        replicationMode?: pulumi.Input<string | undefined>;
+    }
+
+    export interface IdpIntegrationKindMapping {
+        /**
+         * Links records to existing entities; the server's when omitted.
+         */
+        correlation?: pulumi.Input<inputs.platform.IdpIntegrationKindMappingCorrelation | undefined>;
+        /**
+         * Source field used as the entity's name.
+         */
+        displayNameField?: pulumi.Input<string | undefined>;
+        /**
+         * Maps a source field to an entity field. Airbyte types. Omitted, the type's defaults apply; removing it from the config keeps the last value, so destroy the mapping resource to go back to them.
+         */
+        fieldMappings?: pulumi.Input<pulumi.Input<inputs.platform.IdpIntegrationKindMappingFieldMapping>[] | undefined>;
+        /**
+         * Entity kind, e.g. component.
+         */
+        idpKind?: pulumi.Input<string | undefined>;
+        /**
+         * Entity type, e.g. service.
+         */
+        idpType?: pulumi.Input<string | undefined>;
+        /**
+         * Custom types: JQ that builds the entity from a payload.
+         */
+        ingestion?: pulumi.Input<inputs.platform.IdpIntegrationKindMappingIngestion | undefined>;
+        /**
+         * Custom types, custom kind: JSON Schema of the payload.
+         */
+        payloadSchema?: pulumi.Input<string | undefined>;
+        /**
+         * Source field that identifies an entity. Can't change on Airbyte types.
+         */
+        uniqueIdentifierField?: pulumi.Input<string | undefined>;
+    }
+
+    export interface IdpIntegrationKindMappingCorrelation {
+        /**
+         * Match operator; eq when omitted.
+         */
+        operator?: pulumi.Input<string | undefined>;
+        /**
+         * Field to match. Airbyte types: a path in the emitted entity data, e.g. identifier or spec.owner; Custom: a payload field.
+         */
+        sourcePath: pulumi.Input<string>;
+        /**
+         * Entity field to match, e.g. metadata.identifier.
+         */
+        targetPath: pulumi.Input<string>;
+    }
+
+    export interface IdpIntegrationKindMappingEmission {
+        identifier?: pulumi.Input<string | undefined>;
+        name?: pulumi.Input<string | undefined>;
+        /**
+         * JSON object.
+         */
+        properties?: pulumi.Input<string | undefined>;
+    }
+
+    export interface IdpIntegrationKindMappingFieldMapping {
+        /**
+         * Source field.
+         */
+        sourceField: pulumi.Input<string>;
+        /**
+         * Entity field, e.g. spec.owner.
+         */
+        targetField: pulumi.Input<string>;
+    }
+
+    export interface IdpIntegrationKindMappingIngestion {
+        /**
+         * JQ for the entity identifier.
+         */
+        identifier: pulumi.Input<string>;
+        /**
+         * JQ for the entity name.
+         */
+        name?: pulumi.Input<string | undefined>;
+        /**
+         * JQ per entity property; derived from the payload schema when omitted.
+         */
+        properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    }
+
+    export interface IdpIntegrationPagerduty {
+        /**
+         * Months of analytics to aggregate.
+         */
+        analyticsDurationMonths?: pulumi.Input<number | undefined>;
+        /**
+         * Lower bound for the first sync, RFC3339.
+         */
+        startDate?: pulumi.Input<string | undefined>;
+    }
+
+    export interface IdpIntegrationScopes {
+        /**
+         * Read from every scope.
+         */
+        all?: pulumi.Input<boolean | undefined>;
+        /**
+         * Scopes to read from: "" for the account, "org" or "org/project".
+         */
+        selecteds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    }
+
+    export interface IdpIntegrationSonarqube {
+        /**
+         * Set exactly one of server or cloud.
+         */
+        instance: pulumi.Input<inputs.platform.IdpIntegrationSonarqubeInstance>;
+        /**
+         * Filters for the issues stream.
+         */
+        issues?: pulumi.Input<inputs.platform.IdpIntegrationSonarqubeIssues | undefined>;
+        /**
+         * Projects to sync; omit to sync all. Set exactly one of include or exclude.
+         */
+        projects?: pulumi.Input<inputs.platform.IdpIntegrationSonarqubeProjects | undefined>;
+        /**
+         * Lower bound for the first sync, RFC3339.
+         */
+        startDate?: pulumi.Input<string | undefined>;
+        /**
+         * Secret reference to a SonarQube user token.
+         */
+        tokenRef: pulumi.Input<string>;
+    }
+
+    export interface IdpIntegrationSonarqubeInstance {
+        /**
+         * SonarQube Cloud.
+         */
+        cloud?: pulumi.Input<inputs.platform.IdpIntegrationSonarqubeInstanceCloud | undefined>;
+        /**
+         * Self-hosted SonarQube Server.
+         */
+        server?: pulumi.Input<inputs.platform.IdpIntegrationSonarqubeInstanceServer | undefined>;
+    }
+
+    export interface IdpIntegrationSonarqubeInstanceCloud {
+        /**
+         * Cloud URL.
+         */
+        hostUrl?: pulumi.Input<string | undefined>;
+        /**
+         * Organization key.
+         */
+        organization: pulumi.Input<string>;
+    }
+
+    export interface IdpIntegrationSonarqubeInstanceServer {
+        /**
+         * Server URL.
+         */
+        hostUrl: pulumi.Input<string>;
+    }
+
+    export interface IdpIntegrationSonarqubeIssues {
+        /**
+         * INFO, LOW, MEDIUM, HIGH or BLOCKER.
+         */
+        impactSeverities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * OPEN, CONFIRMED, FALSE*POSITIVE, ACCEPTED, FIXED or IN*SANDBOX.
+         */
+        issueStatuses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * "true" for resolved issues only, "false" for unresolved only; omit for both.
+         */
+        resolved?: pulumi.Input<string | undefined>;
+        /**
+         * INFO, MINOR, MAJOR, CRITICAL or BLOCKER.
+         */
+        severities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * CODE_SMELL, BUG or VULNERABILITY.
+         */
+        types?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    }
+
+    export interface IdpIntegrationSonarqubeProjects {
+        /**
+         * Every project except these keys.
+         */
+        excludes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * Only these project keys.
+         */
+        includes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    }
+
     export interface IdpPluginEnvVariable {
         /**
          * Name of the environment variable.
