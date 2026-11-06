@@ -48394,6 +48394,819 @@
                 }
             }
         },
+        "harness:platform/IdpIntegrationBitbucketCloud:IdpIntegrationBitbucketCloud": {
+            "properties": {
+                "startDate": {
+                    "type": "string",
+                    "description": "Lower bound for the first sync, RFC3339.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "startDate"
+                    ]
+                }
+            }
+        },
+        "harness:platform/IdpIntegrationCatalogInfo:IdpIntegrationCatalogInfo": {
+            "properties": {
+                "branch": {
+                    "type": "string",
+                    "description": "Branch to read; omit for each repository's default branch.\n"
+                },
+                "catalogPath": {
+                    "type": "string",
+                    "description": "Catalog file glob, relative to the repository root.\n"
+                },
+                "gitSync": {
+                    "$ref": "#/types/harness:platform/IdpIntegrationCatalogInfoGitSync:IdpIntegrationCatalogInfoGitSync",
+                    "description": "Writes converted Harness YAML to git.\n"
+                },
+                "repositories": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Repositories to scan; omit to scan all.\n"
+                },
+                "sourceType": {
+                    "type": "string",
+                    "description": "github or bitbucket.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "catalogPath",
+                        "sourceType"
+                    ]
+                }
+            }
+        },
+        "harness:platform/IdpIntegrationCatalogInfoGitSync:IdpIntegrationCatalogInfoGitSync": {
+            "properties": {
+                "basePath": {
+                    "type": "string",
+                    "description": "Directory the files are written to.\n"
+                },
+                "connectorRef": {
+                    "type": "string",
+                    "description": "Connector used to push.\n"
+                },
+                "target": {
+                    "$ref": "#/types/harness:platform/IdpIntegrationCatalogInfoGitSyncTarget:IdpIntegrationCatalogInfoGitSyncTarget",
+                    "description": "Where to push. Set exactly one of source*repo or repo.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "connectorRef",
+                "target"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "basePath",
+                        "connectorRef",
+                        "target"
+                    ]
+                }
+            }
+        },
+        "harness:platform/IdpIntegrationCatalogInfoGitSyncTarget:IdpIntegrationCatalogInfoGitSyncTarget": {
+            "properties": {
+                "repo": {
+                    "$ref": "#/types/harness:platform/IdpIntegrationCatalogInfoGitSyncTargetRepo:IdpIntegrationCatalogInfoGitSyncTargetRepo",
+                    "description": "Push to one repository.\n"
+                },
+                "sourceRepo": {
+                    "type": "boolean",
+                    "description": "Push to the repository each file was read from.\n"
+                }
+            },
+            "type": "object"
+        },
+        "harness:platform/IdpIntegrationCatalogInfoGitSyncTargetRepo:IdpIntegrationCatalogInfoGitSyncTargetRepo": {
+            "properties": {
+                "branch": {
+                    "type": "string",
+                    "description": "Branch.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Repository.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "branch",
+                "name"
+            ]
+        },
+        "harness:platform/IdpIntegrationConnector:IdpIntegrationConnector": {
+            "properties": {
+                "inline": {
+                    "$ref": "#/types/harness:platform/IdpIntegrationConnectorInline:IdpIntegrationConnectorInline",
+                    "description": "Credentials stored on the integration.\n"
+                },
+                "ref": {
+                    "type": "string",
+                    "description": "Reference to a standalone IDP connector.\n"
+                }
+            },
+            "type": "object"
+        },
+        "harness:platform/IdpIntegrationConnectorInline:IdpIntegrationConnectorInline": {
+            "properties": {
+                "credentialsRef": {
+                    "type": "string",
+                    "description": "Harness connector reference, e.g. account.snow. Can't change.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "type": "object",
+            "required": [
+                "credentialsRef"
+            ]
+        },
+        "harness:platform/IdpIntegrationCustom:IdpIntegrationCustom": {
+            "properties": {
+                "layout": {
+                    "$ref": "#/types/harness:platform/IdpIntegrationCustomLayout:IdpIntegrationCustomLayout",
+                    "description": "Columns shown for the integration's entities.\n"
+                },
+                "mode": {
+                    "type": "string",
+                    "description": "webhook or api.\n",
+                    "willReplaceOnChanges": true
+                },
+                "sourceLabel": {
+                    "type": "string",
+                    "description": "Label for the sending system.\n"
+                },
+                "webhookAuth": {
+                    "$ref": "#/types/harness:platform/IdpIntegrationCustomWebhookAuth:IdpIntegrationCustomWebhookAuth",
+                    "description": "Webhook authentication. Required in webhook mode.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "mode"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "layout",
+                        "mode",
+                        "sourceLabel"
+                    ]
+                }
+            }
+        },
+        "harness:platform/IdpIntegrationCustomLayout:IdpIntegrationCustomLayout": {
+            "properties": {
+                "columns": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/IdpIntegrationCustomLayoutColumn:IdpIntegrationCustomLayoutColumn"
+                    },
+                    "description": "A column.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "columns"
+            ]
+        },
+        "harness:platform/IdpIntegrationCustomLayoutColumn:IdpIntegrationCustomLayoutColumn": {
+            "properties": {
+                "path": {
+                    "type": "string",
+                    "description": "JQ path of the value.\n"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "Column title.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "path",
+                "title"
+            ]
+        },
+        "harness:platform/IdpIntegrationCustomWebhookAuth:IdpIntegrationCustomWebhookAuth": {
+            "properties": {
+                "authHeader": {
+                    "type": "string",
+                    "description": "Header carrying the signature or token.\n"
+                },
+                "authType": {
+                    "type": "string",
+                    "description": "hmac*auth or jwt*auth.\n"
+                },
+                "hashAlgo": {
+                    "type": "string",
+                    "description": "HMAC hash: hmac*sha224, hmac*sha256, hmac*sha384 or hmac*sha512.\n"
+                },
+                "secretRef": {
+                    "type": "string",
+                    "description": "Secret reference holding the shared secret.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "authType"
+            ]
+        },
+        "harness:platform/IdpIntegrationDatadog:IdpIntegrationDatadog": {
+            "properties": {
+                "serviceDependenciesEnv": {
+                    "type": "string",
+                    "description": "Environment used to add service dependencies.\n"
+                }
+            },
+            "type": "object"
+        },
+        "harness:platform/IdpIntegrationDynatrace:IdpIntegrationDynatrace": {
+            "properties": {
+                "platformTokenRef": {
+                    "type": "string",
+                    "description": "Secret reference to a Platform API token.\n"
+                },
+                "startDate": {
+                    "type": "string",
+                    "description": "Lower bound for incremental streams, RFC3339.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "startDate"
+                    ]
+                }
+            }
+        },
+        "harness:platform/IdpIntegrationEndpoint:IdpIntegrationEndpoint": {
+            "properties": {
+                "kind": {
+                    "type": "string",
+                    "description": "Kind.\n"
+                },
+                "method": {
+                    "type": "string",
+                    "description": "HTTP method.\n"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "Path relative to the integration manager, e.g. https://app.harness.io/gateway/integration.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "kind",
+                        "method",
+                        "url"
+                    ]
+                }
+            }
+        },
+        "harness:platform/IdpIntegrationGcp:IdpIntegrationGcp": {
+            "properties": {
+                "parent": {
+                    "$ref": "#/types/harness:platform/IdpIntegrationGcpParent:IdpIntegrationGcpParent",
+                    "description": "The organization or folder whose assets are synced. Set exactly one field.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "parent"
+            ]
+        },
+        "harness:platform/IdpIntegrationGcpParent:IdpIntegrationGcpParent": {
+            "properties": {
+                "folderId": {
+                    "type": "string",
+                    "description": "Folder ID.\n"
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "Organization ID.\n"
+                }
+            },
+            "type": "object"
+        },
+        "harness:platform/IdpIntegrationGithub:IdpIntegrationGithub": {
+            "properties": {
+                "agentFileName": {
+                    "type": "string",
+                    "description": "Agents file to detect in repositories.\n"
+                },
+                "orgs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Organizations to sync.\n"
+                },
+                "startDate": {
+                    "type": "string",
+                    "description": "Lower bound for the first sync, RFC3339.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "orgs"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "agentFileName",
+                        "orgs",
+                        "startDate"
+                    ]
+                }
+            }
+        },
+        "harness:platform/IdpIntegrationHarnessCd:IdpIntegrationHarnessCd": {
+            "properties": {
+                "deploymentCycle": {
+                    "type": "integer",
+                    "description": "Days of deployments to read.\n"
+                },
+                "mappingFields": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/IdpIntegrationHarnessCdMappingField:IdpIntegrationHarnessCdMappingField"
+                    },
+                    "description": "Fields to map per kind; omit to map all.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "deploymentCycle"
+                    ]
+                }
+            }
+        },
+        "harness:platform/IdpIntegrationHarnessCdMappingField:IdpIntegrationHarnessCdMappingField": {
+            "properties": {
+                "fields": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Fields.\n"
+                },
+                "kind": {
+                    "type": "string",
+                    "description": "Kind.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "fields",
+                "kind"
+            ]
+        },
+        "harness:platform/IdpIntegrationHarnessCode:IdpIntegrationHarnessCode": {
+            "properties": {
+                "agentFileName": {
+                    "type": "string",
+                    "description": "Agents file to detect in repositories.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "agentFileName"
+                    ]
+                }
+            }
+        },
+        "harness:platform/IdpIntegrationHarnessK8s:IdpIntegrationHarnessK8s": {
+            "properties": {
+                "environmentIdentifier": {
+                    "type": "string",
+                    "description": "Environment.\n"
+                },
+                "serviceDiscoveryAgentIdentifier": {
+                    "type": "string",
+                    "description": "Service discovery agent.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "environmentIdentifier",
+                "serviceDiscoveryAgentIdentifier"
+            ]
+        },
+        "harness:platform/IdpIntegrationJira:IdpIntegrationJira": {
+            "properties": {
+                "customFields": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Custom field IDs to sync, like customfield_10456.\n"
+                },
+                "startDate": {
+                    "type": "string",
+                    "description": "Lower bound for the first sync, RFC3339; 365 days back when omitted.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "startDate"
+                    ]
+                }
+            }
+        },
+        "harness:platform/IdpIntegrationKind:IdpIntegrationKind": {
+            "properties": {
+                "action": {
+                    "type": "string",
+                    "description": "register, merge or merge_register; the type's default when omitted.\n"
+                },
+                "autoImport": {
+                    "type": "boolean",
+                    "description": "Import new entities automatically.\n"
+                },
+                "filter": {
+                    "type": "string",
+                    "description": "JQ that returns true for records to keep; the type's default when omitted.\n"
+                },
+                "idpKind": {
+                    "type": "string",
+                    "description": "Airbyte types: entity kind, e.g. component; the type's default when omitted. Set at create only; required for kinds with no default, such as ServiceNow's.\n"
+                },
+                "idpType": {
+                    "type": "string",
+                    "description": "Airbyte types: entity type, e.g. service; the type's default when omitted. Set at create only.\n"
+                },
+                "kind": {
+                    "type": "string",
+                    "description": "Kind name.\n"
+                },
+                "mapping": {
+                    "$ref": "#/types/harness:platform/IdpIntegrationKindMapping:IdpIntegrationKindMapping",
+                    "description": "The kind's mapping, sent with the create so the first sync uses it. Omitted fields keep the type's defaults. Create only: it can't be added or changed afterwards, and removing it leaves the mapping as it is. Use harness*platform*idp*integration*kind_mapping to manage the mapping after the create, and don't use both for the same kind.\n"
+                },
+                "replicationMode": {
+                    "type": "string",
+                    "description": "Airbyte types: the stream's sync mode,\u003cspan pulumi-lang-nodejs=\" fullRefresh \" pulumi-lang-dotnet=\" FullRefresh \" pulumi-lang-go=\" fullRefresh \" pulumi-lang-python=\" full_refresh \" pulumi-lang-yaml=\" fullRefresh \" pulumi-lang-java=\" fullRefresh \" pulumi-lang-hcl=\" full_refresh \"\u003e fullRefresh \u003c/span\u003eor incremental.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "kind"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "action",
+                        "filter",
+                        "idpKind",
+                        "idpType",
+                        "kind",
+                        "replicationMode"
+                    ]
+                }
+            }
+        },
+        "harness:platform/IdpIntegrationKindMapping:IdpIntegrationKindMapping": {
+            "properties": {
+                "correlation": {
+                    "$ref": "#/types/harness:platform/IdpIntegrationKindMappingCorrelation:IdpIntegrationKindMappingCorrelation",
+                    "description": "Links records to existing entities; the server's when omitted.\n"
+                },
+                "displayNameField": {
+                    "type": "string",
+                    "description": "Source field used as the entity's name.\n"
+                },
+                "fieldMappings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/IdpIntegrationKindMappingFieldMapping:IdpIntegrationKindMappingFieldMapping"
+                    },
+                    "description": "Maps a source field to an entity field. Airbyte types. Omitted, the type's defaults apply; removing it from the config keeps the last value, so destroy the mapping resource to go back to them.\n"
+                },
+                "idpKind": {
+                    "type": "string",
+                    "description": "Entity kind, e.g. component.\n"
+                },
+                "idpType": {
+                    "type": "string",
+                    "description": "Entity type, e.g. service.\n"
+                },
+                "ingestion": {
+                    "$ref": "#/types/harness:platform/IdpIntegrationKindMappingIngestion:IdpIntegrationKindMappingIngestion",
+                    "description": "Custom types: JQ that builds the entity from a payload.\n"
+                },
+                "payloadSchema": {
+                    "type": "string",
+                    "description": "Custom types, custom kind: JSON Schema of the payload.\n"
+                },
+                "uniqueIdentifierField": {
+                    "type": "string",
+                    "description": "Source field that identifies an entity. Can't change on Airbyte types.\n"
+                }
+            },
+            "type": "object"
+        },
+        "harness:platform/IdpIntegrationKindMappingCorrelation:IdpIntegrationKindMappingCorrelation": {
+            "properties": {
+                "operator": {
+                    "type": "string",
+                    "description": "Match operator; eq when omitted.\n"
+                },
+                "sourcePath": {
+                    "type": "string",
+                    "description": "Field to match. Airbyte types: a path in the emitted entity data, e.g. identifier or spec.owner; Custom: a payload field.\n"
+                },
+                "targetPath": {
+                    "type": "string",
+                    "description": "Entity field to match, e.g. metadata.identifier.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "sourcePath",
+                "targetPath"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "operator",
+                        "sourcePath",
+                        "targetPath"
+                    ]
+                }
+            }
+        },
+        "harness:platform/IdpIntegrationKindMappingEmission:IdpIntegrationKindMappingEmission": {
+            "properties": {
+                "identifier": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "properties": {
+                    "type": "string",
+                    "description": "JSON object.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "identifier",
+                        "name",
+                        "properties"
+                    ]
+                }
+            }
+        },
+        "harness:platform/IdpIntegrationKindMappingFieldMapping:IdpIntegrationKindMappingFieldMapping": {
+            "properties": {
+                "sourceField": {
+                    "type": "string",
+                    "description": "Source field.\n"
+                },
+                "targetField": {
+                    "type": "string",
+                    "description": "Entity field, e.g. spec.owner.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "sourceField",
+                "targetField"
+            ]
+        },
+        "harness:platform/IdpIntegrationKindMappingIngestion:IdpIntegrationKindMappingIngestion": {
+            "properties": {
+                "identifier": {
+                    "type": "string",
+                    "description": "JQ for the entity identifier.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "JQ for the entity name.\n"
+                },
+                "properties": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "JQ per entity property; derived from the payload schema when omitted.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "identifier"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "identifier",
+                        "properties"
+                    ]
+                }
+            }
+        },
+        "harness:platform/IdpIntegrationPagerduty:IdpIntegrationPagerduty": {
+            "properties": {
+                "analyticsDurationMonths": {
+                    "type": "integer",
+                    "description": "Months of analytics to aggregate.\n"
+                },
+                "startDate": {
+                    "type": "string",
+                    "description": "Lower bound for the first sync, RFC3339.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "analyticsDurationMonths",
+                        "startDate"
+                    ]
+                }
+            }
+        },
+        "harness:platform/IdpIntegrationScopes:IdpIntegrationScopes": {
+            "properties": {
+                "all": {
+                    "type": "boolean",
+                    "description": "Read from every scope.\n"
+                },
+                "selecteds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Scopes to read from: \"\" for the account, \"org\" or \"org/project\".\n"
+                }
+            },
+            "type": "object"
+        },
+        "harness:platform/IdpIntegrationSonarqube:IdpIntegrationSonarqube": {
+            "properties": {
+                "instance": {
+                    "$ref": "#/types/harness:platform/IdpIntegrationSonarqubeInstance:IdpIntegrationSonarqubeInstance",
+                    "description": "Set exactly one of server or cloud.\n"
+                },
+                "issues": {
+                    "$ref": "#/types/harness:platform/IdpIntegrationSonarqubeIssues:IdpIntegrationSonarqubeIssues",
+                    "description": "Filters for the issues stream.\n"
+                },
+                "projects": {
+                    "$ref": "#/types/harness:platform/IdpIntegrationSonarqubeProjects:IdpIntegrationSonarqubeProjects",
+                    "description": "Projects to sync; omit to sync all. Set exactly one of include or exclude.\n"
+                },
+                "startDate": {
+                    "type": "string",
+                    "description": "Lower bound for the first sync, RFC3339.\n"
+                },
+                "tokenRef": {
+                    "type": "string",
+                    "description": "Secret reference to a SonarQube user token.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "instance",
+                "tokenRef"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "instance",
+                        "startDate",
+                        "tokenRef"
+                    ]
+                }
+            }
+        },
+        "harness:platform/IdpIntegrationSonarqubeInstance:IdpIntegrationSonarqubeInstance": {
+            "properties": {
+                "cloud": {
+                    "$ref": "#/types/harness:platform/IdpIntegrationSonarqubeInstanceCloud:IdpIntegrationSonarqubeInstanceCloud",
+                    "description": "SonarQube Cloud.\n"
+                },
+                "server": {
+                    "$ref": "#/types/harness:platform/IdpIntegrationSonarqubeInstanceServer:IdpIntegrationSonarqubeInstanceServer",
+                    "description": "Self-hosted SonarQube Server.\n"
+                }
+            },
+            "type": "object"
+        },
+        "harness:platform/IdpIntegrationSonarqubeInstanceCloud:IdpIntegrationSonarqubeInstanceCloud": {
+            "properties": {
+                "hostUrl": {
+                    "type": "string",
+                    "description": "Cloud URL.\n"
+                },
+                "organization": {
+                    "type": "string",
+                    "description": "Organization key.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "organization"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "hostUrl",
+                        "organization"
+                    ]
+                }
+            }
+        },
+        "harness:platform/IdpIntegrationSonarqubeInstanceServer:IdpIntegrationSonarqubeInstanceServer": {
+            "properties": {
+                "hostUrl": {
+                    "type": "string",
+                    "description": "Server URL.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "hostUrl"
+            ]
+        },
+        "harness:platform/IdpIntegrationSonarqubeIssues:IdpIntegrationSonarqubeIssues": {
+            "properties": {
+                "impactSeverities": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "INFO, LOW, MEDIUM, HIGH or BLOCKER.\n"
+                },
+                "issueStatuses": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "OPEN, CONFIRMED, FALSE*POSITIVE, ACCEPTED, FIXED or IN*SANDBOX.\n"
+                },
+                "resolved": {
+                    "type": "string",
+                    "description": "\"true\" for resolved issues only, \"false\" for unresolved only; omit for both.\n"
+                },
+                "severities": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "INFO, MINOR, MAJOR, CRITICAL or BLOCKER.\n"
+                },
+                "types": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "CODE_SMELL, BUG or VULNERABILITY.\n"
+                }
+            },
+            "type": "object"
+        },
+        "harness:platform/IdpIntegrationSonarqubeProjects:IdpIntegrationSonarqubeProjects": {
+            "properties": {
+                "excludes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Every project except these keys.\n"
+                },
+                "includes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Only these project keys.\n"
+                }
+            },
+            "type": "object"
+        },
         "harness:platform/IdpPluginEnvVariable:IdpPluginEnvVariable": {
             "properties": {
                 "envName": {
@@ -56496,6 +57309,937 @@
                 "lastObjectId",
                 "repoName",
                 "storeType"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "harness:platform/getIdpIntegrationBitbucketCloud:getIdpIntegrationBitbucketCloud": {
+            "properties": {
+                "startDate": {
+                    "type": "string",
+                    "description": "Lower bound for the first sync, RFC3339.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "startDate"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "harness:platform/getIdpIntegrationCatalogInfo:getIdpIntegrationCatalogInfo": {
+            "properties": {
+                "branch": {
+                    "type": "string",
+                    "description": "Branch to read; omit for each repository's default branch.\n"
+                },
+                "catalogPath": {
+                    "type": "string",
+                    "description": "Catalog file glob, relative to the repository root.\n"
+                },
+                "gitSyncs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/getIdpIntegrationCatalogInfoGitSync:getIdpIntegrationCatalogInfoGitSync"
+                    },
+                    "description": "Writes converted Harness YAML to git.\n"
+                },
+                "repositories": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Repositories to scan; omit to scan all.\n"
+                },
+                "sourceType": {
+                    "type": "string",
+                    "description": "github or bitbucket.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "branch",
+                "catalogPath",
+                "gitSyncs",
+                "repositories",
+                "sourceType"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "harness:platform/getIdpIntegrationCatalogInfoGitSync:getIdpIntegrationCatalogInfoGitSync": {
+            "properties": {
+                "basePath": {
+                    "type": "string",
+                    "description": "Directory the files are written to.\n"
+                },
+                "connectorRef": {
+                    "type": "string",
+                    "description": "Connector used to push.\n"
+                },
+                "targets": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/getIdpIntegrationCatalogInfoGitSyncTarget:getIdpIntegrationCatalogInfoGitSyncTarget"
+                    },
+                    "description": "Where to push. Set exactly one of\u003cspan pulumi-lang-nodejs=\" sourceRepo \" pulumi-lang-dotnet=\" SourceRepo \" pulumi-lang-go=\" sourceRepo \" pulumi-lang-python=\" source_repo \" pulumi-lang-yaml=\" sourceRepo \" pulumi-lang-java=\" sourceRepo \" pulumi-lang-hcl=\" source_repo \"\u003e sourceRepo \u003c/span\u003eor repo.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "basePath",
+                "connectorRef",
+                "targets"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "harness:platform/getIdpIntegrationCatalogInfoGitSyncTarget:getIdpIntegrationCatalogInfoGitSyncTarget": {
+            "properties": {
+                "repos": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/getIdpIntegrationCatalogInfoGitSyncTargetRepo:getIdpIntegrationCatalogInfoGitSyncTargetRepo"
+                    },
+                    "description": "Push to one repository.\n"
+                },
+                "sourceRepo": {
+                    "type": "boolean",
+                    "description": "Push to the repository each file was read from.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "repos",
+                "sourceRepo"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "harness:platform/getIdpIntegrationCatalogInfoGitSyncTargetRepo:getIdpIntegrationCatalogInfoGitSyncTargetRepo": {
+            "properties": {
+                "branch": {
+                    "type": "string",
+                    "description": "Branch.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Repository.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "branch",
+                "name"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "harness:platform/getIdpIntegrationConnector:getIdpIntegrationConnector": {
+            "properties": {
+                "inlines": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/getIdpIntegrationConnectorInline:getIdpIntegrationConnectorInline"
+                    },
+                    "description": "Credentials stored on the integration.\n"
+                },
+                "ref": {
+                    "type": "string",
+                    "description": "Reference to a standalone IDP connector.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "inlines",
+                "ref"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "harness:platform/getIdpIntegrationConnectorInline:getIdpIntegrationConnectorInline": {
+            "properties": {
+                "credentialsRef": {
+                    "type": "string",
+                    "description": "Harness connector reference, e.g. account.snow. Can't change.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "credentialsRef"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "harness:platform/getIdpIntegrationCustom:getIdpIntegrationCustom": {
+            "properties": {
+                "layouts": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/getIdpIntegrationCustomLayout:getIdpIntegrationCustomLayout"
+                    },
+                    "description": "Columns shown for the integration's entities.\n"
+                },
+                "mode": {
+                    "type": "string",
+                    "description": "webhook or api.\n"
+                },
+                "sourceLabel": {
+                    "type": "string",
+                    "description": "Label for the sending system.\n"
+                },
+                "webhookAuths": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/getIdpIntegrationCustomWebhookAuth:getIdpIntegrationCustomWebhookAuth"
+                    },
+                    "description": "Webhook authentication. Required in webhook mode.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "layouts",
+                "mode",
+                "sourceLabel",
+                "webhookAuths"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "harness:platform/getIdpIntegrationCustomLayout:getIdpIntegrationCustomLayout": {
+            "properties": {
+                "columns": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/getIdpIntegrationCustomLayoutColumn:getIdpIntegrationCustomLayoutColumn"
+                    },
+                    "description": "A column.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "columns"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "harness:platform/getIdpIntegrationCustomLayoutColumn:getIdpIntegrationCustomLayoutColumn": {
+            "properties": {
+                "path": {
+                    "type": "string",
+                    "description": "JQ path of the value.\n"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "Column title.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "path",
+                "title"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "harness:platform/getIdpIntegrationCustomWebhookAuth:getIdpIntegrationCustomWebhookAuth": {
+            "properties": {
+                "authHeader": {
+                    "type": "string",
+                    "description": "Header carrying the signature or token.\n"
+                },
+                "authType": {
+                    "type": "string",
+                    "description": "hmac_auth or jwt_auth.\n"
+                },
+                "hashAlgo": {
+                    "type": "string",
+                    "description": "HMAC hash: hmac_sha224, hmac_sha256,\u003cspan pulumi-lang-nodejs=\" hmacSha384 \" pulumi-lang-dotnet=\" HmacSha384 \" pulumi-lang-go=\" hmacSha384 \" pulumi-lang-python=\" hmac_sha384 \" pulumi-lang-yaml=\" hmacSha384 \" pulumi-lang-java=\" hmacSha384 \" pulumi-lang-hcl=\" hmac_sha384 \"\u003e hmacSha384 \u003c/span\u003eor hmac_sha512.\n"
+                },
+                "secretRef": {
+                    "type": "string",
+                    "description": "Secret reference holding the shared secret.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "authHeader",
+                "authType",
+                "hashAlgo",
+                "secretRef"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "harness:platform/getIdpIntegrationDatadog:getIdpIntegrationDatadog": {
+            "properties": {
+                "serviceDependenciesEnv": {
+                    "type": "string",
+                    "description": "Environment used to add service dependencies.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "serviceDependenciesEnv"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "harness:platform/getIdpIntegrationDynatrace:getIdpIntegrationDynatrace": {
+            "properties": {
+                "platformTokenRef": {
+                    "type": "string",
+                    "description": "Secret reference to a Platform API token.\n"
+                },
+                "startDate": {
+                    "type": "string",
+                    "description": "Lower bound for incremental streams, RFC3339.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "platformTokenRef",
+                "startDate"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "harness:platform/getIdpIntegrationEndpoint:getIdpIntegrationEndpoint": {
+            "properties": {
+                "kind": {
+                    "type": "string",
+                    "description": "Kind.\n"
+                },
+                "method": {
+                    "type": "string",
+                    "description": "HTTP method.\n"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "Path relative to the integration manager, e.g. https://app.harness.io/gateway/integration.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "kind",
+                "method",
+                "url"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "harness:platform/getIdpIntegrationGcp:getIdpIntegrationGcp": {
+            "properties": {
+                "parents": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/getIdpIntegrationGcpParent:getIdpIntegrationGcpParent"
+                    },
+                    "description": "The organization or folder whose assets are synced. Set exactly one field.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "parents"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "harness:platform/getIdpIntegrationGcpParent:getIdpIntegrationGcpParent": {
+            "properties": {
+                "folderId": {
+                    "type": "string",
+                    "description": "Folder ID.\n"
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "Organization ID.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "folderId",
+                "orgId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "harness:platform/getIdpIntegrationGithub:getIdpIntegrationGithub": {
+            "properties": {
+                "agentFileName": {
+                    "type": "string",
+                    "description": "Agents file to detect in repositories.\n"
+                },
+                "orgs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Organizations to sync.\n"
+                },
+                "startDate": {
+                    "type": "string",
+                    "description": "Lower bound for the first sync, RFC3339.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "agentFileName",
+                "orgs",
+                "startDate"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "harness:platform/getIdpIntegrationHarnessCd:getIdpIntegrationHarnessCd": {
+            "properties": {
+                "deploymentCycle": {
+                    "type": "integer",
+                    "description": "Days of deployments to read.\n"
+                },
+                "mappingFields": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/getIdpIntegrationHarnessCdMappingField:getIdpIntegrationHarnessCdMappingField"
+                    },
+                    "description": "Fields to map per kind; omit to map all.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "deploymentCycle",
+                "mappingFields"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "harness:platform/getIdpIntegrationHarnessCdMappingField:getIdpIntegrationHarnessCdMappingField": {
+            "properties": {
+                "fields": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Fields.\n"
+                },
+                "kind": {
+                    "type": "string",
+                    "description": "Kind.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "fields",
+                "kind"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "harness:platform/getIdpIntegrationHarnessCode:getIdpIntegrationHarnessCode": {
+            "properties": {
+                "agentFileName": {
+                    "type": "string",
+                    "description": "Agents file to detect in repositories.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "agentFileName"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "harness:platform/getIdpIntegrationHarnessK8:getIdpIntegrationHarnessK8": {
+            "properties": {
+                "environmentIdentifier": {
+                    "type": "string",
+                    "description": "Environment.\n"
+                },
+                "serviceDiscoveryAgentIdentifier": {
+                    "type": "string",
+                    "description": "Service discovery agent.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "environmentIdentifier",
+                "serviceDiscoveryAgentIdentifier"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "harness:platform/getIdpIntegrationJira:getIdpIntegrationJira": {
+            "properties": {
+                "customFields": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Custom field IDs to sync, like customfield_10456.\n"
+                },
+                "startDate": {
+                    "type": "string",
+                    "description": "Lower bound for the first sync, RFC3339; 365 days back when omitted.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "customFields",
+                "startDate"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "harness:platform/getIdpIntegrationKind:getIdpIntegrationKind": {
+            "properties": {
+                "action": {
+                    "type": "string",
+                    "description": "register, merge or merge_register; the type's default when omitted.\n"
+                },
+                "autoImport": {
+                    "type": "boolean",
+                    "description": "Import new entities automatically.\n"
+                },
+                "filter": {
+                    "type": "string",
+                    "description": "JQ that returns true for records to keep; the type's default when omitted.\n"
+                },
+                "idpKind": {
+                    "type": "string",
+                    "description": "Airbyte types: entity kind, e.g. component; the type's default when omitted. Set at create only; required for kinds with no default, such as ServiceNow's.\n"
+                },
+                "idpType": {
+                    "type": "string",
+                    "description": "Airbyte types: entity type, e.g. service; the type's default when omitted. Set at create only.\n"
+                },
+                "kind": {
+                    "type": "string",
+                    "description": "Kind name.\n"
+                },
+                "replicationMode": {
+                    "type": "string",
+                    "description": "Airbyte types: the stream's sync mode,\u003cspan pulumi-lang-nodejs=\" fullRefresh \" pulumi-lang-dotnet=\" FullRefresh \" pulumi-lang-go=\" fullRefresh \" pulumi-lang-python=\" full_refresh \" pulumi-lang-yaml=\" fullRefresh \" pulumi-lang-java=\" fullRefresh \" pulumi-lang-hcl=\" full_refresh \"\u003e fullRefresh \u003c/span\u003eor incremental.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "action",
+                "autoImport",
+                "filter",
+                "idpKind",
+                "idpType",
+                "kind",
+                "replicationMode"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "harness:platform/getIdpIntegrationKindMappingCorrelation:getIdpIntegrationKindMappingCorrelation": {
+            "properties": {
+                "operator": {
+                    "type": "string",
+                    "description": "Match operator; eq when omitted.\n"
+                },
+                "sourcePath": {
+                    "type": "string",
+                    "description": "Field to match. Airbyte types: a path in the emitted entity data, e.g. identifier or spec.owner; Custom: a payload field.\n"
+                },
+                "targetPath": {
+                    "type": "string",
+                    "description": "Entity field to match, e.g. metadata.identifier.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "operator",
+                "sourcePath",
+                "targetPath"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "harness:platform/getIdpIntegrationKindMappingEmission:getIdpIntegrationKindMappingEmission": {
+            "properties": {
+                "identifier": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "properties": {
+                    "type": "string",
+                    "description": "JSON object.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "identifier",
+                "name",
+                "properties"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "harness:platform/getIdpIntegrationKindMappingFieldMapping:getIdpIntegrationKindMappingFieldMapping": {
+            "properties": {
+                "sourceField": {
+                    "type": "string",
+                    "description": "Source field.\n"
+                },
+                "targetField": {
+                    "type": "string",
+                    "description": "Entity field, e.g. spec.owner.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "sourceField",
+                "targetField"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "harness:platform/getIdpIntegrationKindMappingIngestion:getIdpIntegrationKindMappingIngestion": {
+            "properties": {
+                "identifier": {
+                    "type": "string",
+                    "description": "JQ for the entity identifier.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "JQ for the entity name.\n"
+                },
+                "properties": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "JQ per entity property; derived from the payload schema when omitted.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "identifier",
+                "name",
+                "properties"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "harness:platform/getIdpIntegrationPagerduty:getIdpIntegrationPagerduty": {
+            "properties": {
+                "analyticsDurationMonths": {
+                    "type": "integer",
+                    "description": "Months of analytics to aggregate.\n"
+                },
+                "startDate": {
+                    "type": "string",
+                    "description": "Lower bound for the first sync, RFC3339.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "analyticsDurationMonths",
+                "startDate"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "harness:platform/getIdpIntegrationScope:getIdpIntegrationScope": {
+            "properties": {
+                "all": {
+                    "type": "boolean",
+                    "description": "Read from every scope.\n"
+                },
+                "selecteds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Scopes to read from: \"\" for the account, \"org\" or \"org/project\".\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "all",
+                "selecteds"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "harness:platform/getIdpIntegrationSonarqube:getIdpIntegrationSonarqube": {
+            "properties": {
+                "instances": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/getIdpIntegrationSonarqubeInstance:getIdpIntegrationSonarqubeInstance"
+                    },
+                    "description": "Set exactly one of server or cloud.\n"
+                },
+                "issues": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/getIdpIntegrationSonarqubeIssue:getIdpIntegrationSonarqubeIssue"
+                    },
+                    "description": "Filters for the issues stream.\n"
+                },
+                "projects": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/getIdpIntegrationSonarqubeProject:getIdpIntegrationSonarqubeProject"
+                    },
+                    "description": "Projects to sync; omit to sync all. Set exactly one of include or exclude.\n"
+                },
+                "startDate": {
+                    "type": "string",
+                    "description": "Lower bound for the first sync, RFC3339.\n"
+                },
+                "tokenRef": {
+                    "type": "string",
+                    "description": "Secret reference to a SonarQube user token.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "instances",
+                "issues",
+                "projects",
+                "startDate",
+                "tokenRef"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "harness:platform/getIdpIntegrationSonarqubeInstance:getIdpIntegrationSonarqubeInstance": {
+            "properties": {
+                "clouds": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/getIdpIntegrationSonarqubeInstanceCloud:getIdpIntegrationSonarqubeInstanceCloud"
+                    },
+                    "description": "SonarQube Cloud.\n"
+                },
+                "servers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/getIdpIntegrationSonarqubeInstanceServer:getIdpIntegrationSonarqubeInstanceServer"
+                    },
+                    "description": "Self-hosted SonarQube Server.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "clouds",
+                "servers"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "harness:platform/getIdpIntegrationSonarqubeInstanceCloud:getIdpIntegrationSonarqubeInstanceCloud": {
+            "properties": {
+                "hostUrl": {
+                    "type": "string",
+                    "description": "Cloud URL.\n"
+                },
+                "organization": {
+                    "type": "string",
+                    "description": "Organization key.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "hostUrl",
+                "organization"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "harness:platform/getIdpIntegrationSonarqubeInstanceServer:getIdpIntegrationSonarqubeInstanceServer": {
+            "properties": {
+                "hostUrl": {
+                    "type": "string",
+                    "description": "Server URL.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "hostUrl"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "harness:platform/getIdpIntegrationSonarqubeIssue:getIdpIntegrationSonarqubeIssue": {
+            "properties": {
+                "impactSeverities": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "INFO, LOW, MEDIUM, HIGH or BLOCKER.\n"
+                },
+                "issueStatuses": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "OPEN, CONFIRMED, FALSE_POSITIVE, ACCEPTED, FIXED or IN_SANDBOX.\n"
+                },
+                "resolved": {
+                    "type": "string",
+                    "description": "\"true\" for resolved issues only, \"false\" for unresolved only; omit for both.\n"
+                },
+                "severities": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "INFO, MINOR, MAJOR, CRITICAL or BLOCKER.\n"
+                },
+                "types": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "CODE_SMELL, BUG or VULNERABILITY.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "impactSeverities",
+                "issueStatuses",
+                "resolved",
+                "severities",
+                "types"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "harness:platform/getIdpIntegrationSonarqubeProject:getIdpIntegrationSonarqubeProject": {
+            "properties": {
+                "excludes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Every project except these keys.\n"
+                },
+                "includes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Only these project keys.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "excludes",
+                "includes"
             ],
             "language": {
                 "nodejs": {
@@ -83290,6 +85034,699 @@
                 "type": "object"
             }
         },
+        "harness:platform/idpIntegration:IdpIntegration": {
+            "description": "Resource for an IDP integration, which imports entities from an external system or Harness.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\n// Custom webhook integration. The webhook URL is in endpoints once created.\nconst orders = new harness.platform.IdpIntegration(\"orders\", {\n    custom: {\n        webhookAuth: {\n            authType: \"hmac_auth\",\n            hashAlgo: \"hmac_sha256\",\n            authHeader: \"X-Signature\",\n            secretRef: \"account.orders_webhook_secret\",\n        },\n        layout: {\n            columns: [{\n                title: \"Service\",\n                path: \".spec.service\",\n            }],\n        },\n        mode: \"webhook\",\n        sourceLabel: \"orders\",\n    },\n    kinds: [{\n        mapping: {\n            ingestion: {\n                identifier: \".service.id\",\n                name: \".service.name\",\n                properties: {\n                    team: \".service.team\",\n                },\n            },\n            correlation: {\n                sourcePath: \"service.id\",\n                targetPath: \"metadata.identifier\",\n            },\n        },\n        kind: \"custom\",\n        autoImport: true,\n        action: \"merge\",\n    }],\n    identifier: \"orders_webhook\",\n    name: \"Orders webhook\",\n    description: \"Imports services pushed by the order system\",\n    type: \"Custom\",\n    tags: [\n        \"team:idp\",\n        \"webhook\",\n    ],\n});\n// Harness CD integration, reading services from every scope of the account.\nconst harnessCd = new harness.platform.IdpIntegration(\"harness_cd\", {\n    scopes: {\n        all: true,\n    },\n    kinds: [{\n        kind: \"service\",\n        autoImport: true,\n    }],\n    identifier: \"harness_cd\",\n    name: \"Harness CD\",\n    type: \"HarnessCD\",\n});\n// ServiceNow CMDB integration in an organization, synced every 12 hours.\nconst servicenow = new harness.platform.IdpIntegration(\"servicenow\", {\n    connector: {\n        inline: {\n            credentialsRef: \"account.servicenow\",\n        },\n    },\n    kinds: [{\n        mapping: {\n            correlation: {\n                sourcePath: \"metadata.integration_properties.ServiceNow.name\",\n                targetPath: \"name\",\n            },\n            fieldMappings: [\n                {\n                    sourceField: \"owned_by\",\n                    targetField: \"spec.owner\",\n                },\n                {\n                    sourceField: \"environment\",\n                    targetField: \"metadata.environment\",\n                },\n            ],\n            displayNameField: \"name\",\n        },\n        kind: \"cmdb_ci_service\",\n        autoImport: true,\n        filter: \".operational_status == \\\"1\\\"\",\n        idpKind: \"component\",\n        idpType: \"service\",\n    }],\n    identifier: \"servicenow_prod\",\n    name: \"ServiceNow prod\",\n    orgId: \"default\",\n    type: \"ServiceNow\",\n    updateFrequency: \"12h\",\n});\n// Harness CI integration. Every kind needs a correlation, so each kind has a mapping.\nconst harnessCi = new harness.platform.IdpIntegration(\"harness_ci\", {\n    kinds: [{\n        mapping: {\n            correlation: {\n                sourcePath: \"metadata.integration_properties.HarnessCI.pipelineName\",\n                targetPath: \"metadata.name\",\n            },\n        },\n        kind: \"pipeline\",\n    }],\n    identifier: \"harness_ci\",\n    name: \"Harness CI\",\n    type: \"HarnessCI\",\n});\n// GitHub integration for one organization's repositories.\nconst github = new harness.platform.IdpIntegration(\"github\", {\n    connector: {\n        inline: {\n            credentialsRef: \"account.github\",\n        },\n    },\n    github: {\n        orgs: [\"acme\"],\n    },\n    kinds: [{\n        mapping: {\n            correlation: {\n                sourcePath: \"metadata.integration_properties.GitHub.name\",\n                targetPath: \"name\",\n            },\n        },\n        kind: \"repo_details\",\n        action: \"merge\",\n    }],\n    identifier: \"github\",\n    name: \"GitHub\",\n    type: \"GitHub\",\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\n# Custom webhook integration. The webhook URL is in endpoints once created.\norders = harness.platform.IdpIntegration(\"orders\",\n    custom={\n        \"webhook_auth\": {\n            \"auth_type\": \"hmac_auth\",\n            \"hash_algo\": \"hmac_sha256\",\n            \"auth_header\": \"X-Signature\",\n            \"secret_ref\": \"account.orders_webhook_secret\",\n        },\n        \"layout\": {\n            \"columns\": [{\n                \"title\": \"Service\",\n                \"path\": \".spec.service\",\n            }],\n        },\n        \"mode\": \"webhook\",\n        \"source_label\": \"orders\",\n    },\n    kinds=[{\n        \"mapping\": {\n            \"ingestion\": {\n                \"identifier\": \".service.id\",\n                \"name\": \".service.name\",\n                \"properties\": {\n                    \"team\": \".service.team\",\n                },\n            },\n            \"correlation\": {\n                \"source_path\": \"service.id\",\n                \"target_path\": \"metadata.identifier\",\n            },\n        },\n        \"kind\": \"custom\",\n        \"auto_import\": True,\n        \"action\": \"merge\",\n    }],\n    identifier=\"orders_webhook\",\n    name=\"Orders webhook\",\n    description=\"Imports services pushed by the order system\",\n    type=\"Custom\",\n    tags=[\n        \"team:idp\",\n        \"webhook\",\n    ])\n# Harness CD integration, reading services from every scope of the account.\nharness_cd = harness.platform.IdpIntegration(\"harness_cd\",\n    scopes={\n        \"all\": True,\n    },\n    kinds=[{\n        \"kind\": \"service\",\n        \"auto_import\": True,\n    }],\n    identifier=\"harness_cd\",\n    name=\"Harness CD\",\n    type=\"HarnessCD\")\n# ServiceNow CMDB integration in an organization, synced every 12 hours.\nservicenow = harness.platform.IdpIntegration(\"servicenow\",\n    connector={\n        \"inline\": {\n            \"credentials_ref\": \"account.servicenow\",\n        },\n    },\n    kinds=[{\n        \"mapping\": {\n            \"correlation\": {\n                \"source_path\": \"metadata.integration_properties.ServiceNow.name\",\n                \"target_path\": \"name\",\n            },\n            \"field_mappings\": [\n                {\n                    \"source_field\": \"owned_by\",\n                    \"target_field\": \"spec.owner\",\n                },\n                {\n                    \"source_field\": \"environment\",\n                    \"target_field\": \"metadata.environment\",\n                },\n            ],\n            \"display_name_field\": \"name\",\n        },\n        \"kind\": \"cmdb_ci_service\",\n        \"auto_import\": True,\n        \"filter\": \".operational_status == \\\"1\\\"\",\n        \"idp_kind\": \"component\",\n        \"idp_type\": \"service\",\n    }],\n    identifier=\"servicenow_prod\",\n    name=\"ServiceNow prod\",\n    org_id=\"default\",\n    type=\"ServiceNow\",\n    update_frequency=\"12h\")\n# Harness CI integration. Every kind needs a correlation, so each kind has a mapping.\nharness_ci = harness.platform.IdpIntegration(\"harness_ci\",\n    kinds=[{\n        \"mapping\": {\n            \"correlation\": {\n                \"source_path\": \"metadata.integration_properties.HarnessCI.pipelineName\",\n                \"target_path\": \"metadata.name\",\n            },\n        },\n        \"kind\": \"pipeline\",\n    }],\n    identifier=\"harness_ci\",\n    name=\"Harness CI\",\n    type=\"HarnessCI\")\n# GitHub integration for one organization's repositories.\ngithub = harness.platform.IdpIntegration(\"github\",\n    connector={\n        \"inline\": {\n            \"credentials_ref\": \"account.github\",\n        },\n    },\n    github={\n        \"orgs\": [\"acme\"],\n    },\n    kinds=[{\n        \"mapping\": {\n            \"correlation\": {\n                \"source_path\": \"metadata.integration_properties.GitHub.name\",\n                \"target_path\": \"name\",\n            },\n        },\n        \"kind\": \"repo_details\",\n        \"action\": \"merge\",\n    }],\n    identifier=\"github\",\n    name=\"GitHub\",\n    type=\"GitHub\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Custom webhook integration. The webhook URL is in endpoints once created.\n    var orders = new Harness.Platform.IdpIntegration(\"orders\", new()\n    {\n        Custom = new Harness.Platform.Inputs.IdpIntegrationCustomArgs\n        {\n            WebhookAuth = new Harness.Platform.Inputs.IdpIntegrationCustomWebhookAuthArgs\n            {\n                AuthType = \"hmac_auth\",\n                HashAlgo = \"hmac_sha256\",\n                AuthHeader = \"X-Signature\",\n                SecretRef = \"account.orders_webhook_secret\",\n            },\n            Layout = new Harness.Platform.Inputs.IdpIntegrationCustomLayoutArgs\n            {\n                Columns = new[]\n                {\n                    new Harness.Platform.Inputs.IdpIntegrationCustomLayoutColumnArgs\n                    {\n                        Title = \"Service\",\n                        Path = \".spec.service\",\n                    },\n                },\n            },\n            Mode = \"webhook\",\n            SourceLabel = \"orders\",\n        },\n        Kinds = new[]\n        {\n            new Harness.Platform.Inputs.IdpIntegrationKindArgs\n            {\n                Mapping = new Harness.Platform.Inputs.IdpIntegrationKindMappingArgs\n                {\n                    Ingestion = new Harness.Platform.Inputs.IdpIntegrationKindMappingIngestionArgs\n                    {\n                        Identifier = \".service.id\",\n                        Name = \".service.name\",\n                        Properties = \n                        {\n                            { \"team\", \".service.team\" },\n                        },\n                    },\n                    Correlation = new Harness.Platform.Inputs.IdpIntegrationKindMappingCorrelationArgs\n                    {\n                        SourcePath = \"service.id\",\n                        TargetPath = \"metadata.identifier\",\n                    },\n                },\n                Kind = \"custom\",\n                AutoImport = true,\n                Action = \"merge\",\n            },\n        },\n        Identifier = \"orders_webhook\",\n        Name = \"Orders webhook\",\n        Description = \"Imports services pushed by the order system\",\n        Type = \"Custom\",\n        Tags = new[]\n        {\n            \"team:idp\",\n            \"webhook\",\n        },\n    });\n\n    // Harness CD integration, reading services from every scope of the account.\n    var harnessCd = new Harness.Platform.IdpIntegration(\"harness_cd\", new()\n    {\n        Scopes = new Harness.Platform.Inputs.IdpIntegrationScopesArgs\n        {\n            All = true,\n        },\n        Kinds = new[]\n        {\n            new Harness.Platform.Inputs.IdpIntegrationKindArgs\n            {\n                Kind = \"service\",\n                AutoImport = true,\n            },\n        },\n        Identifier = \"harness_cd\",\n        Name = \"Harness CD\",\n        Type = \"HarnessCD\",\n    });\n\n    // ServiceNow CMDB integration in an organization, synced every 12 hours.\n    var servicenow = new Harness.Platform.IdpIntegration(\"servicenow\", new()\n    {\n        Connector = new Harness.Platform.Inputs.IdpIntegrationConnectorArgs\n        {\n            Inline = new Harness.Platform.Inputs.IdpIntegrationConnectorInlineArgs\n            {\n                CredentialsRef = \"account.servicenow\",\n            },\n        },\n        Kinds = new[]\n        {\n            new Harness.Platform.Inputs.IdpIntegrationKindArgs\n            {\n                Mapping = new Harness.Platform.Inputs.IdpIntegrationKindMappingArgs\n                {\n                    Correlation = new Harness.Platform.Inputs.IdpIntegrationKindMappingCorrelationArgs\n                    {\n                        SourcePath = \"metadata.integration_properties.ServiceNow.name\",\n                        TargetPath = \"name\",\n                    },\n                    FieldMappings = new[]\n                    {\n                        new Harness.Platform.Inputs.IdpIntegrationKindMappingFieldMappingArgs\n                        {\n                            SourceField = \"owned_by\",\n                            TargetField = \"spec.owner\",\n                        },\n                        new Harness.Platform.Inputs.IdpIntegrationKindMappingFieldMappingArgs\n                        {\n                            SourceField = \"environment\",\n                            TargetField = \"metadata.environment\",\n                        },\n                    },\n                    DisplayNameField = \"name\",\n                },\n                Kind = \"cmdb_ci_service\",\n                AutoImport = true,\n                Filter = \".operational_status == \\\"1\\\"\",\n                IdpKind = \"component\",\n                IdpType = \"service\",\n            },\n        },\n        Identifier = \"servicenow_prod\",\n        Name = \"ServiceNow prod\",\n        OrgId = \"default\",\n        Type = \"ServiceNow\",\n        UpdateFrequency = \"12h\",\n    });\n\n    // Harness CI integration. Every kind needs a correlation, so each kind has a mapping.\n    var harnessCi = new Harness.Platform.IdpIntegration(\"harness_ci\", new()\n    {\n        Kinds = new[]\n        {\n            new Harness.Platform.Inputs.IdpIntegrationKindArgs\n            {\n                Mapping = new Harness.Platform.Inputs.IdpIntegrationKindMappingArgs\n                {\n                    Correlation = new Harness.Platform.Inputs.IdpIntegrationKindMappingCorrelationArgs\n                    {\n                        SourcePath = \"metadata.integration_properties.HarnessCI.pipelineName\",\n                        TargetPath = \"metadata.name\",\n                    },\n                },\n                Kind = \"pipeline\",\n            },\n        },\n        Identifier = \"harness_ci\",\n        Name = \"Harness CI\",\n        Type = \"HarnessCI\",\n    });\n\n    // GitHub integration for one organization's repositories.\n    var github = new Harness.Platform.IdpIntegration(\"github\", new()\n    {\n        Connector = new Harness.Platform.Inputs.IdpIntegrationConnectorArgs\n        {\n            Inline = new Harness.Platform.Inputs.IdpIntegrationConnectorInlineArgs\n            {\n                CredentialsRef = \"account.github\",\n            },\n        },\n        Github = new Harness.Platform.Inputs.IdpIntegrationGithubArgs\n        {\n            Orgs = new[]\n            {\n                \"acme\",\n            },\n        },\n        Kinds = new[]\n        {\n            new Harness.Platform.Inputs.IdpIntegrationKindArgs\n            {\n                Mapping = new Harness.Platform.Inputs.IdpIntegrationKindMappingArgs\n                {\n                    Correlation = new Harness.Platform.Inputs.IdpIntegrationKindMappingCorrelationArgs\n                    {\n                        SourcePath = \"metadata.integration_properties.GitHub.name\",\n                        TargetPath = \"name\",\n                    },\n                },\n                Kind = \"repo_details\",\n                Action = \"merge\",\n            },\n        },\n        Identifier = \"github\",\n        Name = \"GitHub\",\n        Type = \"GitHub\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Custom webhook integration. The webhook URL is in endpoints once created.\n\t\t_, err := platform.NewIdpIntegration(ctx, \"orders\", \u0026platform.IdpIntegrationArgs{\n\t\t\tCustom: \u0026platform.IdpIntegrationCustomArgs{\n\t\t\t\tWebhookAuth: \u0026platform.IdpIntegrationCustomWebhookAuthArgs{\n\t\t\t\t\tAuthType:   pulumi.String(\"hmac_auth\"),\n\t\t\t\t\tHashAlgo:   pulumi.String(\"hmac_sha256\"),\n\t\t\t\t\tAuthHeader: pulumi.String(\"X-Signature\"),\n\t\t\t\t\tSecretRef:  pulumi.String(\"account.orders_webhook_secret\"),\n\t\t\t\t},\n\t\t\t\tLayout: \u0026platform.IdpIntegrationCustomLayoutArgs{\n\t\t\t\t\tColumns: platform.IdpIntegrationCustomLayoutColumnArray{\n\t\t\t\t\t\t\u0026platform.IdpIntegrationCustomLayoutColumnArgs{\n\t\t\t\t\t\t\tTitle: pulumi.String(\"Service\"),\n\t\t\t\t\t\t\tPath:  pulumi.String(\".spec.service\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tMode:        pulumi.String(\"webhook\"),\n\t\t\t\tSourceLabel: pulumi.String(\"orders\"),\n\t\t\t},\n\t\t\tKinds: platform.IdpIntegrationKindArray{\n\t\t\t\t\u0026platform.IdpIntegrationKindArgs{\n\t\t\t\t\tMapping: \u0026platform.IdpIntegrationKindMappingTypeArgs{\n\t\t\t\t\t\tIngestion: \u0026platform.IdpIntegrationKindMappingIngestionArgs{\n\t\t\t\t\t\t\tIdentifier: pulumi.String(\".service.id\"),\n\t\t\t\t\t\t\tName:       pulumi.String(\".service.name\"),\n\t\t\t\t\t\t\tProperties: pulumi.StringMap{\n\t\t\t\t\t\t\t\t\"team\": pulumi.String(\".service.team\"),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t\tCorrelation: \u0026platform.IdpIntegrationKindMappingCorrelationArgs{\n\t\t\t\t\t\t\tSourcePath: pulumi.String(\"service.id\"),\n\t\t\t\t\t\t\tTargetPath: pulumi.String(\"metadata.identifier\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tKind:       pulumi.String(\"custom\"),\n\t\t\t\t\tAutoImport: pulumi.Bool(true),\n\t\t\t\t\tAction:     pulumi.String(\"merge\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tIdentifier:  pulumi.String(\"orders_webhook\"),\n\t\t\tName:        pulumi.String(\"Orders webhook\"),\n\t\t\tDescription: pulumi.String(\"Imports services pushed by the order system\"),\n\t\t\tType:        pulumi.String(\"Custom\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"team:idp\"),\n\t\t\t\tpulumi.String(\"webhook\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Harness CD integration, reading services from every scope of the account.\n\t\t_, err = platform.NewIdpIntegration(ctx, \"harness_cd\", \u0026platform.IdpIntegrationArgs{\n\t\t\tScopes: \u0026platform.IdpIntegrationScopesArgs{\n\t\t\t\tAll: pulumi.Bool(true),\n\t\t\t},\n\t\t\tKinds: platform.IdpIntegrationKindArray{\n\t\t\t\t\u0026platform.IdpIntegrationKindArgs{\n\t\t\t\t\tKind:       pulumi.String(\"service\"),\n\t\t\t\t\tAutoImport: pulumi.Bool(true),\n\t\t\t\t},\n\t\t\t},\n\t\t\tIdentifier: pulumi.String(\"harness_cd\"),\n\t\t\tName:       pulumi.String(\"Harness CD\"),\n\t\t\tType:       pulumi.String(\"HarnessCD\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// ServiceNow CMDB integration in an organization, synced every 12 hours.\n\t\t_, err = platform.NewIdpIntegration(ctx, \"servicenow\", \u0026platform.IdpIntegrationArgs{\n\t\t\tConnector: \u0026platform.IdpIntegrationConnectorArgs{\n\t\t\t\tInline: \u0026platform.IdpIntegrationConnectorInlineArgs{\n\t\t\t\t\tCredentialsRef: pulumi.String(\"account.servicenow\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tKinds: platform.IdpIntegrationKindArray{\n\t\t\t\t\u0026platform.IdpIntegrationKindArgs{\n\t\t\t\t\tMapping: \u0026platform.IdpIntegrationKindMappingTypeArgs{\n\t\t\t\t\t\tCorrelation: \u0026platform.IdpIntegrationKindMappingCorrelationArgs{\n\t\t\t\t\t\t\tSourcePath: pulumi.String(\"metadata.integration_properties.ServiceNow.name\"),\n\t\t\t\t\t\t\tTargetPath: pulumi.String(\"name\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t\tFieldMappings: platform.IdpIntegrationKindMappingFieldMappingArray{\n\t\t\t\t\t\t\t\u0026platform.IdpIntegrationKindMappingFieldMappingArgs{\n\t\t\t\t\t\t\t\tSourceField: pulumi.String(\"owned_by\"),\n\t\t\t\t\t\t\t\tTargetField: pulumi.String(\"spec.owner\"),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\u0026platform.IdpIntegrationKindMappingFieldMappingArgs{\n\t\t\t\t\t\t\t\tSourceField: pulumi.String(\"environment\"),\n\t\t\t\t\t\t\t\tTargetField: pulumi.String(\"metadata.environment\"),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t\tDisplayNameField: pulumi.String(\"name\"),\n\t\t\t\t\t},\n\t\t\t\t\tKind:       pulumi.String(\"cmdb_ci_service\"),\n\t\t\t\t\tAutoImport: pulumi.Bool(true),\n\t\t\t\t\tFilter:     pulumi.String(\".operational_status == \\\"1\\\"\"),\n\t\t\t\t\tIdpKind:    pulumi.String(\"component\"),\n\t\t\t\t\tIdpType:    pulumi.String(\"service\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tIdentifier:      pulumi.String(\"servicenow_prod\"),\n\t\t\tName:            pulumi.String(\"ServiceNow prod\"),\n\t\t\tOrgId:           pulumi.String(\"default\"),\n\t\t\tType:            pulumi.String(\"ServiceNow\"),\n\t\t\tUpdateFrequency: pulumi.String(\"12h\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Harness CI integration. Every kind needs a correlation, so each kind has a mapping.\n\t\t_, err = platform.NewIdpIntegration(ctx, \"harness_ci\", \u0026platform.IdpIntegrationArgs{\n\t\t\tKinds: platform.IdpIntegrationKindArray{\n\t\t\t\t\u0026platform.IdpIntegrationKindArgs{\n\t\t\t\t\tMapping: \u0026platform.IdpIntegrationKindMappingTypeArgs{\n\t\t\t\t\t\tCorrelation: \u0026platform.IdpIntegrationKindMappingCorrelationArgs{\n\t\t\t\t\t\t\tSourcePath: pulumi.String(\"metadata.integration_properties.HarnessCI.pipelineName\"),\n\t\t\t\t\t\t\tTargetPath: pulumi.String(\"metadata.name\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tKind: pulumi.String(\"pipeline\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tIdentifier: pulumi.String(\"harness_ci\"),\n\t\t\tName:       pulumi.String(\"Harness CI\"),\n\t\t\tType:       pulumi.String(\"HarnessCI\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// GitHub integration for one organization's repositories.\n\t\t_, err = platform.NewIdpIntegration(ctx, \"github\", \u0026platform.IdpIntegrationArgs{\n\t\t\tConnector: \u0026platform.IdpIntegrationConnectorArgs{\n\t\t\t\tInline: \u0026platform.IdpIntegrationConnectorInlineArgs{\n\t\t\t\t\tCredentialsRef: pulumi.String(\"account.github\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tGithub: \u0026platform.IdpIntegrationGithubArgs{\n\t\t\t\tOrgs: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"acme\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tKinds: platform.IdpIntegrationKindArray{\n\t\t\t\t\u0026platform.IdpIntegrationKindArgs{\n\t\t\t\t\tMapping: \u0026platform.IdpIntegrationKindMappingTypeArgs{\n\t\t\t\t\t\tCorrelation: \u0026platform.IdpIntegrationKindMappingCorrelationArgs{\n\t\t\t\t\t\t\tSourcePath: pulumi.String(\"metadata.integration_properties.GitHub.name\"),\n\t\t\t\t\t\t\tTargetPath: pulumi.String(\"name\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tKind:   pulumi.String(\"repo_details\"),\n\t\t\t\t\tAction: pulumi.String(\"merge\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tIdentifier: pulumi.String(\"github\"),\n\t\t\tName:       pulumi.String(\"GitHub\"),\n\t\t\tType:       pulumi.String(\"GitHub\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\nterraform {\n  required_providers {\n    harness = {\n      source = \"pulumi/harness\"\n    }\n  }\n}\n\n# Custom webhook integration. The webhook URL is in endpoints once created.\nresource \"harness_platform_idp_integration\" \"orders\" {\n  lifecycle {\n    create_before_destroy = true\n  }\n  custom {\n    webhook_auth {\n      auth_type   = \"hmac_auth\"\n      hash_algo   = \"hmac_sha256\"\n      auth_header = \"X-Signature\"\n      secret_ref  = \"account.orders_webhook_secret\"\n    }\n    layout {\n      column {\n        title = \"Service\"\n        path  = \".spec.service\"\n      }\n    }\n    mode         = \"webhook\"\n    source_label = \"orders\"\n  }\n  kind {\n    mapping {\n      ingestion {\n        identifier = \".service.id\"\n        name       = \".service.name\"\n        properties = {\n          \"team\" = \".service.team\"\n        }\n      }\n      correlation {\n        source_path = \"service.id\"\n        target_path = \"metadata.identifier\"\n      }\n    }\n    kind        = \"custom\"\n    auto_import = true\n    action      = \"merge\"\n  }\n  identifier  = \"orders_webhook\"\n  name        = \"Orders webhook\"\n  description = \"Imports services pushed by the order system\"\n  type        = \"Custom\"\n  tags        = [\"team:idp\", \"webhook\"]\n}\n# Harness CD integration, reading services from every scope of the account.\nresource \"harness_platform_idp_integration\" \"harness_cd\" {\n  lifecycle {\n    create_before_destroy = true\n  }\n  scopes {\n    all = true\n  }\n  kind {\n    kind        = \"service\"\n    auto_import = true\n  }\n  identifier = \"harness_cd\"\n  name       = \"Harness CD\"\n  type       = \"HarnessCD\"\n}\n# ServiceNow CMDB integration in an organization, synced every 12 hours.\nresource \"harness_platform_idp_integration\" \"servicenow\" {\n  lifecycle {\n    create_before_destroy = true\n  }\n  connector {\n    inline {\n      credentials_ref = \"account.servicenow\"\n    }\n  }\n  kind {\n    mapping {\n      correlation {\n        source_path = \"metadata.integration_properties.ServiceNow.name\"\n        target_path = \"name\"\n      }\n      field_mapping {\n        source_field = \"owned_by\"\n        target_field = \"spec.owner\"\n      }\n      field_mapping {\n        source_field = \"environment\"\n        target_field = \"metadata.environment\"\n      }\n      display_name_field = \"name\"\n    }\n    kind        = \"cmdb_ci_service\"\n    auto_import = true\n    filter      = \".operational_status == \\\"1\\\"\"\n    idp_kind    = \"component\"\n    idp_type    = \"service\"\n  }\n  # ServiceNow kinds have no default entity kind or type, so set both. They can't change later.\n  identifier       = \"servicenow_prod\"\n  name             = \"ServiceNow prod\"\n  org_id           = \"default\"\n  type             = \"ServiceNow\"\n  update_frequency = \"12h\"\n}\n# Harness CI integration. Every kind needs a correlation, so each kind has a mapping.\nresource \"harness_platform_idp_integration\" \"harness_ci\" {\n  lifecycle {\n    create_before_destroy = true\n  }\n  kind {\n    mapping {\n      correlation {\n        source_path = \"metadata.integration_properties.HarnessCI.pipelineName\"\n        target_path = \"metadata.name\"\n      }\n    }\n    kind = \"pipeline\"\n  }\n  # A field of the emitted entity data, matched against existing entities.\n  identifier = \"harness_ci\"\n  name       = \"Harness CI\"\n  type       = \"HarnessCI\"\n}\n# GitHub integration for one organization's repositories.\nresource \"harness_platform_idp_integration\" \"github\" {\n  lifecycle {\n    create_before_destroy = true\n  }\n  connector {\n    inline {\n      credentials_ref = \"account.github\"\n    }\n  }\n  github {\n    orgs = [\"acme\"]\n  }\n  kind {\n    mapping {\n      correlation {\n        source_path = \"metadata.integration_properties.GitHub.name\"\n        target_path = \"name\"\n      }\n    }\n    kind   = \"repo_details\"\n    action = \"merge\"\n  }\n  # Only updates entities the correlation finds, and doesn't register new ones. The default, merge_register,\n  # also registers repositories that match no entity.\n  identifier = \"github\"\n  name       = \"GitHub\"\n  type       = \"GitHub\"\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.IdpIntegration;\nimport com.pulumi.harness.platform.IdpIntegrationArgs;\nimport com.pulumi.harness.platform.inputs.IdpIntegrationCustomArgs;\nimport com.pulumi.harness.platform.inputs.IdpIntegrationCustomWebhookAuthArgs;\nimport com.pulumi.harness.platform.inputs.IdpIntegrationCustomLayoutArgs;\nimport com.pulumi.harness.platform.inputs.IdpIntegrationCustomLayoutColumnArgs;\nimport com.pulumi.harness.platform.inputs.IdpIntegrationKindArgs;\nimport com.pulumi.harness.platform.inputs.IdpIntegrationKindMappingArgs;\nimport com.pulumi.harness.platform.inputs.IdpIntegrationKindMappingIngestionArgs;\nimport com.pulumi.harness.platform.inputs.IdpIntegrationKindMappingCorrelationArgs;\nimport com.pulumi.harness.platform.inputs.IdpIntegrationScopesArgs;\nimport com.pulumi.harness.platform.inputs.IdpIntegrationConnectorArgs;\nimport com.pulumi.harness.platform.inputs.IdpIntegrationConnectorInlineArgs;\nimport com.pulumi.harness.platform.inputs.IdpIntegrationKindMappingFieldMappingArgs;\nimport com.pulumi.harness.platform.inputs.IdpIntegrationGithubArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Custom webhook integration. The webhook URL is in endpoints once created.\n        var orders = new IdpIntegration(\"orders\", IdpIntegrationArgs.builder()\n            .custom(IdpIntegrationCustomArgs.builder()\n                .webhookAuth(IdpIntegrationCustomWebhookAuthArgs.builder()\n                    .authType(\"hmac_auth\")\n                    .hashAlgo(\"hmac_sha256\")\n                    .authHeader(\"X-Signature\")\n                    .secretRef(\"account.orders_webhook_secret\")\n                    .build())\n                .layout(IdpIntegrationCustomLayoutArgs.builder()\n                    .columns(IdpIntegrationCustomLayoutColumnArgs.builder()\n                        .title(\"Service\")\n                        .path(\".spec.service\")\n                        .build())\n                    .build())\n                .mode(\"webhook\")\n                .sourceLabel(\"orders\")\n                .build())\n            .kinds(IdpIntegrationKindArgs.builder()\n                .mapping(IdpIntegrationKindMappingArgs.builder()\n                    .ingestion(IdpIntegrationKindMappingIngestionArgs.builder()\n                        .identifier(\".service.id\")\n                        .name(\".service.name\")\n                        .properties(Map.of(\"team\", \".service.team\"))\n                        .build())\n                    .correlation(IdpIntegrationKindMappingCorrelationArgs.builder()\n                        .sourcePath(\"service.id\")\n                        .targetPath(\"metadata.identifier\")\n                        .build())\n                    .build())\n                .kind(\"custom\")\n                .autoImport(true)\n                .action(\"merge\")\n                .build())\n            .identifier(\"orders_webhook\")\n            .name(\"Orders webhook\")\n            .description(\"Imports services pushed by the order system\")\n            .type(\"Custom\")\n            .tags(            \n                \"team:idp\",\n                \"webhook\")\n            .build());\n\n        // Harness CD integration, reading services from every scope of the account.\n        var harnessCd = new IdpIntegration(\"harnessCd\", IdpIntegrationArgs.builder()\n            .scopes(IdpIntegrationScopesArgs.builder()\n                .all(true)\n                .build())\n            .kinds(IdpIntegrationKindArgs.builder()\n                .kind(\"service\")\n                .autoImport(true)\n                .build())\n            .identifier(\"harness_cd\")\n            .name(\"Harness CD\")\n            .type(\"HarnessCD\")\n            .build());\n\n        // ServiceNow CMDB integration in an organization, synced every 12 hours.\n        var servicenow = new IdpIntegration(\"servicenow\", IdpIntegrationArgs.builder()\n            .connector(IdpIntegrationConnectorArgs.builder()\n                .inline(IdpIntegrationConnectorInlineArgs.builder()\n                    .credentialsRef(\"account.servicenow\")\n                    .build())\n                .build())\n            .kinds(IdpIntegrationKindArgs.builder()\n                .mapping(IdpIntegrationKindMappingArgs.builder()\n                    .correlation(IdpIntegrationKindMappingCorrelationArgs.builder()\n                        .sourcePath(\"metadata.integration_properties.ServiceNow.name\")\n                        .targetPath(\"name\")\n                        .build())\n                    .fieldMappings(                    \n                        IdpIntegrationKindMappingFieldMappingArgs.builder()\n                            .sourceField(\"owned_by\")\n                            .targetField(\"spec.owner\")\n                            .build(),\n                        IdpIntegrationKindMappingFieldMappingArgs.builder()\n                            .sourceField(\"environment\")\n                            .targetField(\"metadata.environment\")\n                            .build())\n                    .displayNameField(\"name\")\n                    .build())\n                .kind(\"cmdb_ci_service\")\n                .autoImport(true)\n                .filter(\".operational_status == \\\"1\\\"\")\n                .idpKind(\"component\")\n                .idpType(\"service\")\n                .build())\n            .identifier(\"servicenow_prod\")\n            .name(\"ServiceNow prod\")\n            .orgId(\"default\")\n            .type(\"ServiceNow\")\n            .updateFrequency(\"12h\")\n            .build());\n\n        // Harness CI integration. Every kind needs a correlation, so each kind has a mapping.\n        var harnessCi = new IdpIntegration(\"harnessCi\", IdpIntegrationArgs.builder()\n            .kinds(IdpIntegrationKindArgs.builder()\n                .mapping(IdpIntegrationKindMappingArgs.builder()\n                    .correlation(IdpIntegrationKindMappingCorrelationArgs.builder()\n                        .sourcePath(\"metadata.integration_properties.HarnessCI.pipelineName\")\n                        .targetPath(\"metadata.name\")\n                        .build())\n                    .build())\n                .kind(\"pipeline\")\n                .build())\n            .identifier(\"harness_ci\")\n            .name(\"Harness CI\")\n            .type(\"HarnessCI\")\n            .build());\n\n        // GitHub integration for one organization's repositories.\n        var github = new IdpIntegration(\"github\", IdpIntegrationArgs.builder()\n            .connector(IdpIntegrationConnectorArgs.builder()\n                .inline(IdpIntegrationConnectorInlineArgs.builder()\n                    .credentialsRef(\"account.github\")\n                    .build())\n                .build())\n            .github(IdpIntegrationGithubArgs.builder()\n                .orgs(\"acme\")\n                .build())\n            .kinds(IdpIntegrationKindArgs.builder()\n                .mapping(IdpIntegrationKindMappingArgs.builder()\n                    .correlation(IdpIntegrationKindMappingCorrelationArgs.builder()\n                        .sourcePath(\"metadata.integration_properties.GitHub.name\")\n                        .targetPath(\"name\")\n                        .build())\n                    .build())\n                .kind(\"repo_details\")\n                .action(\"merge\")\n                .build())\n            .identifier(\"github\")\n            .name(\"GitHub\")\n            .type(\"GitHub\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Custom webhook integration. The webhook URL is in endpoints once created.\n  orders:\n    type: harness:platform:IdpIntegration\n    properties:\n      custom:\n        webhookAuth:\n          authType: hmac_auth\n          hashAlgo: hmac_sha256\n          authHeader: X-Signature\n          secretRef: account.orders_webhook_secret\n        layout:\n          columns:\n            - title: Service\n              path: .spec.service\n        mode: webhook\n        sourceLabel: orders\n      kinds:\n        - mapping:\n            ingestion:\n              identifier: .service.id\n              name: .service.name\n              properties:\n                team: .service.team\n            correlation:\n              sourcePath: service.id\n              targetPath: metadata.identifier\n          kind: custom\n          autoImport: true\n          action: merge\n      identifier: orders_webhook\n      name: Orders webhook\n      description: Imports services pushed by the order system\n      type: Custom\n      tags:\n        - team:idp\n        - webhook\n  # Harness CD integration, reading services from every scope of the account.\n  harnessCd:\n    type: harness:platform:IdpIntegration\n    name: harness_cd\n    properties:\n      scopes:\n        all: true\n      kinds:\n        - kind: service\n          autoImport: true\n      identifier: harness_cd\n      name: Harness CD\n      type: HarnessCD\n  # ServiceNow CMDB integration in an organization, synced every 12 hours.\n  servicenow:\n    type: harness:platform:IdpIntegration\n    properties:\n      connector:\n        inline:\n          credentialsRef: account.servicenow\n      kinds:\n        - mapping:\n            correlation:\n              sourcePath: metadata.integration_properties.ServiceNow.name\n              targetPath: name\n            fieldMappings:\n              - sourceField: owned_by\n                targetField: spec.owner\n              - sourceField: environment\n                targetField: metadata.environment\n            displayNameField: name\n          kind: cmdb_ci_service\n          autoImport: true\n          filter: .operational_status == \"1\"\n          idpKind: component\n          idpType: service\n      identifier: servicenow_prod\n      name: ServiceNow prod\n      orgId: default\n      type: ServiceNow\n      updateFrequency: 12h\n  # Harness CI integration. Every kind needs a correlation, so each kind has a mapping.\n  harnessCi:\n    type: harness:platform:IdpIntegration\n    name: harness_ci\n    properties:\n      kinds:\n        - mapping:\n            correlation:\n              sourcePath: metadata.integration_properties.HarnessCI.pipelineName\n              targetPath: metadata.name\n          kind: pipeline\n      identifier: harness_ci\n      name: Harness CI\n      type: HarnessCI\n  # GitHub integration for one organization's repositories.\n  github:\n    type: harness:platform:IdpIntegration\n    properties:\n      connector:\n        inline:\n          credentialsRef: account.github\n      github:\n        orgs:\n          - acme\n      kinds:\n        - mapping:\n            correlation:\n              sourcePath: metadata.integration_properties.GitHub.name\n              targetPath: name\n          kind: repo_details\n          action: merge\n      identifier: github\n      name: GitHub\n      type: GitHub\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nImport an account level integration\n\n```sh\n$ pulumi import harness:platform/idpIntegration:IdpIntegration example \u003cintegration_id\u003e\n```\n\nImport an org level integration\n\n```sh\n$ pulumi import harness:platform/idpIntegration:IdpIntegration example \u003corg_id\u003e/\u003cintegration_id\u003e\n```\n\nImport a project level integration\n\n```sh\n$ pulumi import harness:platform/idpIntegration:IdpIntegration example \u003corg_id\u003e/\u003cproject_id\u003e/\u003cintegration_id\u003e\n```\n\n",
+            "properties": {
+                "bitbucketCloud": {
+                    "$ref": "#/types/harness:platform/IdpIntegrationBitbucketCloud:IdpIntegrationBitbucketCloud",
+                    "description": "Settings for BitbucketCloud integrations.\n"
+                },
+                "catalogInfo": {
+                    "$ref": "#/types/harness:platform/IdpIntegrationCatalogInfo:IdpIntegrationCatalogInfo",
+                    "description": "Settings for CatalogInfo integrations.\n"
+                },
+                "connector": {
+                    "$ref": "#/types/harness:platform/IdpIntegrationConnector:IdpIntegrationConnector",
+                    "description": "Connector the integration reads with. Required or not allowed depending on type.\n"
+                },
+                "connectorVersion": {
+                    "type": "string",
+                    "description": "Connector image tag recorded at create.\n"
+                },
+                "created": {
+                    "type": "integer",
+                    "description": "Creation time, in milliseconds since the epoch.\n"
+                },
+                "custom": {
+                    "$ref": "#/types/harness:platform/IdpIntegrationCustom:IdpIntegrationCustom",
+                    "description": "Settings for Custom integrations.\n"
+                },
+                "datadog": {
+                    "$ref": "#/types/harness:platform/IdpIntegrationDatadog:IdpIntegrationDatadog",
+                    "description": "Settings for DataDog integrations.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the resource.\n"
+                },
+                "dynatrace": {
+                    "$ref": "#/types/harness:platform/IdpIntegrationDynatrace:IdpIntegrationDynatrace",
+                    "description": "Settings for DynaTrace integrations.\n"
+                },
+                "effectiveKinds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Kinds that sync, including secondary kinds.\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether the integration syncs.\n"
+                },
+                "endpoints": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/IdpIntegrationEndpoint:IdpIntegrationEndpoint"
+                    },
+                    "description": "URLs that receive data, per kind.\n"
+                },
+                "gcp": {
+                    "$ref": "#/types/harness:platform/IdpIntegrationGcp:IdpIntegrationGcp",
+                    "description": "Settings for GCP integrations.\n"
+                },
+                "github": {
+                    "$ref": "#/types/harness:platform/IdpIntegrationGithub:IdpIntegrationGithub",
+                    "description": "Settings for GitHub integrations.\n"
+                },
+                "harnessCd": {
+                    "$ref": "#/types/harness:platform/IdpIntegrationHarnessCd:IdpIntegrationHarnessCd",
+                    "description": "Settings for HarnessCD integrations.\n"
+                },
+                "harnessCode": {
+                    "$ref": "#/types/harness:platform/IdpIntegrationHarnessCode:IdpIntegrationHarnessCode",
+                    "description": "Settings for HarnessCode integrations.\n"
+                },
+                "harnessK8s": {
+                    "$ref": "#/types/harness:platform/IdpIntegrationHarnessK8s:IdpIntegrationHarnessK8s",
+                    "description": "Settings for HarnessK8s integrations.\n"
+                },
+                "health": {
+                    "type": "string",
+                    "description": "Health of the integration.\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "Identifier of the integration, stored as sent.\n"
+                },
+                "jira": {
+                    "$ref": "#/types/harness:platform/IdpIntegrationJira:IdpIntegrationJira",
+                    "description": "Settings for Jira integrations.\n"
+                },
+                "kinds": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/IdpIntegrationKind:IdpIntegrationKind"
+                    },
+                    "description": "A kind to sync. Import reads kinds sorted by name, so list them that way to import without a diff; otherwise the first plan after an import reorders them, which applies without calling the API. Omit it for types without kinds, such as HarnessTraceable.\n"
+                },
+                "modeEffective": {
+                    "type": "string",
+                    "description": "How the integration gets data: airbyte, platform, webhook or api.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the resource.\n"
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "Unique identifier of the organization.\n"
+                },
+                "pagerduty": {
+                    "$ref": "#/types/harness:platform/IdpIntegrationPagerduty:IdpIntegrationPagerduty",
+                    "description": "Settings for PagerDuty integrations.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "Unique identifier of the project.\n"
+                },
+                "revision": {
+                    "type": "integer",
+                    "description": "Revision, sent as If-Match on writes.\n"
+                },
+                "scopes": {
+                    "$ref": "#/types/harness:platform/IdpIntegrationScopes:IdpIntegrationScopes",
+                    "description": "Harness scopes a platform integration reads from. Set exactly one of all or selected.\n"
+                },
+                "secondaryKinds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Secondary kinds to sync, for Airbyte types.\n"
+                },
+                "sonarqube": {
+                    "$ref": "#/types/harness:platform/IdpIntegrationSonarqube:IdpIntegrationSonarqube",
+                    "description": "Settings for SonarQube integrations.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tags to associate with the resource.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Integration type, e.g. ServiceNow, GitHub, HarnessCD or Custom.\n"
+                },
+                "uid": {
+                    "type": "string",
+                    "description": "Internal key; new on every create.\n"
+                },
+                "updateFrequency": {
+                    "type": "string",
+                    "description": "How often an Airbyte integration syncs, e.g. 24h.\n"
+                },
+                "updated": {
+                    "type": "integer",
+                    "description": "Last update time, in milliseconds since the epoch.\n"
+                }
+            },
+            "required": [
+                "bitbucketCloud",
+                "catalogInfo",
+                "connectorVersion",
+                "created",
+                "custom",
+                "datadog",
+                "dynatrace",
+                "effectiveKinds",
+                "endpoints",
+                "gcp",
+                "github",
+                "harnessCd",
+                "harnessCode",
+                "harnessK8s",
+                "health",
+                "identifier",
+                "jira",
+                "modeEffective",
+                "name",
+                "pagerduty",
+                "revision",
+                "scopes",
+                "secondaryKinds",
+                "sonarqube",
+                "type",
+                "uid",
+                "updateFrequency",
+                "updated"
+            ],
+            "inputProperties": {
+                "bitbucketCloud": {
+                    "$ref": "#/types/harness:platform/IdpIntegrationBitbucketCloud:IdpIntegrationBitbucketCloud",
+                    "description": "Settings for BitbucketCloud integrations.\n"
+                },
+                "catalogInfo": {
+                    "$ref": "#/types/harness:platform/IdpIntegrationCatalogInfo:IdpIntegrationCatalogInfo",
+                    "description": "Settings for CatalogInfo integrations.\n"
+                },
+                "connector": {
+                    "$ref": "#/types/harness:platform/IdpIntegrationConnector:IdpIntegrationConnector",
+                    "description": "Connector the integration reads with. Required or not allowed depending on type.\n"
+                },
+                "custom": {
+                    "$ref": "#/types/harness:platform/IdpIntegrationCustom:IdpIntegrationCustom",
+                    "description": "Settings for Custom integrations.\n"
+                },
+                "datadog": {
+                    "$ref": "#/types/harness:platform/IdpIntegrationDatadog:IdpIntegrationDatadog",
+                    "description": "Settings for DataDog integrations.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the resource.\n"
+                },
+                "dynatrace": {
+                    "$ref": "#/types/harness:platform/IdpIntegrationDynatrace:IdpIntegrationDynatrace",
+                    "description": "Settings for DynaTrace integrations.\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether the integration syncs.\n"
+                },
+                "gcp": {
+                    "$ref": "#/types/harness:platform/IdpIntegrationGcp:IdpIntegrationGcp",
+                    "description": "Settings for GCP integrations.\n"
+                },
+                "github": {
+                    "$ref": "#/types/harness:platform/IdpIntegrationGithub:IdpIntegrationGithub",
+                    "description": "Settings for GitHub integrations.\n"
+                },
+                "harnessCd": {
+                    "$ref": "#/types/harness:platform/IdpIntegrationHarnessCd:IdpIntegrationHarnessCd",
+                    "description": "Settings for HarnessCD integrations.\n"
+                },
+                "harnessCode": {
+                    "$ref": "#/types/harness:platform/IdpIntegrationHarnessCode:IdpIntegrationHarnessCode",
+                    "description": "Settings for HarnessCode integrations.\n"
+                },
+                "harnessK8s": {
+                    "$ref": "#/types/harness:platform/IdpIntegrationHarnessK8s:IdpIntegrationHarnessK8s",
+                    "description": "Settings for HarnessK8s integrations.\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "Identifier of the integration, stored as sent.\n",
+                    "willReplaceOnChanges": true
+                },
+                "jira": {
+                    "$ref": "#/types/harness:platform/IdpIntegrationJira:IdpIntegrationJira",
+                    "description": "Settings for Jira integrations.\n"
+                },
+                "kinds": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/IdpIntegrationKind:IdpIntegrationKind"
+                    },
+                    "description": "A kind to sync. Import reads kinds sorted by name, so list them that way to import without a diff; otherwise the first plan after an import reorders them, which applies without calling the API. Omit it for types without kinds, such as HarnessTraceable.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the resource.\n"
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "Unique identifier of the organization.\n"
+                },
+                "pagerduty": {
+                    "$ref": "#/types/harness:platform/IdpIntegrationPagerduty:IdpIntegrationPagerduty",
+                    "description": "Settings for PagerDuty integrations.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "Unique identifier of the project.\n"
+                },
+                "scopes": {
+                    "$ref": "#/types/harness:platform/IdpIntegrationScopes:IdpIntegrationScopes",
+                    "description": "Harness scopes a platform integration reads from. Set exactly one of all or selected.\n"
+                },
+                "secondaryKinds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Secondary kinds to sync, for Airbyte types.\n"
+                },
+                "sonarqube": {
+                    "$ref": "#/types/harness:platform/IdpIntegrationSonarqube:IdpIntegrationSonarqube",
+                    "description": "Settings for SonarQube integrations.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tags to associate with the resource.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Integration type, e.g. ServiceNow, GitHub, HarnessCD or Custom.\n",
+                    "willReplaceOnChanges": true
+                },
+                "updateFrequency": {
+                    "type": "string",
+                    "description": "How often an Airbyte integration syncs, e.g. 24h.\n"
+                }
+            },
+            "requiredInputs": [
+                "identifier",
+                "type"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering IdpIntegration resources.\n",
+                "properties": {
+                    "bitbucketCloud": {
+                        "$ref": "#/types/harness:platform/IdpIntegrationBitbucketCloud:IdpIntegrationBitbucketCloud",
+                        "description": "Settings for BitbucketCloud integrations.\n"
+                    },
+                    "catalogInfo": {
+                        "$ref": "#/types/harness:platform/IdpIntegrationCatalogInfo:IdpIntegrationCatalogInfo",
+                        "description": "Settings for CatalogInfo integrations.\n"
+                    },
+                    "connector": {
+                        "$ref": "#/types/harness:platform/IdpIntegrationConnector:IdpIntegrationConnector",
+                        "description": "Connector the integration reads with. Required or not allowed depending on type.\n"
+                    },
+                    "connectorVersion": {
+                        "type": "string",
+                        "description": "Connector image tag recorded at create.\n"
+                    },
+                    "created": {
+                        "type": "integer",
+                        "description": "Creation time, in milliseconds since the epoch.\n"
+                    },
+                    "custom": {
+                        "$ref": "#/types/harness:platform/IdpIntegrationCustom:IdpIntegrationCustom",
+                        "description": "Settings for Custom integrations.\n"
+                    },
+                    "datadog": {
+                        "$ref": "#/types/harness:platform/IdpIntegrationDatadog:IdpIntegrationDatadog",
+                        "description": "Settings for DataDog integrations.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Description of the resource.\n"
+                    },
+                    "dynatrace": {
+                        "$ref": "#/types/harness:platform/IdpIntegrationDynatrace:IdpIntegrationDynatrace",
+                        "description": "Settings for DynaTrace integrations.\n"
+                    },
+                    "effectiveKinds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Kinds that sync, including secondary kinds.\n"
+                    },
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Whether the integration syncs.\n"
+                    },
+                    "endpoints": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/harness:platform/IdpIntegrationEndpoint:IdpIntegrationEndpoint"
+                        },
+                        "description": "URLs that receive data, per kind.\n"
+                    },
+                    "gcp": {
+                        "$ref": "#/types/harness:platform/IdpIntegrationGcp:IdpIntegrationGcp",
+                        "description": "Settings for GCP integrations.\n"
+                    },
+                    "github": {
+                        "$ref": "#/types/harness:platform/IdpIntegrationGithub:IdpIntegrationGithub",
+                        "description": "Settings for GitHub integrations.\n"
+                    },
+                    "harnessCd": {
+                        "$ref": "#/types/harness:platform/IdpIntegrationHarnessCd:IdpIntegrationHarnessCd",
+                        "description": "Settings for HarnessCD integrations.\n"
+                    },
+                    "harnessCode": {
+                        "$ref": "#/types/harness:platform/IdpIntegrationHarnessCode:IdpIntegrationHarnessCode",
+                        "description": "Settings for HarnessCode integrations.\n"
+                    },
+                    "harnessK8s": {
+                        "$ref": "#/types/harness:platform/IdpIntegrationHarnessK8s:IdpIntegrationHarnessK8s",
+                        "description": "Settings for HarnessK8s integrations.\n"
+                    },
+                    "health": {
+                        "type": "string",
+                        "description": "Health of the integration.\n"
+                    },
+                    "identifier": {
+                        "type": "string",
+                        "description": "Identifier of the integration, stored as sent.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "jira": {
+                        "$ref": "#/types/harness:platform/IdpIntegrationJira:IdpIntegrationJira",
+                        "description": "Settings for Jira integrations.\n"
+                    },
+                    "kinds": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/harness:platform/IdpIntegrationKind:IdpIntegrationKind"
+                        },
+                        "description": "A kind to sync. Import reads kinds sorted by name, so list them that way to import without a diff; otherwise the first plan after an import reorders them, which applies without calling the API. Omit it for types without kinds, such as HarnessTraceable.\n"
+                    },
+                    "modeEffective": {
+                        "type": "string",
+                        "description": "How the integration gets data: airbyte, platform, webhook or api.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the resource.\n"
+                    },
+                    "orgId": {
+                        "type": "string",
+                        "description": "Unique identifier of the organization.\n"
+                    },
+                    "pagerduty": {
+                        "$ref": "#/types/harness:platform/IdpIntegrationPagerduty:IdpIntegrationPagerduty",
+                        "description": "Settings for PagerDuty integrations.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "Unique identifier of the project.\n"
+                    },
+                    "revision": {
+                        "type": "integer",
+                        "description": "Revision, sent as If-Match on writes.\n"
+                    },
+                    "scopes": {
+                        "$ref": "#/types/harness:platform/IdpIntegrationScopes:IdpIntegrationScopes",
+                        "description": "Harness scopes a platform integration reads from. Set exactly one of all or selected.\n"
+                    },
+                    "secondaryKinds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Secondary kinds to sync, for Airbyte types.\n"
+                    },
+                    "sonarqube": {
+                        "$ref": "#/types/harness:platform/IdpIntegrationSonarqube:IdpIntegrationSonarqube",
+                        "description": "Settings for SonarQube integrations.\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Tags to associate with the resource.\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "Integration type, e.g. ServiceNow, GitHub, HarnessCD or Custom.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "uid": {
+                        "type": "string",
+                        "description": "Internal key; new on every create.\n"
+                    },
+                    "updateFrequency": {
+                        "type": "string",
+                        "description": "How often an Airbyte integration syncs, e.g. 24h.\n"
+                    },
+                    "updated": {
+                        "type": "integer",
+                        "description": "Last update time, in milliseconds since the epoch.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "harness:platform/idpIntegrationKindMapping:IdpIntegrationKindMapping": {
+            "description": "Resource for the mapping of one kind of an IDP integration. Every kind has a mapping, so creating this adopts it. Destroying it removes it from the state only, as a kind's mapping exists as long as the kind does; on Airbyte types it also restores the type's default field mappings. Don't manage a kind with both this and a mapping block on harness_platform_idp_integration, which is only sent at create.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\n// Every kind of an integration has a mapping. This resource manages it, replacing the whole mapping: omitted fields\n// get the type's defaults. Destroying the resource only removes it from the state; on Airbyte types such as\n// ServiceNow it also restores the type's default field mappings.\nconst services = new harness.platform.IdpIntegrationKindMapping(\"services\", {\n    correlation: {\n        sourcePath: \"metadata.integration_properties.ServiceNow.name\",\n        targetPath: \"name\",\n    },\n    fieldMappings: [\n        {\n            sourceField: \"owned_by\",\n            targetField: \"spec.owner\",\n        },\n        {\n            sourceField: \"environment\",\n            targetField: \"metadata.environment\",\n        },\n    ],\n    integrationId: servicenow.identifier,\n    orgId: \"default\",\n    kind: \"cmdb_ci_service\",\n    displayNameField: \"name\",\n    idpKind: \"component\",\n    idpType: \"service\",\n});\n// Adds a correlation to a PagerDuty kind, linking each service to the catalog entity with the same name. Omitted\n// fields, such as field_mapping, keep the type's defaults.\nconst pagerduty = new harness.platform.IdpIntegrationKindMapping(\"pagerduty\", {\n    correlation: {\n        sourcePath: \"metadata.integration_properties.PagerDuty.name\",\n        targetPath: \"name\",\n    },\n    integrationId: pagerdutyHarnessPlatformIdpIntegration.identifier,\n    kind: \"services\",\n});\n// Custom integrations build entities from the payload with JQ. Don't also set a mapping block for this kind on the\n// integration; that block is only sent at create.\nconst orders = new harness.platform.IdpIntegrationKindMapping(\"orders\", {\n    ingestion: {\n        identifier: \".service.id\",\n        name: \".service.name\",\n        properties: {\n            \"spec.owner\": \".service.team\",\n        },\n    },\n    integrationId: ordersHarnessPlatformIdpIntegration.identifier,\n    kind: \"custom\",\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\n# Every kind of an integration has a mapping. This resource manages it, replacing the whole mapping: omitted fields\n# get the type's defaults. Destroying the resource only removes it from the state; on Airbyte types such as\n# ServiceNow it also restores the type's default field mappings.\nservices = harness.platform.IdpIntegrationKindMapping(\"services\",\n    correlation={\n        \"source_path\": \"metadata.integration_properties.ServiceNow.name\",\n        \"target_path\": \"name\",\n    },\n    field_mappings=[\n        {\n            \"source_field\": \"owned_by\",\n            \"target_field\": \"spec.owner\",\n        },\n        {\n            \"source_field\": \"environment\",\n            \"target_field\": \"metadata.environment\",\n        },\n    ],\n    integration_id=servicenow[\"identifier\"],\n    org_id=\"default\",\n    kind=\"cmdb_ci_service\",\n    display_name_field=\"name\",\n    idp_kind=\"component\",\n    idp_type=\"service\")\n# Adds a correlation to a PagerDuty kind, linking each service to the catalog entity with the same name. Omitted\n# fields, such as field_mapping, keep the type's defaults.\npagerduty = harness.platform.IdpIntegrationKindMapping(\"pagerduty\",\n    correlation={\n        \"source_path\": \"metadata.integration_properties.PagerDuty.name\",\n        \"target_path\": \"name\",\n    },\n    integration_id=pagerduty_harness_platform_idp_integration[\"identifier\"],\n    kind=\"services\")\n# Custom integrations build entities from the payload with JQ. Don't also set a mapping block for this kind on the\n# integration; that block is only sent at create.\norders = harness.platform.IdpIntegrationKindMapping(\"orders\",\n    ingestion={\n        \"identifier\": \".service.id\",\n        \"name\": \".service.name\",\n        \"properties\": {\n            \"spec.owner\": \".service.team\",\n        },\n    },\n    integration_id=orders_harness_platform_idp_integration[\"identifier\"],\n    kind=\"custom\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Every kind of an integration has a mapping. This resource manages it, replacing the whole mapping: omitted fields\n    // get the type's defaults. Destroying the resource only removes it from the state; on Airbyte types such as\n    // ServiceNow it also restores the type's default field mappings.\n    var services = new Harness.Platform.IdpIntegrationKindMapping(\"services\", new()\n    {\n        Correlation = new Harness.Platform.Inputs.IdpIntegrationKindMappingCorrelationArgs\n        {\n            SourcePath = \"metadata.integration_properties.ServiceNow.name\",\n            TargetPath = \"name\",\n        },\n        FieldMappings = new[]\n        {\n            new Harness.Platform.Inputs.IdpIntegrationKindMappingFieldMappingArgs\n            {\n                SourceField = \"owned_by\",\n                TargetField = \"spec.owner\",\n            },\n            new Harness.Platform.Inputs.IdpIntegrationKindMappingFieldMappingArgs\n            {\n                SourceField = \"environment\",\n                TargetField = \"metadata.environment\",\n            },\n        },\n        IntegrationId = servicenow.Identifier,\n        OrgId = \"default\",\n        Kind = \"cmdb_ci_service\",\n        DisplayNameField = \"name\",\n        IdpKind = \"component\",\n        IdpType = \"service\",\n    });\n\n    // Adds a correlation to a PagerDuty kind, linking each service to the catalog entity with the same name. Omitted\n    // fields, such as field_mapping, keep the type's defaults.\n    var pagerduty = new Harness.Platform.IdpIntegrationKindMapping(\"pagerduty\", new()\n    {\n        Correlation = new Harness.Platform.Inputs.IdpIntegrationKindMappingCorrelationArgs\n        {\n            SourcePath = \"metadata.integration_properties.PagerDuty.name\",\n            TargetPath = \"name\",\n        },\n        IntegrationId = pagerdutyHarnessPlatformIdpIntegration.Identifier,\n        Kind = \"services\",\n    });\n\n    // Custom integrations build entities from the payload with JQ. Don't also set a mapping block for this kind on the\n    // integration; that block is only sent at create.\n    var orders = new Harness.Platform.IdpIntegrationKindMapping(\"orders\", new()\n    {\n        Ingestion = new Harness.Platform.Inputs.IdpIntegrationKindMappingIngestionArgs\n        {\n            Identifier = \".service.id\",\n            Name = \".service.name\",\n            Properties = \n            {\n                { \"spec.owner\", \".service.team\" },\n            },\n        },\n        IntegrationId = ordersHarnessPlatformIdpIntegration.Identifier,\n        Kind = \"custom\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Every kind of an integration has a mapping. This resource manages it, replacing the whole mapping: omitted fields\n\t\t// get the type's defaults. Destroying the resource only removes it from the state; on Airbyte types such as\n\t\t// ServiceNow it also restores the type's default field mappings.\n\t\t_, err := platform.NewIdpIntegrationKindMapping(ctx, \"services\", \u0026platform.IdpIntegrationKindMappingArgs{\n\t\t\tCorrelation: \u0026platform.IdpIntegrationKindMappingCorrelationArgs{\n\t\t\t\tSourcePath: pulumi.String(\"metadata.integration_properties.ServiceNow.name\"),\n\t\t\t\tTargetPath: pulumi.String(\"name\"),\n\t\t\t},\n\t\t\tFieldMappings: platform.IdpIntegrationKindMappingFieldMappingArray{\n\t\t\t\t\u0026platform.IdpIntegrationKindMappingFieldMappingArgs{\n\t\t\t\t\tSourceField: pulumi.String(\"owned_by\"),\n\t\t\t\t\tTargetField: pulumi.String(\"spec.owner\"),\n\t\t\t\t},\n\t\t\t\t\u0026platform.IdpIntegrationKindMappingFieldMappingArgs{\n\t\t\t\t\tSourceField: pulumi.String(\"environment\"),\n\t\t\t\t\tTargetField: pulumi.String(\"metadata.environment\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tIntegrationId:    pulumi.Any(servicenow.Identifier),\n\t\t\tOrgId:            pulumi.String(\"default\"),\n\t\t\tKind:             pulumi.String(\"cmdb_ci_service\"),\n\t\t\tDisplayNameField: pulumi.String(\"name\"),\n\t\t\tIdpKind:          pulumi.String(\"component\"),\n\t\t\tIdpType:          pulumi.String(\"service\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Adds a correlation to a PagerDuty kind, linking each service to the catalog entity with the same name. Omitted\n\t\t// fields, such as field_mapping, keep the type's defaults.\n\t\t_, err = platform.NewIdpIntegrationKindMapping(ctx, \"pagerduty\", \u0026platform.IdpIntegrationKindMappingArgs{\n\t\t\tCorrelation: \u0026platform.IdpIntegrationKindMappingCorrelationArgs{\n\t\t\t\tSourcePath: pulumi.String(\"metadata.integration_properties.PagerDuty.name\"),\n\t\t\t\tTargetPath: pulumi.String(\"name\"),\n\t\t\t},\n\t\t\tIntegrationId: pulumi.Any(pagerdutyHarnessPlatformIdpIntegration.Identifier),\n\t\t\tKind:          pulumi.String(\"services\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Custom integrations build entities from the payload with JQ. Don't also set a mapping block for this kind on the\n\t\t// integration; that block is only sent at create.\n\t\t_, err = platform.NewIdpIntegrationKindMapping(ctx, \"orders\", \u0026platform.IdpIntegrationKindMappingArgs{\n\t\t\tIngestion: \u0026platform.IdpIntegrationKindMappingIngestionArgs{\n\t\t\t\tIdentifier: pulumi.String(\".service.id\"),\n\t\t\t\tName:       pulumi.String(\".service.name\"),\n\t\t\t\tProperties: pulumi.StringMap{\n\t\t\t\t\t\"spec.owner\": pulumi.String(\".service.team\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tIntegrationId: pulumi.Any(ordersHarnessPlatformIdpIntegration.Identifier),\n\t\t\tKind:          pulumi.String(\"custom\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\nterraform {\n  required_providers {\n    harness = {\n      source = \"pulumi/harness\"\n    }\n  }\n}\n\n# Every kind of an integration has a mapping. This resource manages it, replacing the whole mapping: omitted fields\n# get the type's defaults. Destroying the resource only removes it from the state; on Airbyte types such as\n# ServiceNow it also restores the type's default field mappings.\nresource \"harness_platform_idp_integration_kind_mapping\" \"services\" {\n  lifecycle {\n    create_before_destroy = true\n  }\n  correlation {\n    source_path = \"metadata.integration_properties.ServiceNow.name\"\n    target_path = \"name\"\n  }\n  field_mapping {\n    source_field = \"owned_by\"\n    target_field = \"spec.owner\"\n  }\n  field_mapping {\n    source_field = \"environment\"\n    target_field = \"metadata.environment\"\n  }\n  integration_id     = servicenow.identifier\n  org_id             = \"default\"\n  kind               = \"cmdb_ci_service\"\n  display_name_field = \"name\"\n  idp_kind           = \"component\"\n  idp_type           = \"service\"\n}\n# Adds a correlation to a PagerDuty kind, linking each service to the catalog entity with the same name. Omitted\n# fields, such as field_mapping, keep the type's defaults.\nresource \"harness_platform_idp_integration_kind_mapping\" \"pagerduty\" {\n  lifecycle {\n    create_before_destroy = true\n  }\n  correlation {\n    source_path = \"metadata.integration_properties.PagerDuty.name\"\n    target_path = \"name\"\n  }\n  integration_id = pagerdutyHarnessPlatformIdpIntegration.identifier\n  kind           = \"services\"\n}\n# Custom integrations build entities from the payload with JQ. Don't also set a mapping block for this kind on the\n# integration; that block is only sent at create.\nresource \"harness_platform_idp_integration_kind_mapping\" \"orders\" {\n  lifecycle {\n    create_before_destroy = true\n  }\n  ingestion {\n    identifier = \".service.id\"\n    name       = \".service.name\"\n    properties = {\n      \"spec.owner\" = \".service.team\"\n    }\n  }\n  integration_id = ordersHarnessPlatformIdpIntegration.identifier\n  kind           = \"custom\"\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.IdpIntegrationKindMapping;\nimport com.pulumi.harness.platform.IdpIntegrationKindMappingArgs;\nimport com.pulumi.harness.platform.inputs.IdpIntegrationKindMappingCorrelationArgs;\nimport com.pulumi.harness.platform.inputs.IdpIntegrationKindMappingFieldMappingArgs;\nimport com.pulumi.harness.platform.inputs.IdpIntegrationKindMappingIngestionArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Every kind of an integration has a mapping. This resource manages it, replacing the whole mapping: omitted fields\n        // get the type's defaults. Destroying the resource only removes it from the state; on Airbyte types such as\n        // ServiceNow it also restores the type's default field mappings.\n        var services = new IdpIntegrationKindMapping(\"services\", IdpIntegrationKindMappingArgs.builder()\n            .correlation(IdpIntegrationKindMappingCorrelationArgs.builder()\n                .sourcePath(\"metadata.integration_properties.ServiceNow.name\")\n                .targetPath(\"name\")\n                .build())\n            .fieldMappings(            \n                IdpIntegrationKindMappingFieldMappingArgs.builder()\n                    .sourceField(\"owned_by\")\n                    .targetField(\"spec.owner\")\n                    .build(),\n                IdpIntegrationKindMappingFieldMappingArgs.builder()\n                    .sourceField(\"environment\")\n                    .targetField(\"metadata.environment\")\n                    .build())\n            .integrationId(servicenow.get(\"identifier\"))\n            .orgId(\"default\")\n            .kind(\"cmdb_ci_service\")\n            .displayNameField(\"name\")\n            .idpKind(\"component\")\n            .idpType(\"service\")\n            .build());\n\n        // Adds a correlation to a PagerDuty kind, linking each service to the catalog entity with the same name. Omitted\n        // fields, such as field_mapping, keep the type's defaults.\n        var pagerduty = new IdpIntegrationKindMapping(\"pagerduty\", IdpIntegrationKindMappingArgs.builder()\n            .correlation(IdpIntegrationKindMappingCorrelationArgs.builder()\n                .sourcePath(\"metadata.integration_properties.PagerDuty.name\")\n                .targetPath(\"name\")\n                .build())\n            .integrationId(pagerdutyHarnessPlatformIdpIntegration.get(\"identifier\"))\n            .kind(\"services\")\n            .build());\n\n        // Custom integrations build entities from the payload with JQ. Don't also set a mapping block for this kind on the\n        // integration; that block is only sent at create.\n        var orders = new IdpIntegrationKindMapping(\"orders\", IdpIntegrationKindMappingArgs.builder()\n            .ingestion(IdpIntegrationKindMappingIngestionArgs.builder()\n                .identifier(\".service.id\")\n                .name(\".service.name\")\n                .properties(Map.of(\"spec.owner\", \".service.team\"))\n                .build())\n            .integrationId(ordersHarnessPlatformIdpIntegration.get(\"identifier\"))\n            .kind(\"custom\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Every kind of an integration has a mapping. This resource manages it, replacing the whole mapping: omitted fields\n  # get the type's defaults. Destroying the resource only removes it from the state; on Airbyte types such as\n  # ServiceNow it also restores the type's default field mappings.\n  services:\n    type: harness:platform:IdpIntegrationKindMapping\n    properties:\n      correlation:\n        sourcePath: metadata.integration_properties.ServiceNow.name\n        targetPath: name\n      fieldMappings:\n        - sourceField: owned_by\n          targetField: spec.owner\n        - sourceField: environment\n          targetField: metadata.environment\n      integrationId: ${servicenow.identifier}\n      orgId: default\n      kind: cmdb_ci_service\n      displayNameField: name\n      idpKind: component\n      idpType: service\n  # Adds a correlation to a PagerDuty kind, linking each service to the catalog entity with the same name. Omitted\n  # fields, such as field_mapping, keep the type's defaults.\n  pagerduty:\n    type: harness:platform:IdpIntegrationKindMapping\n    properties:\n      correlation:\n        sourcePath: metadata.integration_properties.PagerDuty.name\n        targetPath: name\n      integrationId: ${pagerdutyHarnessPlatformIdpIntegration.identifier}\n      kind: services\n  # Custom integrations build entities from the payload with JQ. Don't also set a mapping block for this kind on the\n  # integration; that block is only sent at create.\n  orders:\n    type: harness:platform:IdpIntegrationKindMapping\n    properties:\n      ingestion:\n        identifier: .service.id\n        name: .service.name\n        properties:\n          spec.owner: .service.team\n      integrationId: ${ordersHarnessPlatformIdpIntegration.identifier}\n      kind: custom\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nImport the mapping of a kind of an account level integration\n\n```sh\n$ pulumi import harness:platform/idpIntegrationKindMapping:IdpIntegrationKindMapping example \u003cintegration_id\u003e/\u003ckind\u003e\n```\n\nImport the mapping of a kind of an org level integration\n\n```sh\n$ pulumi import harness:platform/idpIntegrationKindMapping:IdpIntegrationKindMapping example \u003corg_id\u003e/\u003cintegration_id\u003e/\u003ckind\u003e\n```\n\nImport the mapping of a kind of a project level integration\n\n```sh\n$ pulumi import harness:platform/idpIntegrationKindMapping:IdpIntegrationKindMapping example \u003corg_id\u003e/\u003cproject_id\u003e/\u003cintegration_id\u003e/\u003ckind\u003e\n```\n\n",
+            "properties": {
+                "correlation": {
+                    "$ref": "#/types/harness:platform/IdpIntegrationKindMappingCorrelation:IdpIntegrationKindMappingCorrelation",
+                    "description": "Links records to existing entities; the server's when omitted.\n"
+                },
+                "displayNameField": {
+                    "type": "string",
+                    "description": "Source field used as the entity's name.\n"
+                },
+                "emissions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/IdpIntegrationKindMappingEmission:IdpIntegrationKindMappingEmission"
+                    },
+                    "description": "How entities are emitted; read-only.\n"
+                },
+                "fieldMappings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/IdpIntegrationKindMappingFieldMapping:IdpIntegrationKindMappingFieldMapping"
+                    },
+                    "description": "Maps a source field to an entity field. Airbyte types. Omitted, the type's defaults apply; removing it from the config keeps the last value, so destroy the mapping resource to go back to them.\n"
+                },
+                "idpKind": {
+                    "type": "string",
+                    "description": "Entity kind, e.g. component.\n"
+                },
+                "idpType": {
+                    "type": "string",
+                    "description": "Entity type, e.g. service.\n"
+                },
+                "ingestion": {
+                    "$ref": "#/types/harness:platform/IdpIntegrationKindMappingIngestion:IdpIntegrationKindMappingIngestion",
+                    "description": "Custom types: JQ that builds the entity from a payload.\n"
+                },
+                "integrationId": {
+                    "type": "string",
+                    "description": "Identifier of the integration.\n"
+                },
+                "kind": {
+                    "type": "string",
+                    "description": "Kind whose mapping this is.\n"
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "Organization of the integration.\n"
+                },
+                "payloadSchema": {
+                    "type": "string",
+                    "description": "JSON schema of the payload; read-only.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "Project of the integration.\n"
+                },
+                "revision": {
+                    "type": "integer",
+                    "description": "The integration's revision.\n"
+                },
+                "uniqueIdentifierField": {
+                    "type": "string",
+                    "description": "Source field that identifies an entity. Can't change on Airbyte types.\n"
+                },
+                "updated": {
+                    "type": "integer",
+                    "description": "Last update time, in milliseconds since the epoch.\n"
+                }
+            },
+            "required": [
+                "correlation",
+                "displayNameField",
+                "emissions",
+                "fieldMappings",
+                "idpKind",
+                "idpType",
+                "ingestion",
+                "integrationId",
+                "kind",
+                "payloadSchema",
+                "revision",
+                "uniqueIdentifierField",
+                "updated"
+            ],
+            "inputProperties": {
+                "correlation": {
+                    "$ref": "#/types/harness:platform/IdpIntegrationKindMappingCorrelation:IdpIntegrationKindMappingCorrelation",
+                    "description": "Links records to existing entities; the server's when omitted.\n"
+                },
+                "displayNameField": {
+                    "type": "string",
+                    "description": "Source field used as the entity's name.\n"
+                },
+                "fieldMappings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/IdpIntegrationKindMappingFieldMapping:IdpIntegrationKindMappingFieldMapping"
+                    },
+                    "description": "Maps a source field to an entity field. Airbyte types. Omitted, the type's defaults apply; removing it from the config keeps the last value, so destroy the mapping resource to go back to them.\n"
+                },
+                "idpKind": {
+                    "type": "string",
+                    "description": "Entity kind, e.g. component.\n"
+                },
+                "idpType": {
+                    "type": "string",
+                    "description": "Entity type, e.g. service.\n"
+                },
+                "ingestion": {
+                    "$ref": "#/types/harness:platform/IdpIntegrationKindMappingIngestion:IdpIntegrationKindMappingIngestion",
+                    "description": "Custom types: JQ that builds the entity from a payload.\n"
+                },
+                "integrationId": {
+                    "type": "string",
+                    "description": "Identifier of the integration.\n",
+                    "willReplaceOnChanges": true
+                },
+                "kind": {
+                    "type": "string",
+                    "description": "Kind whose mapping this is.\n",
+                    "willReplaceOnChanges": true
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "Organization of the integration.\n",
+                    "willReplaceOnChanges": true
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "Project of the integration.\n",
+                    "willReplaceOnChanges": true
+                },
+                "uniqueIdentifierField": {
+                    "type": "string",
+                    "description": "Source field that identifies an entity. Can't change on Airbyte types.\n"
+                }
+            },
+            "requiredInputs": [
+                "integrationId",
+                "kind"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering IdpIntegrationKindMapping resources.\n",
+                "properties": {
+                    "correlation": {
+                        "$ref": "#/types/harness:platform/IdpIntegrationKindMappingCorrelation:IdpIntegrationKindMappingCorrelation",
+                        "description": "Links records to existing entities; the server's when omitted.\n"
+                    },
+                    "displayNameField": {
+                        "type": "string",
+                        "description": "Source field used as the entity's name.\n"
+                    },
+                    "emissions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/harness:platform/IdpIntegrationKindMappingEmission:IdpIntegrationKindMappingEmission"
+                        },
+                        "description": "How entities are emitted; read-only.\n"
+                    },
+                    "fieldMappings": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/harness:platform/IdpIntegrationKindMappingFieldMapping:IdpIntegrationKindMappingFieldMapping"
+                        },
+                        "description": "Maps a source field to an entity field. Airbyte types. Omitted, the type's defaults apply; removing it from the config keeps the last value, so destroy the mapping resource to go back to them.\n"
+                    },
+                    "idpKind": {
+                        "type": "string",
+                        "description": "Entity kind, e.g. component.\n"
+                    },
+                    "idpType": {
+                        "type": "string",
+                        "description": "Entity type, e.g. service.\n"
+                    },
+                    "ingestion": {
+                        "$ref": "#/types/harness:platform/IdpIntegrationKindMappingIngestion:IdpIntegrationKindMappingIngestion",
+                        "description": "Custom types: JQ that builds the entity from a payload.\n"
+                    },
+                    "integrationId": {
+                        "type": "string",
+                        "description": "Identifier of the integration.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "kind": {
+                        "type": "string",
+                        "description": "Kind whose mapping this is.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "orgId": {
+                        "type": "string",
+                        "description": "Organization of the integration.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "payloadSchema": {
+                        "type": "string",
+                        "description": "JSON schema of the payload; read-only.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "Project of the integration.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "revision": {
+                        "type": "integer",
+                        "description": "The integration's revision.\n"
+                    },
+                    "uniqueIdentifierField": {
+                        "type": "string",
+                        "description": "Source field that identifies an entity. Can't change on Airbyte types.\n"
+                    },
+                    "updated": {
+                        "type": "integer",
+                        "description": "Last update time, in milliseconds since the epoch.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "harness:platform/idpPlugin:IdpPlugin": {
             "description": "Resource for managing IDP plugin configurations.\n\n## Import\n\nThe `pulumi import` command can be used, for example:\n\nImport an IDP plugin by its identifier\n\n```sh\n$ pulumi import harness:platform/idpPlugin:IdpPlugin example \u003cplugin_identifier\u003e\n```\n\n",
             "properties": {
@@ -107746,6 +110183,407 @@
                     "stable",
                     "version",
                     "yaml",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "harness:platform/getIdpIntegration:getIdpIntegration": {
+            "description": "Data source for an IDP integration.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\n// Webhook URLs of a Custom integration, to configure in the sending system.\nconst example = harness.platform.getIdpIntegration({\n    identifier: \"orders_webhook\",\n});\nexport const webhookUrls = example.then(example =\u003e example.endpoints.map(__item =\u003e __item.url));\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\n# Webhook URLs of a Custom integration, to configure in the sending system.\nexample = harness.platform.get_idp_integration(identifier=\"orders_webhook\")\npulumi.export(\"webhookUrls\", [__item.url for __item in example.endpoints])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Webhook URLs of a Custom integration, to configure in the sending system.\n    var example = Harness.Platform.GetIdpIntegration.Invoke(new()\n    {\n        Identifier = \"orders_webhook\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"webhookUrls\"] = example.Apply(getIdpIntegrationResult =\u003e getIdpIntegrationResult.Endpoints).Select(__item =\u003e __item.Url).ToList(),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\nfunc main() {\npulumi.Run(func(ctx *pulumi.Context) error {\n// Webhook URLs of a Custom integration, to configure in the sending system.\nexample, err := platform.LookupIdpIntegration(ctx, \u0026platform.LookupIdpIntegrationArgs{\nIdentifier: \"orders_webhook\",\n}, nil);\nif err != nil {\nreturn err\n}\nctx.Export(\"webhookUrls\", pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:6,11-35)))\nreturn nil\n})\n}\n```\n```hcl\nterraform {\n  required_providers {\n    harness = {\n      source = \"pulumi/harness\"\n    }\n  }\n}\n\ndata \"harness_platform_idp_integration\" \"example\" {\n  identifier = \"orders_webhook\"\n}\n\n# Webhook URLs of a Custom integration, to configure in the sending system.\noutput \"webhookUrls\" {\n  value = data.harness_platform_idp_integration.example.endpoints[*].url\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.PlatformFunctions;\nimport com.pulumi.harness.platform.inputs.GetIdpIntegrationArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Webhook URLs of a Custom integration, to configure in the sending system.\n        final var example = PlatformFunctions.getIdpIntegration(GetIdpIntegrationArgs.builder()\n            .identifier(\"orders_webhook\")\n            .build());\n\n        ctx.export(\"webhookUrls\", example.endpoints().stream().map(element -\u003e element.url()).collect(toList()));\n    }\n}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getIdpIntegration.\n",
+                "properties": {
+                    "identifier": {
+                        "type": "string",
+                        "description": "Unique identifier of the resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the resource.\n"
+                    },
+                    "orgId": {
+                        "type": "string",
+                        "description": "Unique identifier of the organization.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "Unique identifier of the project.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "identifier"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getIdpIntegration.\n",
+                "properties": {
+                    "bitbucketClouds": {
+                        "description": "Settings for BitbucketCloud integrations.\n",
+                        "items": {
+                            "$ref": "#/types/harness:platform/getIdpIntegrationBitbucketCloud:getIdpIntegrationBitbucketCloud"
+                        },
+                        "type": "array"
+                    },
+                    "catalogInfos": {
+                        "description": "Settings for CatalogInfo integrations.\n",
+                        "items": {
+                            "$ref": "#/types/harness:platform/getIdpIntegrationCatalogInfo:getIdpIntegrationCatalogInfo"
+                        },
+                        "type": "array"
+                    },
+                    "connectorVersion": {
+                        "description": "Connector image tag recorded at create.\n",
+                        "type": "string"
+                    },
+                    "connectors": {
+                        "description": "Connector the integration reads with. Required or not allowed depending on type.\n",
+                        "items": {
+                            "$ref": "#/types/harness:platform/getIdpIntegrationConnector:getIdpIntegrationConnector"
+                        },
+                        "type": "array"
+                    },
+                    "created": {
+                        "description": "Creation time, in milliseconds since the epoch.\n",
+                        "type": "integer"
+                    },
+                    "customs": {
+                        "description": "Settings for Custom integrations.\n",
+                        "items": {
+                            "$ref": "#/types/harness:platform/getIdpIntegrationCustom:getIdpIntegrationCustom"
+                        },
+                        "type": "array"
+                    },
+                    "datadogs": {
+                        "description": "Settings for DataDog integrations.\n",
+                        "items": {
+                            "$ref": "#/types/harness:platform/getIdpIntegrationDatadog:getIdpIntegrationDatadog"
+                        },
+                        "type": "array"
+                    },
+                    "description": {
+                        "description": "Description of the resource.\n",
+                        "type": "string"
+                    },
+                    "dynatraces": {
+                        "description": "Settings for DynaTrace integrations.\n",
+                        "items": {
+                            "$ref": "#/types/harness:platform/getIdpIntegrationDynatrace:getIdpIntegrationDynatrace"
+                        },
+                        "type": "array"
+                    },
+                    "effectiveKinds": {
+                        "description": "Kinds that sync, including secondary kinds.\n",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "enabled": {
+                        "description": "Whether the integration syncs.\n",
+                        "type": "boolean"
+                    },
+                    "endpoints": {
+                        "description": "URLs that receive data, per kind.\n",
+                        "items": {
+                            "$ref": "#/types/harness:platform/getIdpIntegrationEndpoint:getIdpIntegrationEndpoint"
+                        },
+                        "type": "array"
+                    },
+                    "gcps": {
+                        "description": "Settings for GCP integrations.\n",
+                        "items": {
+                            "$ref": "#/types/harness:platform/getIdpIntegrationGcp:getIdpIntegrationGcp"
+                        },
+                        "type": "array"
+                    },
+                    "githubs": {
+                        "description": "Settings for GitHub integrations.\n",
+                        "items": {
+                            "$ref": "#/types/harness:platform/getIdpIntegrationGithub:getIdpIntegrationGithub"
+                        },
+                        "type": "array"
+                    },
+                    "harnessCds": {
+                        "description": "Settings for HarnessCD integrations.\n",
+                        "items": {
+                            "$ref": "#/types/harness:platform/getIdpIntegrationHarnessCd:getIdpIntegrationHarnessCd"
+                        },
+                        "type": "array"
+                    },
+                    "harnessCodes": {
+                        "description": "Settings for HarnessCode integrations.\n",
+                        "items": {
+                            "$ref": "#/types/harness:platform/getIdpIntegrationHarnessCode:getIdpIntegrationHarnessCode"
+                        },
+                        "type": "array"
+                    },
+                    "harnessK8s": {
+                        "description": "Settings for HarnessK8s integrations.\n",
+                        "items": {
+                            "$ref": "#/types/harness:platform/getIdpIntegrationHarnessK8:getIdpIntegrationHarnessK8"
+                        },
+                        "type": "array"
+                    },
+                    "health": {
+                        "description": "Health of the integration.\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "type": "string"
+                    },
+                    "identifier": {
+                        "description": "Unique identifier of the resource.\n",
+                        "type": "string"
+                    },
+                    "jiras": {
+                        "description": "Settings for Jira integrations.\n",
+                        "items": {
+                            "$ref": "#/types/harness:platform/getIdpIntegrationJira:getIdpIntegrationJira"
+                        },
+                        "type": "array"
+                    },
+                    "kinds": {
+                        "description": "A kind to sync. Import reads kinds sorted by name, so list them that way to import without a diff; otherwise the first plan after an import reorders them, which applies without calling the API. Omit it for types without kinds, such as HarnessTraceable.\n",
+                        "items": {
+                            "$ref": "#/types/harness:platform/getIdpIntegrationKind:getIdpIntegrationKind"
+                        },
+                        "type": "array"
+                    },
+                    "modeEffective": {
+                        "description": "How the integration gets data: airbyte, platform, webhook or api.\n",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "Name of the resource.\n",
+                        "type": "string"
+                    },
+                    "orgId": {
+                        "description": "Unique identifier of the organization.\n",
+                        "type": "string"
+                    },
+                    "pagerduties": {
+                        "description": "Settings for PagerDuty integrations.\n",
+                        "items": {
+                            "$ref": "#/types/harness:platform/getIdpIntegrationPagerduty:getIdpIntegrationPagerduty"
+                        },
+                        "type": "array"
+                    },
+                    "projectId": {
+                        "description": "Unique identifier of the project.\n",
+                        "type": "string"
+                    },
+                    "revision": {
+                        "description": "Revision, sent as If-Match on writes.\n",
+                        "type": "integer"
+                    },
+                    "scopes": {
+                        "description": "Harness scopes a platform integration reads from. Set exactly one of all or selected.\n",
+                        "items": {
+                            "$ref": "#/types/harness:platform/getIdpIntegrationScope:getIdpIntegrationScope"
+                        },
+                        "type": "array"
+                    },
+                    "secondaryKinds": {
+                        "description": "Secondary kinds to sync, for Airbyte types.\n",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "sonarqubes": {
+                        "description": "Settings for SonarQube integrations.\n",
+                        "items": {
+                            "$ref": "#/types/harness:platform/getIdpIntegrationSonarqube:getIdpIntegrationSonarqube"
+                        },
+                        "type": "array"
+                    },
+                    "tags": {
+                        "description": "Tags to associate with the resource.\n",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "type": {
+                        "description": "Integration type.\n",
+                        "type": "string"
+                    },
+                    "uid": {
+                        "description": "Internal key; new on every create.\n",
+                        "type": "string"
+                    },
+                    "updateFrequency": {
+                        "description": "How often an Airbyte integration syncs, e.g. 24h.\n",
+                        "type": "string"
+                    },
+                    "updated": {
+                        "description": "Last update time, in milliseconds since the epoch.\n",
+                        "type": "integer"
+                    }
+                },
+                "required": [
+                    "bitbucketClouds",
+                    "catalogInfos",
+                    "connectors",
+                    "connectorVersion",
+                    "created",
+                    "customs",
+                    "datadogs",
+                    "description",
+                    "dynatraces",
+                    "effectiveKinds",
+                    "enabled",
+                    "endpoints",
+                    "gcps",
+                    "githubs",
+                    "harnessCds",
+                    "harnessCodes",
+                    "harnessK8s",
+                    "health",
+                    "identifier",
+                    "jiras",
+                    "kinds",
+                    "modeEffective",
+                    "pagerduties",
+                    "revision",
+                    "scopes",
+                    "secondaryKinds",
+                    "sonarqubes",
+                    "tags",
+                    "type",
+                    "uid",
+                    "updateFrequency",
+                    "updated",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "harness:platform/getIdpIntegrationKindMapping:getIdpIntegrationKindMapping": {
+            "description": "Data source for the mapping of one kind of an IDP integration.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst example = harness.platform.getIdpIntegrationKindMapping({\n    integrationId: \"servicenow_prod\",\n    orgId: \"default\",\n    kind: \"cmdb_ci_service\",\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\nexample = harness.platform.get_idp_integration_kind_mapping(integration_id=\"servicenow_prod\",\n    org_id=\"default\",\n    kind=\"cmdb_ci_service\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Harness.Platform.GetIdpIntegrationKindMapping.Invoke(new()\n    {\n        IntegrationId = \"servicenow_prod\",\n        OrgId = \"default\",\n        Kind = \"cmdb_ci_service\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := platform.LookupIdpIntegrationKindMapping(ctx, \u0026platform.LookupIdpIntegrationKindMappingArgs{\n\t\t\tIntegrationId: \"servicenow_prod\",\n\t\t\tOrgId:         pulumi.StringRef(\"default\"),\n\t\t\tKind:          \"cmdb_ci_service\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\nterraform {\n  required_providers {\n    harness = {\n      source = \"pulumi/harness\"\n    }\n  }\n}\n\ndata \"harness_platform_idp_integration_kind_mapping\" \"example\" {\n  integration_id = \"servicenow_prod\"\n  org_id         = \"default\"\n  kind           = \"cmdb_ci_service\"\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.PlatformFunctions;\nimport com.pulumi.harness.platform.inputs.GetIdpIntegrationKindMappingArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = PlatformFunctions.getIdpIntegrationKindMapping(GetIdpIntegrationKindMappingArgs.builder()\n            .integrationId(\"servicenow_prod\")\n            .orgId(\"default\")\n            .kind(\"cmdb_ci_service\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: harness:platform:getIdpIntegrationKindMapping\n      arguments:\n        integrationId: servicenow_prod\n        orgId: default\n        kind: cmdb_ci_service\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getIdpIntegrationKindMapping.\n",
+                "properties": {
+                    "integrationId": {
+                        "type": "string",
+                        "description": "Identifier of the integration.\n"
+                    },
+                    "kind": {
+                        "type": "string",
+                        "description": "Kind.\n"
+                    },
+                    "orgId": {
+                        "type": "string",
+                        "description": "Unique identifier of the organization.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "Unique identifier of the project.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "integrationId",
+                    "kind"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getIdpIntegrationKindMapping.\n",
+                "properties": {
+                    "correlations": {
+                        "description": "Links records to existing entities; the server's when omitted.\n",
+                        "items": {
+                            "$ref": "#/types/harness:platform/getIdpIntegrationKindMappingCorrelation:getIdpIntegrationKindMappingCorrelation"
+                        },
+                        "type": "array"
+                    },
+                    "displayNameField": {
+                        "description": "Source field used as the entity's name.\n",
+                        "type": "string"
+                    },
+                    "emissions": {
+                        "description": "How entities are emitted; read-only.\n",
+                        "items": {
+                            "$ref": "#/types/harness:platform/getIdpIntegrationKindMappingEmission:getIdpIntegrationKindMappingEmission"
+                        },
+                        "type": "array"
+                    },
+                    "fieldMappings": {
+                        "description": "Maps a source field to an entity field. Airbyte types. Omitted, the type's defaults apply; removing it from the config keeps the last value, so destroy the mapping resource to go back to them.\n",
+                        "items": {
+                            "$ref": "#/types/harness:platform/getIdpIntegrationKindMappingFieldMapping:getIdpIntegrationKindMappingFieldMapping"
+                        },
+                        "type": "array"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "type": "string"
+                    },
+                    "idpKind": {
+                        "description": "Entity kind, e.g. component.\n",
+                        "type": "string"
+                    },
+                    "idpType": {
+                        "description": "Entity type, e.g. service.\n",
+                        "type": "string"
+                    },
+                    "ingestions": {
+                        "description": "Custom types: JQ that builds the entity from a payload.\n",
+                        "items": {
+                            "$ref": "#/types/harness:platform/getIdpIntegrationKindMappingIngestion:getIdpIntegrationKindMappingIngestion"
+                        },
+                        "type": "array"
+                    },
+                    "integrationId": {
+                        "description": "Identifier of the integration.\n",
+                        "type": "string"
+                    },
+                    "kind": {
+                        "description": "Kind.\n",
+                        "type": "string"
+                    },
+                    "orgId": {
+                        "description": "Unique identifier of the organization.\n",
+                        "type": "string"
+                    },
+                    "payloadSchema": {
+                        "description": "JSON schema of the payload; read-only.\n",
+                        "type": "string"
+                    },
+                    "projectId": {
+                        "description": "Unique identifier of the project.\n",
+                        "type": "string"
+                    },
+                    "revision": {
+                        "description": "The integration's revision.\n",
+                        "type": "integer"
+                    },
+                    "uniqueIdentifierField": {
+                        "description": "Source field that identifies an entity. Can't change on Airbyte types.\n",
+                        "type": "string"
+                    },
+                    "updated": {
+                        "description": "Last update time, in milliseconds since the epoch.\n",
+                        "type": "integer"
+                    }
+                },
+                "required": [
+                    "correlations",
+                    "displayNameField",
+                    "emissions",
+                    "fieldMappings",
+                    "idpKind",
+                    "idpType",
+                    "ingestions",
+                    "integrationId",
+                    "kind",
+                    "payloadSchema",
+                    "revision",
+                    "uniqueIdentifierField",
+                    "updated",
                     "id"
                 ],
                 "type": "object"
