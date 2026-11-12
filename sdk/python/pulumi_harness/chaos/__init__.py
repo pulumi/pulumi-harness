@@ -17,7 +17,9 @@ from .get_fault_template import *
 from .get_hub import *
 from .get_hub_v2 import *
 from .get_image_registry import *
+from .get_infrastructure_scan import *
 from .get_infrastructure_v2 import *
+from .get_pipeline_scan import *
 from .get_probe_template import *
 from .get_security_governance_condition import *
 from .get_security_governance_condition_v3 import *
@@ -27,11 +29,15 @@ from .hub import *
 from .hub_sync import *
 from .hub_v2 import *
 from .image_registry import *
+from .infrastructure_scan import *
 from .infrastructure_v2 import *
+from .onboarding_service import *
+from .pipeline_scan import *
 from .probe_template import *
 from .security_governance_condition import *
 from .security_governance_condition_v3 import *
 from .security_governance_rule import *
 from .security_governance_rule_v3 import *
+from .service_onboarding import *
 from ._inputs import *
 from . import outputs

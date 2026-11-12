@@ -23,8 +23,12 @@ import com.pulumi.harness.chaos.inputs.GetHubV2Args;
 import com.pulumi.harness.chaos.inputs.GetHubV2PlainArgs;
 import com.pulumi.harness.chaos.inputs.GetImageRegistryArgs;
 import com.pulumi.harness.chaos.inputs.GetImageRegistryPlainArgs;
+import com.pulumi.harness.chaos.inputs.GetInfrastructureScanArgs;
+import com.pulumi.harness.chaos.inputs.GetInfrastructureScanPlainArgs;
 import com.pulumi.harness.chaos.inputs.GetInfrastructureV2Args;
 import com.pulumi.harness.chaos.inputs.GetInfrastructureV2PlainArgs;
+import com.pulumi.harness.chaos.inputs.GetPipelineScanArgs;
+import com.pulumi.harness.chaos.inputs.GetPipelineScanPlainArgs;
 import com.pulumi.harness.chaos.inputs.GetProbeTemplateArgs;
 import com.pulumi.harness.chaos.inputs.GetProbeTemplatePlainArgs;
 import com.pulumi.harness.chaos.inputs.GetSecurityGovernanceConditionArgs;
@@ -42,7 +46,9 @@ import com.pulumi.harness.chaos.outputs.GetFaultTemplateResult;
 import com.pulumi.harness.chaos.outputs.GetHubResult;
 import com.pulumi.harness.chaos.outputs.GetHubV2Result;
 import com.pulumi.harness.chaos.outputs.GetImageRegistryResult;
+import com.pulumi.harness.chaos.outputs.GetInfrastructureScanResult;
 import com.pulumi.harness.chaos.outputs.GetInfrastructureV2Result;
+import com.pulumi.harness.chaos.outputs.GetPipelineScanResult;
 import com.pulumi.harness.chaos.outputs.GetProbeTemplateResult;
 import com.pulumi.harness.chaos.outputs.GetSecurityGovernanceConditionResult;
 import com.pulumi.harness.chaos.outputs.GetSecurityGovernanceConditionV3Result;
@@ -2019,6 +2025,216 @@ public final class ChaosFunctions {
         return Deployment.getInstance().invokeAsync("harness:chaos/getImageRegistry:getImageRegistry", TypeShape.of(GetImageRegistryResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Data source for reading an existing Harness Chaos infrastructure scan and the risks it produced.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.chaos.ChaosFunctions;
+     * import com.pulumi.harness.chaos.inputs.GetInfrastructureScanArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ChaosFunctions.getInfrastructureScan(GetInfrastructureScanArgs.builder()
+     *             .orgId("default")
+     *             .projectId("demo")
+     *             .identity("payments_infra_scan")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetInfrastructureScanResult> getInfrastructureScan(GetInfrastructureScanArgs args) {
+        return getInfrastructureScan(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for reading an existing Harness Chaos infrastructure scan and the risks it produced.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.chaos.ChaosFunctions;
+     * import com.pulumi.harness.chaos.inputs.GetInfrastructureScanArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ChaosFunctions.getInfrastructureScan(GetInfrastructureScanArgs.builder()
+     *             .orgId("default")
+     *             .projectId("demo")
+     *             .identity("payments_infra_scan")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetInfrastructureScanResult> getInfrastructureScanPlain(GetInfrastructureScanPlainArgs args) {
+        return getInfrastructureScanPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for reading an existing Harness Chaos infrastructure scan and the risks it produced.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.chaos.ChaosFunctions;
+     * import com.pulumi.harness.chaos.inputs.GetInfrastructureScanArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ChaosFunctions.getInfrastructureScan(GetInfrastructureScanArgs.builder()
+     *             .orgId("default")
+     *             .projectId("demo")
+     *             .identity("payments_infra_scan")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetInfrastructureScanResult> getInfrastructureScan(GetInfrastructureScanArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:chaos/getInfrastructureScan:getInfrastructureScan", TypeShape.of(GetInfrastructureScanResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for reading an existing Harness Chaos infrastructure scan and the risks it produced.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.chaos.ChaosFunctions;
+     * import com.pulumi.harness.chaos.inputs.GetInfrastructureScanArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ChaosFunctions.getInfrastructureScan(GetInfrastructureScanArgs.builder()
+     *             .orgId("default")
+     *             .projectId("demo")
+     *             .identity("payments_infra_scan")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetInfrastructureScanResult> getInfrastructureScan(GetInfrastructureScanArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:chaos/getInfrastructureScan:getInfrastructureScan", TypeShape.of(GetInfrastructureScanResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for reading an existing Harness Chaos infrastructure scan and the risks it produced.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.chaos.ChaosFunctions;
+     * import com.pulumi.harness.chaos.inputs.GetInfrastructureScanArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ChaosFunctions.getInfrastructureScan(GetInfrastructureScanArgs.builder()
+     *             .orgId("default")
+     *             .projectId("demo")
+     *             .identity("payments_infra_scan")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetInfrastructureScanResult> getInfrastructureScanPlain(GetInfrastructureScanPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:chaos/getInfrastructureScan:getInfrastructureScan", TypeShape.of(GetInfrastructureScanResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Data source for retrieving a Harness Chaos Infrastructure V2.
      * 
      * ## Example Usage
@@ -2252,6 +2468,216 @@ public final class ChaosFunctions {
      */
     public static CompletableFuture<GetInfrastructureV2Result> getInfrastructureV2Plain(GetInfrastructureV2PlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:chaos/getInfrastructureV2:getInfrastructureV2", TypeShape.of(GetInfrastructureV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for reading an existing Harness Chaos pipeline scan and the risks it produced.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.chaos.ChaosFunctions;
+     * import com.pulumi.harness.chaos.inputs.GetPipelineScanArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ChaosFunctions.getPipelineScan(GetPipelineScanArgs.builder()
+     *             .orgId("default")
+     *             .projectId("demo")
+     *             .identity("cart_deploy_scan")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetPipelineScanResult> getPipelineScan(GetPipelineScanArgs args) {
+        return getPipelineScan(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for reading an existing Harness Chaos pipeline scan and the risks it produced.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.chaos.ChaosFunctions;
+     * import com.pulumi.harness.chaos.inputs.GetPipelineScanArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ChaosFunctions.getPipelineScan(GetPipelineScanArgs.builder()
+     *             .orgId("default")
+     *             .projectId("demo")
+     *             .identity("cart_deploy_scan")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetPipelineScanResult> getPipelineScanPlain(GetPipelineScanPlainArgs args) {
+        return getPipelineScanPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for reading an existing Harness Chaos pipeline scan and the risks it produced.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.chaos.ChaosFunctions;
+     * import com.pulumi.harness.chaos.inputs.GetPipelineScanArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ChaosFunctions.getPipelineScan(GetPipelineScanArgs.builder()
+     *             .orgId("default")
+     *             .projectId("demo")
+     *             .identity("cart_deploy_scan")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetPipelineScanResult> getPipelineScan(GetPipelineScanArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:chaos/getPipelineScan:getPipelineScan", TypeShape.of(GetPipelineScanResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for reading an existing Harness Chaos pipeline scan and the risks it produced.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.chaos.ChaosFunctions;
+     * import com.pulumi.harness.chaos.inputs.GetPipelineScanArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ChaosFunctions.getPipelineScan(GetPipelineScanArgs.builder()
+     *             .orgId("default")
+     *             .projectId("demo")
+     *             .identity("cart_deploy_scan")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetPipelineScanResult> getPipelineScan(GetPipelineScanArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:chaos/getPipelineScan:getPipelineScan", TypeShape.of(GetPipelineScanResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for reading an existing Harness Chaos pipeline scan and the risks it produced.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.chaos.ChaosFunctions;
+     * import com.pulumi.harness.chaos.inputs.GetPipelineScanArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ChaosFunctions.getPipelineScan(GetPipelineScanArgs.builder()
+     *             .orgId("default")
+     *             .projectId("demo")
+     *             .identity("cart_deploy_scan")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetPipelineScanResult> getPipelineScanPlain(GetPipelineScanPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:chaos/getPipelineScan:getPipelineScan", TypeShape.of(GetPipelineScanResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source for retrieving a Harness Chaos Probe Template.

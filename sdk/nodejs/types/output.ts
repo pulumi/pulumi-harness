@@ -3287,6 +3287,208 @@ export namespace chaos {
         logWatcher: string;
     }
 
+    export interface GetInfrastructureScanCollectedData {
+        /**
+         * Collection time as a Unix timestamp.
+         */
+        collectedAt: number;
+        /**
+         * Dependent resources collected.
+         */
+        dependentResources: number;
+        /**
+         * Collection failures returned by the API.
+         */
+        errors: outputs.chaos.GetInfrastructureScanCollectedDataError[];
+        /**
+         * Namespaces collected.
+         */
+        namespaces: string[];
+        /**
+         * Primary resources collected.
+         */
+        primaryResources: number;
+        /**
+         * Service groups collected.
+         */
+        serviceGroups: number;
+        /**
+         * Total resources collected.
+         */
+        totalResources: number;
+    }
+
+    export interface GetInfrastructureScanCollectedDataError {
+        /**
+         * Collection error message.
+         */
+        message: string;
+        /**
+         * Collector that reported the error.
+         */
+        source: string;
+    }
+
+    export interface GetInfrastructureScanRisk {
+        /**
+         * Description of the risk.
+         */
+        description: string;
+        /**
+         * Fingerprint of the risk.
+         */
+        fingerprint: string;
+        /**
+         * Identity of the risk.
+         */
+        identity: string;
+        /**
+         * Additional risk metadata as a JSON object string.
+         */
+        metadataJson: string;
+        /**
+         * Name of the risk.
+         */
+        name: string;
+        /**
+         * Detections of this risk in the scan.
+         */
+        occurrences: outputs.chaos.GetInfrastructureScanRiskOccurrence[];
+        /**
+         * Identity of the service the risk applies to.
+         */
+        serviceIdentity: string;
+        /**
+         * Name of the service the risk applies to.
+         */
+        serviceName: string;
+        /**
+         * Service kind, such as DiscoveredService, ChaosService, or CDService.
+         */
+        serviceType: string;
+        /**
+         * Severity: Critical, High, Medium, or Low.
+         */
+        severity: string;
+        /**
+         * Status: Open, InProgress, Resolved, or Ignored.
+         */
+        status: string;
+        /**
+         * Tags on the risk.
+         */
+        tags: string[];
+    }
+
+    export interface GetInfrastructureScanRiskOccurrence {
+        /**
+         * Detection time as a Unix timestamp.
+         */
+        detectedAt: number;
+        /**
+         * Evidence for the occurrence.
+         */
+        evidences: string[];
+        /**
+         * Identity of this occurrence.
+         */
+        occurrenceId: string;
+        /**
+         * Remediation guidance.
+         */
+        remediations: string[];
+        /**
+         * Resilience testing recommendations.
+         */
+        resilienceTestingRecs: string[];
+        /**
+         * Service name recorded on the occurrence.
+         */
+        serviceName: string;
+        /**
+         * Source id of the occurrence.
+         */
+        sourceId: string;
+        /**
+         * Source type of the occurrence.
+         */
+        sourceType: string;
+    }
+
+    export interface GetInfrastructureScanRiskSummary {
+        /**
+         * Analysis time as a Unix timestamp.
+         */
+        analysedAt: number;
+        /**
+         * Risk counts keyed by category.
+         */
+        categoryCounts: {[key: string]: number};
+        /**
+         * Number of risks.
+         */
+        riskCount: number;
+        /**
+         * Resilience score.
+         */
+        score: number;
+        /**
+         * Maximum resilience score.
+         */
+        scoreMax: number;
+        /**
+         * Services included in analysis.
+         */
+        servicesAnalysed: number;
+        /**
+         * Services with at least one risk.
+         */
+        servicesAtRisk: number;
+        /**
+         * Risk counts keyed by severity.
+         */
+        severityCounts: {[key: string]: number};
+    }
+
+    export interface GetInfrastructureScanSummary {
+        /**
+         * Critical risks.
+         */
+        critical: number;
+        /**
+         * High risks.
+         */
+        high: number;
+        /**
+         * Low risks.
+         */
+        low: number;
+        /**
+         * Maximum resilience score.
+         */
+        maxScore: number;
+        /**
+         * Medium risks.
+         */
+        medium: number;
+        /**
+         * Number of risk rules evaluated.
+         */
+        ruleCount: number;
+        /**
+         * Resilience score.
+         */
+        score: number;
+        /**
+         * Number of services scanned.
+         */
+        servicesScanned: number;
+        /**
+         * Number of risks found.
+         */
+        totalRisks: number;
+    }
+
     export interface GetInfrastructureV2ImageRegistry {
         /**
          * Timestamp when the registry was created.
@@ -3502,6 +3704,227 @@ export namespace chaos {
          * Expanded path within the volume from which the container's volume should be mounted. Behaves similarly to sub*path but environment variable references $(VAR*NAME) are expanded using the container's environment. Mutually exclusive with sub_path.
          */
         subPathExpr?: string;
+    }
+
+    export interface GetPipelineScanCollectedData {
+        /**
+         * Collection time as a Unix timestamp.
+         */
+        collectedAt: number;
+        /**
+         * Dependent resources collected.
+         */
+        dependentResources: number;
+        /**
+         * Collection failures returned by the API.
+         */
+        errors: outputs.chaos.GetPipelineScanCollectedDataError[];
+        /**
+         * Namespaces collected.
+         */
+        namespaces: string[];
+        /**
+         * Primary resources collected.
+         */
+        primaryResources: number;
+        /**
+         * Service groups collected.
+         */
+        serviceGroups: number;
+        /**
+         * Total resources collected.
+         */
+        totalResources: number;
+    }
+
+    export interface GetPipelineScanCollectedDataError {
+        /**
+         * Collection error message.
+         */
+        message: string;
+        /**
+         * Collector that reported the error.
+         */
+        source: string;
+    }
+
+    export interface GetPipelineScanInfrastructure {
+        /**
+         * Whether chaos is already onboarded for this infrastructure.
+         */
+        chaosOnboarded: boolean;
+        /**
+         * Whether this infrastructure can be onboarded to chaos.
+         */
+        chaosSupported: boolean;
+        /**
+         * Environment reference.
+         */
+        environmentRef: string;
+        /**
+         * Infrastructure identifier.
+         */
+        infrastructureIdentity: string;
+    }
+
+    export interface GetPipelineScanRisk {
+        /**
+         * Description of the risk.
+         */
+        description: string;
+        /**
+         * Fingerprint of the risk.
+         */
+        fingerprint: string;
+        /**
+         * Identity of the risk.
+         */
+        identity: string;
+        /**
+         * Additional risk metadata as a JSON object string.
+         */
+        metadataJson: string;
+        /**
+         * Name of the risk.
+         */
+        name: string;
+        /**
+         * Detections of this risk in the scan.
+         */
+        occurrences: outputs.chaos.GetPipelineScanRiskOccurrence[];
+        /**
+         * Identity of the service the risk applies to.
+         */
+        serviceIdentity: string;
+        /**
+         * Name of the service the risk applies to.
+         */
+        serviceName: string;
+        /**
+         * Service kind, such as DiscoveredService, ChaosService, or CDService.
+         */
+        serviceType: string;
+        /**
+         * Severity: Critical, High, Medium, or Low.
+         */
+        severity: string;
+        /**
+         * Status: Open, InProgress, Resolved, or Ignored.
+         */
+        status: string;
+        /**
+         * Tags on the risk.
+         */
+        tags: string[];
+    }
+
+    export interface GetPipelineScanRiskOccurrence {
+        /**
+         * Detection time as a Unix timestamp.
+         */
+        detectedAt: number;
+        /**
+         * Evidence for the occurrence.
+         */
+        evidences: string[];
+        /**
+         * Identity of this occurrence.
+         */
+        occurrenceId: string;
+        /**
+         * Remediation guidance.
+         */
+        remediations: string[];
+        /**
+         * Resilience testing recommendations.
+         */
+        resilienceTestingRecs: string[];
+        /**
+         * Service name recorded on the occurrence.
+         */
+        serviceName: string;
+        /**
+         * Source id of the occurrence.
+         */
+        sourceId: string;
+        /**
+         * Source type of the occurrence.
+         */
+        sourceType: string;
+    }
+
+    export interface GetPipelineScanRiskSummary {
+        /**
+         * Analysis time as a Unix timestamp.
+         */
+        analysedAt: number;
+        /**
+         * Risk counts keyed by category.
+         */
+        categoryCounts: {[key: string]: number};
+        /**
+         * Number of risks.
+         */
+        riskCount: number;
+        /**
+         * Resilience score.
+         */
+        score: number;
+        /**
+         * Maximum resilience score.
+         */
+        scoreMax: number;
+        /**
+         * Services included in analysis.
+         */
+        servicesAnalysed: number;
+        /**
+         * Services with at least one risk.
+         */
+        servicesAtRisk: number;
+        /**
+         * Risk counts keyed by severity.
+         */
+        severityCounts: {[key: string]: number};
+    }
+
+    export interface GetPipelineScanSummary {
+        /**
+         * Critical risks.
+         */
+        critical: number;
+        /**
+         * High risks.
+         */
+        high: number;
+        /**
+         * Low risks.
+         */
+        low: number;
+        /**
+         * Maximum resilience score.
+         */
+        maxScore: number;
+        /**
+         * Medium risks.
+         */
+        medium: number;
+        /**
+         * Number of risk rules evaluated.
+         */
+        ruleCount: number;
+        /**
+         * Resilience score.
+         */
+        score: number;
+        /**
+         * Number of services scanned.
+         */
+        servicesScanned: number;
+        /**
+         * Number of risks found.
+         */
+        totalRisks: number;
     }
 
     export interface GetProbeTemplateApmProbe {
@@ -4241,6 +4664,208 @@ export namespace chaos {
         logWatcher: string;
     }
 
+    export interface InfrastructureScanCollectedData {
+        /**
+         * Collection time as a Unix timestamp.
+         */
+        collectedAt: number;
+        /**
+         * Dependent resources collected.
+         */
+        dependentResources: number;
+        /**
+         * Collection failures returned by the API.
+         */
+        errors: outputs.chaos.InfrastructureScanCollectedDataError[];
+        /**
+         * Namespaces collected.
+         */
+        namespaces: string[];
+        /**
+         * Primary resources collected.
+         */
+        primaryResources: number;
+        /**
+         * Service groups collected.
+         */
+        serviceGroups: number;
+        /**
+         * Total resources collected.
+         */
+        totalResources: number;
+    }
+
+    export interface InfrastructureScanCollectedDataError {
+        /**
+         * Collection error message.
+         */
+        message: string;
+        /**
+         * Collector that reported the error.
+         */
+        source: string;
+    }
+
+    export interface InfrastructureScanRisk {
+        /**
+         * Description of the risk.
+         */
+        description: string;
+        /**
+         * Fingerprint of the risk.
+         */
+        fingerprint: string;
+        /**
+         * Identity of the risk.
+         */
+        identity: string;
+        /**
+         * Additional risk metadata as a JSON object string.
+         */
+        metadataJson: string;
+        /**
+         * Name of the risk.
+         */
+        name: string;
+        /**
+         * Detections of this risk in the scan.
+         */
+        occurrences: outputs.chaos.InfrastructureScanRiskOccurrence[];
+        /**
+         * Identity of the service the risk applies to.
+         */
+        serviceIdentity: string;
+        /**
+         * Name of the service the risk applies to.
+         */
+        serviceName: string;
+        /**
+         * Service kind, such as DiscoveredService, ChaosService, or CDService.
+         */
+        serviceType: string;
+        /**
+         * Severity: Critical, High, Medium, or Low.
+         */
+        severity: string;
+        /**
+         * Status: Open, InProgress, Resolved, or Ignored.
+         */
+        status: string;
+        /**
+         * Tags on the risk.
+         */
+        tags: string[];
+    }
+
+    export interface InfrastructureScanRiskOccurrence {
+        /**
+         * Detection time as a Unix timestamp.
+         */
+        detectedAt: number;
+        /**
+         * Evidence for the occurrence.
+         */
+        evidences: string[];
+        /**
+         * Identity of this occurrence.
+         */
+        occurrenceId: string;
+        /**
+         * Remediation guidance.
+         */
+        remediations: string[];
+        /**
+         * Resilience testing recommendations.
+         */
+        resilienceTestingRecs: string[];
+        /**
+         * Service name recorded on the occurrence.
+         */
+        serviceName: string;
+        /**
+         * Source id of the occurrence.
+         */
+        sourceId: string;
+        /**
+         * Source type of the occurrence.
+         */
+        sourceType: string;
+    }
+
+    export interface InfrastructureScanRiskSummary {
+        /**
+         * Analysis time as a Unix timestamp.
+         */
+        analysedAt: number;
+        /**
+         * Risk counts keyed by category.
+         */
+        categoryCounts: {[key: string]: number};
+        /**
+         * Number of risks.
+         */
+        riskCount: number;
+        /**
+         * Resilience score.
+         */
+        score: number;
+        /**
+         * Maximum resilience score.
+         */
+        scoreMax: number;
+        /**
+         * Services included in analysis.
+         */
+        servicesAnalysed: number;
+        /**
+         * Services with at least one risk.
+         */
+        servicesAtRisk: number;
+        /**
+         * Risk counts keyed by severity.
+         */
+        severityCounts: {[key: string]: number};
+    }
+
+    export interface InfrastructureScanSummary {
+        /**
+         * Critical risks.
+         */
+        critical: number;
+        /**
+         * High risks.
+         */
+        high: number;
+        /**
+         * Low risks.
+         */
+        low: number;
+        /**
+         * Maximum resilience score.
+         */
+        maxScore: number;
+        /**
+         * Medium risks.
+         */
+        medium: number;
+        /**
+         * Number of risk rules evaluated.
+         */
+        ruleCount: number;
+        /**
+         * Resilience score.
+         */
+        score: number;
+        /**
+         * Number of services scanned.
+         */
+        servicesScanned: number;
+        /**
+         * Number of risks found.
+         */
+        totalRisks: number;
+    }
+
     export interface InfrastructureV2Env {
         /**
          * Variable name from a ConfigMap or Secret. Required when valueFrom is configMapKeyRef or secretKeyRef.
@@ -4490,6 +5115,238 @@ export namespace chaos {
          * Expanded path within the volume from which the container's volume should be mounted. Behaves similarly to sub*path but environment variable references $(VAR*NAME) are expanded using the container's environment. Mutually exclusive with sub_path.
          */
         subPathExpr?: string;
+    }
+
+    export interface OnboardingServiceProbe {
+        /**
+         * Runtime input values for the probe, keyed by input name.
+         */
+        inputs?: {[key: string]: string};
+        /**
+         * Identifier of a probe that already exists in the project.
+         */
+        probeId: string;
+    }
+
+    export interface PipelineScanCollectedData {
+        /**
+         * Collection time as a Unix timestamp.
+         */
+        collectedAt: number;
+        /**
+         * Dependent resources collected.
+         */
+        dependentResources: number;
+        /**
+         * Collection failures returned by the API.
+         */
+        errors: outputs.chaos.PipelineScanCollectedDataError[];
+        /**
+         * Namespaces collected.
+         */
+        namespaces: string[];
+        /**
+         * Primary resources collected.
+         */
+        primaryResources: number;
+        /**
+         * Service groups collected.
+         */
+        serviceGroups: number;
+        /**
+         * Total resources collected.
+         */
+        totalResources: number;
+    }
+
+    export interface PipelineScanCollectedDataError {
+        /**
+         * Collection error message.
+         */
+        message: string;
+        /**
+         * Collector that reported the error.
+         */
+        source: string;
+    }
+
+    export interface PipelineScanInfrastructure {
+        /**
+         * Whether chaos is already onboarded for this infrastructure.
+         */
+        chaosOnboarded: boolean;
+        /**
+         * Whether this infrastructure can be onboarded to chaos.
+         */
+        chaosSupported: boolean;
+        /**
+         * Environment reference.
+         */
+        environmentRef: string;
+        /**
+         * Infrastructure identifier.
+         */
+        infrastructureIdentity: string;
+    }
+
+    export interface PipelineScanRisk {
+        /**
+         * Description of the risk.
+         */
+        description: string;
+        /**
+         * Fingerprint of the risk.
+         */
+        fingerprint: string;
+        /**
+         * Identity of the risk.
+         */
+        identity: string;
+        /**
+         * Additional risk metadata as a JSON object string.
+         */
+        metadataJson: string;
+        /**
+         * Name of the risk.
+         */
+        name: string;
+        /**
+         * Detections of this risk in the scan.
+         */
+        occurrences: outputs.chaos.PipelineScanRiskOccurrence[];
+        /**
+         * Identity of the service the risk applies to.
+         */
+        serviceIdentity: string;
+        /**
+         * Name of the service the risk applies to.
+         */
+        serviceName: string;
+        /**
+         * Service kind, such as DiscoveredService, ChaosService, or CDService.
+         */
+        serviceType: string;
+        /**
+         * Severity: Critical, High, Medium, or Low.
+         */
+        severity: string;
+        /**
+         * Status: Open, InProgress, Resolved, or Ignored.
+         */
+        status: string;
+        /**
+         * Tags on the risk.
+         */
+        tags: string[];
+    }
+
+    export interface PipelineScanRiskOccurrence {
+        /**
+         * Detection time as a Unix timestamp.
+         */
+        detectedAt: number;
+        /**
+         * Evidence for the occurrence.
+         */
+        evidences: string[];
+        /**
+         * Identity of this occurrence.
+         */
+        occurrenceId: string;
+        /**
+         * Remediation guidance.
+         */
+        remediations: string[];
+        /**
+         * Resilience testing recommendations.
+         */
+        resilienceTestingRecs: string[];
+        /**
+         * Service name recorded on the occurrence.
+         */
+        serviceName: string;
+        /**
+         * Source id of the occurrence.
+         */
+        sourceId: string;
+        /**
+         * Source type of the occurrence.
+         */
+        sourceType: string;
+    }
+
+    export interface PipelineScanRiskSummary {
+        /**
+         * Analysis time as a Unix timestamp.
+         */
+        analysedAt: number;
+        /**
+         * Risk counts keyed by category.
+         */
+        categoryCounts: {[key: string]: number};
+        /**
+         * Number of risks.
+         */
+        riskCount: number;
+        /**
+         * Resilience score.
+         */
+        score: number;
+        /**
+         * Maximum resilience score.
+         */
+        scoreMax: number;
+        /**
+         * Services included in analysis.
+         */
+        servicesAnalysed: number;
+        /**
+         * Services with at least one risk.
+         */
+        servicesAtRisk: number;
+        /**
+         * Risk counts keyed by severity.
+         */
+        severityCounts: {[key: string]: number};
+    }
+
+    export interface PipelineScanSummary {
+        /**
+         * Critical risks.
+         */
+        critical: number;
+        /**
+         * High risks.
+         */
+        high: number;
+        /**
+         * Low risks.
+         */
+        low: number;
+        /**
+         * Maximum resilience score.
+         */
+        maxScore: number;
+        /**
+         * Medium risks.
+         */
+        medium: number;
+        /**
+         * Number of risk rules evaluated.
+         */
+        ruleCount: number;
+        /**
+         * Resilience score.
+         */
+        score: number;
+        /**
+         * Number of services scanned.
+         */
+        servicesScanned: number;
+        /**
+         * Number of risks found.
+         */
+        totalRisks: number;
     }
 
     export interface ProbeTemplateApmProbe {
@@ -5249,6 +6106,17 @@ export namespace chaos {
          * Day of month for Monthly recurrence. Only used when type is Monthly.
          */
         value?: number;
+    }
+
+    export interface ServiceOnboardingProbe {
+        /**
+         * Runtime input values for the probe, keyed by input name.
+         */
+        inputs?: {[key: string]: string};
+        /**
+         * Identifier of a probe that already exists in the project.
+         */
+        probeId: string;
     }
 
 }
@@ -9521,7 +10389,7 @@ export namespace platform {
          */
         remoteUrlSuffix?: string;
         /**
-         * Upstream source. Every package type accepts `Custom` (which requires `config.url`). Package types with a built-in default source, which resolves the remote URL for you: `ALPINE` → `Alpine`, `CARGO` → `Crates`, `COMPOSER` → `Packagist`, `CONAN` → `ConanCenter`, `CONDA` → `Anaconda`, `CRAN` → `CRAN`, `DART` → `Pubdev`, `DOCKER` → `Dockerhub` or `AwsEcr`, `GO` → `GoProxy`, `HELM_HTTP` → `HelmChartRepo`, `MAVEN` → `MavenCentral`, `NPM` → `NpmJs`, `NUGET` → `NugetOrg`, `PUPPET` → `PuppetForge`, `PYTHON` → `PyPi`, `RUBY` → `RubyGems`, `TERRAFORM` → `TerraformRegistry`, `WOLFI` → `Wolfi`. `DEBIAN`, `GENERIC`, `HELM`, `HUGGINGFACE`, `RAW`, `RPM` and `SWIFT` support `Custom` only, and `TERRAFORM_BACKEND` does not support UPSTREAM registries.
+         * Upstream source. Every package type accepts `Custom` (which requires `config.url`). Package types with a built-in default source, which resolves the remote URL for you: `ALPINE` → `Alpine`, `CARGO` → `Crates`, `COMPOSER` → `Packagist`, `CONAN` → `ConanCenter`, `CONDA` → `Anaconda`, `CRAN` → `CRAN`, `DART` → `Pubdev`, `DOCKER` → `Dockerhub` or `AwsEcr`, `GO` → `GoProxy`, `HELM_HTTP` → `HelmChartRepo`, `MAVEN` → `MavenCentral`, `NPM` → `NpmJs`, `NUGET` → `NugetOrg`, `PUPPET` → `PuppetForge`, `PYTHON` → `PyPi`, `RUBY` → `RubyGems`, `TERRAFORM` → `TerraformRegistry`, `WOLFI` → `Wolfi`. `APM`, `DEBIAN`, `GENERIC`, `HELM`, `HUGGINGFACE`, `RAW`, `RPM` and `SWIFT` support `Custom` only, and `TERRAFORM_BACKEND` does not support UPSTREAM registries.
          */
         source?: string;
         /**
@@ -40251,7 +41119,7 @@ export namespace platform {
          */
         remoteUrlSuffix?: string;
         /**
-         * Upstream source. Every package type accepts `Custom` (which requires `config.url`). Package types with a built-in default source, which resolves the remote URL for you: `ALPINE` → `Alpine`, `CARGO` → `Crates`, `COMPOSER` → `Packagist`, `CONAN` → `ConanCenter`, `CONDA` → `Anaconda`, `CRAN` → `CRAN`, `DART` → `Pubdev`, `DOCKER` → `Dockerhub` or `AwsEcr`, `GO` → `GoProxy`, `HELM_HTTP` → `HelmChartRepo`, `MAVEN` → `MavenCentral`, `NPM` → `NpmJs`, `NUGET` → `NugetOrg`, `PUPPET` → `PuppetForge`, `PYTHON` → `PyPi`, `RUBY` → `RubyGems`, `TERRAFORM` → `TerraformRegistry`, `WOLFI` → `Wolfi`. `DEBIAN`, `GENERIC`, `HELM`, `HUGGINGFACE`, `RAW`, `RPM` and `SWIFT` support `Custom` only, and `TERRAFORM_BACKEND` does not support UPSTREAM registries.
+         * Upstream source. Every package type accepts `Custom` (which requires `config.url`). Package types with a built-in default source, which resolves the remote URL for you: `ALPINE` → `Alpine`, `CARGO` → `Crates`, `COMPOSER` → `Packagist`, `CONAN` → `ConanCenter`, `CONDA` → `Anaconda`, `CRAN` → `CRAN`, `DART` → `Pubdev`, `DOCKER` → `Dockerhub` or `AwsEcr`, `GO` → `GoProxy`, `HELM_HTTP` → `HelmChartRepo`, `MAVEN` → `MavenCentral`, `NPM` → `NpmJs`, `NUGET` → `NugetOrg`, `PUPPET` → `PuppetForge`, `PYTHON` → `PyPi`, `RUBY` → `RubyGems`, `TERRAFORM` → `TerraformRegistry`, `WOLFI` → `Wolfi`. `APM`, `DEBIAN`, `GENERIC`, `HELM`, `HUGGINGFACE`, `RAW`, `RPM` and `SWIFT` support `Custom` only, and `TERRAFORM_BACKEND` does not support UPSTREAM registries.
          */
         source?: string;
         /**

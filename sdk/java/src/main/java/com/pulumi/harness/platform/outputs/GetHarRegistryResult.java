@@ -62,7 +62,7 @@ public final class GetHarRegistryResult {
      */
     private @Nullable Map<String,String> metadata;
     /**
-     * @return Type of package (DOCKER, HELM, HELM*HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, TERRAFORM*BACKEND, CRAN, ALPINE, WOLFI, COMPOSER, HUGGINGFACE, DART, SWIFT)
+     * @return Type of package (DOCKER, HELM, HELM*HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, TERRAFORM*BACKEND, CRAN, ALPINE, WOLFI, COMPOSER, HUGGINGFACE, DART, SWIFT, APM)
      * 
      */
     private @Nullable String packageType;
@@ -147,7 +147,7 @@ public final class GetHarRegistryResult {
         return this.metadata == null ? Map.of() : this.metadata;
     }
     /**
-     * @return Type of package (DOCKER, HELM, HELM*HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, TERRAFORM*BACKEND, CRAN, ALPINE, WOLFI, COMPOSER, HUGGINGFACE, DART, SWIFT)
+     * @return Type of package (DOCKER, HELM, HELM*HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, TERRAFORM*BACKEND, CRAN, ALPINE, WOLFI, COMPOSER, HUGGINGFACE, DART, SWIFT, APM)
      * 
      */
     public Optional<String> packageType() {
