@@ -10465,6 +10465,948 @@ func (o ImageRegistryCustomImageArrayOutput) Index(i pulumi.IntInput) ImageRegis
 	}).(ImageRegistryCustomImageOutput)
 }
 
+type InfrastructureScanCollectedData struct {
+	// Collection time as a Unix timestamp.
+	CollectedAt *int `pulumi:"collectedAt"`
+	// Dependent resources collected.
+	DependentResources *int `pulumi:"dependentResources"`
+	// Collection failures returned by the API.
+	Errors []InfrastructureScanCollectedDataError `pulumi:"errors"`
+	// Namespaces collected.
+	Namespaces []string `pulumi:"namespaces"`
+	// Primary resources collected.
+	PrimaryResources *int `pulumi:"primaryResources"`
+	// Service groups collected.
+	ServiceGroups *int `pulumi:"serviceGroups"`
+	// Total resources collected.
+	TotalResources *int `pulumi:"totalResources"`
+}
+
+// InfrastructureScanCollectedDataInput is an input type that accepts InfrastructureScanCollectedDataArgs and InfrastructureScanCollectedDataOutput values.
+// You can construct a concrete instance of `InfrastructureScanCollectedDataInput` via:
+//
+//	InfrastructureScanCollectedDataArgs{...}
+type InfrastructureScanCollectedDataInput interface {
+	pulumi.Input
+
+	ToInfrastructureScanCollectedDataOutput() InfrastructureScanCollectedDataOutput
+	ToInfrastructureScanCollectedDataOutputWithContext(context.Context) InfrastructureScanCollectedDataOutput
+}
+
+type InfrastructureScanCollectedDataArgs struct {
+	// Collection time as a Unix timestamp.
+	CollectedAt pulumi.IntPtrInput `pulumi:"collectedAt"`
+	// Dependent resources collected.
+	DependentResources pulumi.IntPtrInput `pulumi:"dependentResources"`
+	// Collection failures returned by the API.
+	Errors InfrastructureScanCollectedDataErrorArrayInput `pulumi:"errors"`
+	// Namespaces collected.
+	Namespaces pulumi.StringArrayInput `pulumi:"namespaces"`
+	// Primary resources collected.
+	PrimaryResources pulumi.IntPtrInput `pulumi:"primaryResources"`
+	// Service groups collected.
+	ServiceGroups pulumi.IntPtrInput `pulumi:"serviceGroups"`
+	// Total resources collected.
+	TotalResources pulumi.IntPtrInput `pulumi:"totalResources"`
+}
+
+func (InfrastructureScanCollectedDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfrastructureScanCollectedData)(nil)).Elem()
+}
+
+func (i InfrastructureScanCollectedDataArgs) ToInfrastructureScanCollectedDataOutput() InfrastructureScanCollectedDataOutput {
+	return i.ToInfrastructureScanCollectedDataOutputWithContext(context.Background())
+}
+
+func (i InfrastructureScanCollectedDataArgs) ToInfrastructureScanCollectedDataOutputWithContext(ctx context.Context) InfrastructureScanCollectedDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfrastructureScanCollectedDataOutput)
+}
+
+// InfrastructureScanCollectedDataArrayInput is an input type that accepts InfrastructureScanCollectedDataArray and InfrastructureScanCollectedDataArrayOutput values.
+// You can construct a concrete instance of `InfrastructureScanCollectedDataArrayInput` via:
+//
+//	InfrastructureScanCollectedDataArray{ InfrastructureScanCollectedDataArgs{...} }
+type InfrastructureScanCollectedDataArrayInput interface {
+	pulumi.Input
+
+	ToInfrastructureScanCollectedDataArrayOutput() InfrastructureScanCollectedDataArrayOutput
+	ToInfrastructureScanCollectedDataArrayOutputWithContext(context.Context) InfrastructureScanCollectedDataArrayOutput
+}
+
+type InfrastructureScanCollectedDataArray []InfrastructureScanCollectedDataInput
+
+func (InfrastructureScanCollectedDataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InfrastructureScanCollectedData)(nil)).Elem()
+}
+
+func (i InfrastructureScanCollectedDataArray) ToInfrastructureScanCollectedDataArrayOutput() InfrastructureScanCollectedDataArrayOutput {
+	return i.ToInfrastructureScanCollectedDataArrayOutputWithContext(context.Background())
+}
+
+func (i InfrastructureScanCollectedDataArray) ToInfrastructureScanCollectedDataArrayOutputWithContext(ctx context.Context) InfrastructureScanCollectedDataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfrastructureScanCollectedDataArrayOutput)
+}
+
+type InfrastructureScanCollectedDataOutput struct{ *pulumi.OutputState }
+
+func (InfrastructureScanCollectedDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfrastructureScanCollectedData)(nil)).Elem()
+}
+
+func (o InfrastructureScanCollectedDataOutput) ToInfrastructureScanCollectedDataOutput() InfrastructureScanCollectedDataOutput {
+	return o
+}
+
+func (o InfrastructureScanCollectedDataOutput) ToInfrastructureScanCollectedDataOutputWithContext(ctx context.Context) InfrastructureScanCollectedDataOutput {
+	return o
+}
+
+// Collection time as a Unix timestamp.
+func (o InfrastructureScanCollectedDataOutput) CollectedAt() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InfrastructureScanCollectedData) *int { return v.CollectedAt }).(pulumi.IntPtrOutput)
+}
+
+// Dependent resources collected.
+func (o InfrastructureScanCollectedDataOutput) DependentResources() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InfrastructureScanCollectedData) *int { return v.DependentResources }).(pulumi.IntPtrOutput)
+}
+
+// Collection failures returned by the API.
+func (o InfrastructureScanCollectedDataOutput) Errors() InfrastructureScanCollectedDataErrorArrayOutput {
+	return o.ApplyT(func(v InfrastructureScanCollectedData) []InfrastructureScanCollectedDataError { return v.Errors }).(InfrastructureScanCollectedDataErrorArrayOutput)
+}
+
+// Namespaces collected.
+func (o InfrastructureScanCollectedDataOutput) Namespaces() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InfrastructureScanCollectedData) []string { return v.Namespaces }).(pulumi.StringArrayOutput)
+}
+
+// Primary resources collected.
+func (o InfrastructureScanCollectedDataOutput) PrimaryResources() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InfrastructureScanCollectedData) *int { return v.PrimaryResources }).(pulumi.IntPtrOutput)
+}
+
+// Service groups collected.
+func (o InfrastructureScanCollectedDataOutput) ServiceGroups() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InfrastructureScanCollectedData) *int { return v.ServiceGroups }).(pulumi.IntPtrOutput)
+}
+
+// Total resources collected.
+func (o InfrastructureScanCollectedDataOutput) TotalResources() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InfrastructureScanCollectedData) *int { return v.TotalResources }).(pulumi.IntPtrOutput)
+}
+
+type InfrastructureScanCollectedDataArrayOutput struct{ *pulumi.OutputState }
+
+func (InfrastructureScanCollectedDataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InfrastructureScanCollectedData)(nil)).Elem()
+}
+
+func (o InfrastructureScanCollectedDataArrayOutput) ToInfrastructureScanCollectedDataArrayOutput() InfrastructureScanCollectedDataArrayOutput {
+	return o
+}
+
+func (o InfrastructureScanCollectedDataArrayOutput) ToInfrastructureScanCollectedDataArrayOutputWithContext(ctx context.Context) InfrastructureScanCollectedDataArrayOutput {
+	return o
+}
+
+func (o InfrastructureScanCollectedDataArrayOutput) Index(i pulumi.IntInput) InfrastructureScanCollectedDataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InfrastructureScanCollectedData {
+		return vs[0].([]InfrastructureScanCollectedData)[vs[1].(int)]
+	}).(InfrastructureScanCollectedDataOutput)
+}
+
+type InfrastructureScanCollectedDataError struct {
+	// Collection error message.
+	Message *string `pulumi:"message"`
+	// Collector that reported the error.
+	Source *string `pulumi:"source"`
+}
+
+// InfrastructureScanCollectedDataErrorInput is an input type that accepts InfrastructureScanCollectedDataErrorArgs and InfrastructureScanCollectedDataErrorOutput values.
+// You can construct a concrete instance of `InfrastructureScanCollectedDataErrorInput` via:
+//
+//	InfrastructureScanCollectedDataErrorArgs{...}
+type InfrastructureScanCollectedDataErrorInput interface {
+	pulumi.Input
+
+	ToInfrastructureScanCollectedDataErrorOutput() InfrastructureScanCollectedDataErrorOutput
+	ToInfrastructureScanCollectedDataErrorOutputWithContext(context.Context) InfrastructureScanCollectedDataErrorOutput
+}
+
+type InfrastructureScanCollectedDataErrorArgs struct {
+	// Collection error message.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+	// Collector that reported the error.
+	Source pulumi.StringPtrInput `pulumi:"source"`
+}
+
+func (InfrastructureScanCollectedDataErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfrastructureScanCollectedDataError)(nil)).Elem()
+}
+
+func (i InfrastructureScanCollectedDataErrorArgs) ToInfrastructureScanCollectedDataErrorOutput() InfrastructureScanCollectedDataErrorOutput {
+	return i.ToInfrastructureScanCollectedDataErrorOutputWithContext(context.Background())
+}
+
+func (i InfrastructureScanCollectedDataErrorArgs) ToInfrastructureScanCollectedDataErrorOutputWithContext(ctx context.Context) InfrastructureScanCollectedDataErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfrastructureScanCollectedDataErrorOutput)
+}
+
+// InfrastructureScanCollectedDataErrorArrayInput is an input type that accepts InfrastructureScanCollectedDataErrorArray and InfrastructureScanCollectedDataErrorArrayOutput values.
+// You can construct a concrete instance of `InfrastructureScanCollectedDataErrorArrayInput` via:
+//
+//	InfrastructureScanCollectedDataErrorArray{ InfrastructureScanCollectedDataErrorArgs{...} }
+type InfrastructureScanCollectedDataErrorArrayInput interface {
+	pulumi.Input
+
+	ToInfrastructureScanCollectedDataErrorArrayOutput() InfrastructureScanCollectedDataErrorArrayOutput
+	ToInfrastructureScanCollectedDataErrorArrayOutputWithContext(context.Context) InfrastructureScanCollectedDataErrorArrayOutput
+}
+
+type InfrastructureScanCollectedDataErrorArray []InfrastructureScanCollectedDataErrorInput
+
+func (InfrastructureScanCollectedDataErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InfrastructureScanCollectedDataError)(nil)).Elem()
+}
+
+func (i InfrastructureScanCollectedDataErrorArray) ToInfrastructureScanCollectedDataErrorArrayOutput() InfrastructureScanCollectedDataErrorArrayOutput {
+	return i.ToInfrastructureScanCollectedDataErrorArrayOutputWithContext(context.Background())
+}
+
+func (i InfrastructureScanCollectedDataErrorArray) ToInfrastructureScanCollectedDataErrorArrayOutputWithContext(ctx context.Context) InfrastructureScanCollectedDataErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfrastructureScanCollectedDataErrorArrayOutput)
+}
+
+type InfrastructureScanCollectedDataErrorOutput struct{ *pulumi.OutputState }
+
+func (InfrastructureScanCollectedDataErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfrastructureScanCollectedDataError)(nil)).Elem()
+}
+
+func (o InfrastructureScanCollectedDataErrorOutput) ToInfrastructureScanCollectedDataErrorOutput() InfrastructureScanCollectedDataErrorOutput {
+	return o
+}
+
+func (o InfrastructureScanCollectedDataErrorOutput) ToInfrastructureScanCollectedDataErrorOutputWithContext(ctx context.Context) InfrastructureScanCollectedDataErrorOutput {
+	return o
+}
+
+// Collection error message.
+func (o InfrastructureScanCollectedDataErrorOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfrastructureScanCollectedDataError) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+// Collector that reported the error.
+func (o InfrastructureScanCollectedDataErrorOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfrastructureScanCollectedDataError) *string { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+type InfrastructureScanCollectedDataErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (InfrastructureScanCollectedDataErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InfrastructureScanCollectedDataError)(nil)).Elem()
+}
+
+func (o InfrastructureScanCollectedDataErrorArrayOutput) ToInfrastructureScanCollectedDataErrorArrayOutput() InfrastructureScanCollectedDataErrorArrayOutput {
+	return o
+}
+
+func (o InfrastructureScanCollectedDataErrorArrayOutput) ToInfrastructureScanCollectedDataErrorArrayOutputWithContext(ctx context.Context) InfrastructureScanCollectedDataErrorArrayOutput {
+	return o
+}
+
+func (o InfrastructureScanCollectedDataErrorArrayOutput) Index(i pulumi.IntInput) InfrastructureScanCollectedDataErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InfrastructureScanCollectedDataError {
+		return vs[0].([]InfrastructureScanCollectedDataError)[vs[1].(int)]
+	}).(InfrastructureScanCollectedDataErrorOutput)
+}
+
+type InfrastructureScanRisk struct {
+	// Description of the risk.
+	Description *string `pulumi:"description"`
+	// Fingerprint of the risk.
+	Fingerprint *string `pulumi:"fingerprint"`
+	// Identity of the risk.
+	Identity *string `pulumi:"identity"`
+	// Additional risk metadata as a JSON object string.
+	MetadataJson *string `pulumi:"metadataJson"`
+	// Name of the risk.
+	Name *string `pulumi:"name"`
+	// Detections of this risk in the scan.
+	Occurrences []InfrastructureScanRiskOccurrence `pulumi:"occurrences"`
+	// Identity of the service the risk applies to.
+	ServiceIdentity *string `pulumi:"serviceIdentity"`
+	// Name of the service the risk applies to.
+	ServiceName *string `pulumi:"serviceName"`
+	// Service kind, such as DiscoveredService, ChaosService, or CDService.
+	ServiceType *string `pulumi:"serviceType"`
+	// Severity: Critical, High, Medium, or Low.
+	Severity *string `pulumi:"severity"`
+	// Status: Open, InProgress, Resolved, or Ignored.
+	Status *string `pulumi:"status"`
+	// Tags on the risk.
+	Tags []string `pulumi:"tags"`
+}
+
+// InfrastructureScanRiskInput is an input type that accepts InfrastructureScanRiskArgs and InfrastructureScanRiskOutput values.
+// You can construct a concrete instance of `InfrastructureScanRiskInput` via:
+//
+//	InfrastructureScanRiskArgs{...}
+type InfrastructureScanRiskInput interface {
+	pulumi.Input
+
+	ToInfrastructureScanRiskOutput() InfrastructureScanRiskOutput
+	ToInfrastructureScanRiskOutputWithContext(context.Context) InfrastructureScanRiskOutput
+}
+
+type InfrastructureScanRiskArgs struct {
+	// Description of the risk.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Fingerprint of the risk.
+	Fingerprint pulumi.StringPtrInput `pulumi:"fingerprint"`
+	// Identity of the risk.
+	Identity pulumi.StringPtrInput `pulumi:"identity"`
+	// Additional risk metadata as a JSON object string.
+	MetadataJson pulumi.StringPtrInput `pulumi:"metadataJson"`
+	// Name of the risk.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Detections of this risk in the scan.
+	Occurrences InfrastructureScanRiskOccurrenceArrayInput `pulumi:"occurrences"`
+	// Identity of the service the risk applies to.
+	ServiceIdentity pulumi.StringPtrInput `pulumi:"serviceIdentity"`
+	// Name of the service the risk applies to.
+	ServiceName pulumi.StringPtrInput `pulumi:"serviceName"`
+	// Service kind, such as DiscoveredService, ChaosService, or CDService.
+	ServiceType pulumi.StringPtrInput `pulumi:"serviceType"`
+	// Severity: Critical, High, Medium, or Low.
+	Severity pulumi.StringPtrInput `pulumi:"severity"`
+	// Status: Open, InProgress, Resolved, or Ignored.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// Tags on the risk.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+}
+
+func (InfrastructureScanRiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfrastructureScanRisk)(nil)).Elem()
+}
+
+func (i InfrastructureScanRiskArgs) ToInfrastructureScanRiskOutput() InfrastructureScanRiskOutput {
+	return i.ToInfrastructureScanRiskOutputWithContext(context.Background())
+}
+
+func (i InfrastructureScanRiskArgs) ToInfrastructureScanRiskOutputWithContext(ctx context.Context) InfrastructureScanRiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfrastructureScanRiskOutput)
+}
+
+// InfrastructureScanRiskArrayInput is an input type that accepts InfrastructureScanRiskArray and InfrastructureScanRiskArrayOutput values.
+// You can construct a concrete instance of `InfrastructureScanRiskArrayInput` via:
+//
+//	InfrastructureScanRiskArray{ InfrastructureScanRiskArgs{...} }
+type InfrastructureScanRiskArrayInput interface {
+	pulumi.Input
+
+	ToInfrastructureScanRiskArrayOutput() InfrastructureScanRiskArrayOutput
+	ToInfrastructureScanRiskArrayOutputWithContext(context.Context) InfrastructureScanRiskArrayOutput
+}
+
+type InfrastructureScanRiskArray []InfrastructureScanRiskInput
+
+func (InfrastructureScanRiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InfrastructureScanRisk)(nil)).Elem()
+}
+
+func (i InfrastructureScanRiskArray) ToInfrastructureScanRiskArrayOutput() InfrastructureScanRiskArrayOutput {
+	return i.ToInfrastructureScanRiskArrayOutputWithContext(context.Background())
+}
+
+func (i InfrastructureScanRiskArray) ToInfrastructureScanRiskArrayOutputWithContext(ctx context.Context) InfrastructureScanRiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfrastructureScanRiskArrayOutput)
+}
+
+type InfrastructureScanRiskOutput struct{ *pulumi.OutputState }
+
+func (InfrastructureScanRiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfrastructureScanRisk)(nil)).Elem()
+}
+
+func (o InfrastructureScanRiskOutput) ToInfrastructureScanRiskOutput() InfrastructureScanRiskOutput {
+	return o
+}
+
+func (o InfrastructureScanRiskOutput) ToInfrastructureScanRiskOutputWithContext(ctx context.Context) InfrastructureScanRiskOutput {
+	return o
+}
+
+// Description of the risk.
+func (o InfrastructureScanRiskOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfrastructureScanRisk) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Fingerprint of the risk.
+func (o InfrastructureScanRiskOutput) Fingerprint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfrastructureScanRisk) *string { return v.Fingerprint }).(pulumi.StringPtrOutput)
+}
+
+// Identity of the risk.
+func (o InfrastructureScanRiskOutput) Identity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfrastructureScanRisk) *string { return v.Identity }).(pulumi.StringPtrOutput)
+}
+
+// Additional risk metadata as a JSON object string.
+func (o InfrastructureScanRiskOutput) MetadataJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfrastructureScanRisk) *string { return v.MetadataJson }).(pulumi.StringPtrOutput)
+}
+
+// Name of the risk.
+func (o InfrastructureScanRiskOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfrastructureScanRisk) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Detections of this risk in the scan.
+func (o InfrastructureScanRiskOutput) Occurrences() InfrastructureScanRiskOccurrenceArrayOutput {
+	return o.ApplyT(func(v InfrastructureScanRisk) []InfrastructureScanRiskOccurrence { return v.Occurrences }).(InfrastructureScanRiskOccurrenceArrayOutput)
+}
+
+// Identity of the service the risk applies to.
+func (o InfrastructureScanRiskOutput) ServiceIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfrastructureScanRisk) *string { return v.ServiceIdentity }).(pulumi.StringPtrOutput)
+}
+
+// Name of the service the risk applies to.
+func (o InfrastructureScanRiskOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfrastructureScanRisk) *string { return v.ServiceName }).(pulumi.StringPtrOutput)
+}
+
+// Service kind, such as DiscoveredService, ChaosService, or CDService.
+func (o InfrastructureScanRiskOutput) ServiceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfrastructureScanRisk) *string { return v.ServiceType }).(pulumi.StringPtrOutput)
+}
+
+// Severity: Critical, High, Medium, or Low.
+func (o InfrastructureScanRiskOutput) Severity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfrastructureScanRisk) *string { return v.Severity }).(pulumi.StringPtrOutput)
+}
+
+// Status: Open, InProgress, Resolved, or Ignored.
+func (o InfrastructureScanRiskOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfrastructureScanRisk) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// Tags on the risk.
+func (o InfrastructureScanRiskOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InfrastructureScanRisk) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+type InfrastructureScanRiskArrayOutput struct{ *pulumi.OutputState }
+
+func (InfrastructureScanRiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InfrastructureScanRisk)(nil)).Elem()
+}
+
+func (o InfrastructureScanRiskArrayOutput) ToInfrastructureScanRiskArrayOutput() InfrastructureScanRiskArrayOutput {
+	return o
+}
+
+func (o InfrastructureScanRiskArrayOutput) ToInfrastructureScanRiskArrayOutputWithContext(ctx context.Context) InfrastructureScanRiskArrayOutput {
+	return o
+}
+
+func (o InfrastructureScanRiskArrayOutput) Index(i pulumi.IntInput) InfrastructureScanRiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InfrastructureScanRisk {
+		return vs[0].([]InfrastructureScanRisk)[vs[1].(int)]
+	}).(InfrastructureScanRiskOutput)
+}
+
+type InfrastructureScanRiskOccurrence struct {
+	// Detection time as a Unix timestamp.
+	DetectedAt *int `pulumi:"detectedAt"`
+	// Evidence for the occurrence.
+	Evidences []string `pulumi:"evidences"`
+	// Identity of this occurrence.
+	OccurrenceId *string `pulumi:"occurrenceId"`
+	// Remediation guidance.
+	Remediations []string `pulumi:"remediations"`
+	// Resilience testing recommendations.
+	ResilienceTestingRecs []string `pulumi:"resilienceTestingRecs"`
+	// Service name recorded on the occurrence.
+	ServiceName *string `pulumi:"serviceName"`
+	// Source id of the occurrence.
+	SourceId *string `pulumi:"sourceId"`
+	// Source type of the occurrence.
+	SourceType *string `pulumi:"sourceType"`
+}
+
+// InfrastructureScanRiskOccurrenceInput is an input type that accepts InfrastructureScanRiskOccurrenceArgs and InfrastructureScanRiskOccurrenceOutput values.
+// You can construct a concrete instance of `InfrastructureScanRiskOccurrenceInput` via:
+//
+//	InfrastructureScanRiskOccurrenceArgs{...}
+type InfrastructureScanRiskOccurrenceInput interface {
+	pulumi.Input
+
+	ToInfrastructureScanRiskOccurrenceOutput() InfrastructureScanRiskOccurrenceOutput
+	ToInfrastructureScanRiskOccurrenceOutputWithContext(context.Context) InfrastructureScanRiskOccurrenceOutput
+}
+
+type InfrastructureScanRiskOccurrenceArgs struct {
+	// Detection time as a Unix timestamp.
+	DetectedAt pulumi.IntPtrInput `pulumi:"detectedAt"`
+	// Evidence for the occurrence.
+	Evidences pulumi.StringArrayInput `pulumi:"evidences"`
+	// Identity of this occurrence.
+	OccurrenceId pulumi.StringPtrInput `pulumi:"occurrenceId"`
+	// Remediation guidance.
+	Remediations pulumi.StringArrayInput `pulumi:"remediations"`
+	// Resilience testing recommendations.
+	ResilienceTestingRecs pulumi.StringArrayInput `pulumi:"resilienceTestingRecs"`
+	// Service name recorded on the occurrence.
+	ServiceName pulumi.StringPtrInput `pulumi:"serviceName"`
+	// Source id of the occurrence.
+	SourceId pulumi.StringPtrInput `pulumi:"sourceId"`
+	// Source type of the occurrence.
+	SourceType pulumi.StringPtrInput `pulumi:"sourceType"`
+}
+
+func (InfrastructureScanRiskOccurrenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfrastructureScanRiskOccurrence)(nil)).Elem()
+}
+
+func (i InfrastructureScanRiskOccurrenceArgs) ToInfrastructureScanRiskOccurrenceOutput() InfrastructureScanRiskOccurrenceOutput {
+	return i.ToInfrastructureScanRiskOccurrenceOutputWithContext(context.Background())
+}
+
+func (i InfrastructureScanRiskOccurrenceArgs) ToInfrastructureScanRiskOccurrenceOutputWithContext(ctx context.Context) InfrastructureScanRiskOccurrenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfrastructureScanRiskOccurrenceOutput)
+}
+
+// InfrastructureScanRiskOccurrenceArrayInput is an input type that accepts InfrastructureScanRiskOccurrenceArray and InfrastructureScanRiskOccurrenceArrayOutput values.
+// You can construct a concrete instance of `InfrastructureScanRiskOccurrenceArrayInput` via:
+//
+//	InfrastructureScanRiskOccurrenceArray{ InfrastructureScanRiskOccurrenceArgs{...} }
+type InfrastructureScanRiskOccurrenceArrayInput interface {
+	pulumi.Input
+
+	ToInfrastructureScanRiskOccurrenceArrayOutput() InfrastructureScanRiskOccurrenceArrayOutput
+	ToInfrastructureScanRiskOccurrenceArrayOutputWithContext(context.Context) InfrastructureScanRiskOccurrenceArrayOutput
+}
+
+type InfrastructureScanRiskOccurrenceArray []InfrastructureScanRiskOccurrenceInput
+
+func (InfrastructureScanRiskOccurrenceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InfrastructureScanRiskOccurrence)(nil)).Elem()
+}
+
+func (i InfrastructureScanRiskOccurrenceArray) ToInfrastructureScanRiskOccurrenceArrayOutput() InfrastructureScanRiskOccurrenceArrayOutput {
+	return i.ToInfrastructureScanRiskOccurrenceArrayOutputWithContext(context.Background())
+}
+
+func (i InfrastructureScanRiskOccurrenceArray) ToInfrastructureScanRiskOccurrenceArrayOutputWithContext(ctx context.Context) InfrastructureScanRiskOccurrenceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfrastructureScanRiskOccurrenceArrayOutput)
+}
+
+type InfrastructureScanRiskOccurrenceOutput struct{ *pulumi.OutputState }
+
+func (InfrastructureScanRiskOccurrenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfrastructureScanRiskOccurrence)(nil)).Elem()
+}
+
+func (o InfrastructureScanRiskOccurrenceOutput) ToInfrastructureScanRiskOccurrenceOutput() InfrastructureScanRiskOccurrenceOutput {
+	return o
+}
+
+func (o InfrastructureScanRiskOccurrenceOutput) ToInfrastructureScanRiskOccurrenceOutputWithContext(ctx context.Context) InfrastructureScanRiskOccurrenceOutput {
+	return o
+}
+
+// Detection time as a Unix timestamp.
+func (o InfrastructureScanRiskOccurrenceOutput) DetectedAt() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InfrastructureScanRiskOccurrence) *int { return v.DetectedAt }).(pulumi.IntPtrOutput)
+}
+
+// Evidence for the occurrence.
+func (o InfrastructureScanRiskOccurrenceOutput) Evidences() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InfrastructureScanRiskOccurrence) []string { return v.Evidences }).(pulumi.StringArrayOutput)
+}
+
+// Identity of this occurrence.
+func (o InfrastructureScanRiskOccurrenceOutput) OccurrenceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfrastructureScanRiskOccurrence) *string { return v.OccurrenceId }).(pulumi.StringPtrOutput)
+}
+
+// Remediation guidance.
+func (o InfrastructureScanRiskOccurrenceOutput) Remediations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InfrastructureScanRiskOccurrence) []string { return v.Remediations }).(pulumi.StringArrayOutput)
+}
+
+// Resilience testing recommendations.
+func (o InfrastructureScanRiskOccurrenceOutput) ResilienceTestingRecs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InfrastructureScanRiskOccurrence) []string { return v.ResilienceTestingRecs }).(pulumi.StringArrayOutput)
+}
+
+// Service name recorded on the occurrence.
+func (o InfrastructureScanRiskOccurrenceOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfrastructureScanRiskOccurrence) *string { return v.ServiceName }).(pulumi.StringPtrOutput)
+}
+
+// Source id of the occurrence.
+func (o InfrastructureScanRiskOccurrenceOutput) SourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfrastructureScanRiskOccurrence) *string { return v.SourceId }).(pulumi.StringPtrOutput)
+}
+
+// Source type of the occurrence.
+func (o InfrastructureScanRiskOccurrenceOutput) SourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfrastructureScanRiskOccurrence) *string { return v.SourceType }).(pulumi.StringPtrOutput)
+}
+
+type InfrastructureScanRiskOccurrenceArrayOutput struct{ *pulumi.OutputState }
+
+func (InfrastructureScanRiskOccurrenceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InfrastructureScanRiskOccurrence)(nil)).Elem()
+}
+
+func (o InfrastructureScanRiskOccurrenceArrayOutput) ToInfrastructureScanRiskOccurrenceArrayOutput() InfrastructureScanRiskOccurrenceArrayOutput {
+	return o
+}
+
+func (o InfrastructureScanRiskOccurrenceArrayOutput) ToInfrastructureScanRiskOccurrenceArrayOutputWithContext(ctx context.Context) InfrastructureScanRiskOccurrenceArrayOutput {
+	return o
+}
+
+func (o InfrastructureScanRiskOccurrenceArrayOutput) Index(i pulumi.IntInput) InfrastructureScanRiskOccurrenceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InfrastructureScanRiskOccurrence {
+		return vs[0].([]InfrastructureScanRiskOccurrence)[vs[1].(int)]
+	}).(InfrastructureScanRiskOccurrenceOutput)
+}
+
+type InfrastructureScanRiskSummary struct {
+	// Analysis time as a Unix timestamp.
+	AnalysedAt *int `pulumi:"analysedAt"`
+	// Risk counts keyed by category.
+	CategoryCounts map[string]int `pulumi:"categoryCounts"`
+	// Number of risks.
+	RiskCount *int `pulumi:"riskCount"`
+	// Resilience score.
+	Score *int `pulumi:"score"`
+	// Maximum resilience score.
+	ScoreMax *int `pulumi:"scoreMax"`
+	// Services included in analysis.
+	ServicesAnalysed *int `pulumi:"servicesAnalysed"`
+	// Services with at least one risk.
+	ServicesAtRisk *int `pulumi:"servicesAtRisk"`
+	// Risk counts keyed by severity.
+	SeverityCounts map[string]int `pulumi:"severityCounts"`
+}
+
+// InfrastructureScanRiskSummaryInput is an input type that accepts InfrastructureScanRiskSummaryArgs and InfrastructureScanRiskSummaryOutput values.
+// You can construct a concrete instance of `InfrastructureScanRiskSummaryInput` via:
+//
+//	InfrastructureScanRiskSummaryArgs{...}
+type InfrastructureScanRiskSummaryInput interface {
+	pulumi.Input
+
+	ToInfrastructureScanRiskSummaryOutput() InfrastructureScanRiskSummaryOutput
+	ToInfrastructureScanRiskSummaryOutputWithContext(context.Context) InfrastructureScanRiskSummaryOutput
+}
+
+type InfrastructureScanRiskSummaryArgs struct {
+	// Analysis time as a Unix timestamp.
+	AnalysedAt pulumi.IntPtrInput `pulumi:"analysedAt"`
+	// Risk counts keyed by category.
+	CategoryCounts pulumi.IntMapInput `pulumi:"categoryCounts"`
+	// Number of risks.
+	RiskCount pulumi.IntPtrInput `pulumi:"riskCount"`
+	// Resilience score.
+	Score pulumi.IntPtrInput `pulumi:"score"`
+	// Maximum resilience score.
+	ScoreMax pulumi.IntPtrInput `pulumi:"scoreMax"`
+	// Services included in analysis.
+	ServicesAnalysed pulumi.IntPtrInput `pulumi:"servicesAnalysed"`
+	// Services with at least one risk.
+	ServicesAtRisk pulumi.IntPtrInput `pulumi:"servicesAtRisk"`
+	// Risk counts keyed by severity.
+	SeverityCounts pulumi.IntMapInput `pulumi:"severityCounts"`
+}
+
+func (InfrastructureScanRiskSummaryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfrastructureScanRiskSummary)(nil)).Elem()
+}
+
+func (i InfrastructureScanRiskSummaryArgs) ToInfrastructureScanRiskSummaryOutput() InfrastructureScanRiskSummaryOutput {
+	return i.ToInfrastructureScanRiskSummaryOutputWithContext(context.Background())
+}
+
+func (i InfrastructureScanRiskSummaryArgs) ToInfrastructureScanRiskSummaryOutputWithContext(ctx context.Context) InfrastructureScanRiskSummaryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfrastructureScanRiskSummaryOutput)
+}
+
+// InfrastructureScanRiskSummaryArrayInput is an input type that accepts InfrastructureScanRiskSummaryArray and InfrastructureScanRiskSummaryArrayOutput values.
+// You can construct a concrete instance of `InfrastructureScanRiskSummaryArrayInput` via:
+//
+//	InfrastructureScanRiskSummaryArray{ InfrastructureScanRiskSummaryArgs{...} }
+type InfrastructureScanRiskSummaryArrayInput interface {
+	pulumi.Input
+
+	ToInfrastructureScanRiskSummaryArrayOutput() InfrastructureScanRiskSummaryArrayOutput
+	ToInfrastructureScanRiskSummaryArrayOutputWithContext(context.Context) InfrastructureScanRiskSummaryArrayOutput
+}
+
+type InfrastructureScanRiskSummaryArray []InfrastructureScanRiskSummaryInput
+
+func (InfrastructureScanRiskSummaryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InfrastructureScanRiskSummary)(nil)).Elem()
+}
+
+func (i InfrastructureScanRiskSummaryArray) ToInfrastructureScanRiskSummaryArrayOutput() InfrastructureScanRiskSummaryArrayOutput {
+	return i.ToInfrastructureScanRiskSummaryArrayOutputWithContext(context.Background())
+}
+
+func (i InfrastructureScanRiskSummaryArray) ToInfrastructureScanRiskSummaryArrayOutputWithContext(ctx context.Context) InfrastructureScanRiskSummaryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfrastructureScanRiskSummaryArrayOutput)
+}
+
+type InfrastructureScanRiskSummaryOutput struct{ *pulumi.OutputState }
+
+func (InfrastructureScanRiskSummaryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfrastructureScanRiskSummary)(nil)).Elem()
+}
+
+func (o InfrastructureScanRiskSummaryOutput) ToInfrastructureScanRiskSummaryOutput() InfrastructureScanRiskSummaryOutput {
+	return o
+}
+
+func (o InfrastructureScanRiskSummaryOutput) ToInfrastructureScanRiskSummaryOutputWithContext(ctx context.Context) InfrastructureScanRiskSummaryOutput {
+	return o
+}
+
+// Analysis time as a Unix timestamp.
+func (o InfrastructureScanRiskSummaryOutput) AnalysedAt() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InfrastructureScanRiskSummary) *int { return v.AnalysedAt }).(pulumi.IntPtrOutput)
+}
+
+// Risk counts keyed by category.
+func (o InfrastructureScanRiskSummaryOutput) CategoryCounts() pulumi.IntMapOutput {
+	return o.ApplyT(func(v InfrastructureScanRiskSummary) map[string]int { return v.CategoryCounts }).(pulumi.IntMapOutput)
+}
+
+// Number of risks.
+func (o InfrastructureScanRiskSummaryOutput) RiskCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InfrastructureScanRiskSummary) *int { return v.RiskCount }).(pulumi.IntPtrOutput)
+}
+
+// Resilience score.
+func (o InfrastructureScanRiskSummaryOutput) Score() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InfrastructureScanRiskSummary) *int { return v.Score }).(pulumi.IntPtrOutput)
+}
+
+// Maximum resilience score.
+func (o InfrastructureScanRiskSummaryOutput) ScoreMax() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InfrastructureScanRiskSummary) *int { return v.ScoreMax }).(pulumi.IntPtrOutput)
+}
+
+// Services included in analysis.
+func (o InfrastructureScanRiskSummaryOutput) ServicesAnalysed() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InfrastructureScanRiskSummary) *int { return v.ServicesAnalysed }).(pulumi.IntPtrOutput)
+}
+
+// Services with at least one risk.
+func (o InfrastructureScanRiskSummaryOutput) ServicesAtRisk() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InfrastructureScanRiskSummary) *int { return v.ServicesAtRisk }).(pulumi.IntPtrOutput)
+}
+
+// Risk counts keyed by severity.
+func (o InfrastructureScanRiskSummaryOutput) SeverityCounts() pulumi.IntMapOutput {
+	return o.ApplyT(func(v InfrastructureScanRiskSummary) map[string]int { return v.SeverityCounts }).(pulumi.IntMapOutput)
+}
+
+type InfrastructureScanRiskSummaryArrayOutput struct{ *pulumi.OutputState }
+
+func (InfrastructureScanRiskSummaryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InfrastructureScanRiskSummary)(nil)).Elem()
+}
+
+func (o InfrastructureScanRiskSummaryArrayOutput) ToInfrastructureScanRiskSummaryArrayOutput() InfrastructureScanRiskSummaryArrayOutput {
+	return o
+}
+
+func (o InfrastructureScanRiskSummaryArrayOutput) ToInfrastructureScanRiskSummaryArrayOutputWithContext(ctx context.Context) InfrastructureScanRiskSummaryArrayOutput {
+	return o
+}
+
+func (o InfrastructureScanRiskSummaryArrayOutput) Index(i pulumi.IntInput) InfrastructureScanRiskSummaryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InfrastructureScanRiskSummary {
+		return vs[0].([]InfrastructureScanRiskSummary)[vs[1].(int)]
+	}).(InfrastructureScanRiskSummaryOutput)
+}
+
+type InfrastructureScanSummary struct {
+	// Critical risks.
+	Critical *int `pulumi:"critical"`
+	// High risks.
+	High *int `pulumi:"high"`
+	// Low risks.
+	Low *int `pulumi:"low"`
+	// Maximum resilience score.
+	MaxScore *int `pulumi:"maxScore"`
+	// Medium risks.
+	Medium *int `pulumi:"medium"`
+	// Number of risk rules evaluated.
+	RuleCount *int `pulumi:"ruleCount"`
+	// Resilience score.
+	Score *int `pulumi:"score"`
+	// Number of services scanned.
+	ServicesScanned *int `pulumi:"servicesScanned"`
+	// Number of risks found.
+	TotalRisks *int `pulumi:"totalRisks"`
+}
+
+// InfrastructureScanSummaryInput is an input type that accepts InfrastructureScanSummaryArgs and InfrastructureScanSummaryOutput values.
+// You can construct a concrete instance of `InfrastructureScanSummaryInput` via:
+//
+//	InfrastructureScanSummaryArgs{...}
+type InfrastructureScanSummaryInput interface {
+	pulumi.Input
+
+	ToInfrastructureScanSummaryOutput() InfrastructureScanSummaryOutput
+	ToInfrastructureScanSummaryOutputWithContext(context.Context) InfrastructureScanSummaryOutput
+}
+
+type InfrastructureScanSummaryArgs struct {
+	// Critical risks.
+	Critical pulumi.IntPtrInput `pulumi:"critical"`
+	// High risks.
+	High pulumi.IntPtrInput `pulumi:"high"`
+	// Low risks.
+	Low pulumi.IntPtrInput `pulumi:"low"`
+	// Maximum resilience score.
+	MaxScore pulumi.IntPtrInput `pulumi:"maxScore"`
+	// Medium risks.
+	Medium pulumi.IntPtrInput `pulumi:"medium"`
+	// Number of risk rules evaluated.
+	RuleCount pulumi.IntPtrInput `pulumi:"ruleCount"`
+	// Resilience score.
+	Score pulumi.IntPtrInput `pulumi:"score"`
+	// Number of services scanned.
+	ServicesScanned pulumi.IntPtrInput `pulumi:"servicesScanned"`
+	// Number of risks found.
+	TotalRisks pulumi.IntPtrInput `pulumi:"totalRisks"`
+}
+
+func (InfrastructureScanSummaryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfrastructureScanSummary)(nil)).Elem()
+}
+
+func (i InfrastructureScanSummaryArgs) ToInfrastructureScanSummaryOutput() InfrastructureScanSummaryOutput {
+	return i.ToInfrastructureScanSummaryOutputWithContext(context.Background())
+}
+
+func (i InfrastructureScanSummaryArgs) ToInfrastructureScanSummaryOutputWithContext(ctx context.Context) InfrastructureScanSummaryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfrastructureScanSummaryOutput)
+}
+
+// InfrastructureScanSummaryArrayInput is an input type that accepts InfrastructureScanSummaryArray and InfrastructureScanSummaryArrayOutput values.
+// You can construct a concrete instance of `InfrastructureScanSummaryArrayInput` via:
+//
+//	InfrastructureScanSummaryArray{ InfrastructureScanSummaryArgs{...} }
+type InfrastructureScanSummaryArrayInput interface {
+	pulumi.Input
+
+	ToInfrastructureScanSummaryArrayOutput() InfrastructureScanSummaryArrayOutput
+	ToInfrastructureScanSummaryArrayOutputWithContext(context.Context) InfrastructureScanSummaryArrayOutput
+}
+
+type InfrastructureScanSummaryArray []InfrastructureScanSummaryInput
+
+func (InfrastructureScanSummaryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InfrastructureScanSummary)(nil)).Elem()
+}
+
+func (i InfrastructureScanSummaryArray) ToInfrastructureScanSummaryArrayOutput() InfrastructureScanSummaryArrayOutput {
+	return i.ToInfrastructureScanSummaryArrayOutputWithContext(context.Background())
+}
+
+func (i InfrastructureScanSummaryArray) ToInfrastructureScanSummaryArrayOutputWithContext(ctx context.Context) InfrastructureScanSummaryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfrastructureScanSummaryArrayOutput)
+}
+
+type InfrastructureScanSummaryOutput struct{ *pulumi.OutputState }
+
+func (InfrastructureScanSummaryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfrastructureScanSummary)(nil)).Elem()
+}
+
+func (o InfrastructureScanSummaryOutput) ToInfrastructureScanSummaryOutput() InfrastructureScanSummaryOutput {
+	return o
+}
+
+func (o InfrastructureScanSummaryOutput) ToInfrastructureScanSummaryOutputWithContext(ctx context.Context) InfrastructureScanSummaryOutput {
+	return o
+}
+
+// Critical risks.
+func (o InfrastructureScanSummaryOutput) Critical() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InfrastructureScanSummary) *int { return v.Critical }).(pulumi.IntPtrOutput)
+}
+
+// High risks.
+func (o InfrastructureScanSummaryOutput) High() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InfrastructureScanSummary) *int { return v.High }).(pulumi.IntPtrOutput)
+}
+
+// Low risks.
+func (o InfrastructureScanSummaryOutput) Low() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InfrastructureScanSummary) *int { return v.Low }).(pulumi.IntPtrOutput)
+}
+
+// Maximum resilience score.
+func (o InfrastructureScanSummaryOutput) MaxScore() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InfrastructureScanSummary) *int { return v.MaxScore }).(pulumi.IntPtrOutput)
+}
+
+// Medium risks.
+func (o InfrastructureScanSummaryOutput) Medium() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InfrastructureScanSummary) *int { return v.Medium }).(pulumi.IntPtrOutput)
+}
+
+// Number of risk rules evaluated.
+func (o InfrastructureScanSummaryOutput) RuleCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InfrastructureScanSummary) *int { return v.RuleCount }).(pulumi.IntPtrOutput)
+}
+
+// Resilience score.
+func (o InfrastructureScanSummaryOutput) Score() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InfrastructureScanSummary) *int { return v.Score }).(pulumi.IntPtrOutput)
+}
+
+// Number of services scanned.
+func (o InfrastructureScanSummaryOutput) ServicesScanned() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InfrastructureScanSummary) *int { return v.ServicesScanned }).(pulumi.IntPtrOutput)
+}
+
+// Number of risks found.
+func (o InfrastructureScanSummaryOutput) TotalRisks() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InfrastructureScanSummary) *int { return v.TotalRisks }).(pulumi.IntPtrOutput)
+}
+
+type InfrastructureScanSummaryArrayOutput struct{ *pulumi.OutputState }
+
+func (InfrastructureScanSummaryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InfrastructureScanSummary)(nil)).Elem()
+}
+
+func (o InfrastructureScanSummaryArrayOutput) ToInfrastructureScanSummaryArrayOutput() InfrastructureScanSummaryArrayOutput {
+	return o
+}
+
+func (o InfrastructureScanSummaryArrayOutput) ToInfrastructureScanSummaryArrayOutputWithContext(ctx context.Context) InfrastructureScanSummaryArrayOutput {
+	return o
+}
+
+func (o InfrastructureScanSummaryArrayOutput) Index(i pulumi.IntInput) InfrastructureScanSummaryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InfrastructureScanSummary {
+		return vs[0].([]InfrastructureScanSummary)[vs[1].(int)]
+	}).(InfrastructureScanSummaryOutput)
+}
+
 type InfrastructureV2Env struct {
 	// Variable name from a ConfigMap or Secret. Required when valueFrom is configMapKeyRef or secretKeyRef.
 	Key *string `pulumi:"key"`
@@ -12376,6 +13318,1178 @@ func (o InfrastructureV2VolumeMountArrayOutput) Index(i pulumi.IntInput) Infrast
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InfrastructureV2VolumeMount {
 		return vs[0].([]InfrastructureV2VolumeMount)[vs[1].(int)]
 	}).(InfrastructureV2VolumeMountOutput)
+}
+
+type OnboardingServiceProbe struct {
+	// Runtime input values for the probe, keyed by input name.
+	Inputs map[string]string `pulumi:"inputs"`
+	// Identifier of a probe that already exists in the project.
+	ProbeId string `pulumi:"probeId"`
+}
+
+// OnboardingServiceProbeInput is an input type that accepts OnboardingServiceProbeArgs and OnboardingServiceProbeOutput values.
+// You can construct a concrete instance of `OnboardingServiceProbeInput` via:
+//
+//	OnboardingServiceProbeArgs{...}
+type OnboardingServiceProbeInput interface {
+	pulumi.Input
+
+	ToOnboardingServiceProbeOutput() OnboardingServiceProbeOutput
+	ToOnboardingServiceProbeOutputWithContext(context.Context) OnboardingServiceProbeOutput
+}
+
+type OnboardingServiceProbeArgs struct {
+	// Runtime input values for the probe, keyed by input name.
+	Inputs pulumi.StringMapInput `pulumi:"inputs"`
+	// Identifier of a probe that already exists in the project.
+	ProbeId pulumi.StringInput `pulumi:"probeId"`
+}
+
+func (OnboardingServiceProbeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OnboardingServiceProbe)(nil)).Elem()
+}
+
+func (i OnboardingServiceProbeArgs) ToOnboardingServiceProbeOutput() OnboardingServiceProbeOutput {
+	return i.ToOnboardingServiceProbeOutputWithContext(context.Background())
+}
+
+func (i OnboardingServiceProbeArgs) ToOnboardingServiceProbeOutputWithContext(ctx context.Context) OnboardingServiceProbeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OnboardingServiceProbeOutput)
+}
+
+// OnboardingServiceProbeArrayInput is an input type that accepts OnboardingServiceProbeArray and OnboardingServiceProbeArrayOutput values.
+// You can construct a concrete instance of `OnboardingServiceProbeArrayInput` via:
+//
+//	OnboardingServiceProbeArray{ OnboardingServiceProbeArgs{...} }
+type OnboardingServiceProbeArrayInput interface {
+	pulumi.Input
+
+	ToOnboardingServiceProbeArrayOutput() OnboardingServiceProbeArrayOutput
+	ToOnboardingServiceProbeArrayOutputWithContext(context.Context) OnboardingServiceProbeArrayOutput
+}
+
+type OnboardingServiceProbeArray []OnboardingServiceProbeInput
+
+func (OnboardingServiceProbeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OnboardingServiceProbe)(nil)).Elem()
+}
+
+func (i OnboardingServiceProbeArray) ToOnboardingServiceProbeArrayOutput() OnboardingServiceProbeArrayOutput {
+	return i.ToOnboardingServiceProbeArrayOutputWithContext(context.Background())
+}
+
+func (i OnboardingServiceProbeArray) ToOnboardingServiceProbeArrayOutputWithContext(ctx context.Context) OnboardingServiceProbeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OnboardingServiceProbeArrayOutput)
+}
+
+type OnboardingServiceProbeOutput struct{ *pulumi.OutputState }
+
+func (OnboardingServiceProbeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OnboardingServiceProbe)(nil)).Elem()
+}
+
+func (o OnboardingServiceProbeOutput) ToOnboardingServiceProbeOutput() OnboardingServiceProbeOutput {
+	return o
+}
+
+func (o OnboardingServiceProbeOutput) ToOnboardingServiceProbeOutputWithContext(ctx context.Context) OnboardingServiceProbeOutput {
+	return o
+}
+
+// Runtime input values for the probe, keyed by input name.
+func (o OnboardingServiceProbeOutput) Inputs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v OnboardingServiceProbe) map[string]string { return v.Inputs }).(pulumi.StringMapOutput)
+}
+
+// Identifier of a probe that already exists in the project.
+func (o OnboardingServiceProbeOutput) ProbeId() pulumi.StringOutput {
+	return o.ApplyT(func(v OnboardingServiceProbe) string { return v.ProbeId }).(pulumi.StringOutput)
+}
+
+type OnboardingServiceProbeArrayOutput struct{ *pulumi.OutputState }
+
+func (OnboardingServiceProbeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OnboardingServiceProbe)(nil)).Elem()
+}
+
+func (o OnboardingServiceProbeArrayOutput) ToOnboardingServiceProbeArrayOutput() OnboardingServiceProbeArrayOutput {
+	return o
+}
+
+func (o OnboardingServiceProbeArrayOutput) ToOnboardingServiceProbeArrayOutputWithContext(ctx context.Context) OnboardingServiceProbeArrayOutput {
+	return o
+}
+
+func (o OnboardingServiceProbeArrayOutput) Index(i pulumi.IntInput) OnboardingServiceProbeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OnboardingServiceProbe {
+		return vs[0].([]OnboardingServiceProbe)[vs[1].(int)]
+	}).(OnboardingServiceProbeOutput)
+}
+
+type PipelineScanCollectedData struct {
+	// Collection time as a Unix timestamp.
+	CollectedAt *int `pulumi:"collectedAt"`
+	// Dependent resources collected.
+	DependentResources *int `pulumi:"dependentResources"`
+	// Collection failures returned by the API.
+	Errors []PipelineScanCollectedDataError `pulumi:"errors"`
+	// Namespaces collected.
+	Namespaces []string `pulumi:"namespaces"`
+	// Primary resources collected.
+	PrimaryResources *int `pulumi:"primaryResources"`
+	// Service groups collected.
+	ServiceGroups *int `pulumi:"serviceGroups"`
+	// Total resources collected.
+	TotalResources *int `pulumi:"totalResources"`
+}
+
+// PipelineScanCollectedDataInput is an input type that accepts PipelineScanCollectedDataArgs and PipelineScanCollectedDataOutput values.
+// You can construct a concrete instance of `PipelineScanCollectedDataInput` via:
+//
+//	PipelineScanCollectedDataArgs{...}
+type PipelineScanCollectedDataInput interface {
+	pulumi.Input
+
+	ToPipelineScanCollectedDataOutput() PipelineScanCollectedDataOutput
+	ToPipelineScanCollectedDataOutputWithContext(context.Context) PipelineScanCollectedDataOutput
+}
+
+type PipelineScanCollectedDataArgs struct {
+	// Collection time as a Unix timestamp.
+	CollectedAt pulumi.IntPtrInput `pulumi:"collectedAt"`
+	// Dependent resources collected.
+	DependentResources pulumi.IntPtrInput `pulumi:"dependentResources"`
+	// Collection failures returned by the API.
+	Errors PipelineScanCollectedDataErrorArrayInput `pulumi:"errors"`
+	// Namespaces collected.
+	Namespaces pulumi.StringArrayInput `pulumi:"namespaces"`
+	// Primary resources collected.
+	PrimaryResources pulumi.IntPtrInput `pulumi:"primaryResources"`
+	// Service groups collected.
+	ServiceGroups pulumi.IntPtrInput `pulumi:"serviceGroups"`
+	// Total resources collected.
+	TotalResources pulumi.IntPtrInput `pulumi:"totalResources"`
+}
+
+func (PipelineScanCollectedDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineScanCollectedData)(nil)).Elem()
+}
+
+func (i PipelineScanCollectedDataArgs) ToPipelineScanCollectedDataOutput() PipelineScanCollectedDataOutput {
+	return i.ToPipelineScanCollectedDataOutputWithContext(context.Background())
+}
+
+func (i PipelineScanCollectedDataArgs) ToPipelineScanCollectedDataOutputWithContext(ctx context.Context) PipelineScanCollectedDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineScanCollectedDataOutput)
+}
+
+// PipelineScanCollectedDataArrayInput is an input type that accepts PipelineScanCollectedDataArray and PipelineScanCollectedDataArrayOutput values.
+// You can construct a concrete instance of `PipelineScanCollectedDataArrayInput` via:
+//
+//	PipelineScanCollectedDataArray{ PipelineScanCollectedDataArgs{...} }
+type PipelineScanCollectedDataArrayInput interface {
+	pulumi.Input
+
+	ToPipelineScanCollectedDataArrayOutput() PipelineScanCollectedDataArrayOutput
+	ToPipelineScanCollectedDataArrayOutputWithContext(context.Context) PipelineScanCollectedDataArrayOutput
+}
+
+type PipelineScanCollectedDataArray []PipelineScanCollectedDataInput
+
+func (PipelineScanCollectedDataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PipelineScanCollectedData)(nil)).Elem()
+}
+
+func (i PipelineScanCollectedDataArray) ToPipelineScanCollectedDataArrayOutput() PipelineScanCollectedDataArrayOutput {
+	return i.ToPipelineScanCollectedDataArrayOutputWithContext(context.Background())
+}
+
+func (i PipelineScanCollectedDataArray) ToPipelineScanCollectedDataArrayOutputWithContext(ctx context.Context) PipelineScanCollectedDataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineScanCollectedDataArrayOutput)
+}
+
+type PipelineScanCollectedDataOutput struct{ *pulumi.OutputState }
+
+func (PipelineScanCollectedDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineScanCollectedData)(nil)).Elem()
+}
+
+func (o PipelineScanCollectedDataOutput) ToPipelineScanCollectedDataOutput() PipelineScanCollectedDataOutput {
+	return o
+}
+
+func (o PipelineScanCollectedDataOutput) ToPipelineScanCollectedDataOutputWithContext(ctx context.Context) PipelineScanCollectedDataOutput {
+	return o
+}
+
+// Collection time as a Unix timestamp.
+func (o PipelineScanCollectedDataOutput) CollectedAt() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PipelineScanCollectedData) *int { return v.CollectedAt }).(pulumi.IntPtrOutput)
+}
+
+// Dependent resources collected.
+func (o PipelineScanCollectedDataOutput) DependentResources() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PipelineScanCollectedData) *int { return v.DependentResources }).(pulumi.IntPtrOutput)
+}
+
+// Collection failures returned by the API.
+func (o PipelineScanCollectedDataOutput) Errors() PipelineScanCollectedDataErrorArrayOutput {
+	return o.ApplyT(func(v PipelineScanCollectedData) []PipelineScanCollectedDataError { return v.Errors }).(PipelineScanCollectedDataErrorArrayOutput)
+}
+
+// Namespaces collected.
+func (o PipelineScanCollectedDataOutput) Namespaces() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PipelineScanCollectedData) []string { return v.Namespaces }).(pulumi.StringArrayOutput)
+}
+
+// Primary resources collected.
+func (o PipelineScanCollectedDataOutput) PrimaryResources() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PipelineScanCollectedData) *int { return v.PrimaryResources }).(pulumi.IntPtrOutput)
+}
+
+// Service groups collected.
+func (o PipelineScanCollectedDataOutput) ServiceGroups() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PipelineScanCollectedData) *int { return v.ServiceGroups }).(pulumi.IntPtrOutput)
+}
+
+// Total resources collected.
+func (o PipelineScanCollectedDataOutput) TotalResources() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PipelineScanCollectedData) *int { return v.TotalResources }).(pulumi.IntPtrOutput)
+}
+
+type PipelineScanCollectedDataArrayOutput struct{ *pulumi.OutputState }
+
+func (PipelineScanCollectedDataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PipelineScanCollectedData)(nil)).Elem()
+}
+
+func (o PipelineScanCollectedDataArrayOutput) ToPipelineScanCollectedDataArrayOutput() PipelineScanCollectedDataArrayOutput {
+	return o
+}
+
+func (o PipelineScanCollectedDataArrayOutput) ToPipelineScanCollectedDataArrayOutputWithContext(ctx context.Context) PipelineScanCollectedDataArrayOutput {
+	return o
+}
+
+func (o PipelineScanCollectedDataArrayOutput) Index(i pulumi.IntInput) PipelineScanCollectedDataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PipelineScanCollectedData {
+		return vs[0].([]PipelineScanCollectedData)[vs[1].(int)]
+	}).(PipelineScanCollectedDataOutput)
+}
+
+type PipelineScanCollectedDataError struct {
+	// Collection error message.
+	Message *string `pulumi:"message"`
+	// Collector that reported the error.
+	Source *string `pulumi:"source"`
+}
+
+// PipelineScanCollectedDataErrorInput is an input type that accepts PipelineScanCollectedDataErrorArgs and PipelineScanCollectedDataErrorOutput values.
+// You can construct a concrete instance of `PipelineScanCollectedDataErrorInput` via:
+//
+//	PipelineScanCollectedDataErrorArgs{...}
+type PipelineScanCollectedDataErrorInput interface {
+	pulumi.Input
+
+	ToPipelineScanCollectedDataErrorOutput() PipelineScanCollectedDataErrorOutput
+	ToPipelineScanCollectedDataErrorOutputWithContext(context.Context) PipelineScanCollectedDataErrorOutput
+}
+
+type PipelineScanCollectedDataErrorArgs struct {
+	// Collection error message.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+	// Collector that reported the error.
+	Source pulumi.StringPtrInput `pulumi:"source"`
+}
+
+func (PipelineScanCollectedDataErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineScanCollectedDataError)(nil)).Elem()
+}
+
+func (i PipelineScanCollectedDataErrorArgs) ToPipelineScanCollectedDataErrorOutput() PipelineScanCollectedDataErrorOutput {
+	return i.ToPipelineScanCollectedDataErrorOutputWithContext(context.Background())
+}
+
+func (i PipelineScanCollectedDataErrorArgs) ToPipelineScanCollectedDataErrorOutputWithContext(ctx context.Context) PipelineScanCollectedDataErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineScanCollectedDataErrorOutput)
+}
+
+// PipelineScanCollectedDataErrorArrayInput is an input type that accepts PipelineScanCollectedDataErrorArray and PipelineScanCollectedDataErrorArrayOutput values.
+// You can construct a concrete instance of `PipelineScanCollectedDataErrorArrayInput` via:
+//
+//	PipelineScanCollectedDataErrorArray{ PipelineScanCollectedDataErrorArgs{...} }
+type PipelineScanCollectedDataErrorArrayInput interface {
+	pulumi.Input
+
+	ToPipelineScanCollectedDataErrorArrayOutput() PipelineScanCollectedDataErrorArrayOutput
+	ToPipelineScanCollectedDataErrorArrayOutputWithContext(context.Context) PipelineScanCollectedDataErrorArrayOutput
+}
+
+type PipelineScanCollectedDataErrorArray []PipelineScanCollectedDataErrorInput
+
+func (PipelineScanCollectedDataErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PipelineScanCollectedDataError)(nil)).Elem()
+}
+
+func (i PipelineScanCollectedDataErrorArray) ToPipelineScanCollectedDataErrorArrayOutput() PipelineScanCollectedDataErrorArrayOutput {
+	return i.ToPipelineScanCollectedDataErrorArrayOutputWithContext(context.Background())
+}
+
+func (i PipelineScanCollectedDataErrorArray) ToPipelineScanCollectedDataErrorArrayOutputWithContext(ctx context.Context) PipelineScanCollectedDataErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineScanCollectedDataErrorArrayOutput)
+}
+
+type PipelineScanCollectedDataErrorOutput struct{ *pulumi.OutputState }
+
+func (PipelineScanCollectedDataErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineScanCollectedDataError)(nil)).Elem()
+}
+
+func (o PipelineScanCollectedDataErrorOutput) ToPipelineScanCollectedDataErrorOutput() PipelineScanCollectedDataErrorOutput {
+	return o
+}
+
+func (o PipelineScanCollectedDataErrorOutput) ToPipelineScanCollectedDataErrorOutputWithContext(ctx context.Context) PipelineScanCollectedDataErrorOutput {
+	return o
+}
+
+// Collection error message.
+func (o PipelineScanCollectedDataErrorOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineScanCollectedDataError) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+// Collector that reported the error.
+func (o PipelineScanCollectedDataErrorOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineScanCollectedDataError) *string { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+type PipelineScanCollectedDataErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (PipelineScanCollectedDataErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PipelineScanCollectedDataError)(nil)).Elem()
+}
+
+func (o PipelineScanCollectedDataErrorArrayOutput) ToPipelineScanCollectedDataErrorArrayOutput() PipelineScanCollectedDataErrorArrayOutput {
+	return o
+}
+
+func (o PipelineScanCollectedDataErrorArrayOutput) ToPipelineScanCollectedDataErrorArrayOutputWithContext(ctx context.Context) PipelineScanCollectedDataErrorArrayOutput {
+	return o
+}
+
+func (o PipelineScanCollectedDataErrorArrayOutput) Index(i pulumi.IntInput) PipelineScanCollectedDataErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PipelineScanCollectedDataError {
+		return vs[0].([]PipelineScanCollectedDataError)[vs[1].(int)]
+	}).(PipelineScanCollectedDataErrorOutput)
+}
+
+type PipelineScanInfrastructure struct {
+	// Whether chaos is already onboarded for this infrastructure.
+	ChaosOnboarded *bool `pulumi:"chaosOnboarded"`
+	// Whether this infrastructure can be onboarded to chaos.
+	ChaosSupported *bool `pulumi:"chaosSupported"`
+	// Environment reference.
+	EnvironmentRef *string `pulumi:"environmentRef"`
+	// Infrastructure identifier.
+	InfrastructureIdentity *string `pulumi:"infrastructureIdentity"`
+}
+
+// PipelineScanInfrastructureInput is an input type that accepts PipelineScanInfrastructureArgs and PipelineScanInfrastructureOutput values.
+// You can construct a concrete instance of `PipelineScanInfrastructureInput` via:
+//
+//	PipelineScanInfrastructureArgs{...}
+type PipelineScanInfrastructureInput interface {
+	pulumi.Input
+
+	ToPipelineScanInfrastructureOutput() PipelineScanInfrastructureOutput
+	ToPipelineScanInfrastructureOutputWithContext(context.Context) PipelineScanInfrastructureOutput
+}
+
+type PipelineScanInfrastructureArgs struct {
+	// Whether chaos is already onboarded for this infrastructure.
+	ChaosOnboarded pulumi.BoolPtrInput `pulumi:"chaosOnboarded"`
+	// Whether this infrastructure can be onboarded to chaos.
+	ChaosSupported pulumi.BoolPtrInput `pulumi:"chaosSupported"`
+	// Environment reference.
+	EnvironmentRef pulumi.StringPtrInput `pulumi:"environmentRef"`
+	// Infrastructure identifier.
+	InfrastructureIdentity pulumi.StringPtrInput `pulumi:"infrastructureIdentity"`
+}
+
+func (PipelineScanInfrastructureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineScanInfrastructure)(nil)).Elem()
+}
+
+func (i PipelineScanInfrastructureArgs) ToPipelineScanInfrastructureOutput() PipelineScanInfrastructureOutput {
+	return i.ToPipelineScanInfrastructureOutputWithContext(context.Background())
+}
+
+func (i PipelineScanInfrastructureArgs) ToPipelineScanInfrastructureOutputWithContext(ctx context.Context) PipelineScanInfrastructureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineScanInfrastructureOutput)
+}
+
+// PipelineScanInfrastructureArrayInput is an input type that accepts PipelineScanInfrastructureArray and PipelineScanInfrastructureArrayOutput values.
+// You can construct a concrete instance of `PipelineScanInfrastructureArrayInput` via:
+//
+//	PipelineScanInfrastructureArray{ PipelineScanInfrastructureArgs{...} }
+type PipelineScanInfrastructureArrayInput interface {
+	pulumi.Input
+
+	ToPipelineScanInfrastructureArrayOutput() PipelineScanInfrastructureArrayOutput
+	ToPipelineScanInfrastructureArrayOutputWithContext(context.Context) PipelineScanInfrastructureArrayOutput
+}
+
+type PipelineScanInfrastructureArray []PipelineScanInfrastructureInput
+
+func (PipelineScanInfrastructureArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PipelineScanInfrastructure)(nil)).Elem()
+}
+
+func (i PipelineScanInfrastructureArray) ToPipelineScanInfrastructureArrayOutput() PipelineScanInfrastructureArrayOutput {
+	return i.ToPipelineScanInfrastructureArrayOutputWithContext(context.Background())
+}
+
+func (i PipelineScanInfrastructureArray) ToPipelineScanInfrastructureArrayOutputWithContext(ctx context.Context) PipelineScanInfrastructureArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineScanInfrastructureArrayOutput)
+}
+
+type PipelineScanInfrastructureOutput struct{ *pulumi.OutputState }
+
+func (PipelineScanInfrastructureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineScanInfrastructure)(nil)).Elem()
+}
+
+func (o PipelineScanInfrastructureOutput) ToPipelineScanInfrastructureOutput() PipelineScanInfrastructureOutput {
+	return o
+}
+
+func (o PipelineScanInfrastructureOutput) ToPipelineScanInfrastructureOutputWithContext(ctx context.Context) PipelineScanInfrastructureOutput {
+	return o
+}
+
+// Whether chaos is already onboarded for this infrastructure.
+func (o PipelineScanInfrastructureOutput) ChaosOnboarded() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PipelineScanInfrastructure) *bool { return v.ChaosOnboarded }).(pulumi.BoolPtrOutput)
+}
+
+// Whether this infrastructure can be onboarded to chaos.
+func (o PipelineScanInfrastructureOutput) ChaosSupported() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PipelineScanInfrastructure) *bool { return v.ChaosSupported }).(pulumi.BoolPtrOutput)
+}
+
+// Environment reference.
+func (o PipelineScanInfrastructureOutput) EnvironmentRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineScanInfrastructure) *string { return v.EnvironmentRef }).(pulumi.StringPtrOutput)
+}
+
+// Infrastructure identifier.
+func (o PipelineScanInfrastructureOutput) InfrastructureIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineScanInfrastructure) *string { return v.InfrastructureIdentity }).(pulumi.StringPtrOutput)
+}
+
+type PipelineScanInfrastructureArrayOutput struct{ *pulumi.OutputState }
+
+func (PipelineScanInfrastructureArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PipelineScanInfrastructure)(nil)).Elem()
+}
+
+func (o PipelineScanInfrastructureArrayOutput) ToPipelineScanInfrastructureArrayOutput() PipelineScanInfrastructureArrayOutput {
+	return o
+}
+
+func (o PipelineScanInfrastructureArrayOutput) ToPipelineScanInfrastructureArrayOutputWithContext(ctx context.Context) PipelineScanInfrastructureArrayOutput {
+	return o
+}
+
+func (o PipelineScanInfrastructureArrayOutput) Index(i pulumi.IntInput) PipelineScanInfrastructureOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PipelineScanInfrastructure {
+		return vs[0].([]PipelineScanInfrastructure)[vs[1].(int)]
+	}).(PipelineScanInfrastructureOutput)
+}
+
+type PipelineScanRisk struct {
+	// Description of the risk.
+	Description *string `pulumi:"description"`
+	// Fingerprint of the risk.
+	Fingerprint *string `pulumi:"fingerprint"`
+	// Identity of the risk.
+	Identity *string `pulumi:"identity"`
+	// Additional risk metadata as a JSON object string.
+	MetadataJson *string `pulumi:"metadataJson"`
+	// Name of the risk.
+	Name *string `pulumi:"name"`
+	// Detections of this risk in the scan.
+	Occurrences []PipelineScanRiskOccurrence `pulumi:"occurrences"`
+	// Identity of the service the risk applies to.
+	ServiceIdentity *string `pulumi:"serviceIdentity"`
+	// Name of the service the risk applies to.
+	ServiceName *string `pulumi:"serviceName"`
+	// Service kind, such as DiscoveredService, ChaosService, or CDService.
+	ServiceType *string `pulumi:"serviceType"`
+	// Severity: Critical, High, Medium, or Low.
+	Severity *string `pulumi:"severity"`
+	// Status: Open, InProgress, Resolved, or Ignored.
+	Status *string `pulumi:"status"`
+	// Tags on the risk.
+	Tags []string `pulumi:"tags"`
+}
+
+// PipelineScanRiskInput is an input type that accepts PipelineScanRiskArgs and PipelineScanRiskOutput values.
+// You can construct a concrete instance of `PipelineScanRiskInput` via:
+//
+//	PipelineScanRiskArgs{...}
+type PipelineScanRiskInput interface {
+	pulumi.Input
+
+	ToPipelineScanRiskOutput() PipelineScanRiskOutput
+	ToPipelineScanRiskOutputWithContext(context.Context) PipelineScanRiskOutput
+}
+
+type PipelineScanRiskArgs struct {
+	// Description of the risk.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Fingerprint of the risk.
+	Fingerprint pulumi.StringPtrInput `pulumi:"fingerprint"`
+	// Identity of the risk.
+	Identity pulumi.StringPtrInput `pulumi:"identity"`
+	// Additional risk metadata as a JSON object string.
+	MetadataJson pulumi.StringPtrInput `pulumi:"metadataJson"`
+	// Name of the risk.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Detections of this risk in the scan.
+	Occurrences PipelineScanRiskOccurrenceArrayInput `pulumi:"occurrences"`
+	// Identity of the service the risk applies to.
+	ServiceIdentity pulumi.StringPtrInput `pulumi:"serviceIdentity"`
+	// Name of the service the risk applies to.
+	ServiceName pulumi.StringPtrInput `pulumi:"serviceName"`
+	// Service kind, such as DiscoveredService, ChaosService, or CDService.
+	ServiceType pulumi.StringPtrInput `pulumi:"serviceType"`
+	// Severity: Critical, High, Medium, or Low.
+	Severity pulumi.StringPtrInput `pulumi:"severity"`
+	// Status: Open, InProgress, Resolved, or Ignored.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// Tags on the risk.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+}
+
+func (PipelineScanRiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineScanRisk)(nil)).Elem()
+}
+
+func (i PipelineScanRiskArgs) ToPipelineScanRiskOutput() PipelineScanRiskOutput {
+	return i.ToPipelineScanRiskOutputWithContext(context.Background())
+}
+
+func (i PipelineScanRiskArgs) ToPipelineScanRiskOutputWithContext(ctx context.Context) PipelineScanRiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineScanRiskOutput)
+}
+
+// PipelineScanRiskArrayInput is an input type that accepts PipelineScanRiskArray and PipelineScanRiskArrayOutput values.
+// You can construct a concrete instance of `PipelineScanRiskArrayInput` via:
+//
+//	PipelineScanRiskArray{ PipelineScanRiskArgs{...} }
+type PipelineScanRiskArrayInput interface {
+	pulumi.Input
+
+	ToPipelineScanRiskArrayOutput() PipelineScanRiskArrayOutput
+	ToPipelineScanRiskArrayOutputWithContext(context.Context) PipelineScanRiskArrayOutput
+}
+
+type PipelineScanRiskArray []PipelineScanRiskInput
+
+func (PipelineScanRiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PipelineScanRisk)(nil)).Elem()
+}
+
+func (i PipelineScanRiskArray) ToPipelineScanRiskArrayOutput() PipelineScanRiskArrayOutput {
+	return i.ToPipelineScanRiskArrayOutputWithContext(context.Background())
+}
+
+func (i PipelineScanRiskArray) ToPipelineScanRiskArrayOutputWithContext(ctx context.Context) PipelineScanRiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineScanRiskArrayOutput)
+}
+
+type PipelineScanRiskOutput struct{ *pulumi.OutputState }
+
+func (PipelineScanRiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineScanRisk)(nil)).Elem()
+}
+
+func (o PipelineScanRiskOutput) ToPipelineScanRiskOutput() PipelineScanRiskOutput {
+	return o
+}
+
+func (o PipelineScanRiskOutput) ToPipelineScanRiskOutputWithContext(ctx context.Context) PipelineScanRiskOutput {
+	return o
+}
+
+// Description of the risk.
+func (o PipelineScanRiskOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineScanRisk) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Fingerprint of the risk.
+func (o PipelineScanRiskOutput) Fingerprint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineScanRisk) *string { return v.Fingerprint }).(pulumi.StringPtrOutput)
+}
+
+// Identity of the risk.
+func (o PipelineScanRiskOutput) Identity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineScanRisk) *string { return v.Identity }).(pulumi.StringPtrOutput)
+}
+
+// Additional risk metadata as a JSON object string.
+func (o PipelineScanRiskOutput) MetadataJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineScanRisk) *string { return v.MetadataJson }).(pulumi.StringPtrOutput)
+}
+
+// Name of the risk.
+func (o PipelineScanRiskOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineScanRisk) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Detections of this risk in the scan.
+func (o PipelineScanRiskOutput) Occurrences() PipelineScanRiskOccurrenceArrayOutput {
+	return o.ApplyT(func(v PipelineScanRisk) []PipelineScanRiskOccurrence { return v.Occurrences }).(PipelineScanRiskOccurrenceArrayOutput)
+}
+
+// Identity of the service the risk applies to.
+func (o PipelineScanRiskOutput) ServiceIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineScanRisk) *string { return v.ServiceIdentity }).(pulumi.StringPtrOutput)
+}
+
+// Name of the service the risk applies to.
+func (o PipelineScanRiskOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineScanRisk) *string { return v.ServiceName }).(pulumi.StringPtrOutput)
+}
+
+// Service kind, such as DiscoveredService, ChaosService, or CDService.
+func (o PipelineScanRiskOutput) ServiceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineScanRisk) *string { return v.ServiceType }).(pulumi.StringPtrOutput)
+}
+
+// Severity: Critical, High, Medium, or Low.
+func (o PipelineScanRiskOutput) Severity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineScanRisk) *string { return v.Severity }).(pulumi.StringPtrOutput)
+}
+
+// Status: Open, InProgress, Resolved, or Ignored.
+func (o PipelineScanRiskOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineScanRisk) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// Tags on the risk.
+func (o PipelineScanRiskOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PipelineScanRisk) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+type PipelineScanRiskArrayOutput struct{ *pulumi.OutputState }
+
+func (PipelineScanRiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PipelineScanRisk)(nil)).Elem()
+}
+
+func (o PipelineScanRiskArrayOutput) ToPipelineScanRiskArrayOutput() PipelineScanRiskArrayOutput {
+	return o
+}
+
+func (o PipelineScanRiskArrayOutput) ToPipelineScanRiskArrayOutputWithContext(ctx context.Context) PipelineScanRiskArrayOutput {
+	return o
+}
+
+func (o PipelineScanRiskArrayOutput) Index(i pulumi.IntInput) PipelineScanRiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PipelineScanRisk {
+		return vs[0].([]PipelineScanRisk)[vs[1].(int)]
+	}).(PipelineScanRiskOutput)
+}
+
+type PipelineScanRiskOccurrence struct {
+	// Detection time as a Unix timestamp.
+	DetectedAt *int `pulumi:"detectedAt"`
+	// Evidence for the occurrence.
+	Evidences []string `pulumi:"evidences"`
+	// Identity of this occurrence.
+	OccurrenceId *string `pulumi:"occurrenceId"`
+	// Remediation guidance.
+	Remediations []string `pulumi:"remediations"`
+	// Resilience testing recommendations.
+	ResilienceTestingRecs []string `pulumi:"resilienceTestingRecs"`
+	// Service name recorded on the occurrence.
+	ServiceName *string `pulumi:"serviceName"`
+	// Source id of the occurrence.
+	SourceId *string `pulumi:"sourceId"`
+	// Source type of the occurrence.
+	SourceType *string `pulumi:"sourceType"`
+}
+
+// PipelineScanRiskOccurrenceInput is an input type that accepts PipelineScanRiskOccurrenceArgs and PipelineScanRiskOccurrenceOutput values.
+// You can construct a concrete instance of `PipelineScanRiskOccurrenceInput` via:
+//
+//	PipelineScanRiskOccurrenceArgs{...}
+type PipelineScanRiskOccurrenceInput interface {
+	pulumi.Input
+
+	ToPipelineScanRiskOccurrenceOutput() PipelineScanRiskOccurrenceOutput
+	ToPipelineScanRiskOccurrenceOutputWithContext(context.Context) PipelineScanRiskOccurrenceOutput
+}
+
+type PipelineScanRiskOccurrenceArgs struct {
+	// Detection time as a Unix timestamp.
+	DetectedAt pulumi.IntPtrInput `pulumi:"detectedAt"`
+	// Evidence for the occurrence.
+	Evidences pulumi.StringArrayInput `pulumi:"evidences"`
+	// Identity of this occurrence.
+	OccurrenceId pulumi.StringPtrInput `pulumi:"occurrenceId"`
+	// Remediation guidance.
+	Remediations pulumi.StringArrayInput `pulumi:"remediations"`
+	// Resilience testing recommendations.
+	ResilienceTestingRecs pulumi.StringArrayInput `pulumi:"resilienceTestingRecs"`
+	// Service name recorded on the occurrence.
+	ServiceName pulumi.StringPtrInput `pulumi:"serviceName"`
+	// Source id of the occurrence.
+	SourceId pulumi.StringPtrInput `pulumi:"sourceId"`
+	// Source type of the occurrence.
+	SourceType pulumi.StringPtrInput `pulumi:"sourceType"`
+}
+
+func (PipelineScanRiskOccurrenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineScanRiskOccurrence)(nil)).Elem()
+}
+
+func (i PipelineScanRiskOccurrenceArgs) ToPipelineScanRiskOccurrenceOutput() PipelineScanRiskOccurrenceOutput {
+	return i.ToPipelineScanRiskOccurrenceOutputWithContext(context.Background())
+}
+
+func (i PipelineScanRiskOccurrenceArgs) ToPipelineScanRiskOccurrenceOutputWithContext(ctx context.Context) PipelineScanRiskOccurrenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineScanRiskOccurrenceOutput)
+}
+
+// PipelineScanRiskOccurrenceArrayInput is an input type that accepts PipelineScanRiskOccurrenceArray and PipelineScanRiskOccurrenceArrayOutput values.
+// You can construct a concrete instance of `PipelineScanRiskOccurrenceArrayInput` via:
+//
+//	PipelineScanRiskOccurrenceArray{ PipelineScanRiskOccurrenceArgs{...} }
+type PipelineScanRiskOccurrenceArrayInput interface {
+	pulumi.Input
+
+	ToPipelineScanRiskOccurrenceArrayOutput() PipelineScanRiskOccurrenceArrayOutput
+	ToPipelineScanRiskOccurrenceArrayOutputWithContext(context.Context) PipelineScanRiskOccurrenceArrayOutput
+}
+
+type PipelineScanRiskOccurrenceArray []PipelineScanRiskOccurrenceInput
+
+func (PipelineScanRiskOccurrenceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PipelineScanRiskOccurrence)(nil)).Elem()
+}
+
+func (i PipelineScanRiskOccurrenceArray) ToPipelineScanRiskOccurrenceArrayOutput() PipelineScanRiskOccurrenceArrayOutput {
+	return i.ToPipelineScanRiskOccurrenceArrayOutputWithContext(context.Background())
+}
+
+func (i PipelineScanRiskOccurrenceArray) ToPipelineScanRiskOccurrenceArrayOutputWithContext(ctx context.Context) PipelineScanRiskOccurrenceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineScanRiskOccurrenceArrayOutput)
+}
+
+type PipelineScanRiskOccurrenceOutput struct{ *pulumi.OutputState }
+
+func (PipelineScanRiskOccurrenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineScanRiskOccurrence)(nil)).Elem()
+}
+
+func (o PipelineScanRiskOccurrenceOutput) ToPipelineScanRiskOccurrenceOutput() PipelineScanRiskOccurrenceOutput {
+	return o
+}
+
+func (o PipelineScanRiskOccurrenceOutput) ToPipelineScanRiskOccurrenceOutputWithContext(ctx context.Context) PipelineScanRiskOccurrenceOutput {
+	return o
+}
+
+// Detection time as a Unix timestamp.
+func (o PipelineScanRiskOccurrenceOutput) DetectedAt() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PipelineScanRiskOccurrence) *int { return v.DetectedAt }).(pulumi.IntPtrOutput)
+}
+
+// Evidence for the occurrence.
+func (o PipelineScanRiskOccurrenceOutput) Evidences() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PipelineScanRiskOccurrence) []string { return v.Evidences }).(pulumi.StringArrayOutput)
+}
+
+// Identity of this occurrence.
+func (o PipelineScanRiskOccurrenceOutput) OccurrenceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineScanRiskOccurrence) *string { return v.OccurrenceId }).(pulumi.StringPtrOutput)
+}
+
+// Remediation guidance.
+func (o PipelineScanRiskOccurrenceOutput) Remediations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PipelineScanRiskOccurrence) []string { return v.Remediations }).(pulumi.StringArrayOutput)
+}
+
+// Resilience testing recommendations.
+func (o PipelineScanRiskOccurrenceOutput) ResilienceTestingRecs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PipelineScanRiskOccurrence) []string { return v.ResilienceTestingRecs }).(pulumi.StringArrayOutput)
+}
+
+// Service name recorded on the occurrence.
+func (o PipelineScanRiskOccurrenceOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineScanRiskOccurrence) *string { return v.ServiceName }).(pulumi.StringPtrOutput)
+}
+
+// Source id of the occurrence.
+func (o PipelineScanRiskOccurrenceOutput) SourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineScanRiskOccurrence) *string { return v.SourceId }).(pulumi.StringPtrOutput)
+}
+
+// Source type of the occurrence.
+func (o PipelineScanRiskOccurrenceOutput) SourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineScanRiskOccurrence) *string { return v.SourceType }).(pulumi.StringPtrOutput)
+}
+
+type PipelineScanRiskOccurrenceArrayOutput struct{ *pulumi.OutputState }
+
+func (PipelineScanRiskOccurrenceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PipelineScanRiskOccurrence)(nil)).Elem()
+}
+
+func (o PipelineScanRiskOccurrenceArrayOutput) ToPipelineScanRiskOccurrenceArrayOutput() PipelineScanRiskOccurrenceArrayOutput {
+	return o
+}
+
+func (o PipelineScanRiskOccurrenceArrayOutput) ToPipelineScanRiskOccurrenceArrayOutputWithContext(ctx context.Context) PipelineScanRiskOccurrenceArrayOutput {
+	return o
+}
+
+func (o PipelineScanRiskOccurrenceArrayOutput) Index(i pulumi.IntInput) PipelineScanRiskOccurrenceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PipelineScanRiskOccurrence {
+		return vs[0].([]PipelineScanRiskOccurrence)[vs[1].(int)]
+	}).(PipelineScanRiskOccurrenceOutput)
+}
+
+type PipelineScanRiskSummary struct {
+	// Analysis time as a Unix timestamp.
+	AnalysedAt *int `pulumi:"analysedAt"`
+	// Risk counts keyed by category.
+	CategoryCounts map[string]int `pulumi:"categoryCounts"`
+	// Number of risks.
+	RiskCount *int `pulumi:"riskCount"`
+	// Resilience score.
+	Score *int `pulumi:"score"`
+	// Maximum resilience score.
+	ScoreMax *int `pulumi:"scoreMax"`
+	// Services included in analysis.
+	ServicesAnalysed *int `pulumi:"servicesAnalysed"`
+	// Services with at least one risk.
+	ServicesAtRisk *int `pulumi:"servicesAtRisk"`
+	// Risk counts keyed by severity.
+	SeverityCounts map[string]int `pulumi:"severityCounts"`
+}
+
+// PipelineScanRiskSummaryInput is an input type that accepts PipelineScanRiskSummaryArgs and PipelineScanRiskSummaryOutput values.
+// You can construct a concrete instance of `PipelineScanRiskSummaryInput` via:
+//
+//	PipelineScanRiskSummaryArgs{...}
+type PipelineScanRiskSummaryInput interface {
+	pulumi.Input
+
+	ToPipelineScanRiskSummaryOutput() PipelineScanRiskSummaryOutput
+	ToPipelineScanRiskSummaryOutputWithContext(context.Context) PipelineScanRiskSummaryOutput
+}
+
+type PipelineScanRiskSummaryArgs struct {
+	// Analysis time as a Unix timestamp.
+	AnalysedAt pulumi.IntPtrInput `pulumi:"analysedAt"`
+	// Risk counts keyed by category.
+	CategoryCounts pulumi.IntMapInput `pulumi:"categoryCounts"`
+	// Number of risks.
+	RiskCount pulumi.IntPtrInput `pulumi:"riskCount"`
+	// Resilience score.
+	Score pulumi.IntPtrInput `pulumi:"score"`
+	// Maximum resilience score.
+	ScoreMax pulumi.IntPtrInput `pulumi:"scoreMax"`
+	// Services included in analysis.
+	ServicesAnalysed pulumi.IntPtrInput `pulumi:"servicesAnalysed"`
+	// Services with at least one risk.
+	ServicesAtRisk pulumi.IntPtrInput `pulumi:"servicesAtRisk"`
+	// Risk counts keyed by severity.
+	SeverityCounts pulumi.IntMapInput `pulumi:"severityCounts"`
+}
+
+func (PipelineScanRiskSummaryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineScanRiskSummary)(nil)).Elem()
+}
+
+func (i PipelineScanRiskSummaryArgs) ToPipelineScanRiskSummaryOutput() PipelineScanRiskSummaryOutput {
+	return i.ToPipelineScanRiskSummaryOutputWithContext(context.Background())
+}
+
+func (i PipelineScanRiskSummaryArgs) ToPipelineScanRiskSummaryOutputWithContext(ctx context.Context) PipelineScanRiskSummaryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineScanRiskSummaryOutput)
+}
+
+// PipelineScanRiskSummaryArrayInput is an input type that accepts PipelineScanRiskSummaryArray and PipelineScanRiskSummaryArrayOutput values.
+// You can construct a concrete instance of `PipelineScanRiskSummaryArrayInput` via:
+//
+//	PipelineScanRiskSummaryArray{ PipelineScanRiskSummaryArgs{...} }
+type PipelineScanRiskSummaryArrayInput interface {
+	pulumi.Input
+
+	ToPipelineScanRiskSummaryArrayOutput() PipelineScanRiskSummaryArrayOutput
+	ToPipelineScanRiskSummaryArrayOutputWithContext(context.Context) PipelineScanRiskSummaryArrayOutput
+}
+
+type PipelineScanRiskSummaryArray []PipelineScanRiskSummaryInput
+
+func (PipelineScanRiskSummaryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PipelineScanRiskSummary)(nil)).Elem()
+}
+
+func (i PipelineScanRiskSummaryArray) ToPipelineScanRiskSummaryArrayOutput() PipelineScanRiskSummaryArrayOutput {
+	return i.ToPipelineScanRiskSummaryArrayOutputWithContext(context.Background())
+}
+
+func (i PipelineScanRiskSummaryArray) ToPipelineScanRiskSummaryArrayOutputWithContext(ctx context.Context) PipelineScanRiskSummaryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineScanRiskSummaryArrayOutput)
+}
+
+type PipelineScanRiskSummaryOutput struct{ *pulumi.OutputState }
+
+func (PipelineScanRiskSummaryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineScanRiskSummary)(nil)).Elem()
+}
+
+func (o PipelineScanRiskSummaryOutput) ToPipelineScanRiskSummaryOutput() PipelineScanRiskSummaryOutput {
+	return o
+}
+
+func (o PipelineScanRiskSummaryOutput) ToPipelineScanRiskSummaryOutputWithContext(ctx context.Context) PipelineScanRiskSummaryOutput {
+	return o
+}
+
+// Analysis time as a Unix timestamp.
+func (o PipelineScanRiskSummaryOutput) AnalysedAt() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PipelineScanRiskSummary) *int { return v.AnalysedAt }).(pulumi.IntPtrOutput)
+}
+
+// Risk counts keyed by category.
+func (o PipelineScanRiskSummaryOutput) CategoryCounts() pulumi.IntMapOutput {
+	return o.ApplyT(func(v PipelineScanRiskSummary) map[string]int { return v.CategoryCounts }).(pulumi.IntMapOutput)
+}
+
+// Number of risks.
+func (o PipelineScanRiskSummaryOutput) RiskCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PipelineScanRiskSummary) *int { return v.RiskCount }).(pulumi.IntPtrOutput)
+}
+
+// Resilience score.
+func (o PipelineScanRiskSummaryOutput) Score() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PipelineScanRiskSummary) *int { return v.Score }).(pulumi.IntPtrOutput)
+}
+
+// Maximum resilience score.
+func (o PipelineScanRiskSummaryOutput) ScoreMax() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PipelineScanRiskSummary) *int { return v.ScoreMax }).(pulumi.IntPtrOutput)
+}
+
+// Services included in analysis.
+func (o PipelineScanRiskSummaryOutput) ServicesAnalysed() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PipelineScanRiskSummary) *int { return v.ServicesAnalysed }).(pulumi.IntPtrOutput)
+}
+
+// Services with at least one risk.
+func (o PipelineScanRiskSummaryOutput) ServicesAtRisk() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PipelineScanRiskSummary) *int { return v.ServicesAtRisk }).(pulumi.IntPtrOutput)
+}
+
+// Risk counts keyed by severity.
+func (o PipelineScanRiskSummaryOutput) SeverityCounts() pulumi.IntMapOutput {
+	return o.ApplyT(func(v PipelineScanRiskSummary) map[string]int { return v.SeverityCounts }).(pulumi.IntMapOutput)
+}
+
+type PipelineScanRiskSummaryArrayOutput struct{ *pulumi.OutputState }
+
+func (PipelineScanRiskSummaryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PipelineScanRiskSummary)(nil)).Elem()
+}
+
+func (o PipelineScanRiskSummaryArrayOutput) ToPipelineScanRiskSummaryArrayOutput() PipelineScanRiskSummaryArrayOutput {
+	return o
+}
+
+func (o PipelineScanRiskSummaryArrayOutput) ToPipelineScanRiskSummaryArrayOutputWithContext(ctx context.Context) PipelineScanRiskSummaryArrayOutput {
+	return o
+}
+
+func (o PipelineScanRiskSummaryArrayOutput) Index(i pulumi.IntInput) PipelineScanRiskSummaryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PipelineScanRiskSummary {
+		return vs[0].([]PipelineScanRiskSummary)[vs[1].(int)]
+	}).(PipelineScanRiskSummaryOutput)
+}
+
+type PipelineScanSummary struct {
+	// Critical risks.
+	Critical *int `pulumi:"critical"`
+	// High risks.
+	High *int `pulumi:"high"`
+	// Low risks.
+	Low *int `pulumi:"low"`
+	// Maximum resilience score.
+	MaxScore *int `pulumi:"maxScore"`
+	// Medium risks.
+	Medium *int `pulumi:"medium"`
+	// Number of risk rules evaluated.
+	RuleCount *int `pulumi:"ruleCount"`
+	// Resilience score.
+	Score *int `pulumi:"score"`
+	// Number of services scanned.
+	ServicesScanned *int `pulumi:"servicesScanned"`
+	// Number of risks found.
+	TotalRisks *int `pulumi:"totalRisks"`
+}
+
+// PipelineScanSummaryInput is an input type that accepts PipelineScanSummaryArgs and PipelineScanSummaryOutput values.
+// You can construct a concrete instance of `PipelineScanSummaryInput` via:
+//
+//	PipelineScanSummaryArgs{...}
+type PipelineScanSummaryInput interface {
+	pulumi.Input
+
+	ToPipelineScanSummaryOutput() PipelineScanSummaryOutput
+	ToPipelineScanSummaryOutputWithContext(context.Context) PipelineScanSummaryOutput
+}
+
+type PipelineScanSummaryArgs struct {
+	// Critical risks.
+	Critical pulumi.IntPtrInput `pulumi:"critical"`
+	// High risks.
+	High pulumi.IntPtrInput `pulumi:"high"`
+	// Low risks.
+	Low pulumi.IntPtrInput `pulumi:"low"`
+	// Maximum resilience score.
+	MaxScore pulumi.IntPtrInput `pulumi:"maxScore"`
+	// Medium risks.
+	Medium pulumi.IntPtrInput `pulumi:"medium"`
+	// Number of risk rules evaluated.
+	RuleCount pulumi.IntPtrInput `pulumi:"ruleCount"`
+	// Resilience score.
+	Score pulumi.IntPtrInput `pulumi:"score"`
+	// Number of services scanned.
+	ServicesScanned pulumi.IntPtrInput `pulumi:"servicesScanned"`
+	// Number of risks found.
+	TotalRisks pulumi.IntPtrInput `pulumi:"totalRisks"`
+}
+
+func (PipelineScanSummaryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineScanSummary)(nil)).Elem()
+}
+
+func (i PipelineScanSummaryArgs) ToPipelineScanSummaryOutput() PipelineScanSummaryOutput {
+	return i.ToPipelineScanSummaryOutputWithContext(context.Background())
+}
+
+func (i PipelineScanSummaryArgs) ToPipelineScanSummaryOutputWithContext(ctx context.Context) PipelineScanSummaryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineScanSummaryOutput)
+}
+
+// PipelineScanSummaryArrayInput is an input type that accepts PipelineScanSummaryArray and PipelineScanSummaryArrayOutput values.
+// You can construct a concrete instance of `PipelineScanSummaryArrayInput` via:
+//
+//	PipelineScanSummaryArray{ PipelineScanSummaryArgs{...} }
+type PipelineScanSummaryArrayInput interface {
+	pulumi.Input
+
+	ToPipelineScanSummaryArrayOutput() PipelineScanSummaryArrayOutput
+	ToPipelineScanSummaryArrayOutputWithContext(context.Context) PipelineScanSummaryArrayOutput
+}
+
+type PipelineScanSummaryArray []PipelineScanSummaryInput
+
+func (PipelineScanSummaryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PipelineScanSummary)(nil)).Elem()
+}
+
+func (i PipelineScanSummaryArray) ToPipelineScanSummaryArrayOutput() PipelineScanSummaryArrayOutput {
+	return i.ToPipelineScanSummaryArrayOutputWithContext(context.Background())
+}
+
+func (i PipelineScanSummaryArray) ToPipelineScanSummaryArrayOutputWithContext(ctx context.Context) PipelineScanSummaryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineScanSummaryArrayOutput)
+}
+
+type PipelineScanSummaryOutput struct{ *pulumi.OutputState }
+
+func (PipelineScanSummaryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineScanSummary)(nil)).Elem()
+}
+
+func (o PipelineScanSummaryOutput) ToPipelineScanSummaryOutput() PipelineScanSummaryOutput {
+	return o
+}
+
+func (o PipelineScanSummaryOutput) ToPipelineScanSummaryOutputWithContext(ctx context.Context) PipelineScanSummaryOutput {
+	return o
+}
+
+// Critical risks.
+func (o PipelineScanSummaryOutput) Critical() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PipelineScanSummary) *int { return v.Critical }).(pulumi.IntPtrOutput)
+}
+
+// High risks.
+func (o PipelineScanSummaryOutput) High() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PipelineScanSummary) *int { return v.High }).(pulumi.IntPtrOutput)
+}
+
+// Low risks.
+func (o PipelineScanSummaryOutput) Low() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PipelineScanSummary) *int { return v.Low }).(pulumi.IntPtrOutput)
+}
+
+// Maximum resilience score.
+func (o PipelineScanSummaryOutput) MaxScore() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PipelineScanSummary) *int { return v.MaxScore }).(pulumi.IntPtrOutput)
+}
+
+// Medium risks.
+func (o PipelineScanSummaryOutput) Medium() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PipelineScanSummary) *int { return v.Medium }).(pulumi.IntPtrOutput)
+}
+
+// Number of risk rules evaluated.
+func (o PipelineScanSummaryOutput) RuleCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PipelineScanSummary) *int { return v.RuleCount }).(pulumi.IntPtrOutput)
+}
+
+// Resilience score.
+func (o PipelineScanSummaryOutput) Score() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PipelineScanSummary) *int { return v.Score }).(pulumi.IntPtrOutput)
+}
+
+// Number of services scanned.
+func (o PipelineScanSummaryOutput) ServicesScanned() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PipelineScanSummary) *int { return v.ServicesScanned }).(pulumi.IntPtrOutput)
+}
+
+// Number of risks found.
+func (o PipelineScanSummaryOutput) TotalRisks() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PipelineScanSummary) *int { return v.TotalRisks }).(pulumi.IntPtrOutput)
+}
+
+type PipelineScanSummaryArrayOutput struct{ *pulumi.OutputState }
+
+func (PipelineScanSummaryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PipelineScanSummary)(nil)).Elem()
+}
+
+func (o PipelineScanSummaryArrayOutput) ToPipelineScanSummaryArrayOutput() PipelineScanSummaryArrayOutput {
+	return o
+}
+
+func (o PipelineScanSummaryArrayOutput) ToPipelineScanSummaryArrayOutputWithContext(ctx context.Context) PipelineScanSummaryArrayOutput {
+	return o
+}
+
+func (o PipelineScanSummaryArrayOutput) Index(i pulumi.IntInput) PipelineScanSummaryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PipelineScanSummary {
+		return vs[0].([]PipelineScanSummary)[vs[1].(int)]
+	}).(PipelineScanSummaryOutput)
 }
 
 type ProbeTemplateApmProbe struct {
@@ -20644,6 +22758,112 @@ func (o SecurityGovernanceRuleV3TimeWindowRecurrencePtrOutput) Value() pulumi.In
 	}).(pulumi.IntPtrOutput)
 }
 
+type ServiceOnboardingProbe struct {
+	// Runtime input values for the probe, keyed by input name.
+	Inputs map[string]string `pulumi:"inputs"`
+	// Identifier of a probe that already exists in the project.
+	ProbeId string `pulumi:"probeId"`
+}
+
+// ServiceOnboardingProbeInput is an input type that accepts ServiceOnboardingProbeArgs and ServiceOnboardingProbeOutput values.
+// You can construct a concrete instance of `ServiceOnboardingProbeInput` via:
+//
+//	ServiceOnboardingProbeArgs{...}
+type ServiceOnboardingProbeInput interface {
+	pulumi.Input
+
+	ToServiceOnboardingProbeOutput() ServiceOnboardingProbeOutput
+	ToServiceOnboardingProbeOutputWithContext(context.Context) ServiceOnboardingProbeOutput
+}
+
+type ServiceOnboardingProbeArgs struct {
+	// Runtime input values for the probe, keyed by input name.
+	Inputs pulumi.StringMapInput `pulumi:"inputs"`
+	// Identifier of a probe that already exists in the project.
+	ProbeId pulumi.StringInput `pulumi:"probeId"`
+}
+
+func (ServiceOnboardingProbeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceOnboardingProbe)(nil)).Elem()
+}
+
+func (i ServiceOnboardingProbeArgs) ToServiceOnboardingProbeOutput() ServiceOnboardingProbeOutput {
+	return i.ToServiceOnboardingProbeOutputWithContext(context.Background())
+}
+
+func (i ServiceOnboardingProbeArgs) ToServiceOnboardingProbeOutputWithContext(ctx context.Context) ServiceOnboardingProbeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceOnboardingProbeOutput)
+}
+
+// ServiceOnboardingProbeArrayInput is an input type that accepts ServiceOnboardingProbeArray and ServiceOnboardingProbeArrayOutput values.
+// You can construct a concrete instance of `ServiceOnboardingProbeArrayInput` via:
+//
+//	ServiceOnboardingProbeArray{ ServiceOnboardingProbeArgs{...} }
+type ServiceOnboardingProbeArrayInput interface {
+	pulumi.Input
+
+	ToServiceOnboardingProbeArrayOutput() ServiceOnboardingProbeArrayOutput
+	ToServiceOnboardingProbeArrayOutputWithContext(context.Context) ServiceOnboardingProbeArrayOutput
+}
+
+type ServiceOnboardingProbeArray []ServiceOnboardingProbeInput
+
+func (ServiceOnboardingProbeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceOnboardingProbe)(nil)).Elem()
+}
+
+func (i ServiceOnboardingProbeArray) ToServiceOnboardingProbeArrayOutput() ServiceOnboardingProbeArrayOutput {
+	return i.ToServiceOnboardingProbeArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceOnboardingProbeArray) ToServiceOnboardingProbeArrayOutputWithContext(ctx context.Context) ServiceOnboardingProbeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceOnboardingProbeArrayOutput)
+}
+
+type ServiceOnboardingProbeOutput struct{ *pulumi.OutputState }
+
+func (ServiceOnboardingProbeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceOnboardingProbe)(nil)).Elem()
+}
+
+func (o ServiceOnboardingProbeOutput) ToServiceOnboardingProbeOutput() ServiceOnboardingProbeOutput {
+	return o
+}
+
+func (o ServiceOnboardingProbeOutput) ToServiceOnboardingProbeOutputWithContext(ctx context.Context) ServiceOnboardingProbeOutput {
+	return o
+}
+
+// Runtime input values for the probe, keyed by input name.
+func (o ServiceOnboardingProbeOutput) Inputs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ServiceOnboardingProbe) map[string]string { return v.Inputs }).(pulumi.StringMapOutput)
+}
+
+// Identifier of a probe that already exists in the project.
+func (o ServiceOnboardingProbeOutput) ProbeId() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceOnboardingProbe) string { return v.ProbeId }).(pulumi.StringOutput)
+}
+
+type ServiceOnboardingProbeArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceOnboardingProbeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceOnboardingProbe)(nil)).Elem()
+}
+
+func (o ServiceOnboardingProbeArrayOutput) ToServiceOnboardingProbeArrayOutput() ServiceOnboardingProbeArrayOutput {
+	return o
+}
+
+func (o ServiceOnboardingProbeArrayOutput) ToServiceOnboardingProbeArrayOutputWithContext(ctx context.Context) ServiceOnboardingProbeArrayOutput {
+	return o
+}
+
+func (o ServiceOnboardingProbeArrayOutput) Index(i pulumi.IntInput) ServiceOnboardingProbeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceOnboardingProbe {
+		return vs[0].([]ServiceOnboardingProbe)[vs[1].(int)]
+	}).(ServiceOnboardingProbeOutput)
+}
+
 type GetActionTemplateContainerAction struct {
 	// Annotations to apply to the container pod.
 	Annotations map[string]string `pulumi:"annotations"`
@@ -26168,6 +28388,948 @@ func (o GetImageRegistryCustomImageArrayOutput) Index(i pulumi.IntInput) GetImag
 	}).(GetImageRegistryCustomImageOutput)
 }
 
+type GetInfrastructureScanCollectedData struct {
+	// Collection time as a Unix timestamp.
+	CollectedAt int `pulumi:"collectedAt"`
+	// Dependent resources collected.
+	DependentResources int `pulumi:"dependentResources"`
+	// Collection failures returned by the API.
+	Errors []GetInfrastructureScanCollectedDataError `pulumi:"errors"`
+	// Namespaces collected.
+	Namespaces []string `pulumi:"namespaces"`
+	// Primary resources collected.
+	PrimaryResources int `pulumi:"primaryResources"`
+	// Service groups collected.
+	ServiceGroups int `pulumi:"serviceGroups"`
+	// Total resources collected.
+	TotalResources int `pulumi:"totalResources"`
+}
+
+// GetInfrastructureScanCollectedDataInput is an input type that accepts GetInfrastructureScanCollectedDataArgs and GetInfrastructureScanCollectedDataOutput values.
+// You can construct a concrete instance of `GetInfrastructureScanCollectedDataInput` via:
+//
+//	GetInfrastructureScanCollectedDataArgs{...}
+type GetInfrastructureScanCollectedDataInput interface {
+	pulumi.Input
+
+	ToGetInfrastructureScanCollectedDataOutput() GetInfrastructureScanCollectedDataOutput
+	ToGetInfrastructureScanCollectedDataOutputWithContext(context.Context) GetInfrastructureScanCollectedDataOutput
+}
+
+type GetInfrastructureScanCollectedDataArgs struct {
+	// Collection time as a Unix timestamp.
+	CollectedAt pulumi.IntInput `pulumi:"collectedAt"`
+	// Dependent resources collected.
+	DependentResources pulumi.IntInput `pulumi:"dependentResources"`
+	// Collection failures returned by the API.
+	Errors GetInfrastructureScanCollectedDataErrorArrayInput `pulumi:"errors"`
+	// Namespaces collected.
+	Namespaces pulumi.StringArrayInput `pulumi:"namespaces"`
+	// Primary resources collected.
+	PrimaryResources pulumi.IntInput `pulumi:"primaryResources"`
+	// Service groups collected.
+	ServiceGroups pulumi.IntInput `pulumi:"serviceGroups"`
+	// Total resources collected.
+	TotalResources pulumi.IntInput `pulumi:"totalResources"`
+}
+
+func (GetInfrastructureScanCollectedDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInfrastructureScanCollectedData)(nil)).Elem()
+}
+
+func (i GetInfrastructureScanCollectedDataArgs) ToGetInfrastructureScanCollectedDataOutput() GetInfrastructureScanCollectedDataOutput {
+	return i.ToGetInfrastructureScanCollectedDataOutputWithContext(context.Background())
+}
+
+func (i GetInfrastructureScanCollectedDataArgs) ToGetInfrastructureScanCollectedDataOutputWithContext(ctx context.Context) GetInfrastructureScanCollectedDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfrastructureScanCollectedDataOutput)
+}
+
+// GetInfrastructureScanCollectedDataArrayInput is an input type that accepts GetInfrastructureScanCollectedDataArray and GetInfrastructureScanCollectedDataArrayOutput values.
+// You can construct a concrete instance of `GetInfrastructureScanCollectedDataArrayInput` via:
+//
+//	GetInfrastructureScanCollectedDataArray{ GetInfrastructureScanCollectedDataArgs{...} }
+type GetInfrastructureScanCollectedDataArrayInput interface {
+	pulumi.Input
+
+	ToGetInfrastructureScanCollectedDataArrayOutput() GetInfrastructureScanCollectedDataArrayOutput
+	ToGetInfrastructureScanCollectedDataArrayOutputWithContext(context.Context) GetInfrastructureScanCollectedDataArrayOutput
+}
+
+type GetInfrastructureScanCollectedDataArray []GetInfrastructureScanCollectedDataInput
+
+func (GetInfrastructureScanCollectedDataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInfrastructureScanCollectedData)(nil)).Elem()
+}
+
+func (i GetInfrastructureScanCollectedDataArray) ToGetInfrastructureScanCollectedDataArrayOutput() GetInfrastructureScanCollectedDataArrayOutput {
+	return i.ToGetInfrastructureScanCollectedDataArrayOutputWithContext(context.Background())
+}
+
+func (i GetInfrastructureScanCollectedDataArray) ToGetInfrastructureScanCollectedDataArrayOutputWithContext(ctx context.Context) GetInfrastructureScanCollectedDataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfrastructureScanCollectedDataArrayOutput)
+}
+
+type GetInfrastructureScanCollectedDataOutput struct{ *pulumi.OutputState }
+
+func (GetInfrastructureScanCollectedDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInfrastructureScanCollectedData)(nil)).Elem()
+}
+
+func (o GetInfrastructureScanCollectedDataOutput) ToGetInfrastructureScanCollectedDataOutput() GetInfrastructureScanCollectedDataOutput {
+	return o
+}
+
+func (o GetInfrastructureScanCollectedDataOutput) ToGetInfrastructureScanCollectedDataOutputWithContext(ctx context.Context) GetInfrastructureScanCollectedDataOutput {
+	return o
+}
+
+// Collection time as a Unix timestamp.
+func (o GetInfrastructureScanCollectedDataOutput) CollectedAt() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInfrastructureScanCollectedData) int { return v.CollectedAt }).(pulumi.IntOutput)
+}
+
+// Dependent resources collected.
+func (o GetInfrastructureScanCollectedDataOutput) DependentResources() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInfrastructureScanCollectedData) int { return v.DependentResources }).(pulumi.IntOutput)
+}
+
+// Collection failures returned by the API.
+func (o GetInfrastructureScanCollectedDataOutput) Errors() GetInfrastructureScanCollectedDataErrorArrayOutput {
+	return o.ApplyT(func(v GetInfrastructureScanCollectedData) []GetInfrastructureScanCollectedDataError { return v.Errors }).(GetInfrastructureScanCollectedDataErrorArrayOutput)
+}
+
+// Namespaces collected.
+func (o GetInfrastructureScanCollectedDataOutput) Namespaces() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInfrastructureScanCollectedData) []string { return v.Namespaces }).(pulumi.StringArrayOutput)
+}
+
+// Primary resources collected.
+func (o GetInfrastructureScanCollectedDataOutput) PrimaryResources() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInfrastructureScanCollectedData) int { return v.PrimaryResources }).(pulumi.IntOutput)
+}
+
+// Service groups collected.
+func (o GetInfrastructureScanCollectedDataOutput) ServiceGroups() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInfrastructureScanCollectedData) int { return v.ServiceGroups }).(pulumi.IntOutput)
+}
+
+// Total resources collected.
+func (o GetInfrastructureScanCollectedDataOutput) TotalResources() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInfrastructureScanCollectedData) int { return v.TotalResources }).(pulumi.IntOutput)
+}
+
+type GetInfrastructureScanCollectedDataArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInfrastructureScanCollectedDataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInfrastructureScanCollectedData)(nil)).Elem()
+}
+
+func (o GetInfrastructureScanCollectedDataArrayOutput) ToGetInfrastructureScanCollectedDataArrayOutput() GetInfrastructureScanCollectedDataArrayOutput {
+	return o
+}
+
+func (o GetInfrastructureScanCollectedDataArrayOutput) ToGetInfrastructureScanCollectedDataArrayOutputWithContext(ctx context.Context) GetInfrastructureScanCollectedDataArrayOutput {
+	return o
+}
+
+func (o GetInfrastructureScanCollectedDataArrayOutput) Index(i pulumi.IntInput) GetInfrastructureScanCollectedDataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInfrastructureScanCollectedData {
+		return vs[0].([]GetInfrastructureScanCollectedData)[vs[1].(int)]
+	}).(GetInfrastructureScanCollectedDataOutput)
+}
+
+type GetInfrastructureScanCollectedDataError struct {
+	// Collection error message.
+	Message string `pulumi:"message"`
+	// Collector that reported the error.
+	Source string `pulumi:"source"`
+}
+
+// GetInfrastructureScanCollectedDataErrorInput is an input type that accepts GetInfrastructureScanCollectedDataErrorArgs and GetInfrastructureScanCollectedDataErrorOutput values.
+// You can construct a concrete instance of `GetInfrastructureScanCollectedDataErrorInput` via:
+//
+//	GetInfrastructureScanCollectedDataErrorArgs{...}
+type GetInfrastructureScanCollectedDataErrorInput interface {
+	pulumi.Input
+
+	ToGetInfrastructureScanCollectedDataErrorOutput() GetInfrastructureScanCollectedDataErrorOutput
+	ToGetInfrastructureScanCollectedDataErrorOutputWithContext(context.Context) GetInfrastructureScanCollectedDataErrorOutput
+}
+
+type GetInfrastructureScanCollectedDataErrorArgs struct {
+	// Collection error message.
+	Message pulumi.StringInput `pulumi:"message"`
+	// Collector that reported the error.
+	Source pulumi.StringInput `pulumi:"source"`
+}
+
+func (GetInfrastructureScanCollectedDataErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInfrastructureScanCollectedDataError)(nil)).Elem()
+}
+
+func (i GetInfrastructureScanCollectedDataErrorArgs) ToGetInfrastructureScanCollectedDataErrorOutput() GetInfrastructureScanCollectedDataErrorOutput {
+	return i.ToGetInfrastructureScanCollectedDataErrorOutputWithContext(context.Background())
+}
+
+func (i GetInfrastructureScanCollectedDataErrorArgs) ToGetInfrastructureScanCollectedDataErrorOutputWithContext(ctx context.Context) GetInfrastructureScanCollectedDataErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfrastructureScanCollectedDataErrorOutput)
+}
+
+// GetInfrastructureScanCollectedDataErrorArrayInput is an input type that accepts GetInfrastructureScanCollectedDataErrorArray and GetInfrastructureScanCollectedDataErrorArrayOutput values.
+// You can construct a concrete instance of `GetInfrastructureScanCollectedDataErrorArrayInput` via:
+//
+//	GetInfrastructureScanCollectedDataErrorArray{ GetInfrastructureScanCollectedDataErrorArgs{...} }
+type GetInfrastructureScanCollectedDataErrorArrayInput interface {
+	pulumi.Input
+
+	ToGetInfrastructureScanCollectedDataErrorArrayOutput() GetInfrastructureScanCollectedDataErrorArrayOutput
+	ToGetInfrastructureScanCollectedDataErrorArrayOutputWithContext(context.Context) GetInfrastructureScanCollectedDataErrorArrayOutput
+}
+
+type GetInfrastructureScanCollectedDataErrorArray []GetInfrastructureScanCollectedDataErrorInput
+
+func (GetInfrastructureScanCollectedDataErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInfrastructureScanCollectedDataError)(nil)).Elem()
+}
+
+func (i GetInfrastructureScanCollectedDataErrorArray) ToGetInfrastructureScanCollectedDataErrorArrayOutput() GetInfrastructureScanCollectedDataErrorArrayOutput {
+	return i.ToGetInfrastructureScanCollectedDataErrorArrayOutputWithContext(context.Background())
+}
+
+func (i GetInfrastructureScanCollectedDataErrorArray) ToGetInfrastructureScanCollectedDataErrorArrayOutputWithContext(ctx context.Context) GetInfrastructureScanCollectedDataErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfrastructureScanCollectedDataErrorArrayOutput)
+}
+
+type GetInfrastructureScanCollectedDataErrorOutput struct{ *pulumi.OutputState }
+
+func (GetInfrastructureScanCollectedDataErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInfrastructureScanCollectedDataError)(nil)).Elem()
+}
+
+func (o GetInfrastructureScanCollectedDataErrorOutput) ToGetInfrastructureScanCollectedDataErrorOutput() GetInfrastructureScanCollectedDataErrorOutput {
+	return o
+}
+
+func (o GetInfrastructureScanCollectedDataErrorOutput) ToGetInfrastructureScanCollectedDataErrorOutputWithContext(ctx context.Context) GetInfrastructureScanCollectedDataErrorOutput {
+	return o
+}
+
+// Collection error message.
+func (o GetInfrastructureScanCollectedDataErrorOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfrastructureScanCollectedDataError) string { return v.Message }).(pulumi.StringOutput)
+}
+
+// Collector that reported the error.
+func (o GetInfrastructureScanCollectedDataErrorOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfrastructureScanCollectedDataError) string { return v.Source }).(pulumi.StringOutput)
+}
+
+type GetInfrastructureScanCollectedDataErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInfrastructureScanCollectedDataErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInfrastructureScanCollectedDataError)(nil)).Elem()
+}
+
+func (o GetInfrastructureScanCollectedDataErrorArrayOutput) ToGetInfrastructureScanCollectedDataErrorArrayOutput() GetInfrastructureScanCollectedDataErrorArrayOutput {
+	return o
+}
+
+func (o GetInfrastructureScanCollectedDataErrorArrayOutput) ToGetInfrastructureScanCollectedDataErrorArrayOutputWithContext(ctx context.Context) GetInfrastructureScanCollectedDataErrorArrayOutput {
+	return o
+}
+
+func (o GetInfrastructureScanCollectedDataErrorArrayOutput) Index(i pulumi.IntInput) GetInfrastructureScanCollectedDataErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInfrastructureScanCollectedDataError {
+		return vs[0].([]GetInfrastructureScanCollectedDataError)[vs[1].(int)]
+	}).(GetInfrastructureScanCollectedDataErrorOutput)
+}
+
+type GetInfrastructureScanRisk struct {
+	// Description of the risk.
+	Description string `pulumi:"description"`
+	// Fingerprint of the risk.
+	Fingerprint string `pulumi:"fingerprint"`
+	// Identity of the risk.
+	Identity string `pulumi:"identity"`
+	// Additional risk metadata as a JSON object string.
+	MetadataJson string `pulumi:"metadataJson"`
+	// Name of the risk.
+	Name string `pulumi:"name"`
+	// Detections of this risk in the scan.
+	Occurrences []GetInfrastructureScanRiskOccurrence `pulumi:"occurrences"`
+	// Identity of the service the risk applies to.
+	ServiceIdentity string `pulumi:"serviceIdentity"`
+	// Name of the service the risk applies to.
+	ServiceName string `pulumi:"serviceName"`
+	// Service kind, such as DiscoveredService, ChaosService, or CDService.
+	ServiceType string `pulumi:"serviceType"`
+	// Severity: Critical, High, Medium, or Low.
+	Severity string `pulumi:"severity"`
+	// Status: Open, InProgress, Resolved, or Ignored.
+	Status string `pulumi:"status"`
+	// Tags on the risk.
+	Tags []string `pulumi:"tags"`
+}
+
+// GetInfrastructureScanRiskInput is an input type that accepts GetInfrastructureScanRiskArgs and GetInfrastructureScanRiskOutput values.
+// You can construct a concrete instance of `GetInfrastructureScanRiskInput` via:
+//
+//	GetInfrastructureScanRiskArgs{...}
+type GetInfrastructureScanRiskInput interface {
+	pulumi.Input
+
+	ToGetInfrastructureScanRiskOutput() GetInfrastructureScanRiskOutput
+	ToGetInfrastructureScanRiskOutputWithContext(context.Context) GetInfrastructureScanRiskOutput
+}
+
+type GetInfrastructureScanRiskArgs struct {
+	// Description of the risk.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Fingerprint of the risk.
+	Fingerprint pulumi.StringInput `pulumi:"fingerprint"`
+	// Identity of the risk.
+	Identity pulumi.StringInput `pulumi:"identity"`
+	// Additional risk metadata as a JSON object string.
+	MetadataJson pulumi.StringInput `pulumi:"metadataJson"`
+	// Name of the risk.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Detections of this risk in the scan.
+	Occurrences GetInfrastructureScanRiskOccurrenceArrayInput `pulumi:"occurrences"`
+	// Identity of the service the risk applies to.
+	ServiceIdentity pulumi.StringInput `pulumi:"serviceIdentity"`
+	// Name of the service the risk applies to.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+	// Service kind, such as DiscoveredService, ChaosService, or CDService.
+	ServiceType pulumi.StringInput `pulumi:"serviceType"`
+	// Severity: Critical, High, Medium, or Low.
+	Severity pulumi.StringInput `pulumi:"severity"`
+	// Status: Open, InProgress, Resolved, or Ignored.
+	Status pulumi.StringInput `pulumi:"status"`
+	// Tags on the risk.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+}
+
+func (GetInfrastructureScanRiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInfrastructureScanRisk)(nil)).Elem()
+}
+
+func (i GetInfrastructureScanRiskArgs) ToGetInfrastructureScanRiskOutput() GetInfrastructureScanRiskOutput {
+	return i.ToGetInfrastructureScanRiskOutputWithContext(context.Background())
+}
+
+func (i GetInfrastructureScanRiskArgs) ToGetInfrastructureScanRiskOutputWithContext(ctx context.Context) GetInfrastructureScanRiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfrastructureScanRiskOutput)
+}
+
+// GetInfrastructureScanRiskArrayInput is an input type that accepts GetInfrastructureScanRiskArray and GetInfrastructureScanRiskArrayOutput values.
+// You can construct a concrete instance of `GetInfrastructureScanRiskArrayInput` via:
+//
+//	GetInfrastructureScanRiskArray{ GetInfrastructureScanRiskArgs{...} }
+type GetInfrastructureScanRiskArrayInput interface {
+	pulumi.Input
+
+	ToGetInfrastructureScanRiskArrayOutput() GetInfrastructureScanRiskArrayOutput
+	ToGetInfrastructureScanRiskArrayOutputWithContext(context.Context) GetInfrastructureScanRiskArrayOutput
+}
+
+type GetInfrastructureScanRiskArray []GetInfrastructureScanRiskInput
+
+func (GetInfrastructureScanRiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInfrastructureScanRisk)(nil)).Elem()
+}
+
+func (i GetInfrastructureScanRiskArray) ToGetInfrastructureScanRiskArrayOutput() GetInfrastructureScanRiskArrayOutput {
+	return i.ToGetInfrastructureScanRiskArrayOutputWithContext(context.Background())
+}
+
+func (i GetInfrastructureScanRiskArray) ToGetInfrastructureScanRiskArrayOutputWithContext(ctx context.Context) GetInfrastructureScanRiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfrastructureScanRiskArrayOutput)
+}
+
+type GetInfrastructureScanRiskOutput struct{ *pulumi.OutputState }
+
+func (GetInfrastructureScanRiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInfrastructureScanRisk)(nil)).Elem()
+}
+
+func (o GetInfrastructureScanRiskOutput) ToGetInfrastructureScanRiskOutput() GetInfrastructureScanRiskOutput {
+	return o
+}
+
+func (o GetInfrastructureScanRiskOutput) ToGetInfrastructureScanRiskOutputWithContext(ctx context.Context) GetInfrastructureScanRiskOutput {
+	return o
+}
+
+// Description of the risk.
+func (o GetInfrastructureScanRiskOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfrastructureScanRisk) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Fingerprint of the risk.
+func (o GetInfrastructureScanRiskOutput) Fingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfrastructureScanRisk) string { return v.Fingerprint }).(pulumi.StringOutput)
+}
+
+// Identity of the risk.
+func (o GetInfrastructureScanRiskOutput) Identity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfrastructureScanRisk) string { return v.Identity }).(pulumi.StringOutput)
+}
+
+// Additional risk metadata as a JSON object string.
+func (o GetInfrastructureScanRiskOutput) MetadataJson() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfrastructureScanRisk) string { return v.MetadataJson }).(pulumi.StringOutput)
+}
+
+// Name of the risk.
+func (o GetInfrastructureScanRiskOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfrastructureScanRisk) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Detections of this risk in the scan.
+func (o GetInfrastructureScanRiskOutput) Occurrences() GetInfrastructureScanRiskOccurrenceArrayOutput {
+	return o.ApplyT(func(v GetInfrastructureScanRisk) []GetInfrastructureScanRiskOccurrence { return v.Occurrences }).(GetInfrastructureScanRiskOccurrenceArrayOutput)
+}
+
+// Identity of the service the risk applies to.
+func (o GetInfrastructureScanRiskOutput) ServiceIdentity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfrastructureScanRisk) string { return v.ServiceIdentity }).(pulumi.StringOutput)
+}
+
+// Name of the service the risk applies to.
+func (o GetInfrastructureScanRiskOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfrastructureScanRisk) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+// Service kind, such as DiscoveredService, ChaosService, or CDService.
+func (o GetInfrastructureScanRiskOutput) ServiceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfrastructureScanRisk) string { return v.ServiceType }).(pulumi.StringOutput)
+}
+
+// Severity: Critical, High, Medium, or Low.
+func (o GetInfrastructureScanRiskOutput) Severity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfrastructureScanRisk) string { return v.Severity }).(pulumi.StringOutput)
+}
+
+// Status: Open, InProgress, Resolved, or Ignored.
+func (o GetInfrastructureScanRiskOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfrastructureScanRisk) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Tags on the risk.
+func (o GetInfrastructureScanRiskOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInfrastructureScanRisk) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+type GetInfrastructureScanRiskArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInfrastructureScanRiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInfrastructureScanRisk)(nil)).Elem()
+}
+
+func (o GetInfrastructureScanRiskArrayOutput) ToGetInfrastructureScanRiskArrayOutput() GetInfrastructureScanRiskArrayOutput {
+	return o
+}
+
+func (o GetInfrastructureScanRiskArrayOutput) ToGetInfrastructureScanRiskArrayOutputWithContext(ctx context.Context) GetInfrastructureScanRiskArrayOutput {
+	return o
+}
+
+func (o GetInfrastructureScanRiskArrayOutput) Index(i pulumi.IntInput) GetInfrastructureScanRiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInfrastructureScanRisk {
+		return vs[0].([]GetInfrastructureScanRisk)[vs[1].(int)]
+	}).(GetInfrastructureScanRiskOutput)
+}
+
+type GetInfrastructureScanRiskOccurrence struct {
+	// Detection time as a Unix timestamp.
+	DetectedAt int `pulumi:"detectedAt"`
+	// Evidence for the occurrence.
+	Evidences []string `pulumi:"evidences"`
+	// Identity of this occurrence.
+	OccurrenceId string `pulumi:"occurrenceId"`
+	// Remediation guidance.
+	Remediations []string `pulumi:"remediations"`
+	// Resilience testing recommendations.
+	ResilienceTestingRecs []string `pulumi:"resilienceTestingRecs"`
+	// Service name recorded on the occurrence.
+	ServiceName string `pulumi:"serviceName"`
+	// Source id of the occurrence.
+	SourceId string `pulumi:"sourceId"`
+	// Source type of the occurrence.
+	SourceType string `pulumi:"sourceType"`
+}
+
+// GetInfrastructureScanRiskOccurrenceInput is an input type that accepts GetInfrastructureScanRiskOccurrenceArgs and GetInfrastructureScanRiskOccurrenceOutput values.
+// You can construct a concrete instance of `GetInfrastructureScanRiskOccurrenceInput` via:
+//
+//	GetInfrastructureScanRiskOccurrenceArgs{...}
+type GetInfrastructureScanRiskOccurrenceInput interface {
+	pulumi.Input
+
+	ToGetInfrastructureScanRiskOccurrenceOutput() GetInfrastructureScanRiskOccurrenceOutput
+	ToGetInfrastructureScanRiskOccurrenceOutputWithContext(context.Context) GetInfrastructureScanRiskOccurrenceOutput
+}
+
+type GetInfrastructureScanRiskOccurrenceArgs struct {
+	// Detection time as a Unix timestamp.
+	DetectedAt pulumi.IntInput `pulumi:"detectedAt"`
+	// Evidence for the occurrence.
+	Evidences pulumi.StringArrayInput `pulumi:"evidences"`
+	// Identity of this occurrence.
+	OccurrenceId pulumi.StringInput `pulumi:"occurrenceId"`
+	// Remediation guidance.
+	Remediations pulumi.StringArrayInput `pulumi:"remediations"`
+	// Resilience testing recommendations.
+	ResilienceTestingRecs pulumi.StringArrayInput `pulumi:"resilienceTestingRecs"`
+	// Service name recorded on the occurrence.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+	// Source id of the occurrence.
+	SourceId pulumi.StringInput `pulumi:"sourceId"`
+	// Source type of the occurrence.
+	SourceType pulumi.StringInput `pulumi:"sourceType"`
+}
+
+func (GetInfrastructureScanRiskOccurrenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInfrastructureScanRiskOccurrence)(nil)).Elem()
+}
+
+func (i GetInfrastructureScanRiskOccurrenceArgs) ToGetInfrastructureScanRiskOccurrenceOutput() GetInfrastructureScanRiskOccurrenceOutput {
+	return i.ToGetInfrastructureScanRiskOccurrenceOutputWithContext(context.Background())
+}
+
+func (i GetInfrastructureScanRiskOccurrenceArgs) ToGetInfrastructureScanRiskOccurrenceOutputWithContext(ctx context.Context) GetInfrastructureScanRiskOccurrenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfrastructureScanRiskOccurrenceOutput)
+}
+
+// GetInfrastructureScanRiskOccurrenceArrayInput is an input type that accepts GetInfrastructureScanRiskOccurrenceArray and GetInfrastructureScanRiskOccurrenceArrayOutput values.
+// You can construct a concrete instance of `GetInfrastructureScanRiskOccurrenceArrayInput` via:
+//
+//	GetInfrastructureScanRiskOccurrenceArray{ GetInfrastructureScanRiskOccurrenceArgs{...} }
+type GetInfrastructureScanRiskOccurrenceArrayInput interface {
+	pulumi.Input
+
+	ToGetInfrastructureScanRiskOccurrenceArrayOutput() GetInfrastructureScanRiskOccurrenceArrayOutput
+	ToGetInfrastructureScanRiskOccurrenceArrayOutputWithContext(context.Context) GetInfrastructureScanRiskOccurrenceArrayOutput
+}
+
+type GetInfrastructureScanRiskOccurrenceArray []GetInfrastructureScanRiskOccurrenceInput
+
+func (GetInfrastructureScanRiskOccurrenceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInfrastructureScanRiskOccurrence)(nil)).Elem()
+}
+
+func (i GetInfrastructureScanRiskOccurrenceArray) ToGetInfrastructureScanRiskOccurrenceArrayOutput() GetInfrastructureScanRiskOccurrenceArrayOutput {
+	return i.ToGetInfrastructureScanRiskOccurrenceArrayOutputWithContext(context.Background())
+}
+
+func (i GetInfrastructureScanRiskOccurrenceArray) ToGetInfrastructureScanRiskOccurrenceArrayOutputWithContext(ctx context.Context) GetInfrastructureScanRiskOccurrenceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfrastructureScanRiskOccurrenceArrayOutput)
+}
+
+type GetInfrastructureScanRiskOccurrenceOutput struct{ *pulumi.OutputState }
+
+func (GetInfrastructureScanRiskOccurrenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInfrastructureScanRiskOccurrence)(nil)).Elem()
+}
+
+func (o GetInfrastructureScanRiskOccurrenceOutput) ToGetInfrastructureScanRiskOccurrenceOutput() GetInfrastructureScanRiskOccurrenceOutput {
+	return o
+}
+
+func (o GetInfrastructureScanRiskOccurrenceOutput) ToGetInfrastructureScanRiskOccurrenceOutputWithContext(ctx context.Context) GetInfrastructureScanRiskOccurrenceOutput {
+	return o
+}
+
+// Detection time as a Unix timestamp.
+func (o GetInfrastructureScanRiskOccurrenceOutput) DetectedAt() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInfrastructureScanRiskOccurrence) int { return v.DetectedAt }).(pulumi.IntOutput)
+}
+
+// Evidence for the occurrence.
+func (o GetInfrastructureScanRiskOccurrenceOutput) Evidences() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInfrastructureScanRiskOccurrence) []string { return v.Evidences }).(pulumi.StringArrayOutput)
+}
+
+// Identity of this occurrence.
+func (o GetInfrastructureScanRiskOccurrenceOutput) OccurrenceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfrastructureScanRiskOccurrence) string { return v.OccurrenceId }).(pulumi.StringOutput)
+}
+
+// Remediation guidance.
+func (o GetInfrastructureScanRiskOccurrenceOutput) Remediations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInfrastructureScanRiskOccurrence) []string { return v.Remediations }).(pulumi.StringArrayOutput)
+}
+
+// Resilience testing recommendations.
+func (o GetInfrastructureScanRiskOccurrenceOutput) ResilienceTestingRecs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInfrastructureScanRiskOccurrence) []string { return v.ResilienceTestingRecs }).(pulumi.StringArrayOutput)
+}
+
+// Service name recorded on the occurrence.
+func (o GetInfrastructureScanRiskOccurrenceOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfrastructureScanRiskOccurrence) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+// Source id of the occurrence.
+func (o GetInfrastructureScanRiskOccurrenceOutput) SourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfrastructureScanRiskOccurrence) string { return v.SourceId }).(pulumi.StringOutput)
+}
+
+// Source type of the occurrence.
+func (o GetInfrastructureScanRiskOccurrenceOutput) SourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfrastructureScanRiskOccurrence) string { return v.SourceType }).(pulumi.StringOutput)
+}
+
+type GetInfrastructureScanRiskOccurrenceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInfrastructureScanRiskOccurrenceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInfrastructureScanRiskOccurrence)(nil)).Elem()
+}
+
+func (o GetInfrastructureScanRiskOccurrenceArrayOutput) ToGetInfrastructureScanRiskOccurrenceArrayOutput() GetInfrastructureScanRiskOccurrenceArrayOutput {
+	return o
+}
+
+func (o GetInfrastructureScanRiskOccurrenceArrayOutput) ToGetInfrastructureScanRiskOccurrenceArrayOutputWithContext(ctx context.Context) GetInfrastructureScanRiskOccurrenceArrayOutput {
+	return o
+}
+
+func (o GetInfrastructureScanRiskOccurrenceArrayOutput) Index(i pulumi.IntInput) GetInfrastructureScanRiskOccurrenceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInfrastructureScanRiskOccurrence {
+		return vs[0].([]GetInfrastructureScanRiskOccurrence)[vs[1].(int)]
+	}).(GetInfrastructureScanRiskOccurrenceOutput)
+}
+
+type GetInfrastructureScanRiskSummary struct {
+	// Analysis time as a Unix timestamp.
+	AnalysedAt int `pulumi:"analysedAt"`
+	// Risk counts keyed by category.
+	CategoryCounts map[string]int `pulumi:"categoryCounts"`
+	// Number of risks.
+	RiskCount int `pulumi:"riskCount"`
+	// Resilience score.
+	Score int `pulumi:"score"`
+	// Maximum resilience score.
+	ScoreMax int `pulumi:"scoreMax"`
+	// Services included in analysis.
+	ServicesAnalysed int `pulumi:"servicesAnalysed"`
+	// Services with at least one risk.
+	ServicesAtRisk int `pulumi:"servicesAtRisk"`
+	// Risk counts keyed by severity.
+	SeverityCounts map[string]int `pulumi:"severityCounts"`
+}
+
+// GetInfrastructureScanRiskSummaryInput is an input type that accepts GetInfrastructureScanRiskSummaryArgs and GetInfrastructureScanRiskSummaryOutput values.
+// You can construct a concrete instance of `GetInfrastructureScanRiskSummaryInput` via:
+//
+//	GetInfrastructureScanRiskSummaryArgs{...}
+type GetInfrastructureScanRiskSummaryInput interface {
+	pulumi.Input
+
+	ToGetInfrastructureScanRiskSummaryOutput() GetInfrastructureScanRiskSummaryOutput
+	ToGetInfrastructureScanRiskSummaryOutputWithContext(context.Context) GetInfrastructureScanRiskSummaryOutput
+}
+
+type GetInfrastructureScanRiskSummaryArgs struct {
+	// Analysis time as a Unix timestamp.
+	AnalysedAt pulumi.IntInput `pulumi:"analysedAt"`
+	// Risk counts keyed by category.
+	CategoryCounts pulumi.IntMapInput `pulumi:"categoryCounts"`
+	// Number of risks.
+	RiskCount pulumi.IntInput `pulumi:"riskCount"`
+	// Resilience score.
+	Score pulumi.IntInput `pulumi:"score"`
+	// Maximum resilience score.
+	ScoreMax pulumi.IntInput `pulumi:"scoreMax"`
+	// Services included in analysis.
+	ServicesAnalysed pulumi.IntInput `pulumi:"servicesAnalysed"`
+	// Services with at least one risk.
+	ServicesAtRisk pulumi.IntInput `pulumi:"servicesAtRisk"`
+	// Risk counts keyed by severity.
+	SeverityCounts pulumi.IntMapInput `pulumi:"severityCounts"`
+}
+
+func (GetInfrastructureScanRiskSummaryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInfrastructureScanRiskSummary)(nil)).Elem()
+}
+
+func (i GetInfrastructureScanRiskSummaryArgs) ToGetInfrastructureScanRiskSummaryOutput() GetInfrastructureScanRiskSummaryOutput {
+	return i.ToGetInfrastructureScanRiskSummaryOutputWithContext(context.Background())
+}
+
+func (i GetInfrastructureScanRiskSummaryArgs) ToGetInfrastructureScanRiskSummaryOutputWithContext(ctx context.Context) GetInfrastructureScanRiskSummaryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfrastructureScanRiskSummaryOutput)
+}
+
+// GetInfrastructureScanRiskSummaryArrayInput is an input type that accepts GetInfrastructureScanRiskSummaryArray and GetInfrastructureScanRiskSummaryArrayOutput values.
+// You can construct a concrete instance of `GetInfrastructureScanRiskSummaryArrayInput` via:
+//
+//	GetInfrastructureScanRiskSummaryArray{ GetInfrastructureScanRiskSummaryArgs{...} }
+type GetInfrastructureScanRiskSummaryArrayInput interface {
+	pulumi.Input
+
+	ToGetInfrastructureScanRiskSummaryArrayOutput() GetInfrastructureScanRiskSummaryArrayOutput
+	ToGetInfrastructureScanRiskSummaryArrayOutputWithContext(context.Context) GetInfrastructureScanRiskSummaryArrayOutput
+}
+
+type GetInfrastructureScanRiskSummaryArray []GetInfrastructureScanRiskSummaryInput
+
+func (GetInfrastructureScanRiskSummaryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInfrastructureScanRiskSummary)(nil)).Elem()
+}
+
+func (i GetInfrastructureScanRiskSummaryArray) ToGetInfrastructureScanRiskSummaryArrayOutput() GetInfrastructureScanRiskSummaryArrayOutput {
+	return i.ToGetInfrastructureScanRiskSummaryArrayOutputWithContext(context.Background())
+}
+
+func (i GetInfrastructureScanRiskSummaryArray) ToGetInfrastructureScanRiskSummaryArrayOutputWithContext(ctx context.Context) GetInfrastructureScanRiskSummaryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfrastructureScanRiskSummaryArrayOutput)
+}
+
+type GetInfrastructureScanRiskSummaryOutput struct{ *pulumi.OutputState }
+
+func (GetInfrastructureScanRiskSummaryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInfrastructureScanRiskSummary)(nil)).Elem()
+}
+
+func (o GetInfrastructureScanRiskSummaryOutput) ToGetInfrastructureScanRiskSummaryOutput() GetInfrastructureScanRiskSummaryOutput {
+	return o
+}
+
+func (o GetInfrastructureScanRiskSummaryOutput) ToGetInfrastructureScanRiskSummaryOutputWithContext(ctx context.Context) GetInfrastructureScanRiskSummaryOutput {
+	return o
+}
+
+// Analysis time as a Unix timestamp.
+func (o GetInfrastructureScanRiskSummaryOutput) AnalysedAt() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInfrastructureScanRiskSummary) int { return v.AnalysedAt }).(pulumi.IntOutput)
+}
+
+// Risk counts keyed by category.
+func (o GetInfrastructureScanRiskSummaryOutput) CategoryCounts() pulumi.IntMapOutput {
+	return o.ApplyT(func(v GetInfrastructureScanRiskSummary) map[string]int { return v.CategoryCounts }).(pulumi.IntMapOutput)
+}
+
+// Number of risks.
+func (o GetInfrastructureScanRiskSummaryOutput) RiskCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInfrastructureScanRiskSummary) int { return v.RiskCount }).(pulumi.IntOutput)
+}
+
+// Resilience score.
+func (o GetInfrastructureScanRiskSummaryOutput) Score() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInfrastructureScanRiskSummary) int { return v.Score }).(pulumi.IntOutput)
+}
+
+// Maximum resilience score.
+func (o GetInfrastructureScanRiskSummaryOutput) ScoreMax() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInfrastructureScanRiskSummary) int { return v.ScoreMax }).(pulumi.IntOutput)
+}
+
+// Services included in analysis.
+func (o GetInfrastructureScanRiskSummaryOutput) ServicesAnalysed() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInfrastructureScanRiskSummary) int { return v.ServicesAnalysed }).(pulumi.IntOutput)
+}
+
+// Services with at least one risk.
+func (o GetInfrastructureScanRiskSummaryOutput) ServicesAtRisk() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInfrastructureScanRiskSummary) int { return v.ServicesAtRisk }).(pulumi.IntOutput)
+}
+
+// Risk counts keyed by severity.
+func (o GetInfrastructureScanRiskSummaryOutput) SeverityCounts() pulumi.IntMapOutput {
+	return o.ApplyT(func(v GetInfrastructureScanRiskSummary) map[string]int { return v.SeverityCounts }).(pulumi.IntMapOutput)
+}
+
+type GetInfrastructureScanRiskSummaryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInfrastructureScanRiskSummaryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInfrastructureScanRiskSummary)(nil)).Elem()
+}
+
+func (o GetInfrastructureScanRiskSummaryArrayOutput) ToGetInfrastructureScanRiskSummaryArrayOutput() GetInfrastructureScanRiskSummaryArrayOutput {
+	return o
+}
+
+func (o GetInfrastructureScanRiskSummaryArrayOutput) ToGetInfrastructureScanRiskSummaryArrayOutputWithContext(ctx context.Context) GetInfrastructureScanRiskSummaryArrayOutput {
+	return o
+}
+
+func (o GetInfrastructureScanRiskSummaryArrayOutput) Index(i pulumi.IntInput) GetInfrastructureScanRiskSummaryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInfrastructureScanRiskSummary {
+		return vs[0].([]GetInfrastructureScanRiskSummary)[vs[1].(int)]
+	}).(GetInfrastructureScanRiskSummaryOutput)
+}
+
+type GetInfrastructureScanSummary struct {
+	// Critical risks.
+	Critical int `pulumi:"critical"`
+	// High risks.
+	High int `pulumi:"high"`
+	// Low risks.
+	Low int `pulumi:"low"`
+	// Maximum resilience score.
+	MaxScore int `pulumi:"maxScore"`
+	// Medium risks.
+	Medium int `pulumi:"medium"`
+	// Number of risk rules evaluated.
+	RuleCount int `pulumi:"ruleCount"`
+	// Resilience score.
+	Score int `pulumi:"score"`
+	// Number of services scanned.
+	ServicesScanned int `pulumi:"servicesScanned"`
+	// Number of risks found.
+	TotalRisks int `pulumi:"totalRisks"`
+}
+
+// GetInfrastructureScanSummaryInput is an input type that accepts GetInfrastructureScanSummaryArgs and GetInfrastructureScanSummaryOutput values.
+// You can construct a concrete instance of `GetInfrastructureScanSummaryInput` via:
+//
+//	GetInfrastructureScanSummaryArgs{...}
+type GetInfrastructureScanSummaryInput interface {
+	pulumi.Input
+
+	ToGetInfrastructureScanSummaryOutput() GetInfrastructureScanSummaryOutput
+	ToGetInfrastructureScanSummaryOutputWithContext(context.Context) GetInfrastructureScanSummaryOutput
+}
+
+type GetInfrastructureScanSummaryArgs struct {
+	// Critical risks.
+	Critical pulumi.IntInput `pulumi:"critical"`
+	// High risks.
+	High pulumi.IntInput `pulumi:"high"`
+	// Low risks.
+	Low pulumi.IntInput `pulumi:"low"`
+	// Maximum resilience score.
+	MaxScore pulumi.IntInput `pulumi:"maxScore"`
+	// Medium risks.
+	Medium pulumi.IntInput `pulumi:"medium"`
+	// Number of risk rules evaluated.
+	RuleCount pulumi.IntInput `pulumi:"ruleCount"`
+	// Resilience score.
+	Score pulumi.IntInput `pulumi:"score"`
+	// Number of services scanned.
+	ServicesScanned pulumi.IntInput `pulumi:"servicesScanned"`
+	// Number of risks found.
+	TotalRisks pulumi.IntInput `pulumi:"totalRisks"`
+}
+
+func (GetInfrastructureScanSummaryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInfrastructureScanSummary)(nil)).Elem()
+}
+
+func (i GetInfrastructureScanSummaryArgs) ToGetInfrastructureScanSummaryOutput() GetInfrastructureScanSummaryOutput {
+	return i.ToGetInfrastructureScanSummaryOutputWithContext(context.Background())
+}
+
+func (i GetInfrastructureScanSummaryArgs) ToGetInfrastructureScanSummaryOutputWithContext(ctx context.Context) GetInfrastructureScanSummaryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfrastructureScanSummaryOutput)
+}
+
+// GetInfrastructureScanSummaryArrayInput is an input type that accepts GetInfrastructureScanSummaryArray and GetInfrastructureScanSummaryArrayOutput values.
+// You can construct a concrete instance of `GetInfrastructureScanSummaryArrayInput` via:
+//
+//	GetInfrastructureScanSummaryArray{ GetInfrastructureScanSummaryArgs{...} }
+type GetInfrastructureScanSummaryArrayInput interface {
+	pulumi.Input
+
+	ToGetInfrastructureScanSummaryArrayOutput() GetInfrastructureScanSummaryArrayOutput
+	ToGetInfrastructureScanSummaryArrayOutputWithContext(context.Context) GetInfrastructureScanSummaryArrayOutput
+}
+
+type GetInfrastructureScanSummaryArray []GetInfrastructureScanSummaryInput
+
+func (GetInfrastructureScanSummaryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInfrastructureScanSummary)(nil)).Elem()
+}
+
+func (i GetInfrastructureScanSummaryArray) ToGetInfrastructureScanSummaryArrayOutput() GetInfrastructureScanSummaryArrayOutput {
+	return i.ToGetInfrastructureScanSummaryArrayOutputWithContext(context.Background())
+}
+
+func (i GetInfrastructureScanSummaryArray) ToGetInfrastructureScanSummaryArrayOutputWithContext(ctx context.Context) GetInfrastructureScanSummaryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfrastructureScanSummaryArrayOutput)
+}
+
+type GetInfrastructureScanSummaryOutput struct{ *pulumi.OutputState }
+
+func (GetInfrastructureScanSummaryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInfrastructureScanSummary)(nil)).Elem()
+}
+
+func (o GetInfrastructureScanSummaryOutput) ToGetInfrastructureScanSummaryOutput() GetInfrastructureScanSummaryOutput {
+	return o
+}
+
+func (o GetInfrastructureScanSummaryOutput) ToGetInfrastructureScanSummaryOutputWithContext(ctx context.Context) GetInfrastructureScanSummaryOutput {
+	return o
+}
+
+// Critical risks.
+func (o GetInfrastructureScanSummaryOutput) Critical() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInfrastructureScanSummary) int { return v.Critical }).(pulumi.IntOutput)
+}
+
+// High risks.
+func (o GetInfrastructureScanSummaryOutput) High() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInfrastructureScanSummary) int { return v.High }).(pulumi.IntOutput)
+}
+
+// Low risks.
+func (o GetInfrastructureScanSummaryOutput) Low() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInfrastructureScanSummary) int { return v.Low }).(pulumi.IntOutput)
+}
+
+// Maximum resilience score.
+func (o GetInfrastructureScanSummaryOutput) MaxScore() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInfrastructureScanSummary) int { return v.MaxScore }).(pulumi.IntOutput)
+}
+
+// Medium risks.
+func (o GetInfrastructureScanSummaryOutput) Medium() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInfrastructureScanSummary) int { return v.Medium }).(pulumi.IntOutput)
+}
+
+// Number of risk rules evaluated.
+func (o GetInfrastructureScanSummaryOutput) RuleCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInfrastructureScanSummary) int { return v.RuleCount }).(pulumi.IntOutput)
+}
+
+// Resilience score.
+func (o GetInfrastructureScanSummaryOutput) Score() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInfrastructureScanSummary) int { return v.Score }).(pulumi.IntOutput)
+}
+
+// Number of services scanned.
+func (o GetInfrastructureScanSummaryOutput) ServicesScanned() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInfrastructureScanSummary) int { return v.ServicesScanned }).(pulumi.IntOutput)
+}
+
+// Number of risks found.
+func (o GetInfrastructureScanSummaryOutput) TotalRisks() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInfrastructureScanSummary) int { return v.TotalRisks }).(pulumi.IntOutput)
+}
+
+type GetInfrastructureScanSummaryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInfrastructureScanSummaryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInfrastructureScanSummary)(nil)).Elem()
+}
+
+func (o GetInfrastructureScanSummaryArrayOutput) ToGetInfrastructureScanSummaryArrayOutput() GetInfrastructureScanSummaryArrayOutput {
+	return o
+}
+
+func (o GetInfrastructureScanSummaryArrayOutput) ToGetInfrastructureScanSummaryArrayOutputWithContext(ctx context.Context) GetInfrastructureScanSummaryArrayOutput {
+	return o
+}
+
+func (o GetInfrastructureScanSummaryArrayOutput) Index(i pulumi.IntInput) GetInfrastructureScanSummaryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInfrastructureScanSummary {
+		return vs[0].([]GetInfrastructureScanSummary)[vs[1].(int)]
+	}).(GetInfrastructureScanSummaryOutput)
+}
+
 type GetInfrastructureV2ImageRegistry struct {
 	// Timestamp when the registry was created.
 	CreatedAt string `pulumi:"createdAt"`
@@ -27842,6 +31004,1072 @@ func (o GetInfrastructureV2VolumeMountArrayOutput) Index(i pulumi.IntInput) GetI
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInfrastructureV2VolumeMount {
 		return vs[0].([]GetInfrastructureV2VolumeMount)[vs[1].(int)]
 	}).(GetInfrastructureV2VolumeMountOutput)
+}
+
+type GetPipelineScanCollectedData struct {
+	// Collection time as a Unix timestamp.
+	CollectedAt int `pulumi:"collectedAt"`
+	// Dependent resources collected.
+	DependentResources int `pulumi:"dependentResources"`
+	// Collection failures returned by the API.
+	Errors []GetPipelineScanCollectedDataError `pulumi:"errors"`
+	// Namespaces collected.
+	Namespaces []string `pulumi:"namespaces"`
+	// Primary resources collected.
+	PrimaryResources int `pulumi:"primaryResources"`
+	// Service groups collected.
+	ServiceGroups int `pulumi:"serviceGroups"`
+	// Total resources collected.
+	TotalResources int `pulumi:"totalResources"`
+}
+
+// GetPipelineScanCollectedDataInput is an input type that accepts GetPipelineScanCollectedDataArgs and GetPipelineScanCollectedDataOutput values.
+// You can construct a concrete instance of `GetPipelineScanCollectedDataInput` via:
+//
+//	GetPipelineScanCollectedDataArgs{...}
+type GetPipelineScanCollectedDataInput interface {
+	pulumi.Input
+
+	ToGetPipelineScanCollectedDataOutput() GetPipelineScanCollectedDataOutput
+	ToGetPipelineScanCollectedDataOutputWithContext(context.Context) GetPipelineScanCollectedDataOutput
+}
+
+type GetPipelineScanCollectedDataArgs struct {
+	// Collection time as a Unix timestamp.
+	CollectedAt pulumi.IntInput `pulumi:"collectedAt"`
+	// Dependent resources collected.
+	DependentResources pulumi.IntInput `pulumi:"dependentResources"`
+	// Collection failures returned by the API.
+	Errors GetPipelineScanCollectedDataErrorArrayInput `pulumi:"errors"`
+	// Namespaces collected.
+	Namespaces pulumi.StringArrayInput `pulumi:"namespaces"`
+	// Primary resources collected.
+	PrimaryResources pulumi.IntInput `pulumi:"primaryResources"`
+	// Service groups collected.
+	ServiceGroups pulumi.IntInput `pulumi:"serviceGroups"`
+	// Total resources collected.
+	TotalResources pulumi.IntInput `pulumi:"totalResources"`
+}
+
+func (GetPipelineScanCollectedDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPipelineScanCollectedData)(nil)).Elem()
+}
+
+func (i GetPipelineScanCollectedDataArgs) ToGetPipelineScanCollectedDataOutput() GetPipelineScanCollectedDataOutput {
+	return i.ToGetPipelineScanCollectedDataOutputWithContext(context.Background())
+}
+
+func (i GetPipelineScanCollectedDataArgs) ToGetPipelineScanCollectedDataOutputWithContext(ctx context.Context) GetPipelineScanCollectedDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPipelineScanCollectedDataOutput)
+}
+
+// GetPipelineScanCollectedDataArrayInput is an input type that accepts GetPipelineScanCollectedDataArray and GetPipelineScanCollectedDataArrayOutput values.
+// You can construct a concrete instance of `GetPipelineScanCollectedDataArrayInput` via:
+//
+//	GetPipelineScanCollectedDataArray{ GetPipelineScanCollectedDataArgs{...} }
+type GetPipelineScanCollectedDataArrayInput interface {
+	pulumi.Input
+
+	ToGetPipelineScanCollectedDataArrayOutput() GetPipelineScanCollectedDataArrayOutput
+	ToGetPipelineScanCollectedDataArrayOutputWithContext(context.Context) GetPipelineScanCollectedDataArrayOutput
+}
+
+type GetPipelineScanCollectedDataArray []GetPipelineScanCollectedDataInput
+
+func (GetPipelineScanCollectedDataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPipelineScanCollectedData)(nil)).Elem()
+}
+
+func (i GetPipelineScanCollectedDataArray) ToGetPipelineScanCollectedDataArrayOutput() GetPipelineScanCollectedDataArrayOutput {
+	return i.ToGetPipelineScanCollectedDataArrayOutputWithContext(context.Background())
+}
+
+func (i GetPipelineScanCollectedDataArray) ToGetPipelineScanCollectedDataArrayOutputWithContext(ctx context.Context) GetPipelineScanCollectedDataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPipelineScanCollectedDataArrayOutput)
+}
+
+type GetPipelineScanCollectedDataOutput struct{ *pulumi.OutputState }
+
+func (GetPipelineScanCollectedDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPipelineScanCollectedData)(nil)).Elem()
+}
+
+func (o GetPipelineScanCollectedDataOutput) ToGetPipelineScanCollectedDataOutput() GetPipelineScanCollectedDataOutput {
+	return o
+}
+
+func (o GetPipelineScanCollectedDataOutput) ToGetPipelineScanCollectedDataOutputWithContext(ctx context.Context) GetPipelineScanCollectedDataOutput {
+	return o
+}
+
+// Collection time as a Unix timestamp.
+func (o GetPipelineScanCollectedDataOutput) CollectedAt() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPipelineScanCollectedData) int { return v.CollectedAt }).(pulumi.IntOutput)
+}
+
+// Dependent resources collected.
+func (o GetPipelineScanCollectedDataOutput) DependentResources() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPipelineScanCollectedData) int { return v.DependentResources }).(pulumi.IntOutput)
+}
+
+// Collection failures returned by the API.
+func (o GetPipelineScanCollectedDataOutput) Errors() GetPipelineScanCollectedDataErrorArrayOutput {
+	return o.ApplyT(func(v GetPipelineScanCollectedData) []GetPipelineScanCollectedDataError { return v.Errors }).(GetPipelineScanCollectedDataErrorArrayOutput)
+}
+
+// Namespaces collected.
+func (o GetPipelineScanCollectedDataOutput) Namespaces() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPipelineScanCollectedData) []string { return v.Namespaces }).(pulumi.StringArrayOutput)
+}
+
+// Primary resources collected.
+func (o GetPipelineScanCollectedDataOutput) PrimaryResources() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPipelineScanCollectedData) int { return v.PrimaryResources }).(pulumi.IntOutput)
+}
+
+// Service groups collected.
+func (o GetPipelineScanCollectedDataOutput) ServiceGroups() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPipelineScanCollectedData) int { return v.ServiceGroups }).(pulumi.IntOutput)
+}
+
+// Total resources collected.
+func (o GetPipelineScanCollectedDataOutput) TotalResources() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPipelineScanCollectedData) int { return v.TotalResources }).(pulumi.IntOutput)
+}
+
+type GetPipelineScanCollectedDataArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPipelineScanCollectedDataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPipelineScanCollectedData)(nil)).Elem()
+}
+
+func (o GetPipelineScanCollectedDataArrayOutput) ToGetPipelineScanCollectedDataArrayOutput() GetPipelineScanCollectedDataArrayOutput {
+	return o
+}
+
+func (o GetPipelineScanCollectedDataArrayOutput) ToGetPipelineScanCollectedDataArrayOutputWithContext(ctx context.Context) GetPipelineScanCollectedDataArrayOutput {
+	return o
+}
+
+func (o GetPipelineScanCollectedDataArrayOutput) Index(i pulumi.IntInput) GetPipelineScanCollectedDataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPipelineScanCollectedData {
+		return vs[0].([]GetPipelineScanCollectedData)[vs[1].(int)]
+	}).(GetPipelineScanCollectedDataOutput)
+}
+
+type GetPipelineScanCollectedDataError struct {
+	// Collection error message.
+	Message string `pulumi:"message"`
+	// Collector that reported the error.
+	Source string `pulumi:"source"`
+}
+
+// GetPipelineScanCollectedDataErrorInput is an input type that accepts GetPipelineScanCollectedDataErrorArgs and GetPipelineScanCollectedDataErrorOutput values.
+// You can construct a concrete instance of `GetPipelineScanCollectedDataErrorInput` via:
+//
+//	GetPipelineScanCollectedDataErrorArgs{...}
+type GetPipelineScanCollectedDataErrorInput interface {
+	pulumi.Input
+
+	ToGetPipelineScanCollectedDataErrorOutput() GetPipelineScanCollectedDataErrorOutput
+	ToGetPipelineScanCollectedDataErrorOutputWithContext(context.Context) GetPipelineScanCollectedDataErrorOutput
+}
+
+type GetPipelineScanCollectedDataErrorArgs struct {
+	// Collection error message.
+	Message pulumi.StringInput `pulumi:"message"`
+	// Collector that reported the error.
+	Source pulumi.StringInput `pulumi:"source"`
+}
+
+func (GetPipelineScanCollectedDataErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPipelineScanCollectedDataError)(nil)).Elem()
+}
+
+func (i GetPipelineScanCollectedDataErrorArgs) ToGetPipelineScanCollectedDataErrorOutput() GetPipelineScanCollectedDataErrorOutput {
+	return i.ToGetPipelineScanCollectedDataErrorOutputWithContext(context.Background())
+}
+
+func (i GetPipelineScanCollectedDataErrorArgs) ToGetPipelineScanCollectedDataErrorOutputWithContext(ctx context.Context) GetPipelineScanCollectedDataErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPipelineScanCollectedDataErrorOutput)
+}
+
+// GetPipelineScanCollectedDataErrorArrayInput is an input type that accepts GetPipelineScanCollectedDataErrorArray and GetPipelineScanCollectedDataErrorArrayOutput values.
+// You can construct a concrete instance of `GetPipelineScanCollectedDataErrorArrayInput` via:
+//
+//	GetPipelineScanCollectedDataErrorArray{ GetPipelineScanCollectedDataErrorArgs{...} }
+type GetPipelineScanCollectedDataErrorArrayInput interface {
+	pulumi.Input
+
+	ToGetPipelineScanCollectedDataErrorArrayOutput() GetPipelineScanCollectedDataErrorArrayOutput
+	ToGetPipelineScanCollectedDataErrorArrayOutputWithContext(context.Context) GetPipelineScanCollectedDataErrorArrayOutput
+}
+
+type GetPipelineScanCollectedDataErrorArray []GetPipelineScanCollectedDataErrorInput
+
+func (GetPipelineScanCollectedDataErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPipelineScanCollectedDataError)(nil)).Elem()
+}
+
+func (i GetPipelineScanCollectedDataErrorArray) ToGetPipelineScanCollectedDataErrorArrayOutput() GetPipelineScanCollectedDataErrorArrayOutput {
+	return i.ToGetPipelineScanCollectedDataErrorArrayOutputWithContext(context.Background())
+}
+
+func (i GetPipelineScanCollectedDataErrorArray) ToGetPipelineScanCollectedDataErrorArrayOutputWithContext(ctx context.Context) GetPipelineScanCollectedDataErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPipelineScanCollectedDataErrorArrayOutput)
+}
+
+type GetPipelineScanCollectedDataErrorOutput struct{ *pulumi.OutputState }
+
+func (GetPipelineScanCollectedDataErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPipelineScanCollectedDataError)(nil)).Elem()
+}
+
+func (o GetPipelineScanCollectedDataErrorOutput) ToGetPipelineScanCollectedDataErrorOutput() GetPipelineScanCollectedDataErrorOutput {
+	return o
+}
+
+func (o GetPipelineScanCollectedDataErrorOutput) ToGetPipelineScanCollectedDataErrorOutputWithContext(ctx context.Context) GetPipelineScanCollectedDataErrorOutput {
+	return o
+}
+
+// Collection error message.
+func (o GetPipelineScanCollectedDataErrorOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineScanCollectedDataError) string { return v.Message }).(pulumi.StringOutput)
+}
+
+// Collector that reported the error.
+func (o GetPipelineScanCollectedDataErrorOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineScanCollectedDataError) string { return v.Source }).(pulumi.StringOutput)
+}
+
+type GetPipelineScanCollectedDataErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPipelineScanCollectedDataErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPipelineScanCollectedDataError)(nil)).Elem()
+}
+
+func (o GetPipelineScanCollectedDataErrorArrayOutput) ToGetPipelineScanCollectedDataErrorArrayOutput() GetPipelineScanCollectedDataErrorArrayOutput {
+	return o
+}
+
+func (o GetPipelineScanCollectedDataErrorArrayOutput) ToGetPipelineScanCollectedDataErrorArrayOutputWithContext(ctx context.Context) GetPipelineScanCollectedDataErrorArrayOutput {
+	return o
+}
+
+func (o GetPipelineScanCollectedDataErrorArrayOutput) Index(i pulumi.IntInput) GetPipelineScanCollectedDataErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPipelineScanCollectedDataError {
+		return vs[0].([]GetPipelineScanCollectedDataError)[vs[1].(int)]
+	}).(GetPipelineScanCollectedDataErrorOutput)
+}
+
+type GetPipelineScanInfrastructure struct {
+	// Whether chaos is already onboarded for this infrastructure.
+	ChaosOnboarded bool `pulumi:"chaosOnboarded"`
+	// Whether this infrastructure can be onboarded to chaos.
+	ChaosSupported bool `pulumi:"chaosSupported"`
+	// Environment reference.
+	EnvironmentRef string `pulumi:"environmentRef"`
+	// Infrastructure identifier.
+	InfrastructureIdentity string `pulumi:"infrastructureIdentity"`
+}
+
+// GetPipelineScanInfrastructureInput is an input type that accepts GetPipelineScanInfrastructureArgs and GetPipelineScanInfrastructureOutput values.
+// You can construct a concrete instance of `GetPipelineScanInfrastructureInput` via:
+//
+//	GetPipelineScanInfrastructureArgs{...}
+type GetPipelineScanInfrastructureInput interface {
+	pulumi.Input
+
+	ToGetPipelineScanInfrastructureOutput() GetPipelineScanInfrastructureOutput
+	ToGetPipelineScanInfrastructureOutputWithContext(context.Context) GetPipelineScanInfrastructureOutput
+}
+
+type GetPipelineScanInfrastructureArgs struct {
+	// Whether chaos is already onboarded for this infrastructure.
+	ChaosOnboarded pulumi.BoolInput `pulumi:"chaosOnboarded"`
+	// Whether this infrastructure can be onboarded to chaos.
+	ChaosSupported pulumi.BoolInput `pulumi:"chaosSupported"`
+	// Environment reference.
+	EnvironmentRef pulumi.StringInput `pulumi:"environmentRef"`
+	// Infrastructure identifier.
+	InfrastructureIdentity pulumi.StringInput `pulumi:"infrastructureIdentity"`
+}
+
+func (GetPipelineScanInfrastructureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPipelineScanInfrastructure)(nil)).Elem()
+}
+
+func (i GetPipelineScanInfrastructureArgs) ToGetPipelineScanInfrastructureOutput() GetPipelineScanInfrastructureOutput {
+	return i.ToGetPipelineScanInfrastructureOutputWithContext(context.Background())
+}
+
+func (i GetPipelineScanInfrastructureArgs) ToGetPipelineScanInfrastructureOutputWithContext(ctx context.Context) GetPipelineScanInfrastructureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPipelineScanInfrastructureOutput)
+}
+
+// GetPipelineScanInfrastructureArrayInput is an input type that accepts GetPipelineScanInfrastructureArray and GetPipelineScanInfrastructureArrayOutput values.
+// You can construct a concrete instance of `GetPipelineScanInfrastructureArrayInput` via:
+//
+//	GetPipelineScanInfrastructureArray{ GetPipelineScanInfrastructureArgs{...} }
+type GetPipelineScanInfrastructureArrayInput interface {
+	pulumi.Input
+
+	ToGetPipelineScanInfrastructureArrayOutput() GetPipelineScanInfrastructureArrayOutput
+	ToGetPipelineScanInfrastructureArrayOutputWithContext(context.Context) GetPipelineScanInfrastructureArrayOutput
+}
+
+type GetPipelineScanInfrastructureArray []GetPipelineScanInfrastructureInput
+
+func (GetPipelineScanInfrastructureArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPipelineScanInfrastructure)(nil)).Elem()
+}
+
+func (i GetPipelineScanInfrastructureArray) ToGetPipelineScanInfrastructureArrayOutput() GetPipelineScanInfrastructureArrayOutput {
+	return i.ToGetPipelineScanInfrastructureArrayOutputWithContext(context.Background())
+}
+
+func (i GetPipelineScanInfrastructureArray) ToGetPipelineScanInfrastructureArrayOutputWithContext(ctx context.Context) GetPipelineScanInfrastructureArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPipelineScanInfrastructureArrayOutput)
+}
+
+type GetPipelineScanInfrastructureOutput struct{ *pulumi.OutputState }
+
+func (GetPipelineScanInfrastructureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPipelineScanInfrastructure)(nil)).Elem()
+}
+
+func (o GetPipelineScanInfrastructureOutput) ToGetPipelineScanInfrastructureOutput() GetPipelineScanInfrastructureOutput {
+	return o
+}
+
+func (o GetPipelineScanInfrastructureOutput) ToGetPipelineScanInfrastructureOutputWithContext(ctx context.Context) GetPipelineScanInfrastructureOutput {
+	return o
+}
+
+// Whether chaos is already onboarded for this infrastructure.
+func (o GetPipelineScanInfrastructureOutput) ChaosOnboarded() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPipelineScanInfrastructure) bool { return v.ChaosOnboarded }).(pulumi.BoolOutput)
+}
+
+// Whether this infrastructure can be onboarded to chaos.
+func (o GetPipelineScanInfrastructureOutput) ChaosSupported() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPipelineScanInfrastructure) bool { return v.ChaosSupported }).(pulumi.BoolOutput)
+}
+
+// Environment reference.
+func (o GetPipelineScanInfrastructureOutput) EnvironmentRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineScanInfrastructure) string { return v.EnvironmentRef }).(pulumi.StringOutput)
+}
+
+// Infrastructure identifier.
+func (o GetPipelineScanInfrastructureOutput) InfrastructureIdentity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineScanInfrastructure) string { return v.InfrastructureIdentity }).(pulumi.StringOutput)
+}
+
+type GetPipelineScanInfrastructureArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPipelineScanInfrastructureArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPipelineScanInfrastructure)(nil)).Elem()
+}
+
+func (o GetPipelineScanInfrastructureArrayOutput) ToGetPipelineScanInfrastructureArrayOutput() GetPipelineScanInfrastructureArrayOutput {
+	return o
+}
+
+func (o GetPipelineScanInfrastructureArrayOutput) ToGetPipelineScanInfrastructureArrayOutputWithContext(ctx context.Context) GetPipelineScanInfrastructureArrayOutput {
+	return o
+}
+
+func (o GetPipelineScanInfrastructureArrayOutput) Index(i pulumi.IntInput) GetPipelineScanInfrastructureOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPipelineScanInfrastructure {
+		return vs[0].([]GetPipelineScanInfrastructure)[vs[1].(int)]
+	}).(GetPipelineScanInfrastructureOutput)
+}
+
+type GetPipelineScanRisk struct {
+	// Description of the risk.
+	Description string `pulumi:"description"`
+	// Fingerprint of the risk.
+	Fingerprint string `pulumi:"fingerprint"`
+	// Identity of the risk.
+	Identity string `pulumi:"identity"`
+	// Additional risk metadata as a JSON object string.
+	MetadataJson string `pulumi:"metadataJson"`
+	// Name of the risk.
+	Name string `pulumi:"name"`
+	// Detections of this risk in the scan.
+	Occurrences []GetPipelineScanRiskOccurrence `pulumi:"occurrences"`
+	// Identity of the service the risk applies to.
+	ServiceIdentity string `pulumi:"serviceIdentity"`
+	// Name of the service the risk applies to.
+	ServiceName string `pulumi:"serviceName"`
+	// Service kind, such as DiscoveredService, ChaosService, or CDService.
+	ServiceType string `pulumi:"serviceType"`
+	// Severity: Critical, High, Medium, or Low.
+	Severity string `pulumi:"severity"`
+	// Status: Open, InProgress, Resolved, or Ignored.
+	Status string `pulumi:"status"`
+	// Tags on the risk.
+	Tags []string `pulumi:"tags"`
+}
+
+// GetPipelineScanRiskInput is an input type that accepts GetPipelineScanRiskArgs and GetPipelineScanRiskOutput values.
+// You can construct a concrete instance of `GetPipelineScanRiskInput` via:
+//
+//	GetPipelineScanRiskArgs{...}
+type GetPipelineScanRiskInput interface {
+	pulumi.Input
+
+	ToGetPipelineScanRiskOutput() GetPipelineScanRiskOutput
+	ToGetPipelineScanRiskOutputWithContext(context.Context) GetPipelineScanRiskOutput
+}
+
+type GetPipelineScanRiskArgs struct {
+	// Description of the risk.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Fingerprint of the risk.
+	Fingerprint pulumi.StringInput `pulumi:"fingerprint"`
+	// Identity of the risk.
+	Identity pulumi.StringInput `pulumi:"identity"`
+	// Additional risk metadata as a JSON object string.
+	MetadataJson pulumi.StringInput `pulumi:"metadataJson"`
+	// Name of the risk.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Detections of this risk in the scan.
+	Occurrences GetPipelineScanRiskOccurrenceArrayInput `pulumi:"occurrences"`
+	// Identity of the service the risk applies to.
+	ServiceIdentity pulumi.StringInput `pulumi:"serviceIdentity"`
+	// Name of the service the risk applies to.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+	// Service kind, such as DiscoveredService, ChaosService, or CDService.
+	ServiceType pulumi.StringInput `pulumi:"serviceType"`
+	// Severity: Critical, High, Medium, or Low.
+	Severity pulumi.StringInput `pulumi:"severity"`
+	// Status: Open, InProgress, Resolved, or Ignored.
+	Status pulumi.StringInput `pulumi:"status"`
+	// Tags on the risk.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+}
+
+func (GetPipelineScanRiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPipelineScanRisk)(nil)).Elem()
+}
+
+func (i GetPipelineScanRiskArgs) ToGetPipelineScanRiskOutput() GetPipelineScanRiskOutput {
+	return i.ToGetPipelineScanRiskOutputWithContext(context.Background())
+}
+
+func (i GetPipelineScanRiskArgs) ToGetPipelineScanRiskOutputWithContext(ctx context.Context) GetPipelineScanRiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPipelineScanRiskOutput)
+}
+
+// GetPipelineScanRiskArrayInput is an input type that accepts GetPipelineScanRiskArray and GetPipelineScanRiskArrayOutput values.
+// You can construct a concrete instance of `GetPipelineScanRiskArrayInput` via:
+//
+//	GetPipelineScanRiskArray{ GetPipelineScanRiskArgs{...} }
+type GetPipelineScanRiskArrayInput interface {
+	pulumi.Input
+
+	ToGetPipelineScanRiskArrayOutput() GetPipelineScanRiskArrayOutput
+	ToGetPipelineScanRiskArrayOutputWithContext(context.Context) GetPipelineScanRiskArrayOutput
+}
+
+type GetPipelineScanRiskArray []GetPipelineScanRiskInput
+
+func (GetPipelineScanRiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPipelineScanRisk)(nil)).Elem()
+}
+
+func (i GetPipelineScanRiskArray) ToGetPipelineScanRiskArrayOutput() GetPipelineScanRiskArrayOutput {
+	return i.ToGetPipelineScanRiskArrayOutputWithContext(context.Background())
+}
+
+func (i GetPipelineScanRiskArray) ToGetPipelineScanRiskArrayOutputWithContext(ctx context.Context) GetPipelineScanRiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPipelineScanRiskArrayOutput)
+}
+
+type GetPipelineScanRiskOutput struct{ *pulumi.OutputState }
+
+func (GetPipelineScanRiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPipelineScanRisk)(nil)).Elem()
+}
+
+func (o GetPipelineScanRiskOutput) ToGetPipelineScanRiskOutput() GetPipelineScanRiskOutput {
+	return o
+}
+
+func (o GetPipelineScanRiskOutput) ToGetPipelineScanRiskOutputWithContext(ctx context.Context) GetPipelineScanRiskOutput {
+	return o
+}
+
+// Description of the risk.
+func (o GetPipelineScanRiskOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineScanRisk) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Fingerprint of the risk.
+func (o GetPipelineScanRiskOutput) Fingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineScanRisk) string { return v.Fingerprint }).(pulumi.StringOutput)
+}
+
+// Identity of the risk.
+func (o GetPipelineScanRiskOutput) Identity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineScanRisk) string { return v.Identity }).(pulumi.StringOutput)
+}
+
+// Additional risk metadata as a JSON object string.
+func (o GetPipelineScanRiskOutput) MetadataJson() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineScanRisk) string { return v.MetadataJson }).(pulumi.StringOutput)
+}
+
+// Name of the risk.
+func (o GetPipelineScanRiskOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineScanRisk) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Detections of this risk in the scan.
+func (o GetPipelineScanRiskOutput) Occurrences() GetPipelineScanRiskOccurrenceArrayOutput {
+	return o.ApplyT(func(v GetPipelineScanRisk) []GetPipelineScanRiskOccurrence { return v.Occurrences }).(GetPipelineScanRiskOccurrenceArrayOutput)
+}
+
+// Identity of the service the risk applies to.
+func (o GetPipelineScanRiskOutput) ServiceIdentity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineScanRisk) string { return v.ServiceIdentity }).(pulumi.StringOutput)
+}
+
+// Name of the service the risk applies to.
+func (o GetPipelineScanRiskOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineScanRisk) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+// Service kind, such as DiscoveredService, ChaosService, or CDService.
+func (o GetPipelineScanRiskOutput) ServiceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineScanRisk) string { return v.ServiceType }).(pulumi.StringOutput)
+}
+
+// Severity: Critical, High, Medium, or Low.
+func (o GetPipelineScanRiskOutput) Severity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineScanRisk) string { return v.Severity }).(pulumi.StringOutput)
+}
+
+// Status: Open, InProgress, Resolved, or Ignored.
+func (o GetPipelineScanRiskOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineScanRisk) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Tags on the risk.
+func (o GetPipelineScanRiskOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPipelineScanRisk) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+type GetPipelineScanRiskArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPipelineScanRiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPipelineScanRisk)(nil)).Elem()
+}
+
+func (o GetPipelineScanRiskArrayOutput) ToGetPipelineScanRiskArrayOutput() GetPipelineScanRiskArrayOutput {
+	return o
+}
+
+func (o GetPipelineScanRiskArrayOutput) ToGetPipelineScanRiskArrayOutputWithContext(ctx context.Context) GetPipelineScanRiskArrayOutput {
+	return o
+}
+
+func (o GetPipelineScanRiskArrayOutput) Index(i pulumi.IntInput) GetPipelineScanRiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPipelineScanRisk {
+		return vs[0].([]GetPipelineScanRisk)[vs[1].(int)]
+	}).(GetPipelineScanRiskOutput)
+}
+
+type GetPipelineScanRiskOccurrence struct {
+	// Detection time as a Unix timestamp.
+	DetectedAt int `pulumi:"detectedAt"`
+	// Evidence for the occurrence.
+	Evidences []string `pulumi:"evidences"`
+	// Identity of this occurrence.
+	OccurrenceId string `pulumi:"occurrenceId"`
+	// Remediation guidance.
+	Remediations []string `pulumi:"remediations"`
+	// Resilience testing recommendations.
+	ResilienceTestingRecs []string `pulumi:"resilienceTestingRecs"`
+	// Service name recorded on the occurrence.
+	ServiceName string `pulumi:"serviceName"`
+	// Source id of the occurrence.
+	SourceId string `pulumi:"sourceId"`
+	// Source type of the occurrence.
+	SourceType string `pulumi:"sourceType"`
+}
+
+// GetPipelineScanRiskOccurrenceInput is an input type that accepts GetPipelineScanRiskOccurrenceArgs and GetPipelineScanRiskOccurrenceOutput values.
+// You can construct a concrete instance of `GetPipelineScanRiskOccurrenceInput` via:
+//
+//	GetPipelineScanRiskOccurrenceArgs{...}
+type GetPipelineScanRiskOccurrenceInput interface {
+	pulumi.Input
+
+	ToGetPipelineScanRiskOccurrenceOutput() GetPipelineScanRiskOccurrenceOutput
+	ToGetPipelineScanRiskOccurrenceOutputWithContext(context.Context) GetPipelineScanRiskOccurrenceOutput
+}
+
+type GetPipelineScanRiskOccurrenceArgs struct {
+	// Detection time as a Unix timestamp.
+	DetectedAt pulumi.IntInput `pulumi:"detectedAt"`
+	// Evidence for the occurrence.
+	Evidences pulumi.StringArrayInput `pulumi:"evidences"`
+	// Identity of this occurrence.
+	OccurrenceId pulumi.StringInput `pulumi:"occurrenceId"`
+	// Remediation guidance.
+	Remediations pulumi.StringArrayInput `pulumi:"remediations"`
+	// Resilience testing recommendations.
+	ResilienceTestingRecs pulumi.StringArrayInput `pulumi:"resilienceTestingRecs"`
+	// Service name recorded on the occurrence.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+	// Source id of the occurrence.
+	SourceId pulumi.StringInput `pulumi:"sourceId"`
+	// Source type of the occurrence.
+	SourceType pulumi.StringInput `pulumi:"sourceType"`
+}
+
+func (GetPipelineScanRiskOccurrenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPipelineScanRiskOccurrence)(nil)).Elem()
+}
+
+func (i GetPipelineScanRiskOccurrenceArgs) ToGetPipelineScanRiskOccurrenceOutput() GetPipelineScanRiskOccurrenceOutput {
+	return i.ToGetPipelineScanRiskOccurrenceOutputWithContext(context.Background())
+}
+
+func (i GetPipelineScanRiskOccurrenceArgs) ToGetPipelineScanRiskOccurrenceOutputWithContext(ctx context.Context) GetPipelineScanRiskOccurrenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPipelineScanRiskOccurrenceOutput)
+}
+
+// GetPipelineScanRiskOccurrenceArrayInput is an input type that accepts GetPipelineScanRiskOccurrenceArray and GetPipelineScanRiskOccurrenceArrayOutput values.
+// You can construct a concrete instance of `GetPipelineScanRiskOccurrenceArrayInput` via:
+//
+//	GetPipelineScanRiskOccurrenceArray{ GetPipelineScanRiskOccurrenceArgs{...} }
+type GetPipelineScanRiskOccurrenceArrayInput interface {
+	pulumi.Input
+
+	ToGetPipelineScanRiskOccurrenceArrayOutput() GetPipelineScanRiskOccurrenceArrayOutput
+	ToGetPipelineScanRiskOccurrenceArrayOutputWithContext(context.Context) GetPipelineScanRiskOccurrenceArrayOutput
+}
+
+type GetPipelineScanRiskOccurrenceArray []GetPipelineScanRiskOccurrenceInput
+
+func (GetPipelineScanRiskOccurrenceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPipelineScanRiskOccurrence)(nil)).Elem()
+}
+
+func (i GetPipelineScanRiskOccurrenceArray) ToGetPipelineScanRiskOccurrenceArrayOutput() GetPipelineScanRiskOccurrenceArrayOutput {
+	return i.ToGetPipelineScanRiskOccurrenceArrayOutputWithContext(context.Background())
+}
+
+func (i GetPipelineScanRiskOccurrenceArray) ToGetPipelineScanRiskOccurrenceArrayOutputWithContext(ctx context.Context) GetPipelineScanRiskOccurrenceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPipelineScanRiskOccurrenceArrayOutput)
+}
+
+type GetPipelineScanRiskOccurrenceOutput struct{ *pulumi.OutputState }
+
+func (GetPipelineScanRiskOccurrenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPipelineScanRiskOccurrence)(nil)).Elem()
+}
+
+func (o GetPipelineScanRiskOccurrenceOutput) ToGetPipelineScanRiskOccurrenceOutput() GetPipelineScanRiskOccurrenceOutput {
+	return o
+}
+
+func (o GetPipelineScanRiskOccurrenceOutput) ToGetPipelineScanRiskOccurrenceOutputWithContext(ctx context.Context) GetPipelineScanRiskOccurrenceOutput {
+	return o
+}
+
+// Detection time as a Unix timestamp.
+func (o GetPipelineScanRiskOccurrenceOutput) DetectedAt() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPipelineScanRiskOccurrence) int { return v.DetectedAt }).(pulumi.IntOutput)
+}
+
+// Evidence for the occurrence.
+func (o GetPipelineScanRiskOccurrenceOutput) Evidences() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPipelineScanRiskOccurrence) []string { return v.Evidences }).(pulumi.StringArrayOutput)
+}
+
+// Identity of this occurrence.
+func (o GetPipelineScanRiskOccurrenceOutput) OccurrenceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineScanRiskOccurrence) string { return v.OccurrenceId }).(pulumi.StringOutput)
+}
+
+// Remediation guidance.
+func (o GetPipelineScanRiskOccurrenceOutput) Remediations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPipelineScanRiskOccurrence) []string { return v.Remediations }).(pulumi.StringArrayOutput)
+}
+
+// Resilience testing recommendations.
+func (o GetPipelineScanRiskOccurrenceOutput) ResilienceTestingRecs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPipelineScanRiskOccurrence) []string { return v.ResilienceTestingRecs }).(pulumi.StringArrayOutput)
+}
+
+// Service name recorded on the occurrence.
+func (o GetPipelineScanRiskOccurrenceOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineScanRiskOccurrence) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+// Source id of the occurrence.
+func (o GetPipelineScanRiskOccurrenceOutput) SourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineScanRiskOccurrence) string { return v.SourceId }).(pulumi.StringOutput)
+}
+
+// Source type of the occurrence.
+func (o GetPipelineScanRiskOccurrenceOutput) SourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineScanRiskOccurrence) string { return v.SourceType }).(pulumi.StringOutput)
+}
+
+type GetPipelineScanRiskOccurrenceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPipelineScanRiskOccurrenceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPipelineScanRiskOccurrence)(nil)).Elem()
+}
+
+func (o GetPipelineScanRiskOccurrenceArrayOutput) ToGetPipelineScanRiskOccurrenceArrayOutput() GetPipelineScanRiskOccurrenceArrayOutput {
+	return o
+}
+
+func (o GetPipelineScanRiskOccurrenceArrayOutput) ToGetPipelineScanRiskOccurrenceArrayOutputWithContext(ctx context.Context) GetPipelineScanRiskOccurrenceArrayOutput {
+	return o
+}
+
+func (o GetPipelineScanRiskOccurrenceArrayOutput) Index(i pulumi.IntInput) GetPipelineScanRiskOccurrenceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPipelineScanRiskOccurrence {
+		return vs[0].([]GetPipelineScanRiskOccurrence)[vs[1].(int)]
+	}).(GetPipelineScanRiskOccurrenceOutput)
+}
+
+type GetPipelineScanRiskSummary struct {
+	// Analysis time as a Unix timestamp.
+	AnalysedAt int `pulumi:"analysedAt"`
+	// Risk counts keyed by category.
+	CategoryCounts map[string]int `pulumi:"categoryCounts"`
+	// Number of risks.
+	RiskCount int `pulumi:"riskCount"`
+	// Resilience score.
+	Score int `pulumi:"score"`
+	// Maximum resilience score.
+	ScoreMax int `pulumi:"scoreMax"`
+	// Services included in analysis.
+	ServicesAnalysed int `pulumi:"servicesAnalysed"`
+	// Services with at least one risk.
+	ServicesAtRisk int `pulumi:"servicesAtRisk"`
+	// Risk counts keyed by severity.
+	SeverityCounts map[string]int `pulumi:"severityCounts"`
+}
+
+// GetPipelineScanRiskSummaryInput is an input type that accepts GetPipelineScanRiskSummaryArgs and GetPipelineScanRiskSummaryOutput values.
+// You can construct a concrete instance of `GetPipelineScanRiskSummaryInput` via:
+//
+//	GetPipelineScanRiskSummaryArgs{...}
+type GetPipelineScanRiskSummaryInput interface {
+	pulumi.Input
+
+	ToGetPipelineScanRiskSummaryOutput() GetPipelineScanRiskSummaryOutput
+	ToGetPipelineScanRiskSummaryOutputWithContext(context.Context) GetPipelineScanRiskSummaryOutput
+}
+
+type GetPipelineScanRiskSummaryArgs struct {
+	// Analysis time as a Unix timestamp.
+	AnalysedAt pulumi.IntInput `pulumi:"analysedAt"`
+	// Risk counts keyed by category.
+	CategoryCounts pulumi.IntMapInput `pulumi:"categoryCounts"`
+	// Number of risks.
+	RiskCount pulumi.IntInput `pulumi:"riskCount"`
+	// Resilience score.
+	Score pulumi.IntInput `pulumi:"score"`
+	// Maximum resilience score.
+	ScoreMax pulumi.IntInput `pulumi:"scoreMax"`
+	// Services included in analysis.
+	ServicesAnalysed pulumi.IntInput `pulumi:"servicesAnalysed"`
+	// Services with at least one risk.
+	ServicesAtRisk pulumi.IntInput `pulumi:"servicesAtRisk"`
+	// Risk counts keyed by severity.
+	SeverityCounts pulumi.IntMapInput `pulumi:"severityCounts"`
+}
+
+func (GetPipelineScanRiskSummaryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPipelineScanRiskSummary)(nil)).Elem()
+}
+
+func (i GetPipelineScanRiskSummaryArgs) ToGetPipelineScanRiskSummaryOutput() GetPipelineScanRiskSummaryOutput {
+	return i.ToGetPipelineScanRiskSummaryOutputWithContext(context.Background())
+}
+
+func (i GetPipelineScanRiskSummaryArgs) ToGetPipelineScanRiskSummaryOutputWithContext(ctx context.Context) GetPipelineScanRiskSummaryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPipelineScanRiskSummaryOutput)
+}
+
+// GetPipelineScanRiskSummaryArrayInput is an input type that accepts GetPipelineScanRiskSummaryArray and GetPipelineScanRiskSummaryArrayOutput values.
+// You can construct a concrete instance of `GetPipelineScanRiskSummaryArrayInput` via:
+//
+//	GetPipelineScanRiskSummaryArray{ GetPipelineScanRiskSummaryArgs{...} }
+type GetPipelineScanRiskSummaryArrayInput interface {
+	pulumi.Input
+
+	ToGetPipelineScanRiskSummaryArrayOutput() GetPipelineScanRiskSummaryArrayOutput
+	ToGetPipelineScanRiskSummaryArrayOutputWithContext(context.Context) GetPipelineScanRiskSummaryArrayOutput
+}
+
+type GetPipelineScanRiskSummaryArray []GetPipelineScanRiskSummaryInput
+
+func (GetPipelineScanRiskSummaryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPipelineScanRiskSummary)(nil)).Elem()
+}
+
+func (i GetPipelineScanRiskSummaryArray) ToGetPipelineScanRiskSummaryArrayOutput() GetPipelineScanRiskSummaryArrayOutput {
+	return i.ToGetPipelineScanRiskSummaryArrayOutputWithContext(context.Background())
+}
+
+func (i GetPipelineScanRiskSummaryArray) ToGetPipelineScanRiskSummaryArrayOutputWithContext(ctx context.Context) GetPipelineScanRiskSummaryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPipelineScanRiskSummaryArrayOutput)
+}
+
+type GetPipelineScanRiskSummaryOutput struct{ *pulumi.OutputState }
+
+func (GetPipelineScanRiskSummaryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPipelineScanRiskSummary)(nil)).Elem()
+}
+
+func (o GetPipelineScanRiskSummaryOutput) ToGetPipelineScanRiskSummaryOutput() GetPipelineScanRiskSummaryOutput {
+	return o
+}
+
+func (o GetPipelineScanRiskSummaryOutput) ToGetPipelineScanRiskSummaryOutputWithContext(ctx context.Context) GetPipelineScanRiskSummaryOutput {
+	return o
+}
+
+// Analysis time as a Unix timestamp.
+func (o GetPipelineScanRiskSummaryOutput) AnalysedAt() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPipelineScanRiskSummary) int { return v.AnalysedAt }).(pulumi.IntOutput)
+}
+
+// Risk counts keyed by category.
+func (o GetPipelineScanRiskSummaryOutput) CategoryCounts() pulumi.IntMapOutput {
+	return o.ApplyT(func(v GetPipelineScanRiskSummary) map[string]int { return v.CategoryCounts }).(pulumi.IntMapOutput)
+}
+
+// Number of risks.
+func (o GetPipelineScanRiskSummaryOutput) RiskCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPipelineScanRiskSummary) int { return v.RiskCount }).(pulumi.IntOutput)
+}
+
+// Resilience score.
+func (o GetPipelineScanRiskSummaryOutput) Score() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPipelineScanRiskSummary) int { return v.Score }).(pulumi.IntOutput)
+}
+
+// Maximum resilience score.
+func (o GetPipelineScanRiskSummaryOutput) ScoreMax() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPipelineScanRiskSummary) int { return v.ScoreMax }).(pulumi.IntOutput)
+}
+
+// Services included in analysis.
+func (o GetPipelineScanRiskSummaryOutput) ServicesAnalysed() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPipelineScanRiskSummary) int { return v.ServicesAnalysed }).(pulumi.IntOutput)
+}
+
+// Services with at least one risk.
+func (o GetPipelineScanRiskSummaryOutput) ServicesAtRisk() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPipelineScanRiskSummary) int { return v.ServicesAtRisk }).(pulumi.IntOutput)
+}
+
+// Risk counts keyed by severity.
+func (o GetPipelineScanRiskSummaryOutput) SeverityCounts() pulumi.IntMapOutput {
+	return o.ApplyT(func(v GetPipelineScanRiskSummary) map[string]int { return v.SeverityCounts }).(pulumi.IntMapOutput)
+}
+
+type GetPipelineScanRiskSummaryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPipelineScanRiskSummaryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPipelineScanRiskSummary)(nil)).Elem()
+}
+
+func (o GetPipelineScanRiskSummaryArrayOutput) ToGetPipelineScanRiskSummaryArrayOutput() GetPipelineScanRiskSummaryArrayOutput {
+	return o
+}
+
+func (o GetPipelineScanRiskSummaryArrayOutput) ToGetPipelineScanRiskSummaryArrayOutputWithContext(ctx context.Context) GetPipelineScanRiskSummaryArrayOutput {
+	return o
+}
+
+func (o GetPipelineScanRiskSummaryArrayOutput) Index(i pulumi.IntInput) GetPipelineScanRiskSummaryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPipelineScanRiskSummary {
+		return vs[0].([]GetPipelineScanRiskSummary)[vs[1].(int)]
+	}).(GetPipelineScanRiskSummaryOutput)
+}
+
+type GetPipelineScanSummary struct {
+	// Critical risks.
+	Critical int `pulumi:"critical"`
+	// High risks.
+	High int `pulumi:"high"`
+	// Low risks.
+	Low int `pulumi:"low"`
+	// Maximum resilience score.
+	MaxScore int `pulumi:"maxScore"`
+	// Medium risks.
+	Medium int `pulumi:"medium"`
+	// Number of risk rules evaluated.
+	RuleCount int `pulumi:"ruleCount"`
+	// Resilience score.
+	Score int `pulumi:"score"`
+	// Number of services scanned.
+	ServicesScanned int `pulumi:"servicesScanned"`
+	// Number of risks found.
+	TotalRisks int `pulumi:"totalRisks"`
+}
+
+// GetPipelineScanSummaryInput is an input type that accepts GetPipelineScanSummaryArgs and GetPipelineScanSummaryOutput values.
+// You can construct a concrete instance of `GetPipelineScanSummaryInput` via:
+//
+//	GetPipelineScanSummaryArgs{...}
+type GetPipelineScanSummaryInput interface {
+	pulumi.Input
+
+	ToGetPipelineScanSummaryOutput() GetPipelineScanSummaryOutput
+	ToGetPipelineScanSummaryOutputWithContext(context.Context) GetPipelineScanSummaryOutput
+}
+
+type GetPipelineScanSummaryArgs struct {
+	// Critical risks.
+	Critical pulumi.IntInput `pulumi:"critical"`
+	// High risks.
+	High pulumi.IntInput `pulumi:"high"`
+	// Low risks.
+	Low pulumi.IntInput `pulumi:"low"`
+	// Maximum resilience score.
+	MaxScore pulumi.IntInput `pulumi:"maxScore"`
+	// Medium risks.
+	Medium pulumi.IntInput `pulumi:"medium"`
+	// Number of risk rules evaluated.
+	RuleCount pulumi.IntInput `pulumi:"ruleCount"`
+	// Resilience score.
+	Score pulumi.IntInput `pulumi:"score"`
+	// Number of services scanned.
+	ServicesScanned pulumi.IntInput `pulumi:"servicesScanned"`
+	// Number of risks found.
+	TotalRisks pulumi.IntInput `pulumi:"totalRisks"`
+}
+
+func (GetPipelineScanSummaryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPipelineScanSummary)(nil)).Elem()
+}
+
+func (i GetPipelineScanSummaryArgs) ToGetPipelineScanSummaryOutput() GetPipelineScanSummaryOutput {
+	return i.ToGetPipelineScanSummaryOutputWithContext(context.Background())
+}
+
+func (i GetPipelineScanSummaryArgs) ToGetPipelineScanSummaryOutputWithContext(ctx context.Context) GetPipelineScanSummaryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPipelineScanSummaryOutput)
+}
+
+// GetPipelineScanSummaryArrayInput is an input type that accepts GetPipelineScanSummaryArray and GetPipelineScanSummaryArrayOutput values.
+// You can construct a concrete instance of `GetPipelineScanSummaryArrayInput` via:
+//
+//	GetPipelineScanSummaryArray{ GetPipelineScanSummaryArgs{...} }
+type GetPipelineScanSummaryArrayInput interface {
+	pulumi.Input
+
+	ToGetPipelineScanSummaryArrayOutput() GetPipelineScanSummaryArrayOutput
+	ToGetPipelineScanSummaryArrayOutputWithContext(context.Context) GetPipelineScanSummaryArrayOutput
+}
+
+type GetPipelineScanSummaryArray []GetPipelineScanSummaryInput
+
+func (GetPipelineScanSummaryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPipelineScanSummary)(nil)).Elem()
+}
+
+func (i GetPipelineScanSummaryArray) ToGetPipelineScanSummaryArrayOutput() GetPipelineScanSummaryArrayOutput {
+	return i.ToGetPipelineScanSummaryArrayOutputWithContext(context.Background())
+}
+
+func (i GetPipelineScanSummaryArray) ToGetPipelineScanSummaryArrayOutputWithContext(ctx context.Context) GetPipelineScanSummaryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPipelineScanSummaryArrayOutput)
+}
+
+type GetPipelineScanSummaryOutput struct{ *pulumi.OutputState }
+
+func (GetPipelineScanSummaryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPipelineScanSummary)(nil)).Elem()
+}
+
+func (o GetPipelineScanSummaryOutput) ToGetPipelineScanSummaryOutput() GetPipelineScanSummaryOutput {
+	return o
+}
+
+func (o GetPipelineScanSummaryOutput) ToGetPipelineScanSummaryOutputWithContext(ctx context.Context) GetPipelineScanSummaryOutput {
+	return o
+}
+
+// Critical risks.
+func (o GetPipelineScanSummaryOutput) Critical() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPipelineScanSummary) int { return v.Critical }).(pulumi.IntOutput)
+}
+
+// High risks.
+func (o GetPipelineScanSummaryOutput) High() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPipelineScanSummary) int { return v.High }).(pulumi.IntOutput)
+}
+
+// Low risks.
+func (o GetPipelineScanSummaryOutput) Low() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPipelineScanSummary) int { return v.Low }).(pulumi.IntOutput)
+}
+
+// Maximum resilience score.
+func (o GetPipelineScanSummaryOutput) MaxScore() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPipelineScanSummary) int { return v.MaxScore }).(pulumi.IntOutput)
+}
+
+// Medium risks.
+func (o GetPipelineScanSummaryOutput) Medium() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPipelineScanSummary) int { return v.Medium }).(pulumi.IntOutput)
+}
+
+// Number of risk rules evaluated.
+func (o GetPipelineScanSummaryOutput) RuleCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPipelineScanSummary) int { return v.RuleCount }).(pulumi.IntOutput)
+}
+
+// Resilience score.
+func (o GetPipelineScanSummaryOutput) Score() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPipelineScanSummary) int { return v.Score }).(pulumi.IntOutput)
+}
+
+// Number of services scanned.
+func (o GetPipelineScanSummaryOutput) ServicesScanned() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPipelineScanSummary) int { return v.ServicesScanned }).(pulumi.IntOutput)
+}
+
+// Number of risks found.
+func (o GetPipelineScanSummaryOutput) TotalRisks() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPipelineScanSummary) int { return v.TotalRisks }).(pulumi.IntOutput)
+}
+
+type GetPipelineScanSummaryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPipelineScanSummaryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPipelineScanSummary)(nil)).Elem()
+}
+
+func (o GetPipelineScanSummaryArrayOutput) ToGetPipelineScanSummaryArrayOutput() GetPipelineScanSummaryArrayOutput {
+	return o
+}
+
+func (o GetPipelineScanSummaryArrayOutput) ToGetPipelineScanSummaryArrayOutputWithContext(ctx context.Context) GetPipelineScanSummaryArrayOutput {
+	return o
+}
+
+func (o GetPipelineScanSummaryArrayOutput) Index(i pulumi.IntInput) GetPipelineScanSummaryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPipelineScanSummary {
+		return vs[0].([]GetPipelineScanSummary)[vs[1].(int)]
+	}).(GetPipelineScanSummaryOutput)
 }
 
 type GetProbeTemplateApmProbe struct {
@@ -34457,6 +38685,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FaultTemplateVariableArrayInput)(nil)).Elem(), FaultTemplateVariableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageRegistryCustomImageInput)(nil)).Elem(), ImageRegistryCustomImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageRegistryCustomImageArrayInput)(nil)).Elem(), ImageRegistryCustomImageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InfrastructureScanCollectedDataInput)(nil)).Elem(), InfrastructureScanCollectedDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InfrastructureScanCollectedDataArrayInput)(nil)).Elem(), InfrastructureScanCollectedDataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InfrastructureScanCollectedDataErrorInput)(nil)).Elem(), InfrastructureScanCollectedDataErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InfrastructureScanCollectedDataErrorArrayInput)(nil)).Elem(), InfrastructureScanCollectedDataErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InfrastructureScanRiskInput)(nil)).Elem(), InfrastructureScanRiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InfrastructureScanRiskArrayInput)(nil)).Elem(), InfrastructureScanRiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InfrastructureScanRiskOccurrenceInput)(nil)).Elem(), InfrastructureScanRiskOccurrenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InfrastructureScanRiskOccurrenceArrayInput)(nil)).Elem(), InfrastructureScanRiskOccurrenceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InfrastructureScanRiskSummaryInput)(nil)).Elem(), InfrastructureScanRiskSummaryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InfrastructureScanRiskSummaryArrayInput)(nil)).Elem(), InfrastructureScanRiskSummaryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InfrastructureScanSummaryInput)(nil)).Elem(), InfrastructureScanSummaryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InfrastructureScanSummaryArrayInput)(nil)).Elem(), InfrastructureScanSummaryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InfrastructureV2EnvInput)(nil)).Elem(), InfrastructureV2EnvArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InfrastructureV2EnvArrayInput)(nil)).Elem(), InfrastructureV2EnvArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InfrastructureV2IdentifierInput)(nil)).Elem(), InfrastructureV2IdentifierArgs{})
@@ -34483,6 +38723,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InfrastructureV2VolumeArrayInput)(nil)).Elem(), InfrastructureV2VolumeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InfrastructureV2VolumeMountInput)(nil)).Elem(), InfrastructureV2VolumeMountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InfrastructureV2VolumeMountArrayInput)(nil)).Elem(), InfrastructureV2VolumeMountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OnboardingServiceProbeInput)(nil)).Elem(), OnboardingServiceProbeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OnboardingServiceProbeArrayInput)(nil)).Elem(), OnboardingServiceProbeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineScanCollectedDataInput)(nil)).Elem(), PipelineScanCollectedDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineScanCollectedDataArrayInput)(nil)).Elem(), PipelineScanCollectedDataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineScanCollectedDataErrorInput)(nil)).Elem(), PipelineScanCollectedDataErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineScanCollectedDataErrorArrayInput)(nil)).Elem(), PipelineScanCollectedDataErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineScanInfrastructureInput)(nil)).Elem(), PipelineScanInfrastructureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineScanInfrastructureArrayInput)(nil)).Elem(), PipelineScanInfrastructureArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineScanRiskInput)(nil)).Elem(), PipelineScanRiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineScanRiskArrayInput)(nil)).Elem(), PipelineScanRiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineScanRiskOccurrenceInput)(nil)).Elem(), PipelineScanRiskOccurrenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineScanRiskOccurrenceArrayInput)(nil)).Elem(), PipelineScanRiskOccurrenceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineScanRiskSummaryInput)(nil)).Elem(), PipelineScanRiskSummaryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineScanRiskSummaryArrayInput)(nil)).Elem(), PipelineScanRiskSummaryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineScanSummaryInput)(nil)).Elem(), PipelineScanSummaryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineScanSummaryArrayInput)(nil)).Elem(), PipelineScanSummaryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProbeTemplateApmProbeInput)(nil)).Elem(), ProbeTemplateApmProbeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProbeTemplateApmProbePtrInput)(nil)).Elem(), ProbeTemplateApmProbeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProbeTemplateApmProbeAppDynamicsInputsInput)(nil)).Elem(), ProbeTemplateApmProbeAppDynamicsInputsArgs{})
@@ -34581,6 +38837,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGovernanceRuleV3TimeWindowArrayInput)(nil)).Elem(), SecurityGovernanceRuleV3TimeWindowArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGovernanceRuleV3TimeWindowRecurrenceInput)(nil)).Elem(), SecurityGovernanceRuleV3TimeWindowRecurrenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGovernanceRuleV3TimeWindowRecurrencePtrInput)(nil)).Elem(), SecurityGovernanceRuleV3TimeWindowRecurrenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceOnboardingProbeInput)(nil)).Elem(), ServiceOnboardingProbeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceOnboardingProbeArrayInput)(nil)).Elem(), ServiceOnboardingProbeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetActionTemplateContainerActionInput)(nil)).Elem(), GetActionTemplateContainerActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetActionTemplateContainerActionPtrInput)(nil)).Elem(), GetActionTemplateContainerActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetActionTemplateContainerActionEnvInput)(nil)).Elem(), GetActionTemplateContainerActionEnvArgs{})
@@ -34661,6 +38919,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFaultTemplateVariableArrayInput)(nil)).Elem(), GetFaultTemplateVariableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetImageRegistryCustomImageInput)(nil)).Elem(), GetImageRegistryCustomImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetImageRegistryCustomImageArrayInput)(nil)).Elem(), GetImageRegistryCustomImageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInfrastructureScanCollectedDataInput)(nil)).Elem(), GetInfrastructureScanCollectedDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInfrastructureScanCollectedDataArrayInput)(nil)).Elem(), GetInfrastructureScanCollectedDataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInfrastructureScanCollectedDataErrorInput)(nil)).Elem(), GetInfrastructureScanCollectedDataErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInfrastructureScanCollectedDataErrorArrayInput)(nil)).Elem(), GetInfrastructureScanCollectedDataErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInfrastructureScanRiskInput)(nil)).Elem(), GetInfrastructureScanRiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInfrastructureScanRiskArrayInput)(nil)).Elem(), GetInfrastructureScanRiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInfrastructureScanRiskOccurrenceInput)(nil)).Elem(), GetInfrastructureScanRiskOccurrenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInfrastructureScanRiskOccurrenceArrayInput)(nil)).Elem(), GetInfrastructureScanRiskOccurrenceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInfrastructureScanRiskSummaryInput)(nil)).Elem(), GetInfrastructureScanRiskSummaryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInfrastructureScanRiskSummaryArrayInput)(nil)).Elem(), GetInfrastructureScanRiskSummaryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInfrastructureScanSummaryInput)(nil)).Elem(), GetInfrastructureScanSummaryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInfrastructureScanSummaryArrayInput)(nil)).Elem(), GetInfrastructureScanSummaryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInfrastructureV2ImageRegistryInput)(nil)).Elem(), GetInfrastructureV2ImageRegistryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInfrastructureV2ImageRegistryArrayInput)(nil)).Elem(), GetInfrastructureV2ImageRegistryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInfrastructureV2ImageRegistryCustomImageInput)(nil)).Elem(), GetInfrastructureV2ImageRegistryCustomImageArgs{})
@@ -34683,6 +38953,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInfrastructureV2VolumeArrayInput)(nil)).Elem(), GetInfrastructureV2VolumeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInfrastructureV2VolumeMountInput)(nil)).Elem(), GetInfrastructureV2VolumeMountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInfrastructureV2VolumeMountArrayInput)(nil)).Elem(), GetInfrastructureV2VolumeMountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineScanCollectedDataInput)(nil)).Elem(), GetPipelineScanCollectedDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineScanCollectedDataArrayInput)(nil)).Elem(), GetPipelineScanCollectedDataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineScanCollectedDataErrorInput)(nil)).Elem(), GetPipelineScanCollectedDataErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineScanCollectedDataErrorArrayInput)(nil)).Elem(), GetPipelineScanCollectedDataErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineScanInfrastructureInput)(nil)).Elem(), GetPipelineScanInfrastructureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineScanInfrastructureArrayInput)(nil)).Elem(), GetPipelineScanInfrastructureArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineScanRiskInput)(nil)).Elem(), GetPipelineScanRiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineScanRiskArrayInput)(nil)).Elem(), GetPipelineScanRiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineScanRiskOccurrenceInput)(nil)).Elem(), GetPipelineScanRiskOccurrenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineScanRiskOccurrenceArrayInput)(nil)).Elem(), GetPipelineScanRiskOccurrenceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineScanRiskSummaryInput)(nil)).Elem(), GetPipelineScanRiskSummaryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineScanRiskSummaryArrayInput)(nil)).Elem(), GetPipelineScanRiskSummaryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineScanSummaryInput)(nil)).Elem(), GetPipelineScanSummaryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineScanSummaryArrayInput)(nil)).Elem(), GetPipelineScanSummaryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProbeTemplateApmProbeInput)(nil)).Elem(), GetProbeTemplateApmProbeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProbeTemplateApmProbePtrInput)(nil)).Elem(), GetProbeTemplateApmProbeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProbeTemplateApmProbeAppDynamicsInputsInput)(nil)).Elem(), GetProbeTemplateApmProbeAppDynamicsInputsArgs{})
@@ -34907,6 +39191,18 @@ func init() {
 	pulumi.RegisterOutputType(FaultTemplateVariableArrayOutput{})
 	pulumi.RegisterOutputType(ImageRegistryCustomImageOutput{})
 	pulumi.RegisterOutputType(ImageRegistryCustomImageArrayOutput{})
+	pulumi.RegisterOutputType(InfrastructureScanCollectedDataOutput{})
+	pulumi.RegisterOutputType(InfrastructureScanCollectedDataArrayOutput{})
+	pulumi.RegisterOutputType(InfrastructureScanCollectedDataErrorOutput{})
+	pulumi.RegisterOutputType(InfrastructureScanCollectedDataErrorArrayOutput{})
+	pulumi.RegisterOutputType(InfrastructureScanRiskOutput{})
+	pulumi.RegisterOutputType(InfrastructureScanRiskArrayOutput{})
+	pulumi.RegisterOutputType(InfrastructureScanRiskOccurrenceOutput{})
+	pulumi.RegisterOutputType(InfrastructureScanRiskOccurrenceArrayOutput{})
+	pulumi.RegisterOutputType(InfrastructureScanRiskSummaryOutput{})
+	pulumi.RegisterOutputType(InfrastructureScanRiskSummaryArrayOutput{})
+	pulumi.RegisterOutputType(InfrastructureScanSummaryOutput{})
+	pulumi.RegisterOutputType(InfrastructureScanSummaryArrayOutput{})
 	pulumi.RegisterOutputType(InfrastructureV2EnvOutput{})
 	pulumi.RegisterOutputType(InfrastructureV2EnvArrayOutput{})
 	pulumi.RegisterOutputType(InfrastructureV2IdentifierOutput{})
@@ -34933,6 +39229,22 @@ func init() {
 	pulumi.RegisterOutputType(InfrastructureV2VolumeArrayOutput{})
 	pulumi.RegisterOutputType(InfrastructureV2VolumeMountOutput{})
 	pulumi.RegisterOutputType(InfrastructureV2VolumeMountArrayOutput{})
+	pulumi.RegisterOutputType(OnboardingServiceProbeOutput{})
+	pulumi.RegisterOutputType(OnboardingServiceProbeArrayOutput{})
+	pulumi.RegisterOutputType(PipelineScanCollectedDataOutput{})
+	pulumi.RegisterOutputType(PipelineScanCollectedDataArrayOutput{})
+	pulumi.RegisterOutputType(PipelineScanCollectedDataErrorOutput{})
+	pulumi.RegisterOutputType(PipelineScanCollectedDataErrorArrayOutput{})
+	pulumi.RegisterOutputType(PipelineScanInfrastructureOutput{})
+	pulumi.RegisterOutputType(PipelineScanInfrastructureArrayOutput{})
+	pulumi.RegisterOutputType(PipelineScanRiskOutput{})
+	pulumi.RegisterOutputType(PipelineScanRiskArrayOutput{})
+	pulumi.RegisterOutputType(PipelineScanRiskOccurrenceOutput{})
+	pulumi.RegisterOutputType(PipelineScanRiskOccurrenceArrayOutput{})
+	pulumi.RegisterOutputType(PipelineScanRiskSummaryOutput{})
+	pulumi.RegisterOutputType(PipelineScanRiskSummaryArrayOutput{})
+	pulumi.RegisterOutputType(PipelineScanSummaryOutput{})
+	pulumi.RegisterOutputType(PipelineScanSummaryArrayOutput{})
 	pulumi.RegisterOutputType(ProbeTemplateApmProbeOutput{})
 	pulumi.RegisterOutputType(ProbeTemplateApmProbePtrOutput{})
 	pulumi.RegisterOutputType(ProbeTemplateApmProbeAppDynamicsInputsOutput{})
@@ -35031,6 +39343,8 @@ func init() {
 	pulumi.RegisterOutputType(SecurityGovernanceRuleV3TimeWindowArrayOutput{})
 	pulumi.RegisterOutputType(SecurityGovernanceRuleV3TimeWindowRecurrenceOutput{})
 	pulumi.RegisterOutputType(SecurityGovernanceRuleV3TimeWindowRecurrencePtrOutput{})
+	pulumi.RegisterOutputType(ServiceOnboardingProbeOutput{})
+	pulumi.RegisterOutputType(ServiceOnboardingProbeArrayOutput{})
 	pulumi.RegisterOutputType(GetActionTemplateContainerActionOutput{})
 	pulumi.RegisterOutputType(GetActionTemplateContainerActionPtrOutput{})
 	pulumi.RegisterOutputType(GetActionTemplateContainerActionEnvOutput{})
@@ -35111,6 +39425,18 @@ func init() {
 	pulumi.RegisterOutputType(GetFaultTemplateVariableArrayOutput{})
 	pulumi.RegisterOutputType(GetImageRegistryCustomImageOutput{})
 	pulumi.RegisterOutputType(GetImageRegistryCustomImageArrayOutput{})
+	pulumi.RegisterOutputType(GetInfrastructureScanCollectedDataOutput{})
+	pulumi.RegisterOutputType(GetInfrastructureScanCollectedDataArrayOutput{})
+	pulumi.RegisterOutputType(GetInfrastructureScanCollectedDataErrorOutput{})
+	pulumi.RegisterOutputType(GetInfrastructureScanCollectedDataErrorArrayOutput{})
+	pulumi.RegisterOutputType(GetInfrastructureScanRiskOutput{})
+	pulumi.RegisterOutputType(GetInfrastructureScanRiskArrayOutput{})
+	pulumi.RegisterOutputType(GetInfrastructureScanRiskOccurrenceOutput{})
+	pulumi.RegisterOutputType(GetInfrastructureScanRiskOccurrenceArrayOutput{})
+	pulumi.RegisterOutputType(GetInfrastructureScanRiskSummaryOutput{})
+	pulumi.RegisterOutputType(GetInfrastructureScanRiskSummaryArrayOutput{})
+	pulumi.RegisterOutputType(GetInfrastructureScanSummaryOutput{})
+	pulumi.RegisterOutputType(GetInfrastructureScanSummaryArrayOutput{})
 	pulumi.RegisterOutputType(GetInfrastructureV2ImageRegistryOutput{})
 	pulumi.RegisterOutputType(GetInfrastructureV2ImageRegistryArrayOutput{})
 	pulumi.RegisterOutputType(GetInfrastructureV2ImageRegistryCustomImageOutput{})
@@ -35133,6 +39459,20 @@ func init() {
 	pulumi.RegisterOutputType(GetInfrastructureV2VolumeArrayOutput{})
 	pulumi.RegisterOutputType(GetInfrastructureV2VolumeMountOutput{})
 	pulumi.RegisterOutputType(GetInfrastructureV2VolumeMountArrayOutput{})
+	pulumi.RegisterOutputType(GetPipelineScanCollectedDataOutput{})
+	pulumi.RegisterOutputType(GetPipelineScanCollectedDataArrayOutput{})
+	pulumi.RegisterOutputType(GetPipelineScanCollectedDataErrorOutput{})
+	pulumi.RegisterOutputType(GetPipelineScanCollectedDataErrorArrayOutput{})
+	pulumi.RegisterOutputType(GetPipelineScanInfrastructureOutput{})
+	pulumi.RegisterOutputType(GetPipelineScanInfrastructureArrayOutput{})
+	pulumi.RegisterOutputType(GetPipelineScanRiskOutput{})
+	pulumi.RegisterOutputType(GetPipelineScanRiskArrayOutput{})
+	pulumi.RegisterOutputType(GetPipelineScanRiskOccurrenceOutput{})
+	pulumi.RegisterOutputType(GetPipelineScanRiskOccurrenceArrayOutput{})
+	pulumi.RegisterOutputType(GetPipelineScanRiskSummaryOutput{})
+	pulumi.RegisterOutputType(GetPipelineScanRiskSummaryArrayOutput{})
+	pulumi.RegisterOutputType(GetPipelineScanSummaryOutput{})
+	pulumi.RegisterOutputType(GetPipelineScanSummaryArrayOutput{})
 	pulumi.RegisterOutputType(GetProbeTemplateApmProbeOutput{})
 	pulumi.RegisterOutputType(GetProbeTemplateApmProbePtrOutput{})
 	pulumi.RegisterOutputType(GetProbeTemplateApmProbeAppDynamicsInputsOutput{})

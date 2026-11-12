@@ -256,10 +256,34 @@ _utilities.register(
  },
  {
   "pkg": "harness",
+  "mod": "chaos/infrastructureScan",
+  "fqn": "pulumi_harness.chaos",
+  "classes": {
+   "harness:chaos/infrastructureScan:InfrastructureScan": "InfrastructureScan"
+  }
+ },
+ {
+  "pkg": "harness",
   "mod": "chaos/infrastructureV2",
   "fqn": "pulumi_harness.chaos",
   "classes": {
    "harness:chaos/infrastructureV2:InfrastructureV2": "InfrastructureV2"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "chaos/onboardingService",
+  "fqn": "pulumi_harness.chaos",
+  "classes": {
+   "harness:chaos/onboardingService:OnboardingService": "OnboardingService"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "chaos/pipelineScan",
+  "fqn": "pulumi_harness.chaos",
+  "classes": {
+   "harness:chaos/pipelineScan:PipelineScan": "PipelineScan"
   }
  },
  {
@@ -300,6 +324,14 @@ _utilities.register(
   "fqn": "pulumi_harness.chaos",
   "classes": {
    "harness:chaos/securityGovernanceRuleV3:SecurityGovernanceRuleV3": "SecurityGovernanceRuleV3"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "chaos/serviceOnboarding",
+  "fqn": "pulumi_harness.chaos",
+  "classes": {
+   "harness:chaos/serviceOnboarding:ServiceOnboarding": "ServiceOnboarding"
   }
  },
  {

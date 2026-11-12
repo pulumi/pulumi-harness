@@ -630,6 +630,59 @@
                     }
                 }
             },
+            "harness_chaos_infrastructure_scan": {
+                "current": "harness:chaos/infrastructureScan:InfrastructureScan",
+                "fields": {
+                    "collected_data": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "errors": {
+                                    "maxItemsOne": false
+                                },
+                                "namespaces": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "risk_summary": {
+                        "maxItemsOne": false
+                    },
+                    "risks": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "occurrences": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "evidence": {
+                                                "maxItemsOne": false
+                                            },
+                                            "remediation": {
+                                                "maxItemsOne": false
+                                            },
+                                            "resilience_testing_rec": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "tags": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "summary": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "harness_chaos_infrastructure_v2": {
                 "current": "harness:chaos/infrastructureV2:InfrastructureV2",
                 "fields": {
@@ -681,6 +734,70 @@
                         "maxItemsOne": false
                     },
                     "volumes": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_chaos_onboarding_service": {
+                "current": "harness:chaos/onboardingService:OnboardingService",
+                "fields": {
+                    "probes": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_chaos_pipeline_scan": {
+                "current": "harness:chaos/pipelineScan:PipelineScan",
+                "fields": {
+                    "collected_data": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "errors": {
+                                    "maxItemsOne": false
+                                },
+                                "namespaces": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "infrastructures": {
+                        "maxItemsOne": false
+                    },
+                    "risk_summary": {
+                        "maxItemsOne": false
+                    },
+                    "risks": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "occurrences": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "evidence": {
+                                                "maxItemsOne": false
+                                            },
+                                            "remediation": {
+                                                "maxItemsOne": false
+                                            },
+                                            "resilience_testing_rec": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "tags": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "summary": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
                         "maxItemsOne": false
                     }
                 }
@@ -1016,6 +1133,14 @@
                         }
                     },
                     "user_group_ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_chaos_service_onboarding": {
+                "current": "harness:chaos/serviceOnboarding:ServiceOnboarding",
+                "fields": {
+                    "probes": {
                         "maxItemsOne": false
                     }
                 }
@@ -17177,6 +17302,59 @@
             "harness_chaos_infrastructure": {
                 "current": "harness:index/getChaosInfrastructure:getChaosInfrastructure"
             },
+            "harness_chaos_infrastructure_scan": {
+                "current": "harness:chaos/getInfrastructureScan:getInfrastructureScan",
+                "fields": {
+                    "collected_data": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "errors": {
+                                    "maxItemsOne": false
+                                },
+                                "namespaces": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "risk_summary": {
+                        "maxItemsOne": false
+                    },
+                    "risks": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "occurrences": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "evidence": {
+                                                "maxItemsOne": false
+                                            },
+                                            "remediation": {
+                                                "maxItemsOne": false
+                                            },
+                                            "resilience_testing_rec": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "tags": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "summary": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "harness_chaos_infrastructure_v2": {
                 "current": "harness:chaos/getInfrastructureV2:getInfrastructureV2",
                 "fields": {
@@ -17222,6 +17400,62 @@
                         "maxItemsOne": false
                     },
                     "volumes": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_chaos_pipeline_scan": {
+                "current": "harness:chaos/getPipelineScan:getPipelineScan",
+                "fields": {
+                    "collected_data": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "errors": {
+                                    "maxItemsOne": false
+                                },
+                                "namespaces": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "infrastructures": {
+                        "maxItemsOne": false
+                    },
+                    "risk_summary": {
+                        "maxItemsOne": false
+                    },
+                    "risks": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "occurrences": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "evidence": {
+                                                "maxItemsOne": false
+                                            },
+                                            "remediation": {
+                                                "maxItemsOne": false
+                                            },
+                                            "resilience_testing_rec": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "tags": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "summary": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
                         "maxItemsOne": false
                     }
                 }

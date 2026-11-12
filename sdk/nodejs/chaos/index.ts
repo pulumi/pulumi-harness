@@ -60,10 +60,20 @@ export const getImageRegistry: typeof import("./getImageRegistry").getImageRegis
 export const getImageRegistryOutput: typeof import("./getImageRegistry").getImageRegistryOutput = null as any;
 utilities.lazyLoad(exports, ["getImageRegistry","getImageRegistryOutput"], () => require("./getImageRegistry"));
 
+export { GetInfrastructureScanArgs, GetInfrastructureScanResult, GetInfrastructureScanOutputArgs } from "./getInfrastructureScan";
+export const getInfrastructureScan: typeof import("./getInfrastructureScan").getInfrastructureScan = null as any;
+export const getInfrastructureScanOutput: typeof import("./getInfrastructureScan").getInfrastructureScanOutput = null as any;
+utilities.lazyLoad(exports, ["getInfrastructureScan","getInfrastructureScanOutput"], () => require("./getInfrastructureScan"));
+
 export { GetInfrastructureV2Args, GetInfrastructureV2Result, GetInfrastructureV2OutputArgs } from "./getInfrastructureV2";
 export const getInfrastructureV2: typeof import("./getInfrastructureV2").getInfrastructureV2 = null as any;
 export const getInfrastructureV2Output: typeof import("./getInfrastructureV2").getInfrastructureV2Output = null as any;
 utilities.lazyLoad(exports, ["getInfrastructureV2","getInfrastructureV2Output"], () => require("./getInfrastructureV2"));
+
+export { GetPipelineScanArgs, GetPipelineScanResult, GetPipelineScanOutputArgs } from "./getPipelineScan";
+export const getPipelineScan: typeof import("./getPipelineScan").getPipelineScan = null as any;
+export const getPipelineScanOutput: typeof import("./getPipelineScan").getPipelineScanOutput = null as any;
+utilities.lazyLoad(exports, ["getPipelineScan","getPipelineScanOutput"], () => require("./getPipelineScan"));
 
 export { GetProbeTemplateArgs, GetProbeTemplateResult, GetProbeTemplateOutputArgs } from "./getProbeTemplate";
 export const getProbeTemplate: typeof import("./getProbeTemplate").getProbeTemplate = null as any;
@@ -110,10 +120,25 @@ export type ImageRegistry = import("./imageRegistry").ImageRegistry;
 export const ImageRegistry: typeof import("./imageRegistry").ImageRegistry = null as any;
 utilities.lazyLoad(exports, ["ImageRegistry"], () => require("./imageRegistry"));
 
+export { InfrastructureScanArgs, InfrastructureScanState } from "./infrastructureScan";
+export type InfrastructureScan = import("./infrastructureScan").InfrastructureScan;
+export const InfrastructureScan: typeof import("./infrastructureScan").InfrastructureScan = null as any;
+utilities.lazyLoad(exports, ["InfrastructureScan"], () => require("./infrastructureScan"));
+
 export { InfrastructureV2Args, InfrastructureV2State } from "./infrastructureV2";
 export type InfrastructureV2 = import("./infrastructureV2").InfrastructureV2;
 export const InfrastructureV2: typeof import("./infrastructureV2").InfrastructureV2 = null as any;
 utilities.lazyLoad(exports, ["InfrastructureV2"], () => require("./infrastructureV2"));
+
+export { OnboardingServiceArgs, OnboardingServiceState } from "./onboardingService";
+export type OnboardingService = import("./onboardingService").OnboardingService;
+export const OnboardingService: typeof import("./onboardingService").OnboardingService = null as any;
+utilities.lazyLoad(exports, ["OnboardingService"], () => require("./onboardingService"));
+
+export { PipelineScanArgs, PipelineScanState } from "./pipelineScan";
+export type PipelineScan = import("./pipelineScan").PipelineScan;
+export const PipelineScan: typeof import("./pipelineScan").PipelineScan = null as any;
+utilities.lazyLoad(exports, ["PipelineScan"], () => require("./pipelineScan"));
 
 export { ProbeTemplateArgs, ProbeTemplateState } from "./probeTemplate";
 export type ProbeTemplate = import("./probeTemplate").ProbeTemplate;
@@ -140,6 +165,11 @@ export type SecurityGovernanceRuleV3 = import("./securityGovernanceRuleV3").Secu
 export const SecurityGovernanceRuleV3: typeof import("./securityGovernanceRuleV3").SecurityGovernanceRuleV3 = null as any;
 utilities.lazyLoad(exports, ["SecurityGovernanceRuleV3"], () => require("./securityGovernanceRuleV3"));
 
+export { ServiceOnboardingArgs, ServiceOnboardingState } from "./serviceOnboarding";
+export type ServiceOnboarding = import("./serviceOnboarding").ServiceOnboarding;
+export const ServiceOnboarding: typeof import("./serviceOnboarding").ServiceOnboarding = null as any;
+utilities.lazyLoad(exports, ["ServiceOnboarding"], () => require("./serviceOnboarding"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -161,8 +191,14 @@ const _module = {
                 return new HubV2(name, <any>undefined, { urn })
             case "harness:chaos/imageRegistry:ImageRegistry":
                 return new ImageRegistry(name, <any>undefined, { urn })
+            case "harness:chaos/infrastructureScan:InfrastructureScan":
+                return new InfrastructureScan(name, <any>undefined, { urn })
             case "harness:chaos/infrastructureV2:InfrastructureV2":
                 return new InfrastructureV2(name, <any>undefined, { urn })
+            case "harness:chaos/onboardingService:OnboardingService":
+                return new OnboardingService(name, <any>undefined, { urn })
+            case "harness:chaos/pipelineScan:PipelineScan":
+                return new PipelineScan(name, <any>undefined, { urn })
             case "harness:chaos/probeTemplate:ProbeTemplate":
                 return new ProbeTemplate(name, <any>undefined, { urn })
             case "harness:chaos/securityGovernanceCondition:SecurityGovernanceCondition":
@@ -173,6 +209,8 @@ const _module = {
                 return new SecurityGovernanceRule(name, <any>undefined, { urn })
             case "harness:chaos/securityGovernanceRuleV3:SecurityGovernanceRuleV3":
                 return new SecurityGovernanceRuleV3(name, <any>undefined, { urn })
+            case "harness:chaos/serviceOnboarding:ServiceOnboarding":
+                return new ServiceOnboarding(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -186,9 +224,13 @@ pulumi.runtime.registerResourceModule("harness", "chaos/hub", _module)
 pulumi.runtime.registerResourceModule("harness", "chaos/hubSync", _module)
 pulumi.runtime.registerResourceModule("harness", "chaos/hubV2", _module)
 pulumi.runtime.registerResourceModule("harness", "chaos/imageRegistry", _module)
+pulumi.runtime.registerResourceModule("harness", "chaos/infrastructureScan", _module)
 pulumi.runtime.registerResourceModule("harness", "chaos/infrastructureV2", _module)
+pulumi.runtime.registerResourceModule("harness", "chaos/onboardingService", _module)
+pulumi.runtime.registerResourceModule("harness", "chaos/pipelineScan", _module)
 pulumi.runtime.registerResourceModule("harness", "chaos/probeTemplate", _module)
 pulumi.runtime.registerResourceModule("harness", "chaos/securityGovernanceCondition", _module)
 pulumi.runtime.registerResourceModule("harness", "chaos/securityGovernanceConditionV3", _module)
 pulumi.runtime.registerResourceModule("harness", "chaos/securityGovernanceRule", _module)
 pulumi.runtime.registerResourceModule("harness", "chaos/securityGovernanceRuleV3", _module)
+pulumi.runtime.registerResourceModule("harness", "chaos/serviceOnboarding", _module)

@@ -332,6 +332,34 @@ import javax.annotation.Nullable;
  *             .parentRef("accountId/orgId/projectId")
  *             .build());
  * 
+ *         // Example of a Virtual APM Registry
+ *         var apmVirtual = new HarRegistry("apmVirtual", HarRegistryArgs.builder()
+ *             .configs(HarRegistryConfigArgs.builder()
+ *                 .type("VIRTUAL")
+ *                 .build())
+ *             .identifier("virtual_apm_registry")
+ *             .description("Virtual APM Registry")
+ *             .spaceRef("accountId/orgId/projectId")
+ *             .packageType("APM")
+ *             .parentRef("accountId/orgId/projectId")
+ *             .build());
+ * 
+ *         // Example of an Upstream APM Registry
+ *         // APM has no built-in default source - use Custom with the upstream APM registry url.
+ *         var apmUpstream = new HarRegistry("apmUpstream", HarRegistryArgs.builder()
+ *             .configs(HarRegistryConfigArgs.builder()
+ *                 .type("UPSTREAM")
+ *                 .source("Custom")
+ *                 .url("https://apm.example.com")
+ *                 .authType("Anonymous")
+ *                 .build())
+ *             .identifier("upstream_apm_registry")
+ *             .description("Upstream APM Registry")
+ *             .spaceRef("accountId/orgId/projectId")
+ *             .packageType("APM")
+ *             .parentRef("accountId/orgId/projectId")
+ *             .build());
+ * 
  *         // Example of a Virtual Hugging Face Registry
  *         // HUGGINGFACE supports VIRTUAL registries only - upstream is not supported.
  *         var huggingfaceVirtual = new HarRegistry("huggingfaceVirtual", HarRegistryArgs.builder()
@@ -506,14 +534,14 @@ public class HarRegistry extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.metadata);
     }
     /**
-     * Type of package (DOCKER, HELM, HELM*HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, TERRAFORM*BACKEND, CRAN, ALPINE, WOLFI, COMPOSER, HUGGINGFACE, DART, SWIFT)
+     * Type of package (DOCKER, HELM, HELM*HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, TERRAFORM*BACKEND, CRAN, ALPINE, WOLFI, COMPOSER, HUGGINGFACE, DART, SWIFT, APM)
      * 
      */
     @Export(name="packageType", refs={String.class}, tree="[0]")
     private Output<String> packageType;
 
     /**
-     * @return Type of package (DOCKER, HELM, HELM*HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, TERRAFORM*BACKEND, CRAN, ALPINE, WOLFI, COMPOSER, HUGGINGFACE, DART, SWIFT)
+     * @return Type of package (DOCKER, HELM, HELM*HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, TERRAFORM*BACKEND, CRAN, ALPINE, WOLFI, COMPOSER, HUGGINGFACE, DART, SWIFT, APM)
      * 
      */
     public Output<String> packageType() {

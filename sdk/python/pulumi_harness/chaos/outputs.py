@@ -82,6 +82,12 @@ __all__ = [
     'FaultTemplateSpecTargetKubernete',
     'FaultTemplateVariable',
     'ImageRegistryCustomImage',
+    'InfrastructureScanCollectedData',
+    'InfrastructureScanCollectedDataError',
+    'InfrastructureScanRisk',
+    'InfrastructureScanRiskOccurrence',
+    'InfrastructureScanRiskSummary',
+    'InfrastructureScanSummary',
     'InfrastructureV2Env',
     'InfrastructureV2Identifier',
     'InfrastructureV2ImageRegistry',
@@ -95,6 +101,14 @@ __all__ = [
     'InfrastructureV2Toleration',
     'InfrastructureV2Volume',
     'InfrastructureV2VolumeMount',
+    'OnboardingServiceProbe',
+    'PipelineScanCollectedData',
+    'PipelineScanCollectedDataError',
+    'PipelineScanInfrastructure',
+    'PipelineScanRisk',
+    'PipelineScanRiskOccurrence',
+    'PipelineScanRiskSummary',
+    'PipelineScanSummary',
     'ProbeTemplateApmProbe',
     'ProbeTemplateApmProbeAppDynamicsInputs',
     'ProbeTemplateApmProbeAppDynamicsInputsAppdMetrics',
@@ -144,6 +158,7 @@ __all__ = [
     'SecurityGovernanceRuleTimeWindowRecurrence',
     'SecurityGovernanceRuleV3TimeWindow',
     'SecurityGovernanceRuleV3TimeWindowRecurrence',
+    'ServiceOnboardingProbe',
     'GetActionTemplateContainerActionResult',
     'GetActionTemplateContainerActionEnvResult',
     'GetActionTemplateContainerActionResourcesResult',
@@ -184,6 +199,12 @@ __all__ = [
     'GetExperimentTemplateSpecVertexStartProbeResult',
     'GetFaultTemplateVariableResult',
     'GetImageRegistryCustomImageResult',
+    'GetInfrastructureScanCollectedDataResult',
+    'GetInfrastructureScanCollectedDataErrorResult',
+    'GetInfrastructureScanRiskResult',
+    'GetInfrastructureScanRiskOccurrenceResult',
+    'GetInfrastructureScanRiskSummaryResult',
+    'GetInfrastructureScanSummaryResult',
     'GetInfrastructureV2ImageRegistryResult',
     'GetInfrastructureV2ImageRegistryCustomImageResult',
     'GetInfrastructureV2ImageRegistryIdentifierResult',
@@ -195,6 +216,13 @@ __all__ = [
     'GetInfrastructureV2TolerationResult',
     'GetInfrastructureV2VolumeResult',
     'GetInfrastructureV2VolumeMountResult',
+    'GetPipelineScanCollectedDataResult',
+    'GetPipelineScanCollectedDataErrorResult',
+    'GetPipelineScanInfrastructureResult',
+    'GetPipelineScanRiskResult',
+    'GetPipelineScanRiskOccurrenceResult',
+    'GetPipelineScanRiskSummaryResult',
+    'GetPipelineScanSummaryResult',
     'GetProbeTemplateApmProbeResult',
     'GetProbeTemplateApmProbeAppDynamicsInputsResult',
     'GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsResult',
@@ -4195,6 +4223,727 @@ class ImageRegistryCustomImage(dict):
 
 
 @pulumi.output_type
+class InfrastructureScanCollectedData(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "collectedAt":
+            suggest = "collected_at"
+        elif key == "dependentResources":
+            suggest = "dependent_resources"
+        elif key == "primaryResources":
+            suggest = "primary_resources"
+        elif key == "serviceGroups":
+            suggest = "service_groups"
+        elif key == "totalResources":
+            suggest = "total_resources"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InfrastructureScanCollectedData. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InfrastructureScanCollectedData.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InfrastructureScanCollectedData.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 collected_at: Optional[_builtins.int] = None,
+                 dependent_resources: Optional[_builtins.int] = None,
+                 errors: Optional[Sequence['outputs.InfrastructureScanCollectedDataError']] = None,
+                 namespaces: Optional[Sequence[_builtins.str]] = None,
+                 primary_resources: Optional[_builtins.int] = None,
+                 service_groups: Optional[_builtins.int] = None,
+                 total_resources: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int collected_at: Collection time as a Unix timestamp.
+        :param _builtins.int dependent_resources: Dependent resources collected.
+        :param Sequence['InfrastructureScanCollectedDataErrorArgs'] errors: Collection failures returned by the API.
+        :param Sequence[_builtins.str] namespaces: Namespaces collected.
+        :param _builtins.int primary_resources: Primary resources collected.
+        :param _builtins.int service_groups: Service groups collected.
+        :param _builtins.int total_resources: Total resources collected.
+        """
+        if collected_at is not None:
+            pulumi.set(__self__, "collected_at", collected_at)
+        if dependent_resources is not None:
+            pulumi.set(__self__, "dependent_resources", dependent_resources)
+        if errors is not None:
+            pulumi.set(__self__, "errors", errors)
+        if namespaces is not None:
+            pulumi.set(__self__, "namespaces", namespaces)
+        if primary_resources is not None:
+            pulumi.set(__self__, "primary_resources", primary_resources)
+        if service_groups is not None:
+            pulumi.set(__self__, "service_groups", service_groups)
+        if total_resources is not None:
+            pulumi.set(__self__, "total_resources", total_resources)
+
+    @_builtins.property
+    @pulumi.getter(name="collectedAt")
+    def collected_at(self) -> Optional[_builtins.int]:
+        """
+        Collection time as a Unix timestamp.
+        """
+        return pulumi.get(self, "collected_at")
+
+    @_builtins.property
+    @pulumi.getter(name="dependentResources")
+    def dependent_resources(self) -> Optional[_builtins.int]:
+        """
+        Dependent resources collected.
+        """
+        return pulumi.get(self, "dependent_resources")
+
+    @_builtins.property
+    @pulumi.getter
+    def errors(self) -> Optional[Sequence['outputs.InfrastructureScanCollectedDataError']]:
+        """
+        Collection failures returned by the API.
+        """
+        return pulumi.get(self, "errors")
+
+    @_builtins.property
+    @pulumi.getter
+    def namespaces(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Namespaces collected.
+        """
+        return pulumi.get(self, "namespaces")
+
+    @_builtins.property
+    @pulumi.getter(name="primaryResources")
+    def primary_resources(self) -> Optional[_builtins.int]:
+        """
+        Primary resources collected.
+        """
+        return pulumi.get(self, "primary_resources")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceGroups")
+    def service_groups(self) -> Optional[_builtins.int]:
+        """
+        Service groups collected.
+        """
+        return pulumi.get(self, "service_groups")
+
+    @_builtins.property
+    @pulumi.getter(name="totalResources")
+    def total_resources(self) -> Optional[_builtins.int]:
+        """
+        Total resources collected.
+        """
+        return pulumi.get(self, "total_resources")
+
+
+@pulumi.output_type
+class InfrastructureScanCollectedDataError(dict):
+    def __init__(__self__, *,
+                 message: Optional[_builtins.str] = None,
+                 source: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str message: Collection error message.
+        :param _builtins.str source: Collector that reported the error.
+        """
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> Optional[_builtins.str]:
+        """
+        Collection error message.
+        """
+        return pulumi.get(self, "message")
+
+    @_builtins.property
+    @pulumi.getter
+    def source(self) -> Optional[_builtins.str]:
+        """
+        Collector that reported the error.
+        """
+        return pulumi.get(self, "source")
+
+
+@pulumi.output_type
+class InfrastructureScanRisk(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "metadataJson":
+            suggest = "metadata_json"
+        elif key == "serviceIdentity":
+            suggest = "service_identity"
+        elif key == "serviceName":
+            suggest = "service_name"
+        elif key == "serviceType":
+            suggest = "service_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InfrastructureScanRisk. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InfrastructureScanRisk.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InfrastructureScanRisk.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 description: Optional[_builtins.str] = None,
+                 fingerprint: Optional[_builtins.str] = None,
+                 identity: Optional[_builtins.str] = None,
+                 metadata_json: Optional[_builtins.str] = None,
+                 name: Optional[_builtins.str] = None,
+                 occurrences: Optional[Sequence['outputs.InfrastructureScanRiskOccurrence']] = None,
+                 service_identity: Optional[_builtins.str] = None,
+                 service_name: Optional[_builtins.str] = None,
+                 service_type: Optional[_builtins.str] = None,
+                 severity: Optional[_builtins.str] = None,
+                 status: Optional[_builtins.str] = None,
+                 tags: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str description: Description of the risk.
+        :param _builtins.str fingerprint: Fingerprint of the risk.
+        :param _builtins.str identity: Identity of the risk.
+        :param _builtins.str metadata_json: Additional risk metadata as a JSON object string.
+        :param _builtins.str name: Name of the risk.
+        :param Sequence['InfrastructureScanRiskOccurrenceArgs'] occurrences: Detections of this risk in the scan.
+        :param _builtins.str service_identity: Identity of the service the risk applies to.
+        :param _builtins.str service_name: Name of the service the risk applies to.
+        :param _builtins.str service_type: Service kind, such as DiscoveredService, ChaosService, or CDService.
+        :param _builtins.str severity: Severity: Critical, High, Medium, or Low.
+        :param _builtins.str status: Status: Open, InProgress, Resolved, or Ignored.
+        :param Sequence[_builtins.str] tags: Tags on the risk.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if fingerprint is not None:
+            pulumi.set(__self__, "fingerprint", fingerprint)
+        if identity is not None:
+            pulumi.set(__self__, "identity", identity)
+        if metadata_json is not None:
+            pulumi.set(__self__, "metadata_json", metadata_json)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if occurrences is not None:
+            pulumi.set(__self__, "occurrences", occurrences)
+        if service_identity is not None:
+            pulumi.set(__self__, "service_identity", service_identity)
+        if service_name is not None:
+            pulumi.set(__self__, "service_name", service_name)
+        if service_type is not None:
+            pulumi.set(__self__, "service_type", service_type)
+        if severity is not None:
+            pulumi.set(__self__, "severity", severity)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Description of the risk.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def fingerprint(self) -> Optional[_builtins.str]:
+        """
+        Fingerprint of the risk.
+        """
+        return pulumi.get(self, "fingerprint")
+
+    @_builtins.property
+    @pulumi.getter
+    def identity(self) -> Optional[_builtins.str]:
+        """
+        Identity of the risk.
+        """
+        return pulumi.get(self, "identity")
+
+    @_builtins.property
+    @pulumi.getter(name="metadataJson")
+    def metadata_json(self) -> Optional[_builtins.str]:
+        """
+        Additional risk metadata as a JSON object string.
+        """
+        return pulumi.get(self, "metadata_json")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Name of the risk.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def occurrences(self) -> Optional[Sequence['outputs.InfrastructureScanRiskOccurrence']]:
+        """
+        Detections of this risk in the scan.
+        """
+        return pulumi.get(self, "occurrences")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceIdentity")
+    def service_identity(self) -> Optional[_builtins.str]:
+        """
+        Identity of the service the risk applies to.
+        """
+        return pulumi.get(self, "service_identity")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> Optional[_builtins.str]:
+        """
+        Name of the service the risk applies to.
+        """
+        return pulumi.get(self, "service_name")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceType")
+    def service_type(self) -> Optional[_builtins.str]:
+        """
+        Service kind, such as DiscoveredService, ChaosService, or CDService.
+        """
+        return pulumi.get(self, "service_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def severity(self) -> Optional[_builtins.str]:
+        """
+        Severity: Critical, High, Medium, or Low.
+        """
+        return pulumi.get(self, "severity")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[_builtins.str]:
+        """
+        Status: Open, InProgress, Resolved, or Ignored.
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Tags on the risk.
+        """
+        return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
+class InfrastructureScanRiskOccurrence(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "detectedAt":
+            suggest = "detected_at"
+        elif key == "occurrenceId":
+            suggest = "occurrence_id"
+        elif key == "resilienceTestingRecs":
+            suggest = "resilience_testing_recs"
+        elif key == "serviceName":
+            suggest = "service_name"
+        elif key == "sourceId":
+            suggest = "source_id"
+        elif key == "sourceType":
+            suggest = "source_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InfrastructureScanRiskOccurrence. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InfrastructureScanRiskOccurrence.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InfrastructureScanRiskOccurrence.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 detected_at: Optional[_builtins.int] = None,
+                 evidences: Optional[Sequence[_builtins.str]] = None,
+                 occurrence_id: Optional[_builtins.str] = None,
+                 remediations: Optional[Sequence[_builtins.str]] = None,
+                 resilience_testing_recs: Optional[Sequence[_builtins.str]] = None,
+                 service_name: Optional[_builtins.str] = None,
+                 source_id: Optional[_builtins.str] = None,
+                 source_type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int detected_at: Detection time as a Unix timestamp.
+        :param Sequence[_builtins.str] evidences: Evidence for the occurrence.
+        :param _builtins.str occurrence_id: Identity of this occurrence.
+        :param Sequence[_builtins.str] remediations: Remediation guidance.
+        :param Sequence[_builtins.str] resilience_testing_recs: Resilience testing recommendations.
+        :param _builtins.str service_name: Service name recorded on the occurrence.
+        :param _builtins.str source_id: Source id of the occurrence.
+        :param _builtins.str source_type: Source type of the occurrence.
+        """
+        if detected_at is not None:
+            pulumi.set(__self__, "detected_at", detected_at)
+        if evidences is not None:
+            pulumi.set(__self__, "evidences", evidences)
+        if occurrence_id is not None:
+            pulumi.set(__self__, "occurrence_id", occurrence_id)
+        if remediations is not None:
+            pulumi.set(__self__, "remediations", remediations)
+        if resilience_testing_recs is not None:
+            pulumi.set(__self__, "resilience_testing_recs", resilience_testing_recs)
+        if service_name is not None:
+            pulumi.set(__self__, "service_name", service_name)
+        if source_id is not None:
+            pulumi.set(__self__, "source_id", source_id)
+        if source_type is not None:
+            pulumi.set(__self__, "source_type", source_type)
+
+    @_builtins.property
+    @pulumi.getter(name="detectedAt")
+    def detected_at(self) -> Optional[_builtins.int]:
+        """
+        Detection time as a Unix timestamp.
+        """
+        return pulumi.get(self, "detected_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def evidences(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Evidence for the occurrence.
+        """
+        return pulumi.get(self, "evidences")
+
+    @_builtins.property
+    @pulumi.getter(name="occurrenceId")
+    def occurrence_id(self) -> Optional[_builtins.str]:
+        """
+        Identity of this occurrence.
+        """
+        return pulumi.get(self, "occurrence_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def remediations(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Remediation guidance.
+        """
+        return pulumi.get(self, "remediations")
+
+    @_builtins.property
+    @pulumi.getter(name="resilienceTestingRecs")
+    def resilience_testing_recs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Resilience testing recommendations.
+        """
+        return pulumi.get(self, "resilience_testing_recs")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> Optional[_builtins.str]:
+        """
+        Service name recorded on the occurrence.
+        """
+        return pulumi.get(self, "service_name")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceId")
+    def source_id(self) -> Optional[_builtins.str]:
+        """
+        Source id of the occurrence.
+        """
+        return pulumi.get(self, "source_id")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceType")
+    def source_type(self) -> Optional[_builtins.str]:
+        """
+        Source type of the occurrence.
+        """
+        return pulumi.get(self, "source_type")
+
+
+@pulumi.output_type
+class InfrastructureScanRiskSummary(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "analysedAt":
+            suggest = "analysed_at"
+        elif key == "categoryCounts":
+            suggest = "category_counts"
+        elif key == "riskCount":
+            suggest = "risk_count"
+        elif key == "scoreMax":
+            suggest = "score_max"
+        elif key == "servicesAnalysed":
+            suggest = "services_analysed"
+        elif key == "servicesAtRisk":
+            suggest = "services_at_risk"
+        elif key == "severityCounts":
+            suggest = "severity_counts"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InfrastructureScanRiskSummary. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InfrastructureScanRiskSummary.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InfrastructureScanRiskSummary.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 analysed_at: Optional[_builtins.int] = None,
+                 category_counts: Optional[Mapping[str, _builtins.int]] = None,
+                 risk_count: Optional[_builtins.int] = None,
+                 score: Optional[_builtins.int] = None,
+                 score_max: Optional[_builtins.int] = None,
+                 services_analysed: Optional[_builtins.int] = None,
+                 services_at_risk: Optional[_builtins.int] = None,
+                 severity_counts: Optional[Mapping[str, _builtins.int]] = None):
+        """
+        :param _builtins.int analysed_at: Analysis time as a Unix timestamp.
+        :param Mapping[str, _builtins.int] category_counts: Risk counts keyed by category.
+        :param _builtins.int risk_count: Number of risks.
+        :param _builtins.int score: Resilience score.
+        :param _builtins.int score_max: Maximum resilience score.
+        :param _builtins.int services_analysed: Services included in analysis.
+        :param _builtins.int services_at_risk: Services with at least one risk.
+        :param Mapping[str, _builtins.int] severity_counts: Risk counts keyed by severity.
+        """
+        if analysed_at is not None:
+            pulumi.set(__self__, "analysed_at", analysed_at)
+        if category_counts is not None:
+            pulumi.set(__self__, "category_counts", category_counts)
+        if risk_count is not None:
+            pulumi.set(__self__, "risk_count", risk_count)
+        if score is not None:
+            pulumi.set(__self__, "score", score)
+        if score_max is not None:
+            pulumi.set(__self__, "score_max", score_max)
+        if services_analysed is not None:
+            pulumi.set(__self__, "services_analysed", services_analysed)
+        if services_at_risk is not None:
+            pulumi.set(__self__, "services_at_risk", services_at_risk)
+        if severity_counts is not None:
+            pulumi.set(__self__, "severity_counts", severity_counts)
+
+    @_builtins.property
+    @pulumi.getter(name="analysedAt")
+    def analysed_at(self) -> Optional[_builtins.int]:
+        """
+        Analysis time as a Unix timestamp.
+        """
+        return pulumi.get(self, "analysed_at")
+
+    @_builtins.property
+    @pulumi.getter(name="categoryCounts")
+    def category_counts(self) -> Optional[Mapping[str, _builtins.int]]:
+        """
+        Risk counts keyed by category.
+        """
+        return pulumi.get(self, "category_counts")
+
+    @_builtins.property
+    @pulumi.getter(name="riskCount")
+    def risk_count(self) -> Optional[_builtins.int]:
+        """
+        Number of risks.
+        """
+        return pulumi.get(self, "risk_count")
+
+    @_builtins.property
+    @pulumi.getter
+    def score(self) -> Optional[_builtins.int]:
+        """
+        Resilience score.
+        """
+        return pulumi.get(self, "score")
+
+    @_builtins.property
+    @pulumi.getter(name="scoreMax")
+    def score_max(self) -> Optional[_builtins.int]:
+        """
+        Maximum resilience score.
+        """
+        return pulumi.get(self, "score_max")
+
+    @_builtins.property
+    @pulumi.getter(name="servicesAnalysed")
+    def services_analysed(self) -> Optional[_builtins.int]:
+        """
+        Services included in analysis.
+        """
+        return pulumi.get(self, "services_analysed")
+
+    @_builtins.property
+    @pulumi.getter(name="servicesAtRisk")
+    def services_at_risk(self) -> Optional[_builtins.int]:
+        """
+        Services with at least one risk.
+        """
+        return pulumi.get(self, "services_at_risk")
+
+    @_builtins.property
+    @pulumi.getter(name="severityCounts")
+    def severity_counts(self) -> Optional[Mapping[str, _builtins.int]]:
+        """
+        Risk counts keyed by severity.
+        """
+        return pulumi.get(self, "severity_counts")
+
+
+@pulumi.output_type
+class InfrastructureScanSummary(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxScore":
+            suggest = "max_score"
+        elif key == "ruleCount":
+            suggest = "rule_count"
+        elif key == "servicesScanned":
+            suggest = "services_scanned"
+        elif key == "totalRisks":
+            suggest = "total_risks"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InfrastructureScanSummary. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InfrastructureScanSummary.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InfrastructureScanSummary.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 critical: Optional[_builtins.int] = None,
+                 high: Optional[_builtins.int] = None,
+                 low: Optional[_builtins.int] = None,
+                 max_score: Optional[_builtins.int] = None,
+                 medium: Optional[_builtins.int] = None,
+                 rule_count: Optional[_builtins.int] = None,
+                 score: Optional[_builtins.int] = None,
+                 services_scanned: Optional[_builtins.int] = None,
+                 total_risks: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int critical: Critical risks.
+        :param _builtins.int high: High risks.
+        :param _builtins.int low: Low risks.
+        :param _builtins.int max_score: Maximum resilience score.
+        :param _builtins.int medium: Medium risks.
+        :param _builtins.int rule_count: Number of risk rules evaluated.
+        :param _builtins.int score: Resilience score.
+        :param _builtins.int services_scanned: Number of services scanned.
+        :param _builtins.int total_risks: Number of risks found.
+        """
+        if critical is not None:
+            pulumi.set(__self__, "critical", critical)
+        if high is not None:
+            pulumi.set(__self__, "high", high)
+        if low is not None:
+            pulumi.set(__self__, "low", low)
+        if max_score is not None:
+            pulumi.set(__self__, "max_score", max_score)
+        if medium is not None:
+            pulumi.set(__self__, "medium", medium)
+        if rule_count is not None:
+            pulumi.set(__self__, "rule_count", rule_count)
+        if score is not None:
+            pulumi.set(__self__, "score", score)
+        if services_scanned is not None:
+            pulumi.set(__self__, "services_scanned", services_scanned)
+        if total_risks is not None:
+            pulumi.set(__self__, "total_risks", total_risks)
+
+    @_builtins.property
+    @pulumi.getter
+    def critical(self) -> Optional[_builtins.int]:
+        """
+        Critical risks.
+        """
+        return pulumi.get(self, "critical")
+
+    @_builtins.property
+    @pulumi.getter
+    def high(self) -> Optional[_builtins.int]:
+        """
+        High risks.
+        """
+        return pulumi.get(self, "high")
+
+    @_builtins.property
+    @pulumi.getter
+    def low(self) -> Optional[_builtins.int]:
+        """
+        Low risks.
+        """
+        return pulumi.get(self, "low")
+
+    @_builtins.property
+    @pulumi.getter(name="maxScore")
+    def max_score(self) -> Optional[_builtins.int]:
+        """
+        Maximum resilience score.
+        """
+        return pulumi.get(self, "max_score")
+
+    @_builtins.property
+    @pulumi.getter
+    def medium(self) -> Optional[_builtins.int]:
+        """
+        Medium risks.
+        """
+        return pulumi.get(self, "medium")
+
+    @_builtins.property
+    @pulumi.getter(name="ruleCount")
+    def rule_count(self) -> Optional[_builtins.int]:
+        """
+        Number of risk rules evaluated.
+        """
+        return pulumi.get(self, "rule_count")
+
+    @_builtins.property
+    @pulumi.getter
+    def score(self) -> Optional[_builtins.int]:
+        """
+        Resilience score.
+        """
+        return pulumi.get(self, "score")
+
+    @_builtins.property
+    @pulumi.getter(name="servicesScanned")
+    def services_scanned(self) -> Optional[_builtins.int]:
+        """
+        Number of services scanned.
+        """
+        return pulumi.get(self, "services_scanned")
+
+    @_builtins.property
+    @pulumi.getter(name="totalRisks")
+    def total_risks(self) -> Optional[_builtins.int]:
+        """
+        Number of risks found.
+        """
+        return pulumi.get(self, "total_risks")
+
+
+@pulumi.output_type
 class InfrastructureV2Env(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -5129,6 +5878,852 @@ class InfrastructureV2VolumeMount(dict):
         Expanded path within the volume from which the container's volume should be mounted. Behaves similarly to sub*path but environment variable references $(VAR*NAME) are expanded using the container's environment. Mutually exclusive with sub_path.
         """
         return pulumi.get(self, "sub_path_expr")
+
+
+@pulumi.output_type
+class OnboardingServiceProbe(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "probeId":
+            suggest = "probe_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OnboardingServiceProbe. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OnboardingServiceProbe.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OnboardingServiceProbe.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 probe_id: _builtins.str,
+                 inputs: Optional[Mapping[str, _builtins.str]] = None):
+        """
+        :param _builtins.str probe_id: Identifier of a probe that already exists in the project.
+        :param Mapping[str, _builtins.str] inputs: Runtime input values for the probe, keyed by input name.
+        """
+        pulumi.set(__self__, "probe_id", probe_id)
+        if inputs is not None:
+            pulumi.set(__self__, "inputs", inputs)
+
+    @_builtins.property
+    @pulumi.getter(name="probeId")
+    def probe_id(self) -> _builtins.str:
+        """
+        Identifier of a probe that already exists in the project.
+        """
+        return pulumi.get(self, "probe_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def inputs(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Runtime input values for the probe, keyed by input name.
+        """
+        return pulumi.get(self, "inputs")
+
+
+@pulumi.output_type
+class PipelineScanCollectedData(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "collectedAt":
+            suggest = "collected_at"
+        elif key == "dependentResources":
+            suggest = "dependent_resources"
+        elif key == "primaryResources":
+            suggest = "primary_resources"
+        elif key == "serviceGroups":
+            suggest = "service_groups"
+        elif key == "totalResources":
+            suggest = "total_resources"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineScanCollectedData. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineScanCollectedData.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineScanCollectedData.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 collected_at: Optional[_builtins.int] = None,
+                 dependent_resources: Optional[_builtins.int] = None,
+                 errors: Optional[Sequence['outputs.PipelineScanCollectedDataError']] = None,
+                 namespaces: Optional[Sequence[_builtins.str]] = None,
+                 primary_resources: Optional[_builtins.int] = None,
+                 service_groups: Optional[_builtins.int] = None,
+                 total_resources: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int collected_at: Collection time as a Unix timestamp.
+        :param _builtins.int dependent_resources: Dependent resources collected.
+        :param Sequence['PipelineScanCollectedDataErrorArgs'] errors: Collection failures returned by the API.
+        :param Sequence[_builtins.str] namespaces: Namespaces collected.
+        :param _builtins.int primary_resources: Primary resources collected.
+        :param _builtins.int service_groups: Service groups collected.
+        :param _builtins.int total_resources: Total resources collected.
+        """
+        if collected_at is not None:
+            pulumi.set(__self__, "collected_at", collected_at)
+        if dependent_resources is not None:
+            pulumi.set(__self__, "dependent_resources", dependent_resources)
+        if errors is not None:
+            pulumi.set(__self__, "errors", errors)
+        if namespaces is not None:
+            pulumi.set(__self__, "namespaces", namespaces)
+        if primary_resources is not None:
+            pulumi.set(__self__, "primary_resources", primary_resources)
+        if service_groups is not None:
+            pulumi.set(__self__, "service_groups", service_groups)
+        if total_resources is not None:
+            pulumi.set(__self__, "total_resources", total_resources)
+
+    @_builtins.property
+    @pulumi.getter(name="collectedAt")
+    def collected_at(self) -> Optional[_builtins.int]:
+        """
+        Collection time as a Unix timestamp.
+        """
+        return pulumi.get(self, "collected_at")
+
+    @_builtins.property
+    @pulumi.getter(name="dependentResources")
+    def dependent_resources(self) -> Optional[_builtins.int]:
+        """
+        Dependent resources collected.
+        """
+        return pulumi.get(self, "dependent_resources")
+
+    @_builtins.property
+    @pulumi.getter
+    def errors(self) -> Optional[Sequence['outputs.PipelineScanCollectedDataError']]:
+        """
+        Collection failures returned by the API.
+        """
+        return pulumi.get(self, "errors")
+
+    @_builtins.property
+    @pulumi.getter
+    def namespaces(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Namespaces collected.
+        """
+        return pulumi.get(self, "namespaces")
+
+    @_builtins.property
+    @pulumi.getter(name="primaryResources")
+    def primary_resources(self) -> Optional[_builtins.int]:
+        """
+        Primary resources collected.
+        """
+        return pulumi.get(self, "primary_resources")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceGroups")
+    def service_groups(self) -> Optional[_builtins.int]:
+        """
+        Service groups collected.
+        """
+        return pulumi.get(self, "service_groups")
+
+    @_builtins.property
+    @pulumi.getter(name="totalResources")
+    def total_resources(self) -> Optional[_builtins.int]:
+        """
+        Total resources collected.
+        """
+        return pulumi.get(self, "total_resources")
+
+
+@pulumi.output_type
+class PipelineScanCollectedDataError(dict):
+    def __init__(__self__, *,
+                 message: Optional[_builtins.str] = None,
+                 source: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str message: Collection error message.
+        :param _builtins.str source: Collector that reported the error.
+        """
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> Optional[_builtins.str]:
+        """
+        Collection error message.
+        """
+        return pulumi.get(self, "message")
+
+    @_builtins.property
+    @pulumi.getter
+    def source(self) -> Optional[_builtins.str]:
+        """
+        Collector that reported the error.
+        """
+        return pulumi.get(self, "source")
+
+
+@pulumi.output_type
+class PipelineScanInfrastructure(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "chaosOnboarded":
+            suggest = "chaos_onboarded"
+        elif key == "chaosSupported":
+            suggest = "chaos_supported"
+        elif key == "environmentRef":
+            suggest = "environment_ref"
+        elif key == "infrastructureIdentity":
+            suggest = "infrastructure_identity"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineScanInfrastructure. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineScanInfrastructure.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineScanInfrastructure.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 chaos_onboarded: Optional[_builtins.bool] = None,
+                 chaos_supported: Optional[_builtins.bool] = None,
+                 environment_ref: Optional[_builtins.str] = None,
+                 infrastructure_identity: Optional[_builtins.str] = None):
+        """
+        :param _builtins.bool chaos_onboarded: Whether chaos is already onboarded for this infrastructure.
+        :param _builtins.bool chaos_supported: Whether this infrastructure can be onboarded to chaos.
+        :param _builtins.str environment_ref: Environment reference.
+        :param _builtins.str infrastructure_identity: Infrastructure identifier.
+        """
+        if chaos_onboarded is not None:
+            pulumi.set(__self__, "chaos_onboarded", chaos_onboarded)
+        if chaos_supported is not None:
+            pulumi.set(__self__, "chaos_supported", chaos_supported)
+        if environment_ref is not None:
+            pulumi.set(__self__, "environment_ref", environment_ref)
+        if infrastructure_identity is not None:
+            pulumi.set(__self__, "infrastructure_identity", infrastructure_identity)
+
+    @_builtins.property
+    @pulumi.getter(name="chaosOnboarded")
+    def chaos_onboarded(self) -> Optional[_builtins.bool]:
+        """
+        Whether chaos is already onboarded for this infrastructure.
+        """
+        return pulumi.get(self, "chaos_onboarded")
+
+    @_builtins.property
+    @pulumi.getter(name="chaosSupported")
+    def chaos_supported(self) -> Optional[_builtins.bool]:
+        """
+        Whether this infrastructure can be onboarded to chaos.
+        """
+        return pulumi.get(self, "chaos_supported")
+
+    @_builtins.property
+    @pulumi.getter(name="environmentRef")
+    def environment_ref(self) -> Optional[_builtins.str]:
+        """
+        Environment reference.
+        """
+        return pulumi.get(self, "environment_ref")
+
+    @_builtins.property
+    @pulumi.getter(name="infrastructureIdentity")
+    def infrastructure_identity(self) -> Optional[_builtins.str]:
+        """
+        Infrastructure identifier.
+        """
+        return pulumi.get(self, "infrastructure_identity")
+
+
+@pulumi.output_type
+class PipelineScanRisk(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "metadataJson":
+            suggest = "metadata_json"
+        elif key == "serviceIdentity":
+            suggest = "service_identity"
+        elif key == "serviceName":
+            suggest = "service_name"
+        elif key == "serviceType":
+            suggest = "service_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineScanRisk. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineScanRisk.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineScanRisk.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 description: Optional[_builtins.str] = None,
+                 fingerprint: Optional[_builtins.str] = None,
+                 identity: Optional[_builtins.str] = None,
+                 metadata_json: Optional[_builtins.str] = None,
+                 name: Optional[_builtins.str] = None,
+                 occurrences: Optional[Sequence['outputs.PipelineScanRiskOccurrence']] = None,
+                 service_identity: Optional[_builtins.str] = None,
+                 service_name: Optional[_builtins.str] = None,
+                 service_type: Optional[_builtins.str] = None,
+                 severity: Optional[_builtins.str] = None,
+                 status: Optional[_builtins.str] = None,
+                 tags: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str description: Description of the risk.
+        :param _builtins.str fingerprint: Fingerprint of the risk.
+        :param _builtins.str identity: Identity of the risk.
+        :param _builtins.str metadata_json: Additional risk metadata as a JSON object string.
+        :param _builtins.str name: Name of the risk.
+        :param Sequence['PipelineScanRiskOccurrenceArgs'] occurrences: Detections of this risk in the scan.
+        :param _builtins.str service_identity: Identity of the service the risk applies to.
+        :param _builtins.str service_name: Name of the service the risk applies to.
+        :param _builtins.str service_type: Service kind, such as DiscoveredService, ChaosService, or CDService.
+        :param _builtins.str severity: Severity: Critical, High, Medium, or Low.
+        :param _builtins.str status: Status: Open, InProgress, Resolved, or Ignored.
+        :param Sequence[_builtins.str] tags: Tags on the risk.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if fingerprint is not None:
+            pulumi.set(__self__, "fingerprint", fingerprint)
+        if identity is not None:
+            pulumi.set(__self__, "identity", identity)
+        if metadata_json is not None:
+            pulumi.set(__self__, "metadata_json", metadata_json)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if occurrences is not None:
+            pulumi.set(__self__, "occurrences", occurrences)
+        if service_identity is not None:
+            pulumi.set(__self__, "service_identity", service_identity)
+        if service_name is not None:
+            pulumi.set(__self__, "service_name", service_name)
+        if service_type is not None:
+            pulumi.set(__self__, "service_type", service_type)
+        if severity is not None:
+            pulumi.set(__self__, "severity", severity)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Description of the risk.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def fingerprint(self) -> Optional[_builtins.str]:
+        """
+        Fingerprint of the risk.
+        """
+        return pulumi.get(self, "fingerprint")
+
+    @_builtins.property
+    @pulumi.getter
+    def identity(self) -> Optional[_builtins.str]:
+        """
+        Identity of the risk.
+        """
+        return pulumi.get(self, "identity")
+
+    @_builtins.property
+    @pulumi.getter(name="metadataJson")
+    def metadata_json(self) -> Optional[_builtins.str]:
+        """
+        Additional risk metadata as a JSON object string.
+        """
+        return pulumi.get(self, "metadata_json")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Name of the risk.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def occurrences(self) -> Optional[Sequence['outputs.PipelineScanRiskOccurrence']]:
+        """
+        Detections of this risk in the scan.
+        """
+        return pulumi.get(self, "occurrences")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceIdentity")
+    def service_identity(self) -> Optional[_builtins.str]:
+        """
+        Identity of the service the risk applies to.
+        """
+        return pulumi.get(self, "service_identity")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> Optional[_builtins.str]:
+        """
+        Name of the service the risk applies to.
+        """
+        return pulumi.get(self, "service_name")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceType")
+    def service_type(self) -> Optional[_builtins.str]:
+        """
+        Service kind, such as DiscoveredService, ChaosService, or CDService.
+        """
+        return pulumi.get(self, "service_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def severity(self) -> Optional[_builtins.str]:
+        """
+        Severity: Critical, High, Medium, or Low.
+        """
+        return pulumi.get(self, "severity")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[_builtins.str]:
+        """
+        Status: Open, InProgress, Resolved, or Ignored.
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Tags on the risk.
+        """
+        return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
+class PipelineScanRiskOccurrence(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "detectedAt":
+            suggest = "detected_at"
+        elif key == "occurrenceId":
+            suggest = "occurrence_id"
+        elif key == "resilienceTestingRecs":
+            suggest = "resilience_testing_recs"
+        elif key == "serviceName":
+            suggest = "service_name"
+        elif key == "sourceId":
+            suggest = "source_id"
+        elif key == "sourceType":
+            suggest = "source_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineScanRiskOccurrence. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineScanRiskOccurrence.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineScanRiskOccurrence.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 detected_at: Optional[_builtins.int] = None,
+                 evidences: Optional[Sequence[_builtins.str]] = None,
+                 occurrence_id: Optional[_builtins.str] = None,
+                 remediations: Optional[Sequence[_builtins.str]] = None,
+                 resilience_testing_recs: Optional[Sequence[_builtins.str]] = None,
+                 service_name: Optional[_builtins.str] = None,
+                 source_id: Optional[_builtins.str] = None,
+                 source_type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int detected_at: Detection time as a Unix timestamp.
+        :param Sequence[_builtins.str] evidences: Evidence for the occurrence.
+        :param _builtins.str occurrence_id: Identity of this occurrence.
+        :param Sequence[_builtins.str] remediations: Remediation guidance.
+        :param Sequence[_builtins.str] resilience_testing_recs: Resilience testing recommendations.
+        :param _builtins.str service_name: Service name recorded on the occurrence.
+        :param _builtins.str source_id: Source id of the occurrence.
+        :param _builtins.str source_type: Source type of the occurrence.
+        """
+        if detected_at is not None:
+            pulumi.set(__self__, "detected_at", detected_at)
+        if evidences is not None:
+            pulumi.set(__self__, "evidences", evidences)
+        if occurrence_id is not None:
+            pulumi.set(__self__, "occurrence_id", occurrence_id)
+        if remediations is not None:
+            pulumi.set(__self__, "remediations", remediations)
+        if resilience_testing_recs is not None:
+            pulumi.set(__self__, "resilience_testing_recs", resilience_testing_recs)
+        if service_name is not None:
+            pulumi.set(__self__, "service_name", service_name)
+        if source_id is not None:
+            pulumi.set(__self__, "source_id", source_id)
+        if source_type is not None:
+            pulumi.set(__self__, "source_type", source_type)
+
+    @_builtins.property
+    @pulumi.getter(name="detectedAt")
+    def detected_at(self) -> Optional[_builtins.int]:
+        """
+        Detection time as a Unix timestamp.
+        """
+        return pulumi.get(self, "detected_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def evidences(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Evidence for the occurrence.
+        """
+        return pulumi.get(self, "evidences")
+
+    @_builtins.property
+    @pulumi.getter(name="occurrenceId")
+    def occurrence_id(self) -> Optional[_builtins.str]:
+        """
+        Identity of this occurrence.
+        """
+        return pulumi.get(self, "occurrence_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def remediations(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Remediation guidance.
+        """
+        return pulumi.get(self, "remediations")
+
+    @_builtins.property
+    @pulumi.getter(name="resilienceTestingRecs")
+    def resilience_testing_recs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Resilience testing recommendations.
+        """
+        return pulumi.get(self, "resilience_testing_recs")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> Optional[_builtins.str]:
+        """
+        Service name recorded on the occurrence.
+        """
+        return pulumi.get(self, "service_name")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceId")
+    def source_id(self) -> Optional[_builtins.str]:
+        """
+        Source id of the occurrence.
+        """
+        return pulumi.get(self, "source_id")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceType")
+    def source_type(self) -> Optional[_builtins.str]:
+        """
+        Source type of the occurrence.
+        """
+        return pulumi.get(self, "source_type")
+
+
+@pulumi.output_type
+class PipelineScanRiskSummary(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "analysedAt":
+            suggest = "analysed_at"
+        elif key == "categoryCounts":
+            suggest = "category_counts"
+        elif key == "riskCount":
+            suggest = "risk_count"
+        elif key == "scoreMax":
+            suggest = "score_max"
+        elif key == "servicesAnalysed":
+            suggest = "services_analysed"
+        elif key == "servicesAtRisk":
+            suggest = "services_at_risk"
+        elif key == "severityCounts":
+            suggest = "severity_counts"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineScanRiskSummary. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineScanRiskSummary.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineScanRiskSummary.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 analysed_at: Optional[_builtins.int] = None,
+                 category_counts: Optional[Mapping[str, _builtins.int]] = None,
+                 risk_count: Optional[_builtins.int] = None,
+                 score: Optional[_builtins.int] = None,
+                 score_max: Optional[_builtins.int] = None,
+                 services_analysed: Optional[_builtins.int] = None,
+                 services_at_risk: Optional[_builtins.int] = None,
+                 severity_counts: Optional[Mapping[str, _builtins.int]] = None):
+        """
+        :param _builtins.int analysed_at: Analysis time as a Unix timestamp.
+        :param Mapping[str, _builtins.int] category_counts: Risk counts keyed by category.
+        :param _builtins.int risk_count: Number of risks.
+        :param _builtins.int score: Resilience score.
+        :param _builtins.int score_max: Maximum resilience score.
+        :param _builtins.int services_analysed: Services included in analysis.
+        :param _builtins.int services_at_risk: Services with at least one risk.
+        :param Mapping[str, _builtins.int] severity_counts: Risk counts keyed by severity.
+        """
+        if analysed_at is not None:
+            pulumi.set(__self__, "analysed_at", analysed_at)
+        if category_counts is not None:
+            pulumi.set(__self__, "category_counts", category_counts)
+        if risk_count is not None:
+            pulumi.set(__self__, "risk_count", risk_count)
+        if score is not None:
+            pulumi.set(__self__, "score", score)
+        if score_max is not None:
+            pulumi.set(__self__, "score_max", score_max)
+        if services_analysed is not None:
+            pulumi.set(__self__, "services_analysed", services_analysed)
+        if services_at_risk is not None:
+            pulumi.set(__self__, "services_at_risk", services_at_risk)
+        if severity_counts is not None:
+            pulumi.set(__self__, "severity_counts", severity_counts)
+
+    @_builtins.property
+    @pulumi.getter(name="analysedAt")
+    def analysed_at(self) -> Optional[_builtins.int]:
+        """
+        Analysis time as a Unix timestamp.
+        """
+        return pulumi.get(self, "analysed_at")
+
+    @_builtins.property
+    @pulumi.getter(name="categoryCounts")
+    def category_counts(self) -> Optional[Mapping[str, _builtins.int]]:
+        """
+        Risk counts keyed by category.
+        """
+        return pulumi.get(self, "category_counts")
+
+    @_builtins.property
+    @pulumi.getter(name="riskCount")
+    def risk_count(self) -> Optional[_builtins.int]:
+        """
+        Number of risks.
+        """
+        return pulumi.get(self, "risk_count")
+
+    @_builtins.property
+    @pulumi.getter
+    def score(self) -> Optional[_builtins.int]:
+        """
+        Resilience score.
+        """
+        return pulumi.get(self, "score")
+
+    @_builtins.property
+    @pulumi.getter(name="scoreMax")
+    def score_max(self) -> Optional[_builtins.int]:
+        """
+        Maximum resilience score.
+        """
+        return pulumi.get(self, "score_max")
+
+    @_builtins.property
+    @pulumi.getter(name="servicesAnalysed")
+    def services_analysed(self) -> Optional[_builtins.int]:
+        """
+        Services included in analysis.
+        """
+        return pulumi.get(self, "services_analysed")
+
+    @_builtins.property
+    @pulumi.getter(name="servicesAtRisk")
+    def services_at_risk(self) -> Optional[_builtins.int]:
+        """
+        Services with at least one risk.
+        """
+        return pulumi.get(self, "services_at_risk")
+
+    @_builtins.property
+    @pulumi.getter(name="severityCounts")
+    def severity_counts(self) -> Optional[Mapping[str, _builtins.int]]:
+        """
+        Risk counts keyed by severity.
+        """
+        return pulumi.get(self, "severity_counts")
+
+
+@pulumi.output_type
+class PipelineScanSummary(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxScore":
+            suggest = "max_score"
+        elif key == "ruleCount":
+            suggest = "rule_count"
+        elif key == "servicesScanned":
+            suggest = "services_scanned"
+        elif key == "totalRisks":
+            suggest = "total_risks"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineScanSummary. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineScanSummary.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineScanSummary.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 critical: Optional[_builtins.int] = None,
+                 high: Optional[_builtins.int] = None,
+                 low: Optional[_builtins.int] = None,
+                 max_score: Optional[_builtins.int] = None,
+                 medium: Optional[_builtins.int] = None,
+                 rule_count: Optional[_builtins.int] = None,
+                 score: Optional[_builtins.int] = None,
+                 services_scanned: Optional[_builtins.int] = None,
+                 total_risks: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int critical: Critical risks.
+        :param _builtins.int high: High risks.
+        :param _builtins.int low: Low risks.
+        :param _builtins.int max_score: Maximum resilience score.
+        :param _builtins.int medium: Medium risks.
+        :param _builtins.int rule_count: Number of risk rules evaluated.
+        :param _builtins.int score: Resilience score.
+        :param _builtins.int services_scanned: Number of services scanned.
+        :param _builtins.int total_risks: Number of risks found.
+        """
+        if critical is not None:
+            pulumi.set(__self__, "critical", critical)
+        if high is not None:
+            pulumi.set(__self__, "high", high)
+        if low is not None:
+            pulumi.set(__self__, "low", low)
+        if max_score is not None:
+            pulumi.set(__self__, "max_score", max_score)
+        if medium is not None:
+            pulumi.set(__self__, "medium", medium)
+        if rule_count is not None:
+            pulumi.set(__self__, "rule_count", rule_count)
+        if score is not None:
+            pulumi.set(__self__, "score", score)
+        if services_scanned is not None:
+            pulumi.set(__self__, "services_scanned", services_scanned)
+        if total_risks is not None:
+            pulumi.set(__self__, "total_risks", total_risks)
+
+    @_builtins.property
+    @pulumi.getter
+    def critical(self) -> Optional[_builtins.int]:
+        """
+        Critical risks.
+        """
+        return pulumi.get(self, "critical")
+
+    @_builtins.property
+    @pulumi.getter
+    def high(self) -> Optional[_builtins.int]:
+        """
+        High risks.
+        """
+        return pulumi.get(self, "high")
+
+    @_builtins.property
+    @pulumi.getter
+    def low(self) -> Optional[_builtins.int]:
+        """
+        Low risks.
+        """
+        return pulumi.get(self, "low")
+
+    @_builtins.property
+    @pulumi.getter(name="maxScore")
+    def max_score(self) -> Optional[_builtins.int]:
+        """
+        Maximum resilience score.
+        """
+        return pulumi.get(self, "max_score")
+
+    @_builtins.property
+    @pulumi.getter
+    def medium(self) -> Optional[_builtins.int]:
+        """
+        Medium risks.
+        """
+        return pulumi.get(self, "medium")
+
+    @_builtins.property
+    @pulumi.getter(name="ruleCount")
+    def rule_count(self) -> Optional[_builtins.int]:
+        """
+        Number of risk rules evaluated.
+        """
+        return pulumi.get(self, "rule_count")
+
+    @_builtins.property
+    @pulumi.getter
+    def score(self) -> Optional[_builtins.int]:
+        """
+        Resilience score.
+        """
+        return pulumi.get(self, "score")
+
+    @_builtins.property
+    @pulumi.getter(name="servicesScanned")
+    def services_scanned(self) -> Optional[_builtins.int]:
+        """
+        Number of services scanned.
+        """
+        return pulumi.get(self, "services_scanned")
+
+    @_builtins.property
+    @pulumi.getter(name="totalRisks")
+    def total_risks(self) -> Optional[_builtins.int]:
+        """
+        Number of risks found.
+        """
+        return pulumi.get(self, "total_risks")
 
 
 @pulumi.output_type
@@ -8001,6 +9596,53 @@ class SecurityGovernanceRuleV3TimeWindowRecurrence(dict):
 
 
 @pulumi.output_type
+class ServiceOnboardingProbe(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "probeId":
+            suggest = "probe_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceOnboardingProbe. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceOnboardingProbe.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceOnboardingProbe.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 probe_id: _builtins.str,
+                 inputs: Optional[Mapping[str, _builtins.str]] = None):
+        """
+        :param _builtins.str probe_id: Identifier of a probe that already exists in the project.
+        :param Mapping[str, _builtins.str] inputs: Runtime input values for the probe, keyed by input name.
+        """
+        pulumi.set(__self__, "probe_id", probe_id)
+        if inputs is not None:
+            pulumi.set(__self__, "inputs", inputs)
+
+    @_builtins.property
+    @pulumi.getter(name="probeId")
+    def probe_id(self) -> _builtins.str:
+        """
+        Identifier of a probe that already exists in the project.
+        """
+        return pulumi.get(self, "probe_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def inputs(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Runtime input values for the probe, keyed by input name.
+        """
+        return pulumi.get(self, "inputs")
+
+
+@pulumi.output_type
 class GetActionTemplateContainerActionResult(dict):
     def __init__(__self__, *,
                  image: _builtins.str,
@@ -9875,6 +11517,554 @@ class GetImageRegistryCustomImageResult(dict):
 
 
 @pulumi.output_type
+class GetInfrastructureScanCollectedDataResult(dict):
+    def __init__(__self__, *,
+                 collected_at: _builtins.int,
+                 dependent_resources: _builtins.int,
+                 errors: Sequence['outputs.GetInfrastructureScanCollectedDataErrorResult'],
+                 namespaces: Sequence[_builtins.str],
+                 primary_resources: _builtins.int,
+                 service_groups: _builtins.int,
+                 total_resources: _builtins.int):
+        """
+        :param _builtins.int collected_at: Collection time as a Unix timestamp.
+        :param _builtins.int dependent_resources: Dependent resources collected.
+        :param Sequence['GetInfrastructureScanCollectedDataErrorArgs'] errors: Collection failures returned by the API.
+        :param Sequence[_builtins.str] namespaces: Namespaces collected.
+        :param _builtins.int primary_resources: Primary resources collected.
+        :param _builtins.int service_groups: Service groups collected.
+        :param _builtins.int total_resources: Total resources collected.
+        """
+        pulumi.set(__self__, "collected_at", collected_at)
+        pulumi.set(__self__, "dependent_resources", dependent_resources)
+        pulumi.set(__self__, "errors", errors)
+        pulumi.set(__self__, "namespaces", namespaces)
+        pulumi.set(__self__, "primary_resources", primary_resources)
+        pulumi.set(__self__, "service_groups", service_groups)
+        pulumi.set(__self__, "total_resources", total_resources)
+
+    @_builtins.property
+    @pulumi.getter(name="collectedAt")
+    def collected_at(self) -> _builtins.int:
+        """
+        Collection time as a Unix timestamp.
+        """
+        return pulumi.get(self, "collected_at")
+
+    @_builtins.property
+    @pulumi.getter(name="dependentResources")
+    def dependent_resources(self) -> _builtins.int:
+        """
+        Dependent resources collected.
+        """
+        return pulumi.get(self, "dependent_resources")
+
+    @_builtins.property
+    @pulumi.getter
+    def errors(self) -> Sequence['outputs.GetInfrastructureScanCollectedDataErrorResult']:
+        """
+        Collection failures returned by the API.
+        """
+        return pulumi.get(self, "errors")
+
+    @_builtins.property
+    @pulumi.getter
+    def namespaces(self) -> Sequence[_builtins.str]:
+        """
+        Namespaces collected.
+        """
+        return pulumi.get(self, "namespaces")
+
+    @_builtins.property
+    @pulumi.getter(name="primaryResources")
+    def primary_resources(self) -> _builtins.int:
+        """
+        Primary resources collected.
+        """
+        return pulumi.get(self, "primary_resources")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceGroups")
+    def service_groups(self) -> _builtins.int:
+        """
+        Service groups collected.
+        """
+        return pulumi.get(self, "service_groups")
+
+    @_builtins.property
+    @pulumi.getter(name="totalResources")
+    def total_resources(self) -> _builtins.int:
+        """
+        Total resources collected.
+        """
+        return pulumi.get(self, "total_resources")
+
+
+@pulumi.output_type
+class GetInfrastructureScanCollectedDataErrorResult(dict):
+    def __init__(__self__, *,
+                 message: _builtins.str,
+                 source: _builtins.str):
+        """
+        :param _builtins.str message: Collection error message.
+        :param _builtins.str source: Collector that reported the error.
+        """
+        pulumi.set(__self__, "message", message)
+        pulumi.set(__self__, "source", source)
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> _builtins.str:
+        """
+        Collection error message.
+        """
+        return pulumi.get(self, "message")
+
+    @_builtins.property
+    @pulumi.getter
+    def source(self) -> _builtins.str:
+        """
+        Collector that reported the error.
+        """
+        return pulumi.get(self, "source")
+
+
+@pulumi.output_type
+class GetInfrastructureScanRiskResult(dict):
+    def __init__(__self__, *,
+                 description: _builtins.str,
+                 fingerprint: _builtins.str,
+                 identity: _builtins.str,
+                 metadata_json: _builtins.str,
+                 name: _builtins.str,
+                 occurrences: Sequence['outputs.GetInfrastructureScanRiskOccurrenceResult'],
+                 service_identity: _builtins.str,
+                 service_name: _builtins.str,
+                 service_type: _builtins.str,
+                 severity: _builtins.str,
+                 status: _builtins.str,
+                 tags: Sequence[_builtins.str]):
+        """
+        :param _builtins.str description: Description of the risk.
+        :param _builtins.str fingerprint: Fingerprint of the risk.
+        :param _builtins.str identity: Identity of the risk.
+        :param _builtins.str metadata_json: Additional risk metadata as a JSON object string.
+        :param _builtins.str name: Name of the risk.
+        :param Sequence['GetInfrastructureScanRiskOccurrenceArgs'] occurrences: Detections of this risk in the scan.
+        :param _builtins.str service_identity: Identity of the service the risk applies to.
+        :param _builtins.str service_name: Name of the service the risk applies to.
+        :param _builtins.str service_type: Service kind, such as DiscoveredService, ChaosService, or CDService.
+        :param _builtins.str severity: Severity: Critical, High, Medium, or Low.
+        :param _builtins.str status: Status: Open, InProgress, Resolved, or Ignored.
+        :param Sequence[_builtins.str] tags: Tags on the risk.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "fingerprint", fingerprint)
+        pulumi.set(__self__, "identity", identity)
+        pulumi.set(__self__, "metadata_json", metadata_json)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "occurrences", occurrences)
+        pulumi.set(__self__, "service_identity", service_identity)
+        pulumi.set(__self__, "service_name", service_name)
+        pulumi.set(__self__, "service_type", service_type)
+        pulumi.set(__self__, "severity", severity)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tags", tags)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Description of the risk.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def fingerprint(self) -> _builtins.str:
+        """
+        Fingerprint of the risk.
+        """
+        return pulumi.get(self, "fingerprint")
+
+    @_builtins.property
+    @pulumi.getter
+    def identity(self) -> _builtins.str:
+        """
+        Identity of the risk.
+        """
+        return pulumi.get(self, "identity")
+
+    @_builtins.property
+    @pulumi.getter(name="metadataJson")
+    def metadata_json(self) -> _builtins.str:
+        """
+        Additional risk metadata as a JSON object string.
+        """
+        return pulumi.get(self, "metadata_json")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the risk.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def occurrences(self) -> Sequence['outputs.GetInfrastructureScanRiskOccurrenceResult']:
+        """
+        Detections of this risk in the scan.
+        """
+        return pulumi.get(self, "occurrences")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceIdentity")
+    def service_identity(self) -> _builtins.str:
+        """
+        Identity of the service the risk applies to.
+        """
+        return pulumi.get(self, "service_identity")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> _builtins.str:
+        """
+        Name of the service the risk applies to.
+        """
+        return pulumi.get(self, "service_name")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceType")
+    def service_type(self) -> _builtins.str:
+        """
+        Service kind, such as DiscoveredService, ChaosService, or CDService.
+        """
+        return pulumi.get(self, "service_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def severity(self) -> _builtins.str:
+        """
+        Severity: Critical, High, Medium, or Low.
+        """
+        return pulumi.get(self, "severity")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        Status: Open, InProgress, Resolved, or Ignored.
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Sequence[_builtins.str]:
+        """
+        Tags on the risk.
+        """
+        return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
+class GetInfrastructureScanRiskOccurrenceResult(dict):
+    def __init__(__self__, *,
+                 detected_at: _builtins.int,
+                 evidences: Sequence[_builtins.str],
+                 occurrence_id: _builtins.str,
+                 remediations: Sequence[_builtins.str],
+                 resilience_testing_recs: Sequence[_builtins.str],
+                 service_name: _builtins.str,
+                 source_id: _builtins.str,
+                 source_type: _builtins.str):
+        """
+        :param _builtins.int detected_at: Detection time as a Unix timestamp.
+        :param Sequence[_builtins.str] evidences: Evidence for the occurrence.
+        :param _builtins.str occurrence_id: Identity of this occurrence.
+        :param Sequence[_builtins.str] remediations: Remediation guidance.
+        :param Sequence[_builtins.str] resilience_testing_recs: Resilience testing recommendations.
+        :param _builtins.str service_name: Service name recorded on the occurrence.
+        :param _builtins.str source_id: Source id of the occurrence.
+        :param _builtins.str source_type: Source type of the occurrence.
+        """
+        pulumi.set(__self__, "detected_at", detected_at)
+        pulumi.set(__self__, "evidences", evidences)
+        pulumi.set(__self__, "occurrence_id", occurrence_id)
+        pulumi.set(__self__, "remediations", remediations)
+        pulumi.set(__self__, "resilience_testing_recs", resilience_testing_recs)
+        pulumi.set(__self__, "service_name", service_name)
+        pulumi.set(__self__, "source_id", source_id)
+        pulumi.set(__self__, "source_type", source_type)
+
+    @_builtins.property
+    @pulumi.getter(name="detectedAt")
+    def detected_at(self) -> _builtins.int:
+        """
+        Detection time as a Unix timestamp.
+        """
+        return pulumi.get(self, "detected_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def evidences(self) -> Sequence[_builtins.str]:
+        """
+        Evidence for the occurrence.
+        """
+        return pulumi.get(self, "evidences")
+
+    @_builtins.property
+    @pulumi.getter(name="occurrenceId")
+    def occurrence_id(self) -> _builtins.str:
+        """
+        Identity of this occurrence.
+        """
+        return pulumi.get(self, "occurrence_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def remediations(self) -> Sequence[_builtins.str]:
+        """
+        Remediation guidance.
+        """
+        return pulumi.get(self, "remediations")
+
+    @_builtins.property
+    @pulumi.getter(name="resilienceTestingRecs")
+    def resilience_testing_recs(self) -> Sequence[_builtins.str]:
+        """
+        Resilience testing recommendations.
+        """
+        return pulumi.get(self, "resilience_testing_recs")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> _builtins.str:
+        """
+        Service name recorded on the occurrence.
+        """
+        return pulumi.get(self, "service_name")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceId")
+    def source_id(self) -> _builtins.str:
+        """
+        Source id of the occurrence.
+        """
+        return pulumi.get(self, "source_id")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceType")
+    def source_type(self) -> _builtins.str:
+        """
+        Source type of the occurrence.
+        """
+        return pulumi.get(self, "source_type")
+
+
+@pulumi.output_type
+class GetInfrastructureScanRiskSummaryResult(dict):
+    def __init__(__self__, *,
+                 analysed_at: _builtins.int,
+                 category_counts: Mapping[str, _builtins.int],
+                 risk_count: _builtins.int,
+                 score: _builtins.int,
+                 score_max: _builtins.int,
+                 services_analysed: _builtins.int,
+                 services_at_risk: _builtins.int,
+                 severity_counts: Mapping[str, _builtins.int]):
+        """
+        :param _builtins.int analysed_at: Analysis time as a Unix timestamp.
+        :param Mapping[str, _builtins.int] category_counts: Risk counts keyed by category.
+        :param _builtins.int risk_count: Number of risks.
+        :param _builtins.int score: Resilience score.
+        :param _builtins.int score_max: Maximum resilience score.
+        :param _builtins.int services_analysed: Services included in analysis.
+        :param _builtins.int services_at_risk: Services with at least one risk.
+        :param Mapping[str, _builtins.int] severity_counts: Risk counts keyed by severity.
+        """
+        pulumi.set(__self__, "analysed_at", analysed_at)
+        pulumi.set(__self__, "category_counts", category_counts)
+        pulumi.set(__self__, "risk_count", risk_count)
+        pulumi.set(__self__, "score", score)
+        pulumi.set(__self__, "score_max", score_max)
+        pulumi.set(__self__, "services_analysed", services_analysed)
+        pulumi.set(__self__, "services_at_risk", services_at_risk)
+        pulumi.set(__self__, "severity_counts", severity_counts)
+
+    @_builtins.property
+    @pulumi.getter(name="analysedAt")
+    def analysed_at(self) -> _builtins.int:
+        """
+        Analysis time as a Unix timestamp.
+        """
+        return pulumi.get(self, "analysed_at")
+
+    @_builtins.property
+    @pulumi.getter(name="categoryCounts")
+    def category_counts(self) -> Mapping[str, _builtins.int]:
+        """
+        Risk counts keyed by category.
+        """
+        return pulumi.get(self, "category_counts")
+
+    @_builtins.property
+    @pulumi.getter(name="riskCount")
+    def risk_count(self) -> _builtins.int:
+        """
+        Number of risks.
+        """
+        return pulumi.get(self, "risk_count")
+
+    @_builtins.property
+    @pulumi.getter
+    def score(self) -> _builtins.int:
+        """
+        Resilience score.
+        """
+        return pulumi.get(self, "score")
+
+    @_builtins.property
+    @pulumi.getter(name="scoreMax")
+    def score_max(self) -> _builtins.int:
+        """
+        Maximum resilience score.
+        """
+        return pulumi.get(self, "score_max")
+
+    @_builtins.property
+    @pulumi.getter(name="servicesAnalysed")
+    def services_analysed(self) -> _builtins.int:
+        """
+        Services included in analysis.
+        """
+        return pulumi.get(self, "services_analysed")
+
+    @_builtins.property
+    @pulumi.getter(name="servicesAtRisk")
+    def services_at_risk(self) -> _builtins.int:
+        """
+        Services with at least one risk.
+        """
+        return pulumi.get(self, "services_at_risk")
+
+    @_builtins.property
+    @pulumi.getter(name="severityCounts")
+    def severity_counts(self) -> Mapping[str, _builtins.int]:
+        """
+        Risk counts keyed by severity.
+        """
+        return pulumi.get(self, "severity_counts")
+
+
+@pulumi.output_type
+class GetInfrastructureScanSummaryResult(dict):
+    def __init__(__self__, *,
+                 critical: _builtins.int,
+                 high: _builtins.int,
+                 low: _builtins.int,
+                 max_score: _builtins.int,
+                 medium: _builtins.int,
+                 rule_count: _builtins.int,
+                 score: _builtins.int,
+                 services_scanned: _builtins.int,
+                 total_risks: _builtins.int):
+        """
+        :param _builtins.int critical: Critical risks.
+        :param _builtins.int high: High risks.
+        :param _builtins.int low: Low risks.
+        :param _builtins.int max_score: Maximum resilience score.
+        :param _builtins.int medium: Medium risks.
+        :param _builtins.int rule_count: Number of risk rules evaluated.
+        :param _builtins.int score: Resilience score.
+        :param _builtins.int services_scanned: Number of services scanned.
+        :param _builtins.int total_risks: Number of risks found.
+        """
+        pulumi.set(__self__, "critical", critical)
+        pulumi.set(__self__, "high", high)
+        pulumi.set(__self__, "low", low)
+        pulumi.set(__self__, "max_score", max_score)
+        pulumi.set(__self__, "medium", medium)
+        pulumi.set(__self__, "rule_count", rule_count)
+        pulumi.set(__self__, "score", score)
+        pulumi.set(__self__, "services_scanned", services_scanned)
+        pulumi.set(__self__, "total_risks", total_risks)
+
+    @_builtins.property
+    @pulumi.getter
+    def critical(self) -> _builtins.int:
+        """
+        Critical risks.
+        """
+        return pulumi.get(self, "critical")
+
+    @_builtins.property
+    @pulumi.getter
+    def high(self) -> _builtins.int:
+        """
+        High risks.
+        """
+        return pulumi.get(self, "high")
+
+    @_builtins.property
+    @pulumi.getter
+    def low(self) -> _builtins.int:
+        """
+        Low risks.
+        """
+        return pulumi.get(self, "low")
+
+    @_builtins.property
+    @pulumi.getter(name="maxScore")
+    def max_score(self) -> _builtins.int:
+        """
+        Maximum resilience score.
+        """
+        return pulumi.get(self, "max_score")
+
+    @_builtins.property
+    @pulumi.getter
+    def medium(self) -> _builtins.int:
+        """
+        Medium risks.
+        """
+        return pulumi.get(self, "medium")
+
+    @_builtins.property
+    @pulumi.getter(name="ruleCount")
+    def rule_count(self) -> _builtins.int:
+        """
+        Number of risk rules evaluated.
+        """
+        return pulumi.get(self, "rule_count")
+
+    @_builtins.property
+    @pulumi.getter
+    def score(self) -> _builtins.int:
+        """
+        Resilience score.
+        """
+        return pulumi.get(self, "score")
+
+    @_builtins.property
+    @pulumi.getter(name="servicesScanned")
+    def services_scanned(self) -> _builtins.int:
+        """
+        Number of services scanned.
+        """
+        return pulumi.get(self, "services_scanned")
+
+    @_builtins.property
+    @pulumi.getter(name="totalRisks")
+    def total_risks(self) -> _builtins.int:
+        """
+        Number of risks found.
+        """
+        return pulumi.get(self, "total_risks")
+
+
+@pulumi.output_type
 class GetInfrastructureV2ImageRegistryResult(dict):
     def __init__(__self__, *,
                  created_at: _builtins.str,
@@ -10476,6 +12666,605 @@ class GetInfrastructureV2VolumeMountResult(dict):
         Expanded path within the volume from which the container's volume should be mounted. Behaves similarly to sub*path but environment variable references $(VAR*NAME) are expanded using the container's environment. Mutually exclusive with sub_path.
         """
         return pulumi.get(self, "sub_path_expr")
+
+
+@pulumi.output_type
+class GetPipelineScanCollectedDataResult(dict):
+    def __init__(__self__, *,
+                 collected_at: _builtins.int,
+                 dependent_resources: _builtins.int,
+                 errors: Sequence['outputs.GetPipelineScanCollectedDataErrorResult'],
+                 namespaces: Sequence[_builtins.str],
+                 primary_resources: _builtins.int,
+                 service_groups: _builtins.int,
+                 total_resources: _builtins.int):
+        """
+        :param _builtins.int collected_at: Collection time as a Unix timestamp.
+        :param _builtins.int dependent_resources: Dependent resources collected.
+        :param Sequence['GetPipelineScanCollectedDataErrorArgs'] errors: Collection failures returned by the API.
+        :param Sequence[_builtins.str] namespaces: Namespaces collected.
+        :param _builtins.int primary_resources: Primary resources collected.
+        :param _builtins.int service_groups: Service groups collected.
+        :param _builtins.int total_resources: Total resources collected.
+        """
+        pulumi.set(__self__, "collected_at", collected_at)
+        pulumi.set(__self__, "dependent_resources", dependent_resources)
+        pulumi.set(__self__, "errors", errors)
+        pulumi.set(__self__, "namespaces", namespaces)
+        pulumi.set(__self__, "primary_resources", primary_resources)
+        pulumi.set(__self__, "service_groups", service_groups)
+        pulumi.set(__self__, "total_resources", total_resources)
+
+    @_builtins.property
+    @pulumi.getter(name="collectedAt")
+    def collected_at(self) -> _builtins.int:
+        """
+        Collection time as a Unix timestamp.
+        """
+        return pulumi.get(self, "collected_at")
+
+    @_builtins.property
+    @pulumi.getter(name="dependentResources")
+    def dependent_resources(self) -> _builtins.int:
+        """
+        Dependent resources collected.
+        """
+        return pulumi.get(self, "dependent_resources")
+
+    @_builtins.property
+    @pulumi.getter
+    def errors(self) -> Sequence['outputs.GetPipelineScanCollectedDataErrorResult']:
+        """
+        Collection failures returned by the API.
+        """
+        return pulumi.get(self, "errors")
+
+    @_builtins.property
+    @pulumi.getter
+    def namespaces(self) -> Sequence[_builtins.str]:
+        """
+        Namespaces collected.
+        """
+        return pulumi.get(self, "namespaces")
+
+    @_builtins.property
+    @pulumi.getter(name="primaryResources")
+    def primary_resources(self) -> _builtins.int:
+        """
+        Primary resources collected.
+        """
+        return pulumi.get(self, "primary_resources")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceGroups")
+    def service_groups(self) -> _builtins.int:
+        """
+        Service groups collected.
+        """
+        return pulumi.get(self, "service_groups")
+
+    @_builtins.property
+    @pulumi.getter(name="totalResources")
+    def total_resources(self) -> _builtins.int:
+        """
+        Total resources collected.
+        """
+        return pulumi.get(self, "total_resources")
+
+
+@pulumi.output_type
+class GetPipelineScanCollectedDataErrorResult(dict):
+    def __init__(__self__, *,
+                 message: _builtins.str,
+                 source: _builtins.str):
+        """
+        :param _builtins.str message: Collection error message.
+        :param _builtins.str source: Collector that reported the error.
+        """
+        pulumi.set(__self__, "message", message)
+        pulumi.set(__self__, "source", source)
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> _builtins.str:
+        """
+        Collection error message.
+        """
+        return pulumi.get(self, "message")
+
+    @_builtins.property
+    @pulumi.getter
+    def source(self) -> _builtins.str:
+        """
+        Collector that reported the error.
+        """
+        return pulumi.get(self, "source")
+
+
+@pulumi.output_type
+class GetPipelineScanInfrastructureResult(dict):
+    def __init__(__self__, *,
+                 chaos_onboarded: _builtins.bool,
+                 chaos_supported: _builtins.bool,
+                 environment_ref: _builtins.str,
+                 infrastructure_identity: _builtins.str):
+        """
+        :param _builtins.bool chaos_onboarded: Whether chaos is already onboarded for this infrastructure.
+        :param _builtins.bool chaos_supported: Whether this infrastructure can be onboarded to chaos.
+        :param _builtins.str environment_ref: Environment reference.
+        :param _builtins.str infrastructure_identity: Infrastructure identifier.
+        """
+        pulumi.set(__self__, "chaos_onboarded", chaos_onboarded)
+        pulumi.set(__self__, "chaos_supported", chaos_supported)
+        pulumi.set(__self__, "environment_ref", environment_ref)
+        pulumi.set(__self__, "infrastructure_identity", infrastructure_identity)
+
+    @_builtins.property
+    @pulumi.getter(name="chaosOnboarded")
+    def chaos_onboarded(self) -> _builtins.bool:
+        """
+        Whether chaos is already onboarded for this infrastructure.
+        """
+        return pulumi.get(self, "chaos_onboarded")
+
+    @_builtins.property
+    @pulumi.getter(name="chaosSupported")
+    def chaos_supported(self) -> _builtins.bool:
+        """
+        Whether this infrastructure can be onboarded to chaos.
+        """
+        return pulumi.get(self, "chaos_supported")
+
+    @_builtins.property
+    @pulumi.getter(name="environmentRef")
+    def environment_ref(self) -> _builtins.str:
+        """
+        Environment reference.
+        """
+        return pulumi.get(self, "environment_ref")
+
+    @_builtins.property
+    @pulumi.getter(name="infrastructureIdentity")
+    def infrastructure_identity(self) -> _builtins.str:
+        """
+        Infrastructure identifier.
+        """
+        return pulumi.get(self, "infrastructure_identity")
+
+
+@pulumi.output_type
+class GetPipelineScanRiskResult(dict):
+    def __init__(__self__, *,
+                 description: _builtins.str,
+                 fingerprint: _builtins.str,
+                 identity: _builtins.str,
+                 metadata_json: _builtins.str,
+                 name: _builtins.str,
+                 occurrences: Sequence['outputs.GetPipelineScanRiskOccurrenceResult'],
+                 service_identity: _builtins.str,
+                 service_name: _builtins.str,
+                 service_type: _builtins.str,
+                 severity: _builtins.str,
+                 status: _builtins.str,
+                 tags: Sequence[_builtins.str]):
+        """
+        :param _builtins.str description: Description of the risk.
+        :param _builtins.str fingerprint: Fingerprint of the risk.
+        :param _builtins.str identity: Identity of the risk.
+        :param _builtins.str metadata_json: Additional risk metadata as a JSON object string.
+        :param _builtins.str name: Name of the risk.
+        :param Sequence['GetPipelineScanRiskOccurrenceArgs'] occurrences: Detections of this risk in the scan.
+        :param _builtins.str service_identity: Identity of the service the risk applies to.
+        :param _builtins.str service_name: Name of the service the risk applies to.
+        :param _builtins.str service_type: Service kind, such as DiscoveredService, ChaosService, or CDService.
+        :param _builtins.str severity: Severity: Critical, High, Medium, or Low.
+        :param _builtins.str status: Status: Open, InProgress, Resolved, or Ignored.
+        :param Sequence[_builtins.str] tags: Tags on the risk.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "fingerprint", fingerprint)
+        pulumi.set(__self__, "identity", identity)
+        pulumi.set(__self__, "metadata_json", metadata_json)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "occurrences", occurrences)
+        pulumi.set(__self__, "service_identity", service_identity)
+        pulumi.set(__self__, "service_name", service_name)
+        pulumi.set(__self__, "service_type", service_type)
+        pulumi.set(__self__, "severity", severity)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tags", tags)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Description of the risk.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def fingerprint(self) -> _builtins.str:
+        """
+        Fingerprint of the risk.
+        """
+        return pulumi.get(self, "fingerprint")
+
+    @_builtins.property
+    @pulumi.getter
+    def identity(self) -> _builtins.str:
+        """
+        Identity of the risk.
+        """
+        return pulumi.get(self, "identity")
+
+    @_builtins.property
+    @pulumi.getter(name="metadataJson")
+    def metadata_json(self) -> _builtins.str:
+        """
+        Additional risk metadata as a JSON object string.
+        """
+        return pulumi.get(self, "metadata_json")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the risk.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def occurrences(self) -> Sequence['outputs.GetPipelineScanRiskOccurrenceResult']:
+        """
+        Detections of this risk in the scan.
+        """
+        return pulumi.get(self, "occurrences")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceIdentity")
+    def service_identity(self) -> _builtins.str:
+        """
+        Identity of the service the risk applies to.
+        """
+        return pulumi.get(self, "service_identity")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> _builtins.str:
+        """
+        Name of the service the risk applies to.
+        """
+        return pulumi.get(self, "service_name")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceType")
+    def service_type(self) -> _builtins.str:
+        """
+        Service kind, such as DiscoveredService, ChaosService, or CDService.
+        """
+        return pulumi.get(self, "service_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def severity(self) -> _builtins.str:
+        """
+        Severity: Critical, High, Medium, or Low.
+        """
+        return pulumi.get(self, "severity")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        Status: Open, InProgress, Resolved, or Ignored.
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Sequence[_builtins.str]:
+        """
+        Tags on the risk.
+        """
+        return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
+class GetPipelineScanRiskOccurrenceResult(dict):
+    def __init__(__self__, *,
+                 detected_at: _builtins.int,
+                 evidences: Sequence[_builtins.str],
+                 occurrence_id: _builtins.str,
+                 remediations: Sequence[_builtins.str],
+                 resilience_testing_recs: Sequence[_builtins.str],
+                 service_name: _builtins.str,
+                 source_id: _builtins.str,
+                 source_type: _builtins.str):
+        """
+        :param _builtins.int detected_at: Detection time as a Unix timestamp.
+        :param Sequence[_builtins.str] evidences: Evidence for the occurrence.
+        :param _builtins.str occurrence_id: Identity of this occurrence.
+        :param Sequence[_builtins.str] remediations: Remediation guidance.
+        :param Sequence[_builtins.str] resilience_testing_recs: Resilience testing recommendations.
+        :param _builtins.str service_name: Service name recorded on the occurrence.
+        :param _builtins.str source_id: Source id of the occurrence.
+        :param _builtins.str source_type: Source type of the occurrence.
+        """
+        pulumi.set(__self__, "detected_at", detected_at)
+        pulumi.set(__self__, "evidences", evidences)
+        pulumi.set(__self__, "occurrence_id", occurrence_id)
+        pulumi.set(__self__, "remediations", remediations)
+        pulumi.set(__self__, "resilience_testing_recs", resilience_testing_recs)
+        pulumi.set(__self__, "service_name", service_name)
+        pulumi.set(__self__, "source_id", source_id)
+        pulumi.set(__self__, "source_type", source_type)
+
+    @_builtins.property
+    @pulumi.getter(name="detectedAt")
+    def detected_at(self) -> _builtins.int:
+        """
+        Detection time as a Unix timestamp.
+        """
+        return pulumi.get(self, "detected_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def evidences(self) -> Sequence[_builtins.str]:
+        """
+        Evidence for the occurrence.
+        """
+        return pulumi.get(self, "evidences")
+
+    @_builtins.property
+    @pulumi.getter(name="occurrenceId")
+    def occurrence_id(self) -> _builtins.str:
+        """
+        Identity of this occurrence.
+        """
+        return pulumi.get(self, "occurrence_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def remediations(self) -> Sequence[_builtins.str]:
+        """
+        Remediation guidance.
+        """
+        return pulumi.get(self, "remediations")
+
+    @_builtins.property
+    @pulumi.getter(name="resilienceTestingRecs")
+    def resilience_testing_recs(self) -> Sequence[_builtins.str]:
+        """
+        Resilience testing recommendations.
+        """
+        return pulumi.get(self, "resilience_testing_recs")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> _builtins.str:
+        """
+        Service name recorded on the occurrence.
+        """
+        return pulumi.get(self, "service_name")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceId")
+    def source_id(self) -> _builtins.str:
+        """
+        Source id of the occurrence.
+        """
+        return pulumi.get(self, "source_id")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceType")
+    def source_type(self) -> _builtins.str:
+        """
+        Source type of the occurrence.
+        """
+        return pulumi.get(self, "source_type")
+
+
+@pulumi.output_type
+class GetPipelineScanRiskSummaryResult(dict):
+    def __init__(__self__, *,
+                 analysed_at: _builtins.int,
+                 category_counts: Mapping[str, _builtins.int],
+                 risk_count: _builtins.int,
+                 score: _builtins.int,
+                 score_max: _builtins.int,
+                 services_analysed: _builtins.int,
+                 services_at_risk: _builtins.int,
+                 severity_counts: Mapping[str, _builtins.int]):
+        """
+        :param _builtins.int analysed_at: Analysis time as a Unix timestamp.
+        :param Mapping[str, _builtins.int] category_counts: Risk counts keyed by category.
+        :param _builtins.int risk_count: Number of risks.
+        :param _builtins.int score: Resilience score.
+        :param _builtins.int score_max: Maximum resilience score.
+        :param _builtins.int services_analysed: Services included in analysis.
+        :param _builtins.int services_at_risk: Services with at least one risk.
+        :param Mapping[str, _builtins.int] severity_counts: Risk counts keyed by severity.
+        """
+        pulumi.set(__self__, "analysed_at", analysed_at)
+        pulumi.set(__self__, "category_counts", category_counts)
+        pulumi.set(__self__, "risk_count", risk_count)
+        pulumi.set(__self__, "score", score)
+        pulumi.set(__self__, "score_max", score_max)
+        pulumi.set(__self__, "services_analysed", services_analysed)
+        pulumi.set(__self__, "services_at_risk", services_at_risk)
+        pulumi.set(__self__, "severity_counts", severity_counts)
+
+    @_builtins.property
+    @pulumi.getter(name="analysedAt")
+    def analysed_at(self) -> _builtins.int:
+        """
+        Analysis time as a Unix timestamp.
+        """
+        return pulumi.get(self, "analysed_at")
+
+    @_builtins.property
+    @pulumi.getter(name="categoryCounts")
+    def category_counts(self) -> Mapping[str, _builtins.int]:
+        """
+        Risk counts keyed by category.
+        """
+        return pulumi.get(self, "category_counts")
+
+    @_builtins.property
+    @pulumi.getter(name="riskCount")
+    def risk_count(self) -> _builtins.int:
+        """
+        Number of risks.
+        """
+        return pulumi.get(self, "risk_count")
+
+    @_builtins.property
+    @pulumi.getter
+    def score(self) -> _builtins.int:
+        """
+        Resilience score.
+        """
+        return pulumi.get(self, "score")
+
+    @_builtins.property
+    @pulumi.getter(name="scoreMax")
+    def score_max(self) -> _builtins.int:
+        """
+        Maximum resilience score.
+        """
+        return pulumi.get(self, "score_max")
+
+    @_builtins.property
+    @pulumi.getter(name="servicesAnalysed")
+    def services_analysed(self) -> _builtins.int:
+        """
+        Services included in analysis.
+        """
+        return pulumi.get(self, "services_analysed")
+
+    @_builtins.property
+    @pulumi.getter(name="servicesAtRisk")
+    def services_at_risk(self) -> _builtins.int:
+        """
+        Services with at least one risk.
+        """
+        return pulumi.get(self, "services_at_risk")
+
+    @_builtins.property
+    @pulumi.getter(name="severityCounts")
+    def severity_counts(self) -> Mapping[str, _builtins.int]:
+        """
+        Risk counts keyed by severity.
+        """
+        return pulumi.get(self, "severity_counts")
+
+
+@pulumi.output_type
+class GetPipelineScanSummaryResult(dict):
+    def __init__(__self__, *,
+                 critical: _builtins.int,
+                 high: _builtins.int,
+                 low: _builtins.int,
+                 max_score: _builtins.int,
+                 medium: _builtins.int,
+                 rule_count: _builtins.int,
+                 score: _builtins.int,
+                 services_scanned: _builtins.int,
+                 total_risks: _builtins.int):
+        """
+        :param _builtins.int critical: Critical risks.
+        :param _builtins.int high: High risks.
+        :param _builtins.int low: Low risks.
+        :param _builtins.int max_score: Maximum resilience score.
+        :param _builtins.int medium: Medium risks.
+        :param _builtins.int rule_count: Number of risk rules evaluated.
+        :param _builtins.int score: Resilience score.
+        :param _builtins.int services_scanned: Number of services scanned.
+        :param _builtins.int total_risks: Number of risks found.
+        """
+        pulumi.set(__self__, "critical", critical)
+        pulumi.set(__self__, "high", high)
+        pulumi.set(__self__, "low", low)
+        pulumi.set(__self__, "max_score", max_score)
+        pulumi.set(__self__, "medium", medium)
+        pulumi.set(__self__, "rule_count", rule_count)
+        pulumi.set(__self__, "score", score)
+        pulumi.set(__self__, "services_scanned", services_scanned)
+        pulumi.set(__self__, "total_risks", total_risks)
+
+    @_builtins.property
+    @pulumi.getter
+    def critical(self) -> _builtins.int:
+        """
+        Critical risks.
+        """
+        return pulumi.get(self, "critical")
+
+    @_builtins.property
+    @pulumi.getter
+    def high(self) -> _builtins.int:
+        """
+        High risks.
+        """
+        return pulumi.get(self, "high")
+
+    @_builtins.property
+    @pulumi.getter
+    def low(self) -> _builtins.int:
+        """
+        Low risks.
+        """
+        return pulumi.get(self, "low")
+
+    @_builtins.property
+    @pulumi.getter(name="maxScore")
+    def max_score(self) -> _builtins.int:
+        """
+        Maximum resilience score.
+        """
+        return pulumi.get(self, "max_score")
+
+    @_builtins.property
+    @pulumi.getter
+    def medium(self) -> _builtins.int:
+        """
+        Medium risks.
+        """
+        return pulumi.get(self, "medium")
+
+    @_builtins.property
+    @pulumi.getter(name="ruleCount")
+    def rule_count(self) -> _builtins.int:
+        """
+        Number of risk rules evaluated.
+        """
+        return pulumi.get(self, "rule_count")
+
+    @_builtins.property
+    @pulumi.getter
+    def score(self) -> _builtins.int:
+        """
+        Resilience score.
+        """
+        return pulumi.get(self, "score")
+
+    @_builtins.property
+    @pulumi.getter(name="servicesScanned")
+    def services_scanned(self) -> _builtins.int:
+        """
+        Number of services scanned.
+        """
+        return pulumi.get(self, "services_scanned")
+
+    @_builtins.property
+    @pulumi.getter(name="totalRisks")
+    def total_risks(self) -> _builtins.int:
+        """
+        Number of risks found.
+        """
+        return pulumi.get(self, "total_risks")
 
 
 @pulumi.output_type

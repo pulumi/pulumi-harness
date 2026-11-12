@@ -125,14 +125,14 @@ public final class GetHarRegistryConfig extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * Upstream source. Every package type accepts `Custom` (which requires `config.url`). Package types with a built-in default source, which resolves the remote URL for you: `ALPINE` → `Alpine`, `CARGO` → `Crates`, `COMPOSER` → `Packagist`, `CONAN` → `ConanCenter`, `CONDA` → `Anaconda`, `CRAN` → `CRAN`, `DART` → `Pubdev`, `DOCKER` → `Dockerhub` or `AwsEcr`, `GO` → `GoProxy`, `HELM_HTTP` → `HelmChartRepo`, `MAVEN` → `MavenCentral`, `NPM` → `NpmJs`, `NUGET` → `NugetOrg`, `PUPPET` → `PuppetForge`, `PYTHON` → `PyPi`, `RUBY` → `RubyGems`, `TERRAFORM` → `TerraformRegistry`, `WOLFI` → `Wolfi`. `DEBIAN`, `GENERIC`, `HELM`, `HUGGINGFACE`, `RAW`, `RPM` and `SWIFT` support `Custom` only, and `TERRAFORM_BACKEND` does not support UPSTREAM registries.
+     * Upstream source. Every package type accepts `Custom` (which requires `config.url`). Package types with a built-in default source, which resolves the remote URL for you: `ALPINE` → `Alpine`, `CARGO` → `Crates`, `COMPOSER` → `Packagist`, `CONAN` → `ConanCenter`, `CONDA` → `Anaconda`, `CRAN` → `CRAN`, `DART` → `Pubdev`, `DOCKER` → `Dockerhub` or `AwsEcr`, `GO` → `GoProxy`, `HELM_HTTP` → `HelmChartRepo`, `MAVEN` → `MavenCentral`, `NPM` → `NpmJs`, `NUGET` → `NugetOrg`, `PUPPET` → `PuppetForge`, `PYTHON` → `PyPi`, `RUBY` → `RubyGems`, `TERRAFORM` → `TerraformRegistry`, `WOLFI` → `Wolfi`. `APM`, `DEBIAN`, `GENERIC`, `HELM`, `HUGGINGFACE`, `RAW`, `RPM` and `SWIFT` support `Custom` only, and `TERRAFORM_BACKEND` does not support UPSTREAM registries.
      * 
      */
     @Import(name="source")
     private @Nullable String source;
 
     /**
-     * @return Upstream source. Every package type accepts `Custom` (which requires `config.url`). Package types with a built-in default source, which resolves the remote URL for you: `ALPINE` → `Alpine`, `CARGO` → `Crates`, `COMPOSER` → `Packagist`, `CONAN` → `ConanCenter`, `CONDA` → `Anaconda`, `CRAN` → `CRAN`, `DART` → `Pubdev`, `DOCKER` → `Dockerhub` or `AwsEcr`, `GO` → `GoProxy`, `HELM_HTTP` → `HelmChartRepo`, `MAVEN` → `MavenCentral`, `NPM` → `NpmJs`, `NUGET` → `NugetOrg`, `PUPPET` → `PuppetForge`, `PYTHON` → `PyPi`, `RUBY` → `RubyGems`, `TERRAFORM` → `TerraformRegistry`, `WOLFI` → `Wolfi`. `DEBIAN`, `GENERIC`, `HELM`, `HUGGINGFACE`, `RAW`, `RPM` and `SWIFT` support `Custom` only, and `TERRAFORM_BACKEND` does not support UPSTREAM registries.
+     * @return Upstream source. Every package type accepts `Custom` (which requires `config.url`). Package types with a built-in default source, which resolves the remote URL for you: `ALPINE` → `Alpine`, `CARGO` → `Crates`, `COMPOSER` → `Packagist`, `CONAN` → `ConanCenter`, `CONDA` → `Anaconda`, `CRAN` → `CRAN`, `DART` → `Pubdev`, `DOCKER` → `Dockerhub` or `AwsEcr`, `GO` → `GoProxy`, `HELM_HTTP` → `HelmChartRepo`, `MAVEN` → `MavenCentral`, `NPM` → `NpmJs`, `NUGET` → `NugetOrg`, `PUPPET` → `PuppetForge`, `PYTHON` → `PyPi`, `RUBY` → `RubyGems`, `TERRAFORM` → `TerraformRegistry`, `WOLFI` → `Wolfi`. `APM`, `DEBIAN`, `GENERIC`, `HELM`, `HUGGINGFACE`, `RAW`, `RPM` and `SWIFT` support `Custom` only, and `TERRAFORM_BACKEND` does not support UPSTREAM registries.
      * 
      */
     public Optional<String> source() {
@@ -306,7 +306,7 @@ public final class GetHarRegistryConfig extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param source Upstream source. Every package type accepts `Custom` (which requires `config.url`). Package types with a built-in default source, which resolves the remote URL for you: `ALPINE` → `Alpine`, `CARGO` → `Crates`, `COMPOSER` → `Packagist`, `CONAN` → `ConanCenter`, `CONDA` → `Anaconda`, `CRAN` → `CRAN`, `DART` → `Pubdev`, `DOCKER` → `Dockerhub` or `AwsEcr`, `GO` → `GoProxy`, `HELM_HTTP` → `HelmChartRepo`, `MAVEN` → `MavenCentral`, `NPM` → `NpmJs`, `NUGET` → `NugetOrg`, `PUPPET` → `PuppetForge`, `PYTHON` → `PyPi`, `RUBY` → `RubyGems`, `TERRAFORM` → `TerraformRegistry`, `WOLFI` → `Wolfi`. `DEBIAN`, `GENERIC`, `HELM`, `HUGGINGFACE`, `RAW`, `RPM` and `SWIFT` support `Custom` only, and `TERRAFORM_BACKEND` does not support UPSTREAM registries.
+         * @param source Upstream source. Every package type accepts `Custom` (which requires `config.url`). Package types with a built-in default source, which resolves the remote URL for you: `ALPINE` → `Alpine`, `CARGO` → `Crates`, `COMPOSER` → `Packagist`, `CONAN` → `ConanCenter`, `CONDA` → `Anaconda`, `CRAN` → `CRAN`, `DART` → `Pubdev`, `DOCKER` → `Dockerhub` or `AwsEcr`, `GO` → `GoProxy`, `HELM_HTTP` → `HelmChartRepo`, `MAVEN` → `MavenCentral`, `NPM` → `NpmJs`, `NUGET` → `NugetOrg`, `PUPPET` → `PuppetForge`, `PYTHON` → `PyPi`, `RUBY` → `RubyGems`, `TERRAFORM` → `TerraformRegistry`, `WOLFI` → `Wolfi`. `APM`, `DEBIAN`, `GENERIC`, `HELM`, `HUGGINGFACE`, `RAW`, `RPM` and `SWIFT` support `Custom` only, and `TERRAFORM_BACKEND` does not support UPSTREAM registries.
          * 
          * @return builder
          * 

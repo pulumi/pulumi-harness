@@ -37,8 +37,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &HubV2{}
 	case "harness:chaos/imageRegistry:ImageRegistry":
 		r = &ImageRegistry{}
+	case "harness:chaos/infrastructureScan:InfrastructureScan":
+		r = &InfrastructureScan{}
 	case "harness:chaos/infrastructureV2:InfrastructureV2":
 		r = &InfrastructureV2{}
+	case "harness:chaos/onboardingService:OnboardingService":
+		r = &OnboardingService{}
+	case "harness:chaos/pipelineScan:PipelineScan":
+		r = &PipelineScan{}
 	case "harness:chaos/probeTemplate:ProbeTemplate":
 		r = &ProbeTemplate{}
 	case "harness:chaos/securityGovernanceCondition:SecurityGovernanceCondition":
@@ -49,6 +55,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SecurityGovernanceRule{}
 	case "harness:chaos/securityGovernanceRuleV3:SecurityGovernanceRuleV3":
 		r = &SecurityGovernanceRuleV3{}
+	case "harness:chaos/serviceOnboarding:ServiceOnboarding":
+		r = &ServiceOnboarding{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -104,7 +112,22 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"harness",
+		"chaos/infrastructureScan",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
 		"chaos/infrastructureV2",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"chaos/onboardingService",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"chaos/pipelineScan",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -130,6 +153,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"harness",
 		"chaos/securityGovernanceRuleV3",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"chaos/serviceOnboarding",
 		&module{version},
 	)
 }
