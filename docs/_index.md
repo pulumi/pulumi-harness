@@ -17,7 +17,7 @@ The Harness provider is available as a package in all Pulumi languages:
 
 ## Overview
 
-For an explanation on how to use this Provider along with code samples, refer to the Harness Pulumi Provider Quickstart Guide <https://developer.harness.io/harness-platform/use-harness-platform/automation/terraform-provider/harness-terraform-provider>.
+This provider is built from the Harness Terraform provider. For an introduction to its resources and how they fit together, see the [Harness Terraform provider quickstart](https://developer.harness.io/harness-platform/use-harness-platform/automation/terraform-provider/harness-terraform-provider). Its examples are written in HCL, but the resources and arguments are the same in this provider.
 ## Example Usage
 
 Configure the Harness provider for First Gen resources

@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"path"
+	"regexp"
 
 	// embed is used to store bridge-metadata.json in the compiled binary
 	_ "embed"
@@ -413,19 +414,28 @@ var fixAPIKeysLink = tfbridge.DocsEdit{
 	},
 }
 
-// The upstream quickstart link no longer exists. This edit runs after code translation because the bridge's
-// terraform -> pulumi word replacement would otherwise rewrite "harness-terraform-provider" in the new URL.
+// The upstream quickstart link no longer exists, and the bridge's terraform -> pulumi word replacement renames it a
+// "Harness Pulumi Provider Quickstart Guide", which doesn't exist either. This edit names the Terraform quickstart
+// instead, and runs after code translation so the word replacement leaves the new sentence alone.
 var fixQuickstartLink = tfbridge.DocsEdit{
 	Path:  indexDoc,
 	Phase: info.PostCodeTranslation,
 	Edit: func(_ string, content []byte) ([]byte, error) {
-		return bytes.ReplaceAll(content,
-			[]byte("https://docs.harness.io/article/7cude5tvzh-harness-pulumi-provider"),
-			[]byte("https://developer.harness.io/harness-platform/use-harness-platform/automation/"+
-				"terraform-provider/harness-terraform-provider"),
-		), nil
+		return quickstartSentence.ReplaceAll(content, []byte(
+			"This provider is built from the Harness Terraform provider. "+
+				"For an introduction to its resources and how they fit together, see the "+
+				"[Harness Terraform provider quickstart]"+
+				"(https://developer.harness.io/harness-platform/use-harness-platform/automation/"+
+				"terraform-provider/harness-terraform-provider). "+
+				"Its examples are written in HCL, but the resources and arguments are the same in this provider.",
+		)), nil
 	},
 }
+
+var quickstartSentence = regexp.MustCompile(
+	`(?m)^For an explanation on how to use this Provider along with code samples, ` +
+		`refer to the Harness Pulumi Provider Quickstart Guide ` +
+		`<?https://docs\.harness\.io/article/7cude5tvzh-harness-pulumi-provider>?\.`)
 
 // In the upstream example, two providers are defined in the same code block.
 // Pulumi Convert is not set up to handle this case, so this edit breaks the example up into two separate code blocks.
