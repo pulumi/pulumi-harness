@@ -17,7 +17,7 @@ The Harness provider is available as a package in all Pulumi languages:
 
 ## Overview
 
-For an explanation on how to use this Provider along with code samples, refer to the Harness Pulumi Provider Quickstart Guide <https://docs.harness.io/article/7cude5tvzh-harness-pulumi-provider>.
+For an explanation on how to use this Provider along with code samples, refer to the Harness Pulumi Provider Quickstart Guide <https://developer.harness.io/harness-platform/use-harness-platform/automation/terraform-provider/harness-terraform-provider>.
 ## Example Usage
 
 Configure the Harness provider for First Gen resources
@@ -58,4 +58,4 @@ Use the optional `fmeAdminApiEndpoint` provider attribute or the `FME_ADMIN_API_
 - `apiKey` (String) The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable. For more information to create an API key in FirstGen, see <https://docs.harness.io/article/smloyragsm-api-keys#create_an_api_key>.
 - `endpoint` (String) The URL of the Harness API endpoint. The default is `https://app.harness.io/gateway`. This can also be set using the `HARNESS_ENDPOINT` environment variable.
 - `fmeAdminApiEndpoint` (String) The URL of the Harness FME admin API endpoint. This can also be set using the `FME_ADMIN_API_ENDPOINT` environment variable.
-- `platformApiKey` (String) The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment variable. For more information to create an API key in NextGen, see <https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys>.
+- `platformApiKey` (String) The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment variable. For more information to create an API key in NextGen, see <https://developer.harness.io/harness-platform/use-harness-platform/automation/api/add-and-manage-api-keys>.

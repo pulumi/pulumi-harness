@@ -395,7 +395,33 @@ func editRules(defaults []tfbridge.DocsEdit) []tfbridge.DocsEdit {
 	return append(
 		defaults,
 		fixInstallationExample,
+		fixAPIKeysLink,
+		fixQuickstartLink,
 	)
+}
+
+// The upstream docs link to a docs.harness.io article that no longer exists.
+var fixAPIKeysLink = tfbridge.DocsEdit{
+	Path: "index.md",
+	Edit: func(_ string, content []byte) ([]byte, error) {
+		return bytes.ReplaceAll(content,
+			[]byte("https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys"),
+			[]byte("https://developer.harness.io/harness-platform/use-harness-platform/automation/api/add-and-manage-api-keys"),
+		), nil
+	},
+}
+
+// The upstream quickstart link no longer exists. This edit runs after code translation because the bridge's
+// terraform -> pulumi word replacement would otherwise rewrite "harness-terraform-provider" in the new URL.
+var fixQuickstartLink = tfbridge.DocsEdit{
+	Path:  "index.md",
+	Phase: info.PostCodeTranslation,
+	Edit: func(_ string, content []byte) ([]byte, error) {
+		return bytes.ReplaceAll(content,
+			[]byte("https://docs.harness.io/article/7cude5tvzh-harness-pulumi-provider"),
+			[]byte("https://developer.harness.io/harness-platform/use-harness-platform/automation/terraform-provider/harness-terraform-provider"),
+		), nil
+	},
 }
 
 // In the upstream example, two providers are defined in the same code block.
