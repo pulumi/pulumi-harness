@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"path"
+	"regexp"
 
 	// embed is used to store bridge-metadata.json in the compiled binary
 	_ "embed"
@@ -395,14 +396,52 @@ func editRules(defaults []tfbridge.DocsEdit) []tfbridge.DocsEdit {
 	return append(
 		defaults,
 		fixInstallationExample,
+		fixAPIKeysLink,
+		fixQuickstartLink,
 	)
 }
+
+const indexDoc = "index.md"
+
+// The upstream docs link to a docs.harness.io article that no longer exists.
+var fixAPIKeysLink = tfbridge.DocsEdit{
+	Path: indexDoc,
+	Edit: func(_ string, content []byte) ([]byte, error) {
+		return bytes.ReplaceAll(content,
+			[]byte("https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys"),
+			[]byte("https://developer.harness.io/harness-platform/use-harness-platform/automation/api/add-and-manage-api-keys"),
+		), nil
+	},
+}
+
+// The upstream quickstart link no longer exists, and the bridge's terraform -> pulumi word replacement renames it a
+// "Harness Pulumi Provider Quickstart Guide", which doesn't exist either. This edit names the Terraform quickstart
+// instead, and runs after code translation so the word replacement leaves the new sentence alone.
+var fixQuickstartLink = tfbridge.DocsEdit{
+	Path:  indexDoc,
+	Phase: info.PostCodeTranslation,
+	Edit: func(_ string, content []byte) ([]byte, error) {
+		return quickstartSentence.ReplaceAll(content, []byte(
+			"This provider is built from the Harness Terraform provider. "+
+				"For an introduction to its resources and how they fit together, see the "+
+				"[Harness Terraform provider quickstart]"+
+				"(https://developer.harness.io/harness-platform/use-harness-platform/automation/"+
+				"terraform-provider/harness-terraform-provider). "+
+				"Its examples are written in HCL, but the resources and arguments are the same in this provider.",
+		)), nil
+	},
+}
+
+var quickstartSentence = regexp.MustCompile(
+	`(?m)^For an explanation on how to use this Provider along with code samples, ` +
+		`refer to the Harness Pulumi Provider Quickstart Guide ` +
+		`<?https://docs\.harness\.io/article/7cude5tvzh-harness-pulumi-provider>?\.`)
 
 // In the upstream example, two providers are defined in the same code block.
 // Pulumi Convert is not set up to handle this case, so this edit breaks the example up into two separate code blocks.
 // This can be removed when https://github.com/pulumi/pulumi/issues/17596 is implemented.
 var fixInstallationExample = tfbridge.DocsEdit{
-	Path: "index.md",
+	Path: indexDoc,
 	Edit: func(_ string, content []byte) ([]byte, error) {
 		input, err := os.ReadFile("provider/installation-replaces/example-input.md")
 		if err != nil {

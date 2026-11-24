@@ -25,7 +25,7 @@ Replace the version string with your desired version.
 
 ## Setup
 
-To provision resources with the Pulumi Harness provider, you need to have Harness credentials. Harness maintains documentation on how to create API keys [here](https://docs.harness.io/article/smloyragsm-api-keys)
+To provision resources with the Pulumi Harness provider, you need to have Harness credentials. Harness maintains documentation on how to create API keys [here](https://developer.harness.io/harness-platform/use-harness-platform/automation/api/add-and-manage-api-keys)
 
 ### Set environment variables
 
